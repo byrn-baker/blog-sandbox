@@ -1,0 +1,61 @@
+---
+# Inter-device cabling and P2P IP assignments.
+# A-side gets even IP (first in /31), B-side gets odd.
+
+{% macro cable_link(a_dev, a_intf, b_dev, b_intf, prefix) %}
+{% set base = prefix.split('/')[0] %}
+{% set parts = base.split('.') %}
+{% set last = parts[3] | int %}
+{% set net = parts[0] ~ '.' ~ parts[1] ~ '.' ~ parts[2] %}
+{% set a_ip = net ~ '.' ~ last %}
+{% set b_ip = net ~ '.' ~ (last + 1) %}
+devices:
+  - "!update:name": "{{ a_dev }}"
+    interfaces:
+      - "!update:name": "{{ a_intf }}"
+        status__name: "Active"
+        description: "to {{ b_dev }} {{ b_intf }}"
+        "!ref": "{{ a_dev }}_{{ a_intf | replace(' ', '_') }}"
+        ip_addresses:
+          - "!create_or_update:address": "{{ a_ip }}/31"
+            status__name: "Active"
+  - "!update:name": "{{ b_dev }}"
+    interfaces:
+      - "!update:name": "{{ b_intf }}"
+        status__name: "Active"
+        description: "to {{ a_dev }} {{ a_intf }}"
+        "!ref": "{{ b_dev }}_{{ b_intf | replace(' ', '_') }}"
+        ip_addresses:
+          - "!create_or_update:address": "{{ b_ip }}/31"
+            status__name: "Active"
+
+cables:
+  - termination_a: "!ref:{{ a_dev }}_{{ a_intf | replace(' ', '_') }}"
+    termination_b: "!ref:{{ b_dev }}_{{ b_intf | replace(' ', '_') }}"
+    status__name: "Connected"
+{% endmacro %}
+
+# --- SP Core Links ---
+{% for link in sp_core_links %}
+{{ cable_link(link[0], link[1], link[2], link[3], link[4]) }}
+{% endfor %}
+
+# --- PE-CE Links ---
+{% for link in pe_ce_links %}
+{{ cable_link(link[0], link[1], link[2], link[3], link[4]) }}
+{% endfor %}
+
+# --- DC-A Fabric Links ---
+{% for link in dc_a_links %}
+{{ cable_link(link[0], link[1], link[2], link[3], link[4]) }}
+{% endfor %}
+
+# --- DC-B Fabric Links ---
+{% for link in dc_b_links %}
+{{ cable_link(link[0], link[1], link[2], link[3], link[4]) }}
+{% endfor %}
+
+# --- DC-C Fabric Links ---
+{% for link in dc_c_links %}
+{{ cable_link(link[0], link[1], link[2], link[3], link[4]) }}
+{% endfor %}

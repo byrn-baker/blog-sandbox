@@ -1,0 +1,83 @@
+---
+manufacturers:
+  - "!create_or_update:name": "Cisco"
+  - "!create_or_update:name": "Arista"
+
+platforms:
+  - "!create_or_update:name": "cisco_iosxe"
+    manufacturer__name: "Cisco"
+    network_driver: "cisco_ios"
+  - "!create_or_update:name": "arista_eos"
+    manufacturer__name: "Arista"
+    network_driver: "arista_eos"
+
+device_types:
+  - "!create_or_update:model": "CAT8000v"
+    manufacturer__name: "Cisco"
+    u_height: 1
+  - "!create_or_update:model": "vEOS"
+    manufacturer__name: "Arista"
+    u_height: 1
+
+roles:
+{% for role_name in ["P-Router", "PE-Router", "Route-Reflector", "CE-Router", "Border-Router", "Spine", "Leaf"] %}
+  - "!create_or_update:name": "{{ role_name }}"
+    content_types:
+      - "!get:app_label": "dcim"
+        "!get:model": "device"
+{% endfor %}
+
+location_types:
+  - "!create_or_update:name": "Region"
+    nestable: true
+    content_types:
+      - "!get:app_label": "dcim"
+        "!get:model": "device"
+    children:
+      - "!create_or_update:name": "Site"
+        content_types:
+          - "!get:app_label": "dcim"
+            "!get:model": "device"
+          - "!get:app_label": "ipam"
+            "!get:model": "prefix"
+          - "!get:app_label": "ipam"
+            "!get:model": "vlan"
+    locations:
+      - "!create_or_update:name": "SP-Demo-Lab"
+        status__name: "Active"
+        "!ref": "region"
+        children:
+          - "!create_or_update:name": "SP-Core"
+            location_type__name: "Site"
+            status__name: "Active"
+            "!ref": "sp_core"
+          - "!create_or_update:name": "DC-A"
+            location_type__name: "Site"
+            status__name: "Active"
+            "!ref": "dc_a"
+          - "!create_or_update:name": "DC-B"
+            location_type__name: "Site"
+            status__name: "Active"
+            "!ref": "dc_b"
+          - "!create_or_update:name": "DC-C"
+            location_type__name: "Site"
+            status__name: "Active"
+            "!ref": "dc_c"
+
+vrfs:
+{% for vrf in vrfs %}
+  - "!create_or_update:name": "{{ vrf.name }}"
+    rd: "{{ vrf.rd }}"
+    status__name: "Active"
+{% endfor %}
+
+prefixes:
+  - "!create_or_update:prefix": "192.168.3.0/24"
+    status__name: "Active"
+    description: "OOB Management"
+  - "!create_or_update:prefix": "10.0.0.0/24"
+    status__name: "Active"
+    description: "SP Core P2P"
+  - "!create_or_update:prefix": "10.1.0.0/24"
+    status__name: "Active"
+    description: "SP Core Loopbacks"

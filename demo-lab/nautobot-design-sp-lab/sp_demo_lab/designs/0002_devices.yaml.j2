@@ -1,0 +1,75 @@
+---
+# SP Core devices — Cisco CAT8000v (IOS-XE)
+{% set site_refs = {"SP-Core": "sp_core", "DC-A": "dc_a", "DC-B": "dc_b", "DC-C": "dc_c"} %}
+
+{% macro cisco_device(device) -%}
+  - "!create_or_update:name": "{{ device.name }}"
+    location: "!ref:{{ site_refs[device.site] }}"
+    device_type__model: "CAT8000v"
+    role__name: "{{ device.role }}"
+    status__name: "Active"
+    platform__name: "cisco_iosxe"
+    interfaces:
+      - "!create_or_update:name": "GigabitEthernet1"
+        status__name: "Active"
+        type: "1000base-t"
+        description: "Management - MGMT-VRF"
+        ip_addresses:
+          - "!create_or_update:address": "{{ device.ip }}/24"
+            status__name: "Active"
+      - "!create_or_update:name": "Loopback0"
+        status__name: "Active"
+        type: "virtual"
+        description: "Router-ID"
+        ip_addresses:
+          - "!create_or_update:address": "{{ device.loopback }}/32"
+            status__name: "Active"
+{% for i in range(2, 7) %}
+      - "!create_or_update:name": "GigabitEthernet{{ i }}"
+        status__name: "Planned"
+        type: "1000base-t"
+{% endfor %}
+{%- endmacro %}
+
+{% macro arista_device(device) -%}
+  - "!create_or_update:name": "{{ device.name }}"
+    location: "!ref:{{ site_refs[device.site] }}"
+    device_type__model: "vEOS"
+    role__name: "{{ device.role }}"
+    status__name: "Active"
+    platform__name: "arista_eos"
+    interfaces:
+      - "!create_or_update:name": "Management1"
+        status__name: "Active"
+        type: "1000base-t"
+        description: "Management - MGMT-VRF"
+        ip_addresses:
+          - "!create_or_update:address": "{{ device.ip }}/24"
+            status__name: "Active"
+      - "!create_or_update:name": "Loopback0"
+        status__name: "Active"
+        type: "virtual"
+        description: "Router-ID"
+        ip_addresses:
+          - "!create_or_update:address": "{{ device.loopback }}/32"
+            status__name: "Active"
+{% for i in range(1, 9) %}
+      - "!create_or_update:name": "Ethernet{{ i }}"
+        status__name: "Planned"
+        type: "1000base-t"
+{% endfor %}
+{%- endmacro %}
+
+devices:
+{% for device in sp_core_devices %}
+  {{ cisco_device(device) }}
+{% endfor %}
+{% for device in dc_a_devices %}
+  {{ arista_device(device) }}
+{% endfor %}
+{% for device in dc_b_devices %}
+  {{ arista_device(device) }}
+{% endfor %}
+{% for device in dc_c_devices %}
+  {{ arista_device(device) }}
+{% endfor %}
