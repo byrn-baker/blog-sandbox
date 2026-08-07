@@ -1,0 +1,46 @@
+---
+# Inter-device cabling and P2P IP assignments.
+# A-side gets the even IP (first host in the /31), B-side gets the odd.
+#
+# IMPORTANT: every link must render beneath a SINGLE top-level `devices:` and a
+# SINGLE top-level `cables:` key. Emitting one `devices:`/`cables:` block per
+# link produces duplicate top-level YAML keys, and the parser silently keeps
+# only the last occurrence -- which drops every link but one.
+
+{% set all_links = sp_core_links + pe_ce_links + dc_a_links + dc_b_links + dc_c_links %}
+
+{% macro link_devices(a_dev, a_intf, b_dev, b_intf, prefix) -%}
+{%- set octets = prefix.split('/')[0].split('.') -%}
+{%- set net = octets[0] ~ '.' ~ octets[1] ~ '.' ~ octets[2] -%}
+{%- set last = octets[3] | int -%}
+- "!update:name": "{{ a_dev }}"
+    interfaces:
+      - "!update:name": "{{ a_intf }}"
+        status__name: "Active"
+        description: "to {{ b_dev }} {{ b_intf }}"
+        "!ref": "{{ a_dev }}_{{ a_intf | replace(' ', '_') }}"
+        ip_addresses:
+          - "!create_or_update:address": "{{ net }}.{{ last }}/31"
+            status__name: "Active"
+  - "!update:name": "{{ b_dev }}"
+    interfaces:
+      - "!update:name": "{{ b_intf }}"
+        status__name: "Active"
+        description: "to {{ a_dev }} {{ a_intf }}"
+        "!ref": "{{ b_dev }}_{{ b_intf | replace(' ', '_') }}"
+        ip_addresses:
+          - "!create_or_update:address": "{{ net }}.{{ last + 1 }}/31"
+            status__name: "Active"
+{%- endmacro %}
+
+devices:
+{% for link in all_links %}
+  {{ link_devices(link[0], link[1], link[2], link[3], link[4]) }}
+{% endfor %}
+
+cables:
+{% for link in all_links %}
+  - termination_a: "!ref:{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"
+    termination_b: "!ref:{{ link[2] }}_{{ link[3] | replace(' ', '_') }}"
+    status__name: "Connected"
+{% endfor %}

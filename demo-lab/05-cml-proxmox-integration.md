@@ -1,32 +1,50 @@
-# 05 — CML ↔ Proxmox Integration
+# 05 — CML & EVE-NG on Proxmox
 
 ## Concept
 
-CML runs the entire router/switch topology (SP core + CE routers). Proxmox runs
-the K3s VMs with real compute resources. They connect at the DC LAN segments via
-Proxmox Linux bridges passed into the CML VM as extra NICs.
+Two network emulators run as VMs on the same Proxmox host, each handling the
+platform it's best suited for:
+
+- **CML** — SP core (Cisco IOS-XE): P routers, PE routers, Route Reflectors,
+  BORDER1, and CE routers (13 nodes total)
+- **EVE-NG** — Arista datacenter fabric (vEOS): spines, leaves, plus the Linux
+  VMs for K3s clusters, servers, and storage nodes
+
+They interconnect via shared Proxmox Linux bridges. The CE routers live in CML
+but their Gi3/Gi4 downlinks map to Proxmox bridges that EVE-NG's Arista spines
+also connect to — giving L2 adjacency between CEs and spines without either
+hypervisor knowing about the other.
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
 │                           PROXMOX HOST                                    │
 │                                                                          │
-│  ┌──────────────────────────────────────────────────────────────────┐    │
-│  │                      CML VM                                       │    │
-│  │                                                                  │    │
-│  │  [SP Core + CEs]                                                 │    │
-│  │       CE1-Gi3 ─── ext-dc1 (mapped to ens4 / vmbr100)            │    │
-│  │       CE2-Gi3 ─── ext-dc2 (mapped to ens5 / vmbr200)            │    │
-│  │       CE3-Gi3 ─── ext-dc3 (mapped to ens6 / vmbr300)            │    │
-│  └──────────────────────────┬────────┬────────┬─────────────────────┘    │
-│                             │        │        │                          │
-│  Proxmox bridges:       vmbr100   vmbr200   vmbr300                     │
-│                             │        │        │                          │
-│  ┌──────────────┐   ┌──────┴───┐  ┌─┴────────┐   ┌──────────────┐     │
-│  │ DC1 K3s VMs  │   │ DC2 K3s  │  │ DC2 K3s  │   │ DC3 K3s VMs  │     │
-│  │ k3s-m1       │   │ k3s-m2   │  │ k3s-w3   │   │ k3s-m3       │     │
-│  │ k3s-w1       │   │ k3s-w3   │  │ k3s-w4   │   │ k3s-w5       │     │
-│  │ k3s-w2       │   │ k3s-w4   │  └──────────┘   └──────────────┘     │
-│  └──────────────┘   └──────────┘                                        │
+│  ┌─────────────────────────────────────┐  ┌───────────────────────────┐  │
+│  │            CML VM                    │  │        EVE-NG VM          │  │
+│  │                                     │  │                           │  │
+│  │  SP Core (Cisco IOS-XE):            │  │  DC Fabric (Arista vEOS): │  │
+│  │    RR1, RR2                         │  │    DCA-Spine01/02         │  │
+│  │    SP1, SP2, SP3, SP4               │  │    DCA-Leaf01/02/03       │  │
+│  │    SPE1, SPE2, SPE3                 │  │    DCB-Spine01/02         │  │
+│  │    BORDER1                          │  │    DCB-Leaf01/02/03       │  │
+│  │    CE1, CE2, CE3                    │  │    DCC-Spine01/02         │  │
+│  │                                     │  │    DCC-Leaf01/02/03       │  │
+│  │  CE1 Gi3/Gi4 → ext-dc1             │  │                           │  │
+│  │  CE2 Gi3/Gi4 → ext-dc2             │  │  Linux VMs:               │  │
+│  │  CE3 Gi3/Gi4 → ext-dc3             │  │    K3s nodes, servers,    │  │
+│  │                                     │  │    storage per DC         │  │
+│  └──────────────┬────────┬────────┬────┘  └─────┬────────┬────────┬──┘  │
+│                 │        │        │              │        │        │     │
+│  Proxmox:    vmbr100  vmbr200  vmbr300        vmbr100  vmbr200  vmbr300 │
+│                 │        │        │              │        │        │     │
+│                 └────────┼────────┼──────────────┘        │        │     │
+│                          └────────┼───────────────────────┘        │     │
+│                                   └────────────────────────────────┘     │
+│                                                                          │
+│  Each vmbr bridge carries one DC's L2 domain:                            │
+│    vmbr100 = DC-A (CE1 ↔ DCA-Spine01/02 ↔ Leaves ↔ K3s/Servers)        │
+│    vmbr200 = DC-B (CE2 ↔ DCB-Spine01/02 ↔ Leaves ↔ K3s/Servers)        │
+│    vmbr300 = DC-C (CE3 ↔ DCC-Spine01/02 ↔ Leaves ↔ K3s/Servers)        │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -37,49 +55,49 @@ Proxmox Linux bridges passed into the CML VM as extra NICs.
 Add to `/etc/network/interfaces` on the Proxmox host:
 
 ```bash
-# DC1 LAN segment (Customer A — 192.168.100.0/24)
+# DC-A LAN segment (Customer A — 192.168.100.0/24)
 auto vmbr100
 iface vmbr100 inet manual
     bridge-ports none
     bridge-stp off
     bridge-fd 0
-    description "DC1 - Customer A LAN"
+    description "DC-A - Customer A LAN"
 
-# DC2 LAN segment (Customer B — 192.168.200.0/24)
+# DC-B LAN segment (Customer B — 192.168.200.0/24)
 auto vmbr200
 iface vmbr200 inet manual
     bridge-ports none
     bridge-stp off
     bridge-fd 0
-    description "DC2 - Customer B LAN"
+    description "DC-B - Customer B LAN"
 
-# DC3 LAN segment (Customer C — 192.168.100.0/24, separate domain)
+# DC-C LAN segment (Customer C)
 auto vmbr300
 iface vmbr300 inet manual
     bridge-ports none
     bridge-stp off
     bridge-fd 0
-    description "DC3 - Customer C LAN"
+    description "DC-C - Customer C LAN"
 ```
 
 Apply:
 ```bash
 ifreload -a
-# or reboot
 ```
 
 ---
 
-## Step 2: Add NICs to CML VM
+## Step 2: CML VM — NIC Mapping
 
-The CML VM needs 3 additional network interfaces (beyond its management NIC):
+The CML VM needs 3 additional network interfaces (beyond its management NIC)
+to bridge the CE downlinks out to the shared Proxmox bridges:
 
-| CML VM NIC | Proxmox Bridge | Purpose |
-|------------|----------------|---------|
-| net0 (ens3) | vmbr0 | CML management (web UI, API) |
-| net1 (ens4) | vmbr100 | External connector → DC1 |
-| net2 (ens5) | vmbr200 | External connector → DC2 |
-| net3 (ens6) | vmbr300 | External connector → DC3 |
+| CML VM NIC | Proxmox Bridge | CML External Connector | Connected to |
+|------------|----------------|------------------------|--------------|
+| net0 (ens3) | vmbr0 | — | CML management UI |
+| net1 (ens4) | vmbr100 | ext-dc1 | CE1 Gi3, CE1 Gi4 |
+| net2 (ens5) | vmbr200 | ext-dc2 | CE2 Gi3, CE2 Gi4 |
+| net3 (ens6) | vmbr300 | ext-dc3 | CE3 Gi3, CE3 Gi4 |
 
 In Proxmox CLI:
 ```bash
@@ -88,162 +106,116 @@ qm set <CML_VMID> --net2 virtio,bridge=vmbr200
 qm set <CML_VMID> --net3 virtio,bridge=vmbr300
 ```
 
-Or via the Proxmox web UI: VM → Hardware → Add → Network Device.
+### CML External Connector Config
+
+Create 3 External Connector nodes in CML configured for "Bridge" mode:
+
+| CML Node | Maps to |
+|----------|---------|
+| ext-dc1 | ens4 → vmbr100 |
+| ext-dc2 | ens5 → vmbr200 |
+| ext-dc3 | ens6 → vmbr300 |
+
+CML wiring (each CE has two downlinks to its DC fabric):
+```
+CE1 Gi3 ──┐
+CE1 Gi4 ──┼── unmanaged-switch-dc1 ──── ext-dc1
+           │
+CE2 Gi3 ──┐
+CE2 Gi4 ──┼── unmanaged-switch-dc2 ──── ext-dc2
+           │
+CE3 Gi3 ──┐
+CE3 Gi4 ──┼── unmanaged-switch-dc3 ──── ext-dc3
+```
 
 ---
 
-## Step 3: Map External Connectors in CML
+## Step 3: EVE-NG VM — NIC Mapping
 
-In CML, create 3 **External Connector** nodes configured for "Bridge" mode:
+The EVE-NG VM also gets the same 3 DC bridges so the Arista spines can reach
+the CEs:
 
-| CML Node | Configuration | Maps to |
-|----------|---------------|---------|
-| ext-dc1 | Bridge virbr1 (or by interface name) | ens4 → vmbr100 |
-| ext-dc2 | Bridge virbr2 | ens5 → vmbr200 |
-| ext-dc3 | Bridge virbr3 | ens6 → vmbr300 |
+| EVE-NG VM NIC | Proxmox Bridge | EVE-NG Cloud | Connected to |
+|---------------|----------------|--------------|--------------|
+| net0 (eth0) | vmbr0 | — | EVE-NG management UI |
+| net1 (eth1) | vmbr100 | Cloud-DC-A | DCA-Spine01 Eth10, DCA-Spine02 Eth10 |
+| net2 (eth2) | vmbr200 | Cloud-DC-B | DCB-Spine01 Eth10, DCB-Spine02 Eth10 |
+| net3 (eth3) | vmbr300 | Cloud-DC-C | DCC-Spine01 Eth10, DCC-Spine02 Eth10 |
 
-> **Note:** CML's external connector bridge naming depends on your CML version.
-> You may need to create bridge mappings in CML's system config
-> (`/etc/virl2/config.yml`) to map the extra interfaces.
-
-### CML wiring
-
-```
-CE1 Gi3 ──── unmanaged-switch-dc1 ──── ext-dc1
-CE2 Gi3 ──── unmanaged-switch-dc2 ──── ext-dc2
-CE3 Gi3 ──── unmanaged-switch-dc3 ──── ext-dc3
-```
-
-The unmanaged switch allows future expansion (add more CML nodes to the DC LAN).
-
----
-
-## Step 4: Create K3s VMs in Proxmox
-
-### VM creation commands
-
+In Proxmox CLI:
 ```bash
-# DC1 — K3s server
-qm create 201 --name k3s-m1 --memory 8192 --cores 4 --cpu host \
-  --net0 virtio,bridge=vmbr0 \
-  --net1 virtio,bridge=vmbr100 \
-  --scsi0 local-lvm:50 \
-  --ide2 local:iso/ubuntu-22.04-server-cloudimg-amd64.img,media=cdrom \
-  --boot order=scsi0 --ostype l26
-
-# DC1 — K3s worker 1
-qm create 202 --name k3s-w1 --memory 8192 --cores 4 --cpu host \
-  --net0 virtio,bridge=vmbr0 \
-  --net1 virtio,bridge=vmbr100 \
-  --scsi0 local-lvm:50 \
-  --boot order=scsi0 --ostype l26
-
-# DC1 — K3s worker 2
-qm create 203 --name k3s-w2 --memory 8192 --cores 4 --cpu host \
-  --net0 virtio,bridge=vmbr0 \
-  --net1 virtio,bridge=vmbr100 \
-  --scsi0 local-lvm:50 \
-  --boot order=scsi0 --ostype l26
-
-# DC2 — K3s server
-qm create 301 --name k3s-m2 --memory 8192 --cores 4 --cpu host \
-  --net0 virtio,bridge=vmbr0 \
-  --net1 virtio,bridge=vmbr200 \
-  --scsi0 local-lvm:50 \
-  --boot order=scsi0 --ostype l26
-
-# DC2 — K3s workers
-qm create 302 --name k3s-w3 --memory 8192 --cores 4 --cpu host \
-  --net0 virtio,bridge=vmbr0 \
-  --net1 virtio,bridge=vmbr200 \
-  --scsi0 local-lvm:50 \
-  --boot order=scsi0 --ostype l26
-
-qm create 303 --name k3s-w4 --memory 8192 --cores 4 --cpu host \
-  --net0 virtio,bridge=vmbr0 \
-  --net1 virtio,bridge=vmbr200 \
-  --scsi0 local-lvm:50 \
-  --boot order=scsi0 --ostype l26
-
-# DC3 — K3s server
-qm create 401 --name k3s-m3 --memory 8192 --cores 4 --cpu host \
-  --net0 virtio,bridge=vmbr0 \
-  --net1 virtio,bridge=vmbr300 \
-  --scsi0 local-lvm:50 \
-  --boot order=scsi0 --ostype l26
-
-# DC3 — K3s worker
-qm create 402 --name k3s-w5 --memory 8192 --cores 4 --cpu host \
-  --net0 virtio,bridge=vmbr0 \
-  --net1 virtio,bridge=vmbr300 \
-  --scsi0 local-lvm:50 \
-  --boot order=scsi0 --ostype l26
+qm set <EVENG_VMID> --net1 virtio,bridge=vmbr100
+qm set <EVENG_VMID> --net2 virtio,bridge=vmbr200
+qm set <EVENG_VMID> --net3 virtio,bridge=vmbr300
 ```
+
+The Arista spine Ethernet10 interfaces connect to EVE-NG "Cloud" objects mapped
+to the host interfaces. This gives them L2 adjacency with the CML CEs on the
+same bridge.
+
+The Linux VMs (K3s nodes, servers, storage) also run inside EVE-NG, connected
+to the leaf switches via their access ports.
 
 ---
 
-## Step 5: VM Networking (dual-homed)
+## Step 4: Linux VMs in EVE-NG
 
-Each VM has two NICs:
+Each DC has a set of Linux VMs connected to the leaf switches:
 
-| NIC | Bridge | Purpose | IP |
-|-----|--------|---------|-----|
-| net0 (ens18) | vmbr0 | Management (SSH from workstation) | DHCP or static on mgmt LAN |
-| net1 (ens19) | vmbr100/200/300 | DC LAN (K3s traffic, services) | Static per addressing plan |
+| DC | VMs | Connected via | Bridge |
+|----|-----|---------------|--------|
+| DC-A | DCA-Server01, DCA-Storage01, DCA-K3s-ma, DCA-K3srv1, DCA-K3srv2 | DCA-Leaf01/02/03 | vmbr100 |
+| DC-B | DCB-Server01, DCB-Storage01, dcb-k3s-m2, dcb-k3srv2 | DCB-Leaf01/02/03 | vmbr200 |
+| DC-C | DCC-Server01, DCC-Storage01, dcb-k3s-m3, dcb-k3srv-w5 | DCC-Leaf01/02/03 | vmbr300 |
 
-**Why dual-home?** You need SSH access for provisioning and kubectl without
-routing through CML. Once everything is running, all application and K3s cluster
-traffic uses the DC LAN NIC through the MPLS fabric.
-
-### Netplan example (Ubuntu 22.04)
-
-```yaml
-# /etc/netplan/50-cloud-init.yaml on k3s-m1
-network:
-  version: 2
-  ethernets:
-    ens18:
-      dhcp4: true    # Management — gets you SSH access
-    ens19:
-      addresses:
-        - 192.168.100.10/24
-        - fd10:a:100::10/64
-      routes:
-        - to: 192.168.200.0/24
-          via: 192.168.100.1
-        - to: 192.168.100.0/24
-          via: 192.168.100.1
-          # (for DC3's overlapping subnet, use specific routes)
-      gateway6: fd10:a:100::1
-```
+These VMs are managed entirely within EVE-NG. Their application traffic routes
+through the leaf-spine fabric → CE → MPLS core for cross-DC connectivity.
 
 ---
 
-## Verification
+## Step 5: Verification
 
 Once everything is wired:
 
 ```bash
-# From k3s-m1 (DC1), ping CE1 gateway
+# From a DC-A K3s node, ping CE1 (gateway)
 ping 192.168.100.1
 
-# From k3s-m1 (DC1), ping k3s-m2 (DC2) — goes through MPLS core
+# From DC-A, ping a DC-B node — traffic traverses:
+# K3s → Leaf → Spine → CE1 → SPE1 → MPLS Core → SPE2 → CE2 → Spine → Leaf → K3s
 ping 192.168.200.10
 
-# Traceroute shows the MPLS path
+# Traceroute shows the path
 traceroute 192.168.200.10
-# Expected: 192.168.100.1 → (MPLS hops) → 192.168.200.1 → 192.168.200.10
+```
+
+From CML (SP core perspective):
+```bash
+# On SPE1, verify PE-CE peering
+show ip bgp vpnv4 vrf CUST-A summary
+
+# On SP1, verify MPLS forwarding
+show mpls forwarding-table
+```
+
+From EVE-NG (Arista fabric perspective):
+```bash
+# On DCA-Spine01, verify eBGP to CE1
+show ip bgp summary
+
+# On DCA-Leaf01, verify VXLAN
+show vxlan vtep
 ```
 
 ---
 
 ## Resource Summary
 
-| Component | Count | vCPU | RAM | Disk |
-|-----------|-------|------|-----|------|
-| CML VM | 1 | 8–16 | 32–64 GB | 100 GB |
-| K3s VMs | 8 | 32 | 64 GB | 400 GB |
-| **Total Proxmox** | — | **~48 vCPU** | **~128 GB** | **~500 GB** |
+| Component | Count | vCPU | RAM | Disk | Notes |
+|-----------|-------|------|-----|------|-------|
+| CML VM | 1 | 8–16 | 32–64 GB | 100 GB | 13 Cisco IOS-XE nodes |
+| EVE-NG VM | 1 | 16–24 | 64–96 GB | 200 GB | 15 Arista + Linux VMs |
+| **Total Proxmox** | — | **~32–40 vCPU** | **~96–160 GB** | **~300 GB** | |
 
-Adjust down if needed — minimum viable: CML (8 vCPU/32 GB) + 5 K3s VMs (20
-vCPU/40 GB) = ~28 vCPU / 72 GB.
+Minimum viable: CML (8 vCPU/32 GB) + EVE-NG (12 vCPU/48 GB) = 20 vCPU / 80 GB.
+Scale up EVE-NG RAM if running many Linux VMs simultaneously.

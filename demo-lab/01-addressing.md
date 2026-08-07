@@ -25,39 +25,39 @@ management network.
 
 | Device | IPv4 | Interface |
 |--------|------|-----------|
-| BORDER1 | `192.168.3.19/24` | Gi1 |
-| RR1 | `192.168.3.20/24` | Gi1 |
-| RR2 | `192.168.3.21/24` | Gi1 |
-| SP1 | `192.168.3.22/24` | Gi1 |
-| SP2 | `192.168.3.23/24` | Gi1 |
-| SP3 | `192.168.3.24/24` | Gi1 |
-| SP4 | `192.168.3.25/24` | Gi1 |
-| SPE1 | `192.168.3.26/24` | Gi1 |
-| SPE2 | `192.168.3.27/24` | Gi1 |
-| SPE3 | `192.168.3.28/24` | Gi1 |
-| CE1 | `192.168.3.29/24` | Gi1 |
-| CE2 | `192.168.3.30/24` | Gi1 |
-| CE3 | `192.168.3.31/24` | Gi1 |
+| BORDER1 | `192.168.3.50/24` | Gi1 |
+| RR1 | `192.168.3.51/24` | Gi1 |
+| RR2 | `192.168.3.52/24` | Gi1 |
+| SP1 | `192.168.3.53/24` | Gi1 |
+| SP2 | `192.168.3.54/24` | Gi1 |
+| SP3 | `192.168.3.55/24` | Gi1 |
+| SP4 | `192.168.3.56/24` | Gi1 |
+| SPE1 | `192.168.3.57/24` | Gi1 |
+| SPE2 | `192.168.3.58/24` | Gi1 |
+| SPE3 | `192.168.3.59/24` | Gi1 |
+| CE1 | `192.168.3.60/24` | Gi1 |
+| CE2 | `192.168.3.61/24` | Gi1 |
+| CE3 | `192.168.3.62/24` | Gi1 |
 
 **Arista (EOS) — Management1, VRF MGMT-VRF:**
 
 | Device | IPv4 | Interface |
 |--------|------|-----------|
-| DCA-Spine01 | `192.168.3.40/24` | Management1 |
-| DCA-Spine02 | `192.168.3.41/24` | Management1 |
-| DCA-Leaf01 | `192.168.3.42/24` | Management1 |
-| DCA-Leaf02 | `192.168.3.43/24` | Management1 |
-| DCA-Leaf03 | `192.168.3.44/24` | Management1 |
-| DCB-Spine01 | `192.168.3.50/24` | Management1 |
-| DCB-Spine02 | `192.168.3.51/24` | Management1 |
-| DCB-Leaf01 | `192.168.3.52/24` | Management1 |
-| DCB-Leaf02 | `192.168.3.53/24` | Management1 |
-| DCB-Leaf03 | `192.168.3.54/24` | Management1 |
-| DCC-Spine01 | `192.168.3.60/24` | Management1 |
-| DCC-Spine02 | `192.168.3.61/24` | Management1 |
-| DCC-Leaf01 | `192.168.3.62/24` | Management1 |
-| DCC-Leaf02 | `192.168.3.63/24` | Management1 |
-| DCC-Leaf03 | `192.168.3.64/24` | Management1 |
+| DCA-Spine01 | `192.168.3.30/24` | Management1 |
+| DCA-Spine02 | `192.168.3.31/24` | Management1 |
+| DCA-Leaf01 | `192.168.3.32/24` | Management1 |
+| DCA-Leaf02 | `192.168.3.33/24` | Management1 |
+| DCA-Leaf03 | `192.168.3.34/24` | Management1 |
+| DCB-Spine01 | `192.168.3.35/24` | Management1 |
+| DCB-Spine02 | `192.168.3.36/24` | Management1 |
+| DCB-Leaf01 | `192.168.3.37/24` | Management1 |
+| DCB-Leaf02 | `192.168.3.38/24` | Management1 |
+| DCB-Leaf03 | `192.168.3.39/24` | Management1 |
+| DCC-Spine01 | `192.168.3.40/24` | Management1 |
+| DCC-Spine02 | `192.168.3.41/24` | Management1 |
+| DCC-Leaf01 | `192.168.3.42/24` | Management1 |
+| DCC-Leaf02 | `192.168.3.43/24` | Management1 |
+| DCC-Leaf03 | `192.168.3.44/24` | Management1 |
 
 ### Management VRF config (IOS-XE, all Cisco routers)
 

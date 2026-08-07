@@ -1,6 +1,7 @@
 """SP Demo Lab — Design Builder job for the full lab topology."""
 
 from nautobot.apps.jobs import register_jobs
+from nautobot_design_builder.choices import DesignModeChoices
 from nautobot_design_builder.design_job import DesignJob
 
 from .context import SPDemoLabContext
@@ -17,13 +18,14 @@ class SPDemoLabDesign(DesignJob):
             "interfaces, management IPs, loopbacks, P2P /31 links, VRFs, "
             "prefixes, and cables."
         )
-        design_mode = "build"
+        design_mode = DesignModeChoices.DEPLOYMENT
         commit_default = True
         context_class = SPDemoLabContext
         design_files = [
             "designs/0001_foundations.yaml.j2",
             "designs/0002_devices.yaml.j2",
             "designs/0003_cabling.yaml.j2",
+            "designs/0004_routing.yaml.j2",
         ]
         version = "1.0.0"
         has_sensitive_variables = False

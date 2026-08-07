@@ -1,0 +1,203 @@
+---
+# ISIS and BGP routing model for the SP core.
+# Uses nautobot-igp-models and nautobot-bgp-models.
+
+# --- Autonomous Systems ---
+autonomous_systems:
+{% for asn in autonomous_systems %}
+  - "!create_or_update:asn": {{ asn.asn }}
+    description: "{{ asn.description }}"
+    status__name: "Active"
+{% endfor %}
+
+# --- ISIS Routing Instances ---
+igp_routing_instances:
+{% for dev_name in isis_devices %}
+{% set dev = sp_core_devices | selectattr("name", "equalto", dev_name) | first %}
+  - "!create_or_update:device__name": "{{ dev_name }}"
+    "!create_or_update:name": "{{ dev_name }}-ISIS"
+    protocol: "ISIS"
+    router_id__host: "{{ dev.loopback }}"
+    isis_area: "{{ isis_area }}"
+    status__name: "Active"
+    description: "SP Core IS-IS Level-2"
+{% endfor %}
+
+# --- ISIS Configurations (with nested interface configs) ---
+isis_configurations:
+{% for dev_name in isis_devices %}
+{% set dev = sp_core_devices | selectattr("name", "equalto", dev_name) | first %}
+{% set sys_id_parts = dev.loopback.split('.') %}
+  - "!create_or_update:instance__device__name": "{{ dev_name }}"
+    "!create_or_update:instance__name": "{{ dev_name }}-ISIS"
+    "!create_or_update:name": "{{ dev_name }}-ISIS-L2"
+    system_id: "{{ '%04d' | format(sys_id_parts[2] | int) }}.{{ '%04d' | format(sys_id_parts[3] | int) }}.0001"
+    status__name: "Active"
+    default_metric: 10
+    interface_configurations:
+{% for link in sp_core_links %}
+{% if link[0] == dev_name %}
+      - "!create_or_update:name": "{{ dev_name }}-{{ link[1] }}"
+        device__name: "{{ dev_name }}"
+        interface:
+          "!get:name": "{{ link[1] }}"
+          "!get:device__name": "{{ dev_name }}"
+        circuit_type: "L2"
+        network_type: "point-to-point"
+        metric: 10
+        status__name: "Active"
+{% endif %}
+{% if link[2] == dev_name %}
+      - "!create_or_update:name": "{{ dev_name }}-{{ link[3] }}"
+        device__name: "{{ dev_name }}"
+        interface:
+          "!get:name": "{{ link[3] }}"
+          "!get:device__name": "{{ dev_name }}"
+        circuit_type: "L2"
+        network_type: "point-to-point"
+        metric: 10
+        status__name: "Active"
+{% endif %}
+{% endfor %}
+      - "!create_or_update:name": "{{ dev_name }}-Loopback0"
+        device__name: "{{ dev_name }}"
+        interface:
+          "!get:name": "Loopback0"
+          "!get:device__name": "{{ dev_name }}"
+        circuit_type: "L2"
+        network_type: "point-to-point"
+        metric: 0
+        status__name: "Active"
+{% endfor %}
+
+# --- BGP Routing Instances ---
+bgp_routing_instances:
+{% for inst in bgp_instances %}
+  - "!create_or_update:device__name": "{{ inst.device }}"
+    "!create_or_update:autonomous_system__asn": {{ inst.asn }}
+    router_id__host: "{{ inst.router_id }}"
+    description: "BGP on {{ inst.device }}"
+    status__name: "Active"
+{% endfor %}
+# DC Fabric
+{% for inst in dc_bgp_instances %}
+  - "!create_or_update:device__name": "{{ inst.device }}"
+    "!create_or_update:autonomous_system__asn": {{ inst.asn }}
+    router_id__host: "{{ inst.router_id }}"
+    description: "BGP on {{ inst.device }}"
+    status__name: "Active"
+{% endfor %}
+
+# --- BGP Address Families ---
+bgp_address_families:
+{% for inst in bgp_instances %}
+{% if inst.asn == 65000 %}
+  - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
+    "!create_or_update:afi_safi": "vpnv4_unicast"
+  - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
+    "!create_or_update:afi_safi": "vpnv6_unicast"
+{% endif %}
+{% endfor %}
+{% for inst in bgp_instances %}
+{% if inst.asn != 65000 %}
+  - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
+    "!create_or_update:afi_safi": "ipv4_unicast"
+{% endif %}
+{% endfor %}
+# DC Fabric: ipv4_unicast (underlay) + l2_evpn (overlay)
+{% for inst in dc_bgp_instances %}
+  - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
+    "!create_or_update:afi_safi": "ipv4_unicast"
+  - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
+    "!create_or_update:afi_safi": "l2_evpn"
+{% endfor %}
+
+# --- BGP Peer Groups ---
+bgp_peer_groups:
+{% for pe in ["SPE1", "SPE2", "SPE3"] %}
+  - "!create_or_update:name": "RR-CLIENTS"
+    "!create_or_update:routing_instance__device__name": "{{ pe }}"
+    description: "iBGP to Route Reflectors"
+    enabled: true
+    autonomous_system__asn: 65000
+{% endfor %}
+{% for rr in ["RR1", "RR2"] %}
+  - "!create_or_update:name": "PE-CLIENTS"
+    "!create_or_update:routing_instance__device__name": "{{ rr }}"
+    description: "iBGP PE clients"
+    enabled: true
+    autonomous_system__asn: 65000
+{% endfor %}
+
+# --- BGP Peerings ---
+bgp_peerings:
+{% for peer in ibgp_peerings %}
+  - status__name: "Active"
+    endpoints:
+      - routing_instance__device__name: "{{ peer.a_device }}"
+        source_ip__host: "{{ peer.a_ip }}"
+        peer_group:
+          "!get:name": "RR-CLIENTS"
+          "!get:routing_instance__device__name": "{{ peer.a_device }}"
+        enabled: true
+      - routing_instance__device__name: "{{ peer.b_device }}"
+        source_ip__host: "{{ peer.b_ip }}"
+        peer_group:
+          "!get:name": "PE-CLIENTS"
+          "!get:routing_instance__device__name": "{{ peer.b_device }}"
+        enabled: true
+{% endfor %}
+{% for peer in ebgp_peerings %}
+  - status__name: "Active"
+    endpoints:
+      - routing_instance__device__name: "{{ peer.pe }}"
+        source_ip__host: "{{ peer.pe_ip }}"
+        autonomous_system__asn: {{ peer.pe_asn }}
+        enabled: true
+      - routing_instance__device__name: "{{ peer.ce }}"
+        source_ip__host: "{{ peer.ce_ip }}"
+        autonomous_system__asn: {{ peer.ce_asn }}
+        enabled: true
+{% endfor %}
+
+# =============================================================================
+# DC Fabric BGP (Arista eBGP underlay + EVPN overlay)
+# =============================================================================
+
+# --- DC Underlay Peerings (eBGP, IPv4 unicast, source = P2P link IPs) ---
+{% set dc_all_links = dc_a_links + dc_b_links + dc_c_links %}
+{% for link in dc_all_links %}
+{% if "Spine" in link[0] and "Leaf" in link[2] %}
+{% set prefix_parts = link[4].split('/')[0].split('.') %}
+{% set net = prefix_parts[0] ~ '.' ~ prefix_parts[1] ~ '.' ~ prefix_parts[2] %}
+{% set last = prefix_parts[3] | int %}
+  - status__name: "Active"
+    endpoints:
+      - routing_instance__device__name: "{{ link[0] }}"
+        source_ip__host: "{{ net }}.{{ last }}"
+        autonomous_system__asn: {{ dc_asn_map[link[0]] }}
+        enabled: true
+      - routing_instance__device__name: "{{ link[2] }}"
+        source_ip__host: "{{ net }}.{{ last + 1 }}"
+        autonomous_system__asn: {{ dc_asn_map[link[2]] }}
+        enabled: true
+{% endif %}
+{% endfor %}
+
+# --- DC Overlay Peerings (eBGP, L2 EVPN, source = Loopback0) ---
+{% for link in dc_all_links %}
+{% if "Spine" in link[0] and "Leaf" in link[2] %}
+{% set spine = dc_bgp_instances | selectattr("device", "equalto", link[0]) | first %}
+{% set leaf = dc_bgp_instances | selectattr("device", "equalto", link[2]) | first %}
+  - status__name: "Active"
+    endpoints:
+      - routing_instance__device__name: "{{ link[0] }}"
+        source_ip__host: "{{ spine.router_id }}"
+        autonomous_system__asn: {{ spine.asn }}
+        enabled: true
+      - routing_instance__device__name: "{{ link[2] }}"
+        source_ip__host: "{{ leaf.router_id }}"
+        autonomous_system__asn: {{ leaf.asn }}
+        enabled: true
+{% endif %}
+{% endfor %}

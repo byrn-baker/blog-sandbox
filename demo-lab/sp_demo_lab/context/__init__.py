@@ -61,7 +61,7 @@ class SPDemoLabContext(Context):
         ("SP4", "GigabitEthernet3", "SPE2", "GigabitEthernet2", "10.0.0.12/31"),
         ("SP3", "GigabitEthernet4", "SPE2", "GigabitEthernet3", "10.0.0.14/31"),
         ("SP1", "GigabitEthernet4", "SPE3", "GigabitEthernet2", "10.0.0.16/31"),
-        ("SP3", "GigabitEthernet4", "SPE3", "GigabitEthernet3", "10.0.0.18/31"),
+        ("SP3", "GigabitEthernet2", "SPE3", "GigabitEthernet3", "10.0.0.18/31"),
         ("SP1", "GigabitEthernet5", "RR1", "GigabitEthernet2", "10.0.0.20/31"),
         ("SP2", "GigabitEthernet5", "RR2", "GigabitEthernet2", "10.0.0.22/31"),
         ("SP1", "GigabitEthernet6", "BORDER1", "GigabitEthernet2", "10.0.0.24/31"),
@@ -77,8 +77,8 @@ class SPDemoLabContext(Context):
 
     # DC fabric links — (a_device, a_intf, b_device, b_intf, prefix)
     dc_a_links = [
-        ("CE1", "GigabitEthernet3", "DCA-Spine01", "Ethernet1", "10.1.1.0/31"),
-        ("CE1", "GigabitEthernet4", "DCA-Spine02", "Ethernet1", "10.1.1.2/31"),
+        ("CE1", "GigabitEthernet3", "DCA-Spine01", "Ethernet10", "10.1.1.0/31"),
+        ("CE1", "GigabitEthernet4", "DCA-Spine02", "Ethernet10", "10.1.1.2/31"),
         ("DCA-Spine01", "Ethernet2", "DCA-Leaf01", "Ethernet1", "10.1.1.4/31"),
         ("DCA-Spine01", "Ethernet3", "DCA-Leaf02", "Ethernet1", "10.1.1.6/31"),
         ("DCA-Spine01", "Ethernet4", "DCA-Leaf03", "Ethernet1", "10.1.1.8/31"),
@@ -88,8 +88,8 @@ class SPDemoLabContext(Context):
     ]
 
     dc_b_links = [
-        ("CE2", "GigabitEthernet3", "DCB-Spine01", "Ethernet1", "10.1.2.0/31"),
-        ("CE2", "GigabitEthernet4", "DCB-Spine02", "Ethernet1", "10.1.2.2/31"),
+        ("CE2", "GigabitEthernet3", "DCB-Spine01", "Ethernet10", "10.1.2.0/31"),
+        ("CE2", "GigabitEthernet4", "DCB-Spine02", "Ethernet10", "10.1.2.2/31"),
         ("DCB-Spine01", "Ethernet2", "DCB-Leaf01", "Ethernet1", "10.1.2.4/31"),
         ("DCB-Spine01", "Ethernet3", "DCB-Leaf02", "Ethernet1", "10.1.2.6/31"),
         ("DCB-Spine01", "Ethernet4", "DCB-Leaf03", "Ethernet1", "10.1.2.8/31"),
@@ -99,8 +99,8 @@ class SPDemoLabContext(Context):
     ]
 
     dc_c_links = [
-        ("CE3", "GigabitEthernet3", "DCC-Spine01", "Ethernet1", "10.1.3.0/31"),
-        ("CE3", "GigabitEthernet4", "DCC-Spine02", "Ethernet1", "10.1.3.2/31"),
+        ("CE3", "GigabitEthernet3", "DCC-Spine01", "Ethernet10", "10.1.3.0/31"),
+        ("CE3", "GigabitEthernet4", "DCC-Spine02", "Ethernet10", "10.1.3.2/31"),
         ("DCC-Spine01", "Ethernet2", "DCC-Leaf01", "Ethernet1", "10.1.3.4/31"),
         ("DCC-Spine01", "Ethernet3", "DCC-Leaf02", "Ethernet1", "10.1.3.6/31"),
         ("DCC-Spine01", "Ethernet4", "DCC-Leaf03", "Ethernet1", "10.1.3.8/31"),
@@ -112,7 +112,97 @@ class SPDemoLabContext(Context):
     # VRFs
     vrfs = [
         {"name": "MGMT-VRF", "rd": "65000:999"},
-        {"name": "CUST-A", "rd": "65000:1"},
-        {"name": "CUST-B", "rd": "65000:2"},
-        {"name": "CUST-C", "rd": "65000:3"},
+        {"name": "CUST-A", "rd": "65000:100"},
+        {"name": "CUST-B", "rd": "65000:200"},
+        {"name": "CUST-C", "rd": "65000:300"},
+    ]
+
+    # --- Routing context (ISIS + BGP) ---
+
+    # ISIS area (49.0001 = private, Level-2 only)
+    isis_area = "49.0001"
+
+    # Devices running ISIS (all P, PE, RR — not CEs, not BORDER1 for now)
+    isis_devices = ["RR1", "RR2", "SP1", "SP2", "SP3", "SP4", "SPE1", "SPE2", "SPE3"]
+
+    # Autonomous Systems
+    autonomous_systems = [
+        {"asn": 65000, "description": "SP Core iBGP"},
+        {"asn": 65001, "description": "Customer A (CE1)"},
+        {"asn": 65002, "description": "Customer B (CE2)"},
+        {"asn": 65003, "description": "Customer C (CE3)"},
+        {"asn": 65101, "description": "DC-A Spines"},
+        {"asn": 65111, "description": "DC-A Leaf01"},
+        {"asn": 65112, "description": "DC-A Leaf02"},
+        {"asn": 65113, "description": "DC-A Leaf03"},
+        {"asn": 65201, "description": "DC-B Spines"},
+        {"asn": 65211, "description": "DC-B Leaf01"},
+        {"asn": 65212, "description": "DC-B Leaf02"},
+        {"asn": 65213, "description": "DC-B Leaf03"},
+        {"asn": 65301, "description": "DC-C Spines"},
+        {"asn": 65311, "description": "DC-C Leaf01"},
+        {"asn": 65312, "description": "DC-C Leaf02"},
+        {"asn": 65313, "description": "DC-C Leaf03"},
+    ]
+
+    # BGP Routing Instances — device, ASN, router-id (loopback IP)
+    bgp_instances = [
+        # SP Core (iBGP AS 65000) — RRs and PEs only, P routers don't run BGP
+        {"device": "RR1", "asn": 65000, "router_id": "10.1.0.1"},
+        {"device": "RR2", "asn": 65000, "router_id": "10.1.0.2"},
+        {"device": "SPE1", "asn": 65000, "router_id": "10.1.0.7"},
+        {"device": "SPE2", "asn": 65000, "router_id": "10.1.0.8"},
+        {"device": "SPE3", "asn": 65000, "router_id": "10.1.0.9"},
+        # CE routers (eBGP)
+        {"device": "CE1", "asn": 65001, "router_id": "10.2.1.1"},
+        {"device": "CE2", "asn": 65002, "router_id": "10.2.2.1"},
+        {"device": "CE3", "asn": 65003, "router_id": "10.2.3.1"},
+    ]
+
+    # iBGP Peerings: PE ↔ RR (VPNv4 + VPNv6, source = Loopback0)
+    ibgp_peerings = [
+        {"a_device": "SPE1", "a_ip": "10.1.0.7", "b_device": "RR1", "b_ip": "10.1.0.1"},
+        {"a_device": "SPE1", "a_ip": "10.1.0.7", "b_device": "RR2", "b_ip": "10.1.0.2"},
+        {"a_device": "SPE2", "a_ip": "10.1.0.8", "b_device": "RR1", "b_ip": "10.1.0.1"},
+        {"a_device": "SPE2", "a_ip": "10.1.0.8", "b_device": "RR2", "b_ip": "10.1.0.2"},
+        {"a_device": "SPE3", "a_ip": "10.1.0.9", "b_device": "RR1", "b_ip": "10.1.0.1"},
+        {"a_device": "SPE3", "a_ip": "10.1.0.9", "b_device": "RR2", "b_ip": "10.1.0.2"},
+    ]
+
+    # eBGP Peerings: PE ↔ CE (IPv4 unicast in VRF)
+    ebgp_peerings = [
+        {"pe": "SPE1", "pe_ip": "172.16.1.0", "pe_asn": 65000, "ce": "CE1", "ce_ip": "172.16.1.1", "ce_asn": 65001, "vrf": "CUST-A"},
+        {"pe": "SPE2", "pe_ip": "172.16.2.0", "pe_asn": 65000, "ce": "CE2", "ce_ip": "172.16.2.1", "ce_asn": 65002, "vrf": "CUST-B"},
+        {"pe": "SPE3", "pe_ip": "172.16.3.0", "pe_asn": 65000, "ce": "CE3", "ce_ip": "172.16.3.1", "ce_asn": 65003, "vrf": "CUST-C"},
+    ]
+
+    # --- DC Fabric BGP ---
+
+    # ASN assignments per DC device
+    dc_asn_map = {
+        "DCA-Spine01": 65101, "DCA-Spine02": 65101,
+        "DCA-Leaf01": 65111, "DCA-Leaf02": 65112, "DCA-Leaf03": 65113,
+        "DCB-Spine01": 65201, "DCB-Spine02": 65201,
+        "DCB-Leaf01": 65211, "DCB-Leaf02": 65212, "DCB-Leaf03": 65213,
+        "DCC-Spine01": 65301, "DCC-Spine02": 65301,
+        "DCC-Leaf01": 65311, "DCC-Leaf02": 65312, "DCC-Leaf03": 65313,
+    }
+
+    # DC BGP Routing Instances (all 15 Arista switches)
+    dc_bgp_instances = [
+        {"device": "DCA-Spine01", "asn": 65101, "router_id": "10.2.1.2"},
+        {"device": "DCA-Spine02", "asn": 65101, "router_id": "10.2.1.3"},
+        {"device": "DCA-Leaf01", "asn": 65111, "router_id": "10.2.1.4"},
+        {"device": "DCA-Leaf02", "asn": 65112, "router_id": "10.2.1.5"},
+        {"device": "DCA-Leaf03", "asn": 65113, "router_id": "10.2.1.6"},
+        {"device": "DCB-Spine01", "asn": 65201, "router_id": "10.2.2.2"},
+        {"device": "DCB-Spine02", "asn": 65201, "router_id": "10.2.2.3"},
+        {"device": "DCB-Leaf01", "asn": 65211, "router_id": "10.2.2.4"},
+        {"device": "DCB-Leaf02", "asn": 65212, "router_id": "10.2.2.5"},
+        {"device": "DCB-Leaf03", "asn": 65213, "router_id": "10.2.2.6"},
+        {"device": "DCC-Spine01", "asn": 65301, "router_id": "10.2.3.2"},
+        {"device": "DCC-Spine02", "asn": 65301, "router_id": "10.2.3.3"},
+        {"device": "DCC-Leaf01", "asn": 65311, "router_id": "10.2.3.4"},
+        {"device": "DCC-Leaf02", "asn": 65312, "router_id": "10.2.3.5"},
+        {"device": "DCC-Leaf03", "asn": 65313, "router_id": "10.2.3.6"},
     ]
