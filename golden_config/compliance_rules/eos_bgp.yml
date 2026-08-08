@@ -1,5 +1,5 @@
 ---
-- feature: "bgp"
+- feature_slug: "bgp"
   platform_network_driver: "arista_eos"
   config_ordered: true
   match_config: "router bgp"
