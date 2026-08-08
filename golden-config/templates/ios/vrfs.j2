@@ -1,0 +1,16 @@
+{# VRF Definitions — one block per unique VRF found on interfaces #}
+{% set seen_vrfs = [] %}
+{% for interface in interfaces if interface.vrf %}
+{% if interface.vrf.name not in seen_vrfs %}
+{% if seen_vrfs.append(interface.vrf.name) %}{% endif %}
+vrf definition {{ interface.vrf.name }}
+ rd {{ interface.vrf.rd }}
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+{% endif %}
+{% endfor %}

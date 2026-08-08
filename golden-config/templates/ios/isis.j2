@@ -1,0 +1,16 @@
+{# IS-IS router configuration #}
+{% if igp_routing_instances %}
+{% for igp in igp_routing_instances %}
+{% if igp.protocol == "ISIS" %}
+{% for isis_cfg in igp.isisconfiguration_set %}
+router isis SP-ISIS
+ net 49.0001.{{ isis_cfg.system_id }}.00
+ is-type level-2-only
+ metric-style wide
+ log-adjacency-changes
+ passive-interface Loopback0
+!
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}

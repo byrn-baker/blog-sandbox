@@ -1,0 +1,51 @@
+{# Interface configuration — management, loopbacks, P2P links, PE-CE #}
+{% for interface in interfaces %}
+{% if interface.ip_addresses or interface.description %}
+interface {{ interface.name }}
+{% if interface.description %}
+ description {{ interface.description }}
+{% endif %}
+{% if interface.vrf %}
+ vrf forwarding {{ interface.vrf.name }}
+{% endif %}
+{% if not interface.enabled %}
+ shutdown
+{% else %}
+ no shutdown
+{% endif %}
+{% for addr in interface.ip_addresses %}
+{% if addr.ip_version == 4 %}
+{% set ip_parts = addr.address.split('/') %}
+{% set prefix_len = ip_parts[1] | int %}
+{% if prefix_len == 32 %}
+ ip address {{ ip_parts[0] }} 255.255.255.255
+{% elif prefix_len == 31 %}
+ ip address {{ ip_parts[0] }} 255.255.255.254
+{% elif prefix_len == 24 %}
+ ip address {{ ip_parts[0] }} 255.255.255.0
+{% endif %}
+{% elif addr.ip_version == 6 %}
+ ipv6 address {{ addr.address }}
+{% endif %}
+{% endfor %}
+{# ISIS + MPLS on SP core interfaces (non-VRF, non-management, with 10.0.0.x IPs) #}
+{% if not interface.vrf and not interface.mgmt_only and interface.name != 'Loopback0' %}
+{% set ns = namespace(is_core=false) %}
+{% for addr in interface.ip_addresses if addr.ip_version == 4 %}
+{% if addr.address.startswith('10.0.0.') %}
+{% set ns.is_core = true %}
+{% endif %}
+{% endfor %}
+{% if ns.is_core %}
+ ip router isis SP-ISIS
+ isis network point-to-point
+ mpls ip
+{% endif %}
+{% endif %}
+{# Loopback0 — ISIS passive #}
+{% if interface.name == 'Loopback0' %}
+ ip router isis SP-ISIS
+{% endif %}
+!
+{% endif %}
+{% endfor %}

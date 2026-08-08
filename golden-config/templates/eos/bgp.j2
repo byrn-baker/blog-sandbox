@@ -1,0 +1,61 @@
+{# BGP configuration — eBGP underlay + EVPN overlay #}
+{% for bgp in bgp_routing_instances %}
+router bgp {{ bgp.autonomous_system.asn }}
+   router-id {{ bgp.router_id.address.split('/')[0] }}
+   no bgp default ipv4-unicast
+   maximum-paths 4 ecmp 4
+!
+{# Peer Groups #}
+{% for pg in bgp.peer_groups %}
+   neighbor {{ pg.name }} peer group
+   neighbor {{ pg.name }} remote-as {{ pg.autonomous_system.asn }}
+{% if 'EVPN' in pg.name or 'evpn' in pg.name %}
+   neighbor {{ pg.name }} update-source Loopback0
+   neighbor {{ pg.name }} ebgp-multihop 3
+   neighbor {{ pg.name }} send-community extended
+{% endif %}
+{% endfor %}
+!
+{# Neighbors #}
+{% for endpoint in bgp.endpoints %}
+{% if endpoint.peer and endpoint.peer.source_ip %}
+{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
+{% if endpoint.peer_group %}
+   neighbor {{ peer_ip }} peer group {{ endpoint.peer_group.name }}
+{% else %}
+   neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
+{% endif %}
+{% endif %}
+{% endfor %}
+!
+{# IPv4 Unicast Address Family (underlay) #}
+{% set af_list = bgp.address_families | map(attribute='afi_safi') | list %}
+{% if 'IPV4_UNICAST' in af_list %}
+   address-family ipv4
+{% for endpoint in bgp.endpoints %}
+{% if endpoint.peer and endpoint.peer.source_ip %}
+{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
+{% set ep_afs = endpoint.address_families | map(attribute='afi_safi') | list %}
+{% if 'IPV4_UNICAST' in ep_afs %}
+      neighbor {{ peer_ip }} activate
+{% endif %}
+{% endif %}
+{% endfor %}
+      redistribute connected
+   !
+{% endif %}
+{# EVPN Address Family (overlay) #}
+{% if 'L2_EVPN' in af_list %}
+   address-family evpn
+{% for endpoint in bgp.endpoints %}
+{% if endpoint.peer and endpoint.peer.source_ip %}
+{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
+{% set ep_afs = endpoint.address_families | map(attribute='afi_safi') | list %}
+{% if 'L2_EVPN' in ep_afs %}
+      neighbor {{ peer_ip }} activate
+{% endif %}
+{% endif %}
+{% endfor %}
+   !
+{% endif %}
+{% endfor %}

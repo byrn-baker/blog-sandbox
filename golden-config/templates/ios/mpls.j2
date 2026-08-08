@@ -1,0 +1,5 @@
+{# MPLS LDP configuration #}
+{% if igp_routing_instances %}
+mpls ldp router-id Loopback0 force
+!
+{% endif %}

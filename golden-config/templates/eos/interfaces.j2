@@ -1,0 +1,25 @@
+{# Interface configuration #}
+{% for interface in interfaces %}
+{% if interface.ip_addresses or interface.description %}
+interface {{ interface.name }}
+{% if interface.description %}
+   description {{ interface.description }}
+{% endif %}
+{% if interface.vrf %}
+   vrf {{ interface.vrf.name }}
+{% endif %}
+{% if not interface.enabled %}
+   shutdown
+{% else %}
+   no shutdown
+{% endif %}
+{% for addr in interface.ip_addresses %}
+{% if addr.ip_version == 4 %}
+   ip address {{ addr.address }}
+{% elif addr.ip_version == 6 %}
+   ipv6 address {{ addr.address }}
+{% endif %}
+{% endfor %}
+!
+{% endif %}
+{% endfor %}
