@@ -1,8 +1,8 @@
 {# Entry point for Arista EOS (vEOS) — Golden Config #}
 {# Includes modular sub-templates from eos/ folder #}
-{% include 'eos/hostname.j2' %}
-{% include 'eos/vrfs.j2' %}
-{% include 'eos/interfaces.j2' %}
-{% include 'eos/routing.j2' %}
-{% include 'eos/bgp.j2' %}
+{% include 'golden-config/templates/eos/hostname.j2' %}
+{% include 'golden-config/templates/eos/vrfs.j2' %}
+{% include 'golden-config/templates/eos/interfaces.j2' %}
+{% include 'golden-config/templates/eos/routing.j2' %}
+{% include 'golden-config/templates/eos/bgp.j2' %}
 end
