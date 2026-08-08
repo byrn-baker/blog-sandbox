@@ -119,3 +119,9 @@ prefixes:
     description: "CUST-C PE-CE"
     vrf_assignments:
       - "!create_or_update:vrf__name": "CUST-C"
+  # IPv6 parent prefixes
+{% for pfx in ipv6_prefixes %}
+  - "!create_or_update:prefix": "{{ pfx.prefix }}"
+    status__name: "Active"
+    description: "{{ pfx.description }}"
+{% endfor %}

@@ -27,6 +27,8 @@
         ip_addresses:
           - "!create_or_update:address": "{{ device.loopback }}/32"
             status__name: "Active"
+          - "!create_or_update:address": "{{ device.loopback6 }}/128"
+            status__name: "Active"
 {% for i in range(2, 7) %}
       - "!create_or_update:name": "GigabitEthernet{{ i }}"
         status__name: "Planned"
@@ -58,6 +60,8 @@
         description: "Router-ID"
         ip_addresses:
           - "!create_or_update:address": "{{ device.loopback }}/32"
+            status__name: "Active"
+          - "!create_or_update:address": "{{ device.loopback6 }}/128"
             status__name: "Active"
 {% for i in range(1, 11) %}
       - "!create_or_update:name": "Ethernet{{ i }}"

@@ -7,9 +7,9 @@
 # link produces duplicate top-level YAML keys, and the parser silently keeps
 # only the last occurrence -- which drops every link but one.
 
-{% set all_links = sp_core_links + pe_ce_links + dc_a_links + dc_b_links + dc_c_links %}
+{% set all_links = sp_core_links + dc_a_links + dc_b_links + dc_c_links %}
 
-{% macro link_devices(a_dev, a_intf, b_dev, b_intf, prefix) -%}
+{% macro link_devices(a_dev, a_intf, b_dev, b_intf, prefix, v6_a, v6_b) -%}
 {%- set octets = prefix.split('/')[0].split('.') -%}
 {%- set net = octets[0] ~ '.' ~ octets[1] ~ '.' ~ octets[2] -%}
 {%- set last = octets[3] | int -%}
@@ -22,6 +22,8 @@
         ip_addresses:
           - "!create_or_update:address": "{{ net }}.{{ last }}/31"
             status__name: "Active"
+          - "!create_or_update:address": "{{ v6_a }}/127"
+            status__name: "Active"
   - "!update:name": "{{ b_dev }}"
     interfaces:
       - "!update:name": "{{ b_intf }}"
@@ -31,15 +33,54 @@
         ip_addresses:
           - "!create_or_update:address": "{{ net }}.{{ last + 1 }}/31"
             status__name: "Active"
+          - "!create_or_update:address": "{{ v6_b }}/127"
+            status__name: "Active"
 {%- endmacro %}
 
 devices:
+{# Standard links (SP core + DC fabric) — no VRF #}
 {% for link in all_links %}
-  {{ link_devices(link[0], link[1], link[2], link[3], link[4]) }}
+  {{ link_devices(link[0], link[1], link[2], link[3], link[4], link[5], link[6]) }}
+{% endfor %}
+{# PE-CE links — PE interface in customer VRF #}
+{% for link in pe_ce_links %}
+{% set octets = link[4].split('/')[0].split('.') %}
+{% set net = octets[0] ~ '.' ~ octets[1] ~ '.' ~ octets[2] %}
+{% set last = octets[3] | int %}
+  - "!update:name": "{{ link[0] }}"
+    vrf_assignments:
+      - "!create_or_update:vrf__name": "{{ link[5] }}"
+    interfaces:
+      - "!update:name": "{{ link[1] }}"
+        status__name: "Active"
+        description: "PE-CE to {{ link[2] }} {{ link[3] }} (VRF {{ link[5] }})"
+        vrf__name: "{{ link[5] }}"
+        "!ref": "{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"
+        ip_addresses:
+          - "!create_or_update:address": "{{ net }}.{{ last }}/31"
+            status__name: "Active"
+          - "!create_or_update:address": "{{ link[6] }}/127"
+            status__name: "Active"
+  - "!update:name": "{{ link[2] }}"
+    interfaces:
+      - "!update:name": "{{ link[3] }}"
+        status__name: "Active"
+        description: "PE-CE to {{ link[0] }} {{ link[1] }}"
+        "!ref": "{{ link[2] }}_{{ link[3] | replace(' ', '_') }}"
+        ip_addresses:
+          - "!create_or_update:address": "{{ net }}.{{ last + 1 }}/31"
+            status__name: "Active"
+          - "!create_or_update:address": "{{ link[7] }}/127"
+            status__name: "Active"
 {% endfor %}
 
 cables:
 {% for link in all_links %}
+  - termination_a: "!ref:{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"
+    termination_b: "!ref:{{ link[2] }}_{{ link[3] | replace(' ', '_') }}"
+    status__name: "Connected"
+{% endfor %}
+{% for link in pe_ce_links %}
   - termination_a: "!ref:{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"
     termination_b: "!ref:{{ link[2] }}_{{ link[3] | replace(' ', '_') }}"
     status__name: "Connected"
