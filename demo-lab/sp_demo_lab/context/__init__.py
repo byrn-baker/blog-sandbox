@@ -142,8 +142,8 @@ class SPDemoLabContext(Context):
     # ISIS area (49.0001 = private, Level-2 only)
     isis_area = "49.0001"
 
-    # Devices running ISIS (all P, PE, RR — not CEs, not BORDER1 for now)
-    isis_devices = ["RR1", "RR2", "SP1", "SP2", "SP3", "SP4", "SPE1", "SPE2", "SPE3"]
+    # Devices running ISIS (all P, PE, RR, Border — not CEs)
+    isis_devices = ["RR1", "RR2", "SP1", "SP2", "SP3", "SP4", "SPE1", "SPE2", "SPE3", "BORDER1"]
 
     # Autonomous Systems
     autonomous_systems = [
