@@ -1,0 +1,35 @@
+---
+_metadata:
+  name: "VRF Properties"
+  description: "Schema governing VRF route-target and service properties for PE routers"
+data_schema:
+  type: object
+  properties:
+    vrfs:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          route_targets:
+            type: object
+            properties:
+              import:
+                type: array
+                items:
+                  type: string
+                  pattern: "^\\d+:\\d+$"
+              export:
+                type: array
+                items:
+                  type: string
+                  pattern: "^\\d+:\\d+$"
+            required:
+              - import
+              - export
+          description:
+            type: string
+        required:
+          - route_targets
+  required:
+    - vrfs
+  additionalProperties: false

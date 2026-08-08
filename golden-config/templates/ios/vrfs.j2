@@ -1,4 +1,4 @@
-{# VRF Definitions — one block per unique VRF found on interfaces #}
+{# VRF Definitions — from interface data + config_context route targets #}
 {% set seen_vrfs = [] %}
 {% for interface in interfaces if interface.vrf %}
 {% if interface.vrf.name not in seen_vrfs %}
@@ -7,9 +7,25 @@ vrf definition {{ interface.vrf.name }}
  rd {{ interface.vrf.rd }}
  !
  address-family ipv4
+{% if config_context.vrfs is defined and interface.vrf.name in config_context.vrfs %}
+{% for rt in config_context.vrfs[interface.vrf.name].route_targets.export %}
+  route-target export {{ rt }}
+{% endfor %}
+{% for rt in config_context.vrfs[interface.vrf.name].route_targets.import %}
+  route-target import {{ rt }}
+{% endfor %}
+{% endif %}
  exit-address-family
  !
  address-family ipv6
+{% if config_context.vrfs is defined and interface.vrf.name in config_context.vrfs %}
+{% for rt in config_context.vrfs[interface.vrf.name].route_targets.export %}
+  route-target export {{ rt }}
+{% endfor %}
+{% for rt in config_context.vrfs[interface.vrf.name].route_targets.import %}
+  route-target import {{ rt }}
+{% endfor %}
+{% endif %}
  exit-address-family
 !
 {% endif %}

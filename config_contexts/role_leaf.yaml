@@ -1,0 +1,19 @@
+---
+_metadata:
+  name: "Leaf DC Fabric Properties"
+  weight: 100
+  description: "BGP and EVPN properties for DC leaves"
+  roles:
+    - name: "Leaf"
+  config_context_schema: "DC Fabric Properties"
+bgp:
+  timers:
+    keepalive: 3
+    hold: 9
+  maximum_paths: 4
+  ecmp: 4
+  log_neighbor_changes: true
+  default_ipv4_unicast: false
+evpn:
+  multihop: 3
+  update_source: "Loopback0"

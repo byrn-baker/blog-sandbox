@@ -1,0 +1,27 @@
+---
+_metadata:
+  name: "Route-Reflector Routing Properties"
+  weight: 100
+  description: "ISIS + MPLS + BGP RR + BFD properties"
+  roles:
+    - name: "Route-Reflector"
+  config_context_schema: "Routing Properties"
+isis:
+  process_name: "SP-ISIS"
+  metric_style: "wide"
+  is_type: "level-2-only"
+  log_adjacency_changes: true
+mpls:
+  ldp_router_id: "Loopback0"
+  ldp_sync: true
+  explicit_null: true
+bfd:
+  interval: 100
+  min_rx: 100
+  multiplier: 3
+bgp:
+  timers:
+    keepalive: 10
+    hold: 30
+  log_neighbor_changes: true
+  default_ipv4_unicast: false

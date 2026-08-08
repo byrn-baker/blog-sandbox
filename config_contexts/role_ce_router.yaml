@@ -1,0 +1,14 @@
+---
+_metadata:
+  name: "CE-Router Routing Properties"
+  weight: 100
+  description: "BGP properties for CE routers (no ISIS/MPLS)"
+  roles:
+    - name: "CE-Router"
+  config_context_schema: "Routing Properties"
+bgp:
+  timers:
+    keepalive: 10
+    hold: 30
+  log_neighbor_changes: true
+  default_ipv4_unicast: false

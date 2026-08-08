@@ -1,0 +1,79 @@
+---
+_metadata:
+  name: "Routing Properties"
+  description: "Schema governing ISIS, BGP, MPLS, and BFD properties for SP core devices"
+data_schema:
+  type: object
+  properties:
+    isis:
+      type: object
+      properties:
+        process_name:
+          type: string
+          description: "ISIS process/instance name"
+        metric_style:
+          type: string
+          enum: ["wide", "narrow", "transition"]
+        is_type:
+          type: string
+          enum: ["level-1", "level-2-only", "level-1-2"]
+        log_adjacency_changes:
+          type: boolean
+      required:
+        - process_name
+        - is_type
+    bgp:
+      type: object
+      properties:
+        timers:
+          type: object
+          properties:
+            keepalive:
+              type: integer
+              minimum: 1
+              maximum: 65535
+            hold:
+              type: integer
+              minimum: 3
+              maximum: 65535
+          required:
+            - keepalive
+            - hold
+        log_neighbor_changes:
+          type: boolean
+        default_ipv4_unicast:
+          type: boolean
+      required:
+        - timers
+    mpls:
+      type: object
+      properties:
+        ldp_router_id:
+          type: string
+          description: "Interface used as LDP router-id"
+        ldp_sync:
+          type: boolean
+        explicit_null:
+          type: boolean
+      required:
+        - ldp_router_id
+    bfd:
+      type: object
+      properties:
+        interval:
+          type: integer
+          minimum: 50
+          maximum: 10000
+        min_rx:
+          type: integer
+          minimum: 50
+          maximum: 10000
+        multiplier:
+          type: integer
+          minimum: 2
+          maximum: 50
+      required:
+        - interval
+        - min_rx
+        - multiplier
+  additionalProperties: false

@@ -1,5 +1,11 @@
-{# MPLS LDP configuration #}
-{% if igp_routing_instances %}
-mpls ldp router-id Loopback0 force
+{# MPLS LDP configuration — driven by config_context.mpls #}
+{% if igp_routing_instances and config_context.mpls is defined %}
+mpls ldp router-id {{ config_context.mpls.ldp_router_id }} force
+{% if config_context.mpls.ldp_sync | default(false) %}
+mpls ldp igp sync
+{% endif %}
+{% if config_context.mpls.explicit_null | default(false) %}
+mpls ldp explicit-null
+{% endif %}
 !
 {% endif %}

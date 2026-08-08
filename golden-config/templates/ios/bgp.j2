@@ -1,15 +1,24 @@
 {# BGP configuration — iBGP (PE/RR) and eBGP (PE-CE) #}
+{# Uses config_context.bgp for timers and defaults #}
 {% for bgp in bgp_routing_instances %}
 router bgp {{ bgp.autonomous_system.asn }}
  bgp router-id {{ bgp.router_id.address.split('/')[0] }}
+{% if config_context.bgp.log_neighbor_changes | default(true) %}
  bgp log-neighbor-changes
+{% endif %}
+{% if not config_context.bgp.default_ipv4_unicast | default(false) %}
  no bgp default ipv4-unicast
+{% endif %}
+ timers bgp {{ config_context.bgp.timers.keepalive }} {{ config_context.bgp.timers.hold }}
 !
 {# Peer Groups #}
 {% for pg in bgp.peer_groups %}
  neighbor {{ pg.name }} peer-group
  neighbor {{ pg.name }} remote-as {{ pg.autonomous_system.asn }}
  neighbor {{ pg.name }} update-source Loopback0
+{% if config_context.bfd is defined %}
+ neighbor {{ pg.name }} fall-over bfd
+{% endif %}
 {% endfor %}
 !
 {# Neighbors #}

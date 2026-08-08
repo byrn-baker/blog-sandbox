@@ -1,17 +1,21 @@
 {# BGP configuration — eBGP underlay + EVPN overlay #}
+{# Uses config_context.bgp and config_context.evpn for settings #}
 {% for bgp in bgp_routing_instances %}
 router bgp {{ bgp.autonomous_system.asn }}
    router-id {{ bgp.router_id.address.split('/')[0] }}
+{% if not config_context.bgp.default_ipv4_unicast | default(false) %}
    no bgp default ipv4-unicast
-   maximum-paths 4 ecmp 4
+{% endif %}
+   maximum-paths {{ config_context.bgp.maximum_paths | default(4) }} ecmp {{ config_context.bgp.ecmp | default(4) }}
+   timers bgp {{ config_context.bgp.timers.keepalive }} {{ config_context.bgp.timers.hold }}
 !
 {# Peer Groups #}
 {% for pg in bgp.peer_groups %}
    neighbor {{ pg.name }} peer group
    neighbor {{ pg.name }} remote-as {{ pg.autonomous_system.asn }}
 {% if 'EVPN' in pg.name or 'evpn' in pg.name %}
-   neighbor {{ pg.name }} update-source Loopback0
-   neighbor {{ pg.name }} ebgp-multihop 3
+   neighbor {{ pg.name }} update-source {{ config_context.evpn.update_source | default("Loopback0") }}
+   neighbor {{ pg.name }} ebgp-multihop {{ config_context.evpn.multihop | default(3) }}
    neighbor {{ pg.name }} send-community extended
 {% endif %}
 {% endfor %}

@@ -29,7 +29,7 @@ interface {{ interface.name }}
 {% endif %}
 {% endfor %}
 {# ISIS + MPLS on SP core interfaces (non-VRF, non-management, with 10.0.0.x IPs) #}
-{% if not interface.vrf and not interface.mgmt_only and interface.name != 'Loopback0' %}
+{% if not interface.vrf and not interface.mgmt_only and interface.name != 'Loopback0' and config_context.isis is defined %}
 {% set ns = namespace(is_core=false) %}
 {% for addr in interface.ip_addresses if addr.ip_version == 4 %}
 {% if addr.address.startswith('10.0.0.') %}
@@ -37,14 +37,17 @@ interface {{ interface.name }}
 {% endif %}
 {% endfor %}
 {% if ns.is_core %}
- ip router isis SP-ISIS
+ ip router isis {{ config_context.isis.process_name }}
  isis network point-to-point
  mpls ip
+{% if config_context.bfd is defined %}
+ bfd interval {{ config_context.bfd.interval }} min_rx {{ config_context.bfd.min_rx }} multiplier {{ config_context.bfd.multiplier }}
+{% endif %}
 {% endif %}
 {% endif %}
 {# Loopback0 — ISIS passive #}
-{% if interface.name == 'Loopback0' %}
- ip router isis SP-ISIS
+{% if interface.name == 'Loopback0' and config_context.isis is defined %}
+ ip router isis {{ config_context.isis.process_name }}
 {% endif %}
 !
 {% endif %}

@@ -1,0 +1,16 @@
+---
+_metadata:
+  name: "SPE1 VRF Properties"
+  weight: 200
+  description: "VRF route targets for SPE1"
+  devices:
+    - name: "SPE1"
+  config_context_schema: "VRF Properties"
+vrfs:
+  CUST-A:
+    description: "Customer A - DC1"
+    route_targets:
+      import:
+        - "65000:100"
+      export:
+        - "65000:100"

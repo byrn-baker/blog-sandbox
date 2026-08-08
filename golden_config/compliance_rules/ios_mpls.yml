@@ -1,0 +1,5 @@
+---
+feature: "mpls"
+platform_network_driver: "cisco_ios"
+config_ordered: false
+match_config: "mpls ldp"

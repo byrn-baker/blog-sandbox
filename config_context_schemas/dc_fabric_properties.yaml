@@ -1,0 +1,43 @@
+---
+_metadata:
+  name: "DC Fabric Properties"
+  description: "Schema governing Arista DC fabric BGP and EVPN properties"
+data_schema:
+  type: object
+  properties:
+    bgp:
+      type: object
+      properties:
+        timers:
+          type: object
+          properties:
+            keepalive:
+              type: integer
+            hold:
+              type: integer
+          required:
+            - keepalive
+            - hold
+        maximum_paths:
+          type: integer
+          minimum: 1
+          maximum: 128
+        ecmp:
+          type: integer
+          minimum: 1
+          maximum: 128
+        log_neighbor_changes:
+          type: boolean
+        default_ipv4_unicast:
+          type: boolean
+    evpn:
+      type: object
+      properties:
+        multihop:
+          type: integer
+          minimum: 1
+          maximum: 255
+        update_source:
+          type: string
+          description: "Interface for EVPN peering source"
+  additionalProperties: false
