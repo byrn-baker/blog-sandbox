@@ -1,5 +1,5 @@
 ---
-feature: "isis"
-platform_network_driver: "cisco_ios"
-config_ordered: true
-match_config: "router isis"
+- feature: "isis"
+  platform_network_driver: "cisco_ios"
+  config_ordered: true
+  match_config: "router isis"

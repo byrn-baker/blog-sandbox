@@ -1,5 +1,5 @@
 ---
-feature: "bgp"
-platform_network_driver: "cisco_ios"
-config_ordered: true
-match_config: "router bgp"
+- feature: "bgp"
+  platform_network_driver: "cisco_ios"
+  config_ordered: true
+  match_config: "router bgp"
