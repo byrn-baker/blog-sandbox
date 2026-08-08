@@ -1,7 +1,7 @@
 # Blog Sandbox — SP Demo Lab
 
 Source code and configuration for a 28-device service provider MPLS/EVPN lab
-with AI-driven monitoring. Accompanies the [10-part blog series](https://localedgedatacenter.com/blog).
+with AI-driven monitoring. Accompanies the [10-part blog series](https://byrnbaker.me).
 
 ## What's in here
 
