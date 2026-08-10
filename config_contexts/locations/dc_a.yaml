@@ -1,0 +1,20 @@
+---
+_metadata:
+  name: "DC-A VXLAN Properties"
+  weight: 200
+  description: "DC-A specific VLAN/VNI/SVI for leaves"
+  locations:
+    - name: "DC-A"
+svis:
+  - vlan_id: 100
+    name: "SERVER_K3S"
+    vrf: "SERVERS"
+    enabled: true
+    ip_address_virtual: "192.168.100.1/24"
+    ipv6_address_virtual: "fd10:a:100::1/64"
+  - vlan_id: 101
+    name: "STORAGE"
+    vrf: "SERVERS"
+    enabled: true
+    ip_address_virtual: "192.168.101.1/24"
+    ipv6_address_virtual: "fd10:a:101::1/64"

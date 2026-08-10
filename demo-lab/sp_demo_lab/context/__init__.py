@@ -29,27 +29,27 @@ class SPDemoLabContext(Context):
     dc_a_devices = [
         {"name": "DCA-Spine01", "role": "Spine", "ip": "192.168.3.40", "loopback": "10.2.1.2", "loopback6": "fd10:2:1::2", "site": "DC-A"},
         {"name": "DCA-Spine02", "role": "Spine", "ip": "192.168.3.41", "loopback": "10.2.1.3", "loopback6": "fd10:2:1::3", "site": "DC-A"},
-        {"name": "DCA-Leaf01", "role": "Leaf", "ip": "192.168.3.42", "loopback": "10.2.1.4", "loopback6": "fd10:2:1::4", "site": "DC-A"},
-        {"name": "DCA-Leaf02", "role": "Leaf", "ip": "192.168.3.43", "loopback": "10.2.1.5", "loopback6": "fd10:2:1::5", "site": "DC-A"},
-        {"name": "DCA-Leaf03", "role": "Leaf", "ip": "192.168.3.44", "loopback": "10.2.1.6", "loopback6": "fd10:2:1::6", "site": "DC-A"},
+        {"name": "DCA-Leaf01", "role": "Leaf", "ip": "192.168.3.42", "loopback": "10.2.1.4", "loopback6": "fd10:2:1::4", "site": "DC-A", "vtep": "10.3.1.4"},
+        {"name": "DCA-Leaf02", "role": "Leaf", "ip": "192.168.3.43", "loopback": "10.2.1.5", "loopback6": "fd10:2:1::5", "site": "DC-A", "vtep": "10.3.1.5"},
+        {"name": "DCA-Leaf03", "role": "Leaf", "ip": "192.168.3.44", "loopback": "10.2.1.6", "loopback6": "fd10:2:1::6", "site": "DC-A", "vtep": "10.3.1.6"},
     ]
 
     # DC-B fabric
     dc_b_devices = [
         {"name": "DCB-Spine01", "role": "Spine", "ip": "192.168.3.50", "loopback": "10.2.2.2", "loopback6": "fd10:2:2::2", "site": "DC-B"},
         {"name": "DCB-Spine02", "role": "Spine", "ip": "192.168.3.51", "loopback": "10.2.2.3", "loopback6": "fd10:2:2::3", "site": "DC-B"},
-        {"name": "DCB-Leaf01", "role": "Leaf", "ip": "192.168.3.52", "loopback": "10.2.2.4", "loopback6": "fd10:2:2::4", "site": "DC-B"},
-        {"name": "DCB-Leaf02", "role": "Leaf", "ip": "192.168.3.53", "loopback": "10.2.2.5", "loopback6": "fd10:2:2::5", "site": "DC-B"},
-        {"name": "DCB-Leaf03", "role": "Leaf", "ip": "192.168.3.54", "loopback": "10.2.2.6", "loopback6": "fd10:2:2::6", "site": "DC-B"},
+        {"name": "DCB-Leaf01", "role": "Leaf", "ip": "192.168.3.52", "loopback": "10.2.2.4", "loopback6": "fd10:2:2::4", "site": "DC-B", "vtep": "10.3.2.4"},
+        {"name": "DCB-Leaf02", "role": "Leaf", "ip": "192.168.3.53", "loopback": "10.2.2.5", "loopback6": "fd10:2:2::5", "site": "DC-B", "vtep": "10.3.2.5"},
+        {"name": "DCB-Leaf03", "role": "Leaf", "ip": "192.168.3.54", "loopback": "10.2.2.6", "loopback6": "fd10:2:2::6", "site": "DC-B", "vtep": "10.3.2.6"},
     ]
 
     # DC-C fabric
     dc_c_devices = [
         {"name": "DCC-Spine01", "role": "Spine", "ip": "192.168.3.60", "loopback": "10.2.3.2", "loopback6": "fd10:2:3::2", "site": "DC-C"},
         {"name": "DCC-Spine02", "role": "Spine", "ip": "192.168.3.61", "loopback": "10.2.3.3", "loopback6": "fd10:2:3::3", "site": "DC-C"},
-        {"name": "DCC-Leaf01", "role": "Leaf", "ip": "192.168.3.62", "loopback": "10.2.3.4", "loopback6": "fd10:2:3::4", "site": "DC-C"},
-        {"name": "DCC-Leaf02", "role": "Leaf", "ip": "192.168.3.63", "loopback": "10.2.3.5", "loopback6": "fd10:2:3::5", "site": "DC-C"},
-        {"name": "DCC-Leaf03", "role": "Leaf", "ip": "192.168.3.64", "loopback": "10.2.3.6", "loopback6": "fd10:2:3::6", "site": "DC-C"},
+        {"name": "DCC-Leaf01", "role": "Leaf", "ip": "192.168.3.62", "loopback": "10.2.3.4", "loopback6": "fd10:2:3::4", "site": "DC-C", "vtep": "10.3.3.4"},
+        {"name": "DCC-Leaf02", "role": "Leaf", "ip": "192.168.3.63", "loopback": "10.2.3.5", "loopback6": "fd10:2:3::5", "site": "DC-C", "vtep": "10.3.3.5"},
+        {"name": "DCC-Leaf03", "role": "Leaf", "ip": "192.168.3.64", "loopback": "10.2.3.6", "loopback6": "fd10:2:3::6", "site": "DC-C", "vtep": "10.3.3.6"},
     ]
 
     # SP Core P2P links — (a_device, a_intf, b_device, b_intf, prefix4, v6_a, v6_b)

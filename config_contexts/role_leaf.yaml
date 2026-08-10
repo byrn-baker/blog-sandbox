@@ -2,10 +2,17 @@
 _metadata:
   name: "Leaf DC Fabric Properties"
   weight: 100
-  description: "BGP and EVPN properties for DC leaves"
+  description: "AVD-aligned eBGP underlay + EVPN overlay + VXLAN for DC leaves"
   roles:
     - name: "Leaf"
   config_context_schema: "DC Fabric Properties"
+platform:
+  service_routing_protocols_model: "multi-agent"
+  vlan_internal_order:
+    range_start: 1006
+    range_end: 1199
+  spanning_tree_mode: "mstp"
+  spanning_tree_priority: 4096
 bgp:
   timers:
     keepalive: 3
@@ -14,6 +21,56 @@ bgp:
   ecmp: 4
   log_neighbor_changes: true
   default_ipv4_unicast: false
+  peer_groups:
+    ipv4_underlay:
+      name: "IPv4-UNDERLAY-PEERS"
+      send_community: true
+      maximum_routes: 256000
+    evpn_overlay:
+      name: "EVPN-OVERLAY-PEERS"
+      update_source: "Loopback0"
+      ebgp_multihop: 3
+      bfd: true
+      send_community: true
+      maximum_routes: 0
+  redistribute:
+    connected:
+      route_map: "RM-CONN-2-BGP"
 evpn:
   multihop: 3
   update_source: "Loopback0"
+bfd:
+  multihop:
+    interval: 300
+    min_rx: 300
+    multiplier: 3
+vxlan:
+  source_interface: "Loopback1"
+  virtual_router_mac: "00:1c:73:00:00:99"
+  vlans:
+    - id: 100
+      vni: 10100
+      name: "SERVER_K3S"
+    - id: 101
+      vni: 10101
+      name: "STORAGE"
+  vrfs:
+    - name: "SERVERS"
+      vni: 10000
+prefix_lists:
+  - name: "PL-LOOPBACKS-EVPN-OVERLAY"
+    entries:
+      - sequence: 10
+        action: "permit"
+        prefix: "10.2.0.0/16"
+        comparison: "eq 32"
+      - sequence: 20
+        action: "permit"
+        prefix: "10.3.0.0/16"
+        comparison: "eq 32"
+route_maps:
+  - name: "RM-CONN-2-BGP"
+    entries:
+      - sequence: 10
+        action: "permit"
+        match: "ip address prefix-list PL-LOOPBACKS-EVPN-OVERLAY"

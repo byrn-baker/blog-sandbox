@@ -1,4 +1,4 @@
-{# Interface configuration #}
+{# Interface configuration (AVD-aligned) #}
 {% for interface in interfaces %}
 {% if interface.ip_addresses or interface.description %}
 interface {{ interface.name }}
@@ -13,6 +13,10 @@ interface {{ interface.name }}
 {% else %}
    no shutdown
 {% endif %}
+{% if interface.name.startswith('Ethernet') and not interface.vrf %}
+   mtu 9214
+   no switchport
+{% endif %}
 {% for addr in interface.ip_addresses %}
 {% if addr.ip_version == 4 %}
    ip address {{ addr.address }}
@@ -23,3 +27,21 @@ interface {{ interface.name }}
 !
 {% endif %}
 {% endfor %}
+{# SVIs with anycast gateways (from config context, leaves only) #}
+{% if config_context.svis is defined %}
+{% for svi in config_context.svis %}
+interface Vlan{{ svi.vlan_id }}
+   description {{ svi.name }}
+{% if svi.vrf is defined %}
+   vrf {{ svi.vrf }}
+{% endif %}
+{% if svi.enabled | default(true) %}
+   no shutdown
+{% endif %}
+   ip address virtual {{ svi.ip_address_virtual }}
+{% if svi.ipv6_address_virtual is defined %}
+   ipv6 address virtual {{ svi.ipv6_address_virtual }}
+{% endif %}
+!
+{% endfor %}
+{% endif %}

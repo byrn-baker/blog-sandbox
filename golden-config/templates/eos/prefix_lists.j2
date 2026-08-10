@@ -1,0 +1,11 @@
+{# IP Prefix Lists (AVD-aligned) #}
+{% if config_context.prefix_lists is defined %}
+{% for pl in config_context.prefix_lists %}
+ip prefix-list {{ pl.name }}
+{% for entry in pl.entries %}
+   seq {{ entry.sequence }} {{ entry.action }} {{ entry.prefix }}{% if entry.comparison is defined %} {{ entry.comparison }}{% endif %}
+
+{% endfor %}
+!
+{% endfor %}
+{% endif %}

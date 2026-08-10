@@ -1,10 +1,28 @@
 ---
 _metadata:
   name: "DC Fabric Properties"
-  description: "Schema governing Arista DC fabric BGP and EVPN properties"
+  description: "Schema for AVD-aligned Arista DC fabric config (spines + leaves)"
 data_schema:
   type: object
   properties:
+    platform:
+      type: object
+      properties:
+        service_routing_protocols_model:
+          type: string
+          enum: ["multi-agent", "ribd"]
+        vlan_internal_order:
+          type: object
+          properties:
+            range_start:
+              type: integer
+            range_end:
+              type: integer
+        spanning_tree_mode:
+          type: string
+          enum: ["none", "mstp", "rstp", "rapid-pvst"]
+        spanning_tree_priority:
+          type: integer
     bgp:
       type: object
       properties:
@@ -15,29 +33,133 @@ data_schema:
               type: integer
             hold:
               type: integer
-          required:
-            - keepalive
-            - hold
         maximum_paths:
           type: integer
-          minimum: 1
-          maximum: 128
         ecmp:
           type: integer
-          minimum: 1
-          maximum: 128
         log_neighbor_changes:
           type: boolean
         default_ipv4_unicast:
           type: boolean
+        peer_groups:
+          type: object
+          properties:
+            ipv4_underlay:
+              type: object
+              properties:
+                name:
+                  type: string
+                send_community:
+                  type: boolean
+                maximum_routes:
+                  type: integer
+            evpn_overlay:
+              type: object
+              properties:
+                name:
+                  type: string
+                next_hop_unchanged:
+                  type: boolean
+                update_source:
+                  type: string
+                ebgp_multihop:
+                  type: integer
+                bfd:
+                  type: boolean
+                send_community:
+                  type: boolean
+                maximum_routes:
+                  type: integer
+        redistribute:
+          type: object
+          properties:
+            connected:
+              type: object
+              properties:
+                route_map:
+                  type: string
     evpn:
       type: object
       properties:
         multihop:
           type: integer
-          minimum: 1
-          maximum: 255
         update_source:
           type: string
-          description: "Interface for EVPN peering source"
-  additionalProperties: false
+    bfd:
+      type: object
+      properties:
+        multihop:
+          type: object
+          properties:
+            interval:
+              type: integer
+            min_rx:
+              type: integer
+            multiplier:
+              type: integer
+    vxlan:
+      type: object
+      properties:
+        source_interface:
+          type: string
+        virtual_router_mac:
+          type: string
+        vlans:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              vni:
+                type: integer
+              name:
+                type: string
+        vrfs:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              vni:
+                type: integer
+    prefix_lists:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          entries:
+            type: array
+            items:
+              type: object
+              properties:
+                sequence:
+                  type: integer
+                action:
+                  type: string
+                prefix:
+                  type: string
+                comparison:
+                  type: string
+    route_maps:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          entries:
+            type: array
+            items:
+              type: object
+              properties:
+                sequence:
+                  type: integer
+                action:
+                  type: string
+                match:
+                  type: string
+  additionalProperties: true

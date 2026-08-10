@@ -1,0 +1,10 @@
+{# Route Maps (AVD-aligned) #}
+{% if config_context.route_maps is defined %}
+{% for rm in config_context.route_maps %}
+route-map {{ rm.name }} {{ rm.entries[0].action }} {{ rm.entries[0].sequence }}
+{% for entry in rm.entries %}
+   match {{ entry.match }}
+{% endfor %}
+!
+{% endfor %}
+{% endif %}

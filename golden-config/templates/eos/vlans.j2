@@ -1,0 +1,8 @@
+{# VLAN definitions for VXLAN (leaves only) #}
+{% if config_context.vxlan is defined and config_context.vxlan.vlans is defined %}
+{% for vlan in config_context.vxlan.vlans %}
+vlan {{ vlan.id }}
+   name {{ vlan.name }}
+!
+{% endfor %}
+{% endif %}

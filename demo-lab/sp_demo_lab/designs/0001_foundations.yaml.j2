@@ -103,6 +103,16 @@ prefixes:
   - "!create_or_update:prefix": "10.2.3.0/24"
     status__name: "Active"
     description: "DC-C Loopbacks"
+  # VTEP Loopback1 IPs (/32s assigned in 0002_devices, leaves only)
+  - "!create_or_update:prefix": "10.3.1.0/24"
+    status__name: "Active"
+    description: "DC-A VTEP Loopbacks"
+  - "!create_or_update:prefix": "10.3.2.0/24"
+    status__name: "Active"
+    description: "DC-B VTEP Loopbacks"
+  - "!create_or_update:prefix": "10.3.3.0/24"
+    status__name: "Active"
+    description: "DC-C VTEP Loopbacks"
   # PE-CE handoffs (/31s assigned in 0003_cabling)
   - "!create_or_update:prefix": "172.16.1.0/24"
     status__name: "Active"

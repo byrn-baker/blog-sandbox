@@ -1,0 +1,6 @@
+{# BFD configuration (AVD-aligned) #}
+{% if config_context.bfd is defined and config_context.bfd.multihop is defined %}
+router bfd
+   multihop interval {{ config_context.bfd.multihop.interval }} min-rx {{ config_context.bfd.multihop.min_rx }} multiplier {{ config_context.bfd.multihop.multiplier }}
+!
+{% endif %}
