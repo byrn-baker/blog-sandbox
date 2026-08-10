@@ -9,6 +9,9 @@
     role__name: "{{ device.role }}"
     status__name: "Active"
     platform__name: "cisco_iosxe"
+    primary_ip4:
+      "!get:address": "{{ device.ip }}/24"
+      deferred: true
     vrf_assignments:
       - "!create_or_update:vrf__name": "MGMT-VRF"
     interfaces:
@@ -43,6 +46,9 @@
     role__name: "{{ device.role }}"
     status__name: "Active"
     platform__name: "arista_eos"
+    primary_ip4:
+      "!get:address": "{{ device.ip }}/24"
+      deferred: true
     vrf_assignments:
       - "!create_or_update:vrf__name": "MGMT-VRF"
     interfaces:
