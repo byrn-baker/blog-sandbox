@@ -1,19 +1,16 @@
 {# Platform-level settings (AVD-aligned) #}
-{% if config_context.platform is defined %}
-{% if config_context.platform.service_routing_protocols_model is defined %}
-service routing protocols model {{ config_context.platform.service_routing_protocols_model }}
+service routing protocols model multi-agent
 !
-{% endif %}
+spanning-tree mode mstp
+!
+{% if config_context.platform is defined %}
 {% if config_context.platform.vlan_internal_order is defined %}
 vlan internal order ascending range {{ config_context.platform.vlan_internal_order.range_start }} {{ config_context.platform.vlan_internal_order.range_end }}
 !
 {% endif %}
-{% if config_context.platform.spanning_tree_mode is defined %}
-spanning-tree mode {{ config_context.platform.spanning_tree_mode }}
 {% if config_context.platform.spanning_tree_priority is defined %}
 spanning-tree root super
 spanning-tree vlan-id 1-4094 priority {{ config_context.platform.spanning_tree_priority }}
-{% endif %}
 !
 {% endif %}
 {% endif %}

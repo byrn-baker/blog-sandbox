@@ -1,9 +1,13 @@
 {# Entry point for Cisco IOS-XE (CAT8000v) — Golden Config #}
 {# Includes modular sub-templates from ios/ folder #}
 {% include 'golden-config/templates/ios/hostname.j2' %}
+{% include 'golden-config/templates/ios/aaa.j2' %}
 {% include 'golden-config/templates/ios/vrfs.j2' %}
 {% include 'golden-config/templates/ios/interfaces.j2' %}
 {% include 'golden-config/templates/ios/isis.j2' %}
 {% include 'golden-config/templates/ios/mpls.j2' %}
 {% include 'golden-config/templates/ios/bgp.j2' %}
+{% include 'golden-config/templates/ios/static_routes.j2' %}
+{% include 'golden-config/templates/ios/ssh.j2' %}
+{% include 'golden-config/templates/ios/vty.j2' %}
 end

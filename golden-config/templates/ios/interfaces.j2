@@ -49,6 +49,10 @@ interface {{ interface.name }}
 {% if interface.name == 'Loopback0' and config_context.isis is defined %}
  ip router isis {{ config_context.isis.process_name }}
 {% endif %}
+{# Negotiation auto on GigabitEthernet interfaces #}
+{% if interface.name.startswith('GigabitEthernet') %}
+ negotiation auto
+{% endif %}
 !
 {% endif %}
 {% endfor %}
