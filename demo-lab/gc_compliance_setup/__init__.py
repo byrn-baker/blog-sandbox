@@ -4,9 +4,14 @@ Creates a production-grade set of compliance features and rules covering the ful
 intended configuration for both Cisco IOS-XE (SP core) and Arista EOS (DC fabric).
 
 Features map 1:1 to golden config template sections:
-  Cisco IOS-XE: hostname, vrfs, interfaces, isis, mpls, bgp
+  Cisco IOS-XE: hostname, vrfs, interfaces, routing (isis+mpls+bgp combined)
   Arista EOS:   hostname, platform, vrfs, vlans, interfaces, routing_global,
                 prefix_lists, route_maps, bfd, bgp, vxlan
+
+Design decision: Cisco uses a single "routing" feature that combines IS-IS,
+MPLS LDP, and BGP. This prevents noise on CE devices that don't run ISIS/MPLS —
+they get one compliance record for routing instead of three empty ones.
+Arista keeps BGP separate since every EOS device in the fabric runs BGP.
 
 Idempotent — safe to re-run as templates evolve.
 """
@@ -24,9 +29,8 @@ FEATURES = [
     {"name": "hostname", "description": "Device hostname configuration"},
     {"name": "vrfs", "description": "VRF definitions (IOS-XE) and VRF instances (EOS)"},
     {"name": "interfaces", "description": "Interface configuration (IPs, descriptions, shutdown state)"},
-    {"name": "isis", "description": "IS-IS routing protocol (SP core IGP)"},
-    {"name": "mpls", "description": "MPLS LDP configuration (label distribution)"},
-    {"name": "bgp", "description": "BGP routing (iBGP VPNv4/v6, eBGP PE-CE, DC underlay/EVPN)"},
+    {"name": "routing", "description": "All routing protocols — IS-IS, MPLS LDP, and BGP"},
+    {"name": "bgp", "description": "BGP routing (DC underlay + EVPN overlay)"},
     {"name": "platform", "description": "Platform-level settings (STP mode, service model, VLAN ranges)"},
     {"name": "routing_global", "description": "Global routing enables (ip routing, ipv6 unicast-routing)"},
     {"name": "prefix_lists", "description": "IP prefix-list definitions for route filtering"},
@@ -41,15 +45,18 @@ FEATURES = [
 #
 # match_config: newline-separated patterns matching top-level config parents
 # config_ordered: True = line order matters for compliance (BGP, interfaces)
+#
+# Design decision: Cisco IOS-XE uses a single "routing" feature that covers
+# IS-IS + MPLS + BGP together. This avoids noise on CE devices that don't run
+# ISIS/MPLS — they get one "routing" compliance record instead of three empty ones.
+# Arista EOS keeps "bgp" separate since all EOS devices run BGP.
 
 RULES = [
     # ═══ Cisco IOS-XE (platform name: cisco_iosxe) ═══
     {"feature": "hostname", "platform": "cisco_iosxe", "match_config": "hostname", "ordered": False},
     {"feature": "vrfs", "platform": "cisco_iosxe", "match_config": "vrf definition", "ordered": False},
     {"feature": "interfaces", "platform": "cisco_iosxe", "match_config": "interface ", "ordered": True},
-    {"feature": "isis", "platform": "cisco_iosxe", "match_config": "router isis", "ordered": True},
-    {"feature": "mpls", "platform": "cisco_iosxe", "match_config": "mpls ldp", "ordered": False},
-    {"feature": "bgp", "platform": "cisco_iosxe", "match_config": "router bgp", "ordered": True},
+    {"feature": "routing", "platform": "cisco_iosxe", "match_config": "router isis\nrouter bgp\nmpls ldp", "ordered": True},
     # ═══ Arista EOS (platform name: arista_eos) ═══
     {"feature": "hostname", "platform": "arista_eos", "match_config": "hostname", "ordered": False},
     {"feature": "platform", "platform": "arista_eos", "match_config": "service routing protocols model\nspanning-tree\nvlan internal order", "ordered": False},
