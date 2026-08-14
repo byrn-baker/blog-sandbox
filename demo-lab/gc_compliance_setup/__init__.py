@@ -3,19 +3,19 @@
 Creates a production-grade set of compliance features and rules covering the full
 intended configuration for both Cisco IOS-XE (SP core) and Arista EOS (DC fabric).
 
-Features (5 total, consolidated to reduce noise):
-  Both platforms: hostname, vrfs, interfaces, routing
-  Arista only:    fabric_services
+One feature per configurable section — granular visibility into exactly which
+feature is drifting on which device:
 
-Design decisions:
-  - Cisco "routing" combines IS-IS + MPLS LDP + BGP. CEs that only run BGP get
-    one routing check instead of three (two of which would be empty noise).
-  - Arista "routing" combines ip routing + ipv6 unicast-routing + BGP.
-  - Arista "fabric_services" combines platform settings, VLANs, VXLAN, BFD,
-    prefix-lists, and route-maps. Spines that don't run VXLAN get one record
-    instead of six empty ones.
-  - Rules are platform-scoped (Golden Config limitation), not role-scoped.
-    Consolidating features is the documented workaround for reducing noise.
+  Both platforms: hostname, vrfs, interfaces, bgp, aaa, acl, ntp, snmp, logging,
+                  prefix_lists, route_maps, static_routes
+  Cisco only:     isis, mpls, vty
+  Arista only:    routing_global, platform, vlans, vxlan, bfd
+
+Trade-off: Compliance rules are platform-scoped (not role-scoped), so devices
+get checked against features that may not apply to them (e.g., CE routers checked
+for isis/mpls, spines checked for vxlan/vlans). When both intended and backup are
+empty for a feature, it shows as "compliant" — harmless noise, and the granular
+visibility into actual drift is worth it.
 
 Idempotent — safe to re-run as templates evolve.
 """
@@ -30,39 +30,76 @@ from nautobot_golden_config.models import ComplianceFeature, ComplianceRule
 # Each feature = one independently-audited config section
 
 FEATURES = [
+    # Shared across both platforms
     {"name": "hostname", "description": "Device hostname configuration"},
     {"name": "vrfs", "description": "VRF definitions (IOS-XE) and VRF instances (EOS)"},
     {"name": "interfaces", "description": "Interface configuration (IPs, descriptions, shutdown state)"},
-    {"name": "routing", "description": "All routing protocols — IS-IS, MPLS LDP, and BGP (Cisco); ip routing + BGP (Arista)"},
-    {"name": "fabric_services", "description": "DC fabric overlay — platform settings, VLANs, VXLAN, BFD, prefix-lists, route-maps"},
+    {"name": "bgp", "description": "BGP routing protocol"},
+    {"name": "aaa", "description": "AAA and TACACS+ authentication configuration"},
+    {"name": "acl", "description": "Access control lists"},
+    {"name": "ntp", "description": "NTP time synchronization"},
+    {"name": "snmp", "description": "SNMP monitoring configuration"},
+    {"name": "logging", "description": "Syslog and logging configuration"},
+    {"name": "prefix_lists", "description": "IP prefix-list definitions for route filtering"},
+    {"name": "route_maps", "description": "Route-map definitions for BGP policy"},
+    {"name": "static_routes", "description": "Static and default route configuration"},
+    # Cisco IOS-XE only
+    {"name": "isis", "description": "IS-IS routing protocol (SP core IGP)"},
+    {"name": "mpls", "description": "MPLS LDP configuration (label distribution)"},
+    {"name": "vty", "description": "VTY line configuration (SSH access, exec timeout, transport)"},
+    # Arista EOS only
+    {"name": "routing_global", "description": "Global routing enables (ip routing, ipv6 unicast-routing)"},
+    {"name": "platform", "description": "Platform-level settings (STP mode, service model, VLAN ranges)"},
+    {"name": "vlans", "description": "VLAN definitions"},
+    {"name": "vxlan", "description": "VXLAN VTEP interface, VNI-to-VLAN/VRF mappings"},
+    {"name": "bfd", "description": "Bidirectional Forwarding Detection timers"},
 ]
 
 # ─── Rule Definitions ──────────────────────────────────────────────────────────
 # Each rule = feature + platform + match_config pattern
 #
 # match_config: newline-separated patterns matching top-level config parents
-# config_ordered: True = line order matters for compliance (BGP, interfaces)
+# config_ordered: True = line order matters for compliance
 #
-# Design decision: Compliance rules are platform-scoped, not role-scoped. Every
-# device on a platform gets checked against every rule for that platform.
-# To avoid noise (empty "compliant" records for features a device doesn't use),
-# we consolidate related features into broader groups:
-#   - Cisco: "routing" covers ISIS + MPLS + BGP together
-#   - Arista: "routing" covers ip routing + BGP; "fabric_services" covers all
-#     overlay features (VXLAN, BFD, VLANs, etc.) as a single check
+# Every configurable feature gets its own rule per platform. This gives granular
+# visibility into which exact feature is drifting. Features that don't apply to
+# a device role (e.g., isis on a CE) will show "compliant" (empty both sides).
 
 RULES = [
     # ═══ Cisco IOS-XE (platform name: cisco_iosxe) ═══
     {"feature": "hostname", "platform": "cisco_iosxe", "match_config": "hostname", "ordered": False},
     {"feature": "vrfs", "platform": "cisco_iosxe", "match_config": "vrf definition", "ordered": False},
     {"feature": "interfaces", "platform": "cisco_iosxe", "match_config": "interface ", "ordered": True},
-    {"feature": "routing", "platform": "cisco_iosxe", "match_config": "router isis\nrouter bgp\nmpls ldp", "ordered": True},
+    {"feature": "isis", "platform": "cisco_iosxe", "match_config": "router isis", "ordered": True},
+    {"feature": "mpls", "platform": "cisco_iosxe", "match_config": "mpls ldp", "ordered": False},
+    {"feature": "bgp", "platform": "cisco_iosxe", "match_config": "router bgp", "ordered": True},
+    {"feature": "aaa", "platform": "cisco_iosxe", "match_config": "aaa \ntacacs-server\ntacacs server", "ordered": True},
+    {"feature": "vty", "platform": "cisco_iosxe", "match_config": "line vty", "ordered": True},
+    {"feature": "acl", "platform": "cisco_iosxe", "match_config": "ip access-list\naccess-list", "ordered": True},
+    {"feature": "ntp", "platform": "cisco_iosxe", "match_config": "ntp", "ordered": False},
+    {"feature": "snmp", "platform": "cisco_iosxe", "match_config": "snmp-server", "ordered": False},
+    {"feature": "logging", "platform": "cisco_iosxe", "match_config": "logging", "ordered": False},
+    {"feature": "prefix_lists", "platform": "cisco_iosxe", "match_config": "ip prefix-list", "ordered": True},
+    {"feature": "route_maps", "platform": "cisco_iosxe", "match_config": "route-map", "ordered": True},
+    {"feature": "static_routes", "platform": "cisco_iosxe", "match_config": "ip route", "ordered": False},
     # ═══ Arista EOS (platform name: arista_eos) ═══
     {"feature": "hostname", "platform": "arista_eos", "match_config": "hostname", "ordered": False},
     {"feature": "vrfs", "platform": "arista_eos", "match_config": "vrf instance", "ordered": False},
     {"feature": "interfaces", "platform": "arista_eos", "match_config": "interface ", "ordered": True},
-    {"feature": "routing", "platform": "arista_eos", "match_config": "ip routing\nipv6 unicast-routing\nrouter bgp", "ordered": True},
-    {"feature": "fabric_services", "platform": "arista_eos", "match_config": "service routing protocols model\nspanning-tree\nvlan internal order\nvlan \ninterface Vxlan\nip virtual-router\nrouter bfd\nip prefix-list\nroute-map", "ordered": False},
+    {"feature": "bgp", "platform": "arista_eos", "match_config": "router bgp", "ordered": True},
+    {"feature": "routing_global", "platform": "arista_eos", "match_config": "ip routing\nipv6 unicast-routing", "ordered": False},
+    {"feature": "platform", "platform": "arista_eos", "match_config": "service routing protocols model\nspanning-tree\nvlan internal order", "ordered": False},
+    {"feature": "vlans", "platform": "arista_eos", "match_config": "vlan ", "ordered": False},
+    {"feature": "vxlan", "platform": "arista_eos", "match_config": "interface Vxlan\nip virtual-router", "ordered": False},
+    {"feature": "bfd", "platform": "arista_eos", "match_config": "router bfd", "ordered": False},
+    {"feature": "aaa", "platform": "arista_eos", "match_config": "aaa \ntacacs-server", "ordered": True},
+    {"feature": "acl", "platform": "arista_eos", "match_config": "ip access-list", "ordered": True},
+    {"feature": "ntp", "platform": "arista_eos", "match_config": "ntp", "ordered": False},
+    {"feature": "snmp", "platform": "arista_eos", "match_config": "snmp-server", "ordered": False},
+    {"feature": "logging", "platform": "arista_eos", "match_config": "logging", "ordered": False},
+    {"feature": "prefix_lists", "platform": "arista_eos", "match_config": "ip prefix-list", "ordered": True},
+    {"feature": "route_maps", "platform": "arista_eos", "match_config": "route-map", "ordered": True},
+    {"feature": "static_routes", "platform": "arista_eos", "match_config": "ip route", "ordered": False},
 ]
 
 
