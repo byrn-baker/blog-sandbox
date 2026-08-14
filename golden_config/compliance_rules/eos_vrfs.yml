@@ -1,0 +1,5 @@
+---
+- feature_slug: "vrfs"
+  platform_network_driver: "arista_eos"
+  config_ordered: false
+  match_config: "vrf instance"

@@ -1,0 +1,5 @@
+---
+- feature_slug: "route_maps"
+  platform_network_driver: "arista_eos"
+  config_ordered: true
+  match_config: "route-map"
