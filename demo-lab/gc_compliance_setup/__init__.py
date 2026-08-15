@@ -128,7 +128,10 @@ class GCComplianceSetup(Job):
         for feat_def in FEATURES:
             feature, created = ComplianceFeature.objects.get_or_create(
                 name=feat_def["name"],
-                defaults={"description": feat_def["description"]},
+                defaults={
+                    "description": feat_def["description"],
+                    "slug": feat_def["name"],
+                },
             )
             if created:
                 features_created += 1
