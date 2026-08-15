@@ -140,6 +140,35 @@ bgp_peer_groups:
     enabled: true
 {% endfor %}
 
+# --- BGP Peer Group Address Families ---
+peer_group_address_families:
+# SP Core: RR-CLIENTS and PE-CLIENTS need VPNv4 + VPNv6
+{% for pe in ["SPE1", "SPE2", "SPE3"] %}
+  - "!create_or_update:peer_group__name": "RR-CLIENTS"
+    "!create_or_update:peer_group__routing_instance__device__name": "{{ pe }}"
+    "!create_or_update:afi_safi": "vpnv4_unicast"
+  - "!create_or_update:peer_group__name": "RR-CLIENTS"
+    "!create_or_update:peer_group__routing_instance__device__name": "{{ pe }}"
+    "!create_or_update:afi_safi": "vpnv6_unicast"
+{% endfor %}
+{% for rr in ["RR1", "RR2"] %}
+  - "!create_or_update:peer_group__name": "PE-CLIENTS"
+    "!create_or_update:peer_group__routing_instance__device__name": "{{ rr }}"
+    "!create_or_update:afi_safi": "vpnv4_unicast"
+  - "!create_or_update:peer_group__name": "PE-CLIENTS"
+    "!create_or_update:peer_group__routing_instance__device__name": "{{ rr }}"
+    "!create_or_update:afi_safi": "vpnv6_unicast"
+{% endfor %}
+# DC Fabric: underlay = ipv4_unicast, overlay = l2_evpn
+{% for inst in dc_bgp_instances %}
+  - "!create_or_update:peer_group__name": "IPV4-UNDERLAY-PEERS"
+    "!create_or_update:peer_group__routing_instance__device__name": "{{ inst.device }}"
+    "!create_or_update:afi_safi": "ipv4_unicast"
+  - "!create_or_update:peer_group__name": "EVPN-OVERLAY-PEERS"
+    "!create_or_update:peer_group__routing_instance__device__name": "{{ inst.device }}"
+    "!create_or_update:afi_safi": "l2_evpn"
+{% endfor %}
+
 # --- BGP Peerings ---
 bgp_peerings:
 {% for peer in ibgp_peerings %}
