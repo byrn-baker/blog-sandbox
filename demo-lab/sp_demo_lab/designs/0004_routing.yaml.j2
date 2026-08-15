@@ -128,6 +128,17 @@ bgp_peer_groups:
     enabled: true
     autonomous_system__asn: 65000
 {% endfor %}
+# DC Fabric peer groups (all spines and leaves get both underlay + overlay)
+{% for inst in dc_bgp_instances %}
+  - "!create_or_update:name": "IPV4-UNDERLAY-PEERS"
+    "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
+    description: "eBGP IPv4 underlay peers"
+    enabled: true
+  - "!create_or_update:name": "EVPN-OVERLAY-PEERS"
+    "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
+    description: "eBGP EVPN overlay peers"
+    enabled: true
+{% endfor %}
 
 # --- BGP Peerings ---
 bgp_peerings:
@@ -176,10 +187,16 @@ bgp_peerings:
       - routing_instance__device__name: "{{ link[0] }}"
         source_ip__host: "{{ net }}.{{ last }}"
         autonomous_system__asn: {{ dc_asn_map[link[0]] }}
+        peer_group:
+          "!get:name": "IPV4-UNDERLAY-PEERS"
+          "!get:routing_instance__device__name": "{{ link[0] }}"
         enabled: true
       - routing_instance__device__name: "{{ link[2] }}"
         source_ip__host: "{{ net }}.{{ last + 1 }}"
         autonomous_system__asn: {{ dc_asn_map[link[2]] }}
+        peer_group:
+          "!get:name": "IPV4-UNDERLAY-PEERS"
+          "!get:routing_instance__device__name": "{{ link[2] }}"
         enabled: true
 {% endif %}
 {% endfor %}
@@ -194,10 +211,16 @@ bgp_peerings:
       - routing_instance__device__name: "{{ link[0] }}"
         source_ip__host: "{{ spine.router_id }}"
         autonomous_system__asn: {{ spine.asn }}
+        peer_group:
+          "!get:name": "EVPN-OVERLAY-PEERS"
+          "!get:routing_instance__device__name": "{{ link[0] }}"
         enabled: true
       - routing_instance__device__name: "{{ link[2] }}"
         source_ip__host: "{{ leaf.router_id }}"
         autonomous_system__asn: {{ leaf.asn }}
+        peer_group:
+          "!get:name": "EVPN-OVERLAY-PEERS"
+          "!get:routing_instance__device__name": "{{ link[2] }}"
         enabled: true
 {% endif %}
 {% endfor %}

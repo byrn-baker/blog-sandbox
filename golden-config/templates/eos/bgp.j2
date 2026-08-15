@@ -7,80 +7,60 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% if config_context.bgp is defined %}
    maximum-paths {{ config_context.bgp.maximum_paths | default(4) }} ecmp {{ config_context.bgp.ecmp | default(4) }}
    timers bgp {{ config_context.bgp.timers.keepalive }} {{ config_context.bgp.timers.hold }}
+{% else %}
+   maximum-paths 4 ecmp 4
+   timers bgp 3 9
 {% endif %}
 !
-{% if config_context.bgp is defined and config_context.bgp.peer_groups is defined %}
-{% set underlay_pg = config_context.bgp.peer_groups.ipv4_underlay %}
-{% set overlay_pg = config_context.bgp.peer_groups.evpn_overlay %}
-   neighbor {{ overlay_pg.name }} peer group
-{% if overlay_pg.next_hop_unchanged | default(false) %}
-   neighbor {{ overlay_pg.name }} next-hop-unchanged
+{% set has_overlay = [] %}
+{% set has_underlay = [] %}
+{% for pg in bgp.peer_groups %}
+{% if pg.name == "EVPN-OVERLAY-PEERS" %}
+{% if has_overlay.append(true) %}{% endif %}
+   neighbor EVPN-OVERLAY-PEERS peer group
+   neighbor EVPN-OVERLAY-PEERS update-source Loopback0
+   neighbor EVPN-OVERLAY-PEERS bfd
+   neighbor EVPN-OVERLAY-PEERS ebgp-multihop 3
+   neighbor EVPN-OVERLAY-PEERS send-community extended
+   neighbor EVPN-OVERLAY-PEERS maximum-routes 0
+{% elif pg.name == "IPV4-UNDERLAY-PEERS" %}
+{% if has_underlay.append(true) %}{% endif %}
+   neighbor IPV4-UNDERLAY-PEERS peer group
+   neighbor IPV4-UNDERLAY-PEERS send-community
+   neighbor IPV4-UNDERLAY-PEERS maximum-routes 12000
 {% endif %}
-   neighbor {{ overlay_pg.name }} update-source {{ overlay_pg.update_source }}
-{% if overlay_pg.bfd | default(false) %}
-   neighbor {{ overlay_pg.name }} bfd
-{% endif %}
-   neighbor {{ overlay_pg.name }} ebgp-multihop {{ overlay_pg.ebgp_multihop }}
-{% if overlay_pg.send_community | default(false) %}
-   neighbor {{ overlay_pg.name }} send-community
-{% endif %}
-   neighbor {{ overlay_pg.name }} maximum-routes {{ overlay_pg.maximum_routes }}
-!
-   neighbor {{ underlay_pg.name }} peer group
-{% if underlay_pg.send_community | default(false) %}
-   neighbor {{ underlay_pg.name }} send-community
-{% endif %}
-   neighbor {{ underlay_pg.name }} maximum-routes {{ underlay_pg.maximum_routes }}
+{% endfor %}
 !
 {% for endpoint in bgp.endpoints %}
 {% if endpoint.peer and endpoint.peer.source_ip %}
 {% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
-{% set ep_afs = endpoint.address_families | map(attribute='afi_safi') | list %}
-{% if 'L2_EVPN' in ep_afs %}
-   neighbor {{ peer_ip }} peer group {{ overlay_pg.name }}
+{% if endpoint.peer_group and endpoint.peer_group.name == "EVPN-OVERLAY-PEERS" %}
+   neighbor {{ peer_ip }} peer group EVPN-OVERLAY-PEERS
    neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
-   neighbor {{ peer_ip }} description {{ endpoint.peer.routing_instance.device.name }}_Loopback0
-{% elif 'IPV4_UNICAST' in ep_afs %}
-   neighbor {{ peer_ip }} peer group {{ underlay_pg.name }}
+   neighbor {{ peer_ip }} description {{ endpoint.peer.routing_instance.device.name }}
+{% elif endpoint.peer_group and endpoint.peer_group.name == "IPV4-UNDERLAY-PEERS" %}
+   neighbor {{ peer_ip }} peer group IPV4-UNDERLAY-PEERS
    neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
-   neighbor {{ peer_ip }} description {{ endpoint.peer.routing_instance.device.name }}_{{ endpoint.peer.source_ip.address.split('/')[0] }}
+   neighbor {{ peer_ip }} description {{ endpoint.peer.routing_instance.device.name }}
+{% else %}
+   neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
 {% endif %}
 {% endif %}
 {% endfor %}
 !
-{% if config_context.bgp.redistribute is defined and config_context.bgp.redistribute.connected is defined %}
+{% if config_context.bgp is defined and config_context.bgp.redistribute is defined and config_context.bgp.redistribute.connected is defined %}
    redistribute connected route-map {{ config_context.bgp.redistribute.connected.route_map }}
 {% endif %}
 !
-{% set af_list = bgp.address_families | map(attribute='afi_safi') | list %}
-{% if 'L2_EVPN' in af_list %}
-   address-family evpn
-      neighbor {{ overlay_pg.name }} activate
-   !
-{% endif %}
-{% if 'IPV4_UNICAST' in af_list %}
+{% if has_underlay %}
    address-family ipv4
-      no neighbor {{ overlay_pg.name }} activate
-      neighbor {{ underlay_pg.name }} activate
-   !
-{% endif %}
-{% else %}
-{% for endpoint in bgp.endpoints %}
-{% if endpoint.peer and endpoint.peer.source_ip %}
-{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
-   neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
-{% endif %}
-{% endfor %}
-!
-{% set af_list = bgp.address_families | map(attribute='afi_safi') | list %}
-{% if 'IPV4_UNICAST' in af_list %}
-   address-family ipv4
+      neighbor IPV4-UNDERLAY-PEERS activate
       redistribute connected
    !
 {% endif %}
-{% if 'L2_EVPN' in af_list %}
+{% if has_overlay %}
    address-family evpn
+      neighbor EVPN-OVERLAY-PEERS activate
    !
-{% endif %}
 {% endif %}
 {% endfor %}
