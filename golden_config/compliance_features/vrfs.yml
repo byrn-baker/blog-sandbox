@@ -1,3 +1,3 @@
----
-- name: "vrfs"
-  description: "VRF definitions (IOS-XE) and VRF instances (EOS)"
+- name: vrfs
+  description: VRF definitions (IOS-XE) and VRF instances (EOS)
+  slug: vrfs

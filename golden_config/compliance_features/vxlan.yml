@@ -1,3 +1,3 @@
----
-- name: "vxlan"
-  description: "VXLAN VTEP interface, VNI-to-VLAN/VRF mappings"
+- name: vxlan
+  description: VXLAN VTEP interface, VNI-to-VLAN/VRF mappings
+  slug: vxlan

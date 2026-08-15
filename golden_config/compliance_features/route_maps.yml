@@ -1,3 +1,3 @@
----
-- name: "route_maps"
-  description: "Route-map definitions for BGP policy"
+- name: route_maps
+  description: Route-map definitions for BGP policy
+  slug: route_maps

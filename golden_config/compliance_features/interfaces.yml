@@ -1,3 +1,3 @@
----
-- name: "interfaces"
-  description: "Interface configuration (IPs, descriptions, VRFs)"
+- name: interfaces
+  description: Interface configuration (IPs, descriptions, VRFs)
+  slug: interfaces
