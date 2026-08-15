@@ -27,28 +27,43 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endfor %}
 !
 {% for endpoint in bgp.endpoints %}
-{% if endpoint.peer and endpoint.peer.source_ip %}
-{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
+{% if endpoint.peering and endpoint.peering.endpoints %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
+{% endif %}
+{% endfor %}
+{% if remote.ep %}
+{% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
 {% if endpoint.peer_group %}
  neighbor {{ peer_ip }} peer-group {{ endpoint.peer_group.name }}
 {% else %}
- neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
+ neighbor {{ peer_ip }} remote-as {{ remote.ep.routing_instance.autonomous_system.asn }}
+{% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
 !
 {% for pg in bgp.peer_groups %}
-{% set pg_afs = pg.address_families | map(attribute='afi_safi') | list %}
 {% for af in pg.address_families %}
 {% if af.afi_safi in ['VPNV4_UNICAST', 'vpnv4_unicast'] %}
  address-family vpnv4
 {% for endpoint in bgp.endpoints %}
-{% if endpoint.peer and endpoint.peer.source_ip and endpoint.peer_group and endpoint.peer_group.name == pg.name %}
-{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
+{% if endpoint.peer_group and endpoint.peer_group.name == pg.name and endpoint.peering %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
+{% endif %}
+{% endfor %}
+{% if remote.ep %}
+{% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
   neighbor {{ peer_ip }} activate
   neighbor {{ peer_ip }} send-community extended
 {% if 'RR' in hostname or 'Route-Reflector' in role.name %}
   neighbor {{ peer_ip }} route-reflector-client
+{% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
@@ -57,12 +72,20 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% elif af.afi_safi in ['VPNV6_UNICAST', 'vpnv6_unicast'] %}
  address-family vpnv6
 {% for endpoint in bgp.endpoints %}
-{% if endpoint.peer and endpoint.peer.source_ip and endpoint.peer_group and endpoint.peer_group.name == pg.name %}
-{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
+{% if endpoint.peer_group and endpoint.peer_group.name == pg.name and endpoint.peering %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
+{% endif %}
+{% endfor %}
+{% if remote.ep %}
+{% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
   neighbor {{ peer_ip }} activate
   neighbor {{ peer_ip }} send-community extended
 {% if 'RR' in hostname or 'Route-Reflector' in role.name %}
   neighbor {{ peer_ip }} route-reflector-client
+{% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
@@ -72,20 +95,28 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endfor %}
 {% endfor %}
 {% for endpoint in bgp.endpoints %}
-{% if endpoint.peer and endpoint.peer.source_ip and not endpoint.peer_group %}
-{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
+{% if not endpoint.peer_group and endpoint.peering and endpoint.peering.endpoints %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
+{% endif %}
+{% endfor %}
+{% if remote.ep %}
+{% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
 {% set source_ip = endpoint.source_ip.address.split('/')[0] %}
 {% for interface in interfaces if interface.vrf %}
 {% for addr in interface.ip_addresses if addr.ip_version == 4 %}
 {% if addr.address.split('/')[0] == source_ip %}
  address-family ipv4 vrf {{ interface.vrf.name }}
-  neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
+  neighbor {{ peer_ip }} remote-as {{ remote.ep.routing_instance.autonomous_system.asn }}
   neighbor {{ peer_ip }} activate
  exit-address-family
 !
 {% endif %}
 {% endfor %}
 {% endfor %}
+{% endif %}
 {% endif %}
 {% endfor %}
 {% endfor %}

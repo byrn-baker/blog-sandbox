@@ -132,6 +132,27 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
           import_policy
           export_policy
         }
+        peering {
+          endpoints {
+            source_ip {
+              address
+            }
+            autonomous_system {
+              asn
+            }
+            peer_group {
+              name
+            }
+            routing_instance {
+              device {
+                name
+              }
+              autonomous_system {
+                asn
+              }
+            }
+          }
+        }
         peer {
           source_ip {
             address

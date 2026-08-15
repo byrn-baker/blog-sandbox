@@ -28,14 +28,22 @@ router bgp {{ bgp.autonomous_system.asn }}
 !
 {% endfor %}
 {% for endpoint in bgp.endpoints %}
-{% if endpoint.peer and endpoint.peer.source_ip %}
-{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
+{% if endpoint.peering and endpoint.peering.endpoints %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
+{% endif %}
+{% endfor %}
+{% if remote.ep %}
+{% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
 {% if endpoint.peer_group %}
    neighbor {{ peer_ip }} peer group {{ endpoint.peer_group.name }}
-   neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
-   neighbor {{ peer_ip }} description {{ endpoint.peer.routing_instance.device.name }}
+   neighbor {{ peer_ip }} remote-as {{ remote.ep.routing_instance.autonomous_system.asn }}
+   neighbor {{ peer_ip }} description {{ remote.ep.routing_instance.device.name }}
 {% else %}
-   neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
+   neighbor {{ peer_ip }} remote-as {{ remote.ep.routing_instance.autonomous_system.asn }}
+{% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
