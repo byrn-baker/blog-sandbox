@@ -187,6 +187,7 @@ PROVIDED_CONTENTS = [
     "nautobot_golden_config.backupconfigs",
     "nautobot_golden_config.intendedconfigs",
     "nautobot_golden_config.jinjatemplate",
+    "nautobot_golden_config.pluginproperties",
 ]
 
 
