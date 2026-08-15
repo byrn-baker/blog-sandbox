@@ -1,15 +1,15 @@
-{# BGP configuration - AVD-aligned eBGP underlay + EVPN overlay #}
 {% for bgp in bgp_routing_instances %}
 router bgp {{ bgp.autonomous_system.asn }}
    router-id {{ bgp.router_id.address.split('/')[0] }}
-{% if not config_context.bgp.default_ipv4_unicast | default(false) %}
+{% if config_context.bgp is defined and not config_context.bgp.default_ipv4_unicast | default(false) %}
    no bgp default ipv4-unicast
 {% endif %}
+{% if config_context.bgp is defined %}
    maximum-paths {{ config_context.bgp.maximum_paths | default(4) }} ecmp {{ config_context.bgp.ecmp | default(4) }}
    timers bgp {{ config_context.bgp.timers.keepalive }} {{ config_context.bgp.timers.hold }}
+{% endif %}
 !
-{# Named Peer Groups (AVD-style) #}
-{% if config_context.bgp.peer_groups is defined %}
+{% if config_context.bgp is defined and config_context.bgp.peer_groups is defined %}
 {% set underlay_pg = config_context.bgp.peer_groups.ipv4_underlay %}
 {% set overlay_pg = config_context.bgp.peer_groups.evpn_overlay %}
    neighbor {{ overlay_pg.name }} peer group
@@ -32,8 +32,6 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
    neighbor {{ underlay_pg.name }} maximum-routes {{ underlay_pg.maximum_routes }}
 !
-{% endif %}
-{# Neighbors - assign to peer groups based on address family #}
 {% for endpoint in bgp.endpoints %}
 {% if endpoint.peer and endpoint.peer.source_ip %}
 {% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
@@ -50,12 +48,10 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {% endfor %}
 !
-{# Redistribute connected via route-map #}
 {% if config_context.bgp.redistribute is defined and config_context.bgp.redistribute.connected is defined %}
    redistribute connected route-map {{ config_context.bgp.redistribute.connected.route_map }}
 {% endif %}
 !
-{# Address Families #}
 {% set af_list = bgp.address_families | map(attribute='afi_safi') | list %}
 {% if 'L2_EVPN' in af_list %}
    address-family evpn
@@ -67,5 +63,24 @@ router bgp {{ bgp.autonomous_system.asn }}
       no neighbor {{ overlay_pg.name }} activate
       neighbor {{ underlay_pg.name }} activate
    !
+{% endif %}
+{% else %}
+{% for endpoint in bgp.endpoints %}
+{% if endpoint.peer and endpoint.peer.source_ip %}
+{% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
+   neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
+{% endif %}
+{% endfor %}
+!
+{% set af_list = bgp.address_families | map(attribute='afi_safi') | list %}
+{% if 'IPV4_UNICAST' in af_list %}
+   address-family ipv4
+      redistribute connected
+   !
+{% endif %}
+{% if 'L2_EVPN' in af_list %}
+   address-family evpn
+   !
+{% endif %}
 {% endif %}
 {% endfor %}
