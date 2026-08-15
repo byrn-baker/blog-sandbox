@@ -26,6 +26,7 @@ class SPDemoLabDesign(DesignJob):
             "designs/0002_devices.yaml.j2",
             "designs/0003_cabling.yaml.j2",
             "designs/0004_routing.yaml.j2",
+            "designs/0005_primary_ips.yaml.j2",
         ]
         version = "1.0.0"
         has_sensitive_variables = False
