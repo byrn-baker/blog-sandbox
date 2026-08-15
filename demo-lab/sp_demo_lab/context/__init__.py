@@ -172,12 +172,13 @@ class SPDemoLabContext(Context):
         {"device": "SPE1", "asn": 65000, "router_id": "10.1.0.7"},
         {"device": "SPE2", "asn": 65000, "router_id": "10.1.0.8"},
         {"device": "SPE3", "asn": 65000, "router_id": "10.1.0.9"},
+        {"device": "BORDER1", "asn": 65000, "router_id": "10.1.0.10"},
         {"device": "CE1", "asn": 65001, "router_id": "10.2.1.1"},
         {"device": "CE2", "asn": 65002, "router_id": "10.2.2.1"},
         {"device": "CE3", "asn": 65003, "router_id": "10.2.3.1"},
     ]
 
-    # iBGP Peerings: PE ↔ RR (VPNv4 + VPNv6, source = Loopback0)
+    # iBGP Peerings: PE/Border ↔ RR (VPNv4 + VPNv6, source = Loopback0)
     ibgp_peerings = [
         {"a_device": "SPE1", "a_ip": "10.1.0.7", "b_device": "RR1", "b_ip": "10.1.0.1"},
         {"a_device": "SPE1", "a_ip": "10.1.0.7", "b_device": "RR2", "b_ip": "10.1.0.2"},
@@ -185,6 +186,8 @@ class SPDemoLabContext(Context):
         {"a_device": "SPE2", "a_ip": "10.1.0.8", "b_device": "RR2", "b_ip": "10.1.0.2"},
         {"a_device": "SPE3", "a_ip": "10.1.0.9", "b_device": "RR1", "b_ip": "10.1.0.1"},
         {"a_device": "SPE3", "a_ip": "10.1.0.9", "b_device": "RR2", "b_ip": "10.1.0.2"},
+        {"a_device": "BORDER1", "a_ip": "10.1.0.10", "b_device": "RR1", "b_ip": "10.1.0.1"},
+        {"a_device": "BORDER1", "a_ip": "10.1.0.10", "b_device": "RR2", "b_ip": "10.1.0.2"},
     ]
 
     # eBGP Peerings: PE ↔ CE (IPv4 unicast in VRF)
