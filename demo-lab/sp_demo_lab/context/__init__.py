@@ -6,6 +6,9 @@ from nautobot_design_builder.context import Context
 class SPDemoLabContext(Context):
     """All data derived from the addressing plan (01-addressing.md). Dual-stack IPv4+IPv6."""
 
+    # Management network prefix length (192.168.3.0/24)
+    mgmt_prefix_len = 24
+
     # SP Core — Cisco IOS-XE (CAT8000v)
     # IPv6 loopbacks: fd10:0:1::<last-octet>/128
     sp_core_devices = [
