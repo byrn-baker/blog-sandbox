@@ -141,7 +141,7 @@ bgp_peer_groups:
 {% endfor %}
 
 # --- BGP Peer Group Address Families ---
-peer_group_address_families:
+bgp_peer_group_address_families:
 # SP Core: RR-CLIENTS and PE-CLIENTS need VPNv4 + VPNv6
 {% for pe in ["SPE1", "SPE2", "SPE3"] %}
   - "!create_or_update:peer_group__name": "RR-CLIENTS"
