@@ -184,8 +184,6 @@ JINJA_PATH = "golden-config/templates/{{obj.platform.network_driver}}.j2"
 PROVIDED_CONTENTS = [
     "extras.configcontext",
     "extras.configcontextschema",
-    "extras.graphqlquery",
-    "extras.job",
     "nautobot_golden_config.backupconfigs",
     "nautobot_golden_config.intendedconfigs",
     "nautobot_golden_config.jinjatemplate",
