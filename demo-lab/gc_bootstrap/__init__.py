@@ -246,8 +246,7 @@ class GCBootstrap(Job):
             repo.validated_save()
 
         # Set provided contents
-        for content_type in PROVIDED_CONTENTS:
-            repo.provided_contents.add(content_type)
+        repo.provided_contents = PROVIDED_CONTENTS
         repo.validated_save()
         self.logger.info(f"GitRepository '{REPO_NAME}': {'created' if created else 'updated'}")
 
