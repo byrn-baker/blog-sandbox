@@ -12,34 +12,26 @@ router bgp {{ bgp.autonomous_system.asn }}
    timers bgp 3 9
 {% endif %}
 !
-{% set has_overlay = [] %}
-{% set has_underlay = [] %}
 {% for pg in bgp.peer_groups %}
-{% if pg.name == "EVPN-OVERLAY-PEERS" %}
-{% if has_overlay.append(true) %}{% endif %}
-   neighbor EVPN-OVERLAY-PEERS peer group
-   neighbor EVPN-OVERLAY-PEERS update-source Loopback0
-   neighbor EVPN-OVERLAY-PEERS bfd
-   neighbor EVPN-OVERLAY-PEERS ebgp-multihop 3
-   neighbor EVPN-OVERLAY-PEERS send-community extended
-   neighbor EVPN-OVERLAY-PEERS maximum-routes 0
-{% elif pg.name == "IPV4-UNDERLAY-PEERS" %}
-{% if has_underlay.append(true) %}{% endif %}
-   neighbor IPV4-UNDERLAY-PEERS peer group
-   neighbor IPV4-UNDERLAY-PEERS send-community
-   neighbor IPV4-UNDERLAY-PEERS maximum-routes 12000
+   neighbor {{ pg.name }} peer group
+{% set pg_afs = pg.address_families | map(attribute='afi_safi') | list %}
+{% if 'L2_EVPN' in pg_afs or 'l2_evpn' in pg_afs %}
+   neighbor {{ pg.name }} update-source Loopback0
+   neighbor {{ pg.name }} bfd
+   neighbor {{ pg.name }} ebgp-multihop 3
+   neighbor {{ pg.name }} send-community extended
+   neighbor {{ pg.name }} maximum-routes 0
+{% else %}
+   neighbor {{ pg.name }} send-community
+   neighbor {{ pg.name }} maximum-routes 12000
 {% endif %}
-{% endfor %}
 !
+{% endfor %}
 {% for endpoint in bgp.endpoints %}
 {% if endpoint.peer and endpoint.peer.source_ip %}
 {% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
-{% if endpoint.peer_group and endpoint.peer_group.name == "EVPN-OVERLAY-PEERS" %}
-   neighbor {{ peer_ip }} peer group EVPN-OVERLAY-PEERS
-   neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
-   neighbor {{ peer_ip }} description {{ endpoint.peer.routing_instance.device.name }}
-{% elif endpoint.peer_group and endpoint.peer_group.name == "IPV4-UNDERLAY-PEERS" %}
-   neighbor {{ peer_ip }} peer group IPV4-UNDERLAY-PEERS
+{% if endpoint.peer_group %}
+   neighbor {{ peer_ip }} peer group {{ endpoint.peer_group.name }}
    neighbor {{ peer_ip }} remote-as {{ endpoint.peer.autonomous_system.asn }}
    neighbor {{ peer_ip }} description {{ endpoint.peer.routing_instance.device.name }}
 {% else %}
@@ -52,15 +44,26 @@ router bgp {{ bgp.autonomous_system.asn }}
    redistribute connected route-map {{ config_context.bgp.redistribute.connected.route_map }}
 {% endif %}
 !
-{% if has_underlay %}
+{% for pg in bgp.peer_groups %}
+{% set pg_afs = pg.address_families | map(attribute='afi_safi') | list %}
+{% for af in pg.address_families %}
+{% if af.afi_safi in ['L2_EVPN', 'l2_evpn'] %}
+   address-family evpn
+      neighbor {{ pg.name }} activate
+   !
+{% elif af.afi_safi in ['IPV4_UNICAST', 'ipv4_unicast'] %}
    address-family ipv4
-      neighbor IPV4-UNDERLAY-PEERS activate
+      neighbor {{ pg.name }} activate
       redistribute connected
    !
 {% endif %}
-{% if has_overlay %}
+{% endfor %}
+{% endfor %}
+{% if not bgp.peer_groups %}
+   address-family ipv4
+      redistribute connected
+   !
    address-family evpn
-      neighbor EVPN-OVERLAY-PEERS activate
    !
 {% endif %}
 {% endfor %}

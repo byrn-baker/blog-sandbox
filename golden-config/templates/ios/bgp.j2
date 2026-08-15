@@ -1,4 +1,3 @@
-{# BGP configuration — iBGP (PE/RR) and eBGP (PE-CE) #}
 {% for bgp in bgp_routing_instances %}
 router bgp {{ bgp.autonomous_system.asn }}
  bgp router-id {{ bgp.router_id.address.split('/')[0] }}
@@ -16,17 +15,17 @@ router bgp {{ bgp.autonomous_system.asn }}
  timers bgp 10 30
 {% endif %}
 !
-{# Peer Groups #}
 {% for pg in bgp.peer_groups %}
  neighbor {{ pg.name }} peer-group
+{% if pg.autonomous_system %}
  neighbor {{ pg.name }} remote-as {{ pg.autonomous_system.asn }}
+{% endif %}
  neighbor {{ pg.name }} update-source Loopback0
 {% if config_context.bfd is defined %}
  neighbor {{ pg.name }} fall-over bfd
 {% endif %}
 {% endfor %}
 !
-{# Neighbors #}
 {% for endpoint in bgp.endpoints %}
 {% if endpoint.peer and endpoint.peer.source_ip %}
 {% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
@@ -38,32 +37,31 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {% endfor %}
 !
-{# VPNv4 Address Family #}
-{% set af_list = bgp.address_families | map(attribute='afi_safi') | list %}
-{% if 'VPNV4_UNICAST' in af_list %}
+{% for pg in bgp.peer_groups %}
+{% set pg_afs = pg.address_families | map(attribute='afi_safi') | list %}
+{% for af in pg.address_families %}
+{% if af.afi_safi in ['VPNV4_UNICAST', 'vpnv4_unicast'] %}
  address-family vpnv4
 {% for endpoint in bgp.endpoints %}
-{% if endpoint.peer and endpoint.peer.source_ip and endpoint.peer_group %}
+{% if endpoint.peer and endpoint.peer.source_ip and endpoint.peer_group and endpoint.peer_group.name == pg.name %}
 {% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
   neighbor {{ peer_ip }} activate
   neighbor {{ peer_ip }} send-community extended
-{% if 'RR' in hostname %}
+{% if 'RR' in hostname or 'Route-Reflector' in role.name %}
   neighbor {{ peer_ip }} route-reflector-client
 {% endif %}
 {% endif %}
 {% endfor %}
  exit-address-family
 !
-{% endif %}
-{# VPNv6 Address Family #}
-{% if 'VPNV6_UNICAST' in af_list %}
+{% elif af.afi_safi in ['VPNV6_UNICAST', 'vpnv6_unicast'] %}
  address-family vpnv6
 {% for endpoint in bgp.endpoints %}
-{% if endpoint.peer and endpoint.peer.source_ip and endpoint.peer_group %}
+{% if endpoint.peer and endpoint.peer.source_ip and endpoint.peer_group and endpoint.peer_group.name == pg.name %}
 {% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
   neighbor {{ peer_ip }} activate
   neighbor {{ peer_ip }} send-community extended
-{% if 'RR' in hostname %}
+{% if 'RR' in hostname or 'Route-Reflector' in role.name %}
   neighbor {{ peer_ip }} route-reflector-client
 {% endif %}
 {% endif %}
@@ -71,7 +69,8 @@ router bgp {{ bgp.autonomous_system.asn }}
  exit-address-family
 !
 {% endif %}
-{# IPv4 VRF Address Families (PE-CE eBGP) #}
+{% endfor %}
+{% endfor %}
 {% for endpoint in bgp.endpoints %}
 {% if endpoint.peer and endpoint.peer.source_ip and not endpoint.peer_group %}
 {% set peer_ip = endpoint.peer.source_ip.address.split('/')[0] %}
