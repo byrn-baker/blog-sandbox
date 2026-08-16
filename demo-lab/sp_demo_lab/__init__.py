@@ -30,7 +30,7 @@ class SPDemoLabDesign(DesignJob):
             "designs/0004_routing.yaml.j2",
             "designs/0005_primary_ips.yaml.j2",
         ]
-        version = "1.1.0"
+        version = "1.2.0"
         has_sensitive_variables = False
 
 

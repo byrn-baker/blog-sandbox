@@ -150,7 +150,7 @@ organized by location, and are pushed back to the GitHub repo automatically.
 | Backup Configs | `golden-config/backup-configs/` | Written by backup job, pushed to git |
 | Intended Configs | `golden-config/intended-configs/` | Written by generate job, pushed to git |
 | GraphQL query | `demo-lab/gc_bootstrap/__init__.py` | Canonical query updated by the bootstrap job |
-| Config Contexts | `config_contexts/` | Role-based and device-specific |
+| Config Contexts | `config_contexts/` | Role-based policy |
 | Config Context Schemas | `config_context_schemas/` | JSON Schema validation |
 | Golden Config Properties | `golden_config/` | Compliance features and rules |
 

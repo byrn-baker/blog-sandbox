@@ -1,36 +1,20 @@
-{# VRF definitions from modeled interfaces and native route targets #}
+{# VRF definitions from native Nautobot device assignments and route targets #}
 {% macro render_targets(vrf) %}
-{% if vrf.export_targets is defined and vrf.export_targets %}
-{% for rt in vrf.export_targets %}
+{% for rt in vrf.export_targets | default([]) %}
   route-target export {{ rt.name }}
 {% endfor %}
-{% elif config_context.vrfs is defined and vrf.name in config_context.vrfs %}
-{% for rt in config_context.vrfs[vrf.name].route_targets.export %}
-  route-target export {{ rt }}
-{% endfor %}
-{% endif %}
-{% if vrf.import_targets is defined and vrf.import_targets %}
-{% for rt in vrf.import_targets %}
+{% for rt in vrf.import_targets | default([]) %}
   route-target import {{ rt.name }}
 {% endfor %}
-{% elif config_context.vrfs is defined and vrf.name in config_context.vrfs %}
-{% for rt in config_context.vrfs[vrf.name].route_targets.import %}
-  route-target import {{ rt }}
-{% endfor %}
-{% endif %}
 {% endmacro %}
-{% set seen_vrfs = [] %}
-{% for interface in interfaces if interface.vrf %}
-{% if interface.vrf.name not in seen_vrfs %}
-{% if seen_vrfs.append(interface.vrf.name) %}{% endif %}
-vrf definition {{ interface.vrf.name }}
- rd {{ interface.vrf.rd }}
+{% for vrf in vrfs | default([]) %}
+vrf definition {{ vrf.name }}
+ rd {{ vrf.rd }}
  !
  address-family ipv4
-{{ render_targets(interface.vrf) }} exit-address-family
+{{ render_targets(vrf) }} exit-address-family
  !
  address-family ipv6
-{{ render_targets(interface.vrf) }} exit-address-family
+{{ render_targets(vrf) }} exit-address-family
 !
-{% endif %}
 {% endfor %}

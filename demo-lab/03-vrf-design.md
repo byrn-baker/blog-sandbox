@@ -1,11 +1,21 @@
-# 03 — VRF / L3VPN Design
+# 03: VRF / L3VPN Design
 
 ## Overview
 
-Each datacenter keeps its own PE VRF and RD. All three VRFs import and export
-`65000:900` for the DCI underlay, while retaining a site RT for local identity.
-This shared RT carries spine and VTEP loopback reachability between sites. EVPN
-still controls MAC, IP, and tenant prefix exchange between the DC fabrics.
+Each datacenter keeps its own PE VRF and route distinguisher (RD). All three
+VRFs import and export `65000:900` for routed DCI reachability while retaining
+a site route target (RT) for local identity. This shared RT carries spine and
+VTEP loopback routes between sites. EVPN carries MAC, IP, and tenant prefix
+reachability between the datacenter fabrics.
+
+## Source of Truth
+
+Nautobot owns the VRF definitions, RDs, device assignments, interface
+assignments, and native import and export RouteTarget relationships. Design
+Builder creates those objects from `SPDemoLabContext.vrfs` and assigns each
+customer VRF to its SPE and PE-CE interface. Golden Config reads the native
+relationships through the saved GraphQL query. Config contexts provide device
+policy, not VRF inventory.
 
 ## VRF Table
 
@@ -17,11 +27,14 @@ still controls MAC, IP, and tenant prefix exchange between the DC fabrics.
 
 ## PE-CE Peering
 
-| PE | VRF | PE IP | CE IP | CE ASN | AFI |
-|----|-----|-------|-------|--------|-----|
-| SPE1 | CUST-A | `172.16.1.0` | `172.16.1.1` | 65001 | IPv4 + IPv6 |
-| SPE2 | CUST-B | `172.16.2.0` | `172.16.2.1` | 65002 | IPv4 + IPv6 |
-| SPE3 | CUST-C | `172.16.3.0` | `172.16.3.1` | 65003 | IPv4 + IPv6 |
+| PE | VRF | PE IPv4 | CE IPv4 | CE ASN | BGP AFI |
+|----|-----|---------|---------|--------|---------|
+| SPE1 | CUST-A | `172.16.1.0` | `172.16.1.1` | 65001 | IPv4 unicast |
+| SPE2 | CUST-B | `172.16.2.0` | `172.16.2.1` | 65002 | IPv4 unicast |
+| SPE3 | CUST-C | `172.16.3.0` | `172.16.3.1` | 65003 | IPv4 unicast |
+
+The PE-CE interfaces also have IPv6 addresses. IPv6 unicast BGP on those links
+is not yet modeled or rendered.
 
 ## PE VRF Configuration (IOS-XE example)
 
@@ -31,13 +44,17 @@ vrf definition CUST-A
  rd 65000:100
  address-family ipv4
   route-target export 65000:100
+  route-target export 65000:900
   route-target import 65000:100
+  route-target import 65000:900
  address-family ipv6
   route-target export 65000:100
+  route-target export 65000:900
   route-target import 65000:100
+  route-target import 65000:900
 
-interface GigabitEthernet3
- description PE-CE link to DC1 (Customer A)
+interface GigabitEthernet5
+ description PE-CE to CE1 GigabitEthernet2 (VRF CUST-A)
  vrf forwarding CUST-A
  ip address 172.16.1.0 255.255.255.254
  ipv6 address fd10:c:1::/127
@@ -47,74 +64,37 @@ router bgp 65000
  address-family ipv4 vrf CUST-A
   neighbor 172.16.1.1 remote-as 65001
   neighbor 172.16.1.1 activate
- address-family ipv6 vrf CUST-A
-  neighbor fd10:c:1::1 remote-as 65001
-  neighbor fd10:c:1::1 activate
 ```
 
 ## CE Configuration (IOS-XE example)
 
 ```ios
-! CE1 (DC1 — Customer A)
-router bgp 65001
- bgp router-id 172.16.1.1
- neighbor 172.16.1.0 remote-as 65000
- address-family ipv4
-  network 192.168.100.0 mask 255.255.255.0
-  neighbor 172.16.1.0 activate
- address-family ipv6
-  network fd10:a:100::/64
-  neighbor fd10:c:1:: remote-as 65000
-  neighbor fd10:c:1:: activate
-
+! CE1 in DC-A
 interface GigabitEthernet2
- description Uplink to SPE1
+ description PE-CE to SPE1 GigabitEthernet5
  ip address 172.16.1.1 255.255.255.254
  ipv6 address fd10:c:1::1/127
  no shutdown
 
-interface GigabitEthernet3
- description DC1 LAN (to K3s nodes)
- ip address 192.168.100.1 255.255.255.0
- ipv6 address fd10:a:100::1/64
- no shutdown
+router bgp 65001
+ bgp router-id 10.2.1.1
+ neighbor 172.16.1.0 remote-as 65000
+ address-family ipv4
+  neighbor 172.16.1.0 activate
 ```
 
 ## Route Flow
 
 ```
-DC1 servers (192.168.100.0/24)
-  → advertised by CE1 via eBGP to SPE1 (VRF CUST-A)
-    → SPE1 exports as VPNv4 with RD 65000:100, RT 65000:100
-      → MP-iBGP to RR1/RR2
-        → RR reflects to SPE2, SPE3
-          → SPE2 imports into CUST-B? NO (RT doesn't match)
-          → Customers are isolated by default
+DCA-Spine01 Loopback0 (10.2.1.2/32)
+  → advertised by eBGP to CE1
+    → CE1 advertises it to SPE1 in CUST-A
+      → SPE1 exports VPNv4 with RD 65000:100 and RTs 65000:100, 65000:900
+        → RR1 and RR2 reflect the VPNv4 route
+          → SPE2 and SPE3 import it through shared RT 65000:900
+            → remote CE and spine devices gain routed loopback reachability
+              → inter-site EVPN sessions use those spine loopbacks
 ```
-
-## Inter-Customer Connectivity (Optional Extranet)
-
-To demonstrate shared services (e.g., a central DNS or monitoring server
-reachable by all customers):
-
-```ios
-! On SPE1 — add a shared services VRF
-vrf definition SHARED-SVC
- rd 65000:999
- address-family ipv4
-  route-target export 65000:999
-  route-target import 65000:100
-  route-target import 65000:200
-  route-target import 65000:300
-
-! On each customer VRF — import shared services
-vrf definition CUST-A
- address-family ipv4
-  route-target import 65000:999   ! <-- add this line
-```
-
-This gives all customers access to SHARED-SVC routes while remaining isolated
-from each other — classic hub-and-spoke extranet topology.
 
 ## Monitoring Points
 
@@ -122,6 +102,6 @@ from each other — classic hub-and-spoke extranet topology.
 |-----------------|-----|-----------------|
 | PE-CE BGP session state | `show bgp vpnv4 unicast all summary` | Peer state != Established |
 | VRF route count | `show bgp vpnv4 unicast vrf CUST-A summary` | Route count drops to 0 |
-| RT import/export | Config audit | Unexpected RT leaking |
+| RT import/export | Config audit | Unexpected RT assignment |
 | VPNv4 prefix count on RR | `show bgp vpnv4 unicast all` | Total VPN routes change unexpectedly |
 | PE-CE BFD | `show bfd neighbors` | Session down |

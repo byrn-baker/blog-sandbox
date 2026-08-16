@@ -84,6 +84,7 @@ vrfs:
 {% for vrf in vrfs %}
   - "!create_or_update:name": "{{ vrf.name }}"
     rd: "{{ vrf.rd }}"
+    description: "{{ vrf.description }}"
     status__name: "Active"
 {% if vrf.vni is defined %}
     custom_fields:

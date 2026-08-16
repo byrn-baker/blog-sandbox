@@ -117,11 +117,42 @@ class SPDemoLabContext(Context):
     # VRFs and route targets. RT 65000:900 carries the shared DCI underlay
     # between the otherwise distinct site VRFs.
     vrfs = [
-        {"name": "MGMT-VRF", "rd": "65000:999", "import_targets": [], "export_targets": []},
-        {"name": "CUST-A", "rd": "65000:100", "import_targets": ["65000:100", "65000:900"], "export_targets": ["65000:100", "65000:900"]},
-        {"name": "CUST-B", "rd": "65000:200", "import_targets": ["65000:200", "65000:900"], "export_targets": ["65000:200", "65000:900"]},
-        {"name": "CUST-C", "rd": "65000:300", "import_targets": ["65000:300", "65000:900"], "export_targets": ["65000:300", "65000:900"]},
-        {"name": "SERVERS", "rd": "65000:10000", "vni": 10000, "import_targets": [], "export_targets": []},
+        {
+            "name": "MGMT-VRF",
+            "rd": "65000:999",
+            "description": "Out-of-band management",
+            "import_targets": [],
+            "export_targets": [],
+        },
+        {
+            "name": "CUST-A",
+            "rd": "65000:100",
+            "description": "Customer A - DC-A",
+            "import_targets": ["65000:100", "65000:900"],
+            "export_targets": ["65000:100", "65000:900"],
+        },
+        {
+            "name": "CUST-B",
+            "rd": "65000:200",
+            "description": "Customer B - DC-B",
+            "import_targets": ["65000:200", "65000:900"],
+            "export_targets": ["65000:200", "65000:900"],
+        },
+        {
+            "name": "CUST-C",
+            "rd": "65000:300",
+            "description": "Customer C - DC-C",
+            "import_targets": ["65000:300", "65000:900"],
+            "export_targets": ["65000:300", "65000:900"],
+        },
+        {
+            "name": "SERVERS",
+            "rd": "65000:10000",
+            "description": "EVPN server and storage services",
+            "vni": 10000,
+            "import_targets": [],
+            "export_targets": [],
+        },
     ]
     route_targets = ["65000:100", "65000:200", "65000:300", "65000:900"]
 
