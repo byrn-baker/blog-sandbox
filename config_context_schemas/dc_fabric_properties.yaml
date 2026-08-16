@@ -104,26 +104,6 @@ data_schema:
           type: string
         virtual_router_mac:
           type: string
-        vlans:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              vni:
-                type: integer
-              name:
-                type: string
-        vrfs:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              vni:
-                type: integer
     prefix_lists:
       type: array
       items:

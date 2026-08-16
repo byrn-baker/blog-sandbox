@@ -13,18 +13,7 @@
 {%- set octets = prefix.split('/')[0].split('.') -%}
 {%- set net = octets[0] ~ '.' ~ octets[1] ~ '.' ~ octets[2] -%}
 {%- set last = octets[3] | int -%}
-- "!update:name": "{{ a_dev }}"
-    interfaces:
-      - "!update:name": "{{ a_intf }}"
-        status__name: "Active"
-        description: "to {{ b_dev }} {{ b_intf }}"
-        "!ref": "{{ a_dev }}_{{ a_intf | replace(' ', '_') }}"
-        ip_addresses:
-          - "!create_or_update:address": "{{ net }}.{{ last }}/31"
-            status__name: "Active"
-          - "!create_or_update:address": "{{ v6_a }}/127"
-            status__name: "Active"
-  - "!update:name": "{{ b_dev }}"
+- "!update:name": "{{ b_dev }}"
     interfaces:
       - "!update:name": "{{ b_intf }}"
         status__name: "Active"
@@ -34,6 +23,22 @@
           - "!create_or_update:address": "{{ net }}.{{ last + 1 }}/31"
             status__name: "Active"
           - "!create_or_update:address": "{{ v6_b }}/127"
+            status__name: "Active"
+  - "!update:name": "{{ a_dev }}"
+    interfaces:
+      - "!update:name": "{{ a_intf }}"
+        status__name: "Active"
+        description: "to {{ b_dev }} {{ b_intf }}"
+        "!ref": "{{ a_dev }}_{{ a_intf | replace(' ', '_') }}"
+        "!connect_cable":
+          status__name: "Connected"
+          to:
+            device__name: "{{ b_dev }}"
+            name: "{{ b_intf }}"
+        ip_addresses:
+          - "!create_or_update:address": "{{ net }}.{{ last }}/31"
+            status__name: "Active"
+          - "!create_or_update:address": "{{ v6_a }}/127"
             status__name: "Active"
 {%- endmacro %}
 
@@ -47,20 +52,6 @@ devices:
 {% set octets = link[4].split('/')[0].split('.') %}
 {% set net = octets[0] ~ '.' ~ octets[1] ~ '.' ~ octets[2] %}
 {% set last = octets[3] | int %}
-  - "!update:name": "{{ link[0] }}"
-    vrf_assignments:
-      - "!create_or_update:vrf__name": "{{ link[5] }}"
-    interfaces:
-      - "!update:name": "{{ link[1] }}"
-        status__name: "Active"
-        description: "PE-CE to {{ link[2] }} {{ link[3] }} (VRF {{ link[5] }})"
-        vrf__name: "{{ link[5] }}"
-        "!ref": "{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"
-        ip_addresses:
-          - "!create_or_update:address": "{{ net }}.{{ last }}/31"
-            status__name: "Active"
-          - "!create_or_update:address": "{{ link[6] }}/127"
-            status__name: "Active"
   - "!update:name": "{{ link[2] }}"
     interfaces:
       - "!update:name": "{{ link[3] }}"
@@ -72,16 +63,23 @@ devices:
             status__name: "Active"
           - "!create_or_update:address": "{{ link[7] }}/127"
             status__name: "Active"
-{% endfor %}
-
-cables:
-{% for link in all_links %}
-  - termination_a: "!ref:{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"
-    termination_b: "!ref:{{ link[2] }}_{{ link[3] | replace(' ', '_') }}"
-    status__name: "Connected"
-{% endfor %}
-{% for link in pe_ce_links %}
-  - termination_a: "!ref:{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"
-    termination_b: "!ref:{{ link[2] }}_{{ link[3] | replace(' ', '_') }}"
-    status__name: "Connected"
+  - "!update:name": "{{ link[0] }}"
+    vrf_assignments:
+      - "!create_or_update:vrf__name": "{{ link[5] }}"
+    interfaces:
+      - "!update:name": "{{ link[1] }}"
+        status__name: "Active"
+        description: "PE-CE to {{ link[2] }} {{ link[3] }} (VRF {{ link[5] }})"
+        vrf__name: "{{ link[5] }}"
+        "!ref": "{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"
+        "!connect_cable":
+          status__name: "Connected"
+          to:
+            device__name: "{{ link[2] }}"
+            name: "{{ link[3] }}"
+        ip_addresses:
+          - "!create_or_update:address": "{{ net }}.{{ last }}/31"
+            status__name: "Active"
+          - "!create_or_update:address": "{{ link[6] }}/127"
+            status__name: "Active"
 {% endfor %}

@@ -2,17 +2,18 @@
 
 ## Overview
 
-Each datacenter represents a separate customer connected to the SP via MPLS
-L3VPN. The PEs host VRFs and run eBGP with the customer CE routers. VPN routes
-are carried across the core via MP-BGP VPNv4/VPNv6 through the route reflectors.
+Each datacenter keeps its own PE VRF and RD. All three VRFs import and export
+`65000:900` for the DCI underlay, while retaining a site RT for local identity.
+This shared RT carries spine and VTEP loopback reachability between sites. EVPN
+still controls MAC, IP, and tenant prefix exchange between the DC fabrics.
 
 ## VRF Table
 
 | DC | Customer | VRF Name | RD | RT Import | RT Export | PE | CE ASN |
 |----|----------|----------|-----|-----------|-----------|-----|--------|
-| DC1 | Customer A | `CUST-A` | `65000:100` | `65000:100` | `65000:100` | SPE1 | 65001 |
-| DC2 | Customer B | `CUST-B` | `65000:200` | `65000:200` | `65000:200` | SPE2 | 65002 |
-| DC3 | Customer C | `CUST-C` | `65000:300` | `65000:300` | `65000:300` | SPE3 | 65003 |
+| DC-A | Customer A | `CUST-A` | `65000:100` | `65000:100`, `65000:900` | `65000:100`, `65000:900` | SPE1 | 65001 |
+| DC-B | Customer B | `CUST-B` | `65000:200` | `65000:200`, `65000:900` | `65000:200`, `65000:900` | SPE2 | 65002 |
+| DC-C | Customer C | `CUST-C` | `65000:300` | `65000:300`, `65000:900` | `65000:300`, `65000:900` | SPE3 | 65003 |
 
 ## PE-CE Peering
 

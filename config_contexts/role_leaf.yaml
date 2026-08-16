@@ -47,16 +47,6 @@ bfd:
 vxlan:
   source_interface: "Loopback1"
   virtual_router_mac: "00:1c:73:00:00:99"
-  vlans:
-    - id: 100
-      vni: 10100
-      name: "SERVER_K3S"
-    - id: 101
-      vni: 10101
-      name: "STORAGE"
-  vrfs:
-    - name: "SERVERS"
-      vni: 10000
 prefix_lists:
   - name: "PL-LOOPBACKS-EVPN-OVERLAY"
     entries:

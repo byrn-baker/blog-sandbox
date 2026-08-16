@@ -45,6 +45,9 @@
     platform__name: "arista_eos"
     vrf_assignments:
       - "!create_or_update:vrf__name": "MGMT-VRF"
+{% if device.vtep is defined %}
+      - "!create_or_update:vrf__name": "SERVERS"
+{% endif %}
     interfaces:
       - "!create_or_update:name": "Management1"
         status__name: "Active"
@@ -71,6 +74,18 @@
         ip_addresses:
           - "!create_or_update:address": "{{ device.vtep }}/32"
             status__name: "Active"
+{% for vlan in service_vlans if device.site in vlan.locations %}
+      - "!create_or_update:name": "Vlan{{ vlan.id }}"
+        status__name: "Active"
+        type: "virtual"
+        description: "{{ vlan.name }}"
+        vrf__name: "SERVERS"
+        ip_addresses:
+          - "!create_or_update:address": "{{ vlan.ipv4_gateway }}"
+            status__name: "Active"
+          - "!create_or_update:address": "{{ vlan.ipv6_gateway }}"
+            status__name: "Active"
+{% endfor %}
 {% endif %}
 {% for i in range(1, 11) %}
       - "!create_or_update:name": "Ethernet{{ i }}"

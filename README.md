@@ -23,7 +23,8 @@ blog-sandbox/
 │           ├── 0001_foundations.yaml.j2   # Sites, roles, VRFs, prefixes
 │           ├── 0002_devices.yaml.j2       # Devices + interfaces + IPs
 │           ├── 0003_cabling.yaml.j2       # Cables + P2P IPs + VRF assignments
-│           └── 0004_routing.yaml.j2       # ISIS + BGP (SP + DC fabric)
+│           ├── 0004_routing.yaml.j2       # ISIS + BGP (SP + DC fabric)
+│           └── 0005_primary_ips.yaml.j2   # Device primary IPv4 assignments
 │
 └── golden-config/                # Nautobot Golden Configuration data source
     ├── templates/
@@ -70,11 +71,12 @@ Interconnected via shared Proxmox bridges (vmbr100/200/300).
 ## Quick Start
 
 1. Deploy Nautobot via [nautobot-docker-compose](https://github.com/nautobot/nautobot-docker-compose)
-2. Copy `demo-lab/sp_demo_lab/` to `nautobot-docker-compose/jobs/`
-3. Run the Design Builder job → populates 28 devices, 248 IPs, 41 cables, full routing
-4. Add this repo as a Git data source in Nautobot for Golden Config
-5. Configure Golden Config settings per `golden-config/README.md`
-6. Generate intended configs → compliance-ready
+3. Run the Design Builder job. It creates devices, VLANs, VRFs, anycast SVIs,
+   prefixes, cabling, and SP/DC routing.
+4. The lab loads jobs from `/home/ubuntu/nautobot-docker-compose/jobs/` through
+   the container bind mount. Keep that mounted copy in step with `demo-lab/`.
+5. Add this repo as the Git data source for contexts and Golden Config.
+6. Run `Golden Config - Bootstrap Setup`, then generate intended configs.
 
 ## Blog Series
 

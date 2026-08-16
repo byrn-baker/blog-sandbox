@@ -207,7 +207,9 @@ bgp_peerings:
 # --- DC Underlay Peerings (eBGP, IPv4 unicast, source = P2P link IPs) ---
 {% set dc_all_links = dc_a_links + dc_b_links + dc_c_links %}
 {% for link in dc_all_links %}
-{% if "Spine" in link[0] and "Leaf" in link[2] %}
+{% set is_fabric_link = "Spine" in link[0] and "Leaf" in link[2] %}
+{% set is_dci_link = link[0].startswith("CE") and "Spine" in link[2] %}
+{% if is_fabric_link or is_dci_link %}
 {% set prefix_parts = link[4].split('/')[0].split('.') %}
 {% set net = prefix_parts[0] ~ '.' ~ prefix_parts[1] ~ '.' ~ prefix_parts[2] %}
 {% set last = prefix_parts[3] | int %}
@@ -216,9 +218,11 @@ bgp_peerings:
       - routing_instance__device__name: "{{ link[0] }}"
         source_ip__host: "{{ net }}.{{ last }}"
         autonomous_system__asn: {{ dc_asn_map[link[0]] }}
+{% if not is_dci_link %}
         peer_group:
           "!get:name": "IPV4-UNDERLAY-PEERS"
           "!get:routing_instance__device__name": "{{ link[0] }}"
+{% endif %}
         enabled: true
       - routing_instance__device__name: "{{ link[2] }}"
         source_ip__host: "{{ net }}.{{ last + 1 }}"
@@ -252,4 +256,24 @@ bgp_peerings:
           "!get:routing_instance__device__name": "{{ link[2] }}"
         enabled: true
 {% endif %}
+{% endfor %}
+
+# --- Inter-site EVPN peerings over MPLS-provided Loopback0 reachability ---
+{% for peer in dci_evpn_peerings %}
+  - status__name: "Active"
+    endpoints:
+      - routing_instance__device__name: "{{ peer.a_device }}"
+        source_ip__host: "{{ peer.a_ip }}"
+        autonomous_system__asn: {{ dc_asn_map[peer.a_device] }}
+        peer_group:
+          "!get:name": "EVPN-OVERLAY-PEERS"
+          "!get:routing_instance__device__name": "{{ peer.a_device }}"
+        enabled: true
+      - routing_instance__device__name: "{{ peer.b_device }}"
+        source_ip__host: "{{ peer.b_ip }}"
+        autonomous_system__asn: {{ dc_asn_map[peer.b_device] }}
+        peer_group:
+          "!get:name": "EVPN-OVERLAY-PEERS"
+          "!get:routing_instance__device__name": "{{ peer.b_device }}"
+        enabled: true
 {% endfor %}

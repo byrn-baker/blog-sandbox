@@ -1,19 +1,15 @@
-{# VXLAN interface (leaves only, AVD-aligned) #}
+{# VXLAN policy is contextual; VLAN and VRF inventory is modeled in Nautobot #}
 {% if config_context.vxlan is defined %}
 interface Vxlan1
    description {{ hostname }}_VTEP
    vxlan source-interface {{ config_context.vxlan.source_interface }}
    vxlan udp-port 4789
-{% if config_context.vxlan.vlans is defined %}
-{% for vlan in config_context.vxlan.vlans %}
-   vxlan vlan {{ vlan.id }} vni {{ vlan.vni }}
+{% for vlan in location.vlans | default([]) if vlan._custom_field_data.vni is defined %}
+   vxlan vlan {{ vlan.vid }} vni {{ vlan._custom_field_data.vni }}
 {% endfor %}
-{% endif %}
-{% if config_context.vxlan.vrfs is defined %}
-{% for vrf in config_context.vxlan.vrfs %}
-   vxlan vrf {{ vrf.name }} vni {{ vrf.vni }}
+{% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined %}
+   vxlan vrf {{ vrf.name }} vni {{ vrf._custom_field_data.vni }}
 {% endfor %}
-{% endif %}
 !
 {% if config_context.vxlan.virtual_router_mac is defined %}
 ip virtual-router mac-address {{ config_context.vxlan.virtual_router_mac }}

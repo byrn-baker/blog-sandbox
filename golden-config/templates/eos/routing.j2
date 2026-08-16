@@ -1,4 +1,9 @@
-{# Global routing enables #}
+{# Global and modeled VRF routing enables #}
 ip routing
 ipv6 unicast-routing
 !
+{% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined %}
+ip routing vrf {{ vrf.name }}
+ipv6 unicast-routing vrf {{ vrf.name }}
+!
+{% endfor %}

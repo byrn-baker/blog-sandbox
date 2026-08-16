@@ -1,7 +1,7 @@
-{# VLAN definitions for VXLAN (leaves only) #}
-{% if config_context.vxlan is defined and config_context.vxlan.vlans is defined %}
-{% for vlan in config_context.vxlan.vlans %}
-vlan {{ vlan.id }}
+{# VLAN inventory comes from the device location in Nautobot #}
+{% if config_context.vxlan is defined and location.vlans is defined %}
+{% for vlan in location.vlans | default([]) if vlan._custom_field_data.vni is defined %}
+vlan {{ vlan.vid }}
    name {{ vlan.name }}
 !
 {% endfor %}

@@ -114,17 +114,69 @@ class SPDemoLabContext(Context):
         ("DCC-Spine02", "Ethernet4", "DCC-Leaf03", "Ethernet2", "10.1.3.14/31", "fd10:1:3::14", "fd10:1:3::15"),
     ]
 
-    # VRFs
+    # VRFs and route targets. RT 65000:900 carries the shared DCI underlay
+    # between the otherwise distinct site VRFs.
     vrfs = [
-        {"name": "MGMT-VRF", "rd": "65000:999"},
-        {"name": "CUST-A", "rd": "65000:100"},
-        {"name": "CUST-B", "rd": "65000:200"},
-        {"name": "CUST-C", "rd": "65000:300"},
+        {"name": "MGMT-VRF", "rd": "65000:999", "import_targets": [], "export_targets": []},
+        {"name": "CUST-A", "rd": "65000:100", "import_targets": ["65000:100", "65000:900"], "export_targets": ["65000:100", "65000:900"]},
+        {"name": "CUST-B", "rd": "65000:200", "import_targets": ["65000:200", "65000:900"], "export_targets": ["65000:200", "65000:900"]},
+        {"name": "CUST-C", "rd": "65000:300", "import_targets": ["65000:300", "65000:900"], "export_targets": ["65000:300", "65000:900"]},
+        {"name": "SERVERS", "rd": "65000:10000", "vni": 10000, "import_targets": [], "export_targets": []},
+    ]
+    route_targets = ["65000:100", "65000:200", "65000:300", "65000:900"]
+
+    # VLAN 100 is one EVPN segment stretched across all sites. Storage stays
+    # site-local until its DCI behavior is explicitly defined.
+    service_vlans = [
+        {
+            "id": 100,
+            "name": "SERVER_K3S",
+            "vni": 10100,
+            "locations": ["DC-A", "DC-B", "DC-C"],
+            "location_refs": ["dc_a", "dc_b", "dc_c"],
+            "ipv4_prefix": "192.168.100.0/24",
+            "ipv4_gateway": "192.168.100.1/24",
+            "ipv6_prefix": "fd10:a:100::/64",
+            "ipv6_gateway": "fd10:a:100::1/64",
+        },
+        {
+            "id": 101,
+            "name": "STORAGE",
+            "vni": 10101,
+            "locations": ["DC-A"],
+            "location_refs": ["dc_a"],
+            "ipv4_prefix": "192.168.101.0/24",
+            "ipv4_gateway": "192.168.101.1/24",
+            "ipv6_prefix": "fd10:a:101::/64",
+            "ipv6_gateway": "fd10:a:101::1/64",
+        },
+        {
+            "id": 201,
+            "name": "STORAGE",
+            "vni": 10201,
+            "locations": ["DC-B"],
+            "location_refs": ["dc_b"],
+            "ipv4_prefix": "192.168.201.0/24",
+            "ipv4_gateway": "192.168.201.1/24",
+            "ipv6_prefix": "fd10:a:201::/64",
+            "ipv6_gateway": "fd10:a:201::1/64",
+        },
+        {
+            "id": 301,
+            "name": "STORAGE",
+            "vni": 10301,
+            "locations": ["DC-C"],
+            "location_refs": ["dc_c"],
+            "ipv4_prefix": "192.168.31.0/24",
+            "ipv4_gateway": "192.168.31.1/24",
+            "ipv6_prefix": "fd10:a:301::/64",
+            "ipv6_gateway": "fd10:a:301::1/64",
+        },
     ]
 
     # --- IPv6 Prefixes (parent containers for /127 and /128 assignments) ---
     ipv6_prefixes = [
-        {"prefix": "fd10:0:0::/48", "description": "SP Core P2P (IPv6)"},
+        {"prefix": "fd10::/48", "description": "SP Core P2P (IPv6)"},
         {"prefix": "fd10:0:1::/48", "description": "SP Core Loopbacks (IPv6)"},
         {"prefix": "fd10:1:1::/48", "description": "DC-A Fabric P2P (IPv6)"},
         {"prefix": "fd10:1:2::/48", "description": "DC-B Fabric P2P (IPv6)"},
@@ -200,6 +252,7 @@ class SPDemoLabContext(Context):
     # --- DC Fabric BGP ---
 
     dc_asn_map = {
+        "CE1": 65001, "CE2": 65002, "CE3": 65003,
         "DCA-Spine01": 65101, "DCA-Spine02": 65101,
         "DCA-Leaf01": 65111, "DCA-Leaf02": 65112, "DCA-Leaf03": 65113,
         "DCB-Spine01": 65201, "DCB-Spine02": 65201,
@@ -224,4 +277,21 @@ class SPDemoLabContext(Context):
         {"device": "DCC-Leaf01", "asn": 65311, "router_id": "10.2.3.4"},
         {"device": "DCC-Leaf02", "asn": 65312, "router_id": "10.2.3.5"},
         {"device": "DCC-Leaf03", "asn": 65313, "router_id": "10.2.3.6"},
+    ]
+
+    # Full-mesh inter-site EVPN between the two spines at each site. The
+    # MPLS L3VPN provides routed reachability between these Loopback0 sources.
+    dci_evpn_peerings = [
+        {"a_device": "DCA-Spine01", "a_ip": "10.2.1.2", "b_device": "DCB-Spine01", "b_ip": "10.2.2.2"},
+        {"a_device": "DCA-Spine01", "a_ip": "10.2.1.2", "b_device": "DCB-Spine02", "b_ip": "10.2.2.3"},
+        {"a_device": "DCA-Spine02", "a_ip": "10.2.1.3", "b_device": "DCB-Spine01", "b_ip": "10.2.2.2"},
+        {"a_device": "DCA-Spine02", "a_ip": "10.2.1.3", "b_device": "DCB-Spine02", "b_ip": "10.2.2.3"},
+        {"a_device": "DCA-Spine01", "a_ip": "10.2.1.2", "b_device": "DCC-Spine01", "b_ip": "10.2.3.2"},
+        {"a_device": "DCA-Spine01", "a_ip": "10.2.1.2", "b_device": "DCC-Spine02", "b_ip": "10.2.3.3"},
+        {"a_device": "DCA-Spine02", "a_ip": "10.2.1.3", "b_device": "DCC-Spine01", "b_ip": "10.2.3.2"},
+        {"a_device": "DCA-Spine02", "a_ip": "10.2.1.3", "b_device": "DCC-Spine02", "b_ip": "10.2.3.3"},
+        {"a_device": "DCB-Spine01", "a_ip": "10.2.2.2", "b_device": "DCC-Spine01", "b_ip": "10.2.3.2"},
+        {"a_device": "DCB-Spine01", "a_ip": "10.2.2.2", "b_device": "DCC-Spine02", "b_ip": "10.2.3.3"},
+        {"a_device": "DCB-Spine02", "a_ip": "10.2.2.3", "b_device": "DCC-Spine01", "b_ip": "10.2.3.2"},
+        {"a_device": "DCB-Spine02", "a_ip": "10.2.2.3", "b_device": "DCC-Spine02", "b_ip": "10.2.3.3"},
     ]

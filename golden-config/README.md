@@ -99,15 +99,18 @@ Navigate to **Extensibility > Git Repositories** and create:
 | Branch | `main` |
 | Secrets Group | `GitHub` |
 
-Under **Provides**, check all that apply:
+Under **Provides**, select:
 
-- [x] Config Context Schemas
-- [x] Config Contexts
-- [x] GraphQL Queries
-- [x] Golden Config Properties
-- [x] Backup Configs
-- [x] Intended Configs
-- [x] Jinja Templates
+- Config Context Schemas
+- Config Contexts
+- Golden Config Properties
+- Backup Configs
+- Intended Configs
+- Jinja Templates
+
+The bootstrap job stores the canonical query embedded in
+`demo-lab/gc_bootstrap/__init__.py`. Run that job after changing the query. It
+isn't imported from a `graphql_queries/` directory.
 
 Click **Create & Sync**. All checked items should show green checkmarks.
 
@@ -123,7 +126,7 @@ Navigate to **Golden Config > Settings** and edit the default entry:
 | Intended | Path | `golden-config/intended-configs/{{obj.location.name\|slugify}}/{{obj.name}}.cfg` |
 | Templates | Repository | `sp_demo_lab_golden_config` |
 | Templates | Path | `golden-config/templates/{{obj.platform.network_driver}}.j2` |
-| SoT Agg | Query | `sp_demo_lab_golden_config` (synced from graphql_queries/) |
+| SoT Agg | Query | `sp_demo_lab_golden_config` (created by the bootstrap job) |
 
 ### 7. Enable Golden Config Jobs
 
@@ -146,7 +149,7 @@ organized by location, and are pushed back to the GitHub repo automatically.
 | Jinja Templates | `golden-config/templates/` | Selected by platform network_driver |
 | Backup Configs | `golden-config/backup-configs/` | Written by backup job, pushed to git |
 | Intended Configs | `golden-config/intended-configs/` | Written by generate job, pushed to git |
-| GraphQL Queries | `graphql_queries/` | Auto-imported as saved queries |
+| GraphQL query | `demo-lab/gc_bootstrap/__init__.py` | Canonical query updated by the bootstrap job |
 | Config Contexts | `config_contexts/` | Role-based and device-specific |
 | Config Context Schemas | `config_context_schemas/` | JSON Schema validation |
 | Golden Config Properties | `golden_config/` | Compliance features and rules |

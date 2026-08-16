@@ -2,20 +2,22 @@
 
 ## Architecture per DC
 
-Each datacenter is minimal — a single CE router providing L3 gateway to a flat
-LAN segment where K3s nodes live. This keeps the CML topology light while giving
-full L3VPN reachability across the MPLS core.
+Each site has two spines and three leaves. The leaves terminate the shared
+SERVER segment as VLAN 100, VNI 10100, in VRF `SERVERS`. Every leaf uses the
+same IPv4 and IPv6 anycast gateway with MAC `00:1c:73:00:00:99`.
 
+The CEs and MPLS L3VPN provide routed underlay reachability between spine and
+VTEP loopbacks. The spines exchange EVPN routes between sites. DC-C stays in
+the control plane at all times, while workload placement determines its DR
+role.
+
+```text
+Leaf VTEP <-> local Spine <-> CE <-> PE/MPLS <-> CE <-> remote Spine <-> Leaf VTEP
+                    eBGP IPv4 underlay     eBGP EVPN over Loopback0
 ```
-SPE(x)
-  │  eBGP (VRF)
-  │
-CE(x) ─── GigabitEthernet3 ──┐
-                              │
-                        L2 segment (bridge)
-                         │    │    │
-                      k3s-m  k3s-w1 k3s-w2
-```
+
+Storage remains site-local on VLANs 101, 201, and 301. Its DCI behavior can be
+changed later without changing the shared SERVER identity.
 
 ## K3s Cluster Model
 
@@ -57,12 +59,16 @@ curl -sfL https://get.k3s.io | K3S_URL=https://192.168.100.10:6443 \
   INSTALL_K3S_EXEC="agent --node-ip=192.168.100.11 --flannel-iface=ens3" sh -
 ```
 
-### Repeat for DC2 and DC3
+### K3s node addresses
 
-Each DC gets its own independent K3s cluster. The server nodes are:
-- DC1: `k3s-m1` at `192.168.100.10`
-- DC2: `k3s-m2` at `192.168.200.10`
-- DC3: `k3s-m3` at `192.168.100.10` (different L2 domain, same IP is fine)
+The SERVER subnet is stretched, so node addresses must be unique across all
+three sites:
+
+- DC-A: `192.168.100.10` through `192.168.100.12`
+- DC-B: `192.168.100.20` through `192.168.100.22`
+- DC-C: `192.168.100.30` and `192.168.100.31`
+
+All nodes use `192.168.100.1` and `fd10:a:100::1` as their anycast gateways.
 
 ## K3s Networking
 
@@ -110,16 +116,11 @@ network:
     ens19:
       addresses:
         - 192.168.100.10/24
-      routes:
-        - to: 192.168.200.0/24
-          via: 192.168.100.1
-        - to: 192.168.100.0/24
-          via: 192.168.100.1
-      # IPv6
-      addresses:
         - fd10:a:100::10/64
       routes:
-        - to: fd10:a:200::/64
+        - to: 0.0.0.0/0
+          via: 192.168.100.1
+        - to: ::/0
           via: fd10:a:100::1
 runcmd:
   - echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
@@ -128,13 +129,14 @@ runcmd:
 
 ## Default Routes on K3s Nodes
 
-Each K3s node's default gateway points to the local CE router:
+Each K3s node uses the leaf anycast gateway. The address is identical at every
+site because VLAN 100 is one stretched segment:
 
 | DC | Gateway (IPv4) | Gateway (IPv6) |
 |----|----------------|----------------|
-| DC1 | `192.168.100.1` (CE1) | `fd10:a:100::1` |
-| DC2 | `192.168.200.1` (CE2) | `fd10:a:200::1` |
-| DC3 | `192.168.100.1` (CE3) | `fd10:a:300::1` |
+| DC-A | `192.168.100.1` | `fd10:a:100::1` |
+| DC-B | `192.168.100.1` | `fd10:a:100::1` |
+| DC-C | `192.168.100.1` | `fd10:a:100::1` |
 
-The CE routers handle eBGP to the PEs, so all inter-DC traffic naturally
-traverses the MPLS VPN core.
+EVPN advertises endpoint reachability between VTEPs. The MPLS path carries the
+routed underlay traffic between those VTEPs.

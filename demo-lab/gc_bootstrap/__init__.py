@@ -62,6 +62,15 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
       parent {
         name
       }
+      vlans {
+        vid
+        name
+        description
+        _custom_field_data
+        locations {
+          name
+        }
+      }
     }
     interfaces {
       name
@@ -74,6 +83,13 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
       vrf {
         name
         rd
+        _custom_field_data
+        import_targets {
+          name
+        }
+        export_targets {
+          name
+        }
       }
       ip_addresses {
         address
@@ -86,6 +102,17 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
         }
       }
       tags {
+        name
+      }
+    }
+    vrfs {
+      name
+      rd
+      _custom_field_data
+      import_targets {
+        name
+      }
+      export_targets {
         name
       }
     }

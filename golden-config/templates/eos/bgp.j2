@@ -17,6 +17,9 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% set pg_afs = pg.address_families | map(attribute='afi_safi') | list %}
 {% if 'L2_EVPN' in pg_afs or 'l2_evpn' in pg_afs %}
    neighbor {{ pg.name }} update-source Loopback0
+{% if role.name == 'Spine' %}
+   neighbor {{ pg.name }} next-hop-unchanged
+{% endif %}
    neighbor {{ pg.name }} bfd
    neighbor {{ pg.name }} ebgp-multihop 3
    neighbor {{ pg.name }} send-community extended
@@ -73,5 +76,22 @@ router bgp {{ bgp.autonomous_system.asn }}
    !
    address-family evpn
    !
+{% endif %}
+{% if config_context.vxlan is defined %}
+{% for vlan in location.vlans | default([]) if vlan._custom_field_data.vni is defined %}
+   vlan {{ vlan.vid }}
+      rd {{ bgp.router_id.address.split('/')[0] }}:{{ vlan._custom_field_data.vni }}
+      route-target both {{ vlan._custom_field_data.vni }}:{{ vlan._custom_field_data.vni }}
+      redistribute learned
+   !
+{% endfor %}
+{% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined %}
+   vrf {{ vrf.name }}
+      rd {{ bgp.router_id.address.split('/')[0] }}:{{ vrf._custom_field_data.vni }}
+      route-target import evpn {{ vrf._custom_field_data.vni }}:{{ vrf._custom_field_data.vni }}
+      route-target export evpn {{ vrf._custom_field_data.vni }}:{{ vrf._custom_field_data.vni }}
+      redistribute connected
+   !
+{% endfor %}
 {% endif %}
 {% endfor %}

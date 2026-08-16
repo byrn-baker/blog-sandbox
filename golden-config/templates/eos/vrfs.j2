@@ -1,4 +1,4 @@
-{# VRF instances #}
+{# VRF instances modeled on this device #}
 {% set seen_vrfs = [] %}
 {% for interface in interfaces if interface.vrf %}
 {% if interface.vrf.name not in seen_vrfs %}
@@ -7,13 +7,3 @@ vrf instance {{ interface.vrf.name }}
 !
 {% endif %}
 {% endfor %}
-{# VXLAN VRFs from config context (leaves only) #}
-{% if config_context.vxlan is defined and config_context.vxlan.vrfs is defined %}
-{% for vrf in config_context.vxlan.vrfs %}
-{% if vrf.name not in seen_vrfs %}
-{% if seen_vrfs.append(vrf.name) %}{% endif %}
-vrf instance {{ vrf.name }}
-!
-{% endif %}
-{% endfor %}
-{% endif %}
