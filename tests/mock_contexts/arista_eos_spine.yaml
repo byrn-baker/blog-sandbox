@@ -1,0 +1,177 @@
+# Mock SoT context for a Spine switch on arista_eos platform.
+# Spines have no VXLAN config, just underlay + EVPN overlay redistribution.
+---
+hostname: DCA-Spine01
+
+config_context:
+  bfd:
+    multihop:
+      interval: 300
+      min_rx: 300
+      multiplier: 3
+  bgp:
+    ecmp: 4
+    timers:
+      hold: 9
+      keepalive: 3
+    maximum_paths: 4
+    default_ipv4_unicast: false
+    log_neighbor_changes: true
+    redistribute:
+      connected:
+        route_map: RM-CONN-2-BGP
+  platform:
+    spanning_tree_mode: mstp
+    spanning_tree_priority: 4096
+    vlan_internal_order:
+      range_start: 1006
+      range_end: 1199
+    service_routing_protocols_model: multi-agent
+  prefix_lists:
+    - name: PL-LOOPBACKS-EVPN-OVERLAY
+      entries:
+        - sequence: 10
+          action: permit
+          prefix: "10.2.0.0/16"
+          comparison: "eq 32"
+  route_maps:
+    - name: RM-CONN-2-BGP
+      entries:
+        - sequence: 10
+          action: permit
+          match: "ip address prefix-list PL-LOOPBACKS-EVPN-OVERLAY"
+
+role:
+  name: Spine
+
+platform:
+  name: arista_eos
+  network_driver: arista_eos
+
+location:
+  name: DC-A
+  vlans:
+    - vid: 100
+      name: SERVER_K3S
+      description: "Stretched EVPN segment"
+      _custom_field_data:
+        vni: 10100
+    - vid: 101
+      name: STORAGE
+      description: "Site-local storage segment"
+      _custom_field_data:
+        vni: 10101
+
+interfaces:
+  - name: Ethernet1
+    description: "to DCA-Leaf01 Ethernet1"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.1.1.4/31"
+        ip_version: 4
+      - address: "fd10:1:1::4/127"
+        ip_version: 6
+    tags: []
+  - name: Ethernet2
+    description: "to DCA-Leaf02 Ethernet1"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.1.1.6/31"
+        ip_version: 4
+    tags: []
+  - name: Loopback0
+    description: "Router-ID"
+    enabled: true
+    type: VIRTUAL
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.2.1.2/32"
+        ip_version: 4
+      - address: "fd10:2:1::2/128"
+        ip_version: 6
+    tags: []
+  - name: Management1
+    description: "Management - MGMT-VRF"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf:
+      name: MGMT-VRF
+      rd: "65000:999"
+      _custom_field_data:
+        vni: null
+    ip_addresses:
+      - address: "192.168.3.30/24"
+        ip_version: 4
+    tags: []
+
+vrfs:
+  - name: MGMT-VRF
+    rd: "65000:999"
+    _custom_field_data:
+      vni: null
+
+bgp_routing_instances:
+  - autonomous_system:
+      asn: 65101
+    router_id:
+      address: "10.2.1.2/32"
+    peer_groups:
+      - name: EVPN-OVERLAY-PEERS
+        autonomous_system: null
+        address_families:
+          - afi_safi: L2_EVPN
+      - name: IPV4-UNDERLAY-PEERS
+        autonomous_system: null
+        address_families:
+          - afi_safi: IPV4_UNICAST
+    endpoints:
+      - peer_group:
+          name: EVPN-OVERLAY-PEERS
+        source_ip:
+          address: "10.2.1.2/32"
+        peering:
+          endpoints:
+            - source_ip:
+                address: "10.2.1.4/32"
+              routing_instance:
+                device:
+                  name: DCA-Leaf01
+                autonomous_system:
+                  asn: 65111
+            - source_ip:
+                address: "10.2.1.2/32"
+              routing_instance:
+                device:
+                  name: DCA-Spine01
+                autonomous_system:
+                  asn: 65101
+      - peer_group:
+          name: IPV4-UNDERLAY-PEERS
+        source_ip:
+          address: "10.1.1.4/31"
+        peering:
+          endpoints:
+            - source_ip:
+                address: "10.1.1.5/31"
+              routing_instance:
+                device:
+                  name: DCA-Leaf01
+                autonomous_system:
+                  asn: 65111
+            - source_ip:
+                address: "10.1.1.4/31"
+              routing_instance:
+                device:
+                  name: DCA-Spine01
+                autonomous_system:
+                  asn: 65101
+
+igp_routing_instances: []

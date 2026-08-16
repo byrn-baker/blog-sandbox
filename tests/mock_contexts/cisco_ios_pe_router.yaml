@@ -1,0 +1,165 @@
+# Mock SoT context for a PE-Router on cisco_ios platform.
+# Includes VRF + PE-CE peering to exercise the full BGP template logic.
+---
+hostname: SPE1
+
+config_context:
+  bfd:
+    interval: 100
+    min_rx: 100
+    multiplier: 3
+  bgp:
+    timers:
+      keepalive: 10
+      hold: 30
+    log_neighbor_changes: true
+    default_ipv4_unicast: false
+  isis:
+    process_name: SP-ISIS
+    metric_style: wide
+    is_type: level-2-only
+    log_adjacency_changes: true
+  mpls:
+    ldp_router_id: Loopback0
+    ldp_sync: true
+    explicit_null: true
+
+role:
+  name: PE-Router
+
+platform:
+  name: cisco_iosxe
+  network_driver: cisco_ios
+
+location:
+  name: SP-Core
+  vlans: []
+
+interfaces:
+  - name: GigabitEthernet1
+    description: "Management - MGMT-VRF"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf:
+      name: MGMT-VRF
+      rd: "65000:999"
+    ip_addresses:
+      - address: "192.168.3.53/24"
+        ip_version: 4
+    tags: []
+  - name: GigabitEthernet2
+    description: "to SP1 GigabitEthernet2"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.0.0.1/31"
+        ip_version: 4
+      - address: "fd10::1/127"
+        ip_version: 6
+    tags: []
+  - name: GigabitEthernet3
+    description: "to CE1 GigabitEthernet2"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf:
+      name: CUSTOMER-A
+      rd: "65000:100"
+    ip_addresses:
+      - address: "172.16.0.0/31"
+        ip_version: 4
+    tags: []
+  - name: Loopback0
+    description: "Router-ID"
+    enabled: true
+    type: VIRTUAL
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.1.0.7/32"
+        ip_version: 4
+      - address: "fd10:0:1::7/128"
+        ip_version: 6
+    tags: []
+
+vrfs:
+  - name: MGMT-VRF
+    rd: "65000:999"
+    import_targets:
+      - name: "65000:999"
+    export_targets:
+      - name: "65000:999"
+  - name: CUSTOMER-A
+    rd: "65000:100"
+    import_targets:
+      - name: "65000:100"
+    export_targets:
+      - name: "65000:100"
+
+bgp_routing_instances:
+  - autonomous_system:
+      asn: 65000
+    router_id:
+      address: "10.1.0.7/32"
+    peer_groups:
+      - name: PE-CLIENTS
+        autonomous_system:
+          asn: 65000
+        address_families:
+          - afi_safi: VPNV4_UNICAST
+          - afi_safi: VPNV6_UNICAST
+    endpoints:
+      # iBGP to RR
+      - peer_group:
+          name: PE-CLIENTS
+        source_ip:
+          address: "10.1.0.7/32"
+        peering:
+          endpoints:
+            - source_ip:
+                address: "10.1.0.1/32"
+              routing_instance:
+                device:
+                  name: RR1
+                autonomous_system:
+                  asn: 65000
+            - source_ip:
+                address: "10.1.0.7/32"
+              routing_instance:
+                device:
+                  name: SPE1
+                autonomous_system:
+                  asn: 65000
+      # PE-CE eBGP (no peer-group)
+      - peer_group: null
+        source_ip:
+          address: "172.16.0.0/31"
+        peering:
+          endpoints:
+            - source_ip:
+                address: "172.16.0.1/31"
+              routing_instance:
+                device:
+                  name: CE1
+                autonomous_system:
+                  asn: 65001
+            - source_ip:
+                address: "172.16.0.0/31"
+              routing_instance:
+                device:
+                  name: SPE1
+                autonomous_system:
+                  asn: 65000
+
+igp_routing_instances:
+  - name: SP-ISIS
+    protocol: ISIS
+    router_id:
+      address: "10.1.0.7/32"
+    isisconfiguration_set:
+      - name: SPE1-ISIS
+        system_id: "0000.0001.0007"
+        interface_configurations: []

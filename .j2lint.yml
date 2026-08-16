@@ -1,0 +1,25 @@
+# j2lint configuration for golden config Jinja2 templates.
+# Rules reference: https://github.com/aristanetworks/j2lint
+#
+# NOTE: Rule suppression via this YAML file doesn't work reliably in j2lint.
+# The actual ignored rules are passed via CLI flags in the Makefile:
+#   j2lint ... -i jinja-statements-indentation single-statement-per-line
+#
+# Disabled rules and rationale:
+#
+# jinja-statements-indentation (S4): Network config templates keep Jinja
+#   control blocks at column 0 while the rendered IOS/EOS output uses CLI
+#   indentation. Enforcing S4 would require indenting all {% %} blocks by 4
+#   spaces per nesting level, making templates unreadable next to the config
+#   lines they produce.
+#
+# single-statement-per-line: The {% if list.append(x) %}{% endif %} pattern
+#   is a known Jinja2 idiom for building lists during iteration. There's no
+#   cleaner way to do it without custom filters.
+---
+ignore:
+  - golden-config/templates/ios/aaa.j2
+  - golden-config/templates/ios/ssh.j2
+  - golden-config/templates/ios/vty.j2
+  - golden-config/templates/ios/static_routes.j2
+  - golden-config/templates/eos/static_routes.j2
