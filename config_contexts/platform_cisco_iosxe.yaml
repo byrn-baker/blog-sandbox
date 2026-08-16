@@ -1,12 +1,19 @@
 ---
+# Per-push Netmiko arguments for Golden Config deployment.
+#
+# error_pattern makes Netmiko raise on the exact rejected CLI line instead of
+# returning a generic E1030 that lists every pattern it searched for.
+#
+# These are send_config_set() arguments, not Netmiko constructor arguments, so
+# they cannot live in PLUGINS_CONFIG connection_options. nornir-nautobot reads
+# netmiko_kwargs only from a device custom field or from config context.
+#
+# The pattern requires "% " with a trailing space so IOS syslog lines such as
+# %LINK-3-UPDOWN and %SYS-5-CONFIG_I do not trigger a false failure.
 _metadata:
   name: "Cisco IOS-XE Netmiko Properties"
   weight: 1000
-  description: >-
-    Per-push Netmiko arguments for Golden Config deployment. error_pattern makes
-    Netmiko raise on the exact rejected CLI line instead of returning a generic
-    E1030. These are send_config_set() arguments, so they cannot live in
-    PLUGINS_CONFIG connection_options, which only feed the Netmiko constructor.
+  description: "Netmiko send_config_set arguments for IOS-XE deployment"
   platforms:
     - name: "cisco_iosxe"
 netmiko_kwargs:
