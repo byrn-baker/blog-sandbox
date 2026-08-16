@@ -5,6 +5,8 @@ _metadata:
   description: "DC-C specific VLAN/VNI/SVI for leaves"
   locations:
     - name: "DC-C"
+  roles:
+    - name: "Leaf"
 svis:
   - vlan_id: 300
     name: "SERVER_K3S"

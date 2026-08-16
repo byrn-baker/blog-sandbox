@@ -5,6 +5,8 @@ _metadata:
   description: "DC-B specific VLAN/VNI/SVI for leaves"
   locations:
     - name: "DC-B"
+  roles:
+    - name: "Leaf"
 svis:
   - vlan_id: 200
     name: "SERVER_K3S"
