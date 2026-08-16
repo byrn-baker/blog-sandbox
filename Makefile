@@ -17,7 +17,7 @@ test: ## Render templates against mock contexts and validate output
 	pytest tests/test_template_render.py -v
 
 validate: ## Validate rendered configs with Batfish (requires container)
-	pytest tests/test_batfish_validate.py -v
+	pytest tests/test_batfish_validate.py tests/test_intended_configs.py -v
 
 ci: lint test ## Run fast CI pipeline (lint + render tests)
 

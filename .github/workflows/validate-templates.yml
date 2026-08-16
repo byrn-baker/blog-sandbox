@@ -4,12 +4,14 @@ on:
   push:
     paths:
       - 'golden-config/templates/**'
+      - 'golden-config/intended-configs/**'
       - 'config_contexts/**'
       - 'tests/**'
       - 'Makefile'
   pull_request:
     paths:
       - 'golden-config/templates/**'
+      - 'golden-config/intended-configs/**'
       - 'config_contexts/**'
       - 'tests/**'
       - 'Makefile'
