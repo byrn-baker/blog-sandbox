@@ -76,7 +76,7 @@ class SPDemoLabContext(Context):
     pe_ce_links = [
         ("SPE1", "GigabitEthernet5", "CE1", "GigabitEthernet2", "172.16.1.0/31", "CUST-A", "fd10:c:1::", "fd10:c:1::1"),
         ("SPE2", "GigabitEthernet5", "CE2", "GigabitEthernet2", "172.16.2.0/31", "CUST-B", "fd10:c:2::", "fd10:c:2::1"),
-        ("SPE3", "GigabitEthernet5", "CE3", "GigabitEthernet2", "172.16.3.0/31", "CUST-C", "fd10:c:3::", "fd10:c:3::1"),
+        ("SPE3", "GigabitEthernet4", "CE3", "GigabitEthernet2", "172.16.3.0/31", "CUST-C", "fd10:c:3::", "fd10:c:3::1"),
     ]
 
     # DC fabric links — (a_device, a_intf, b_device, b_intf, prefix4, v6_a, v6_b)

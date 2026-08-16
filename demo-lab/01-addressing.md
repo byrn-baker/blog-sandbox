@@ -108,7 +108,7 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 | SP4 ↔ SPE2 | `10.0.0.12/31` | `fd10:0:0::12/127` | SP4 Gi3 | SPE2 Gi2 |
 | SP3 ↔ SPE2 | `10.0.0.14/31` | `fd10:0:0::14/127` | SP3 Gi4 | SPE2 Gi3 |
 | SP1 ↔ SPE3 | `10.0.0.16/31` | `fd10:0:0::16/127` | SP1 Gi4 | SPE3 Gi2 |
-| SP3 ↔ SPE3 | `10.0.0.18/31` | `fd10:0:0::18/127` | SP3 Gi4 | SPE3 Gi3 |
+| SP3 ↔ SPE3 | `10.0.0.18/31` | `fd10:0:0::18/127` | SP3 Gi2 | SPE3 Gi3 |
 | SP1 ↔ RR1 | `10.0.0.20/31` | `fd10:0:0::20/127` | SP1 Gi5 | RR1 Gi2 |
 | SP2 ↔ RR2 | `10.0.0.22/31` | `fd10:0:0::22/127` | SP2 Gi5 | RR2 Gi2 |
 | SP1 ↔ BORDER1 | `10.0.0.24/31` | `fd10:0:0::24/127` | SP1 Gi6 | BORDER1 Gi2 |
@@ -142,7 +142,7 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 |------|------|------|---------------|---------------|
 | SPE1 ↔ CE1 | `172.16.1.0/31` | `fd10:c:1::/127` | SPE1 Gi5 | CE1 Gi2 |
 | SPE2 ↔ CE2 | `172.16.2.0/31` | `fd10:c:2::/127` | SPE2 Gi5 | CE2 Gi2 |
-| SPE3 ↔ CE3 | `172.16.3.0/31` | `fd10:c:3::/127` | SPE3 Gi5 | CE3 Gi2 |
+| SPE3 ↔ CE3 | `172.16.3.0/31` | `fd10:c:3::/127` | SPE3 Gi4 | CE3 Gi2 |
 
 ---
 
@@ -157,8 +157,8 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 
 | Link | IPv4 | IPv6 | A side (intf) | B side (intf) |
 |------|------|------|---------------|---------------|
-| CE1 ↔ DCA-Spine01 | `10.1.1.0/31` | `fd10:1:1::0/127` | CE1 Gi3 | Spine01 Eth1 |
-| CE1 ↔ DCA-Spine02 | `10.1.1.2/31` | `fd10:1:1::2/127` | CE1 Gi4 | Spine02 Eth1 |
+| CE1 ↔ DCA-Spine01 | `10.1.1.0/31` | `fd10:1:1::0/127` | CE1 Gi3 | Spine01 Eth10 |
+| CE1 ↔ DCA-Spine02 | `10.1.1.2/31` | `fd10:1:1::2/127` | CE1 Gi4 | Spine02 Eth10 |
 
 ### Spine to Leaf
 
@@ -195,8 +195,8 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 
 | Link | IPv4 | IPv6 | A side (intf) | B side (intf) |
 |------|------|------|---------------|---------------|
-| CE2 ↔ DCB-Spine01 | `10.1.2.0/31` | `fd10:1:2::0/127` | CE2 Gi3 | Spine01 Eth1 |
-| CE2 ↔ DCB-Spine02 | `10.1.2.2/31` | `fd10:1:2::2/127` | CE2 Gi4 | Spine02 Eth1 |
+| CE2 ↔ DCB-Spine01 | `10.1.2.0/31` | `fd10:1:2::0/127` | CE2 Gi3 | Spine01 Eth10 |
+| CE2 ↔ DCB-Spine02 | `10.1.2.2/31` | `fd10:1:2::2/127` | CE2 Gi4 | Spine02 Eth10 |
 
 ### Spine to Leaf
 
@@ -233,8 +233,8 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 
 | Link | IPv4 | IPv6 | A side (intf) | B side (intf) |
 |------|------|------|---------------|---------------|
-| CE3 ↔ DCC-Spine01 | `10.1.3.0/31` | `fd10:1:3::0/127` | CE3 Gi3 | Spine01 Eth1 |
-| CE3 ↔ DCC-Spine02 | `10.1.3.2/31` | `fd10:1:3::2/127` | CE3 Gi4 | Spine02 Eth1 |
+| CE3 ↔ DCC-Spine01 | `10.1.3.0/31` | `fd10:1:3::0/127` | CE3 Gi3 | Spine01 Eth10 |
+| CE3 ↔ DCC-Spine02 | `10.1.3.2/31` | `fd10:1:3::2/127` | CE3 Gi4 | Spine02 Eth10 |
 
 ### Spine to Leaf
 
