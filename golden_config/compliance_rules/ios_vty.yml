@@ -2,4 +2,4 @@
 - feature_slug: "200-vty"
   platform_network_driver: "cisco_ios"
   config_ordered: true
-  match_config: "line con\nline vty"
+  match_config: "line vty"

@@ -73,7 +73,7 @@ RULES = [
     {"feature": "mpls", "platform": "cisco_iosxe", "match_config": "mpls ldp", "ordered": False},
     {"feature": "bgp", "platform": "cisco_iosxe", "match_config": "router bgp", "ordered": True},
     {"feature": "aaa", "platform": "cisco_iosxe", "match_config": "aaa \ntacacs-server\ntacacs server", "ordered": True},
-    {"feature": "vty", "platform": "cisco_iosxe", "match_config": "line con\nline vty", "ordered": True},
+    {"feature": "vty", "platform": "cisco_iosxe", "match_config": "line vty", "ordered": True},
     {"feature": "acl", "platform": "cisco_iosxe", "match_config": "ip access-list\naccess-list", "ordered": True},
     {"feature": "ntp", "platform": "cisco_iosxe", "match_config": "ntp", "ordered": False},
     {"feature": "snmp", "platform": "cisco_iosxe", "match_config": "snmp-server", "ordered": False},
