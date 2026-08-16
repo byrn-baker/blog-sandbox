@@ -1,5 +1,5 @@
 ---
-- feature_slug: "routing_global"
+- feature_slug: "070-routing-global"
   platform_network_driver: "arista_eos"
   config_ordered: false
   match_config: "ip routing\nipv6 unicast-routing"

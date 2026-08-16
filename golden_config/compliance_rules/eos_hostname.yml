@@ -1,5 +1,5 @@
 ---
-- feature_slug: "hostname"
+- feature_slug: "010-hostname"
   platform_network_driver: "arista_eos"
   config_ordered: false
   match_config: "hostname"

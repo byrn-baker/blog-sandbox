@@ -1,5 +1,5 @@
 ---
-- feature_slug: "bfd"
+- feature_slug: "120-bfd"
   platform_network_driver: "arista_eos"
   config_ordered: false
   match_config: "router bfd"

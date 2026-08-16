@@ -1,5 +1,5 @@
 ---
-- feature_slug: "vlans"
+- feature_slug: "050-vlans"
   platform_network_driver: "arista_eos"
   config_ordered: false
   match_config: "vlan "

@@ -1,3 +1,3 @@
 - name: isis
   description: IS-IS routing protocol configuration
-  slug: isis
+  slug: 080-isis

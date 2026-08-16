@@ -1,5 +1,5 @@
 ---
-- feature_slug: "isis"
+- feature_slug: "080-isis"
   platform_network_driver: "cisco_ios"
   config_ordered: true
   match_config: "router isis"

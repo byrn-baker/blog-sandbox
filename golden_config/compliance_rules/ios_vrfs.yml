@@ -1,5 +1,5 @@
 ---
-- feature_slug: "vrfs"
+- feature_slug: "040-vrfs"
   platform_network_driver: "cisco_ios"
   config_ordered: false
   match_config: "vrf definition"

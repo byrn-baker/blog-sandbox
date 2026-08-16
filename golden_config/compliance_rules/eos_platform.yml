@@ -1,5 +1,5 @@
 ---
-- feature_slug: "platform"
+- feature_slug: "020-platform"
   platform_network_driver: "arista_eos"
   config_ordered: false
   match_config: "service routing protocols model\nspanning-tree\nvlan internal order"

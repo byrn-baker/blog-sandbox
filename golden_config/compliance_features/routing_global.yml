@@ -1,3 +1,3 @@
 - name: routing_global
   description: Global routing enables (ip routing, ipv6 unicast-routing)
-  slug: routing_global
+  slug: 070-routing-global

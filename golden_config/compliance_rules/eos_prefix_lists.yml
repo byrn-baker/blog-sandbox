@@ -1,5 +1,5 @@
 ---
-- feature_slug: "prefix_lists"
+- feature_slug: "100-prefix-lists"
   platform_network_driver: "arista_eos"
   config_ordered: true
   match_config: "ip prefix-list"

@@ -29,30 +29,29 @@ from nautobot_golden_config.models import ComplianceFeature, ComplianceRule
 # ─── Feature Definitions ───────────────────────────────────────────────────────
 # Each feature = one independently-audited config section
 
+# ComplianceFeature is ordered by slug. These prefixes also control the order
+# used when Generate Config Plans joins multiple selected features.
 FEATURES = [
-    # Shared across both platforms
-    {"name": "hostname", "description": "Device hostname configuration"},
-    {"name": "vrfs", "description": "VRF definitions (IOS-XE) and VRF instances (EOS)"},
-    {"name": "interfaces", "description": "Interface configuration (IPs, descriptions, shutdown state)"},
-    {"name": "bgp", "description": "BGP routing protocol"},
-    {"name": "aaa", "description": "AAA and TACACS+ authentication configuration"},
-    {"name": "acl", "description": "Access control lists"},
-    {"name": "ntp", "description": "NTP time synchronization"},
-    {"name": "snmp", "description": "SNMP monitoring configuration"},
-    {"name": "logging", "description": "Syslog and logging configuration"},
-    {"name": "prefix_lists", "description": "IP prefix-list definitions for route filtering"},
-    {"name": "route_maps", "description": "Route-map definitions for BGP policy"},
-    {"name": "static_routes", "description": "Static and default route configuration"},
-    # Cisco IOS-XE only
-    {"name": "isis", "description": "IS-IS routing protocol (SP core IGP)"},
-    {"name": "mpls", "description": "MPLS LDP configuration (label distribution)"},
-    {"name": "vty", "description": "VTY line configuration (SSH access, exec timeout, transport)"},
-    # Arista EOS only
-    {"name": "routing_global", "description": "Global routing enables (ip routing, ipv6 unicast-routing)"},
-    {"name": "platform", "description": "Platform-level settings (STP mode, service model, VLAN ranges)"},
-    {"name": "vlans", "description": "VLAN definitions"},
-    {"name": "vxlan", "description": "VXLAN VTEP interface, VNI-to-VLAN/VRF mappings"},
-    {"name": "bfd", "description": "Bidirectional Forwarding Detection timers"},
+    {"name": "hostname", "slug": "010-hostname", "description": "Device hostname configuration"},
+    {"name": "platform", "slug": "020-platform", "description": "Platform-level settings (STP mode, service model, VLAN ranges)"},
+    {"name": "aaa", "slug": "030-aaa", "description": "AAA and TACACS+ authentication configuration"},
+    {"name": "vrfs", "slug": "040-vrfs", "description": "VRF definitions (IOS-XE) and VRF instances (EOS)"},
+    {"name": "vlans", "slug": "050-vlans", "description": "VLAN definitions"},
+    {"name": "interfaces", "slug": "060-interfaces", "description": "Interface configuration (IPs, descriptions, shutdown state)"},
+    {"name": "routing_global", "slug": "070-routing-global", "description": "Global routing enables (ip routing, ipv6 unicast-routing)"},
+    {"name": "isis", "slug": "080-isis", "description": "IS-IS routing protocol (SP core IGP)"},
+    {"name": "mpls", "slug": "090-mpls", "description": "MPLS LDP configuration (label distribution)"},
+    {"name": "prefix_lists", "slug": "100-prefix-lists", "description": "IP prefix-list definitions for route filtering"},
+    {"name": "route_maps", "slug": "110-route-maps", "description": "Route-map definitions for BGP policy"},
+    {"name": "bfd", "slug": "120-bfd", "description": "Bidirectional Forwarding Detection timers"},
+    {"name": "bgp", "slug": "130-bgp", "description": "BGP routing protocol"},
+    {"name": "static_routes", "slug": "140-static-routes", "description": "Static and default route configuration"},
+    {"name": "vxlan", "slug": "150-vxlan", "description": "VXLAN VTEP interface, VNI-to-VLAN/VRF mappings"},
+    {"name": "acl", "slug": "160-acl", "description": "Access control lists"},
+    {"name": "ntp", "slug": "170-ntp", "description": "NTP time synchronization"},
+    {"name": "snmp", "slug": "180-snmp", "description": "SNMP monitoring configuration"},
+    {"name": "logging", "slug": "190-logging", "description": "Syslog and logging configuration"},
+    {"name": "vty", "slug": "200-vty", "description": "VTY line configuration (SSH access, exec timeout, transport)"},
 ]
 
 # ─── Rule Definitions ──────────────────────────────────────────────────────────
@@ -130,15 +129,21 @@ class GCComplianceSetup(Job):
                 name=feat_def["name"],
                 defaults={
                     "description": feat_def["description"],
-                    "slug": feat_def["name"],
+                    "slug": feat_def["slug"],
                 },
             )
             if created:
                 features_created += 1
                 self.logger.info(f"Created compliance feature: {feat_def['name']}")
             else:
+                changed = False
                 if feature.description != feat_def["description"]:
                     feature.description = feat_def["description"]
+                    changed = True
+                if feature.slug != feat_def["slug"]:
+                    feature.slug = feat_def["slug"]
+                    changed = True
+                if changed:
                     feature.validated_save()
                     features_updated += 1
                     self.logger.info(f"Updated compliance feature: {feat_def['name']}")
