@@ -2,7 +2,7 @@
 ip routing
 ipv6 unicast-routing
 !
-{% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined %}
+{% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined and vrf._custom_field_data.vni is not none %}
 ip routing vrf {{ vrf.name }}
 ipv6 unicast-routing vrf {{ vrf.name }}
 !

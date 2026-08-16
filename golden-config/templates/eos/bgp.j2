@@ -85,7 +85,7 @@ router bgp {{ bgp.autonomous_system.asn }}
       redistribute learned
    !
 {% endfor %}
-{% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined %}
+{% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined and vrf._custom_field_data.vni is not none %}
    vrf {{ vrf.name }}
       rd {{ bgp.router_id.address.split('/')[0] }}:{{ vrf._custom_field_data.vni }}
       route-target import evpn {{ vrf._custom_field_data.vni }}:{{ vrf._custom_field_data.vni }}

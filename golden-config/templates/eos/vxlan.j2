@@ -7,7 +7,7 @@ interface Vxlan1
 {% for vlan in location.vlans | default([]) if vlan._custom_field_data.vni is defined %}
    vxlan vlan {{ vlan.vid }} vni {{ vlan._custom_field_data.vni }}
 {% endfor %}
-{% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined %}
+{% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined and vrf._custom_field_data.vni is not none %}
    vxlan vrf {{ vrf.name }} vni {{ vrf._custom_field_data.vni }}
 {% endfor %}
 !
