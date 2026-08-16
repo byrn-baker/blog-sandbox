@@ -2,21 +2,19 @@
 _metadata:
   name: "DC-C VXLAN Properties"
   weight: 200
-  description: "DC-C specific VLAN/VNI/SVI for leaves"
+  description: "DC-C VXLAN overlay properties for leaves"
   locations:
     - name: "DC-C"
   roles:
     - name: "Leaf"
-svis:
-  - vlan_id: 300
-    name: "SERVER_K3S"
-    vrf: "SERVERS"
-    enabled: true
-    ip_address_virtual: "192.168.100.1/24"
-    ipv6_address_virtual: "fd10:a:300::1/64"
-  - vlan_id: 301
-    name: "STORAGE"
-    vrf: "SERVERS"
-    enabled: true
-    ip_address_virtual: "192.168.101.1/24"
-    ipv6_address_virtual: "fd10:a:301::1/64"
+vxlan:
+  source_interface: "Loopback1"
+  virtual_router_mac: "00:1c:73:00:00:99"
+  vlans:
+    - id: 300
+      vni: 10300
+    - id: 301
+      vni: 10301
+  vrfs:
+    - name: "SERVERS"
+      vni: 30000

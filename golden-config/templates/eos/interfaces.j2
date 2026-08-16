@@ -19,29 +19,19 @@ interface {{ interface.name }}
 {% endif %}
 {% for addr in interface.ip_addresses %}
 {% if addr.ip_version == 4 %}
+{% if interface.name.startswith('Vlan') %}
+   ip address virtual {{ addr.address }}
+{% else %}
    ip address {{ addr.address }}
+{% endif %}
 {% elif addr.ip_version == 6 %}
+{% if interface.name.startswith('Vlan') %}
+   ipv6 address virtual {{ addr.address }}
+{% else %}
    ipv6 address {{ addr.address }}
 {% endif %}
+{% endif %}
 {% endfor %}
 !
 {% endif %}
 {% endfor %}
-{# SVIs with anycast gateways (from config context, leaves only) #}
-{% if config_context.svis is defined %}
-{% for svi in config_context.svis %}
-interface Vlan{{ svi.vlan_id }}
-   description {{ svi.name }}
-{% if svi.vrf is defined %}
-   vrf {{ svi.vrf }}
-{% endif %}
-{% if svi.enabled | default(true) %}
-   no shutdown
-{% endif %}
-   ip address virtual {{ svi.ip_address_virtual }}
-{% if svi.ipv6_address_virtual is defined %}
-   ipv6 address virtual {{ svi.ipv6_address_virtual }}
-{% endif %}
-!
-{% endfor %}
-{% endif %}
