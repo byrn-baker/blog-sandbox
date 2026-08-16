@@ -15,6 +15,19 @@ design job or any golden config operations.
 Prerequisites:
   - GITHUB_TOKEN environment variable must be set in the Nautobot worker
   - The blog-sandbox repo must be accessible from the worker
+
+Bootstrap ordering note:
+
+  All Nautobot jobs for this lab, including this one, live in the repo's
+  top-level jobs/ directory and are sourced from Git. That creates a
+  chicken-and-egg problem on a brand new Nautobot: this job sets
+  extras.job on the repository, but it cannot run until the repository
+  already provides jobs.
+
+  On a fresh install, register the repository once by hand (Extensibility >
+  Git Repositories) with the Jobs content type checked, sync it, then run
+  this job to normalize every other setting. After that, Git is the only
+  source and nothing needs to be placed in JOBS_ROOT.
 """
 
 from nautobot.apps.jobs import register_jobs, Job
@@ -232,6 +245,10 @@ JINJA_PATH = "golden-config/templates/{{obj.platform.network_driver}}.j2"
 PROVIDED_CONTENTS = [
     "extras.configcontext",
     "extras.configcontextschema",
+    # Jobs live in the repo's top-level jobs/ directory and are sourced from Git,
+    # not from JOBS_ROOT on the Nautobot filesystem. Without this content type
+    # Nautobot syncs the repo and silently ignores jobs/.
+    "extras.job",
     "nautobot_golden_config.backupconfigs",
     "nautobot_golden_config.intendedconfigs",
     "nautobot_golden_config.jinjatemplate",
