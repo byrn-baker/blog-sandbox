@@ -1,0 +1,13 @@
+---
+_metadata:
+  name: "Cisco IOS-XE Netmiko Properties"
+  weight: 1000
+  description: >-
+    Per-push Netmiko arguments for Golden Config deployment. error_pattern makes
+    Netmiko raise on the exact rejected CLI line instead of returning a generic
+    E1030. These are send_config_set() arguments, so they cannot live in
+    PLUGINS_CONFIG connection_options, which only feed the Netmiko constructor.
+  platforms:
+    - name: "cisco_iosxe"
+netmiko_kwargs:
+  error_pattern: "^% (Invalid input|Incomplete command|Ambiguous command|Unrecognized command|Too many parameters|Wrong parameter|Cannot execute)"
