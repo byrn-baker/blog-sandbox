@@ -1,6 +1,11 @@
 aaa new-model
 !
 aaa authentication login default local
+{# Console is the break-glass path on a virtual node. `aaa new-model` applies the
+   default login method to line con 0, which turns an open CML console into one
+   demanding local credentials. Keep an explicit console method list so console
+   access survives a bad local-user state. #}
+aaa authentication login CONSOLE none
 aaa authorization exec default local
 !
 aaa session-id common
