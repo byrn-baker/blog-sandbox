@@ -105,9 +105,11 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% if remote.ep %}
 {% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
 {% set source_ip = endpoint.source_ip.address.split('/')[0] %}
+{% set found_vrf = namespace(yes=false) %}
 {% for interface in interfaces if interface.vrf %}
 {% for addr in interface.ip_addresses if addr.ip_version == 4 %}
 {% if addr.address.split('/')[0] == source_ip %}
+{% set found_vrf.yes = true %}
  address-family ipv4 vrf {{ interface.vrf.name }}
   neighbor {{ peer_ip }} remote-as {{ remote.ep.routing_instance.autonomous_system.asn }}
   neighbor {{ peer_ip }} activate
@@ -116,6 +118,12 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {% endfor %}
 {% endfor %}
+{% if not found_vrf.yes %}
+ address-family ipv4
+  neighbor {{ peer_ip }} activate
+ exit-address-family
+!
+{% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
