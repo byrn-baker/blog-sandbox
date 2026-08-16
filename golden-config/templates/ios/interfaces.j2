@@ -38,6 +38,10 @@ interface {{ interface.name }}
 {% endfor %}
 {% if ns.is_core %}
  ip router isis {{ config_context.isis.process_name }}
+{% set has_ipv6 = interface.ip_addresses | selectattr('ip_version', 'equalto', 6) | list | length > 0 %}
+{% if has_ipv6 %}
+ ipv6 router isis {{ config_context.isis.process_name }}
+{% endif %}
  isis network point-to-point
  mpls ip
 {% if config_context.bfd is defined %}
@@ -45,9 +49,13 @@ interface {{ interface.name }}
 {% endif %}
 {% endif %}
 {% endif %}
-{# Loopback0 — ISIS passive #}
+{# Loopback0 — ISIS passive (IPv4 + IPv6) #}
 {% if interface.name == 'Loopback0' and config_context.isis is defined %}
  ip router isis {{ config_context.isis.process_name }}
+{% set has_ipv6 = interface.ip_addresses | selectattr('ip_version', 'equalto', 6) | list | length > 0 %}
+{% if has_ipv6 %}
+ ipv6 router isis {{ config_context.isis.process_name }}
+{% endif %}
 {% endif %}
 {# Negotiation auto on GigabitEthernet interfaces #}
 {% if interface.name.startswith('GigabitEthernet') %}
