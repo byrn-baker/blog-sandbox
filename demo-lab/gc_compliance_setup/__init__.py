@@ -81,6 +81,9 @@ RULES = [
     {"feature": "prefix_lists", "platform": "cisco_iosxe", "match_config": "ip prefix-list", "ordered": True},
     {"feature": "route_maps", "platform": "cisco_iosxe", "match_config": "route-map", "ordered": True},
     {"feature": "static_routes", "platform": "cisco_iosxe", "match_config": "ip route", "ordered": False},
+    # IPv4 routing is default-on and hidden in IOS-XE running-config, so only
+    # the IPv6 enable is audited here.
+    {"feature": "routing_global", "platform": "cisco_iosxe", "match_config": "ipv6 unicast-routing", "ordered": False},
     # ═══ Arista EOS (platform name: arista_eos) ═══
     {"feature": "hostname", "platform": "arista_eos", "match_config": "hostname", "ordered": False},
     {"feature": "vrfs", "platform": "arista_eos", "match_config": "vrf instance", "ordered": False},

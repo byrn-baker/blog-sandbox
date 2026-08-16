@@ -1,0 +1,5 @@
+---
+- feature_slug: "070-routing-global"
+  platform_network_driver: "cisco_ios"
+  config_ordered: false
+  match_config: "ipv6 unicast-routing"
