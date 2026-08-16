@@ -14,6 +14,9 @@ router isis {{ config_context.isis.process_name }}
 {% if config_context.bfd is defined %}
  bfd all-interfaces
 {% endif %}
+{% if config_context.mpls is defined and config_context.mpls.ldp_sync | default(false) %}
+ mpls ldp sync
+{% endif %}
 !
 {% endfor %}
 {% endif %}
