@@ -1,0 +1,66 @@
+name: Validate Golden Config Templates
+
+on:
+  push:
+    paths:
+      - 'golden-config/templates/**'
+      - 'config_contexts/**'
+      - 'tests/**'
+      - 'Makefile'
+  pull_request:
+    paths:
+      - 'golden-config/templates/**'
+      - 'config_contexts/**'
+      - 'tests/**'
+      - 'Makefile'
+
+jobs:
+  lint-and-render:
+    name: Lint + Render Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install jinja2 pyyaml pytest j2lint
+
+      - name: Run fast CI (j2lint + render tests)
+        run: make ci
+
+  batfish-validate:
+    name: Batfish Config Validation
+    runs-on: ubuntu-latest
+    needs: lint-and-render
+    services:
+      batfish:
+        image: batfish/batfish:latest
+        ports:
+          - 9997:9997
+          - 9996:9996
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install jinja2 pyyaml pytest pybatfish
+
+      - name: Wait for Batfish to be ready
+        run: |
+          for i in $(seq 1 30); do
+            python3 -c "
+          from pybatfish.client.session import Session
+          bf = Session(host='localhost')
+          bf.set_network('probe')
+          " 2>/dev/null && break
+            sleep 2
+          done
+
+      - name: Run Batfish validation
+        run: make validate
