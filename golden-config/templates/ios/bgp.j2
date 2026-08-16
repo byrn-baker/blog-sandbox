@@ -36,10 +36,22 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endfor %}
 {% if remote.ep %}
 {% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
+{% set source_ip = endpoint.source_ip.address.split('/')[0] %}
 {% if endpoint.peer_group %}
  neighbor {{ peer_ip }} peer-group {{ endpoint.peer_group.name }}
 {% else %}
+{# PE-CE neighbors live in their VRF address-family, never in the global table #}
+{% set in_vrf = namespace(yes=false) %}
+{% for interface in interfaces if interface.vrf %}
+{% for addr in interface.ip_addresses if addr.ip_version == 4 %}
+{% if addr.address.split('/')[0] == source_ip %}
+{% set in_vrf.yes = true %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% if not in_vrf.yes %}
  neighbor {{ peer_ip }} remote-as {{ remote.ep.routing_instance.autonomous_system.asn }}
+{% endif %}
 {% endif %}
 {% endif %}
 {% endif %}
