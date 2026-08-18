@@ -46,6 +46,9 @@ interface {{ interface.name }}
  mpls ip
 {% if config_context.bfd is defined %}
  bfd interval {{ config_context.bfd.interval }} min_rx {{ config_context.bfd.min_rx }} multiplier {{ config_context.bfd.multiplier }}
+{% if not (config_context.bfd.echo | default(true)) %}
+ no bfd echo
+{% endif %}
 {% endif %}
 {% endif %}
 {% endif %}

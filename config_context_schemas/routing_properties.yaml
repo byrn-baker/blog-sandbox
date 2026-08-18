@@ -72,8 +72,11 @@ data_schema:
           type: integer
           minimum: 2
           maximum: 50
+        echo:
+          type: boolean
       required:
         - interval
         - min_rx
         - multiplier
+        - echo
   additionalProperties: false

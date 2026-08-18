@@ -5,9 +5,10 @@ hostname: RR1
 
 config_context:
   bfd:
-    interval: 100
-    min_rx: 100
-    multiplier: 3
+    interval: 500
+    min_rx: 500
+    multiplier: 5
+    echo: false
   bgp:
     timers:
       keepalive: 10
