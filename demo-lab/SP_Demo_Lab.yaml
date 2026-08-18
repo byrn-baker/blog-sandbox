@@ -1,0 +1,1607 @@
+annotations:
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 240.0
+    y1: -800.0
+    x2: 240.0
+    y2: -800.0
+    z_index: 0
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname RR1
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.51 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: RR1
+    node_definition: cat8000v
+    parameters: {}
+    priority: 1
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: -400
+    y: -400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname RR2
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.52 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: RR2
+    node_definition: cat8000v
+    parameters: {}
+    priority: 1
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: -400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname SP1
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.53 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: SP1
+    node_definition: cat8000v
+    parameters: {}
+    priority: 3
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: -400
+    y: -200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: GigabitEthernet5
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i6
+        label: GigabitEthernet6
+        mac_address: null
+        type: physical
+        slot: 5
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname SP2
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.54 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: SP2
+    node_definition: cat8000v
+    parameters: {}
+    priority: 3
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: -200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: GigabitEthernet5
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i6
+        label: GigabitEthernet6
+        mac_address: null
+        type: physical
+        slot: 5
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname SP3
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.55 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: SP3
+    node_definition: cat8000v
+    parameters: {}
+    priority: 3
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: -400
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: GigabitEthernet5
+        mac_address: null
+        type: physical
+        slot: 4
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname SP4
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.56 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: SP4
+    node_definition: cat8000v
+    parameters: {}
+    priority: 3
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: GigabitEthernet5
+        mac_address: null
+        type: physical
+        slot: 4
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname SPE1
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.57 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: SPE1
+    node_definition: cat8000v
+    parameters: {}
+    priority: 4
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: 280
+    y: -40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: GigabitEthernet5
+        mac_address: null
+        type: physical
+        slot: 4
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname SPE2
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.58 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n7
+    image_definition: null
+    label: SPE2
+    node_definition: cat8000v
+    parameters: {}
+    priority: 4
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: -200
+    y: 200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: GigabitEthernet5
+        mac_address: null
+        type: physical
+        slot: 4
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname SPE3
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.59 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n8
+    image_definition: null
+    label: SPE3
+    node_definition: cat8000v
+    parameters: {}
+    priority: 4
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: -600
+    y: -120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: GigabitEthernet5
+        mac_address: null
+        type: physical
+        slot: 4
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname CE1
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.60 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n9
+    image_definition: null
+    label: CE1
+    node_definition: cat8000v
+    parameters: {}
+    priority: 5
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: 520
+    y: -40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname CE2
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.61 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n10
+    image_definition: null
+    label: CE2
+    node_definition: cat8000v
+    parameters: {}
+    priority: 5
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: 40
+    y: 200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname CE3
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.62 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n11
+    image_definition: null
+    label: CE3
+    node_definition: cat8000v
+    parameters: {}
+    priority: 5
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: -840
+    y: -120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: default
+        content: vlan401
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n12
+    image_definition: null
+    label: DCA-Spine01-E10
+    node_definition: external_connector
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 400
+    y: 160
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: default
+        content: vlan402
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n13
+    image_definition: null
+    label: DCA-Spine02-E10
+    node_definition: external_connector
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 600
+    y: 160
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: default
+        content: vlan403
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n14
+    image_definition: null
+    label: DCB-Spine01-E10
+    node_definition: external_connector
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -40
+    y: 360
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: default
+        content: vlan404
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n15
+    image_definition: null
+    label: DCB-Spine02-E10
+    node_definition: external_connector
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 120
+    y: 360
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: default
+        content: vlan405
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n16
+    image_definition: null
+    label: DCC-Spine01-E10
+    node_definition: external_connector
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -960
+    y: 40
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: default
+        content: vlan406
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n17
+    image_definition: null
+    label: DCC-Spine02-E10
+    node_definition: external_connector
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -760
+    y: 40
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: default
+        content: vlan3
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n18
+    image_definition: null
+    label: lab-mgmt
+    node_definition: external_connector
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 80
+    y: -760
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: default
+        content: 'mode: Bridge'
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n19
+    image_definition: null
+    label: mgmt-switch
+    node_definition: unmanaged_switch
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -200
+    y: -760
+    interfaces:
+      - id: i0
+        label: port0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: port1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i2
+        label: port2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i3
+        label: port3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i4
+        label: port4
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i5
+        label: port5
+        mac_address: null
+        type: physical
+        slot: 5
+      - id: i6
+        label: port6
+        mac_address: null
+        type: physical
+        slot: 6
+      - id: i7
+        label: port7
+        mac_address: null
+        type: physical
+        slot: 7
+      - id: i8
+        label: port8
+        mac_address: null
+        type: physical
+        slot: 8
+      - id: i9
+        label: port9
+        mac_address: null
+        type: physical
+        slot: 9
+      - id: i10
+        label: port10
+        mac_address: null
+        type: physical
+        slot: 10
+      - id: i11
+        label: port11
+        mac_address: null
+        type: physical
+        slot: 11
+      - id: i12
+        label: port12
+        mac_address: null
+        type: physical
+        slot: 12
+      - id: i13
+        label: port13
+        mac_address: null
+        type: physical
+        slot: 13
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname BORDER1
+          !
+          license boot level network-advantage addon dna-advantage
+          !
+          aaa new-model
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          username cisco privilege 15 secret cisco
+          !
+          vrf definition MGMT-VRF
+           address-family ipv4
+          !
+          interface GigabitEthernet1
+           vrf forwarding MGMT-VRF
+           ip address 192.168.3.50 255.255.255.0
+           no shutdown
+          !
+          ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+          !
+          ip domain name lab.local
+          crypto key generate rsa modulus 2048
+          !
+          line vty 0 4
+           transport input ssh
+           login authentication default
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n20
+    image_definition: null
+    label: BORDER1
+    node_definition: cat8000v
+    parameters: {}
+    priority: 2
+    pyats:
+      username: cisco
+      password: cisco
+      enable_password: null
+    ram: null
+    tags: []
+    x: -200
+    y: -400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n21
+    image_definition: null
+    label: ext-internet
+    node_definition: external_connector
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 400
+    y: -400
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n2
+    n2: n3
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: SP1-GigabitEthernet2<->SP2-GigabitEthernet2
+  - id: l1
+    n1: n3
+    n2: n5
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: SP2-GigabitEthernet3<->SP4-GigabitEthernet2
+  - id: l2
+    n1: n4
+    n2: n5
+    i1: i5
+    i2: i5
+    conditioning: {}
+    label: SP3-GigabitEthernet5<->SP4-GigabitEthernet5
+  - id: l3
+    n1: n2
+    n2: n4
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: SP1-GigabitEthernet3<->SP3-GigabitEthernet3
+  - id: l4
+    n1: n3
+    n2: n6
+    i1: i4
+    i2: i2
+    conditioning: {}
+    label: SP2-GigabitEthernet4<->SPE1-GigabitEthernet2
+  - id: l5
+    n1: n5
+    n2: n6
+    i1: i4
+    i2: i4
+    conditioning: {}
+    label: SP4-GigabitEthernet4<->SPE1-GigabitEthernet4
+  - id: l6
+    n1: n5
+    n2: n7
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: SP4-GigabitEthernet3<->SPE2-GigabitEthernet2
+  - id: l7
+    n1: n4
+    n2: n7
+    i1: i4
+    i2: i3
+    conditioning: {}
+    label: SP3-GigabitEthernet4<->SPE2-GigabitEthernet3
+  - id: l8
+    n1: n2
+    n2: n8
+    i1: i4
+    i2: i2
+    conditioning: {}
+    label: SP1-GigabitEthernet4<->SPE3-GigabitEthernet2
+  - id: l9
+    n1: n4
+    n2: n8
+    i1: i2
+    i2: i3
+    conditioning: {}
+    label: SP3-GigabitEthernet2<->SPE3-GigabitEthernet3
+  - id: l10
+    n1: n2
+    n2: n0
+    i1: i5
+    i2: i2
+    conditioning: {}
+    label: SP1-GigabitEthernet5<->RR1-GigabitEthernet2
+  - id: l11
+    n1: n3
+    n2: n1
+    i1: i5
+    i2: i2
+    conditioning: {}
+    label: SP2-GigabitEthernet5<->RR2-GigabitEthernet2
+  - id: l12
+    n1: n6
+    n2: n9
+    i1: i5
+    i2: i2
+    conditioning: {}
+    label: SPE1-GigabitEthernet5<->CE1-GigabitEthernet2
+  - id: l13
+    n1: n7
+    n2: n10
+    i1: i5
+    i2: i2
+    conditioning: {}
+    label: SPE2-GigabitEthernet5<->CE2-GigabitEthernet2
+  - id: l14
+    n1: n9
+    n2: n12
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: CE1-GigabitEthernet3<->DCA-Spine01-E10-port
+  - id: l15
+    n1: n9
+    n2: n13
+    i1: i4
+    i2: i0
+    conditioning: {}
+    label: CE1-GigabitEthernet4<->DCA-Spine02-E10-port
+  - id: l16
+    n1: n10
+    n2: n14
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: CE2-GigabitEthernet3<->DCB-Spine01-E10-port
+  - id: l17
+    n1: n10
+    n2: n15
+    i1: i4
+    i2: i0
+    conditioning: {}
+    label: CE2-GigabitEthernet4<->DCB-Spine02-E10-port
+  - id: l18
+    n1: n11
+    n2: n16
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: CE3-GigabitEthernet3<->DCC-Spine01-E10-port
+  - id: l19
+    n1: n11
+    n2: n17
+    i1: i4
+    i2: i0
+    conditioning: {}
+    label: CE3-GigabitEthernet4<->DCC-Spine02-E10-port
+  - id: l20
+    n1: n18
+    n2: n19
+    i1: i0
+    i2: i0
+    conditioning: {}
+    label: lab-mgmt-port<->mgmt-switch-port0
+  - id: l21
+    n1: n0
+    n2: n19
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: RR1-GigabitEthernet1<->mgmt-switch-port1
+  - id: l22
+    n1: n1
+    n2: n19
+    i1: i1
+    i2: i2
+    conditioning: {}
+    label: RR2-GigabitEthernet1<->mgmt-switch-port2
+  - id: l23
+    n1: n2
+    n2: n19
+    i1: i1
+    i2: i3
+    conditioning: {}
+    label: SP1-GigabitEthernet1<->mgmt-switch-port3
+  - id: l24
+    n1: n3
+    n2: n19
+    i1: i1
+    i2: i4
+    conditioning: {}
+    label: SP2-GigabitEthernet1<->mgmt-switch-port4
+  - id: l25
+    n1: n4
+    n2: n19
+    i1: i1
+    i2: i5
+    conditioning: {}
+    label: SP3-GigabitEthernet1<->mgmt-switch-port5
+  - id: l26
+    n1: n5
+    n2: n19
+    i1: i1
+    i2: i6
+    conditioning: {}
+    label: SP4-GigabitEthernet1<->mgmt-switch-port6
+  - id: l27
+    n1: n6
+    n2: n19
+    i1: i1
+    i2: i7
+    conditioning: {}
+    label: SPE1-GigabitEthernet1<->mgmt-switch-port7
+  - id: l28
+    n1: n7
+    n2: n19
+    i1: i1
+    i2: i8
+    conditioning: {}
+    label: SPE2-GigabitEthernet1<->mgmt-switch-port8
+  - id: l29
+    n1: n8
+    n2: n19
+    i1: i1
+    i2: i9
+    conditioning: {}
+    label: SPE3-GigabitEthernet1<->mgmt-switch-port9
+  - id: l30
+    n1: n9
+    n2: n19
+    i1: i1
+    i2: i10
+    conditioning: {}
+    label: CE1-GigabitEthernet1<->mgmt-switch-port10
+  - id: l31
+    n1: n10
+    n2: n19
+    i1: i1
+    i2: i11
+    conditioning: {}
+    label: CE2-GigabitEthernet1<->mgmt-switch-port11
+  - id: l32
+    n1: n11
+    n2: n19
+    i1: i1
+    i2: i12
+    conditioning: {}
+    label: CE3-GigabitEthernet1<->mgmt-switch-port12
+  - id: l33
+    n1: n20
+    n2: n19
+    i1: i1
+    i2: i13
+    conditioning: {}
+    label: BORDER1-GigabitEthernet1<->mgmt-switch-port13
+  - id: l34
+    n1: n20
+    n2: n2
+    i1: i2
+    i2: i6
+    conditioning: {}
+    label: BORDER1-GigabitEthernet2<->SP1-GigabitEthernet6
+  - id: l35
+    n1: n20
+    n2: n3
+    i1: i3
+    i2: i6
+    conditioning: {}
+    label: BORDER1-GigabitEthernet3<->SP2-GigabitEthernet6
+  - id: l36
+    n1: n21
+    n2: n20
+    i1: i0
+    i2: i4
+    conditioning: {}
+    label: ext-internet-port<->BORDER1-GigabitEthernet4
+  - id: l37
+    n1: n8
+    n2: n11
+    i1: i4
+    i2: i2
+    conditioning: {}
+    label: SPE3-GigabitEthernet4<->CE3-GigabitEthernet2
+lab:
+  description: Service Provider core with 3 DC fabrics (Arista). Routers=cat8000v,
+    Switches=Arista-vEOS. Dual-stack IPv4/IPv6.
+  notes: ''
+  title: SP Demo Lab
+  node_staging:
+    enabled: true
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
