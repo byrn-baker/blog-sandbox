@@ -3,16 +3,22 @@ name: Validate Golden Config Templates
 on:
   push:
     paths:
+      - '.github/workflows/validate-templates.yml'
+      - '.j2lint.yml'
       - 'golden-config/templates/**'
       - 'golden-config/intended-configs/**'
       - 'config_contexts/**'
+      - 'config_context_schemas/**'
       - 'tests/**'
       - 'Makefile'
   pull_request:
     paths:
+      - '.github/workflows/validate-templates.yml'
+      - '.j2lint.yml'
       - 'golden-config/templates/**'
       - 'golden-config/intended-configs/**'
       - 'config_contexts/**'
+      - 'config_context_schemas/**'
       - 'tests/**'
       - 'Makefile'
 
@@ -54,15 +60,27 @@ jobs:
         run: pip install jinja2 pyyaml pytest pybatfish
 
       - name: Wait for Batfish to be ready
+        shell: bash
         run: |
+          set -euo pipefail
+          batfish_ready=false
           for i in $(seq 1 30); do
-            python3 -c "
+            if python3 -c "
           from pybatfish.client.session import Session
           bf = Session(host='localhost')
           bf.set_network('probe')
-          " 2>/dev/null && break
+          "; then
+              batfish_ready=true
+              break
+            fi
+            echo "Batfish is not ready yet (attempt ${i}/30)"
             sleep 2
           done
+
+          if [[ "${batfish_ready}" != "true" ]]; then
+            echo "Batfish failed to become ready after 30 attempts" >&2
+            exit 1
+          fi
 
       - name: Run Batfish validation
         run: make validate
