@@ -11,8 +11,4 @@ interface Vxlan1
    vxlan vrf {{ vrf.name }} vni {{ vrf._custom_field_data.vni }}
 {% endfor %}
 !
-{% if config_context.vxlan.virtual_router_mac is defined %}
-ip virtual-router mac-address {{ config_context.vxlan.virtual_router_mac }}
-!
-{% endif %}
 {% endif %}

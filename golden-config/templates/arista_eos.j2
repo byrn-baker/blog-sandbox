@@ -2,6 +2,10 @@
 {% include 'golden-config/templates/eos/platform.j2' %}{{ '\n' }}
 {% include 'golden-config/templates/eos/vrfs.j2' %}{{ '\n' }}
 {% include 'golden-config/templates/eos/vlans.j2' %}{{ '\n' }}
+{% if config_context.vxlan is defined and config_context.vxlan.virtual_router_mac is defined %}
+ip virtual-router mac-address {{ config_context.vxlan.virtual_router_mac }}
+!
+{% endif %}
 {% include 'golden-config/templates/eos/interfaces.j2' %}{{ '\n' }}
 {% include 'golden-config/templates/eos/static_routes.j2' %}{{ '\n' }}
 {% include 'golden-config/templates/eos/routing.j2' %}{{ '\n' }}
