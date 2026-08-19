@@ -1,0 +1,29 @@
+---
+# Per-push Netmiko arguments for Golden Config deployment on Arista EOS.
+#
+# These are send_config_set() / save_config() arguments, not Netmiko constructor
+# arguments. nornir-nautobot reads netmiko_kwargs from a device custom field or
+# config context.
+#
+# read_timeout: Leaf switches with VXLAN/EVPN configs are large enough that
+# default 30s can be exceeded when the device processes interface Vxlan1,
+# VRF routing, or EVPN address-family commands.
+#
+# cmd_verify: disabled because EOS informational messages (e.g. "It is
+# recommended to configure larger multi-hop interval") and BGP/EVPN state
+# changes interleave with command echoes during large config pushes, breaking
+# Netmiko's pattern match. error_pattern still catches real rejections.
+#
+# error_pattern: EOS errors always start with "% " (percent + space). This
+# catches all rejected commands without false-triggering on informational lines
+# like "It is recommended to configure larger multi-hop interval".
+_metadata:
+  name: "Arista EOS Netmiko Properties"
+  weight: 1000
+  description: "Netmiko send_config_set arguments for EOS deployment"
+  platforms:
+    - name: "arista_eos"
+netmiko_kwargs:
+  error_pattern: "^% "
+  read_timeout: 90
+  cmd_verify: false
