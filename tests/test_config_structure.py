@@ -204,3 +204,29 @@ def test_eos_no_duplicate_interface_vxlan1(context_file, platform):
         f"{context_file}: 'interface Vxlan1' appears {vxlan_count} times. "
         f"Should be at most once."
     )
+
+
+@pytest.mark.parametrize("context_file,platform", IOS_SCENARIOS)
+def test_ios_peergroup_activate_requires_members(context_file, platform):
+    """IOS-XE: activating a peer-group in an AF requires at least one member."""
+    rendered = render(context_file, platform)
+
+    # Find all peer-group member assignments (neighbor <ip> peer-group <name>)
+    pg_with_members = set()
+    for match in re.finditer(
+        r"^ neighbor [\d.]+ peer-group (\S+)", rendered, re.MULTILINE
+    ):
+        pg_with_members.add(match.group(1))
+
+    # Find all peer-group activations inside address-families
+    # Pattern: "neighbor <PG-NAME> activate" where PG-NAME starts with a letter
+    for match in re.finditer(
+        r"^ +neighbor ([A-Z][\w-]*) activate", rendered, re.MULTILINE
+    ):
+        pg_name = match.group(1)
+        assert pg_name in pg_with_members, (
+            f"{context_file}: 'neighbor {pg_name} activate' in address-family "
+            f"but no peers assigned to this group with "
+            f"'neighbor <ip> peer-group {pg_name}'. IOS-XE rejects activating "
+            f"a peer-group with no members."
+        )
