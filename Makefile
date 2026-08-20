@@ -14,7 +14,7 @@ lint: ## Run j2lint on all Jinja2 templates
 	j2lint $(TEMPLATE_DIR) --extensions j2 -i jinja-statements-indentation single-statement-per-line
 
 test: ## Render templates against mock contexts and validate output
-	pytest tests/test_template_render.py -v
+	pytest tests/test_template_render.py tests/test_config_structure.py -v
 
 validate: ## Validate rendered configs with Batfish (requires container)
 	pytest tests/test_batfish_validate.py tests/test_intended_configs.py -v

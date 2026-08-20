@@ -30,6 +30,7 @@ PLATFORM_TEMPLATES = {
 DEVICE_SCENARIOS = [
     ("cisco_ios_route_reflector.yaml", "cisco_ios"),
     ("cisco_ios_pe_router.yaml", "cisco_ios"),
+    ("cisco_ios_ce_router.yaml", "cisco_ios"),
     ("arista_eos_leaf.yaml", "arista_eos"),
     ("arista_eos_spine.yaml", "arista_eos"),
 ]
