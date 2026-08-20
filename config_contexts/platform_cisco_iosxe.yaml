@@ -28,5 +28,5 @@ _metadata:
     - name: "cisco_iosxe"
 netmiko_kwargs:
   error_pattern: "^% (Invalid input|Incomplete command|Ambiguous command|Unrecognized command|Too many parameters|Wrong parameter|Cannot execute)"
-  read_timeout: 90
+  read_timeout: 180
   cmd_verify: false

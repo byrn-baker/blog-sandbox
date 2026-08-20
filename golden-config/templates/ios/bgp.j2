@@ -21,6 +21,7 @@ router bgp {{ bgp.autonomous_system.asn }}
  neighbor {{ pg.name }} remote-as {{ pg.autonomous_system.asn }}
 {% endif %}
  neighbor {{ pg.name }} update-source Loopback0
+ neighbor {{ pg.name }} send-community extended
 {% if config_context.bfd is defined %}
  neighbor {{ pg.name }} fall-over bfd
 {% endif %}
@@ -72,7 +73,6 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% if remote.ep %}
 {% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
   neighbor {{ peer_ip }} activate
-  neighbor {{ peer_ip }} send-community extended
 {% if 'RR' in hostname or 'Route-Reflector' in role.name %}
   neighbor {{ peer_ip }} route-reflector-client
 {% endif %}
@@ -94,7 +94,6 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% if remote.ep %}
 {% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
   neighbor {{ peer_ip }} activate
-  neighbor {{ peer_ip }} send-community extended
 {% if 'RR' in hostname or 'Route-Reflector' in role.name %}
   neighbor {{ peer_ip }} route-reflector-client
 {% endif %}
