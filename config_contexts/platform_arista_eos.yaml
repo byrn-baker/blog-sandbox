@@ -25,5 +25,5 @@ _metadata:
     - name: "arista_eos"
 netmiko_kwargs:
   error_pattern: "^% "
-  read_timeout: 90
+  read_timeout: 180
   cmd_verify: false
