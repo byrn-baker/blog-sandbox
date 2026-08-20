@@ -134,6 +134,7 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {% endfor %}
 {% endfor %}
+{% set global_ipv4_peers = namespace(list=[]) %}
 {% for endpoint in bgp.endpoints %}
 {% if not endpoint.peer_group and endpoint.peering and endpoint.peering.endpoints %}
 {% set remote = namespace(ep=none) %}
@@ -159,12 +160,17 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endfor %}
 {% endfor %}
 {% if not found_vrf.yes %}
- address-family ipv4
-  neighbor {{ peer_ip }} activate
- exit-address-family
-!
+{% set global_ipv4_peers.list = global_ipv4_peers.list + [peer_ip] %}
 {% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
+{% if global_ipv4_peers.list %}
+ address-family ipv4
+{% for peer_ip in global_ipv4_peers.list %}
+  neighbor {{ peer_ip }} activate
+{% endfor %}
+ exit-address-family
+!
+{% endif %}
 {% endfor %}
