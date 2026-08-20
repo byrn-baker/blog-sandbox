@@ -25,7 +25,7 @@ interface {{ interface.name }}
  ip address {{ ip_parts[0] }} 255.255.255.0
 {% endif %}
 {% elif addr.ip_version == 6 %}
- ipv6 address {{ addr.address }}
+ ipv6 address {{ addr.address | upper }}
 {% endif %}
 {% endfor %}
 {# ISIS + MPLS on SP core interfaces (non-VRF, non-management, with 10.0.0.x IPs) #}
