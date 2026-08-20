@@ -79,6 +79,33 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {% endif %}
 {% endfor %}
+{# Non-peer-group neighbors in vpnv4 need per-neighbor attributes #}
+{% for endpoint in bgp.endpoints %}
+{% if not endpoint.peer_group and endpoint.peering and endpoint.peering.endpoints %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
+{% endif %}
+{% endfor %}
+{% if remote.ep %}
+{% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
+{% set source_ip = endpoint.source_ip.address.split('/')[0] %}
+{% set in_vrf = namespace(yes=false) %}
+{% for interface in interfaces if interface.vrf %}
+{% for addr in interface.ip_addresses if addr.ip_version == 4 %}
+{% if addr.address.split('/')[0] == source_ip %}
+{% set in_vrf.yes = true %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% if not in_vrf.yes %}
+  neighbor {{ peer_ip }} activate
+  neighbor {{ peer_ip }} send-community extended
+{% endif %}
+{% endif %}
+{% endif %}
+{% endfor %}
  exit-address-family
 !
 {% elif af.afi_safi in ['VPNV6_UNICAST', 'vpnv6_unicast'] %}
@@ -96,6 +123,33 @@ router bgp {{ bgp.autonomous_system.asn }}
   neighbor {{ peer_ip }} activate
 {% if 'RR' in hostname or 'Route-Reflector' in role.name %}
   neighbor {{ peer_ip }} route-reflector-client
+{% endif %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{# Non-peer-group neighbors in vpnv6 need per-neighbor attributes #}
+{% for endpoint in bgp.endpoints %}
+{% if not endpoint.peer_group and endpoint.peering and endpoint.peering.endpoints %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
+{% endif %}
+{% endfor %}
+{% if remote.ep %}
+{% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
+{% set source_ip = endpoint.source_ip.address.split('/')[0] %}
+{% set in_vrf = namespace(yes=false) %}
+{% for interface in interfaces if interface.vrf %}
+{% for addr in interface.ip_addresses if addr.ip_version == 4 %}
+{% if addr.address.split('/')[0] == source_ip %}
+{% set in_vrf.yes = true %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% if not in_vrf.yes %}
+  neighbor {{ peer_ip }} activate
+  neighbor {{ peer_ip }} send-community extended
 {% endif %}
 {% endif %}
 {% endif %}
