@@ -30,6 +30,8 @@ IOS_SCENARIOS = [
     ("cisco_ios_route_reflector.yaml", "cisco_ios"),
     ("cisco_ios_pe_router.yaml", "cisco_ios"),
     ("cisco_ios_ce_router.yaml", "cisco_ios"),
+    ("cisco_ios_p_router.yaml", "cisco_ios"),
+    ("cisco_ios_border_router.yaml", "cisco_ios"),
 ]
 
 EOS_SCENARIOS = [

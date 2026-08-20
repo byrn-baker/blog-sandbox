@@ -1,0 +1,163 @@
+# Mock SoT context for a Border-Router on cisco_ios.
+# Border routers sit at the edge of the SP core. They run ISIS + MPLS like
+# P-Routers, but also participate in iBGP with vpnv4/vpnv6 toward the RRs
+# using the RR-CLIENTS peer-group. No PE-CE peerings, no customer VRFs.
+---
+hostname: BORDER1
+
+config_context:
+  bfd:
+    interval: 500
+    min_rx: 500
+    multiplier: 5
+    echo: false
+  bgp:
+    timers:
+      keepalive: 10
+      hold: 30
+    log_neighbor_changes: true
+    default_ipv4_unicast: false
+  isis:
+    process_name: SP-ISIS
+    metric_style: wide
+    is_type: level-2-only
+    log_adjacency_changes: true
+  mpls:
+    ldp_router_id: Loopback0
+    ldp_sync: true
+    explicit_null: true
+
+role:
+  name: Border-Router
+
+platform:
+  name: cisco_iosxe
+  network_driver: cisco_ios
+
+location:
+  name: SP-Core
+  vlans: []
+
+interfaces:
+  - name: GigabitEthernet1
+    description: "Management - MGMT-VRF"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf:
+      name: MGMT-VRF
+      rd: "65000:999"
+    ip_addresses:
+      - address: "192.168.3.50/24"
+        ip_version: 4
+    tags: []
+  - name: GigabitEthernet2
+    description: "to SP1 GigabitEthernet6"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.0.0.25/31"
+        ip_version: 4
+      - address: "fd10::25/127"
+        ip_version: 6
+    tags: []
+  - name: GigabitEthernet3
+    description: "to SP2 GigabitEthernet6"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.0.0.27/31"
+        ip_version: 4
+      - address: "fd10::27/127"
+        ip_version: 6
+    tags: []
+  - name: Loopback0
+    description: "Router-ID"
+    enabled: true
+    type: VIRTUAL
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.1.0.10/32"
+        ip_version: 4
+      - address: "fd10:0:1::10/128"
+        ip_version: 6
+    tags: []
+
+vrfs:
+  - name: MGMT-VRF
+    rd: "65000:999"
+    import_targets:
+      - name: "65000:999"
+    export_targets:
+      - name: "65000:999"
+
+bgp_routing_instances:
+  - autonomous_system:
+      asn: 65000
+    router_id:
+      address: "10.1.0.10/32"
+    peer_groups:
+      - name: RR-CLIENTS
+        autonomous_system:
+          asn: 65000
+        address_families:
+          - afi_safi: VPNV4_UNICAST
+          - afi_safi: VPNV6_UNICAST
+    endpoints:
+      # iBGP to RR1
+      - peer_group:
+          name: RR-CLIENTS
+        source_ip:
+          address: "10.1.0.10/32"
+        peering:
+          endpoints:
+            - source_ip:
+                address: "10.1.0.1/32"
+              routing_instance:
+                device:
+                  name: RR1
+                autonomous_system:
+                  asn: 65000
+            - source_ip:
+                address: "10.1.0.10/32"
+              routing_instance:
+                device:
+                  name: BORDER1
+                autonomous_system:
+                  asn: 65000
+      # iBGP to RR2
+      - peer_group:
+          name: RR-CLIENTS
+        source_ip:
+          address: "10.1.0.10/32"
+        peering:
+          endpoints:
+            - source_ip:
+                address: "10.1.0.2/32"
+              routing_instance:
+                device:
+                  name: RR2
+                autonomous_system:
+                  asn: 65000
+            - source_ip:
+                address: "10.1.0.10/32"
+              routing_instance:
+                device:
+                  name: BORDER1
+                autonomous_system:
+                  asn: 65000
+
+igp_routing_instances:
+  - name: SP-ISIS
+    protocol: ISIS
+    router_id:
+      address: "10.1.0.10/32"
+    isisconfiguration_set:
+      - name: BORDER1-ISIS
+        system_id: "0000.0010.0001"
+        interface_configurations: []

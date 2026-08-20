@@ -1,0 +1,145 @@
+# Mock SoT context for a P-Router (provider core transit) on cisco_ios.
+# P-Routers run ISIS + MPLS but have NO BGP. They forward labeled traffic
+# between PEs/RRs without participating in the VPN control plane.
+---
+hostname: SP1
+
+config_context:
+  bfd:
+    interval: 500
+    min_rx: 500
+    multiplier: 5
+    echo: false
+  bgp:
+    timers:
+      keepalive: 10
+      hold: 30
+    log_neighbor_changes: true
+    default_ipv4_unicast: false
+  isis:
+    process_name: SP-ISIS
+    metric_style: wide
+    is_type: level-2-only
+    log_adjacency_changes: true
+  mpls:
+    ldp_router_id: Loopback0
+    ldp_sync: true
+    explicit_null: true
+
+role:
+  name: P-Router
+
+platform:
+  name: cisco_iosxe
+  network_driver: cisco_ios
+
+location:
+  name: SP-Core
+  vlans: []
+
+interfaces:
+  - name: GigabitEthernet1
+    description: "Management - MGMT-VRF"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf:
+      name: MGMT-VRF
+      rd: "65000:999"
+    ip_addresses:
+      - address: "192.168.3.53/24"
+        ip_version: 4
+    tags: []
+  - name: GigabitEthernet2
+    description: "to SP2 GigabitEthernet2"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.0.0.0/31"
+        ip_version: 4
+      - address: "fd10::/127"
+        ip_version: 6
+    tags: []
+  - name: GigabitEthernet3
+    description: "to SP3 GigabitEthernet3"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.0.0.6/31"
+        ip_version: 4
+      - address: "fd10::6/127"
+        ip_version: 6
+    tags: []
+  - name: GigabitEthernet4
+    description: "to SPE3 GigabitEthernet2"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.0.0.16/31"
+        ip_version: 4
+      - address: "fd10::16/127"
+        ip_version: 6
+    tags: []
+  - name: GigabitEthernet5
+    description: "to RR1 GigabitEthernet2"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.0.0.20/31"
+        ip_version: 4
+      - address: "fd10::20/127"
+        ip_version: 6
+    tags: []
+  - name: GigabitEthernet6
+    description: "to BORDER1 GigabitEthernet2"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.0.0.24/31"
+        ip_version: 4
+      - address: "fd10::24/127"
+        ip_version: 6
+    tags: []
+  - name: Loopback0
+    description: "Router-ID"
+    enabled: true
+    type: VIRTUAL
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.1.0.3/32"
+        ip_version: 4
+      - address: "fd10:0:1::3/128"
+        ip_version: 6
+    tags: []
+
+vrfs:
+  - name: MGMT-VRF
+    rd: "65000:999"
+    import_targets:
+      - name: "65000:999"
+    export_targets:
+      - name: "65000:999"
+
+# P-Routers have no BGP routing instances (pure MPLS transit)
+bgp_routing_instances: []
+
+igp_routing_instances:
+  - name: SP-ISIS
+    protocol: ISIS
+    router_id:
+      address: "10.1.0.3/32"
+    isisconfiguration_set:
+      - name: SP1-ISIS
+        system_id: "0000.0003.0001"
+        interface_configurations: []
