@@ -21,7 +21,6 @@ router bgp {{ bgp.autonomous_system.asn }}
  neighbor {{ pg.name }} remote-as {{ pg.autonomous_system.asn }}
 {% endif %}
  neighbor {{ pg.name }} update-source Loopback0
- neighbor {{ pg.name }} send-community extended
 {% if config_context.bfd is defined %}
  neighbor {{ pg.name }} fall-over bfd
 {% endif %}
@@ -62,23 +61,11 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% for af in pg.address_families %}
 {% if af.afi_safi in ['VPNV4_UNICAST', 'vpnv4_unicast'] %}
  address-family vpnv4
-{% for endpoint in bgp.endpoints %}
-{% if endpoint.peer_group and endpoint.peer_group.name == pg.name and endpoint.peering %}
-{% set remote = namespace(ep=none) %}
-{% for ep in endpoint.peering.endpoints %}
-{% if ep.source_ip.address != endpoint.source_ip.address %}
-{% set remote.ep = ep %}
-{% endif %}
-{% endfor %}
-{% if remote.ep %}
-{% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
-  neighbor {{ peer_ip }} activate
+  neighbor {{ pg.name }} activate
+  neighbor {{ pg.name }} send-community extended
 {% if 'RR' in hostname or 'Route-Reflector' in role.name %}
-  neighbor {{ peer_ip }} route-reflector-client
+  neighbor {{ pg.name }} route-reflector-client
 {% endif %}
-{% endif %}
-{% endif %}
-{% endfor %}
 {# Non-peer-group neighbors in vpnv4 need per-neighbor attributes #}
 {% for endpoint in bgp.endpoints %}
 {% if not endpoint.peer_group and endpoint.peering and endpoint.peering.endpoints %}
@@ -110,23 +97,11 @@ router bgp {{ bgp.autonomous_system.asn }}
 !
 {% elif af.afi_safi in ['VPNV6_UNICAST', 'vpnv6_unicast'] %}
  address-family vpnv6
-{% for endpoint in bgp.endpoints %}
-{% if endpoint.peer_group and endpoint.peer_group.name == pg.name and endpoint.peering %}
-{% set remote = namespace(ep=none) %}
-{% for ep in endpoint.peering.endpoints %}
-{% if ep.source_ip.address != endpoint.source_ip.address %}
-{% set remote.ep = ep %}
-{% endif %}
-{% endfor %}
-{% if remote.ep %}
-{% set peer_ip = remote.ep.source_ip.address.split('/')[0] %}
-  neighbor {{ peer_ip }} activate
+  neighbor {{ pg.name }} activate
+  neighbor {{ pg.name }} send-community extended
 {% if 'RR' in hostname or 'Route-Reflector' in role.name %}
-  neighbor {{ peer_ip }} route-reflector-client
+  neighbor {{ pg.name }} route-reflector-client
 {% endif %}
-{% endif %}
-{% endif %}
-{% endfor %}
 {# Non-peer-group neighbors in vpnv6 need per-neighbor attributes #}
 {% for endpoint in bgp.endpoints %}
 {% if not endpoint.peer_group and endpoint.peering and endpoint.peering.endpoints %}
