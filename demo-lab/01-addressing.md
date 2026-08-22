@@ -59,6 +59,19 @@ management network.
 | DCC-Leaf02 | `192.168.3.43/24` | Management1 |
 | DCC-Leaf03 | `192.168.3.44/24` | Management1 |
 
+**Ubuntu (VMs) — Eth0**
+
+| Device | IPv4 | Interface |
+|--------|------|-----------|
+| k3s-m1 | `192.168.3.63` | Eth0 |
+| k3s-w1 | `192.168.3.64` | Eth0 |
+| k3s-w2 | `192.168.3.65` | Eth0 |
+| k3s-m2 | `192.168.3.66` | Eth0 |
+| k3s-w3 | `192.168.3.67` | Eth0 |
+| k3s-w4 | `192.168.3.68` | Eth0 |
+| k3s-m3 | `192.168.3.69` | Eth0 |
+| k3s-w5 | `192.168.3.70` | Eth0 |
+
 ### Management VRF config (IOS-XE, all Cisco routers)
 
 ```ios
@@ -164,12 +177,12 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 
 | Link | IPv4 | IPv6 | A side (intf) | B side (intf) |
 |------|------|------|---------------|---------------|
-| DCA-Spine01 ↔ DCA-Leaf01 | `10.1.1.4/31` | `fd10:1:1::4/127` | Spine01 Eth2 | Leaf01 Eth1 |
-| DCA-Spine01 ↔ DCA-Leaf02 | `10.1.1.6/31` | `fd10:1:1::6/127` | Spine01 Eth3 | Leaf02 Eth1 |
-| DCA-Spine01 ↔ DCA-Leaf03 | `10.1.1.8/31` | `fd10:1:1::8/127` | Spine01 Eth4 | Leaf03 Eth1 |
-| DCA-Spine02 ↔ DCA-Leaf01 | `10.1.1.10/31` | `fd10:1:1::10/127` | Spine02 Eth2 | Leaf01 Eth2 |
-| DCA-Spine02 ↔ DCA-Leaf02 | `10.1.1.12/31` | `fd10:1:1::12/127` | Spine02 Eth3 | Leaf02 Eth2 |
-| DCA-Spine02 ↔ DCA-Leaf03 | `10.1.1.14/31` | `fd10:1:1::14/127` | Spine02 Eth4 | Leaf03 Eth2 |
+| DCA-Spine01 ↔ DCA-Leaf01 | `10.1.1.4/31` | `fd10:1:1::4/127` | Spine01 Eth1 | Leaf01 Eth1 |
+| DCA-Spine01 ↔ DCA-Leaf02 | `10.1.1.6/31` | `fd10:1:1::6/127` | Spine01 Eth2 | Leaf02 Eth1 |
+| DCA-Spine01 ↔ DCA-Leaf03 | `10.1.1.8/31` | `fd10:1:1::8/127` | Spine01 Eth3 | Leaf03 Eth1 |
+| DCA-Spine02 ↔ DCA-Leaf01 | `10.1.1.10/31` | `fd10:1:1::10/127` | Spine02 Eth1 | Leaf01 Eth2 |
+| DCA-Spine02 ↔ DCA-Leaf02 | `10.1.1.12/31` | `fd10:1:1::12/127` | Spine02 Eth2 | Leaf02 Eth2 |
+| DCA-Spine02 ↔ DCA-Leaf03 | `10.1.1.14/31` | `fd10:1:1::14/127` | Spine02 Eth3 | Leaf03 Eth2 |
 
 ### DC-A Loopbacks
 
@@ -202,12 +215,12 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 
 | Link | IPv4 | IPv6 | A side (intf) | B side (intf) |
 |------|------|------|---------------|---------------|
-| DCB-Spine01 ↔ DCB-Leaf01 | `10.1.2.4/31` | `fd10:1:2::4/127` | Spine01 Eth2 | Leaf01 Eth1 |
-| DCB-Spine01 ↔ DCB-Leaf02 | `10.1.2.6/31` | `fd10:1:2::6/127` | Spine01 Eth3 | Leaf02 Eth1 |
-| DCB-Spine01 ↔ DCB-Leaf03 | `10.1.2.8/31` | `fd10:1:2::8/127` | Spine01 Eth4 | Leaf03 Eth1 |
-| DCB-Spine02 ↔ DCB-Leaf01 | `10.1.2.10/31` | `fd10:1:2::10/127` | Spine02 Eth2 | Leaf01 Eth2 |
-| DCB-Spine02 ↔ DCB-Leaf02 | `10.1.2.12/31` | `fd10:1:2::12/127` | Spine02 Eth3 | Leaf02 Eth2 |
-| DCB-Spine02 ↔ DCB-Leaf03 | `10.1.2.14/31` | `fd10:1:2::14/127` | Spine02 Eth4 | Leaf03 Eth2 |
+| DCB-Spine01 ↔ DCB-Leaf01 | `10.1.2.4/31` | `fd10:1:2::4/127` | Spine01 Eth1 | Leaf01 Eth1 |
+| DCB-Spine01 ↔ DCB-Leaf02 | `10.1.2.6/31` | `fd10:1:2::6/127` | Spine01 Eth2 | Leaf02 Eth1 |
+| DCB-Spine01 ↔ DCB-Leaf03 | `10.1.2.8/31` | `fd10:1:2::8/127` | Spine01 Eth3 | Leaf03 Eth1 |
+| DCB-Spine02 ↔ DCB-Leaf01 | `10.1.2.10/31` | `fd10:1:2::10/127` | Spine02 Eth1 | Leaf01 Eth2 |
+| DCB-Spine02 ↔ DCB-Leaf02 | `10.1.2.12/31` | `fd10:1:2::12/127` | Spine02 Eth2 | Leaf02 Eth2 |
+| DCB-Spine02 ↔ DCB-Leaf03 | `10.1.2.14/31` | `fd10:1:2::14/127` | Spine02 Eth3 | Leaf03 Eth2 |
 
 ### DC-B Loopbacks
 
@@ -240,12 +253,12 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 
 | Link | IPv4 | IPv6 | A side (intf) | B side (intf) |
 |------|------|------|---------------|---------------|
-| DCC-Spine01 ↔ DCC-Leaf01 | `10.1.3.4/31` | `fd10:1:3::4/127` | Spine01 Eth2 | Leaf01 Eth1 |
-| DCC-Spine01 ↔ DCC-Leaf02 | `10.1.3.6/31` | `fd10:1:3::6/127` | Spine01 Eth3 | Leaf02 Eth1 |
-| DCC-Spine01 ↔ DCC-Leaf03 | `10.1.3.8/31` | `fd10:1:3::8/127` | Spine01 Eth4 | Leaf03 Eth1 |
-| DCC-Spine02 ↔ DCC-Leaf01 | `10.1.3.10/31` | `fd10:1:3::10/127` | Spine02 Eth2 | Leaf01 Eth2 |
-| DCC-Spine02 ↔ DCC-Leaf02 | `10.1.3.12/31` | `fd10:1:3::12/127` | Spine02 Eth3 | Leaf02 Eth2 |
-| DCC-Spine02 ↔ DCC-Leaf03 | `10.1.3.14/31` | `fd10:1:3::14/127` | Spine02 Eth4 | Leaf03 Eth2 |
+| DCC-Spine01 ↔ DCC-Leaf01 | `10.1.3.4/31` | `fd10:1:3::4/127` | Spine01 Eth1 | Leaf01 Eth1 |
+| DCC-Spine01 ↔ DCC-Leaf02 | `10.1.3.6/31` | `fd10:1:3::6/127` | Spine01 Eth2 | Leaf02 Eth1 |
+| DCC-Spine01 ↔ DCC-Leaf03 | `10.1.3.8/31` | `fd10:1:3::8/127` | Spine01 Eth3 | Leaf03 Eth1 |
+| DCC-Spine02 ↔ DCC-Leaf01 | `10.1.3.10/31` | `fd10:1:3::10/127` | Spine02 Eth1 | Leaf01 Eth2 |
+| DCC-Spine02 ↔ DCC-Leaf02 | `10.1.3.12/31` | `fd10:1:3::12/127` | Spine02 Eth2 | Leaf02 Eth2 |
+| DCC-Spine02 ↔ DCC-Leaf03 | `10.1.3.14/31` | `fd10:1:3::14/127` | Spine02 Eth3 | Leaf03 Eth2 |
 
 ### DC-C Loopbacks
 
