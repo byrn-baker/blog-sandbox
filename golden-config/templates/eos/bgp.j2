@@ -1,18 +1,13 @@
-{% set device_tag_names = tags | default([]) | map(attribute='name') | list %}
-{% set internet_origin = config_context.internet_egress is defined and 'internet-egress-origin' in device_tag_names %}
-{% set internet_services = namespace(vrfs=[]) %}
-{% if internet_origin %}
-{% for interface in interfaces if interface.enabled and interface.vrf %}
-{% set interface_tag_names = interface.tags | default([]) | map(attribute='name') | list %}
-{% if 'internet-service' in interface_tag_names %}
-{% for address in interface.ip_addresses if address.ip_version == 4 and address.parent %}
-{% if interface.vrf.name not in internet_services.vrfs %}
-{% set internet_services.vrfs = internet_services.vrfs + [interface.vrf.name] %}
-{% endif %}
+{# Map each local IP (host portion) to the VRF of the interface that holds it. #}
+{# Used to place BGP endpoints in the correct VRF: global endpoints render in #}
+{# the main instance, VRF endpoints (e.g. the border-leaf SERVERS handoff to #}
+{# the CE) render inside their vrf block. #}
+{% set addr_vrf = namespace(map={}) %}
+{% for interface in interfaces if interface.vrf %}
+{% for address in interface.ip_addresses %}
+{% set _ = addr_vrf.map.update({address.address.split('/')[0]: interface.vrf.name}) %}
 {% endfor %}
-{% endif %}
 {% endfor %}
-{% endif %}
 {% for bgp in bgp_routing_instances %}
 router bgp {{ bgp.autonomous_system.asn }}
    router-id {{ bgp.router_id.address.split('/')[0] }}
@@ -46,7 +41,7 @@ router bgp {{ bgp.autonomous_system.asn }}
 !
 {% endfor %}
 {% for endpoint in bgp.endpoints %}
-{% if endpoint.peering and endpoint.peering.endpoints %}
+{% if endpoint.peering and endpoint.peering.endpoints and endpoint.source_ip.address.split('/')[0] not in addr_vrf.map %}
 {% set remote = namespace(ep=none) %}
 {% for ep in endpoint.peering.endpoints %}
 {% if ep.source_ip.address != endpoint.source_ip.address %}
@@ -93,9 +88,6 @@ router bgp {{ bgp.autonomous_system.asn }}
       neighbor {{ peer_group_name }} activate
 {% endfor %}
       redistribute connected
-{% if internet_origin and internet_services.vrfs %}
-      redistribute static route-map {{ config_context.internet_egress.reverse_route.route_map }}
-{% endif %}
    !
 {% endif %}
 {% if not bgp.peer_groups %}
@@ -119,9 +111,22 @@ router bgp {{ bgp.autonomous_system.asn }}
       route-target import evpn {{ vrf._custom_field_data.vni }}:{{ vrf._custom_field_data.vni }}
       route-target export evpn {{ vrf._custom_field_data.vni }}:{{ vrf._custom_field_data.vni }}
       redistribute connected
-{% if internet_origin and vrf.name in internet_services.vrfs %}
-      redistribute static route-map {{ config_context.internet_egress.default_route.route_map }}
+{# Border-leaf handoff: eBGP to the CE inside this VRF. Only the border leaf #}
+{# has an endpoint whose source IP is in this VRF; other leaves render none. #}
+{% for endpoint in bgp.endpoints if endpoint.peering and endpoint.peering.endpoints and addr_vrf.map.get(endpoint.source_ip.address.split('/')[0]) == vrf.name %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
 {% endif %}
+{% endfor %}
+{% if remote.ep %}
+      neighbor {{ remote.ep.source_ip.address.split('/')[0] }} remote-as {{ remote.ep.autonomous_system.asn }}
+      neighbor {{ remote.ep.source_ip.address.split('/')[0] }} maximum-routes 12000
+      address-family ipv4
+         neighbor {{ remote.ep.source_ip.address.split('/')[0] }} activate
+{% endif %}
+{% endfor %}
    !
 {% endfor %}
 {% endif %}

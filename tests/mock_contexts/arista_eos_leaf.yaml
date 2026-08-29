@@ -1,10 +1,9 @@
 # Mock SoT context for a Leaf switch on arista_eos platform.
 # Exercises EVPN/VXLAN, VRFs, VLANs, prefix lists, route maps, BFD.
 ---
-hostname: DCA-Leaf01
+hostname: DCA-Leaf03
 
-tags:
-  - name: internet-egress-origin
+tags: []
 
 config_context:
   bfd:
@@ -56,15 +55,6 @@ config_context:
         - sequence: 10
           action: permit
           match: "ip address prefix-list PL-LOOPBACKS-EVPN-OVERLAY"
-  internet_egress:
-    default_route:
-      prefix: "0.0.0.0/0"
-      egress_vrf: default
-      prefix_list: PL-SERVERS-DEFAULT-ONLY
-      route_map: RM-SERVERS-STATIC-TO-EVPN
-    reverse_route:
-      prefix_list: PL-SERVERS-TO-UNDERLAY
-      route_map: RM-SERVERS-TO-UNDERLAY
 
 role:
   name: Leaf
@@ -165,8 +155,7 @@ interfaces:
           prefix: "192.168.100.0/24"
       - address: "fd10:a:100::1/64"
         ip_version: 6
-    tags:
-      - name: internet-service
+    tags: []
   - name: Vlan101
     description: STORAGE
     enabled: true
@@ -184,8 +173,23 @@ interfaces:
           prefix: "192.168.101.0/24"
       - address: "fd10:a:101::1/64"
         ip_version: 6
-    tags:
-      - name: internet-service
+    tags: []
+  - name: Ethernet10
+    description: "Border handoff to CE1 (SERVERS)"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf:
+      name: SERVERS
+      rd: "65000:10000"
+      _custom_field_data:
+        vni: 10000
+    ip_addresses:
+      - address: "10.1.1.16/31"
+        ip_version: 4
+        parent:
+          prefix: "10.1.1.16/31"
+    tags: []
 
 vrfs:
   - name: MGMT-VRF
@@ -281,6 +285,30 @@ bgp_routing_instances:
                   name: DCA-Leaf01
                 autonomous_system:
                   asn: 65111
+      - enabled: true
+        peer_group: null
+        source_ip:
+          address: "10.1.1.16/31"
+        peering:
+          endpoints:
+            - enabled: true
+              source_ip:
+                address: "10.1.1.17/31"
+              autonomous_system:
+                asn: 65001
+              routing_instance:
+                device:
+                  name: CE1
+                autonomous_system:
+                  asn: 65001
+            - enabled: true
+              source_ip:
+                address: "10.1.1.16/31"
+              routing_instance:
+                device:
+                  name: DCA-Leaf03
+                autonomous_system:
+                  asn: 65113
 
 # No IGP for EOS DC fabric
 igp_routing_instances: []

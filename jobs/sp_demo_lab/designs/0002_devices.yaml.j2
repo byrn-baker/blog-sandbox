@@ -58,15 +58,8 @@
     role__name: "{{ device.role }}"
     status__name: "Active"
     platform__name: "arista_eos"
-{% if device.name in internet_egress.origin_devices %}
-    tags:
-      - "!get:name": "internet-egress-origin"
-{% endif %}
     vrf_assignments:
       - "!create_or_update:vrf__name": "MGMT-VRF"
-{% if device.vtep is defined %}
-      - "!create_or_update:vrf__name": "SERVERS"
-{% endif %}
     interfaces:
       - "!create_or_update:name": "Management1"
         status__name: "Active"
@@ -98,13 +91,6 @@
         status__name: "Active"
         type: "virtual"
         description: "{{ vlan.name }}"
-{% if vlan.internet_access %}
-        tags:
-          - "!get:name": "internet-service"
-{% else %}
-        tags: []
-{% endif %}
-        vrf__name: "SERVERS"
         ip_addresses:
           - "!create_or_update:address": "{{ vlan.ipv4_gateway }}"
             status__name: "Active"

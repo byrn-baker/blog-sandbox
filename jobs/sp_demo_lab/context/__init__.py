@@ -114,20 +114,6 @@ class SPDemoLabContext(Context):
         ("DCC-Spine02", "Ethernet3", "DCC-Leaf03", "Ethernet2", "10.1.3.14/31", "fd10:1:3::14", "fd10:1:3::15"),
     ]
 
-    # Every leaf carrying SERVERS originates redundant local internet routes.
-    internet_egress = {
-        "origin_devices": [
-            "DCA-Leaf01",
-            "DCA-Leaf02",
-            "DCA-Leaf03",
-            "DCB-Leaf01",
-            "DCB-Leaf02",
-            "DCB-Leaf03",
-            "DCC-Leaf01",
-            "DCC-Leaf02",
-            "DCC-Leaf03",
-        ],
-    }
     internet_edge = {
         "device": "BORDER1",
         "vrf": {
@@ -175,14 +161,6 @@ class SPDemoLabContext(Context):
             "description": "Customer C - DC-C",
             "import_targets": ["65000:300", "65000:900"],
             "export_targets": ["65000:300", "65000:900"],
-        },
-        {
-            "name": "SERVERS",
-            "rd": "65000:10000",
-            "description": "EVPN server and storage services",
-            "vni": 10000,
-            "import_targets": [],
-            "export_targets": [],
         },
     ]
     route_targets = ["65000:100", "65000:200", "65000:300", "65000:900"]

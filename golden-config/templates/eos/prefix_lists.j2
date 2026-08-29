@@ -9,27 +9,3 @@ ip prefix-list {{ pl.name }}
 !
 {% endfor %}
 {% endif %}
-{% set device_tag_names = tags | default([]) | map(attribute='name') | list %}
-{% if config_context.internet_egress is defined and 'internet-egress-origin' in device_tag_names %}
-{% set services = namespace(prefixes=[]) %}
-{% for interface in interfaces if interface.enabled and interface.vrf %}
-{% set interface_tag_names = interface.tags | default([]) | map(attribute='name') | list %}
-{% if 'internet-service' in interface_tag_names %}
-{% for address in interface.ip_addresses if address.ip_version == 4 and address.parent %}
-{% if address.parent.prefix not in services.prefixes %}
-{% set services.prefixes = services.prefixes + [address.parent.prefix] %}
-{% endif %}
-{% endfor %}
-{% endif %}
-{% endfor %}
-{% if services.prefixes %}
-ip prefix-list {{ config_context.internet_egress.reverse_route.prefix_list }}
-{% for prefix in services.prefixes | sort %}
-   seq {{ loop.index * 10 }} permit {{ prefix }}
-{% endfor %}
-!
-ip prefix-list {{ config_context.internet_egress.default_route.prefix_list }}
-   seq 10 permit {{ config_context.internet_egress.default_route.prefix }}
-!
-{% endif %}
-{% endif %}

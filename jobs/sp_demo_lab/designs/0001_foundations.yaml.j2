@@ -34,14 +34,6 @@ roles:
 {% endfor %}
 
 tags:
-  - "!create_or_update:name": "internet-egress-origin"
-    content_types:
-      - "!get:app_label": "dcim"
-        "!get:model": "device"
-  - "!create_or_update:name": "internet-service"
-    content_types:
-      - "!get:app_label": "dcim"
-        "!get:model": "interface"
   - "!create_or_update:name": "nat-source"
     content_types:
       - "!get:app_label": "ipam"
@@ -230,8 +222,6 @@ prefixes:
 {% for location_ref in vlan.location_refs %}
       - "!ref:{{ location_ref }}"
 {% endfor %}
-    vrf_assignments:
-      - "!create_or_update:vrf__name": "SERVERS"
   - "!create_or_update:prefix": "{{ vlan.ipv6_prefix }}"
     status__name: "Active"
     description: "{{ vlan.name }} VLAN {{ vlan.id }} IPv6"
@@ -239,8 +229,6 @@ prefixes:
 {% for location_ref in vlan.location_refs %}
       - "!ref:{{ location_ref }}"
 {% endfor %}
-    vrf_assignments:
-      - "!create_or_update:vrf__name": "SERVERS"
 {% endfor %}
   # IPv6 parent prefixes
 {% for pfx in ipv6_prefixes %}

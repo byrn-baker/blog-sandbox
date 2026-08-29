@@ -74,6 +74,16 @@ interfaces:
       - address: "fd10:1:1::2/127"
         ip_version: 6
     tags: []
+  - name: GigabitEthernet5
+    description: "Border handoff to DCA-Leaf03"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses:
+      - address: "10.1.1.17/31"
+        ip_version: 4
+    tags: []
   - name: Loopback0
     description: "Router-ID"
     enabled: true
@@ -157,6 +167,26 @@ bgp_routing_instances:
                   asn: 65101
             - source_ip:
                 address: "10.1.1.2/31"
+              routing_instance:
+                device:
+                  name: CE1
+                autonomous_system:
+                  asn: 65001
+      # eBGP to border leaf DCA-Leaf03 (SERVERS handoff, non-VRF on CE side)
+      - peer_group: null
+        source_ip:
+          address: "10.1.1.17/31"
+        peering:
+          endpoints:
+            - source_ip:
+                address: "10.1.1.16/31"
+              routing_instance:
+                device:
+                  name: DCA-Leaf03
+                autonomous_system:
+                  asn: 65113
+            - source_ip:
+                address: "10.1.1.17/31"
               routing_instance:
                 device:
                   name: CE1
