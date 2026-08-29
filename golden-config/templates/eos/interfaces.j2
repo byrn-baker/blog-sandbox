@@ -13,7 +13,7 @@ interface {{ interface.name }}
 {% else %}
    no shutdown
 {% endif %}
-{% if interface.name.startswith('Ethernet') and not interface.vrf %}
+{% if interface.name.startswith('Ethernet') and (not interface.vrf or interface.ip_addresses) %}
    mtu 9214
    no switchport
 {% endif %}

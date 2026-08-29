@@ -60,6 +60,9 @@
     platform__name: "arista_eos"
     vrf_assignments:
       - "!create_or_update:vrf__name": "MGMT-VRF"
+{% if device.vtep is defined %}
+      - "!create_or_update:vrf__name": "SERVERS"
+{% endif %}
     interfaces:
       - "!create_or_update:name": "Management1"
         status__name: "Active"
@@ -91,6 +94,9 @@
         status__name: "Active"
         type: "virtual"
         description: "{{ vlan.name }}"
+{% if vlan.vrf is defined %}
+        vrf__name: "{{ vlan.vrf }}"
+{% endif %}
         ip_addresses:
           - "!create_or_update:address": "{{ vlan.ipv4_gateway }}"
             status__name: "Active"

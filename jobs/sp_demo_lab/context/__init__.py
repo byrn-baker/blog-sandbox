@@ -73,10 +73,13 @@ class SPDemoLabContext(Context):
     ]
 
     # PE-CE links — (a_device, a_intf, b_device, b_intf, prefix4, vrf, v6_a, v6_b)
+    # All three sites land in CUST-A: the border-leaf design carries every DC's
+    # server routes to a single customer VRF so one BORDER1 internet edge and
+    # NAT policy serves them all. SPE3 uses Gi5 to match SPE1/SPE2.
     pe_ce_links = [
         ("SPE1", "GigabitEthernet5", "CE1", "GigabitEthernet2", "172.16.1.0/31", "CUST-A", "fd10:c:1::", "fd10:c:1::1"),
-        ("SPE2", "GigabitEthernet5", "CE2", "GigabitEthernet2", "172.16.2.0/31", "CUST-B", "fd10:c:2::", "fd10:c:2::1"),
-        ("SPE3", "GigabitEthernet4", "CE3", "GigabitEthernet2", "172.16.3.0/31", "CUST-C", "fd10:c:3::", "fd10:c:3::1"),
+        ("SPE2", "GigabitEthernet5", "CE2", "GigabitEthernet2", "172.16.2.0/31", "CUST-A", "fd10:c:2::", "fd10:c:2::1"),
+        ("SPE3", "GigabitEthernet5", "CE3", "GigabitEthernet2", "172.16.3.0/31", "CUST-A", "fd10:c:3::", "fd10:c:3::1"),
     ]
 
     # DC fabric links — (a_device, a_intf, b_device, b_intf, prefix4, v6_a, v6_b)
@@ -114,13 +117,17 @@ class SPDemoLabContext(Context):
         ("DCC-Spine02", "Ethernet3", "DCC-Leaf03", "Ethernet2", "10.1.3.14/31", "fd10:1:3::14", "fd10:1:3::15"),
     ]
 
+    # BORDER1 internet edge. INET imports the customer routes (65000:100) so
+    # it can NAT them, plus the leak RT it owns; it exports only the leak RT
+    # (65000:950), which CUST-A imports to pull the default toward NAT.
     internet_edge = {
         "device": "BORDER1",
         "vrf": {
             "name": "INET",
             "rd": "65000:900",
             "description": "Internet edge and NAT routing table",
-            "route_target": "65000:900",
+            "import_targets": ["65000:100", "65000:950"],
+            "export_targets": ["65000:950"],
         },
         "inside_interfaces": ["GigabitEthernet2", "GigabitEthernet3"],
         "outside_interface": {
@@ -133,6 +140,13 @@ class SPDemoLabContext(Context):
 
     # VRFs and route targets. RT 65000:900 carries the shared DCI underlay
     # between the otherwise distinct site VRFs.
+    #
+    # SERVERS is the DC fabric tenant VRF. It lives on every leaf as an
+    # EVPN type-5 L3 VRF (L3 VNI 10000). Its routes leave the fabric only at
+    # the border leaf, which hands them to its CE over an eBGP session inside
+    # SERVERS. Intra-fabric reachability rides the EVPN route target the
+    # template derives from the VNI, so SERVERS carries no MPLS import/export
+    # targets of its own.
     vrfs = [
         {
             "name": "MGMT-VRF",
@@ -142,36 +156,35 @@ class SPDemoLabContext(Context):
             "export_targets": [],
         },
         {
+            "name": "SERVERS",
+            "rd": "65000:10000",
+            "vni": 10000,
+            "description": "DC fabric server tenant (EVPN type-5)",
+            "import_targets": [],
+            "export_targets": [],
+        },
+        {
             "name": "CUST-A",
             "rd": "65000:100",
-            "description": "Customer A - DC-A",
-            "import_targets": ["65000:100", "65000:900"],
+            "description": "Customer A - all DCs",
+            # Imports its own routes, the shared DCI RT, and the internet
+            # leak RT (65000:950) that INET exports. Exports its own routes
+            # and the DCI RT so the servers reach BORDER1's NAT edge.
+            "import_targets": ["65000:100", "65000:900", "65000:950"],
             "export_targets": ["65000:100", "65000:900"],
         },
-        {
-            "name": "CUST-B",
-            "rd": "65000:200",
-            "description": "Customer B - DC-B",
-            "import_targets": ["65000:200", "65000:900"],
-            "export_targets": ["65000:200", "65000:900"],
-        },
-        {
-            "name": "CUST-C",
-            "rd": "65000:300",
-            "description": "Customer C - DC-C",
-            "import_targets": ["65000:300", "65000:900"],
-            "export_targets": ["65000:300", "65000:900"],
-        },
     ]
-    route_targets = ["65000:100", "65000:200", "65000:300", "65000:900"]
+    route_targets = ["65000:100", "65000:900", "65000:950"]
 
     # VLAN 100 is one EVPN segment stretched across all sites. Storage stays
-    # site-local until its DCI behavior is explicitly defined.
+    # site-local until its DCI behavior is explicitly defined. Every service
+    # SVI lives in the SERVERS VRF so the fabric carries them as EVPN type-5.
     service_vlans = [
         {
             "id": 100,
             "name": "SERVER_K3S",
             "vni": 10100,
+            "vrf": "SERVERS",
             "internet_access": True,
             "locations": ["DC-A", "DC-B", "DC-C"],
             "location_refs": ["dc_a", "dc_b", "dc_c"],
@@ -184,6 +197,7 @@ class SPDemoLabContext(Context):
             "id": 101,
             "name": "STORAGE",
             "vni": 10101,
+            "vrf": "SERVERS",
             "internet_access": True,
             "locations": ["DC-A"],
             "location_refs": ["dc_a"],
@@ -196,6 +210,7 @@ class SPDemoLabContext(Context):
             "id": 201,
             "name": "STORAGE",
             "vni": 10201,
+            "vrf": "SERVERS",
             "internet_access": True,
             "locations": ["DC-B"],
             "location_refs": ["dc_b"],
@@ -208,6 +223,7 @@ class SPDemoLabContext(Context):
             "id": 301,
             "name": "STORAGE",
             "vni": 10301,
+            "vrf": "SERVERS",
             "internet_access": True,
             "locations": ["DC-C"],
             "location_refs": ["dc_c"],
@@ -216,6 +232,28 @@ class SPDemoLabContext(Context):
             "ipv6_prefix": "fd10:a:301::/64",
             "ipv6_gateway": "fd10:a:301::1/64",
         },
+    ]
+
+    # Border leaves: one per site (DCx-Leaf03). Each has a routed link to its
+    # CE inside the SERVERS VRF and an eBGP handoff that carries the fabric
+    # server routes out to the CE, which lands them in CUST-A at the PE.
+    border_leaves = ["DCA-Leaf03", "DCB-Leaf03", "DCC-Leaf03"]
+
+    # Border links — (leaf, leaf_intf, ce, ce_intf, prefix4, leaf_vrf).
+    # Leaf side (.16) sits in SERVERS; the CE side (.17) is global so the CE
+    # can advertise the learned routes into its existing PE-CE session.
+    border_links = [
+        ("DCA-Leaf03", "Ethernet10", "CE1", "GigabitEthernet5", "10.1.1.16/31", "SERVERS"),
+        ("DCB-Leaf03", "Ethernet10", "CE2", "GigabitEthernet5", "10.1.2.16/31", "SERVERS"),
+        ("DCC-Leaf03", "Ethernet10", "CE3", "GigabitEthernet5", "10.1.3.16/31", "SERVERS"),
+    ]
+
+    # Border eBGP handoff — (leaf, leaf_ip, leaf_asn, ce, ce_ip, ce_asn).
+    # The leaf peers from its SERVERS interface; the CE peers globally.
+    border_ebgp_peerings = [
+        {"leaf": "DCA-Leaf03", "leaf_ip": "10.1.1.16", "leaf_asn": 65113, "ce": "CE1", "ce_ip": "10.1.1.17", "ce_asn": 65001, "vrf": "SERVERS"},
+        {"leaf": "DCB-Leaf03", "leaf_ip": "10.1.2.16", "leaf_asn": 65213, "ce": "CE2", "ce_ip": "10.1.2.17", "ce_asn": 65002, "vrf": "SERVERS"},
+        {"leaf": "DCC-Leaf03", "leaf_ip": "10.1.3.16", "leaf_asn": 65313, "ce": "CE3", "ce_ip": "10.1.3.17", "ce_asn": 65003, "vrf": "SERVERS"},
     ]
 
     # --- IPv6 Prefixes (parent containers for /127 and /128 assignments) ---
@@ -228,9 +266,9 @@ class SPDemoLabContext(Context):
         {"prefix": "fd10:2:1::/48", "description": "DC-A Loopbacks (IPv6)"},
         {"prefix": "fd10:2:2::/48", "description": "DC-B Loopbacks (IPv6)"},
         {"prefix": "fd10:2:3::/48", "description": "DC-C Loopbacks (IPv6)"},
-        {"prefix": "fd10:c:1::/48", "description": "CUST-A PE-CE (IPv6)"},
-        {"prefix": "fd10:c:2::/48", "description": "CUST-B PE-CE (IPv6)"},
-        {"prefix": "fd10:c:3::/48", "description": "CUST-C PE-CE (IPv6)"},
+        {"prefix": "fd10:c:1::/48", "description": "CUST-A PE-CE DC-A (IPv6)"},
+        {"prefix": "fd10:c:2::/48", "description": "CUST-A PE-CE DC-B (IPv6)"},
+        {"prefix": "fd10:c:3::/48", "description": "CUST-A PE-CE DC-C (IPv6)"},
     ]
 
     # --- Routing context (ISIS + BGP) ---
@@ -286,11 +324,11 @@ class SPDemoLabContext(Context):
         {"a_device": "BORDER1", "a_ip": "10.1.0.10", "b_device": "RR2", "b_ip": "10.1.0.2"},
     ]
 
-    # eBGP Peerings: PE ↔ CE (IPv4 unicast in VRF)
+    # eBGP Peerings: PE ↔ CE (IPv4 unicast in VRF). All three land in CUST-A.
     ebgp_peerings = [
         {"pe": "SPE1", "pe_ip": "172.16.1.0", "pe_asn": 65000, "ce": "CE1", "ce_ip": "172.16.1.1", "ce_asn": 65001, "vrf": "CUST-A"},
-        {"pe": "SPE2", "pe_ip": "172.16.2.0", "pe_asn": 65000, "ce": "CE2", "ce_ip": "172.16.2.1", "ce_asn": 65002, "vrf": "CUST-B"},
-        {"pe": "SPE3", "pe_ip": "172.16.3.0", "pe_asn": 65000, "ce": "CE3", "ce_ip": "172.16.3.1", "ce_asn": 65003, "vrf": "CUST-C"},
+        {"pe": "SPE2", "pe_ip": "172.16.2.0", "pe_asn": 65000, "ce": "CE2", "ce_ip": "172.16.2.1", "ce_asn": 65002, "vrf": "CUST-A"},
+        {"pe": "SPE3", "pe_ip": "172.16.3.0", "pe_asn": 65000, "ce": "CE3", "ce_ip": "172.16.3.1", "ce_asn": 65003, "vrf": "CUST-A"},
     ]
 
     # --- DC Fabric BGP ---

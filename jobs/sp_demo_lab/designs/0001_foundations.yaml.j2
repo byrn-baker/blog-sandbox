@@ -127,9 +127,13 @@ vrfs:
     description: "{{ internet_edge.vrf.description }}"
     status__name: "Active"
     import_targets:
-      - "!get:name": "{{ internet_edge.vrf.route_target }}"
+{% for route_target in internet_edge.vrf.import_targets %}
+      - "!get:name": "{{ route_target }}"
+{% endfor %}
     export_targets:
-      - "!get:name": "{{ internet_edge.vrf.route_target }}"
+{% for route_target in internet_edge.vrf.export_targets %}
+      - "!get:name": "{{ route_target }}"
+{% endfor %}
 
 vlans:
 {% for vlan in service_vlans %}
@@ -199,14 +203,14 @@ prefixes:
       - "!create_or_update:vrf__name": "CUST-A"
   - "!create_or_update:prefix": "172.16.2.0/24"
     status__name: "Active"
-    description: "CUST-B PE-CE"
+    description: "CUST-A PE-CE (DC-B)"
     vrf_assignments:
-      - "!create_or_update:vrf__name": "CUST-B"
+      - "!create_or_update:vrf__name": "CUST-A"
   - "!create_or_update:prefix": "172.16.3.0/24"
     status__name: "Active"
-    description: "CUST-C PE-CE"
+    description: "CUST-A PE-CE (DC-C)"
     vrf_assignments:
-      - "!create_or_update:vrf__name": "CUST-C"
+      - "!create_or_update:vrf__name": "CUST-A"
   # Server and storage service prefixes
 {% for vlan in service_vlans %}
   - "!create_or_update:prefix": "{{ vlan.ipv4_prefix }}"

@@ -149,13 +149,71 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 
 ---
 
-## PE-CE Links (inside VRFs)
+## PE-CE Links (inside VRF CUST-A)
 
-| Link | IPv4 | IPv6 | A side (intf) | B side (intf) |
-|------|------|------|---------------|---------------|
-| SPE1 ↔ CE1 | `172.16.1.0/31` | `fd10:c:1::/127` | SPE1 Gi5 | CE1 Gi2 |
-| SPE2 ↔ CE2 | `172.16.2.0/31` | `fd10:c:2::/127` | SPE2 Gi5 | CE2 Gi2 |
-| SPE3 ↔ CE3 | `172.16.3.0/31` | `fd10:c:3::/127` | SPE3 Gi4 | CE3 Gi2 |
+All three sites land in a single customer VRF, `CUST-A`. The border-leaf
+design carries every DC's server routes to one customer VRF at the provider
+edge, so one `BORDER1` internet edge and one NAT policy serve all three.
+
+| Link | IPv4 | IPv6 | A side (intf) | B side (intf) | VRF |
+|------|------|------|---------------|---------------|-----|
+| SPE1 ↔ CE1 | `172.16.1.0/31` | `fd10:c:1::/127` | SPE1 Gi5 | CE1 Gi2 | CUST-A |
+| SPE2 ↔ CE2 | `172.16.2.0/31` | `fd10:c:2::/127` | SPE2 Gi5 | CE2 Gi2 | CUST-A |
+| SPE3 ↔ CE3 | `172.16.3.0/31` | `fd10:c:3::/127` | SPE3 Gi5 | CE3 Gi2 | CUST-A |
+
+---
+
+## Border Links (border leaf → CE, inside VRF SERVERS)
+
+Each site's `DCx-Leaf03` is the border leaf. A routed link runs from its
+`Ethernet10` (in the `SERVERS` VRF) to the CE's `GigabitEthernet5` (global).
+The leaf runs eBGP to the CE inside `SERVERS` and redistributes the fabric's
+connected server routes into it. The CE re-advertises them into its existing
+PE-CE session, landing them in `CUST-A`.
+
+| Link | IPv4 | A side (intf, VRF) | B side (intf, VRF) |
+|------|------|--------------------|--------------------|
+| DCA-Leaf03 ↔ CE1 | `10.1.1.16/31` | DCA-Leaf03 Eth10 (SERVERS) | CE1 Gi5 (global) |
+| DCB-Leaf03 ↔ CE2 | `10.1.2.16/31` | DCB-Leaf03 Eth10 (SERVERS) | CE2 Gi5 (global) |
+| DCC-Leaf03 ↔ CE3 | `10.1.3.16/31` | DCC-Leaf03 Eth10 (SERVERS) | CE3 Gi5 (global) |
+
+The leaf side takes the `.16` address; the CE side takes `.17`.
+
+### Border handoff eBGP
+
+| Border leaf (SERVERS) | ASN | CE (global) | ASN |
+|-----------------------|-----|-------------|-----|
+| DCA-Leaf03 `10.1.1.16` | 65113 | CE1 `10.1.1.17` | 65001 |
+| DCB-Leaf03 `10.1.2.16` | 65213 | CE2 `10.1.2.17` | 65002 |
+| DCC-Leaf03 `10.1.3.16` | 65313 | CE3 `10.1.3.17` | 65003 |
+
+---
+
+## VRFs and Route Targets
+
+| VRF | RD | Import RTs | Export RTs | Where |
+|-----|-----|-----------|-----------|-------|
+| CUST-A | `65000:100` | `65000:100`, `65000:900`, `65000:950` | `65000:100`, `65000:900` | SPE1, SPE2, SPE3 |
+| INET | `65000:900` | `65000:100`, `65000:950` | `65000:950` | BORDER1 |
+| SERVERS | `65000:10000` | (none) | (none) | all 9 leaves (L3 VNI 10000) |
+| MGMT-VRF | `65000:999` | (none) | (none) | all routers/switches |
+
+### How the internet leak works
+
+`CUST-A` and `INET` exchange routes through route target `65000:950`, not a
+static route:
+
+- `INET` exports `65000:950`. Its default route (`0.0.0.0/0`, originated at
+  `BORDER1`) carries that RT.
+- `CUST-A` imports `65000:950`, so every PE pulls the default toward
+  `BORDER1`. Servers follow it out.
+- `INET` imports `65000:100`, so `BORDER1` learns the customer server
+  subnets and can NAT them on the way out. `65000:900` is the shared DCI RT
+  that ties the customer edge and the internet edge into the same core.
+
+`SERVERS` carries no MPLS import/export targets. Inside the fabric it moves as
+EVPN type-5 on the route target the switches derive from its VNI (`10000`). It
+only leaves the fabric at the border leaf, over the eBGP handoff above.
 
 ---
 
@@ -273,7 +331,10 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 
 ---
 
-## DC Server/Host Subnets (on Leafs — VXLAN VNIs)
+## DC Server/Host Subnets (on Leafs — VXLAN VNIs, VRF SERVERS)
+
+Every server SVI lives in the `SERVERS` VRF and rides the fabric as EVPN
+type-5. The anycast gateways below are the `SERVERS` SVIs on each leaf.
 
 | DC | VLAN | Subnet (IPv4) | Subnet (IPv6) | VNI | Purpose |
 |----|------|---------------|---------------|-----|---------|
@@ -308,12 +369,12 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 | DC-A Spines | 65101 | eBGP underlay (DC-A fabric) |
 | DC-A Leaf01 | 65111 | eBGP underlay |
 | DC-A Leaf02 | 65112 | eBGP underlay |
-| DC-A Leaf03 | 65113 | eBGP underlay |
+| DC-A Leaf03 | 65113 | eBGP underlay + border handoff to CE1 |
 | DC-B Spines | 65201 | eBGP underlay (DC-B fabric) |
 | DC-B Leaf01 | 65211 | eBGP underlay |
 | DC-B Leaf02 | 65212 | eBGP underlay |
-| DC-B Leaf03 | 65213 | eBGP underlay |
+| DC-B Leaf03 | 65213 | eBGP underlay + border handoff to CE2 |
 | DC-C Spines | 65301 | eBGP underlay (DC-C fabric) |
 | DC-C Leaf01 | 65311 | eBGP underlay |
 | DC-C Leaf02 | 65312 | eBGP underlay |
-| DC-C Leaf03 | 65313 | eBGP underlay |
+| DC-C Leaf03 | 65313 | eBGP underlay + border handoff to CE3 |

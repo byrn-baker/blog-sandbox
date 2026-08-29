@@ -210,6 +210,23 @@ bgp_peerings:
         enabled: true
 {% endfor %}
 
+# --- Border handoff eBGP (border leaf SERVERS <-> CE global) ---
+# The leaf peers from its SERVERS interface (.16); the EOS template renders
+# it under `vrf SERVERS` because the source IP sits on an interface in that
+# VRF. The CE peers globally (.17) and re-advertises into its PE-CE session.
+{% for peer in border_ebgp_peerings %}
+  - status__name: "Active"
+    endpoints:
+      - routing_instance__device__name: "{{ peer.leaf }}"
+        source_ip__host: "{{ peer.leaf_ip }}"
+        autonomous_system__asn: {{ peer.leaf_asn }}
+        enabled: true
+      - routing_instance__device__name: "{{ peer.ce }}"
+        source_ip__host: "{{ peer.ce_ip }}"
+        autonomous_system__asn: {{ peer.ce_asn }}
+        enabled: true
+{% endfor %}
+
 # =============================================================================
 # DC Fabric BGP (Arista eBGP underlay + EVPN overlay)
 # =============================================================================
