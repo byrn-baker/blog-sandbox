@@ -190,6 +190,14 @@ interfaces:
         parent:
           prefix: "10.1.1.16/31"
     tags: []
+  - name: Ethernet3
+    description: ""
+    enabled: false
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses: []
+    tags: []
 
 vrfs:
   - name: MGMT-VRF

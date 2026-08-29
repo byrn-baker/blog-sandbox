@@ -17,6 +17,7 @@
     interfaces:
       - "!update:name": "{{ b_intf }}"
         status__name: "Active"
+        enabled: true
         description: "to {{ a_dev }} {{ a_intf }}"
         "!ref": "{{ b_dev }}_{{ b_intf | replace(' ', '_') }}"
         ip_addresses:
@@ -28,6 +29,7 @@
     interfaces:
       - "!update:name": "{{ a_intf }}"
         status__name: "Active"
+        enabled: true
         description: "to {{ b_dev }} {{ b_intf }}"
         "!ref": "{{ a_dev }}_{{ a_intf | replace(' ', '_') }}"
         "!connect_cable":
@@ -56,6 +58,7 @@ devices:
     interfaces:
       - "!update:name": "{{ link[3] }}"
         status__name: "Active"
+        enabled: true
         description: "PE-CE to {{ link[0] }} {{ link[1] }}"
         "!ref": "{{ link[2] }}_{{ link[3] | replace(' ', '_') }}"
         ip_addresses:
@@ -69,6 +72,7 @@ devices:
     interfaces:
       - "!update:name": "{{ link[1] }}"
         status__name: "Active"
+        enabled: true
         description: "PE-CE to {{ link[2] }} {{ link[3] }} (VRF {{ link[5] }})"
         vrf__name: "{{ link[5] }}"
         "!ref": "{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"
@@ -93,6 +97,7 @@ devices:
     interfaces:
       - "!update:name": "{{ link[3] }}"
         status__name: "Active"
+        enabled: true
         description: "Border handoff to {{ link[0] }} {{ link[1] }}"
         "!ref": "{{ link[2] }}_{{ link[3] | replace(' ', '_') }}"
         ip_addresses:
@@ -102,6 +107,7 @@ devices:
     interfaces:
       - "!update:name": "{{ link[1] }}"
         status__name: "Active"
+        enabled: true
         description: "Border handoff to {{ link[2] }} ({{ link[5] }})"
         vrf__name: "{{ link[5] }}"
         "!ref": "{{ link[0] }}_{{ link[1] | replace(' ', '_') }}"

@@ -1,6 +1,9 @@
 {# Interface configuration (AVD-aligned) #}
+{# Render an interface when it carries config, or when it is a physical    #}
+{# Ethernet port that exists on the box. Unused physical ports render as a  #}
+{# plain `shutdown` so compliance sees them present, not extra.            #}
 {% for interface in interfaces %}
-{% if interface.ip_addresses or interface.description %}
+{% if interface.ip_addresses or interface.description or interface.name.startswith('Ethernet') %}
 interface {{ interface.name }}
 {% if interface.description %}
    description {{ interface.description }}
@@ -10,10 +13,8 @@ interface {{ interface.name }}
 {% endif %}
 {% if not interface.enabled %}
    shutdown
-{% else %}
-   no shutdown
 {% endif %}
-{% if interface.name.startswith('Ethernet') and (not interface.vrf or interface.ip_addresses) %}
+{% if interface.name.startswith('Ethernet') and interface.ip_addresses %}
    mtu 9214
    no switchport
 {% endif %}

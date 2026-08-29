@@ -4,7 +4,7 @@
 {% set interface_role_name = interface_role.name if interface_role else '' %}
 {% set is_nat_inside = interface_role_name == 'NAT Inside' %}
 {% set is_nat_outside = interface_role_name == 'NAT Outside' %}
-{% if interface.ip_addresses or interface.description or is_nat_inside or is_nat_outside %}
+{% if interface.ip_addresses or interface.description or is_nat_inside or is_nat_outside or interface.name.startswith('GigabitEthernet') %}
 interface {{ interface.name }}
 {% if interface.description %}
  description {{ interface.description }}
@@ -12,10 +12,12 @@ interface {{ interface.name }}
 {% if interface.vrf %}
  vrf forwarding {{ interface.vrf.name }}
 {% endif %}
+{% set has_ipv4 = interface.ip_addresses | selectattr('ip_version', 'equalto', 4) | list | length > 0 %}
+{% if not interface.enabled and not has_ipv4 and interface.name.startswith('GigabitEthernet') %}
+ no ip address
+{% endif %}
 {% if not interface.enabled %}
  shutdown
-{% else %}
- no shutdown
 {% endif %}
 {% for addr in interface.ip_addresses %}
 {% if addr.ip_version == 4 %}

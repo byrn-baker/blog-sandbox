@@ -96,6 +96,14 @@ interfaces:
       - address: "fd10:2:1::1/128"
         ip_version: 6
     tags: []
+  - name: GigabitEthernet6
+    description: ""
+    enabled: false
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses: []
+    tags: []
 
 vrfs:
   - name: MGMT-VRF

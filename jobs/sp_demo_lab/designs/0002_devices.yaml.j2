@@ -32,7 +32,7 @@
             status__name: "Active"
           - "!create_or_update:address": "{{ device.loopback6 }}/128"
             status__name: "Active"
-{% for i in range(2, 7) %}
+{% for i in range(2, 9) %}
 {% set interface_name = "GigabitEthernet" ~ i %}
       - "!create_or_update:name": "{{ interface_name }}"
 {% if device.name == internet_edge.device and interface_name in internet_edge.inside_interfaces %}
@@ -46,6 +46,7 @@
           ip_address_mode: "{{ internet_edge.outside_interface.address_mode }}"
 {% else %}
         status__name: "Planned"
+        enabled: false
 {% endif %}
         type: "1000base-t"
 {% endfor %}
@@ -107,6 +108,7 @@
 {% for i in range(1, 11) %}
       - "!create_or_update:name": "Ethernet{{ i }}"
         status__name: "Planned"
+        enabled: false
         type: "1000base-t"
 {% endfor %}
 {%- endmacro %}
