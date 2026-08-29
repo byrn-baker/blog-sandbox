@@ -103,14 +103,17 @@ Under **Provides**, select:
 
 - Config Context Schemas
 - Config Contexts
+- GraphQL Queries
+- Jobs
 - Golden Config Properties
 - Backup Configs
 - Intended Configs
 - Jinja Templates
 
-The bootstrap job stores the canonical query embedded in
-`demo-lab/gc_bootstrap/__init__.py`. Run that job after changing the query. It
-isn't imported from a `graphql_queries/` directory.
+The saved query is imported from
+`graphql_queries/sp_demo_lab_golden_config.gql`. Repository sync creates or
+updates that object. The bootstrap job only links the imported query to Golden
+Config settings and fails if the query has not been synced.
 
 Click **Create & Sync**. All checked items should show green checkmarks.
 
@@ -126,7 +129,7 @@ Navigate to **Golden Config > Settings** and edit the default entry:
 | Intended | Path | `golden-config/intended-configs/{{obj.location.name\|slugify}}/{{obj.name}}.cfg` |
 | Templates | Repository | `sp_demo_lab_golden_config` |
 | Templates | Path | `golden-config/templates/{{obj.platform.network_driver}}.j2` |
-| SoT Agg | Query | `sp_demo_lab_golden_config` (created by the bootstrap job) |
+| SoT Agg | Query | `sp_demo_lab_golden_config` (imported from `graphql_queries/`) |
 
 ### 7. Enable Golden Config Jobs
 
@@ -149,7 +152,7 @@ organized by location, and are pushed back to the GitHub repo automatically.
 | Jinja Templates | `golden-config/templates/` | Selected by platform network_driver |
 | Backup Configs | `golden-config/backup-configs/` | Written by backup job, pushed to git |
 | Intended Configs | `golden-config/intended-configs/` | Written by generate job, pushed to git |
-| GraphQL query | `demo-lab/gc_bootstrap/__init__.py` | Canonical query updated by the bootstrap job |
+| GraphQL query | `graphql_queries/sp_demo_lab_golden_config.gql` | Imported and updated by repository sync |
 | Config Contexts | `config_contexts/` | Role-based policy |
 | Config Context Schemas | `config_context_schemas/` | JSON Schema validation |
 | Golden Config Properties | `golden_config/` | Compliance features and rules |

@@ -5,6 +5,9 @@ query ($device_id: ID!) {
     role {
       name
     }
+    tags {
+      name
+    }
     platform {
       name
       network_driver
@@ -35,6 +38,10 @@ query ($device_id: ID!) {
       mac_address
       mode
       mgmt_only
+      role {
+        name
+      }
+      _custom_field_data
       vrf {
         name
         rd
@@ -49,6 +56,9 @@ query ($device_id: ID!) {
       ip_addresses {
         address
         ip_version
+        parent {
+          prefix
+        }
       }
       connected_interface {
         name
@@ -81,6 +91,10 @@ query ($device_id: ID!) {
       extra_attributes
       address_families {
         afi_safi
+        vrf {
+          name
+        }
+        extra_attributes
       }
       peer_groups {
         name
@@ -119,6 +133,7 @@ query ($device_id: ID!) {
             source_ip {
               address
             }
+            enabled
             autonomous_system {
               asn
             }
@@ -176,6 +191,13 @@ query ($device_id: ID!) {
           metric
         }
       }
+    }
+  }
+  nat_source_prefixes: prefixes {
+    network
+    prefix_length
+    tags {
+      name
     }
   }
 }

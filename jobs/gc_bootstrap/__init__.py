@@ -1,36 +1,27 @@
-"""Golden Config Bootstrap — sets up git repo, secrets, and golden config settings.
+"""Set up the Git repository, secrets, and Golden Config settings.
 
-This job handles the initial Nautobot setup required before golden config can
-operate. It creates:
+The saved GraphQL query is owned by
+``graphql_queries/sp_demo_lab_golden_config.gql`` and imported by repository
+sync. This job resolves that imported object by name and links it to Golden
+Config settings. It never creates or overwrites the query.
 
-  1. A secret (environment variable for GITHUB_TOKEN)
-  2. A secrets group associating the token for HTTP access
-  3. The git repository pointing to blog-sandbox
-  4. The GraphQL SoT aggregation query
-  5. Golden Config settings linking repos, paths, and query
-
-Run this once after a fresh Nautobot install, before running the topology
-design job or any golden config operations.
+On a fresh Nautobot install, register ``blog-sandbox`` once under
+Extensibility > Git Repositories with both Jobs and GraphQL Queries selected,
+then sync it before running this job. After bootstrap, Git remains the only
+source for jobs, the query, contexts, schemas, templates, and Golden Config
+plugin properties.
 
 Prerequisites:
-  - GITHUB_TOKEN environment variable must be set in the Nautobot worker
-  - The blog-sandbox repo must be accessible from the worker
-
-Bootstrap ordering note:
-
-  All Nautobot jobs for this lab, including this one, live in the repo's
-  top-level jobs/ directory and are sourced from Git. That creates a
-  chicken-and-egg problem on a brand new Nautobot: this job sets
-  extras.job on the repository, but it cannot run until the repository
-  already provides jobs.
-
-  On a fresh install, register the repository once by hand (Extensibility >
-  Git Repositories) with the Jobs content type checked, sync it, then run
-  this job to normalize every other setting. After that, Git is the only
-  source and nothing needs to be placed in JOBS_ROOT.
+  - GITHUB_TOKEN is set in the Nautobot worker environment.
+  - The blog-sandbox repository is accessible from the worker.
+  - Repository sync has imported ``sp_demo_lab_golden_config``.
 """
 
-from nautobot.apps.jobs import register_jobs, Job
+from nautobot.apps.jobs import Job, register_jobs
+from nautobot.extras.choices import (
+    SecretsGroupAccessTypeChoices,
+    SecretsGroupSecretTypeChoices,
+)
 from nautobot.extras.models import (
     GitRepository,
     GraphQLQuery,
@@ -38,15 +29,8 @@ from nautobot.extras.models import (
     SecretsGroup,
     SecretsGroupAssociation,
 )
-from nautobot.extras.choices import (
-    SecretsGroupAccessTypeChoices,
-    SecretsGroupSecretTypeChoices,
-)
-
 from nautobot_golden_config.models import GoldenConfigSetting
 
-
-# ─── Configuration ─────────────────────────────────────────────────────────────
 
 REPO_NAME = "blog-sandbox"
 REPO_URL = "https://github.com/byrn-baker/blog-sandbox.git"
@@ -54,208 +38,7 @@ REPO_BRANCH = "main"
 
 SECRET_NAME = "GITHUB_TOKEN"
 SECRETS_GROUP_NAME = "GitHub"
-
 GRAPHQL_QUERY_NAME = "sp_demo_lab_golden_config"
-GRAPHQL_QUERY = """query ($device_id: ID!) {
-  device(id: $device_id) {
-    hostname: name
-    config_context
-    role {
-      name
-    }
-    tags {
-      name
-    }
-    platform {
-      name
-      network_driver
-      manufacturer {
-        name
-      }
-    }
-    location {
-      name
-      parent {
-        name
-      }
-      vlans {
-        vid
-        name
-        description
-        _custom_field_data
-        locations {
-          name
-        }
-      }
-    }
-    interfaces {
-      name
-      description
-      enabled
-      type
-      mac_address
-      mode
-      mgmt_only
-      role {
-        name
-      }
-      _custom_field_data
-      vrf {
-        name
-        rd
-        _custom_field_data
-        import_targets {
-          name
-        }
-        export_targets {
-          name
-        }
-      }
-      ip_addresses {
-        address
-        ip_version
-        parent {
-          prefix
-        }
-      }
-      connected_interface {
-        name
-        device {
-          name
-        }
-      }
-      tags {
-        name
-      }
-    }
-    vrfs {
-      name
-      rd
-      _custom_field_data
-      import_targets {
-        name
-      }
-      export_targets {
-        name
-      }
-    }
-    bgp_routing_instances {
-      autonomous_system {
-        asn
-      }
-      router_id {
-        address
-      }
-      extra_attributes
-      address_families {
-        afi_safi
-        vrf {
-          name
-        }
-        extra_attributes
-      }
-      peer_groups {
-        name
-        autonomous_system {
-          asn
-        }
-        extra_attributes
-        address_families {
-          afi_safi
-          import_policy
-          export_policy
-        }
-      }
-      endpoints {
-        enabled
-        description
-        peer_group {
-          name
-        }
-        source_ip {
-          address
-        }
-        source_interface {
-          name
-        }
-        autonomous_system {
-          asn
-        }
-        address_families {
-          afi_safi
-          import_policy
-          export_policy
-        }
-        peering {
-          endpoints {
-            source_ip {
-              address
-            }
-            enabled
-            autonomous_system {
-              asn
-            }
-            peer_group {
-              name
-            }
-            routing_instance {
-              device {
-                name
-              }
-              autonomous_system {
-                asn
-              }
-            }
-          }
-        }
-        peer {
-          source_ip {
-            address
-          }
-          autonomous_system {
-            asn
-          }
-          routing_instance {
-            device {
-              name
-            }
-            autonomous_system {
-              asn
-            }
-          }
-          address_families {
-            afi_safi
-          }
-        }
-      }
-    }
-    igp_routing_instances {
-      name
-      protocol
-      router_id {
-        address
-      }
-      isis_area
-      isisconfiguration_set {
-        name
-        system_id
-        default_metric
-        interface_configurations {
-          interface {
-            name
-          }
-          circuit_type
-          network_type
-          metric
-        }
-      }
-    }
-  }
-  nat_source_prefixes: prefixes(tags: ["nat-source"]) {
-    network
-    prefix_length
-  }
-}"""
 
 BACKUP_PATH = "golden-config/backup-configs/{{obj.location.name|slugify}}/{{obj.name}}.cfg"
 INTENDED_PATH = "golden-config/intended-configs/{{obj.location.name|slugify}}/{{obj.name}}.cfg"
@@ -264,9 +47,7 @@ JINJA_PATH = "golden-config/templates/{{obj.platform.network_driver}}.j2"
 PROVIDED_CONTENTS = [
     "extras.configcontext",
     "extras.configcontextschema",
-    # Jobs live in the repo's top-level jobs/ directory and are sourced from Git,
-    # not from JOBS_ROOT on the Nautobot filesystem. Without this content type
-    # Nautobot syncs the repo and silently ignores jobs/.
+    "extras.graphqlquery",
     "extras.job",
     "nautobot_golden_config.backupconfigs",
     "nautobot_golden_config.intendedconfigs",
@@ -276,23 +57,18 @@ PROVIDED_CONTENTS = [
 
 
 class GCBootstrap(Job):
-    """Bootstrap Golden Config: secrets, git repo, GraphQL query, and settings.
-
-    Idempotent. Safe to re-run after config changes.
-    """
+    """Normalize the repository, secrets, and Golden Config settings."""
 
     class Meta:
         name = "Golden Config - Bootstrap Setup"
         description = (
-            "Creates the secret, secrets group, git repository, GraphQL query, "
-            "and golden config settings needed for config management. Run once "
-            "after a fresh Nautobot install."
+            "Creates repository credentials, normalizes repository content types, "
+            "and links the Git-managed GraphQL query and repositories to Golden Config."
         )
         has_sensitive_variables = False
 
     def run(self, *args, **kwargs):
-        """Set up all golden config prerequisites."""
-        # ── Step 1: Secret ──
+        """Set up Golden Config prerequisites without rewriting Git-owned data."""
         secret, created = Secret.objects.get_or_create(
             name=SECRET_NAME,
             defaults={
@@ -302,48 +78,50 @@ class GCBootstrap(Job):
         )
         self.logger.info(f"Secret '{SECRET_NAME}': {'created' if created else 'exists'}")
 
-        # ── Step 2: Secrets Group ──
-        sg, created = SecretsGroup.objects.get_or_create(name=SECRETS_GROUP_NAME)
-        self.logger.info(f"SecretsGroup '{SECRETS_GROUP_NAME}': {'created' if created else 'exists'}")
+        secrets_group, created = SecretsGroup.objects.get_or_create(
+            name=SECRETS_GROUP_NAME
+        )
+        self.logger.info(
+            f"SecretsGroup '{SECRETS_GROUP_NAME}': "
+            f"{'created' if created else 'exists'}"
+        )
 
         SecretsGroupAssociation.objects.get_or_create(
-            secrets_group=sg,
+            secrets_group=secrets_group,
             access_type=SecretsGroupAccessTypeChoices.TYPE_HTTP,
             secret_type=SecretsGroupSecretTypeChoices.TYPE_TOKEN,
             defaults={"secret": secret},
         )
 
-        # ── Step 3: Git Repository ──
         repo, created = GitRepository.objects.get_or_create(
             name=REPO_NAME,
             defaults={
                 "remote_url": REPO_URL,
                 "branch": REPO_BRANCH,
-                "secrets_group": sg,
+                "secrets_group": secrets_group,
             },
         )
         if not created:
             repo.remote_url = REPO_URL
             repo.branch = REPO_BRANCH
-            repo.secrets_group = sg
+            repo.secrets_group = secrets_group
             repo.validated_save()
 
-        # Set provided contents
         repo.provided_contents = PROVIDED_CONTENTS
         repo.validated_save()
-        self.logger.info(f"GitRepository '{REPO_NAME}': {'created' if created else 'updated'}")
-
-        # ── Step 4: GraphQL Query ──
-        gql, created = GraphQLQuery.objects.get_or_create(
-            name=GRAPHQL_QUERY_NAME,
-            defaults={"query": GRAPHQL_QUERY},
+        self.logger.info(
+            f"GitRepository '{REPO_NAME}': {'created' if created else 'updated'}"
         )
-        if not created:
-            gql.query = GRAPHQL_QUERY
-            gql.validated_save()
-        self.logger.info(f"GraphQLQuery '{GRAPHQL_QUERY_NAME}': {'created' if created else 'updated'}")
 
-        # ── Step 5: Golden Config Settings ──
+        graphql_query = GraphQLQuery.objects.filter(name=GRAPHQL_QUERY_NAME).first()
+        if graphql_query is None:
+            raise RuntimeError(
+                f"Git-managed GraphQL query '{GRAPHQL_QUERY_NAME}' was not found. "
+                "Enable the GraphQL Queries content type on blog-sandbox, sync the "
+                "repository, and rerun this job."
+            )
+        self.logger.info(f"GraphQLQuery '{GRAPHQL_QUERY_NAME}': found (Git-managed)")
+
         gc_settings = GoldenConfigSetting.objects.filter(name="default").first()
         if not gc_settings:
             gc_settings = GoldenConfigSetting.objects.first()
@@ -356,10 +134,9 @@ class GCBootstrap(Job):
         gc_settings.intended_path_template = INTENDED_PATH
         gc_settings.jinja_repository = repo
         gc_settings.jinja_path_template = JINJA_PATH
-        gc_settings.sot_agg_query = gql
+        gc_settings.sot_agg_query = graphql_query
         gc_settings.validated_save()
         self.logger.info("GoldenConfigSetting: configured")
-
         self.logger.info(
             f"Bootstrap complete. Repo: {REPO_NAME}, Query: {GRAPHQL_QUERY_NAME}"
         )

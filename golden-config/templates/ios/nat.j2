@@ -16,8 +16,15 @@
 {% endfor %}
 {% endfor %}
 {% if internet.outside_interface and internet.vrf_name %}
+{% set nat = namespace(prefixes=[]) %}
+{% for prefix in nat_source_prefixes | default([]) %}
+{% set prefix_tag_names = prefix.tags | default([]) | map(attribute='name') | list %}
+{% if 'nat-source' in prefix_tag_names %}
+{% set nat.prefixes = nat.prefixes + [prefix] %}
+{% endif %}
+{% endfor %}
 ip access-list standard {{ config_context.internet_edge.nat.access_list }}
-{% for prefix in nat_source_prefixes | default([]) | sort(attribute='network') %}
+{% for prefix in nat.prefixes | sort(attribute='network') %}
  {{ loop.index * 10 }} permit {{ prefix.network }} {{ wildcard_masks.get(prefix.prefix_length, 'UNSUPPORTED_PREFIX_LENGTH') }}
 {% endfor %}
 !

@@ -1,4 +1,4 @@
-# Blog Sandbox — SP Demo Lab
+# Blog Sandbox: SP Demo Lab
 
 Source code and configuration for a 28-device service provider MPLS/EVPN lab
 with AI-driven monitoring. Accompanies the [10-part blog series](https://byrnbaker.me).
@@ -26,6 +26,9 @@ blog-sandbox/
 │           ├── 0004_routing.yaml.j2       # ISIS + BGP (SP + DC fabric)
 │           └── 0005_primary_ips.yaml.j2   # Device primary IPv4 assignments
 │
+├── graphql_queries/
+│   └── sp_demo_lab_golden_config.gql  # Git-managed SoT aggregation query
+│
 └── golden-config/                # Nautobot Golden Configuration data source
     ├── templates/
     │   ├── cisco_ios.j2          # Entry point for IOS-XE (includes ios/*.j2)
@@ -37,13 +40,12 @@ blog-sandbox/
     │   │   ├── isis.j2
     │   │   ├── mpls.j2
     │   │   └── bgp.j2
-    │   ├── eos/                  # Modular EOS partials
-    │   │   ├── hostname.j2
-    │   │   ├── vrfs.j2
-    │   │   ├── interfaces.j2
-    │   │   ├── routing.j2
-    │   │   └── bgp.j2
-    │   └── graphql_query.graphql # SoT aggregation query
+    │   └── eos/                  # Modular EOS partials
+    │       ├── hostname.j2
+    │       ├── vrfs.j2
+    │       ├── interfaces.j2
+    │       ├── routing.j2
+    │       └── bgp.j2
     ├── intended-configs/         # Auto-populated by Golden Config
     ├── backup-configs/           # Auto-populated by Golden Config
     └── README.md                 # Setup instructions
@@ -53,9 +55,9 @@ blog-sandbox/
 
 28 network devices running on Proxmox:
 
-- **CML** — 13 Cisco IOS-XE (CAT8000v): P routers, PE routers, Route
+- **CML:** 13 Cisco IOS-XE (CAT8000v): P routers, PE routers, Route
   Reflectors, Border router, CE routers
-- **EVE-NG** — 15 Arista vEOS: 3 DC leaf-spine fabrics (2 spines + 3 leaves each)
+- **EVE-NG:** 15 Arista vEOS: 3 DC leaf-spine fabrics (2 spines + 3 leaves each)
 
 Interconnected via shared Proxmox bridges (vmbr100/200/300).
 
@@ -70,13 +72,15 @@ Interconnected via shared Proxmox bridges (vmbr100/200/300).
 
 ## Quick Start
 
-1. Deploy Nautobot via [nautobot-docker-compose](https://github.com/nautobot/nautobot-docker-compose)
-3. Run the Design Builder job. It creates devices, VLANs, VRFs, anycast SVIs,
+1. Deploy Nautobot via [nautobot-docker-compose](https://github.com/nautobot/nautobot-docker-compose).
+2. Add this repository as the `blog-sandbox` Git data source with Jobs,
+   GraphQL Queries, config contexts, schemas, and Golden Config properties.
+3. Sync the repository. Git is the source for everything Nautobot consumes.
+4. On a fresh install, run `Golden Config - Bootstrap Setup` once to normalize
+   repository credentials and link the Git-imported query to Golden Config.
+5. Run the Design Builder job. It creates devices, VLANs, VRFs, anycast SVIs,
    prefixes, cabling, and SP/DC routing.
-4. The lab loads jobs from `/home/ubuntu/nautobot-docker-compose/jobs/` through
-   the container bind mount. Keep that mounted copy in step with `demo-lab/`.
-5. Add this repo as the Git data source for contexts and Golden Config.
-6. Run `Golden Config - Bootstrap Setup`, then generate intended configs.
+6. Generate intended configurations.
 
 ## Blog Series
 
