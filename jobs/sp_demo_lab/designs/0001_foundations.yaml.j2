@@ -33,12 +33,6 @@ roles:
         "!get:model": "interface"
 {% endfor %}
 
-tags:
-  - "!create_or_update:name": "nat-source"
-    content_types:
-      - "!get:app_label": "ipam"
-        "!get:model": "prefix"
-
 location_types:
   - "!create_or_update:name": "Region"
     nestable: true
@@ -216,12 +210,6 @@ prefixes:
   - "!create_or_update:prefix": "{{ vlan.ipv4_prefix }}"
     status__name: "Active"
     description: "{{ vlan.name }} VLAN {{ vlan.id }}"
-{% if vlan.internet_access %}
-    tags:
-      - "!get:name": "nat-source"
-{% else %}
-    tags: []
-{% endif %}
     locations:
 {% for location_ref in vlan.location_refs %}
       - "!ref:{{ location_ref }}"

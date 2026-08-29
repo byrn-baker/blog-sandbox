@@ -102,6 +102,10 @@ data_schema:
               type: string
             overload:
               type: boolean
+            source_prefixes:
+              type: array
+              items:
+                type: string
           required:
             - access_list
             - overload

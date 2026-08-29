@@ -193,11 +193,4 @@ query ($device_id: ID!) {
       }
     }
   }
-  nat_source_prefixes: prefixes {
-    network
-    prefix_length
-    tags {
-      name
-    }
-  }
 }

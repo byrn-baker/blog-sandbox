@@ -36,7 +36,10 @@ KNOWN_BENIGN_IOS = {
     "ip ssh bulk-mode",
 }
 
-# Known-benign for EOS (Batfish mis-detects as IOS)
+# Known-benign Arista EOS parse warnings. These are valid EOS lines that
+# Batfish's Arista grammar flags as unsupported or unrecognized (it does not
+# fully model multi-agent EVPN or per-vrf BGP neighbors). Kept in sync with
+# KNOWN_BENIGN_ARISTA in test_batfish_validate.py.
 KNOWN_BENIGN_EOS = {
     "vrf instance",
     "vlan internal order",
@@ -51,6 +54,9 @@ KNOWN_BENIGN_EOS = {
     "vxlan vlan",
     "vxlan vrf",
     "ip virtual-router mac-address",
+    "virtual-router mac-address",
+    "ipv6 unicast-routing",
+    "maximum-routes",
     "redistribute learned",
     "route-target both",
     "route-target import evpn",
@@ -220,10 +226,22 @@ class TestIntendedConfigsBatfish:
         configs_dir = os.path.join(snapshot_dir, "configs")
         os.makedirs(configs_dir)
 
+        # Batfish auto-detects vendor from content, but EOS configs are close
+        # enough to IOS that it can fall back to the IOS grammar and emit false
+        # warnings on valid EOS syntax (vrf-scoped BGP neighbors, for example).
+        # Writing the RANCID header pins the right parser, matching how
+        # test_batfish_validate.py builds its snapshot.
+        rancid_header = {"arista_eos": "arista", "cisco_ios": "cisco"}
         platform_map = {}
         for platform, cfg_path in INTENDED_CONFIGS:
             hostname = cfg_path.stem
-            shutil.copy(str(cfg_path), os.path.join(configs_dir, f"{hostname}.cfg"))
+            header = rancid_header.get(platform)
+            content = cfg_path.read_text()
+            dest = os.path.join(configs_dir, f"{hostname}.cfg")
+            with open(dest, "w") as f:
+                if header:
+                    f.write(f"!RANCID-CONTENT-TYPE: {header}\n")
+                f.write(content)
             platform_map[hostname.lower()] = platform
 
         bf = Session(host="localhost")

@@ -34,6 +34,11 @@ config_context:
     nat:
       access_list: NAT-INET
       overload: true
+      source_prefixes:
+        - "192.168.100.0/24"
+        - "192.168.101.0/24"
+        - "192.168.201.0/24"
+        - "192.168.31.0/24"
 
 role:
   name: Border-Router
@@ -189,27 +194,6 @@ bgp_routing_instances:
                   name: BORDER1
                 autonomous_system:
                   asn: 65000
-
-nat_source_prefixes:
-  - network: "172.16.0.0"
-    prefix_length: 16
-    tags: []
-  - network: "192.168.100.0"
-    prefix_length: 24
-    tags:
-      - name: nat-source
-  - network: "192.168.101.0"
-    prefix_length: 24
-    tags:
-      - name: nat-source
-  - network: "192.168.201.0"
-    prefix_length: 24
-    tags:
-      - name: nat-source
-  - network: "192.168.31.0"
-    prefix_length: 24
-    tags:
-      - name: nat-source
 
 igp_routing_instances:
   - name: SP-ISIS

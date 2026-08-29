@@ -34,3 +34,8 @@ internet_edge:
   nat:
     access_list: "NAT-INET"
     overload: true
+    source_prefixes:
+      - "192.168.100.0/24"
+      - "192.168.101.0/24"
+      - "192.168.201.0/24"
+      - "192.168.31.0/24"
