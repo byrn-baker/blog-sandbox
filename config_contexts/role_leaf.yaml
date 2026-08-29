@@ -23,7 +23,7 @@ bgp:
   default_ipv4_unicast: false
   peer_groups:
     ipv4_underlay:
-      name: "IPv4-UNDERLAY-PEERS"
+      name: "IPV4-UNDERLAY-PEERS"
       send_community: true
       maximum_routes: 256000
     evpn_overlay:
@@ -64,3 +64,12 @@ route_maps:
       - sequence: 10
         action: "permit"
         match: "ip address prefix-list PL-LOOPBACKS-EVPN-OVERLAY"
+internet_egress:
+  default_route:
+    prefix: "0.0.0.0/0"
+    egress_vrf: "default"
+    prefix_list: "PL-SERVERS-DEFAULT-ONLY"
+    route_map: "RM-SERVERS-STATIC-TO-EVPN"
+  reverse_route:
+    prefix_list: "PL-SERVERS-TO-UNDERLAY"
+    route_map: "RM-SERVERS-TO-UNDERLAY"

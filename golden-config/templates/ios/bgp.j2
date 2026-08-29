@@ -173,4 +173,13 @@ router bgp {{ bgp.autonomous_system.asn }}
  exit-address-family
 !
 {% endif %}
+{% for address_family in bgp.address_families | default([]) if address_family.vrf %}
+ address-family ipv4 vrf {{ address_family.vrf.name }}
+{% set attributes = address_family.extra_attributes | default({}) %}
+{% for network in attributes.networks | default([]) %}
+  network {{ network }}
+{% endfor %}
+ exit-address-family
+!
+{% endfor %}
 {% endfor %}

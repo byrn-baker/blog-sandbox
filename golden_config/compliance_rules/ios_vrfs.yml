@@ -3,3 +3,4 @@
   platform_network_driver: "cisco_ios"
   config_ordered: false
   match_config: "vrf definition"
+  config_remediation: true

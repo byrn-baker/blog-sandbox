@@ -63,6 +63,9 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
     role {
       name
     }
+    tags {
+      name
+    }
     platform {
       name
       network_driver
@@ -93,6 +96,10 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
       mac_address
       mode
       mgmt_only
+      role {
+        name
+      }
+      _custom_field_data
       vrf {
         name
         rd
@@ -107,6 +114,9 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
       ip_addresses {
         address
         ip_version
+        parent {
+          prefix
+        }
       }
       connected_interface {
         name
@@ -139,6 +149,10 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
       extra_attributes
       address_families {
         afi_safi
+        vrf {
+          name
+        }
+        extra_attributes
       }
       peer_groups {
         name
@@ -177,6 +191,7 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
             source_ip {
               address
             }
+            enabled
             autonomous_system {
               asn
             }
@@ -235,6 +250,10 @@ GRAPHQL_QUERY = """query ($device_id: ID!) {
         }
       }
     }
+  }
+  nat_source_prefixes: prefixes(tags: ["nat-source"]) {
+    network
+    prefix_length
   }
 }"""
 

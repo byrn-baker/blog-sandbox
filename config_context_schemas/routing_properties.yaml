@@ -79,4 +79,33 @@ data_schema:
         - min_rx
         - multiplier
         - echo
+    internet_edge:
+      type: object
+      properties:
+        default_route:
+          type: object
+          properties:
+            mask:
+              type: string
+            next_hop:
+              type: string
+            global:
+              type: boolean
+          required:
+            - mask
+            - next_hop
+            - global
+        nat:
+          type: object
+          properties:
+            access_list:
+              type: string
+            overload:
+              type: boolean
+          required:
+            - access_list
+            - overload
+      required:
+        - default_route
+        - nat
   additionalProperties: false

@@ -3,3 +3,4 @@
   platform_network_driver: "arista_eos"
   config_ordered: false
   match_config: "interface Vxlan\nip virtual-router"
+  config_remediation: true

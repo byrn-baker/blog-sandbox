@@ -1,2 +1,47 @@
 ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 !
+{% set device_tag_names = tags | default([]) | map(attribute='name') | list %}
+{% if config_context.internet_egress is defined and 'internet-egress-origin' in device_tag_names %}
+{% set services = namespace(items=[], keys=[], vrfs=[]) %}
+{% for interface in interfaces if interface.enabled and interface.vrf %}
+{% set interface_tag_names = interface.tags | default([]) | map(attribute='name') | list %}
+{% if 'internet-service' in interface_tag_names %}
+{% for address in interface.ip_addresses if address.ip_version == 4 and address.parent %}
+{% set service_key = interface.name ~ '|' ~ address.parent.prefix %}
+{% if service_key not in services.keys %}
+{% set services.items = services.items + [{'interface': interface.name, 'vrf': interface.vrf.name, 'gateway': address.address.split('/')[0], 'prefix': address.parent.prefix}] %}
+{% set services.keys = services.keys + [service_key] %}
+{% endif %}
+{% if interface.vrf.name not in services.vrfs %}
+{% set services.vrfs = services.vrfs + [interface.vrf.name] %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% set next_hops = namespace(items=[]) %}
+{% set underlay_peer_group = config_context.bgp.peer_groups.ipv4_underlay.name %}
+{% for bgp in bgp_routing_instances %}
+{% for endpoint in bgp.endpoints if endpoint.enabled and endpoint.peer_group and endpoint.peer_group.name == underlay_peer_group %}
+{% if endpoint.peering and endpoint.peering.endpoints %}
+{% for remote in endpoint.peering.endpoints if remote.enabled and remote.source_ip.address != endpoint.source_ip.address %}
+{% set next_hop = remote.source_ip.address.split('/')[0] %}
+{% if next_hop not in next_hops.items %}
+{% set next_hops.items = next_hops.items + [next_hop] %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% if services.items and next_hops.items %}
+{% for vrf_name in services.vrfs | sort %}
+{% for next_hop in next_hops.items | sort %}
+ip route vrf {{ vrf_name }} {{ config_context.internet_egress.default_route.prefix }} egress-vrf {{ config_context.internet_egress.default_route.egress_vrf }} {{ next_hop }}
+{% endfor %}
+{% endfor %}
+{% for service in services.items | sort(attribute='prefix') %}
+{% set route_interface = service.interface %}
+ip route {{ service.prefix }} egress-vrf {{ service.vrf }} {{ 'Vlan ' ~ route_interface[4:] if route_interface.startswith('Vlan') else route_interface }} {{ service.gateway }}
+{% endfor %}
+!
+{% endif %}
+{% endif %}

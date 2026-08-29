@@ -1,6 +1,10 @@
-{# Interface configuration — management, loopbacks, P2P links, PE-CE #}
+{# Interface configuration: management, loopbacks, P2P links, PE-CE, NAT roles #}
 {% for interface in interfaces %}
-{% if interface.ip_addresses or interface.description %}
+{% set interface_role = interface.role | default(none) %}
+{% set interface_role_name = interface_role.name if interface_role else '' %}
+{% set is_nat_inside = interface_role_name == 'NAT Inside' %}
+{% set is_nat_outside = interface_role_name == 'NAT Outside' %}
+{% if interface.ip_addresses or interface.description or is_nat_inside or is_nat_outside %}
 interface {{ interface.name }}
 {% if interface.description %}
  description {{ interface.description }}
@@ -28,6 +32,15 @@ interface {{ interface.name }}
  ipv6 address {{ addr.address | upper }}
 {% endif %}
 {% endfor %}
+{% set interface_custom_fields = interface._custom_field_data | default({}) %}
+{% if is_nat_outside and interface_custom_fields.ip_address_mode | default('') == 'dhcp' %}
+ ip address dhcp
+{% endif %}
+{% if is_nat_inside %}
+ ip nat inside
+{% elif is_nat_outside %}
+ ip nat outside
+{% endif %}
 {# ISIS + MPLS on SP core interfaces (non-VRF, non-management, with 10.0.0.x IPs) #}
 {% if not interface.vrf and not interface.mgmt_only and interface.name != 'Loopback0' and config_context.isis is defined %}
 {% set ns = namespace(is_core=false) %}

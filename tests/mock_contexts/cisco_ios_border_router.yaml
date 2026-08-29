@@ -26,6 +26,14 @@ config_context:
     ldp_router_id: Loopback0
     ldp_sync: true
     explicit_null: true
+  internet_edge:
+    default_route:
+      mask: "0.0.0.0"
+      next_hop: "192.168.255.1"
+      global: true
+    nat:
+      access_list: NAT-INET
+      overload: true
 
 role:
   name: Border-Router
@@ -57,6 +65,8 @@ interfaces:
     type: A_1000BASE_T
     mgmt_only: false
     vrf: null
+    role:
+      name: NAT Inside
     ip_addresses:
       - address: "10.0.0.25/31"
         ip_version: 4
@@ -69,11 +79,25 @@ interfaces:
     type: A_1000BASE_T
     mgmt_only: false
     vrf: null
+    role:
+      name: NAT Inside
     ip_addresses:
       - address: "10.0.0.27/31"
         ip_version: 4
       - address: "fd10::27/127"
         ip_version: 6
+    tags: []
+  - name: GigabitEthernet4
+    description: "to ext-internet"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    role:
+      name: NAT Outside
+    _custom_field_data:
+      ip_address_mode: dhcp
+    ip_addresses: []
     tags: []
   - name: Loopback0
     description: "Router-ID"
@@ -95,12 +119,26 @@ vrfs:
       - name: "65000:999"
     export_targets:
       - name: "65000:999"
+  - name: INET
+    rd: "65000:900"
+    import_targets:
+      - name: "65000:900"
+    export_targets:
+      - name: "65000:900"
 
 bgp_routing_instances:
   - autonomous_system:
       asn: 65000
     router_id:
       address: "10.1.0.10/32"
+    address_families:
+      - afi_safi: IPV4_UNICAST
+        vrf:
+          name: INET
+        extra_attributes:
+          internet_edge: true
+          networks:
+            - "0.0.0.0"
     peer_groups:
       - name: RR-CLIENTS
         autonomous_system:
@@ -151,6 +189,16 @@ bgp_routing_instances:
                   name: BORDER1
                 autonomous_system:
                   asn: 65000
+
+nat_source_prefixes:
+  - network: "192.168.100.0"
+    prefix_length: 24
+  - network: "192.168.101.0"
+    prefix_length: 24
+  - network: "192.168.201.0"
+    prefix_length: 24
+  - network: "192.168.31.0"
+    prefix_length: 24
 
 igp_routing_instances:
   - name: SP-ISIS

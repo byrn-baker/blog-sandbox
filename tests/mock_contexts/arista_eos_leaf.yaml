@@ -3,6 +3,9 @@
 ---
 hostname: DCA-Leaf01
 
+tags:
+  - name: internet-egress-origin
+
 config_context:
   bfd:
     multihop:
@@ -17,6 +20,9 @@ config_context:
     maximum_paths: 4
     default_ipv4_unicast: false
     log_neighbor_changes: true
+    peer_groups:
+      ipv4_underlay:
+        name: IPV4-UNDERLAY-PEERS
     redistribute:
       connected:
         route_map: RM-CONN-2-BGP
@@ -50,6 +56,15 @@ config_context:
         - sequence: 10
           action: permit
           match: "ip address prefix-list PL-LOOPBACKS-EVPN-OVERLAY"
+  internet_egress:
+    default_route:
+      prefix: "0.0.0.0/0"
+      egress_vrf: default
+      prefix_list: PL-SERVERS-DEFAULT-ONLY
+      route_map: RM-SERVERS-STATIC-TO-EVPN
+    reverse_route:
+      prefix_list: PL-SERVERS-TO-UNDERLAY
+      route_map: RM-SERVERS-TO-UNDERLAY
 
 role:
   name: Leaf
@@ -74,7 +89,7 @@ location:
 
 interfaces:
   - name: Ethernet1
-    description: "to DCA-Spine01 Ethernet2"
+    description: "to DCA-Spine01 Ethernet1"
     enabled: true
     type: A_1000BASE_T
     mgmt_only: false
@@ -86,7 +101,7 @@ interfaces:
         ip_version: 6
     tags: []
   - name: Ethernet2
-    description: "to DCA-Spine02 Ethernet2"
+    description: "to DCA-Spine02 Ethernet1"
     enabled: true
     type: A_1000BASE_T
     mgmt_only: false
@@ -146,9 +161,12 @@ interfaces:
     ip_addresses:
       - address: "192.168.100.1/24"
         ip_version: 4
+        parent:
+          prefix: "192.168.100.0/24"
       - address: "fd10:a:100::1/64"
         ip_version: 6
-    tags: []
+    tags:
+      - name: internet-service
   - name: Vlan101
     description: STORAGE
     enabled: true
@@ -162,9 +180,12 @@ interfaces:
     ip_addresses:
       - address: "192.168.101.1/24"
         ip_version: 4
+        parent:
+          prefix: "192.168.101.0/24"
       - address: "fd10:a:101::1/64"
         ip_version: 6
-    tags: []
+    tags:
+      - name: internet-service
 
 vrfs:
   - name: MGMT-VRF
@@ -191,41 +212,70 @@ bgp_routing_instances:
         address_families:
           - afi_safi: IPV4_UNICAST
     endpoints:
-      - peer_group:
+      - enabled: true
+        peer_group:
           name: EVPN-OVERLAY-PEERS
         source_ip:
           address: "10.2.1.4/32"
         peering:
           endpoints:
-            - source_ip:
+            - enabled: true
+              source_ip:
                 address: "10.2.1.2/32"
               routing_instance:
                 device:
                   name: DCA-Spine01
                 autonomous_system:
                   asn: 65101
-            - source_ip:
+            - enabled: true
+              source_ip:
                 address: "10.2.1.4/32"
               routing_instance:
                 device:
                   name: DCA-Leaf01
                 autonomous_system:
                   asn: 65111
-      - peer_group:
+      - enabled: true
+        peer_group:
           name: IPV4-UNDERLAY-PEERS
         source_ip:
           address: "10.1.1.5/31"
         peering:
           endpoints:
-            - source_ip:
+            - enabled: true
+              source_ip:
                 address: "10.1.1.4/31"
               routing_instance:
                 device:
                   name: DCA-Spine01
                 autonomous_system:
                   asn: 65101
-            - source_ip:
+            - enabled: true
+              source_ip:
                 address: "10.1.1.5/31"
+              routing_instance:
+                device:
+                  name: DCA-Leaf01
+                autonomous_system:
+                  asn: 65111
+      - enabled: true
+        peer_group:
+          name: IPV4-UNDERLAY-PEERS
+        source_ip:
+          address: "10.1.1.11/31"
+        peering:
+          endpoints:
+            - enabled: true
+              source_ip:
+                address: "10.1.1.10/31"
+              routing_instance:
+                device:
+                  name: DCA-Spine02
+                autonomous_system:
+                  asn: 65102
+            - enabled: true
+              source_ip:
+                address: "10.1.1.11/31"
               routing_instance:
                 device:
                   name: DCA-Leaf01

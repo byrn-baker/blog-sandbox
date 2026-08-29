@@ -1,0 +1,27 @@
+{% set wildcard_masks = {16: '0.0.255.255', 24: '0.0.0.255'} %}
+{% if config_context.internet_edge is defined %}
+{% set internet = namespace(outside_interface=none, vrf_name=none) %}
+{% for interface in interfaces %}
+{% set interface_role = interface.role | default(none) %}
+{% if interface_role and interface_role.name == 'NAT Outside' %}
+{% set internet.outside_interface = interface.name %}
+{% endif %}
+{% endfor %}
+{% for bgp in bgp_routing_instances %}
+{% for address_family in bgp.address_families | default([]) %}
+{% set attributes = address_family.extra_attributes | default({}) %}
+{% if address_family.vrf and attributes.internet_edge | default(false) %}
+{% set internet.vrf_name = address_family.vrf.name %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% if internet.outside_interface and internet.vrf_name %}
+ip access-list standard {{ config_context.internet_edge.nat.access_list }}
+{% for prefix in nat_source_prefixes | default([]) | sort(attribute='network') %}
+ {{ loop.index * 10 }} permit {{ prefix.network }} {{ wildcard_masks.get(prefix.prefix_length, 'UNSUPPORTED_PREFIX_LENGTH') }}
+{% endfor %}
+!
+ip nat inside source list {{ config_context.internet_edge.nat.access_list }} interface {{ internet.outside_interface }} vrf {{ internet.vrf_name }}{{ ' overload' if config_context.internet_edge.nat.overload else '' }}
+!
+{% endif %}
+{% endif %}

@@ -142,4 +142,39 @@ data_schema:
                   type: string
                 match:
                   type: string
+    internet_egress:
+      type: object
+      properties:
+        default_route:
+          type: object
+          properties:
+            prefix:
+              type: string
+            egress_vrf:
+              type: string
+            prefix_list:
+              type: string
+            route_map:
+              type: string
+          additionalProperties: false
+          required:
+            - prefix
+            - egress_vrf
+            - prefix_list
+            - route_map
+        reverse_route:
+          type: object
+          properties:
+            prefix_list:
+              type: string
+            route_map:
+              type: string
+          additionalProperties: false
+          required:
+            - prefix_list
+            - route_map
+      additionalProperties: false
+      required:
+        - default_route
+        - reverse_route
   additionalProperties: true

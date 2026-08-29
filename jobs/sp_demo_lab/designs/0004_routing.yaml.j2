@@ -104,6 +104,16 @@ bgp_address_families:
     "!create_or_update:afi_safi": "ipv4_unicast"
 {% endif %}
 {% endfor %}
+# BORDER1 Internet VRF default origination
+  - "!create_or_update:routing_instance__device__name": "{{ internet_edge.device }}"
+    "!create_or_update:afi_safi": "ipv4_unicast"
+    "!create_or_update:vrf__name": "{{ internet_edge.vrf.name }}"
+    extra_attributes:
+      internet_edge: true
+      networks:
+{% for network in internet_edge.advertise_networks %}
+        - "{{ network }}"
+{% endfor %}
 # DC Fabric: ipv4_unicast (underlay) + l2_evpn (overlay)
 {% for inst in dc_bgp_instances %}
   - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"

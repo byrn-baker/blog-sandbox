@@ -1,0 +1,5 @@
+# cisco_iosxe.yml
+---
+- platform_name: "cisco_iosxe"
+  remediation_type: "hierconfig"
+  remediation_options: {}

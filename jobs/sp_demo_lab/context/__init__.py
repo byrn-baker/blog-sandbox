@@ -84,35 +84,66 @@ class SPDemoLabContext(Context):
     dc_a_links = [
         ("CE1", "GigabitEthernet3", "DCA-Spine01", "Ethernet10", "10.1.1.0/31", "fd10:1:1::0", "fd10:1:1::1"),
         ("CE1", "GigabitEthernet4", "DCA-Spine02", "Ethernet10", "10.1.1.2/31", "fd10:1:1::2", "fd10:1:1::3"),
-        ("DCA-Spine01", "Ethernet2", "DCA-Leaf01", "Ethernet1", "10.1.1.4/31", "fd10:1:1::4", "fd10:1:1::5"),
-        ("DCA-Spine01", "Ethernet3", "DCA-Leaf02", "Ethernet1", "10.1.1.6/31", "fd10:1:1::6", "fd10:1:1::7"),
-        ("DCA-Spine01", "Ethernet4", "DCA-Leaf03", "Ethernet1", "10.1.1.8/31", "fd10:1:1::8", "fd10:1:1::9"),
-        ("DCA-Spine02", "Ethernet2", "DCA-Leaf01", "Ethernet2", "10.1.1.10/31", "fd10:1:1::10", "fd10:1:1::11"),
-        ("DCA-Spine02", "Ethernet3", "DCA-Leaf02", "Ethernet2", "10.1.1.12/31", "fd10:1:1::12", "fd10:1:1::13"),
-        ("DCA-Spine02", "Ethernet4", "DCA-Leaf03", "Ethernet2", "10.1.1.14/31", "fd10:1:1::14", "fd10:1:1::15"),
+        ("DCA-Spine01", "Ethernet1", "DCA-Leaf01", "Ethernet1", "10.1.1.4/31", "fd10:1:1::4", "fd10:1:1::5"),
+        ("DCA-Spine01", "Ethernet2", "DCA-Leaf02", "Ethernet1", "10.1.1.6/31", "fd10:1:1::6", "fd10:1:1::7"),
+        ("DCA-Spine01", "Ethernet3", "DCA-Leaf03", "Ethernet1", "10.1.1.8/31", "fd10:1:1::8", "fd10:1:1::9"),
+        ("DCA-Spine02", "Ethernet1", "DCA-Leaf01", "Ethernet2", "10.1.1.10/31", "fd10:1:1::10", "fd10:1:1::11"),
+        ("DCA-Spine02", "Ethernet2", "DCA-Leaf02", "Ethernet2", "10.1.1.12/31", "fd10:1:1::12", "fd10:1:1::13"),
+        ("DCA-Spine02", "Ethernet3", "DCA-Leaf03", "Ethernet2", "10.1.1.14/31", "fd10:1:1::14", "fd10:1:1::15"),
     ]
 
     dc_b_links = [
         ("CE2", "GigabitEthernet3", "DCB-Spine01", "Ethernet10", "10.1.2.0/31", "fd10:1:2::0", "fd10:1:2::1"),
         ("CE2", "GigabitEthernet4", "DCB-Spine02", "Ethernet10", "10.1.2.2/31", "fd10:1:2::2", "fd10:1:2::3"),
-        ("DCB-Spine01", "Ethernet2", "DCB-Leaf01", "Ethernet1", "10.1.2.4/31", "fd10:1:2::4", "fd10:1:2::5"),
-        ("DCB-Spine01", "Ethernet3", "DCB-Leaf02", "Ethernet1", "10.1.2.6/31", "fd10:1:2::6", "fd10:1:2::7"),
-        ("DCB-Spine01", "Ethernet4", "DCB-Leaf03", "Ethernet1", "10.1.2.8/31", "fd10:1:2::8", "fd10:1:2::9"),
-        ("DCB-Spine02", "Ethernet2", "DCB-Leaf01", "Ethernet2", "10.1.2.10/31", "fd10:1:2::10", "fd10:1:2::11"),
-        ("DCB-Spine02", "Ethernet3", "DCB-Leaf02", "Ethernet2", "10.1.2.12/31", "fd10:1:2::12", "fd10:1:2::13"),
-        ("DCB-Spine02", "Ethernet4", "DCB-Leaf03", "Ethernet2", "10.1.2.14/31", "fd10:1:2::14", "fd10:1:2::15"),
+        ("DCB-Spine01", "Ethernet1", "DCB-Leaf01", "Ethernet1", "10.1.2.4/31", "fd10:1:2::4", "fd10:1:2::5"),
+        ("DCB-Spine01", "Ethernet2", "DCB-Leaf02", "Ethernet1", "10.1.2.6/31", "fd10:1:2::6", "fd10:1:2::7"),
+        ("DCB-Spine01", "Ethernet3", "DCB-Leaf03", "Ethernet1", "10.1.2.8/31", "fd10:1:2::8", "fd10:1:2::9"),
+        ("DCB-Spine02", "Ethernet1", "DCB-Leaf01", "Ethernet2", "10.1.2.10/31", "fd10:1:2::10", "fd10:1:2::11"),
+        ("DCB-Spine02", "Ethernet2", "DCB-Leaf02", "Ethernet2", "10.1.2.12/31", "fd10:1:2::12", "fd10:1:2::13"),
+        ("DCB-Spine02", "Ethernet3", "DCB-Leaf03", "Ethernet2", "10.1.2.14/31", "fd10:1:2::14", "fd10:1:2::15"),
     ]
 
     dc_c_links = [
         ("CE3", "GigabitEthernet3", "DCC-Spine01", "Ethernet10", "10.1.3.0/31", "fd10:1:3::0", "fd10:1:3::1"),
         ("CE3", "GigabitEthernet4", "DCC-Spine02", "Ethernet10", "10.1.3.2/31", "fd10:1:3::2", "fd10:1:3::3"),
-        ("DCC-Spine01", "Ethernet2", "DCC-Leaf01", "Ethernet1", "10.1.3.4/31", "fd10:1:3::4", "fd10:1:3::5"),
-        ("DCC-Spine01", "Ethernet3", "DCC-Leaf02", "Ethernet1", "10.1.3.6/31", "fd10:1:3::6", "fd10:1:3::7"),
-        ("DCC-Spine01", "Ethernet4", "DCC-Leaf03", "Ethernet1", "10.1.3.8/31", "fd10:1:3::8", "fd10:1:3::9"),
-        ("DCC-Spine02", "Ethernet2", "DCC-Leaf01", "Ethernet2", "10.1.3.10/31", "fd10:1:3::10", "fd10:1:3::11"),
-        ("DCC-Spine02", "Ethernet3", "DCC-Leaf02", "Ethernet2", "10.1.3.12/31", "fd10:1:3::12", "fd10:1:3::13"),
-        ("DCC-Spine02", "Ethernet4", "DCC-Leaf03", "Ethernet2", "10.1.3.14/31", "fd10:1:3::14", "fd10:1:3::15"),
+        ("DCC-Spine01", "Ethernet1", "DCC-Leaf01", "Ethernet1", "10.1.3.4/31", "fd10:1:3::4", "fd10:1:3::5"),
+        ("DCC-Spine01", "Ethernet2", "DCC-Leaf02", "Ethernet1", "10.1.3.6/31", "fd10:1:3::6", "fd10:1:3::7"),
+        ("DCC-Spine01", "Ethernet3", "DCC-Leaf03", "Ethernet1", "10.1.3.8/31", "fd10:1:3::8", "fd10:1:3::9"),
+        ("DCC-Spine02", "Ethernet1", "DCC-Leaf01", "Ethernet2", "10.1.3.10/31", "fd10:1:3::10", "fd10:1:3::11"),
+        ("DCC-Spine02", "Ethernet2", "DCC-Leaf02", "Ethernet2", "10.1.3.12/31", "fd10:1:3::12", "fd10:1:3::13"),
+        ("DCC-Spine02", "Ethernet3", "DCC-Leaf03", "Ethernet2", "10.1.3.14/31", "fd10:1:3::14", "fd10:1:3::15"),
     ]
+
+    # Every leaf carrying SERVERS originates redundant local internet routes.
+    internet_egress = {
+        "origin_devices": [
+            "DCA-Leaf01",
+            "DCA-Leaf02",
+            "DCA-Leaf03",
+            "DCB-Leaf01",
+            "DCB-Leaf02",
+            "DCB-Leaf03",
+            "DCC-Leaf01",
+            "DCC-Leaf02",
+            "DCC-Leaf03",
+        ],
+    }
+    internet_edge = {
+        "device": "BORDER1",
+        "vrf": {
+            "name": "INET",
+            "rd": "65000:900",
+            "description": "Internet edge and NAT routing table",
+            "route_target": "65000:900",
+        },
+        "inside_interfaces": ["GigabitEthernet2", "GigabitEthernet3"],
+        "outside_interface": {
+            "name": "GigabitEthernet4",
+            "description": "to ext-internet",
+            "address_mode": "dhcp",
+        },
+        "advertise_networks": ["0.0.0.0"],
+    }
 
     # VRFs and route targets. RT 65000:900 carries the shared DCI underlay
     # between the otherwise distinct site VRFs.
@@ -163,6 +194,7 @@ class SPDemoLabContext(Context):
             "id": 100,
             "name": "SERVER_K3S",
             "vni": 10100,
+            "internet_access": True,
             "locations": ["DC-A", "DC-B", "DC-C"],
             "location_refs": ["dc_a", "dc_b", "dc_c"],
             "ipv4_prefix": "192.168.100.0/24",
@@ -174,6 +206,7 @@ class SPDemoLabContext(Context):
             "id": 101,
             "name": "STORAGE",
             "vni": 10101,
+            "internet_access": True,
             "locations": ["DC-A"],
             "location_refs": ["dc_a"],
             "ipv4_prefix": "192.168.101.0/24",
@@ -185,6 +218,7 @@ class SPDemoLabContext(Context):
             "id": 201,
             "name": "STORAGE",
             "vni": 10201,
+            "internet_access": True,
             "locations": ["DC-B"],
             "location_refs": ["dc_b"],
             "ipv4_prefix": "192.168.201.0/24",
@@ -196,6 +230,7 @@ class SPDemoLabContext(Context):
             "id": 301,
             "name": "STORAGE",
             "vni": 10301,
+            "internet_access": True,
             "locations": ["DC-C"],
             "location_refs": ["dc_c"],
             "ipv4_prefix": "192.168.31.0/24",

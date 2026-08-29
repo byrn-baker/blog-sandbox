@@ -11,6 +11,9 @@
     platform__name: "cisco_iosxe"
     vrf_assignments:
       - "!create_or_update:vrf__name": "MGMT-VRF"
+{% if device.name == internet_edge.device %}
+      - "!create_or_update:vrf__name": "{{ internet_edge.vrf.name }}"
+{% endif %}
     interfaces:
       - "!create_or_update:name": "GigabitEthernet1"
         status__name: "Active"
@@ -30,8 +33,20 @@
           - "!create_or_update:address": "{{ device.loopback6 }}/128"
             status__name: "Active"
 {% for i in range(2, 7) %}
-      - "!create_or_update:name": "GigabitEthernet{{ i }}"
+{% set interface_name = "GigabitEthernet" ~ i %}
+      - "!create_or_update:name": "{{ interface_name }}"
+{% if device.name == internet_edge.device and interface_name in internet_edge.inside_interfaces %}
         status__name: "Planned"
+        role__name: "NAT Inside"
+{% elif device.name == internet_edge.device and interface_name == internet_edge.outside_interface.name %}
+        status__name: "Active"
+        role__name: "NAT Outside"
+        description: "{{ internet_edge.outside_interface.description }}"
+        custom_fields:
+          ip_address_mode: "{{ internet_edge.outside_interface.address_mode }}"
+{% else %}
+        status__name: "Planned"
+{% endif %}
         type: "1000base-t"
 {% endfor %}
 {%- endmacro %}
@@ -43,6 +58,10 @@
     role__name: "{{ device.role }}"
     status__name: "Active"
     platform__name: "arista_eos"
+{% if device.name in internet_egress.origin_devices %}
+    tags:
+      - "!get:name": "internet-egress-origin"
+{% endif %}
     vrf_assignments:
       - "!create_or_update:vrf__name": "MGMT-VRF"
 {% if device.vtep is defined %}
@@ -79,6 +98,12 @@
         status__name: "Active"
         type: "virtual"
         description: "{{ vlan.name }}"
+{% if vlan.internet_access %}
+        tags:
+          - "!get:name": "internet-service"
+{% else %}
+        tags: []
+{% endif %}
         vrf__name: "SERVERS"
         ip_addresses:
           - "!create_or_update:address": "{{ vlan.ipv4_gateway }}"

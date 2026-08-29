@@ -1,0 +1,5 @@
+# arista_eos.yml
+---
+- platform_name: "arista_eos"
+  remediation_type: "hierconfig"
+  remediation_options: {}

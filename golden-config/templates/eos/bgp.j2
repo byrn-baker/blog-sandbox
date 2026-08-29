@@ -1,3 +1,18 @@
+{% set device_tag_names = tags | default([]) | map(attribute='name') | list %}
+{% set internet_origin = config_context.internet_egress is defined and 'internet-egress-origin' in device_tag_names %}
+{% set internet_services = namespace(vrfs=[]) %}
+{% if internet_origin %}
+{% for interface in interfaces if interface.enabled and interface.vrf %}
+{% set interface_tag_names = interface.tags | default([]) | map(attribute='name') | list %}
+{% if 'internet-service' in interface_tag_names %}
+{% for address in interface.ip_addresses if address.ip_version == 4 and address.parent %}
+{% if interface.vrf.name not in internet_services.vrfs %}
+{% set internet_services.vrfs = internet_services.vrfs + [interface.vrf.name] %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
 {% for bgp in bgp_routing_instances %}
 router bgp {{ bgp.autonomous_system.asn }}
    router-id {{ bgp.router_id.address.split('/')[0] }}
@@ -55,21 +70,34 @@ router bgp {{ bgp.autonomous_system.asn }}
    redistribute connected route-map {{ config_context.bgp.redistribute.connected.route_map }}
 {% endif %}
 !
+{% set address_families = namespace(ipv4=[], evpn=[]) %}
 {% for pg in bgp.peer_groups %}
-{% set pg_afs = pg.address_families | map(attribute='afi_safi') | list %}
 {% for af in pg.address_families %}
-{% if af.afi_safi in ['L2_EVPN', 'l2_evpn'] %}
-   address-family evpn
-      neighbor {{ pg.name }} activate
-   !
-{% elif af.afi_safi in ['IPV4_UNICAST', 'ipv4_unicast'] %}
-   address-family ipv4
-      neighbor {{ pg.name }} activate
-      redistribute connected
-   !
+{% if af.afi_safi in ['L2_EVPN', 'l2_evpn'] and pg.name not in address_families.evpn %}
+{% set address_families.evpn = address_families.evpn + [pg.name] %}
+{% elif af.afi_safi in ['IPV4_UNICAST', 'ipv4_unicast'] and pg.name not in address_families.ipv4 %}
+{% set address_families.ipv4 = address_families.ipv4 + [pg.name] %}
 {% endif %}
 {% endfor %}
 {% endfor %}
+{% if address_families.evpn %}
+   address-family evpn
+{% for peer_group_name in address_families.evpn %}
+      neighbor {{ peer_group_name }} activate
+{% endfor %}
+   !
+{% endif %}
+{% if address_families.ipv4 %}
+   address-family ipv4
+{% for peer_group_name in address_families.ipv4 %}
+      neighbor {{ peer_group_name }} activate
+{% endfor %}
+      redistribute connected
+{% if internet_origin and internet_services.vrfs %}
+      redistribute static route-map {{ config_context.internet_egress.reverse_route.route_map }}
+{% endif %}
+   !
+{% endif %}
 {% if not bgp.peer_groups %}
    address-family ipv4
       redistribute connected
@@ -91,6 +119,9 @@ router bgp {{ bgp.autonomous_system.asn }}
       route-target import evpn {{ vrf._custom_field_data.vni }}:{{ vrf._custom_field_data.vni }}
       route-target export evpn {{ vrf._custom_field_data.vni }}:{{ vrf._custom_field_data.vni }}
       redistribute connected
+{% if internet_origin and vrf.name in internet_services.vrfs %}
+      redistribute static route-map {{ config_context.internet_egress.default_route.route_map }}
+{% endif %}
    !
 {% endfor %}
 {% endif %}

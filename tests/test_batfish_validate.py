@@ -49,30 +49,18 @@ KNOWN_BENIGN_IOS = {
     "ip ssh bulk-mode",  # IOS-XE 17.x feature, Batfish grammar is behind
 }
 
-# EOS commands Batfish's Cisco parser doesn't understand (expected when
-# Batfish mis-detects format). We track these separately.
-KNOWN_BENIGN_EOS = {
-    "vrf instance",
-    "vlan internal order",
+# Valid EOS syntax that the latest Batfish Arista grammar does not model yet.
+# The EOS tests first assert File_Format == ARISTA, so this list cannot hide
+# warnings caused by vendor-format misdetection.
+KNOWN_BENIGN_ARISTA = {
+    "vlan internal order ascending range",
+    "virtual-router mac-address",
+    "egress-vrf",
+    "ipv6 unicast-routing",
     "router bfd",
     "multihop interval",
-    "peer group",
-    "next-hop-unchanged",
-    "address-family evpn",
-    "interface Vxlan1",
-    "vxlan source-interface",
-    "vxlan udp-port",
-    "vxlan vlan",
-    "vxlan vrf",
-    "ip virtual-router mac-address",
+    "maximum-routes 12000",
     "redistribute learned",
-    "route-target both",
-    "route-target import evpn",
-    "route-target export evpn",
-    "redistribute connected",
-    # When Batfish skips 'interface Vxlan1', the description line that follows
-    # becomes orphaned and shows up as a warning. Only affects EOS VTEP blocks.
-    "_VTEP",
 }
 
 
@@ -95,15 +83,25 @@ def render_configs(scenarios: list[tuple[str, str]]) -> dict[str, str]:
     return configs
 
 
-def create_snapshot(configs: dict[str, str], snapshot_name: str) -> str:
+def create_snapshot(
+    configs: dict[str, str],
+    snapshot_name: str,
+    platform: str | None = None,
+) -> str:
     """Write configs to a temp directory in Batfish snapshot format."""
     snapshot_dir = f"/tmp/batfish_{snapshot_name}"
     if os.path.exists(snapshot_dir):
         shutil.rmtree(snapshot_dir)
     configs_dir = os.path.join(snapshot_dir, "configs")
     os.makedirs(configs_dir)
+    format_header = (
+        f"!RANCID-CONTENT-TYPE: {platform.strip().lower()}\n"
+        if platform is not None
+        else ""
+    )
     for hostname, config in configs.items():
         with open(os.path.join(configs_dir, f"{hostname}.cfg"), "w") as f:
+            f.write(format_header)
             f.write(config)
     return snapshot_dir
 
@@ -174,15 +172,7 @@ class TestBatfishIOSValidation:
 
 
 class TestBatfishEOSValidation:
-    """
-    Validate Arista EOS rendered configs.
-
-    Note: Batfish frequently mis-detects EOS configs as Cisco IOS, which
-    produces many false-positive warnings. This test validates that configs
-    render and parse without FAILED status, but the parse warnings are
-    filtered against known EOS-specific syntax that Batfish's IOS parser
-    doesn't understand.
-    """
+    """Validate Arista EOS renders with Batfish's Arista parser."""
 
     EOS_SCENARIOS = [
         ("tests/mock_contexts/arista_eos_leaf.yaml", "golden-config/templates/arista_eos.j2"),
@@ -193,7 +183,7 @@ class TestBatfishEOSValidation:
     def batfish_eos_results(self):
         """Initialize Batfish snapshot with EOS configs (once per class)."""
         configs = render_configs(self.EOS_SCENARIOS)
-        snapshot_dir = create_snapshot(configs, "eos_ci")
+        snapshot_dir = create_snapshot(configs, "eos_ci", platform="arista")
 
         bf = Session(host="localhost")
         bf.set_network("ci-eos-validation")
@@ -210,27 +200,26 @@ class TestBatfishEOSValidation:
         }
 
     def test_all_eos_configs_parsed(self, batfish_eos_results):
-        """Batfish must not completely fail on any EOS config."""
+        """Batfish must parse every EOS config with its Arista parser."""
         status = batfish_eos_results["parse_status"]
         assert len(status) == len(self.EOS_SCENARIOS)
+        assert set(status["File_Format"]) == {"ARISTA"}, (
+            "EOS configs used the wrong Batfish parser:\n"
+            + status[["File_Name", "Status", "File_Format"]].to_string(index=False)
+        )
         for _, row in status.iterrows():
             assert row["Status"] != "FAILED", (
                 f"Batfish completely failed to parse {row['File_Name']}"
             )
 
     def test_no_unexpected_eos_parse_warnings(self, batfish_eos_results):
-        """Only known EOS-specific syntax should appear in warnings."""
+        """Reject Arista parse warnings outside known grammar gaps."""
         warnings = batfish_eos_results["parse_warnings"]
-        unexpected = []
-        for _, row in warnings.iterrows():
-            text = row["Text"].strip()
-            if not is_benign_warning(text, KNOWN_BENIGN_EOS | KNOWN_BENIGN_IOS):
-                # Also skip rd/route-target lines inside BGP VLAN context
-                if text.startswith("rd ") or text.startswith("route-target"):
-                    continue
-                unexpected.append(
-                    f"  {row['Filename']}:{row['Line']} - {text}"
-                )
+        unexpected = [
+            f"  {row['Filename']}:{row['Line']} - {row['Text'].strip()}"
+            for _, row in warnings.iterrows()
+            if not is_benign_warning(row["Text"], KNOWN_BENIGN_ARISTA)
+        ]
         assert not unexpected, (
             "Unexpected EOS parse warnings:\n" + "\n".join(unexpected)
         )

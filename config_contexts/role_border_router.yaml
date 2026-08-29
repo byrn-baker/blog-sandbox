@@ -26,3 +26,11 @@ bgp:
     hold: 30
   log_neighbor_changes: true
   default_ipv4_unicast: false
+internet_edge:
+  default_route:
+    mask: "0.0.0.0"
+    next_hop: "192.168.255.1"
+    global: true
+  nat:
+    access_list: "NAT-INET"
+    overload: true

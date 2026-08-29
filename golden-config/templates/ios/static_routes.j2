@@ -1,2 +1,23 @@
 ip route vrf MGMT-VRF 0.0.0.0 0.0.0.0 192.168.3.1
+{% if config_context.internet_edge is defined %}
+{% set internet = namespace(outside_interface=none, vrf_name=none, networks=[]) %}
+{% for interface in interfaces %}
+{% set interface_role = interface.role | default(none) %}
+{% if interface_role and interface_role.name == 'NAT Outside' %}
+{% set internet.outside_interface = interface.name %}
+{% endif %}
+{% endfor %}
+{% for bgp in bgp_routing_instances %}
+{% for address_family in bgp.address_families | default([]) %}
+{% set attributes = address_family.extra_attributes | default({}) %}
+{% if address_family.vrf and attributes.internet_edge | default(false) %}
+{% set internet.vrf_name = address_family.vrf.name %}
+{% set internet.networks = attributes.networks | default([]) %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% if internet.outside_interface and internet.vrf_name and internet.networks %}
+ip route vrf {{ internet.vrf_name }} {{ internet.networks[0] }} {{ config_context.internet_edge.default_route.mask }} {{ internet.outside_interface }} {{ config_context.internet_edge.default_route.next_hop }}{{ ' global' if config_context.internet_edge.default_route.global else '' }}
+{% endif %}
+{% endif %}
 !

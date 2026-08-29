@@ -26,6 +26,26 @@ roles:
       - "!get:app_label": "dcim"
         "!get:model": "device"
 {% endfor %}
+{% for role_name in ["NAT Inside", "NAT Outside"] %}
+  - "!create_or_update:name": "{{ role_name }}"
+    content_types:
+      - "!get:app_label": "dcim"
+        "!get:model": "interface"
+{% endfor %}
+
+tags:
+  - "!create_or_update:name": "internet-egress-origin"
+    content_types:
+      - "!get:app_label": "dcim"
+        "!get:model": "device"
+  - "!create_or_update:name": "internet-service"
+    content_types:
+      - "!get:app_label": "dcim"
+        "!get:model": "interface"
+  - "!create_or_update:name": "nat-source"
+    content_types:
+      - "!get:app_label": "ipam"
+        "!get:model": "prefix"
 
 location_types:
   - "!create_or_update:name": "Region"
@@ -74,6 +94,13 @@ custom_fields:
         "!get:model": "vlan"
       - "!get:app_label": "ipam"
         "!get:model": "vrf"
+  - "!create_or_update:key": "ip_address_mode"
+    label: "IP Address Mode"
+    type: "text"
+    description: "Interface address source when no static Nautobot IP is assigned"
+    content_types:
+      - "!get:app_label": "dcim"
+        "!get:model": "interface"
 
 route_targets:
 {% for route_target in route_targets %}
@@ -103,6 +130,14 @@ vrfs:
 {% endfor %}
 {% endif %}
 {% endfor %}
+  - "!create_or_update:name": "{{ internet_edge.vrf.name }}"
+    rd: "{{ internet_edge.vrf.rd }}"
+    description: "{{ internet_edge.vrf.description }}"
+    status__name: "Active"
+    import_targets:
+      - "!get:name": "{{ internet_edge.vrf.route_target }}"
+    export_targets:
+      - "!get:name": "{{ internet_edge.vrf.route_target }}"
 
 vlans:
 {% for vlan in service_vlans %}
@@ -161,6 +196,10 @@ prefixes:
     status__name: "Active"
     description: "DC-C VTEP Loopbacks"
   # PE-CE handoffs (/31s assigned in 0003_cabling)
+  - "!create_or_update:prefix": "172.16.0.0/16"
+    status__name: "Active"
+    description: "PE-CE infrastructure address space"
+    tags: []
   - "!create_or_update:prefix": "172.16.1.0/24"
     status__name: "Active"
     description: "CUST-A PE-CE"
@@ -181,6 +220,12 @@ prefixes:
   - "!create_or_update:prefix": "{{ vlan.ipv4_prefix }}"
     status__name: "Active"
     description: "{{ vlan.name }} VLAN {{ vlan.id }}"
+{% if vlan.internet_access %}
+    tags:
+      - "!get:name": "nat-source"
+{% else %}
+    tags: []
+{% endif %}
     locations:
 {% for location_ref in vlan.location_refs %}
       - "!ref:{{ location_ref }}"

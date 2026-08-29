@@ -3,3 +3,4 @@
   platform_network_driver: "arista_eos"
   config_ordered: true
   match_config: "ip prefix-list"
+  config_remediation: true
