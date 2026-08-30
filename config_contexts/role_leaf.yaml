@@ -28,6 +28,27 @@ bfd:
 vxlan:
   source_interface: "Loopback1"
   virtual_router_mac: "00:1c:73:00:00:99"
+# EVPN ESI multihoming for server bonds. Every server VM is dual-homed to
+# Leaf01 + Leaf02 of its site over a static LAG; the two leaves share one
+# Ethernet Segment per server so EVPN forwards all-active. The ESI is not a
+# native Nautobot field, so it lives here as a deterministic map keyed by the
+# connected server's name. The leaf resolves the server on each port-channel
+# member from the cable peer the SoT query returns, then derives:
+#   port-channel access VLAN = server_esi_vlan
+#   ESI identifier           = 00<oct>:00<oct>:00<oct>:00<oct>:00<oct>
+#   ES import route-target   = 00:<oct>:00:<oct>:00:<oct>
+# where <oct> is the server's VLAN 100 host octet below.
+server_esi_vlan: 100
+server_esi_octets:
+  DCA-k3s-m1: 10
+  DCA-k3s-w1: 11
+  DCA-k3s-w2: 12
+  DCA-DNS: 53
+  DCB-k3s-m2: 20
+  DCB-k3s-w3: 21
+  DCB-k3s-w4: 22
+  DCC-k3s-m3: 30
+  DCC-k3s-w5: 31
 prefix_lists:
   - name: "PL-LOOPBACKS-EVPN-OVERLAY"
     entries:

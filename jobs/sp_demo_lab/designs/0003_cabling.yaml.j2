@@ -87,6 +87,44 @@ devices:
           - "!create_or_update:address": "{{ link[6] }}/127"
             status__name: "Active"
 {% endfor %}
+{# Server ESI links — each VM's two NICs to Ethernet<eth_index> on the two #}
+{# leaves of its site. Each leaf gets a Port-Channel<eth_index> access port #}
+{# in VLAN 100; the member Ethernet joins it as a LAG child and cables to the #}
+{# server NIC. The evpn ethernet-segment + ESI render from context in the #}
+{# golden-config EOS template, keyed off the same host octet. #}
+{% for server in servers %}
+{% set po = "Port-Channel" ~ server.eth_index %}
+{% set member = "Ethernet" ~ server.eth_index %}
+{% set nics = ["ens19", "ens20"] %}
+{% for leaf in server.leaves %}
+  - "!update:name": "{{ leaf }}"
+    interfaces:
+      - "!create_or_update:name": "{{ po }}"
+        status__name: "Active"
+        enabled: true
+        type: "lag"
+        mode: "access"
+        description: "{{ server.name }} EVPN ESI multihome"
+        untagged_vlan__vid: 100
+      - "!update:name": "{{ member }}"
+        status__name: "Active"
+        enabled: true
+        lag__name: "{{ po }}"
+        description: "{{ server.name }} bond member (ESI multihome)"
+        "!ref": "{{ leaf }}_{{ member }}"
+  - "!update:name": "{{ server.name }}"
+    interfaces:
+      - "!update:name": "{{ nics[loop.index0] }}"
+        status__name: "Active"
+        enabled: true
+        "!connect_cable":
+          status__name: "Connected"
+          to:
+            device__name: "{{ leaf }}"
+            name: "{{ member }}"
+{% endfor %}
+{% endfor %}
+
 {# Border links — leaf Ethernet10 in SERVERS to CE GigabitEthernet5 (global). #}
 {# Leaf side (.16) carries the /31 in SERVERS; CE side (.17) stays global. #}
 {% for link in border_links %}

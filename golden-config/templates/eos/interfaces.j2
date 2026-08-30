@@ -1,4 +1,35 @@
 {# Interface configuration (AVD-aligned) #}
+{#                                                                          #}
+{# EVPN ESI server bonds: a leaf Ethernet whose cable peer is a known       #}
+{# server (config_context.server_esi_octets) is a bond member. Its          #}
+{# Port-Channel number equals the member's Ethernet index, and its ESI is   #}
+{# derived from the server's VLAN 100 host octet. We build a member->octet  #}
+{# map and a set of the port-channels to render, so both the member         #}
+{# (channel-group) and the Port-Channel (switchport + ethernet-segment)     #}
+{# come out even though the query returns the cable only on the member.     #}
+{% set esi = namespace(members={}, pos={}) %}
+{% set esi_octets = config_context.server_esi_octets | default({}) %}
+{% set esi_vlan = config_context.server_esi_vlan | default(100) %}
+{% for interface in interfaces if interface.name.startswith('Ethernet') and interface.connected_interface is defined and interface.connected_interface %}
+{% set peer = interface.connected_interface.device.name %}
+{% if peer in esi_octets %}
+{% set idx = interface.name | replace('Ethernet', '') %}
+{% set oct = esi_octets[peer] %}
+{% set _ = esi.members.update({interface.name: idx}) %}
+{% set _ = esi.pos.update({idx: {'octet': oct, 'server': peer}}) %}
+{% endif %}
+{% endfor %}
+{# Render each ESI Port-Channel first (access port in the server VLAN + ES). #}
+{% for idx, info in esi.pos | dictsort %}
+interface Port-Channel{{ idx }}
+   description {{ info.server }} EVPN ESI multihome
+   switchport access vlan {{ esi_vlan }}
+   !
+   evpn ethernet-segment
+      identifier 00{{ info.octet }}:00{{ info.octet }}:00{{ info.octet }}:00{{ info.octet }}:00{{ info.octet }}
+      route-target import 00:{{ info.octet }}:00:{{ info.octet }}:00:{{ info.octet }}
+!
+{% endfor %}
 {# Render an interface when it carries config, or when it is a physical    #}
 {# Ethernet port that exists on the box. Unused physical ports render as a  #}
 {# plain `shutdown` so compliance sees them present, not extra.            #}
@@ -13,6 +44,9 @@ interface {{ interface.name }}
 {% endif %}
 {% if not interface.enabled %}
    shutdown
+{% endif %}
+{% if interface.name in esi.members %}
+   channel-group {{ esi.members[interface.name] }} mode on
 {% endif %}
 {% if interface.name.startswith('Ethernet') and interface.ip_addresses %}
    mtu 9214
@@ -33,6 +67,11 @@ interface {{ interface.name }}
 {% endif %}
 {% endif %}
 {% endfor %}
+{# VLAN 100 exports its learned host routes so each site can originate the  #}
+{# per-host /32 that steers internet return traffic back to the owning DC.  #}
+{% if interface.name == 'Vlan100' %}
+   ip attached-host route export
+{% endif %}
 !
 {% endif %}
 {% endfor %}

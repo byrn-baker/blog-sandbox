@@ -116,6 +116,39 @@
 {% endfor %}
 {%- endmacro %}
 
+{% macro server_device(server) -%}
+  - "!create_or_update:name": "{{ server.name }}"
+    location: "!ref:{{ site_refs[server.site] }}"
+    device_type__model: "Ubuntu-VM"
+    role__name: "Server"
+    status__name: "Active"
+    interfaces:
+      - "!create_or_update:name": "eth0"
+        status__name: "Active"
+        type: "virtual"
+        description: "Management"
+        ip_addresses:
+          - "!create_or_update:address": "{{ server.mgmt }}/24"
+            status__name: "Active"
+      - "!create_or_update:name": "bond0"
+        status__name: "Active"
+        type: "lag"
+        description: "VLAN100 EVPN ESI bond (static LAG)"
+        ip_addresses:
+          - "!create_or_update:address": "192.168.100.{{ server.host_octet }}/24"
+            status__name: "Active"
+      - "!create_or_update:name": "ens19"
+        status__name: "Active"
+        type: "virtual"
+        description: "bond0 member -> {{ server.leaves[0] }} Ethernet{{ server.eth_index }}"
+        lag__name: "bond0"
+      - "!create_or_update:name": "ens20"
+        status__name: "Active"
+        type: "virtual"
+        description: "bond0 member -> {{ server.leaves[1] }} Ethernet{{ server.eth_index }}"
+        lag__name: "bond0"
+{%- endmacro %}
+
 devices:
 {% for device in sp_core_devices %}
   {{ cisco_device(device) }}
@@ -128,4 +161,7 @@ devices:
 {% endfor %}
 {% for device in dc_c_devices %}
   {{ arista_device(device) }}
+{% endfor %}
+{% for server in servers %}
+  {{ server_device(server) }}
 {% endfor %}

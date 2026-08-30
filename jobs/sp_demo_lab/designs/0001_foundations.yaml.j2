@@ -2,6 +2,7 @@
 manufacturers:
   - "!create_or_update:name": "Cisco"
   - "!create_or_update:name": "Arista"
+  - "!create_or_update:name": "Generic"
 
 platforms:
   - "!create_or_update:name": "cisco_iosxe"
@@ -18,9 +19,12 @@ device_types:
   - "!create_or_update:model": "vEOS"
     manufacturer__name: "Arista"
     u_height: 1
+  - "!create_or_update:model": "Ubuntu-VM"
+    manufacturer__name: "Generic"
+    u_height: 0
 
 roles:
-{% for role_name in ["P-Router", "PE-Router", "Route-Reflector", "CE-Router", "Border-Router", "Spine", "Leaf"] %}
+{% for role_name in ["P-Router", "PE-Router", "Route-Reflector", "CE-Router", "Border-Router", "Spine", "Leaf", "Server"] %}
   - "!create_or_update:name": "{{ role_name }}"
     content_types:
       - "!get:app_label": "dcim"

@@ -17,6 +17,17 @@ config_context:
   vxlan:
     source_interface: Loopback1
     virtual_router_mac: "00:1c:73:00:00:99"
+  server_esi_vlan: 100
+  server_esi_octets:
+    DCA-k3s-m1: 10
+    DCA-k3s-w1: 11
+    DCA-k3s-w2: 12
+    DCA-DNS: 53
+    DCB-k3s-m2: 20
+    DCB-k3s-w3: 21
+    DCB-k3s-w4: 22
+    DCC-k3s-m3: 30
+    DCC-k3s-w5: 31
   platform:
     spanning_tree_mode: mstp
     spanning_tree_priority: 4096
@@ -183,6 +194,19 @@ interfaces:
     mgmt_only: false
     vrf: null
     ip_addresses: []
+    connected_interface: null
+    tags: []
+  - name: Ethernet7
+    description: "DCA-DNS bond member (ESI multihome)"
+    enabled: true
+    type: A_1000BASE_T
+    mgmt_only: false
+    vrf: null
+    ip_addresses: []
+    connected_interface:
+      name: ens19
+      device:
+        name: DCA-DNS
     tags: []
 
 vrfs:

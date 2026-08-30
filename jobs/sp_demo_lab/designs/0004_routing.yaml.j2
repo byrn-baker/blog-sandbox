@@ -133,6 +133,12 @@ bgp_address_families:
 # Every leaf runs the SERVERS L3 VRF, so each gets a SERVERS-VRF ipv4 AF
 # whose redistribute connected pulls the server SVIs into EVPN. On the border
 # leaf that same VRF AF also feeds the eBGP handoff to the CE.
+#
+# Leaves that host server bonds also redistribute attached-host: EOS turns
+# each ARP it learns on the anycast SVI into a /32, and this pulls those /32s
+# into the SERVERS VRF so the per-host route rides EVPN out to the border and
+# steers internet return traffic back to the owning site.
+{% set server_leaves = servers | map(attribute='leaves') | sum(start=[]) | unique | list %}
 {% for inst in dc_bgp_instances if "Leaf" in inst.device %}
   - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
     "!create_or_update:afi_safi": "ipv4_unicast"
@@ -140,6 +146,9 @@ bgp_address_families:
     extra_attributes:
       redistribute:
         - "connected"
+{% if inst.device in server_leaves %}
+        - "attached-host"
+{% endif %}
 {% endfor %}
 
 # --- BGP Peer Groups ---

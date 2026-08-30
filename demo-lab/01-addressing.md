@@ -343,18 +343,39 @@ type-5. The anycast gateways below are the `SERVERS` SVIs on each leaf.
 | DC-B | 201 | `192.168.201.0/24` | `fd10:a:201::/64` | 10201 | Site-local storage |
 | DC-C | 301 | `192.168.31.0/24` | `fd10:a:301::/64` | 10301 | Site-local storage |
 
-### K3s Node Addresses
+### Server VLAN 100 Addresses (EVPN ESI multihomed)
 
-| DC | Node | IPv4 | IPv6 | Leaf | Role |
-|----|------|------|------|------|------|
-| DC-A | k3s-m1 | `192.168.100.10` | `fd10:a:100::10` | Leaf01 | K3s server |
-| DC-A | k3s-w1 | `192.168.100.11` | `fd10:a:100::11` | Leaf02 | K3s agent |
-| DC-A | k3s-w2 | `192.168.100.12` | `fd10:a:100::12` | Leaf03 | K3s agent |
-| DC-B | k3s-m2 | `192.168.100.20` | `fd10:a:100::20` | Leaf01 | K3s server |
-| DC-B | k3s-w3 | `192.168.100.21` | `fd10:a:100::21` | Leaf02 | K3s agent |
-| DC-B | k3s-w4 | `192.168.100.22` | `fd10:a:100::22` | Leaf03 | K3s agent |
-| DC-C | k3s-m3 | `192.168.100.30` | `fd10:a:100::30` | Leaf01 | K3s server |
-| DC-C | k3s-w5 | `192.168.100.31` | `fd10:a:100::31` | Leaf02 | K3s agent |
+Every server VM is dual-homed to Leaf01 and Leaf02 of its site (never the
+border leaf, Leaf03) over an EVPN Ethernet Segment. The two leaves present a
+port-channel on the same Ethernet member and share one ESI, forwarding
+all-active. The server bundles its two NICs into a single static LAG bond.
+
+The bond is a static LAG rather than LACP: in this nested virtual lab the
+server NICs reach the leaves across stacked Linux bridges that do not forward
+LACP's slow-protocols multicast, so LACP never forms. The static LAG needs no
+control frames. The ESI (designated-forwarder election, all-active forwarding)
+is an EVPN control-plane function and is unaffected by that choice.
+
+Per-server values are deterministic, keyed off the VLAN 100 host octet:
+port-channel number equals the leaf Ethernet member index, the ESI identifier
+is `00<oct>:00<oct>:00<oct>:00<oct>:00<oct>`, and the ES import route-target is
+`00:<oct>:00:<oct>:00:<oct>`.
+
+| DC | Node | VLAN100 IPv4 | IPv6 | Homed to (leaf pair) | Leaf port / Po# | Role |
+|----|------|--------------|------|----------------------|-----------------|------|
+| DC-A | k3s-m1 | `192.168.100.10` | `fd10:a:100::10` | DCA-Leaf01 + DCA-Leaf02 | Ethernet4 / Po4 | K3s server |
+| DC-A | k3s-w1 | `192.168.100.11` | `fd10:a:100::11` | DCA-Leaf01 + DCA-Leaf02 | Ethernet5 / Po5 | K3s agent |
+| DC-A | k3s-w2 | `192.168.100.12` | `fd10:a:100::12` | DCA-Leaf01 + DCA-Leaf02 | Ethernet6 / Po6 | K3s agent |
+| DC-A | DCA-DNS | `192.168.100.53` | `fd10:a:100::53` | DCA-Leaf01 + DCA-Leaf02 | Ethernet7 / Po7 | Internal DNS |
+| DC-B | k3s-m2 | `192.168.100.20` | `fd10:a:100::20` | DCB-Leaf01 + DCB-Leaf02 | Ethernet4 / Po4 | K3s server |
+| DC-B | k3s-w3 | `192.168.100.21` | `fd10:a:100::21` | DCB-Leaf01 + DCB-Leaf02 | Ethernet5 / Po5 | K3s agent |
+| DC-B | k3s-w4 | `192.168.100.22` | `fd10:a:100::22` | DCB-Leaf01 + DCB-Leaf02 | Ethernet6 / Po6 | K3s agent |
+| DC-C | k3s-m3 | `192.168.100.30` | `fd10:a:100::30` | DCC-Leaf01 + DCC-Leaf02 | Ethernet4 / Po4 | K3s server |
+| DC-C | k3s-w5 | `192.168.100.31` | `fd10:a:100::31` | DCC-Leaf01 + DCC-Leaf02 | Ethernet5 / Po5 | K3s agent |
+
+Both leaves in a pair use the same Ethernet member index and port-channel
+number for a given server. The server's `ens19` cables to Leaf01, `ens20` to
+Leaf02.
 
 ---
 
