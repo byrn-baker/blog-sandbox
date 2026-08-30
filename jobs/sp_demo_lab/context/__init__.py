@@ -328,6 +328,20 @@ class SPDemoLabContext(Context):
         {"pe": "SPE3", "pe_ip": "172.16.3.0", "pe_asn": 65000, "ce": "CE3", "ce_ip": "172.16.3.1", "ce_asn": 65003, "vrf": "CUST-A"},
     ]
 
+    # Highest GigabitEthernet data port each Cisco device actually presents in
+    # the lab (Gi1 is always management). The CAT8000v boots with a variable
+    # port count per node, so the SoT must model each device's real inventory
+    # rather than a uniform range, or the intended config references ports that
+    # do not exist and can never be made compliant. Verified against the live
+    # devices. Any device not listed falls back to the default (8).
+    cisco_max_gi_port = {
+        "RR1": 2, "RR2": 2,
+        "SP1": 6, "SP2": 6, "SP3": 5, "SP4": 5,
+        "SPE1": 5, "SPE2": 5, "SPE3": 5,
+        "BORDER1": 4,
+        "CE1": 8, "CE2": 8, "CE3": 8,
+    }
+
     # --- BGP settings modeled as extra_attributes (not config context) ---
     # Every BGP knob the nautobot-bgp-models plugin can hold lives on the
     # model object, keyed as Extra Attributes JSON. The design job writes

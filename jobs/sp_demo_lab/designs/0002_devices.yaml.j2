@@ -32,7 +32,7 @@
             status__name: "Active"
           - "!create_or_update:address": "{{ device.loopback6 }}/128"
             status__name: "Active"
-{% for i in range(2, 9) %}
+{% for i in range(2, (cisco_max_gi_port.get(device.name, 8)) + 1) %}
 {% set interface_name = "GigabitEthernet" ~ i %}
       - "!create_or_update:name": "{{ interface_name }}"
 {% if device.name == internet_edge.device and interface_name in internet_edge.inside_interfaces %}
