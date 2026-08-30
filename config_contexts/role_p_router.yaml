@@ -20,9 +20,5 @@ bfd:
   min_rx: 500
   multiplier: 5
   echo: false
-bgp:
-  timers:
-    keepalive: 10
-    hold: 30
-  log_neighbor_changes: true
-  default_ipv4_unicast: false
+# P routers run no BGP instance. Any BGP settings for BGP-speaking roles are
+# modeled as Extra Attributes on the BGP routing instance, not config context.

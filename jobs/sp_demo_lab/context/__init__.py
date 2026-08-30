@@ -328,6 +328,61 @@ class SPDemoLabContext(Context):
         {"pe": "SPE3", "pe_ip": "172.16.3.0", "pe_asn": 65000, "ce": "CE3", "ce_ip": "172.16.3.1", "ce_asn": 65003, "vrf": "CUST-A"},
     ]
 
+    # --- BGP settings modeled as extra_attributes (not config context) ---
+    # Every BGP knob the nautobot-bgp-models plugin can hold lives on the
+    # model object, keyed as Extra Attributes JSON. The design job writes
+    # these when it creates the routing instances and peer groups; the
+    # templates read them back. Config context keeps only the prefix-list
+    # and route-map bodies, which have no native Nautobot object.
+
+    # Routing-instance-level settings, by ASN family.
+    # SP core (iBGP 65000) and CE (65001-3) share IOS-XE instance knobs;
+    # the DC fabric (Arista) adds maximum_paths/ecmp.
+    sp_bgp_instance_attrs = {
+        "timers": {"keepalive": 10, "hold": 30},
+        "log_neighbor_changes": True,
+        "default_ipv4_unicast": False,
+    }
+    dc_bgp_instance_attrs = {
+        "timers": {"keepalive": 3, "hold": 9},
+        "maximum_paths": 4,
+        "ecmp": 4,
+        "log_neighbor_changes": True,
+        "default_ipv4_unicast": False,
+        "redistribute": {"connected": {"route_map": "RM-CONN-2-BGP"}},
+    }
+
+    # Peer-group-level settings (Extra Attributes on the PeerGroup object).
+    # SP core iBGP peers source from Loopback0 and fall over on BFD.
+    sp_bgp_peer_group_attrs = {
+        "RR-CLIENTS": {"update_source": "Loopback0", "fall_over_bfd": True},
+        "PE-CLIENTS": {"update_source": "Loopback0", "fall_over_bfd": True, "route_reflector_client": True},
+    }
+    # DC fabric eBGP underlay + EVPN overlay peer groups. Underlay carries the
+    # ipv4 send-community (standard) and a 12000-route limit; overlay carries
+    # the EVPN transport knobs and an unlimited route count (0). These match
+    # what the fabric actually runs.
+    dc_bgp_peer_group_attrs = {
+        "IPV4-UNDERLAY-PEERS": {"send_community": True, "maximum_routes": 12000},
+        "EVPN-OVERLAY-PEERS": {
+            "update_source": "Loopback0",
+            "ebgp_multihop": 3,
+            "bfd": True,
+            "send_community_extended": True,
+            "maximum_routes": 0,
+        },
+    }
+    # next_hop_unchanged is a spine-only EVPN overlay attribute. Pre-merge the
+    # spine overlay dict here so the design template needs no dict-merge filter.
+    dc_spine_overlay_attrs = {
+        "update_source": "Loopback0",
+        "ebgp_multihop": 3,
+        "bfd": True,
+        "send_community_extended": True,
+        "maximum_routes": 0,
+        "next_hop_unchanged": True,
+    }
+
     # --- DC Fabric BGP ---
 
     dc_asn_map = {

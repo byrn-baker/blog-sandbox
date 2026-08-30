@@ -6,9 +6,5 @@ _metadata:
   roles:
     - name: "CE-Router"
   config_context_schema: "Routing Properties"
-bgp:
-  timers:
-    keepalive: 10
-    hold: 30
-  log_neighbor_changes: true
-  default_ipv4_unicast: false
+# BGP settings (timers, log-neighbor-changes, default-ipv4-unicast) are
+# modeled as Extra Attributes on the BGP routing instance, not config context.

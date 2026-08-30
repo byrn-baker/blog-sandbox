@@ -10,12 +10,6 @@ config_context:
     min_rx: 500
     multiplier: 5
     echo: false
-  bgp:
-    timers:
-      keepalive: 10
-      hold: 30
-    log_neighbor_changes: true
-    default_ipv4_unicast: false
   isis:
     process_name: SP-ISIS
     metric_style: wide

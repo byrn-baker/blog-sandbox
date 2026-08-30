@@ -9,17 +9,6 @@ config_context:
       interval: 300
       min_rx: 300
       multiplier: 3
-  bgp:
-    ecmp: 4
-    timers:
-      hold: 9
-      keepalive: 3
-    maximum_paths: 4
-    default_ipv4_unicast: false
-    log_neighbor_changes: true
-    redistribute:
-      connected:
-        route_map: RM-CONN-2-BGP
   platform:
     spanning_tree_mode: mstp
     spanning_tree_priority: 4096
@@ -123,15 +112,42 @@ bgp_routing_instances:
       asn: 65101
     router_id:
       address: "10.2.1.2/32"
+    extra_attributes:
+      timers:
+        keepalive: 3
+        hold: 9
+      maximum_paths: 4
+      ecmp: 4
+      log_neighbor_changes: true
+      default_ipv4_unicast: false
+      redistribute:
+        connected:
+          route_map: "RM-CONN-2-BGP"
     peer_groups:
       - name: EVPN-OVERLAY-PEERS
         autonomous_system: null
+        extra_attributes:
+          update_source: "Loopback0"
+          ebgp_multihop: 3
+          bfd: true
+          send_community_extended: true
+          maximum_routes: 0
+          next_hop_unchanged: true
         address_families:
           - afi_safi: L2_EVPN
       - name: IPV4-UNDERLAY-PEERS
         autonomous_system: null
+        extra_attributes:
+          send_community: true
+          maximum_routes: 12000
         address_families:
           - afi_safi: IPV4_UNICAST
+    address_families:
+      - afi_safi: IPV4_UNICAST
+        vrf: null
+        extra_attributes:
+          redistribute:
+            - "connected"
     endpoints:
       - peer_group:
           name: EVPN-OVERLAY-PEERS

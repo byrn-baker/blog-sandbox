@@ -71,6 +71,8 @@ isis_configurations:
 {% endfor %}
 
 # --- BGP Routing Instances ---
+# Instance-level knobs (timers, maximum-paths, redistribute, etc.) ride the
+# routing instance's Extra Attributes, not config context.
 bgp_routing_instances:
 {% for inst in bgp_instances %}
   - "!create_or_update:device__name": "{{ inst.device }}"
@@ -78,6 +80,7 @@ bgp_routing_instances:
     router_id__host: "{{ inst.router_id }}"
     description: "BGP on {{ inst.device }}"
     status__name: "Active"
+    extra_attributes: {{ sp_bgp_instance_attrs | tojson }}
 {% endfor %}
 # DC Fabric
 {% for inst in dc_bgp_instances %}
@@ -86,6 +89,7 @@ bgp_routing_instances:
     router_id__host: "{{ inst.router_id }}"
     description: "BGP on {{ inst.device }}"
     status__name: "Active"
+    extra_attributes: {{ dc_bgp_instance_attrs | tojson }}
 {% endfor %}
 
 # --- BGP Address Families ---
@@ -114,15 +118,33 @@ bgp_address_families:
 {% for network in internet_edge.advertise_networks %}
         - "{{ network }}"
 {% endfor %}
-# DC Fabric: ipv4_unicast (underlay) + l2_evpn (overlay)
+# DC Fabric: ipv4_unicast (underlay) + l2_evpn (overlay).
+# The global ipv4 AF redistributes connected; that policy rides the AF model,
+# not a template literal.
 {% for inst in dc_bgp_instances %}
   - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
     "!create_or_update:afi_safi": "ipv4_unicast"
+    extra_attributes:
+      redistribute:
+        - "connected"
   - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
     "!create_or_update:afi_safi": "l2_evpn"
 {% endfor %}
+# Border leaves get a SERVERS-VRF ipv4 AF whose redistribute connected feeds
+# the fabric server routes into the eBGP handoff to the CE.
+{% for peer in border_ebgp_peerings %}
+  - "!create_or_update:routing_instance__device__name": "{{ peer.leaf }}"
+    "!create_or_update:afi_safi": "ipv4_unicast"
+    "!create_or_update:vrf__name": "{{ peer.vrf }}"
+    extra_attributes:
+      redistribute:
+        - "connected"
+{% endfor %}
 
 # --- BGP Peer Groups ---
+# Peer-group tuning (send-community, maximum-routes, update-source,
+# ebgp-multihop, bfd, next-hop-unchanged, fall-over bfd, rr-client) lives in
+# the peer group's Extra Attributes, keyed off the group, not config context.
 bgp_peer_groups:
 {% for pe in ["SPE1", "SPE2", "SPE3", "BORDER1"] %}
   - "!create_or_update:name": "RR-CLIENTS"
@@ -130,6 +152,7 @@ bgp_peer_groups:
     description: "iBGP to Route Reflectors"
     enabled: true
     autonomous_system__asn: 65000
+    extra_attributes: {{ sp_bgp_peer_group_attrs["RR-CLIENTS"] | tojson }}
 {% endfor %}
 {% for rr in ["RR1", "RR2"] %}
   - "!create_or_update:name": "PE-CLIENTS"
@@ -137,17 +160,26 @@ bgp_peer_groups:
     description: "iBGP PE clients"
     enabled: true
     autonomous_system__asn: 65000
+    extra_attributes: {{ sp_bgp_peer_group_attrs["PE-CLIENTS"] | tojson }}
 {% endfor %}
-# DC Fabric peer groups (all spines and leaves get both underlay + overlay)
+# DC Fabric peer groups (all spines and leaves get both underlay + overlay).
+# Spines add next_hop_unchanged to the overlay group.
 {% for inst in dc_bgp_instances %}
+{% set is_spine = "Spine" in inst.device %}
   - "!create_or_update:name": "IPV4-UNDERLAY-PEERS"
     "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
     description: "eBGP IPv4 underlay peers"
     enabled: true
+    extra_attributes: {{ dc_bgp_peer_group_attrs["IPV4-UNDERLAY-PEERS"] | tojson }}
   - "!create_or_update:name": "EVPN-OVERLAY-PEERS"
     "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
     description: "eBGP EVPN overlay peers"
     enabled: true
+{% if is_spine %}
+    extra_attributes: {{ dc_spine_overlay_attrs | tojson }}
+{% else %}
+    extra_attributes: {{ dc_bgp_peer_group_attrs["EVPN-OVERLAY-PEERS"] | tojson }}
+{% endif %}
 {% endfor %}
 
 # --- BGP Peer Group Address Families ---
@@ -221,6 +253,8 @@ bgp_peerings:
         source_ip__host: "{{ peer.leaf_ip }}"
         autonomous_system__asn: {{ peer.leaf_asn }}
         enabled: true
+        extra_attributes:
+          maximum_routes: 12000
       - routing_instance__device__name: "{{ peer.ce }}"
         source_ip__host: "{{ peer.ce_ip }}"
         autonomous_system__asn: {{ peer.ce_asn }}

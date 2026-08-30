@@ -11,12 +11,6 @@ config_context:
     min_rx: 500
     multiplier: 5
     echo: false
-  bgp:
-    timers:
-      keepalive: 10
-      hold: 30
-    log_neighbor_changes: true
-    default_ipv4_unicast: false
   isis:
     process_name: SP-ISIS
     metric_style: wide
@@ -136,6 +130,12 @@ bgp_routing_instances:
       asn: 65000
     router_id:
       address: "10.1.0.10/32"
+    extra_attributes:
+      timers:
+        keepalive: 10
+        hold: 30
+      log_neighbor_changes: true
+      default_ipv4_unicast: false
     address_families:
       - afi_safi: IPV4_UNICAST
         vrf:
@@ -148,6 +148,9 @@ bgp_routing_instances:
       - name: RR-CLIENTS
         autonomous_system:
           asn: 65000
+        extra_attributes:
+          update_source: "Loopback0"
+          fall_over_bfd: true
         address_families:
           - afi_safi: VPNV4_UNICAST
           - afi_safi: VPNV6_UNICAST

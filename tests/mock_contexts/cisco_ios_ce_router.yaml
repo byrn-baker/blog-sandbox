@@ -6,13 +6,7 @@
 ---
 hostname: CE1
 
-config_context:
-  bgp:
-    timers:
-      keepalive: 10
-      hold: 30
-    log_neighbor_changes: true
-    default_ipv4_unicast: false
+config_context: {}
 
 role:
   name: CE-Router
@@ -118,6 +112,12 @@ bgp_routing_instances:
       asn: 65001
     router_id:
       address: "10.2.1.1/32"
+    extra_attributes:
+      timers:
+        keepalive: 10
+        hold: 30
+      log_neighbor_changes: true
+      default_ipv4_unicast: false
     peer_groups: []
     endpoints:
       # eBGP to PE (non-VRF, non-peer-group)

@@ -9,34 +9,41 @@
 {% endfor %}
 {% endfor %}
 {% for bgp in bgp_routing_instances %}
+{% set inst_attrs = bgp.extra_attributes | default({}) %}
 router bgp {{ bgp.autonomous_system.asn }}
    router-id {{ bgp.router_id.address.split('/')[0] }}
-{% if config_context.bgp is defined and not config_context.bgp.default_ipv4_unicast | default(false) %}
+{% if not inst_attrs.default_ipv4_unicast | default(false) %}
    no bgp default ipv4-unicast
 {% endif %}
-{% if config_context.bgp is defined %}
-   maximum-paths {{ config_context.bgp.maximum_paths | default(4) }} ecmp {{ config_context.bgp.ecmp | default(4) }}
-   timers bgp {{ config_context.bgp.timers.keepalive }} {{ config_context.bgp.timers.hold }}
+   maximum-paths {{ inst_attrs.maximum_paths | default(4) }} ecmp {{ inst_attrs.ecmp | default(4) }}
+{% if inst_attrs.timers is defined %}
+   timers bgp {{ inst_attrs.timers.keepalive }} {{ inst_attrs.timers.hold }}
 {% else %}
-   maximum-paths 4 ecmp 4
    timers bgp 3 9
 {% endif %}
 !
 {% for pg in bgp.peer_groups %}
+{% set pg_attrs = pg.extra_attributes | default({}) %}
    neighbor {{ pg.name }} peer group
-{% set pg_afs = pg.address_families | map(attribute='afi_safi') | list %}
-{% if 'L2_EVPN' in pg_afs or 'l2_evpn' in pg_afs %}
-   neighbor {{ pg.name }} update-source Loopback0
-{% if role.name == 'Spine' %}
+{% if pg_attrs.update_source is defined %}
+   neighbor {{ pg.name }} update-source {{ pg_attrs.update_source }}
+{% endif %}
+{% if pg_attrs.next_hop_unchanged | default(false) %}
    neighbor {{ pg.name }} next-hop-unchanged
 {% endif %}
+{% if pg_attrs.bfd | default(false) %}
    neighbor {{ pg.name }} bfd
-   neighbor {{ pg.name }} ebgp-multihop 3
+{% endif %}
+{% if pg_attrs.ebgp_multihop is defined %}
+   neighbor {{ pg.name }} ebgp-multihop {{ pg_attrs.ebgp_multihop }}
+{% endif %}
+{% if pg_attrs.send_community_extended | default(false) %}
    neighbor {{ pg.name }} send-community extended
-   neighbor {{ pg.name }} maximum-routes 0
-{% else %}
+{% elif pg_attrs.send_community | default(false) %}
    neighbor {{ pg.name }} send-community
-   neighbor {{ pg.name }} maximum-routes 12000
+{% endif %}
+{% if pg_attrs.maximum_routes is defined %}
+   neighbor {{ pg.name }} maximum-routes {{ pg_attrs.maximum_routes }}
 {% endif %}
 !
 {% endfor %}
@@ -61,8 +68,8 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {% endfor %}
 !
-{% if config_context.bgp is defined and config_context.bgp.redistribute is defined and config_context.bgp.redistribute.connected is defined %}
-   redistribute connected route-map {{ config_context.bgp.redistribute.connected.route_map }}
+{% if inst_attrs.redistribute is defined and inst_attrs.redistribute.connected is defined %}
+   redistribute connected route-map {{ inst_attrs.redistribute.connected.route_map }}
 {% endif %}
 !
 {% set address_families = namespace(ipv4=[], evpn=[]) %}
@@ -83,11 +90,18 @@ router bgp {{ bgp.autonomous_system.asn }}
    !
 {% endif %}
 {% if address_families.ipv4 %}
+{# Global ipv4 AF redistribute rides the AddressFamily model's extra_attributes. #}
+{% set global_ipv4_redist = namespace(list=[]) %}
+{% for af in bgp.address_families | default([]) if af.afi_safi in ['IPV4_UNICAST', 'ipv4_unicast'] and not af.vrf %}
+{% set global_ipv4_redist.list = af.extra_attributes.redistribute | default([]) %}
+{% endfor %}
    address-family ipv4
 {% for peer_group_name in address_families.ipv4 %}
       neighbor {{ peer_group_name }} activate
 {% endfor %}
-      redistribute connected
+{% for proto in global_ipv4_redist.list %}
+      redistribute {{ proto }}
+{% endfor %}
    !
 {% endif %}
 {% if not bgp.peer_groups %}
@@ -106,14 +120,22 @@ router bgp {{ bgp.autonomous_system.asn }}
    !
 {% endfor %}
 {% for vrf in vrfs | default([]) if vrf._custom_field_data.vni is defined and vrf._custom_field_data.vni is not none %}
+{# This VRF's ipv4 AF redistribute rides the AddressFamily model. #}
+{% set vrf_redist = namespace(list=[]) %}
+{% for af in bgp.address_families | default([]) if af.afi_safi in ['IPV4_UNICAST', 'ipv4_unicast'] and af.vrf and af.vrf.name == vrf.name %}
+{% set vrf_redist.list = af.extra_attributes.redistribute | default([]) %}
+{% endfor %}
    vrf {{ vrf.name }}
       rd {{ bgp.router_id.address.split('/')[0] }}:{{ vrf._custom_field_data.vni }}
       route-target import evpn {{ vrf._custom_field_data.vni }}:{{ vrf._custom_field_data.vni }}
       route-target export evpn {{ vrf._custom_field_data.vni }}:{{ vrf._custom_field_data.vni }}
-      redistribute connected
+{% for proto in vrf_redist.list %}
+      redistribute {{ proto }}
+{% endfor %}
 {# Border-leaf handoff: eBGP to the CE inside this VRF. Only the border leaf #}
 {# has an endpoint whose source IP is in this VRF; other leaves render none. #}
 {% for endpoint in bgp.endpoints if endpoint.peering and endpoint.peering.endpoints and addr_vrf.map.get(endpoint.source_ip.address.split('/')[0]) == vrf.name %}
+{% set ep_attrs = endpoint.extra_attributes | default({}) %}
 {% set remote = namespace(ep=none) %}
 {% for ep in endpoint.peering.endpoints %}
 {% if ep.source_ip.address != endpoint.source_ip.address %}
@@ -122,7 +144,9 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endfor %}
 {% if remote.ep %}
       neighbor {{ remote.ep.source_ip.address.split('/')[0] }} remote-as {{ remote.ep.autonomous_system.asn }}
-      neighbor {{ remote.ep.source_ip.address.split('/')[0] }} maximum-routes 12000
+{% if ep_attrs.maximum_routes is defined %}
+      neighbor {{ remote.ep.source_ip.address.split('/')[0] }} maximum-routes {{ ep_attrs.maximum_routes }}
+{% endif %}
       address-family ipv4
          neighbor {{ remote.ep.source_ip.address.split('/')[0] }} activate
 {% endif %}

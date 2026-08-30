@@ -11,20 +11,6 @@ config_context:
       interval: 300
       min_rx: 300
       multiplier: 3
-  bgp:
-    ecmp: 4
-    timers:
-      hold: 9
-      keepalive: 3
-    maximum_paths: 4
-    default_ipv4_unicast: false
-    log_neighbor_changes: true
-    peer_groups:
-      ipv4_underlay:
-        name: IPV4-UNDERLAY-PEERS
-    redistribute:
-      connected:
-        route_map: RM-CONN-2-BGP
   evpn:
     multihop: 3
     update_source: Loopback0
@@ -214,15 +200,47 @@ bgp_routing_instances:
       asn: 65111
     router_id:
       address: "10.2.1.4/32"
+    extra_attributes:
+      timers:
+        keepalive: 3
+        hold: 9
+      maximum_paths: 4
+      ecmp: 4
+      log_neighbor_changes: true
+      default_ipv4_unicast: false
+      redistribute:
+        connected:
+          route_map: "RM-CONN-2-BGP"
     peer_groups:
       - name: EVPN-OVERLAY-PEERS
         autonomous_system: null
+        extra_attributes:
+          update_source: "Loopback0"
+          ebgp_multihop: 3
+          bfd: true
+          send_community_extended: true
+          maximum_routes: 0
         address_families:
           - afi_safi: L2_EVPN
       - name: IPV4-UNDERLAY-PEERS
         autonomous_system: null
+        extra_attributes:
+          send_community: true
+          maximum_routes: 12000
         address_families:
           - afi_safi: IPV4_UNICAST
+    address_families:
+      - afi_safi: IPV4_UNICAST
+        vrf: null
+        extra_attributes:
+          redistribute:
+            - "connected"
+      - afi_safi: IPV4_UNICAST
+        vrf:
+          name: SERVERS
+        extra_attributes:
+          redistribute:
+            - "connected"
     endpoints:
       - enabled: true
         peer_group:
@@ -297,6 +315,8 @@ bgp_routing_instances:
         peer_group: null
         source_ip:
           address: "10.1.1.16/31"
+        extra_attributes:
+          maximum_routes: 12000
         peering:
           endpoints:
             - enabled: true
