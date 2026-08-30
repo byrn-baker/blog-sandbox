@@ -1,6 +1,7 @@
 ---
 - feature_slug: "080-isis"
   platform_network_driver: "cisco_ios"
-  config_ordered: true
+  # Unordered: the device returns router isis sub-lines in its own order.
+  config_ordered: false
   match_config: "router isis"
   config_remediation: true

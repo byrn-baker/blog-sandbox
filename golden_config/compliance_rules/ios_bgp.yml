@@ -1,6 +1,9 @@
 ---
 - feature_slug: "130-bgp"
   platform_network_driver: "cisco_ios"
-  config_ordered: true
+  # Unordered: IOS-XE returns BGP neighbor lines in its own order. Content
+  # differences (e.g. peer-group vs member activation) still surface as
+  # missing/extra; only pure reordering is tolerated.
+  config_ordered: false
   match_config: "router bgp"
   config_remediation: true
