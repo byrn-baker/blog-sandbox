@@ -36,7 +36,7 @@
 {% set interface_name = "GigabitEthernet" ~ i %}
       - "!create_or_update:name": "{{ interface_name }}"
 {% if device.name == internet_edge.device and interface_name in internet_edge.inside_interfaces %}
-        status__name: "Planned"
+        status__name: "Active"
         role__name: "NAT Inside"
 {% elif device.name == internet_edge.device and interface_name == internet_edge.outside_interface.name %}
         status__name: "Active"
@@ -45,7 +45,8 @@
         custom_fields:
           ip_address_mode: "{{ internet_edge.outside_interface.address_mode }}"
 {% else %}
-        status__name: "Planned"
+        # Physical port present on the box but unused: Active status, admin-down.
+        status__name: "Active"
         enabled: false
 {% endif %}
         type: "1000base-t"
@@ -107,7 +108,9 @@
 {% endif %}
 {% for i in range(1, 11) %}
       - "!create_or_update:name": "Ethernet{{ i }}"
-        status__name: "Planned"
+        # Physical port present on the box but unused: Active status, admin-down.
+        # 0003 flips cabled ports to enabled=true.
+        status__name: "Active"
         enabled: false
         type: "1000base-t"
 {% endfor %}
