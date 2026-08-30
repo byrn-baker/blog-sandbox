@@ -159,7 +159,7 @@ edge, so one `BORDER1` internet edge and one NAT policy serve all three.
 |------|------|------|---------------|---------------|-----|
 | SPE1 ↔ CE1 | `172.16.1.0/31` | `fd10:c:1::/127` | SPE1 Gi5 | CE1 Gi2 | CUST-A |
 | SPE2 ↔ CE2 | `172.16.2.0/31` | `fd10:c:2::/127` | SPE2 Gi5 | CE2 Gi2 | CUST-A |
-| SPE3 ↔ CE3 | `172.16.3.0/31` | `fd10:c:3::/127` | SPE3 Gi5 | CE3 Gi2 | CUST-A |
+| SPE3 ↔ CE3 | `172.16.3.0/31` | `fd10:c:3::/127` | SPE3 Gi4 | CE3 Gi2 | CUST-A |
 
 ---
 

@@ -75,11 +75,12 @@ class SPDemoLabContext(Context):
     # PE-CE links — (a_device, a_intf, b_device, b_intf, prefix4, vrf, v6_a, v6_b)
     # All three sites land in CUST-A: the border-leaf design carries every DC's
     # server routes to a single customer VRF so one BORDER1 internet edge and
-    # NAT policy serves them all. SPE3 uses Gi5 to match SPE1/SPE2.
+    # NAT policy serves them all. SPE1/SPE2 land the CE on Gi5; SPE3 uses Gi4
+    # because its Gi5 is unused in the lab wiring and CE3 cables to SPE3 Gi4.
     pe_ce_links = [
         ("SPE1", "GigabitEthernet5", "CE1", "GigabitEthernet2", "172.16.1.0/31", "CUST-A", "fd10:c:1::", "fd10:c:1::1"),
         ("SPE2", "GigabitEthernet5", "CE2", "GigabitEthernet2", "172.16.2.0/31", "CUST-A", "fd10:c:2::", "fd10:c:2::1"),
-        ("SPE3", "GigabitEthernet5", "CE3", "GigabitEthernet2", "172.16.3.0/31", "CUST-A", "fd10:c:3::", "fd10:c:3::1"),
+        ("SPE3", "GigabitEthernet4", "CE3", "GigabitEthernet2", "172.16.3.0/31", "CUST-A", "fd10:c:3::", "fd10:c:3::1"),
     ]
 
     # DC fabric links — (a_device, a_intf, b_device, b_intf, prefix4, v6_a, v6_b)
