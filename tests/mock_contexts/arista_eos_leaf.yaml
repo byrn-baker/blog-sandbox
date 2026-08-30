@@ -208,6 +208,15 @@ interfaces:
       device:
         name: DCA-DNS
     tags: []
+  - name: Port-Channel7
+    description: "DCA-DNS EVPN ESI multihome"
+    enabled: true
+    type: LAG
+    mgmt_only: false
+    vrf: null
+    ip_addresses: []
+    connected_interface: null
+    tags: []
 
 vrfs:
   - name: MGMT-VRF

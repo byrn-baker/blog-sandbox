@@ -34,7 +34,10 @@ interface Port-Channel{{ idx }}
 {# Ethernet port that exists on the box. Unused physical ports render as a  #}
 {# plain `shutdown` so compliance sees them present, not extra.            #}
 {% for interface in interfaces %}
-{% if interface.ip_addresses or interface.description or interface.name.startswith('Ethernet') %}
+{# Port-Channels are rendered above with their ethernet-segment; skip here so #}
+{# they don't emit a second bare block. #}
+{% if interface.name.startswith('Port-Channel') %}
+{% elif interface.ip_addresses or interface.description or interface.name.startswith('Ethernet') %}
 interface {{ interface.name }}
 {% if interface.description %}
    description {{ interface.description }}
