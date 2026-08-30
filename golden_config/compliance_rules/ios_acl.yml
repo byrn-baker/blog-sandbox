@@ -1,0 +1,8 @@
+---
+- feature_slug: "160-acl"
+  platform_network_driver: "cisco_ios"
+  config_ordered: true
+  config_remediation: true
+  match_config: |-
+    ip access-list
+    access-list

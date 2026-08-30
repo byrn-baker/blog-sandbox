@@ -1,0 +1,6 @@
+---
+- feature_slug: "165-nat"
+  platform_network_driver: "cisco_ios"
+  config_ordered: false
+  config_remediation: true
+  match_config: "ip nat inside source"
