@@ -130,12 +130,13 @@ bgp_address_families:
   - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
     "!create_or_update:afi_safi": "l2_evpn"
 {% endfor %}
-# Border leaves get a SERVERS-VRF ipv4 AF whose redistribute connected feeds
-# the fabric server routes into the eBGP handoff to the CE.
-{% for peer in border_ebgp_peerings %}
-  - "!create_or_update:routing_instance__device__name": "{{ peer.leaf }}"
+# Every leaf runs the SERVERS L3 VRF, so each gets a SERVERS-VRF ipv4 AF
+# whose redistribute connected pulls the server SVIs into EVPN. On the border
+# leaf that same VRF AF also feeds the eBGP handoff to the CE.
+{% for inst in dc_bgp_instances if "Leaf" in inst.device %}
+  - "!create_or_update:routing_instance__device__name": "{{ inst.device }}"
     "!create_or_update:afi_safi": "ipv4_unicast"
-    "!create_or_update:vrf__name": "{{ peer.vrf }}"
+    "!create_or_update:vrf__name": "SERVERS"
     extra_attributes:
       redistribute:
         - "connected"

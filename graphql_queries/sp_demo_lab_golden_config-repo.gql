@@ -111,6 +111,7 @@ query ($device_id: ID!) {
       endpoints {
         enabled
         description
+        extra_attributes
         peer_group {
           name
         }
