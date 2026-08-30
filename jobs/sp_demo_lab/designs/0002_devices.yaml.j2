@@ -137,14 +137,16 @@
         ip_addresses:
           - "!create_or_update:address": "192.168.100.{{ server.host_octet }}/24"
             status__name: "Active"
+      # LAG members must be a physical interface type; Nautobot rejects a
+      # virtual interface as a bond child.
       - "!create_or_update:name": "ens19"
         status__name: "Active"
-        type: "virtual"
+        type: "1000base-t"
         description: "bond0 member -> {{ server.leaves[0] }} Ethernet{{ server.eth_index }}"
         lag__name: "bond0"
       - "!create_or_update:name": "ens20"
         status__name: "Active"
-        type: "virtual"
+        type: "1000base-t"
         description: "bond0 member -> {{ server.leaves[1] }} Ethernet{{ server.eth_index }}"
         lag__name: "bond0"
 {%- endmacro %}
