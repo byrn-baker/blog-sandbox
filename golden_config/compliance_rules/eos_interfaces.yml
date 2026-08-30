@@ -1,6 +1,9 @@
 ---
 - feature_slug: "060-interfaces"
   platform_network_driver: "arista_eos"
-  config_ordered: true
+  # Unordered: EOS reorders sub-lines within an interface block (e.g. vrf
+  # placement relative to mtu/switchport). Content matches intended; a
+  # genuinely missing/extra line still surfaces under an unordered compare.
+  config_ordered: false
   match_config: "interface "
   config_remediation: true

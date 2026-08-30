@@ -1,6 +1,10 @@
 ---
 - feature_slug: "060-interfaces"
   platform_network_driver: "cisco_ios"
-  config_ordered: true
+  # Unordered: the device emits interface blocks in its own order (Loopback0
+  # first) and orders sub-lines its own way (vrf placement). Content matches
+  # intended; a genuinely missing/extra interface line still surfaces under an
+  # unordered compare, only pure reordering is tolerated.
+  config_ordered: false
   match_config: "interface "
   config_remediation: true
