@@ -59,16 +59,42 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {% endfor %}
 !
+{# Under `no bgp default ipv4-unicast`, an iBGP speaker whose peers all live #}
+{# in vpnv4/vpnv6 still carries an empty `address-family ipv4` block, which #}
+{# IOS-XE auto-creates. Emit it so intended matches the device. #}
+{% set has_vpn_pg = namespace(yes=false) %}
+{% for pg in bgp.peer_groups %}
+{% for af in pg.address_families if af.afi_safi in ['VPNV4_UNICAST', 'vpnv4_unicast', 'VPNV6_UNICAST', 'vpnv6_unicast'] %}
+{% set has_vpn_pg.yes = true %}
+{% endfor %}
+{% endfor %}
+{% if has_vpn_pg.yes %}
+ address-family ipv4
+ exit-address-family
+!
+{% endif %}
 {% for pg in bgp.peer_groups %}
 {% set pg_attrs = pg.extra_attributes | default({}) %}
 {% for af in pg.address_families %}
 {% if af.afi_safi in ['VPNV4_UNICAST', 'vpnv4_unicast'] %}
  address-family vpnv4
-  neighbor {{ pg.name }} activate
   neighbor {{ pg.name }} send-community extended
 {% if pg_attrs.route_reflector_client | default(false) %}
   neighbor {{ pg.name }} route-reflector-client
 {% endif %}
+{# Activate each peer-group member by its remote IP; IOS-XE rejects #}
+{# activating the peer-group name itself for explicitly-configured peers. #}
+{% for endpoint in bgp.endpoints if endpoint.peer_group and endpoint.peer_group.name == pg.name and endpoint.peering and endpoint.peering.endpoints %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
+{% endif %}
+{% endfor %}
+{% if remote.ep %}
+  neighbor {{ remote.ep.source_ip.address.split('/')[0] }} activate
+{% endif %}
+{% endfor %}
 {# Non-peer-group neighbors in vpnv4 need per-neighbor attributes #}
 {% for endpoint in bgp.endpoints %}
 {% if not endpoint.peer_group and endpoint.peering and endpoint.peering.endpoints %}
@@ -100,11 +126,23 @@ router bgp {{ bgp.autonomous_system.asn }}
 !
 {% elif af.afi_safi in ['VPNV6_UNICAST', 'vpnv6_unicast'] %}
  address-family vpnv6
-  neighbor {{ pg.name }} activate
   neighbor {{ pg.name }} send-community extended
 {% if pg_attrs.route_reflector_client | default(false) %}
   neighbor {{ pg.name }} route-reflector-client
 {% endif %}
+{# Activate each peer-group member by its remote IP; IOS-XE rejects #}
+{# activating the peer-group name itself for explicitly-configured peers. #}
+{% for endpoint in bgp.endpoints if endpoint.peer_group and endpoint.peer_group.name == pg.name and endpoint.peering and endpoint.peering.endpoints %}
+{% set remote = namespace(ep=none) %}
+{% for ep in endpoint.peering.endpoints %}
+{% if ep.source_ip.address != endpoint.source_ip.address %}
+{% set remote.ep = ep %}
+{% endif %}
+{% endfor %}
+{% if remote.ep %}
+  neighbor {{ remote.ep.source_ip.address.split('/')[0] }} activate
+{% endif %}
+{% endfor %}
 {# Non-peer-group neighbors in vpnv6 need per-neighbor attributes #}
 {% for endpoint in bgp.endpoints %}
 {% if not endpoint.peer_group and endpoint.peering and endpoint.peering.endpoints %}
