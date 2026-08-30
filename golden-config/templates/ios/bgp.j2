@@ -84,6 +84,9 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {# Activate each peer-group member by its remote IP; IOS-XE rejects #}
 {# activating the peer-group name itself for explicitly-configured peers. #}
+{# Emit in numeric IP order so the render is deterministic and matches the #}
+{# device's configuration order. #}
+{% set vpnv4_members = namespace(ips=[]) %}
 {% for endpoint in bgp.endpoints if endpoint.peer_group and endpoint.peer_group.name == pg.name and endpoint.peering and endpoint.peering.endpoints %}
 {% set remote = namespace(ep=none) %}
 {% for ep in endpoint.peering.endpoints %}
@@ -92,8 +95,16 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {% endfor %}
 {% if remote.ep %}
-  neighbor {{ remote.ep.source_ip.address.split('/')[0] }} activate
+{% set ip = remote.ep.source_ip.address.split('/')[0] %}
+{% set key = namespace(s='') %}
+{% for octet in ip.split('.') %}
+{% set key.s = key.s + '%03d' | format(octet | int) %}
+{% endfor %}
+{% set vpnv4_members.ips = vpnv4_members.ips + [(key.s, ip)] %}
 {% endif %}
+{% endfor %}
+{% for pair in vpnv4_members.ips | sort %}
+  neighbor {{ pair[1] }} activate
 {% endfor %}
 {# Non-peer-group neighbors in vpnv4 need per-neighbor attributes #}
 {% for endpoint in bgp.endpoints %}
@@ -132,6 +143,7 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {# Activate each peer-group member by its remote IP; IOS-XE rejects #}
 {# activating the peer-group name itself for explicitly-configured peers. #}
+{% set vpnv6_members = namespace(ips=[]) %}
 {% for endpoint in bgp.endpoints if endpoint.peer_group and endpoint.peer_group.name == pg.name and endpoint.peering and endpoint.peering.endpoints %}
 {% set remote = namespace(ep=none) %}
 {% for ep in endpoint.peering.endpoints %}
@@ -140,8 +152,16 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% endif %}
 {% endfor %}
 {% if remote.ep %}
-  neighbor {{ remote.ep.source_ip.address.split('/')[0] }} activate
+{% set ip = remote.ep.source_ip.address.split('/')[0] %}
+{% set key = namespace(s='') %}
+{% for octet in ip.split('.') %}
+{% set key.s = key.s + '%03d' | format(octet | int) %}
+{% endfor %}
+{% set vpnv6_members.ips = vpnv6_members.ips + [(key.s, ip)] %}
 {% endif %}
+{% endfor %}
+{% for pair in vpnv6_members.ips | sort %}
+  neighbor {{ pair[1] }} activate
 {% endfor %}
 {# Non-peer-group neighbors in vpnv6 need per-neighbor attributes #}
 {% for endpoint in bgp.endpoints %}
