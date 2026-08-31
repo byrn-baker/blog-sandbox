@@ -1,0 +1,93 @@
+---
+# =============================================================================
+# bind_dns: the lab authoritative DNS server (DCA-DNS)
+# =============================================================================
+# Installs BIND9 and serves the sandbox.lab zone plus reverse zones. Every
+# record is generated from Nautobot: the role queries all devices and their
+# primary IPs, so DNS stays in lockstep with the source of truth. Re-running
+# the role after a topology change regenerates the zones.
+
+- name: Query Nautobot for all device names and primary IPs
+  ansible.builtin.uri:
+    url: "{{ lookup('env', 'NAUTOBOT_URL') }}/api/graphql/"
+    method: POST
+    headers:
+      Authorization: "Token {{ lookup('env', 'NAUTOBOT_TOKEN') }}"
+      Content-Type: "application/json"
+    body_format: json
+    body:
+      query: >-
+        query { devices { name primary_ip4 { host } } }
+    validate_certs: false
+    return_content: true
+  delegate_to: localhost
+  become: false
+  run_once: true
+  register: nb_devices
+
+- name: Build the A-record map (hostname -> IPv4), skipping devices with no primary IP
+  ansible.builtin.set_fact:
+    dns_records: >-
+      {{ nb_devices.json.data.devices
+         | selectattr('primary_ip4', 'ne', none)
+         | map('combine', {})
+         | list }}
+  run_once: true
+
+- name: Install BIND9
+  ansible.builtin.apt:
+    name:
+      - bind9
+      - bind9utils
+      - dnsutils
+    state: present
+    update_cache: true
+
+- name: Deploy named.conf.options (forwarders, ACL, listen)
+  ansible.builtin.template:
+    src: named.conf.options.j2
+    dest: /etc/bind/named.conf.options
+    owner: root
+    group: bind
+    mode: "0644"
+  notify: Reload bind
+
+- name: Deploy named.conf.local (zone declarations)
+  ansible.builtin.template:
+    src: named.conf.local.j2
+    dest: /etc/bind/named.conf.local
+    owner: root
+    group: bind
+    mode: "0644"
+  notify: Reload bind
+
+- name: Render the forward zone
+  ansible.builtin.template:
+    src: db.forward.j2
+    dest: "/etc/bind/db.{{ lab_domain }}"
+    owner: root
+    group: bind
+    mode: "0644"
+  notify: Reload bind
+
+- name: Render each reverse zone
+  ansible.builtin.template:
+    src: db.reverse.j2
+    dest: "/etc/bind/db.{{ item.origin }}"
+    owner: root
+    group: bind
+    mode: "0644"
+  loop: "{{ bind_reverse_zones }}"
+  loop_control:
+    label: "{{ item.origin }}"
+  notify: Reload bind
+
+- name: Validate BIND configuration
+  ansible.builtin.command: named-checkconf
+  changed_when: false
+
+- name: Ensure named is running
+  ansible.builtin.systemd:
+    name: named
+    state: started
+    enabled: true

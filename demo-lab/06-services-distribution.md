@@ -1,14 +1,64 @@
-# 06 — Services Distribution
+# 06: Services Distribution
 
 ## Design Philosophy
 
-Services are split across DCs to generate meaningful cross-site traffic that
-traverses the MPLS L3VPN core. This creates realistic monitoring scenarios:
-replication lag under congestion, failover when a site goes dark, log pipeline
-stalls when connectivity degrades.
+Services are spread across the three DCs to generate meaningful cross-site
+traffic that traverses the MPLS L3VPN core. This creates realistic monitoring
+scenarios: replication lag under congestion, failover when a site goes dark,
+log pipeline stalls when connectivity degrades.
 
-Each DC runs an independent K3s cluster. Cross-DC communication happens at the
-network layer (pod-to-pod via node IPs routed through CEs and the SP core).
+## Cluster topology: one stretched cluster, not three
+
+There is a single K3s cluster stretched across all three datacenters. It is not
+three independent clusters. Every node sits on VLAN 100, the EVPN type-5
+segment (192.168.100.0/24, dual-stack) stretched across DC-A, DC-B, and DC-C, so
+all nodes are mutually reachable on the same subnet regardless of which DC they
+physically live in. That stretched segment is what makes one cluster possible.
+
+The control plane is three server nodes running embedded etcd, one per DC:
+
+| Node | DC | VLAN 100 IP | K3s role |
+|------|----|-------------|----------|
+| DCA-k3s-m1 | DC-A | 192.168.100.10 | server (cluster-init) |
+| DCB-k3s-m2 | DC-B | 192.168.100.20 | server |
+| DCC-k3s-m3 | DC-C | 192.168.100.30 | server |
+| DCA-k3s-w1 | DC-A | 192.168.100.11 | agent |
+| DCA-k3s-w2 | DC-A | 192.168.100.12 | agent |
+| DCB-k3s-w3 | DC-B | 192.168.100.21 | agent |
+| DCB-k3s-w4 | DC-B | 192.168.100.22 | agent |
+| DCC-k3s-w5 | DC-C | 192.168.100.31 | agent |
+
+Placing one etcd member in each DC means the quorum survives losing any single
+site. The tradeoff is that etcd's peer traffic now crosses the MPLS core. etcd's
+defaults (100ms heartbeat, 1000ms election) assume a LAN, so the cluster relaxes
+them to 500ms/5000ms to absorb the cross-DC jitter in the nested CML/EVE-NG lab.
+
+There is no VIP and no keepalived. The VLAN 100 gateway (192.168.100.1) is an
+anycast SVI present identically on every leaf, and agents register against the
+cluster-init server's IP directly. A stretched L2 segment does not need VRRP for
+the control-plane endpoint.
+
+DCA-DNS is a Server-role device on the same VLAN 100 segment but is not a
+cluster member. It runs standalone BIND (see below).
+
+## Lab DNS: BIND on DCA-DNS, generated from Nautobot
+
+DCA-DNS (192.168.100.53) is the lab's authoritative DNS server for the
+`sandbox.lab` zone. Every record is generated from Nautobot: the Ansible role
+queries all devices and their primary IPs and renders the forward zone plus
+reverse zones from that data. DNS stays in lockstep with the source of truth,
+and a topology change is reflected by re-running the role, never by hand-editing
+a zone file.
+
+## Automation: Ansible sourced entirely from Nautobot
+
+Host configuration (the bond, K3s, BIND) is managed by Ansible, and Ansible
+takes everything from Nautobot. There is no static inventory file. The Nautobot
+dynamic inventory pulls the Server-role devices, reaches them over their
+management IPs, and builds the `k3s_servers` / `k3s_agents` / `dns_servers`
+groups from a Git-synced K3s config context. Per-node data (management IP, DC,
+VLAN 100 addresses, K3s role) all resolve from the model. See
+`06a-ansible-automation.md` for the full automation architecture.
 
 ---
 

@@ -1,0 +1,12 @@
+// Managed by Ansible (bind_dns role)
+zone "{{ lab_domain }}" {
+    type master;
+    file "/etc/bind/db.{{ lab_domain }}";
+};
+
+{% for rz in bind_reverse_zones %}
+zone "{{ rz.origin }}" {
+    type master;
+    file "/etc/bind/db.{{ rz.origin }}";
+};
+{% endfor %}

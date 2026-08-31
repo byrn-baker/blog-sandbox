@@ -1,0 +1,55 @@
+---
+# =============================================================================
+# Part 6: provision the lab servers from Nautobot
+# =============================================================================
+# One stretched K3s cluster across three DCs, plus the standalone BIND DNS
+# server. Inventory and every per-host variable come from Nautobot.
+#
+# Usage:
+#   export NAUTOBOT_URL=http://localhost:8080
+#   export NAUTOBOT_TOKEN=<token>
+#   ansible-playbook site.yml
+# =============================================================================
+
+- name: Base prep for every managed server
+  hosts: all
+  become: true
+  roles:
+    - common
+    - host_network
+
+- name: Stand up the lab DNS server
+  hosts: dns_servers
+  become: true
+  roles:
+    - bind_dns
+
+- name: Install K3s control plane (servers, one per DC)
+  hosts: k3s_servers
+  become: true
+  serial: 1
+  roles:
+    - k3s_server
+
+- name: Install K3s workers
+  hosts: k3s_agents
+  become: true
+  roles:
+    - k3s_agent
+
+- name: Fetch kubeconfig to the control machine
+  hosts: k3s_init
+  become: true
+  tasks:
+    - name: Read kubeconfig from the init server
+      ansible.builtin.slurp:
+        src: /etc/rancher/k3s/k3s.yaml
+      register: k3s_kubeconfig
+
+    - name: Save kubeconfig locally with the reachable API address
+      ansible.builtin.copy:
+        content: "{{ k3s_kubeconfig.content | b64decode | replace('127.0.0.1', k3s_api_host) }}"
+        dest: "{{ kubeconfig_local_path }}"
+        mode: "0600"
+      delegate_to: localhost
+      become: false

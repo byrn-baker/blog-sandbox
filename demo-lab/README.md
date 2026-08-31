@@ -15,4 +15,5 @@ observability across a realistic multi-tenant SP environment.
 | [04-datacenter-design.md](04-datacenter-design.md) | Per-DC topology, K3s clusters, services |
 | [05-cml-proxmox-integration.md](05-cml-proxmox-integration.md) | CML ↔ Proxmox bridging, VM specs |
 | [06-services-distribution.md](06-services-distribution.md) | K3s workloads split across DCs |
+| [06a-ansible-automation.md](06a-ansible-automation.md) | Nautobot-sourced Ansible: inventory, roles, BIND, K3s |
 | [07-monitoring-scenarios.md](07-monitoring-scenarios.md) | Demo failure scenarios and observables |

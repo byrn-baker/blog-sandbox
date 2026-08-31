@@ -1,0 +1,17 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+; Managed by Ansible (bind_dns role). Records generated from Nautobot.
+; Do not hand-edit; change device data in Nautobot and re-run the role.
+$TTL {{ bind_soa_minimum }}
+$ORIGIN {{ lab_domain }}.
+@       IN      SOA     ns1.{{ lab_domain }}. admin.{{ lab_domain }}. (
+                        {{ ansible_date_time.epoch }} ; serial
+                        {{ bind_soa_refresh }}       ; refresh
+                        {{ bind_soa_retry }}         ; retry
+                        {{ bind_soa_expire }}        ; expire
+                        {{ bind_soa_minimum }} )     ; minimum
+@       IN      NS      ns1.{{ lab_domain }}.
+ns1     IN      A       {{ vlan100_ipv4 | default('192.168.100.53') }}
+
+{% for rec in dns_records | sort(attribute='name') %}
+{{ "%-24s" | format(rec.name | lower) }} IN      A       {{ rec.primary_ip4.host }}
+{% endfor %}

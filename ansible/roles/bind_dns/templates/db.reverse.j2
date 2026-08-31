@@ -1,0 +1,17 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+; Managed by Ansible (bind_dns role). PTR records generated from Nautobot.
+$TTL {{ bind_soa_minimum }}
+$ORIGIN {{ item.origin }}.
+@       IN      SOA     ns1.{{ lab_domain }}. admin.{{ lab_domain }}. (
+                        {{ ansible_date_time.epoch }} ; serial
+                        {{ bind_soa_refresh }}       ; refresh
+                        {{ bind_soa_retry }}         ; retry
+                        {{ bind_soa_expire }}        ; expire
+                        {{ bind_soa_minimum }} )     ; minimum
+@       IN      NS      ns1.{{ lab_domain }}.
+
+{% for rec in dns_records | sort(attribute='primary_ip4.host') %}
+{% if rec.primary_ip4.host | ansible.utils.ipaddr(item.network) %}
+{{ "%-4s" | format(rec.primary_ip4.host.split('.')[3]) }} IN      PTR     {{ rec.name | lower }}.{{ lab_domain }}.
+{% endif %}
+{% endfor %}

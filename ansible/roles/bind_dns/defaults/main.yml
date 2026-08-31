@@ -1,0 +1,34 @@
+---
+# =============================================================================
+# bind_dns defaults
+# =============================================================================
+lab_domain: "sandbox.lab"
+
+# Forwarders for anything outside the lab zone. Reachable via the BORDER1 NAT
+# edge stood up in Part 5.
+bind_forwarders:
+  - "1.1.1.1"
+  - "8.8.8.8"
+
+# Networks allowed to query the resolver (the lab management + data planes).
+bind_allow_query:
+  - "192.168.3.0/24"
+  - "192.168.100.0/24"
+  - "10.0.0.0/8"
+  - "fd10::/32"
+  - "localhost"
+
+# Reverse zones to serve. Keyed by the in-addr.arpa/ip6.arpa origin and the
+# network its records are generated from.
+bind_reverse_zones:
+  - origin: "3.168.192.in-addr.arpa"
+    network: "192.168.3.0/24"
+  - origin: "100.168.192.in-addr.arpa"
+    network: "192.168.100.0/24"
+
+# SOA / serial handling. Serial is regenerated on each run from the timestamp so
+# zone transfers and caches see the update.
+bind_soa_refresh: 3600
+bind_soa_retry: 900
+bind_soa_expire: 604800
+bind_soa_minimum: 300
