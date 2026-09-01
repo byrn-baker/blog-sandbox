@@ -1,0 +1,11 @@
+---
+_metadata:
+  name: "DCC-k3s-w5 K3s Properties"
+  weight: 200
+  description: "K3s agent in DC-C"
+  device: "DCC-k3s-w5"
+  config_context_schema: "K3s Properties"
+k3s:
+  member: true
+  role: "agent"
+  node_labels: "topology.kubernetes.io/zone=dc-c"

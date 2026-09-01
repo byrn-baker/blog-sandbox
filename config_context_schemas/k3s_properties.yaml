@@ -1,0 +1,26 @@
+---
+_metadata:
+  name: "K3s Properties"
+  description: "Schema for the stretched K3s cluster: per-node role and cluster-wide install settings consumed by Ansible via the Nautobot dynamic inventory"
+data_schema:
+  type: object
+  properties:
+    k3s:
+      type: object
+      properties:
+        member:
+          type: boolean
+          description: "Whether this device is part of the K3s cluster. DNS-only hosts set this false."
+        role:
+          type: string
+          enum: ["server", "agent"]
+          description: "K3s node role. server nodes run the control plane (embedded etcd); agent nodes run workloads only."
+        node_labels:
+          type: string
+          description: "Comma-separated Kubernetes node labels applied at join (e.g. topology.kubernetes.io/zone=dc-a)."
+        cluster_init:
+          type: boolean
+          description: "True on exactly one server node — the node that runs --cluster-init to bootstrap embedded etcd."
+      required:
+        - member
+  additionalProperties: true

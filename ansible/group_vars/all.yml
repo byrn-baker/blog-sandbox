@@ -1,0 +1,29 @@
+---
+# =============================================================================
+# Lab-wide variables
+# =============================================================================
+# Per-device facts (management IP, DC, K3s role) come from Nautobot. This file
+# holds only the settings that are uniform across the lab or that Nautobot has
+# no field for.
+
+# These VMs are plain Ubuntu, not Raspberry Pis. Skip all the Pi-only bootstrap
+# and hardening branches carried over from the reference repo.
+is_pi: false
+
+timezone: "UTC"
+
+# Lab DNS. Every node resolves against the BIND server once it is up. Until
+# then, host_network lays down a resolvable path via the same address.
+lab_domain: "sandbox.lab"
+lab_dns_server: "192.168.100.53"
+
+# VLAN 100 data plane (stretched EVPN segment across all three DCs).
+vlan100_gateway: "192.168.100.1"
+vlan100_gateway6: "fd10:a:100::1"
+vlan100_cidr4: 24
+vlan100_cidr6: 64
+
+# The two NICs every server bundles into bond0. ens19 -> Leaf01, ens20 -> Leaf02.
+bond_members:
+  - ens19
+  - ens20

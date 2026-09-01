@@ -1,0 +1,12 @@
+---
+_metadata:
+  name: "DCA-k3s-m1 K3s Properties"
+  weight: 200
+  description: "K3s control-plane server (cluster-init node) in DC-A"
+  device: "DCA-k3s-m1"
+  config_context_schema: "K3s Properties"
+k3s:
+  member: true
+  role: "server"
+  cluster_init: true
+  node_labels: "topology.kubernetes.io/zone=dc-a"

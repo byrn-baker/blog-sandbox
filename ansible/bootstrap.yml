@@ -1,0 +1,51 @@
+---
+# =============================================================================
+# Bootstrap: run FIRST on fresh VMs still using password auth
+# =============================================================================
+# Deploys the SSH key and passwordless sudo so site.yml can run key-based.
+# Reaches every Server-role device over its management IP from Nautobot.
+#
+# Usage:
+#   ansible-playbook bootstrap.yml --ask-pass --ask-become-pass
+# =============================================================================
+
+- name: Bootstrap fresh servers
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+  tasks:
+    - name: Ensure python3 is present
+      ansible.builtin.raw: test -e /usr/bin/python3 || (apt-get update && apt-get install -y python3)
+      changed_when: false
+
+    - name: Ensure .ssh directory exists
+      ansible.builtin.file:
+        path: "/home/{{ ansible_user }}/.ssh"
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "0700"
+
+    - name: Deploy SSH authorized key
+      ansible.posix.authorized_key:
+        user: "{{ ansible_user }}"
+        state: present
+        key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_ed25519.pub') }}"
+
+    - name: Grant passwordless sudo
+      ansible.builtin.lineinfile:
+        path: "/etc/sudoers.d/010_{{ ansible_user }}-nopasswd"
+        line: "{{ ansible_user }} ALL=(ALL) NOPASSWD: ALL"
+        create: true
+        mode: "0440"
+        validate: "visudo -cf %s"
+
+    - name: Set hostname
+      ansible.builtin.hostname:
+        name: "{{ inventory_hostname }}"
+
+  post_tasks:
+    - name: Verify connectivity
+      ansible.builtin.ping:

@@ -1,0 +1,26 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+# Managed by Ansible (host_network role). Sourced from Nautobot.
+# VLAN 100 EVPN ESI bond: {{ bond_members | join(' + ') }} as a static LAG.
+network:
+  version: 2
+  ethernets:
+    {% for nic in bond_members %}
+    {{ nic }}:
+      dhcp4: false
+      dhcp6: false
+    {% endfor %}
+  bonds:
+    bond0:
+      interfaces: [{{ bond_members | join(', ') }}]
+      addresses:
+        - "{{ vlan100_ipv4 }}/{{ vlan100_cidr4 }}"
+        - "{{ vlan100_ipv6 }}/{{ vlan100_cidr6 }}"
+      routes:
+        - to: default
+          via: {{ vlan100_gateway }}
+        - to: "::/0"
+          via: "{{ vlan100_gateway6 }}"
+      parameters:
+        mode: balance-xor
+        transmit-hash-policy: layer3+4
+        mii-monitor-interval: 100

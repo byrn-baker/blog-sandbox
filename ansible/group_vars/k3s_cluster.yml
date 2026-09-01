@@ -1,0 +1,33 @@
+---
+# =============================================================================
+# K3s cluster settings (applied to every cluster member)
+# =============================================================================
+# The cluster is one stretched control plane across three DCs. All members sit
+# on the VLAN 100 stretched segment (192.168.100.0/24), so they are mutually
+# reachable regardless of which DC they physically live in. The three server
+# nodes (one per DC) form an embedded-etcd HA control plane.
+
+# Pin the K3s version so a rebuild is reproducible. Blank = latest stable.
+k3s_version: "v1.30.5+k3s1"
+
+# Shared join token. Override with a vault-encrypted value in a real deployment.
+k3s_token: "changeme-lab-k3s-token"
+
+# The API server address agents and joining servers register against. This is
+# the cluster-init node's VLAN 100 IP. No VIP: the gateway is an anycast SVI and
+# a stretched L2 segment does not need VRRP for the control-plane endpoint.
+k3s_api_host: "192.168.100.10"
+k3s_api_port: 6443
+
+# Components to disable (we manage ingress/LB separately if at all).
+k3s_disable:
+  - traefik
+
+# etcd on a stretched cluster crosses the MPLS core between DCs. The defaults
+# (100ms heartbeat, 1000ms election) are tuned for a LAN. Relax them so cross-DC
+# jitter in the nested lab does not trigger spurious leader elections.
+k3s_etcd_heartbeat_interval: "500"
+k3s_etcd_election_timeout: "5000"
+
+# Where to drop the fetched kubeconfig on the control machine.
+kubeconfig_local_path: "./kubeconfig"

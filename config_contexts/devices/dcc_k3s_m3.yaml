@@ -1,0 +1,12 @@
+---
+_metadata:
+  name: "DCC-k3s-m3 K3s Properties"
+  weight: 200
+  description: "K3s control-plane server in DC-C"
+  device: "DCC-k3s-m3"
+  config_context_schema: "K3s Properties"
+k3s:
+  member: true
+  role: "server"
+  cluster_init: false
+  node_labels: "topology.kubernetes.io/zone=dc-c"

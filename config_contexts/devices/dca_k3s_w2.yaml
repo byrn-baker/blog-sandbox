@@ -1,0 +1,11 @@
+---
+_metadata:
+  name: "DCA-k3s-w2 K3s Properties"
+  weight: 200
+  description: "K3s agent in DC-A"
+  device: "DCA-k3s-w2"
+  config_context_schema: "K3s Properties"
+k3s:
+  member: true
+  role: "agent"
+  node_labels: "topology.kubernetes.io/zone=dc-a"

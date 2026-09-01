@@ -1,0 +1,31 @@
+---
+# =============================================================================
+# host_network: bring up the VLAN 100 bond on every server
+# =============================================================================
+# Lays down the static-LAG bond that carries the server's VLAN 100 data-plane
+# address (dual-stack). The two member NICs cable to Leaf01 and Leaf02 as an
+# EVPN Ethernet Segment; the bond is balance-xor (static LAG) because the nested
+# lab bridges will not forward LACP. This mirrors the netplan Part 5 established
+# by hand, now rendered from Nautobot data.
+
+- name: Assert VLAN 100 addresses were supplied from Nautobot
+  ansible.builtin.assert:
+    that:
+      - vlan100_ipv4 is defined and vlan100_ipv4 | length > 0
+      - vlan100_ipv6 is defined and vlan100_ipv6 | length > 0
+    fail_msg: >-
+      Missing VLAN 100 addressing for {{ inventory_hostname }}. The Nautobot
+      inventory must supply vlan100_ipv4 and vlan100_ipv6 (from the bond0
+      interface). Check the inventory 'compose' block resolved them.
+
+- name: Render netplan for the VLAN 100 bond
+  ansible.builtin.template:
+    src: 60-vlan100-bond.yaml.j2
+    dest: /etc/netplan/60-vlan100-bond.yaml
+    owner: root
+    group: root
+    mode: "0600"
+  notify: Apply netplan
+
+- name: Ensure netplan is applied before continuing
+  ansible.builtin.meta: flush_handlers

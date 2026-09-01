@@ -1,0 +1,73 @@
+---
+# =============================================================================
+# common: base host prep for every Ubuntu VM in the lab
+# =============================================================================
+# Ubuntu-only. The Pi-specific branches from the reference repo are dropped
+# (is_pi is false lab-wide). Sets hostname, packages, timezone, kernel prereqs
+# for K3s, and points the resolver at the lab BIND server.
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Install base packages
+  ansible.builtin.apt:
+    name:
+      - curl
+      - wget
+      - vim
+      - htop
+      - dnsutils
+      - net-tools
+      - ca-certificates
+      - open-iscsi
+      - nfs-common
+    state: present
+
+- name: Set timezone
+  community.general.timezone:
+    name: "{{ timezone }}"
+
+- name: Set hostname
+  ansible.builtin.hostname:
+    name: "{{ inventory_hostname }}"
+
+# --- K3s kernel prerequisites (cluster members only) ---
+- name: Enable required kernel modules
+  community.general.modprobe:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - br_netfilter
+    - overlay
+  when: inventory_hostname in groups['k3s_cluster'] | default([])
+
+- name: Persist kernel modules
+  ansible.builtin.copy:
+    content: |
+      br_netfilter
+      overlay
+    dest: /etc/modules-load.d/k3s.conf
+    mode: "0644"
+  when: inventory_hostname in groups['k3s_cluster'] | default([])
+
+- name: Configure kernel parameters for K3s
+  ansible.posix.sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    sysctl_set: true
+    reload: true
+  loop:
+    - { key: "net.bridge.bridge-nf-call-iptables", value: "1" }
+    - { key: "net.bridge.bridge-nf-call-ip6tables", value: "1" }
+    - { key: "net.ipv4.ip_forward", value: "1" }
+    - { key: "net.ipv6.conf.all.forwarding", value: "1" }
+  when: inventory_hostname in groups['k3s_cluster'] | default([])
+
+- name: Ensure iscsid is running (Longhorn/CSI prerequisite)
+  ansible.builtin.systemd:
+    name: iscsid
+    state: started
+    enabled: true
+  when: inventory_hostname in groups['k3s_cluster'] | default([])

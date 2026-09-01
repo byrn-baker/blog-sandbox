@@ -1,0 +1,5 @@
+---
+- name: Reload bind
+  ansible.builtin.systemd:
+    name: named
+    state: reloaded

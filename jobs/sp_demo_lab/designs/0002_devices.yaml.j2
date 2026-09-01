@@ -137,6 +137,8 @@
         ip_addresses:
           - "!create_or_update:address": "192.168.100.{{ server.host_octet }}/24"
             status__name: "Active"
+          - "!create_or_update:address": "fd10:a:100::{{ server.host_octet }}/64"
+            status__name: "Active"
       # LAG members must be a physical interface type; Nautobot rejects a
       # virtual interface as a bond child.
       - "!create_or_update:name": "ens19"

@@ -1,0 +1,22 @@
+// Managed by Ansible (bind_dns role)
+options {
+    directory "/var/cache/bind";
+
+    recursion yes;
+    allow-query {
+{% for net in bind_allow_query %}
+        {{ net }};
+{% endfor %}
+    };
+
+    forwarders {
+{% for fwd in bind_forwarders %}
+        {{ fwd }};
+{% endfor %}
+    };
+    forward only;
+
+    dnssec-validation auto;
+    listen-on { any; };
+    listen-on-v6 { any; };
+};

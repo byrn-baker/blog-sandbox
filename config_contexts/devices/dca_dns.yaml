@@ -1,0 +1,9 @@
+---
+_metadata:
+  name: "DCA-DNS K3s Properties"
+  weight: 200
+  description: "Standalone BIND DNS server in DC-A — not a K3s cluster member"
+  device: "DCA-DNS"
+  config_context_schema: "K3s Properties"
+k3s:
+  member: false
