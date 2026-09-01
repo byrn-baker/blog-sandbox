@@ -35,14 +35,15 @@ query:
       name:
     primary_ip4:
       host:
+    platform:
+      napalm_driver:
     interfaces:
       name:
       ip_addresses:
         address:
 
-# Group by DC location: dc_DC-A, dc_DC-B, dc_DC-C
-group_by:
-  - location.name
+# No group_by: the roles group on the k3s_* groups below, not on location.
+# (group_by location.name produced hyphenated group names Ansible warns about.)
 
 # Membership and role come straight from the local config context.
 groups:
