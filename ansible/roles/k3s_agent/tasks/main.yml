@@ -19,7 +19,7 @@
     curl -sfL https://get.k3s.io | {{ k3s_version_flag }} K3S_URL="https://{{ k3s_api_host }}:{{ k3s_api_port }}" \
       K3S_TOKEN="{{ k3s_token }}" sh -s - agent \
       --node-ip {{ vlan100_ipv4 }} \
-      --node-label {{ config_context.k3s.node_labels | default('') }}
+      --node-label {{ k3s_node_labels | default('') }}
   args:
     creates: /usr/local/bin/k3s
   when: not k3s_binary.stat.exists

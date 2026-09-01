@@ -17,7 +17,7 @@
       {% for c in k3s_disable %}--disable {{ c }} {% endfor %}
       --tls-san {{ k3s_api_host }}
       --node-ip {{ vlan100_ipv4 }}
-      --node-label {{ config_context.k3s.node_labels | default('') }}
+      --node-label {{ k3s_node_labels | default('') }}
       --etcd-arg heartbeat-interval={{ k3s_etcd_heartbeat_interval }}
       --etcd-arg election-timeout={{ k3s_etcd_election_timeout }}
       --write-kubeconfig-mode 644
@@ -29,7 +29,7 @@
 # --- Cluster-init node bootstraps embedded etcd ---
 - name: Initialize the cluster (cluster-init node only)
   when:
-    - config_context.k3s.cluster_init | default(false)
+    - k3s_cluster_init | default(false)
     - not k3s_binary.stat.exists
   block:
     - name: Install K3s as the initializing server
@@ -52,7 +52,7 @@
 # --- Remaining servers join the etcd cluster ---
 - name: Join the cluster (additional servers)
   when:
-    - not (config_context.k3s.cluster_init | default(false))
+    - not (k3s_cluster_init | default(false))
     - not k3s_binary.stat.exists
   block:
     - name: Install K3s and join the existing cluster

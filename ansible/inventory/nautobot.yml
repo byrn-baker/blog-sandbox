@@ -1,11 +1,14 @@
 ---
 # =============================================================================
-# Nautobot dynamic inventory: the single source of truth for Ansible
+# Nautobot GraphQL dynamic inventory: the single source of truth for Ansible
 # =============================================================================
-# Every host, group, and variable Ansible sees comes from Nautobot. There is no
-# static hosts file. Devices are pulled by role; the K3s config context decides
-# cluster membership and server/agent role; connection details (management IP,
-# platform) come straight from the model.
+# Uses the GraphQL inventory plugin so we control the exact fields returned and
+# group/compose on predictable names. Every host, group, and variable comes
+# from Nautobot; there is no static hosts file.
+#
+# ansible_host is set automatically from primary_ip4.host (the eth0 management
+# address, 192.168.3.0/24). K3s membership/role comes from each device's local
+# config context. The VLAN 100 bond addresses come from the bond0 interface.
 #
 # Requires env vars:
 #   NAUTOBOT_URL    e.g. http://localhost:8080
@@ -14,32 +17,49 @@
 # Usage:
 #   ansible-inventory -i inventory/nautobot.yml --graph
 # =============================================================================
-plugin: networktocode.nautobot.inventory
-# api_endpoint and token are read from the NAUTOBOT_URL and NAUTOBOT_TOKEN
-# environment variables by the plugin. Do not set them here with a Jinja
-# lookup: the inventory plugin does not template these at parse time, so the
-# lookup would be passed to the URL parser literally.
+plugin: networktocode.nautobot.gql_inventory
+# api_endpoint and token are read from NAUTOBOT_URL / NAUTOBOT_TOKEN.
 validate_certs: false
 
-# Pull config context so k3s.* is available for grouping and templating,
-# and interface data so we can read the bond0 VLAN 100 addresses.
-config_context: true
-interfaces: true
-plurals: true
+query:
+  # Only manage the Ubuntu servers. The network devices are Golden Config's.
+  virtual_machines:
+    filters:
+      name: EXCLUDE ALL
+  devices:
+    filters:
+      role: Server
+    name:
+    local_config_context_data:
+    location:
+      name:
+    primary_ip4:
+      host:
+    interfaces:
+      name:
+      ip_addresses:
+        address:
 
-# Only the Ubuntu server devices are Ansible-managed. The network devices are
-# owned by Golden Config, not Ansible.
-query_filters:
-  - role: server
+# Group by DC location: dc_DC-A, dc_DC-B, dc_DC-C
+group_by:
+  - location.name
 
-# Reach every host over its management interface (eth0, 192.168.3.0/24), not the
-# VLAN100 data-plane bond. primary_ip4 on these devices is the eth0 address.
+# Membership and role come straight from the local config context.
+groups:
+  k3s_cluster: "local_config_context_data.k3s.member | default(false)"
+  k3s_servers: "local_config_context_data.k3s.member | default(false) and local_config_context_data.k3s.role | default('') == 'server'"
+  k3s_agents: "local_config_context_data.k3s.member | default(false) and local_config_context_data.k3s.role | default('') == 'agent'"
+  k3s_init: "local_config_context_data.k3s.cluster_init | default(false)"
+  dns_servers: "not (local_config_context_data.k3s.member | default(false))"
+
 compose:
-  ansible_host: primary_ip4.address | default(name) | ansible.utils.ipaddr('address')
   ansible_user: "'ubuntu'"
-  # VLAN 100 data-plane addresses read off the bond0 interface. The inventory
-  # exposes interfaces[].ip_addresses[]; pick the 192.168.100.0/24 v4 and the
-  # fd10:a:100::/64 v6 that sit on bond0.
+  # K3s node labels and cluster-init flag, surfaced as plain host vars for the
+  # roles to consume.
+  k3s_role: "local_config_context_data.k3s.role | default('')"
+  k3s_node_labels: "local_config_context_data.k3s.node_labels | default('')"
+  k3s_cluster_init: "local_config_context_data.k3s.cluster_init | default(false)"
+  # VLAN 100 data-plane addresses read off the bond0 interface.
   _bond0_ips: >-
     interfaces | selectattr('name', 'equalto', 'bond0') | map(attribute='ip_addresses')
     | sum(start=[]) | map(attribute='address') | list
@@ -47,20 +67,3 @@ compose:
     (_bond0_ips | select('ansible.utils.ipv4') | map('ansible.utils.ipaddr', 'address') | first) | default('')
   vlan100_ipv6: >-
     (_bond0_ips | select('ansible.utils.ipv6') | map('ansible.utils.ipaddr', 'address') | first) | default('')
-
-# Groups built from Nautobot data. Jinja group_by expressions run against the
-# device's attributes and merged config context.
-keyed_groups:
-  # Group by DC location: dc_dc_a, dc_dc_b, dc_dc_c
-  - prefix: dc
-    key: location.name | lower | replace('-', '_')
-
-groups:
-  # K3s cluster membership and role come from the K3s config context.
-  k3s_cluster: "config_context.k3s.member | default(false)"
-  k3s_servers: "config_context.k3s.member | default(false) and config_context.k3s.role | default('') == 'server'"
-  k3s_agents: "config_context.k3s.member | default(false) and config_context.k3s.role | default('') == 'agent'"
-  # The one node that bootstraps embedded etcd.
-  k3s_init: "config_context.k3s.cluster_init | default(false)"
-  # Standalone BIND host: a Server-role device that is not a cluster member.
-  dns_servers: "not (config_context.k3s.member | default(false))"
