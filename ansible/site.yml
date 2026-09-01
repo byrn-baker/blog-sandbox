@@ -15,13 +15,23 @@
 #   ansible-playbook site.yml --tags network   # base prep + VLAN 100 bond only
 #   (verify server-to-server VLAN 100 reachability)
 #   ansible-playbook site.yml                   # full run: DNS + K3s on top
-- name: Base prep for every managed server
+# Bring up the VLAN 100 data plane first, on its own tag, so it can be run and
+# verified before anything else. No apt or package work in this stage.
+- name: Bring up the VLAN 100 bond
   hosts: all
   become: true
   tags: [network]
   roles:
-    - common
     - host_network
+
+# Base OS prep (packages, hostname, timezone, K3s kernel prereqs). Reaches the
+# apt mirror over the eth0 management interface, so it does not depend on the
+# VLAN 100 bond.
+- name: Base prep for every managed server
+  hosts: all
+  become: true
+  roles:
+    - common
 
 - name: Stand up the lab DNS server
   hosts: dns_servers
