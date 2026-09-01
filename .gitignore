@@ -1,1 +1,12 @@
 tests/__pycache__/
+
+# Ansible control-node virtualenv (see ansible/requirements.txt)
+ansible/.ansible/
+.ansible/
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Fetched kubeconfig from site.yml
+ansible/kubeconfig
