@@ -11,9 +11,14 @@
 #   ansible-playbook site.yml
 # =============================================================================
 
+# Plays are tagged so the data plane can be staged ahead of the cluster:
+#   ansible-playbook site.yml --tags network   # base prep + VLAN 100 bond only
+#   (verify server-to-server VLAN 100 reachability)
+#   ansible-playbook site.yml                   # full run: DNS + K3s on top
 - name: Base prep for every managed server
   hosts: all
   become: true
+  tags: [network]
   roles:
     - common
     - host_network
@@ -21,6 +26,7 @@
 - name: Stand up the lab DNS server
   hosts: dns_servers
   become: true
+  tags: [dns]
   roles:
     - bind_dns
 
@@ -28,18 +34,21 @@
   hosts: k3s_servers
   become: true
   serial: 1
+  tags: [k3s]
   roles:
     - k3s_server
 
 - name: Install K3s workers
   hosts: k3s_agents
   become: true
+  tags: [k3s]
   roles:
     - k3s_agent
 
 - name: Fetch kubeconfig to the control machine
   hosts: k3s_init
   become: true
+  tags: [k3s]
   tasks:
     - name: Read kubeconfig from the init server
       ansible.builtin.slurp:
