@@ -17,11 +17,11 @@ timezone: "UTC"
 lab_domain: "sandbox.lab"
 lab_dns_server: "192.168.100.53"
 
-# VLAN 100 data plane (stretched EVPN segment across all three DCs).
-vlan100_gateway: "192.168.100.1"
-vlan100_gateway6: "fd10:a:100::1"
-vlan100_cidr4: 24
-vlan100_cidr6: 64
+# Server data-plane gateway. This is the anycast SVI on the Arista leaves for
+# the 192.168.100.0/24 subnet. The server just points its default route here;
+# it has no idea it's VLAN 100 on the switch side.
+bond_gateway: "192.168.100.1"
+bond_gateway6: "fd10:a:100::1"
 
 # The two NICs every server bundles into bond0. ens19 -> Leaf01, ens20 -> Leaf02.
 bond_members:

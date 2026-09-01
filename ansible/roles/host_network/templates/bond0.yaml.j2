@@ -1,6 +1,7 @@
 #jinja2: trim_blocks: True, lstrip_blocks: True
 # Managed by Ansible (host_network role). Sourced from Nautobot.
-# VLAN 100 EVPN ESI bond: {{ bond_members | join(' + ') }} as a static LAG.
+# Server data-plane bond: {{ bond_members | join(' + ') }} as a static LAG.
+# The server is not VLAN-aware; VLAN 100 tagging is on the Arista leaf ports.
 network:
   version: 2
   ethernets:
@@ -13,13 +14,17 @@ network:
     bond0:
       interfaces: [{{ bond_members | join(', ') }}]
       addresses:
-        - "{{ vlan100_ipv4 }}/{{ vlan100_cidr4 }}"
-        - "{{ vlan100_ipv6 }}/{{ vlan100_cidr6 }}"
+        - "{{ bond_ipv4 }}"
+        {% if bond_ipv6 | length > 0 %}
+        - "{{ bond_ipv6 }}"
+        {% endif %}
       routes:
         - to: default
-          via: {{ vlan100_gateway }}
+          via: {{ bond_gateway }}
+        {% if bond_ipv6 | length > 0 %}
         - to: "::/0"
-          via: "{{ vlan100_gateway6 }}"
+          via: "{{ bond_gateway6 }}"
+        {% endif %}
       parameters:
         mode: balance-xor
         transmit-hash-policy: layer3+4

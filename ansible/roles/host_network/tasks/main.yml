@@ -1,27 +1,37 @@
 ---
 # =============================================================================
-# host_network: bring up the VLAN 100 bond on every server
+# host_network: bring up the server data-plane bond
 # =============================================================================
-# Lays down the static-LAG bond that carries the server's VLAN 100 data-plane
-# address (dual-stack). The two member NICs cable to Leaf01 and Leaf02 as an
-# EVPN Ethernet Segment; the bond is balance-xor (static LAG) because the nested
-# lab bridges will not forward LACP. This mirrors the netplan Part 5 established
-# by hand, now rendered from Nautobot data.
+# The server sees a plain bond of two NICs (ens19 + ens20) with an address on
+# the 192.168.100.0/24 subnet. It is not VLAN-aware: the VLAN 100 tagging and
+# the EVPN Ethernet Segment live on the Arista leaf switch ports, not here. The
+# bond is a static LAG (balance-xor) because the nested-lab bridges do not
+# forward LACP. Addresses come from the device's bond0 interface in Nautobot.
 
-- name: Assert VLAN 100 addresses were supplied from Nautobot
+- name: Derive the bond address from the device's bond0 interface
+  ansible.builtin.set_fact:
+    _bond0_addrs: >-
+      {{ interfaces | selectattr('name', 'equalto', 'bond0')
+         | map(attribute='ip_addresses') | sum(start=[])
+         | map(attribute='address') | list }}
+
+- name: Split the bond address into IPv4 and IPv6
+  ansible.builtin.set_fact:
+    bond_ipv4: "{{ (_bond0_addrs | reject('search', ':') | first) | default('') }}"
+    bond_ipv6: "{{ (_bond0_addrs | select('search', ':') | first) | default('') }}"
+
+- name: Assert the bond has an IPv4 address in Nautobot
   ansible.builtin.assert:
     that:
-      - vlan100_ipv4 is defined and vlan100_ipv4 | length > 0
-      - vlan100_ipv6 is defined and vlan100_ipv6 | length > 0
+      - bond_ipv4 | length > 0
     fail_msg: >-
-      Missing VLAN 100 addressing for {{ inventory_hostname }}. The Nautobot
-      inventory must supply vlan100_ipv4 and vlan100_ipv6 (from the bond0
-      interface). Check the inventory 'compose' block resolved them.
+      No bond0 IPv4 address found for {{ inventory_hostname }} in Nautobot.
+      The device's bond0 interface must carry a 192.168.100.0/24 address.
 
-- name: Render netplan for the VLAN 100 bond
+- name: Render netplan for the data-plane bond
   ansible.builtin.template:
-    src: 60-vlan100-bond.yaml.j2
-    dest: /etc/netplan/60-vlan100-bond.yaml
+    src: bond0.yaml.j2
+    dest: /etc/netplan/60-bond0.yaml
     owner: root
     group: root
     mode: "0600"
