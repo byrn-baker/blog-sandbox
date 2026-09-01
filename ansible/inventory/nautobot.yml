@@ -15,8 +15,10 @@
 #   ansible-inventory -i inventory/nautobot.yml --graph
 # =============================================================================
 plugin: networktocode.nautobot.inventory
-api_endpoint: "{{ lookup('env', 'NAUTOBOT_URL') }}"
-token: "{{ lookup('env', 'NAUTOBOT_TOKEN') }}"
+# api_endpoint and token are read from the NAUTOBOT_URL and NAUTOBOT_TOKEN
+# environment variables by the plugin. Do not set them here with a Jinja
+# lookup: the inventory plugin does not template these at parse time, so the
+# lookup would be passed to the URL parser literally.
 validate_certs: false
 
 # Pull config context so k3s.* is available for grouping and templating,
