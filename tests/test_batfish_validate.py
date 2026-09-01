@@ -61,6 +61,13 @@ KNOWN_BENIGN_ARISTA = {
     "multihop interval",
     "maximum-routes 12000",
     "redistribute learned",
+    # EVPN Ethernet Segment (server ESI multihoming). Batfish's Arista grammar
+    # does not model the ES identifier or its non-evpn import route-target.
+    "identifier 00",
+    "route-target import 00",
+    # EOS attached-host: redistribute ARP-learned /32s into the SERVERS VRF.
+    "ip attached-host route export",
+    "attached-host",
 }
 
 
