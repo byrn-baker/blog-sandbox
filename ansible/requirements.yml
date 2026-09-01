@@ -2,8 +2,8 @@
 # Ansible collections needed by the Part 6 playbooks.
 # Install with: ansible-galaxy collection install -r requirements.yml
 collections:
-  - name: nautobot.nautobot
-    version: ">=5.3.0"
+  - name: networktocode.nautobot
+    version: ">=6.0.0,<7.0.0"
   - name: ansible.posix
     version: ">=1.5.0"
   - name: community.general

@@ -13,7 +13,7 @@ the same source of truth, Nautobot, so neither owns a second copy of the data.
 
 ## Source of truth: Nautobot, no static inventory
 
-There is no `hosts.yml`. Ansible uses the `nautobot.nautobot` dynamic inventory
+There is no `hosts.yml`. Ansible uses the `networktocode.nautobot` dynamic inventory
 plugin. On every run it queries Nautobot for the Server-role devices and derives:
 
 - Connection target: each host's management primary IP (eth0, 192.168.3.0/24).
@@ -71,7 +71,7 @@ synced to Nautobot, not an inventory edit.
 ansible/
   ansible.cfg              inventory + plugin config
   requirements.txt         python deps (ansible-core, pynautobot, netaddr)
-  requirements.yml         collections (nautobot, ansible.posix, community.general)
+  requirements.yml         collections (networktocode.nautobot, ansible.posix, community.general)
   inventory/nautobot.yml   dynamic inventory (the only inventory)
   group_vars/
     all.yml                lab-wide (domain, VLAN 100 gateways, bond members)

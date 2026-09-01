@@ -14,7 +14,7 @@
 # Usage:
 #   ansible-inventory -i inventory/nautobot.yml --graph
 # =============================================================================
-plugin: nautobot.nautobot.inventory
+plugin: networktocode.nautobot.inventory
 api_endpoint: "{{ lookup('env', 'NAUTOBOT_URL') }}"
 token: "{{ lookup('env', 'NAUTOBOT_TOKEN') }}"
 validate_certs: false
