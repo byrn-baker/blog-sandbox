@@ -1,0 +1,7 @@
+---
+# Local config context for DCC-k3s-m3 (K3s control-plane server, DC-C).
+k3s:
+  member: true
+  role: "server"
+  cluster_init: false
+  node_labels: "topology.kubernetes.io/zone=dc-c"

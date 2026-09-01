@@ -1,0 +1,6 @@
+---
+# Local config context for DCB-k3s-w3 (K3s agent, DC-B).
+k3s:
+  member: true
+  role: "agent"
+  node_labels: "topology.kubernetes.io/zone=dc-b"

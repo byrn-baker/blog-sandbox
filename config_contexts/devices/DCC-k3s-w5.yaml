@@ -1,0 +1,6 @@
+---
+# Local config context for DCC-k3s-w5 (K3s agent, DC-C).
+k3s:
+  member: true
+  role: "agent"
+  node_labels: "topology.kubernetes.io/zone=dc-c"

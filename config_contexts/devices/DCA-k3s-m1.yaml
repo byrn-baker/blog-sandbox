@@ -1,0 +1,9 @@
+---
+# Local config context for DCA-k3s-m1 (K3s control-plane server, cluster-init).
+# Filename must equal the device name exactly; the file body IS the device's
+# local_config_context_data. No _metadata block for local contexts.
+k3s:
+  member: true
+  role: "server"
+  cluster_init: true
+  node_labels: "topology.kubernetes.io/zone=dc-a"
