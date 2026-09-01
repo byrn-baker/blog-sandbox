@@ -23,9 +23,9 @@ plugin. On every run it queries Nautobot for the Server-role devices and derives
 
 ### Groups built from the K3s config context
 
-Cluster membership and node role are modeled as a Git-synced config context
-(`config_contexts/devices/*.yaml`) validated by the `K3s Properties` schema
-(`config_context_schemas/k3s_properties.yaml`). Each server device carries:
+Cluster membership and node role are modeled as Git-synced device-local config
+contexts, one file per device under `config_contexts/devices/`. Each server
+device carries:
 
 ```yaml
 k3s:
@@ -34,6 +34,23 @@ k3s:
   cluster_init: true    # true on exactly one server (bootstraps embedded etcd)
   node_labels: "topology.kubernetes.io/zone=dc-a"
 ```
+
+Two rules govern these files, both learned the hard way from a sync failure:
+
+1. The filename must equal the device name exactly, case and hyphens included
+   (`DCA-k3s-m1.yaml`). Nautobot resolves a device-local context by
+   `Device.objects.get(name=<filename without extension>)`, not by anything
+   inside the file. A mismatched name fails the whole sync with `record not
+   found!`.
+2. The file body is only the context data, no `_metadata` block. Nautobot
+   stores the file verbatim as the device's `local_config_context_data`, so a
+   `_metadata` key would pollute the merged context.
+
+There is a `K3s Properties` schema in `config_context_schemas/` that documents
+the intended shape, but device-local contexts loaded this way are not
+schema-validated (schema binding is a global-context feature). The schema is
+kept as documentation, not enforcement. To enforce it, model these as
+schema-bound global contexts scoped per device instead.
 
 The inventory turns that into groups:
 
