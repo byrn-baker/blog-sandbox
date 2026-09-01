@@ -90,12 +90,13 @@ Interconnected via shared Proxmox bridges (vmbr100/200/300).
 | 2 | SP Core: ISIS, MPLS, BGP (Golden Config) |
 | 3 | PE-CE and Customer VRFs |
 | 4 | Datacenter Fabrics: Arista Leaf-Spine |
-| 5 | K3s Clusters and Applications |
-| 6 | Observability Stack |
-| 7 | SuzieQ State History |
-| 8 | NetClaw AI NOC |
-| 9 | Failure Scenarios |
-| 10 | Golden Config Compliance + Remediation |
+| 5 | Datacenter Fabric: Internet drain |
+| 6 | K3s Clusters and Applications |
+| 7 | Observability Stack |
+| 8 | SuzieQ State History |
+| 9 | NetClaw AI NOC |
+| 10 | Failure Scenarios |
+| 11 | Golden Config Compliance + Remediation |
 
 ## License
 
