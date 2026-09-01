@@ -13,13 +13,25 @@ the same source of truth, Nautobot, so neither owns a second copy of the data.
 
 ## Source of truth: Nautobot, no static inventory
 
-There is no `hosts.yml`. Ansible uses the `networktocode.nautobot` dynamic inventory
-plugin. On every run it queries Nautobot for the Server-role devices and derives:
+There is no `hosts.yml`. Ansible uses the `networktocode.nautobot.gql_inventory`
+(GraphQL) inventory plugin. The GraphQL plugin is deliberate: the REST inventory
+plugin does not expose the merged config context or interface IPs as host vars
+in a shape the group and compose expressions can reach, so grouping on K3s role
+and reading the bond0 addresses both failed with it. The GraphQL plugin returns
+exactly the queried fields under predictable names. On every run it queries
+Nautobot for the Server-role devices and derives:
 
-- Connection target: each host's management primary IP (eth0, 192.168.3.0/24).
+- Connection target: `ansible_host` is set automatically from `primary_ip4.host`
+  (the eth0 management address, 192.168.3.0/24). Each server must therefore have
+  its eth0 address assigned as `primary_ip4`.
 - Data-plane addressing: the VLAN 100 IPv4 and IPv6 read off the `bond0`
-  interface, composed into `vlan100_ipv4` / `vlan100_ipv6` host vars.
-- Group membership: built from the K3s config context, not from a file.
+  interface, composed into `vlan100_ipv4` / `vlan100_ipv6` host vars (split by
+  the colon in the CIDR, mask stripped).
+- Group membership and K3s attributes: read from each device's
+  `local_config_context_data`, not from a file.
+
+The device role filter matches the role name exactly (`Server`), not a
+lowercased slug; `server` is rejected as an invalid choice.
 
 ### Groups built from the K3s config context
 
@@ -70,7 +82,7 @@ synced to Nautobot, not an inventory edit.
 ```text
 ansible/
   ansible.cfg              inventory + plugin config
-  requirements.txt         python deps (ansible-core, pynautobot, netaddr)
+  requirements.txt         python deps (ansible-core>=2.18, pynautobot, netutils, netaddr)
   requirements.yml         collections (networktocode.nautobot, ansible.posix, community.general)
   inventory/nautobot.yml   dynamic inventory (the only inventory)
   group_vars/
