@@ -70,6 +70,7 @@ synced to Nautobot, not an inventory edit.
 ```text
 ansible/
   ansible.cfg              inventory + plugin config
+  requirements.txt         python deps (ansible-core, pynautobot, netaddr)
   requirements.yml         collections (nautobot, ansible.posix, community.general)
   inventory/nautobot.yml   dynamic inventory (the only inventory)
   group_vars/
@@ -108,6 +109,10 @@ ansible/
 ## Run order
 
 ```bash
+# One-time control-node setup: python deps + Ansible collections
+pip install -r requirements.txt
+ansible-galaxy collection install -r requirements.yml
+
 export NAUTOBOT_URL=http://localhost:8080
 export NAUTOBOT_TOKEN=<token>
 

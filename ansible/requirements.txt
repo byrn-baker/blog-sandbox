@@ -1,0 +1,13 @@
+# Python dependencies for the Part 6 Ansible control node.
+# Install with: pip install -r requirements.txt
+#
+# Then install the Ansible collections separately:
+#   ansible-galaxy collection install -r requirements.yml
+#
+# ansible-core drives the playbooks. pynautobot is required by the
+# nautobot.nautobot dynamic inventory plugin and modules to talk to the
+# Nautobot REST API. netaddr backs the ansible.utils ipaddr/ipv4/ipv6 filters
+# the inventory uses to compose ansible_host and the VLAN 100 addresses.
+ansible-core>=2.16,<2.18
+pynautobot>=2.0.0
+netaddr>=0.10.0
