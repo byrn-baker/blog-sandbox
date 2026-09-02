@@ -27,3 +27,9 @@ bond_gateway6: "fd10:a:100::1"
 bond_members:
   - ens19
   - ens20
+# Bond MTU. The SP core underlay stays at the 1500 default (the CML Cat8000v
+# vmxnet3 NIC silently drops jumbo frames, so we cannot raise it). Cross-DC K3s
+# traffic is VXLAN-encapsulated by the Arista leaves onto the inter-DC EVPN DCI,
+# and VXLAN adds 50 bytes. Capping the server bond at 1450 keeps the post-encap
+# frame at or under 1500 so it survives the core instead of being dropped.
+bond_mtu: 1450

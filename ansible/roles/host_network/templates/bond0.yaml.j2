@@ -9,11 +9,13 @@ network:
     {{ nic }}:
       dhcp4: false
       dhcp6: false
+      mtu: {{ bond_mtu }}
     {% endfor %}
   bonds:
     bond0:
       interfaces: [{{ bond_members | join(', ') }}]
       macaddress: "{{ bond_mac }}"
+      mtu: {{ bond_mtu }}
       addresses:
         - "{{ bond_ipv4 }}"
         {% if bond_ipv6 | length > 0 %}
