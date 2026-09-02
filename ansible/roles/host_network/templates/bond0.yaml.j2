@@ -13,6 +13,7 @@ network:
   bonds:
     bond0:
       interfaces: [{{ bond_members | join(', ') }}]
+      macaddress: "{{ bond_mac }}"
       addresses:
         - "{{ bond_ipv4 }}"
         {% if bond_ipv6 | length > 0 %}

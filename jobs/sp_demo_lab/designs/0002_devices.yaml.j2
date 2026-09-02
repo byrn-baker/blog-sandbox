@@ -134,6 +134,11 @@
         status__name: "Active"
         type: "lag"
         description: "VLAN100 EVPN ESI bond (static LAG)"
+        # Unique locally-administered MAC keyed off the VLAN 100 host octet.
+        # The server VMs are template clones that share a machine-id, so
+        # systemd-networkd would otherwise derive the SAME bond0 MAC on every
+        # server and collide on the stretched VLAN 100. Pin a unique one here.
+        mac_address: "02:00:00:00:01:{{ '%02X' | format(server.host_octet) }}"
         ip_addresses:
           - "!create_or_update:address": "192.168.100.{{ server.host_octet }}/24"
             status__name: "Active"

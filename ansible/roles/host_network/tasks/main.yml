@@ -20,6 +20,21 @@
     bond_ipv4: "{{ (_bond0_addrs | reject('search', ':') | first) | default('') }}"
     bond_ipv6: "{{ (_bond0_addrs | select('search', ':') | first) | default('') }}"
 
+- name: Read the bond0 MAC from Nautobot
+  ansible.builtin.set_fact:
+    bond_mac: >-
+      {{ (interfaces | selectattr('name', 'equalto', 'bond0')
+         | map(attribute='mac_address') | select | first) | default('') }}
+
+- name: Assert the bond has a unique MAC in Nautobot
+  ansible.builtin.assert:
+    that:
+      - bond_mac | length > 0
+    fail_msg: >-
+      No bond0 MAC for {{ inventory_hostname }} in Nautobot. These VMs are
+      template clones with a shared machine-id, so an explicit unique MAC is
+      required or systemd-networkd derives the same one on every server.
+
 - name: Assert the bond has an IPv4 address in Nautobot
   ansible.builtin.assert:
     that:

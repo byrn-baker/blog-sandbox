@@ -39,6 +39,7 @@ query:
       napalm_driver:
     interfaces:
       name:
+      mac_address:
       ip_addresses:
         address:
 
