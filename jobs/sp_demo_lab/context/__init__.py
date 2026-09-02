@@ -427,9 +427,14 @@ class SPDemoLabContext(Context):
     }
     # next_hop_unchanged is a spine-only EVPN overlay attribute. Pre-merge the
     # spine overlay dict here so the design template needs no dict-merge filter.
+    # ebgp_multihop is 10 on the spines (not 3) because the inter-DC DCI EVPN
+    # sessions are spine-to-spine over Loopback0 across the MPLS core, which is
+    # ~5-6 hops. At 3 the DCI TCP sessions fail with "No route to host" (TTL
+    # exceeded) while ICMP still works. The leaf-spine overlay stays at the
+    # peer-group default since those adjacencies are genuinely within 3 hops.
     dc_spine_overlay_attrs = {
         "update_source": "Loopback0",
-        "ebgp_multihop": 3,
+        "ebgp_multihop": 10,
         "bfd": True,
         "send_community_extended": True,
         "maximum_routes": 0,
