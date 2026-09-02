@@ -12,6 +12,16 @@ interface {{ interface.name }}
 {% if interface.vrf %}
  vrf forwarding {{ interface.vrf.name }}
 {% endif %}
+{# Jumbo MTU on routed data-plane links so a 9214-byte fabric frame survives   #}
+{# the MPLS core end to end (the inter-DC EVPN DCI crosses this path). Applies  #}
+{# to GigabitEthernet interfaces with an IPv4 address that are NOT management   #}
+{# (management is Gi1 in MGMT-VRF). Loopbacks and the mgmt interface keep the   #}
+{# default. Matches the Arista fabric's 9214. #}
+{% set is_mgmt_intf = (interface.vrf and interface.vrf.name == 'MGMT-VRF') %}
+{% set has_ipv4_data = interface.ip_addresses | selectattr('ip_version', 'equalto', 4) | list | length > 0 %}
+{% if interface.name.startswith('GigabitEthernet') and has_ipv4_data and not is_mgmt_intf %}
+ mtu 9214
+{% endif %}
 {% set has_ipv4 = interface.ip_addresses | selectattr('ip_version', 'equalto', 4) | list | length > 0 %}
 {% if not interface.enabled and not has_ipv4 and interface.name.startswith('GigabitEthernet') %}
  no ip address
