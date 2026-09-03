@@ -1,5 +1,5 @@
 ---
-# Assign primary_ip4 to all devices.
+# Assign primary_ip4 to all network devices and managed servers.
 # Runs after 0002 (devices + IPs created) and 0003 (cabling).
 devices:
 {% for device in sp_core_devices %}
@@ -21,4 +21,9 @@ devices:
   - "!create_or_update:name": "{{ device.name }}"
     primary_ip4:
       "!get:address": "{{ device.ip }}/24"
+{% endfor %}
+{% for server in servers %}
+  - "!create_or_update:name": "{{ server.name }}"
+    primary_ip4:
+      "!get:address": "{{ server.mgmt }}/24"
 {% endfor %}

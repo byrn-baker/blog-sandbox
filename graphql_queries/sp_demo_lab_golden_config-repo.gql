@@ -34,11 +34,15 @@ query ($device_id: ID!) {
       name
       description
       enabled
+      mtu
       type
       mac_address
       mode
       mgmt_only
       role {
+        name
+      }
+      lag {
         name
       }
       _custom_field_data
@@ -62,6 +66,9 @@ query ($device_id: ID!) {
       }
       connected_interface {
         name
+        lag {
+          name
+        }
         device {
           name
         }

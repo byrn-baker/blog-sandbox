@@ -61,7 +61,7 @@ compose:
   k3s_role: "local_config_context_data.k3s.role | default('')"
   k3s_node_labels: "local_config_context_data.k3s.node_labels | default('')"
   k3s_cluster_init: "local_config_context_data.k3s.cluster_init | default(false)"
-  # bond0 addresses are derived inside the host_network role from the
-  # interfaces list (queried above), not composed here. The inventory compose
-  # kept returning empty for the ipaddr split; doing it in the role with
-  # set_fact is testable and reliable.
+  # host_network still derives the CIDR addresses used by netplan. K3s needs a
+  # mask-free node IP even when site.yml is run with --tags k3s, so derive it
+  # directly from the queried bond0 interface instead of relying on role facts.
+  vlan100_ipv4: "interfaces | selectattr('name', 'equalto', 'bond0') | map(attribute='ip_addresses') | first | map(attribute='address') | reject('search', ':') | first | regex_replace('/.*$', '')"

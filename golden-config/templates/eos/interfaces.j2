@@ -1,19 +1,19 @@
 {# Interface configuration (AVD-aligned) #}
 {#                                                                          #}
-{# EVPN ESI server bonds: a leaf Ethernet whose cable peer is a known       #}
-{# server (config_context.server_esi_octets) is a bond member. Its          #}
-{# Port-Channel number equals the member's Ethernet index, and its ESI is   #}
-{# derived from the server's VLAN 100 host octet. We build a member->octet  #}
-{# map and a set of the port-channels to render, so both the member         #}
-{# (channel-group) and the Port-Channel (switchport + ethernet-segment)     #}
-{# come out even though the query returns the cable only on the member.     #}
+{# EVPN ESI server bonds require explicit LAG membership on both sides of  #}
+{# the cable. The leaf Ethernet must belong to a Port-Channel, and the      #}
+{# connected server NIC must belong to bond0. The Port-Channel number comes #}
+{# from the leaf interface's modeled LAG parent. Its ESI comes from the     #}
+{# server's VLAN 100 host octet in config_context.server_esi_octets.        #}
 {% set esi = namespace(members={}, pos={}) %}
 {% set esi_octets = config_context.server_esi_octets | default({}) %}
 {% set esi_vlan = config_context.server_esi_vlan | default(100) %}
-{% for interface in interfaces if interface.name.startswith('Ethernet') and interface.connected_interface is defined and interface.connected_interface %}
+{% for interface in interfaces if interface.name.startswith('Ethernet') and interface.lag is defined and interface.lag and interface.connected_interface is defined and interface.connected_interface %}
 {% set peer = interface.connected_interface.device.name %}
-{% if peer in esi_octets %}
-{% set idx = interface.name | replace('Ethernet', '') %}
+{% set peer_lag = interface.connected_interface.lag.name if interface.connected_interface.lag is defined and interface.connected_interface.lag else '' %}
+{% set local_lag = interface.lag.name %}
+{% if peer in esi_octets and peer_lag == 'bond0' and local_lag.startswith('Port-Channel') %}
+{% set idx = local_lag | replace('Port-Channel', '') %}
 {% set oct = esi_octets[peer] %}
 {% set _ = esi.members.update({interface.name: idx}) %}
 {% set _ = esi.pos.update({idx: {'octet': oct, 'server': peer}}) %}
@@ -52,7 +52,7 @@ interface {{ interface.name }}
    channel-group {{ esi.members[interface.name] }} mode on
 {% endif %}
 {% if interface.name.startswith('Ethernet') and interface.ip_addresses %}
-   mtu 9214
+   mtu {{ interface.mtu | default(9214, true) }}
    no switchport
 {% endif %}
 {% for addr in interface.ip_addresses %}

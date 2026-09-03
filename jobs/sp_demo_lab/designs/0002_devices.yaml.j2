@@ -113,6 +113,8 @@
         status__name: "Active"
         enabled: false
         type: "1000base-t"
+        # Spine Ethernet10 faces a CE at MTU 1500. Fabric ports remain jumbo.
+        mtu: {% if device.role == "Spine" and i == 10 %}1500{% else %}9214{% endif %}
 {% endfor %}
 {%- endmacro %}
 

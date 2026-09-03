@@ -3,7 +3,7 @@
 $TTL {{ bind_soa_minimum }}
 $ORIGIN {{ item.origin }}.
 @       IN      SOA     ns1.{{ lab_domain }}. admin.{{ lab_domain }}. (
-                        {{ ansible_date_time.epoch }} ; serial
+                        {{ ansible_facts['date_time']['epoch'] }} ; serial
                         {{ bind_soa_refresh }}       ; refresh
                         {{ bind_soa_retry }}         ; retry
                         {{ bind_soa_expire }}        ; expire
@@ -11,7 +11,7 @@ $ORIGIN {{ item.origin }}.
 @       IN      NS      ns1.{{ lab_domain }}.
 
 {% for rec in dns_records | sort(attribute='primary_ip4.host') %}
-{% if rec.primary_ip4.host | ansible.utils.ipaddr(item.network) %}
-{{ "%-4s" | format(rec.primary_ip4.host.split('.')[3]) }} IN      PTR     {{ rec.name | lower }}.{{ lab_domain }}.
+{% if rec.primary_ip4.host.rsplit('.', 1)[0] == item.network.split('/')[0].rsplit('.', 1)[0] %}
+{{ "%-4s" | format(rec.primary_ip4.host.rsplit('.', 1)[1]) }} IN      PTR     {{ rec.name | lower }}.{{ lab_domain }}.
 {% endif %}
 {% endfor %}

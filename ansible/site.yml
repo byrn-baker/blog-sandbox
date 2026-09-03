@@ -12,7 +12,7 @@
 # =============================================================================
 
 # Plays are tagged so the data plane can be staged ahead of the cluster:
-#   ansible-playbook site.yml --tags network   # base prep + VLAN 100 bond only
+#   ansible-playbook site.yml --tags network   # VLAN 100 bond only
 #   (verify server-to-server VLAN 100 reachability)
 #   ansible-playbook site.yml                   # full run: DNS + K3s on top
 # Bring up the VLAN 100 data plane first, on its own tag, so it can be run and
@@ -24,21 +24,29 @@
   roles:
     - host_network
 
-# Base OS prep (packages, hostname, timezone, K3s kernel prereqs). Reaches the
-# apt mirror over the eth0 management interface, so it does not depend on the
-# VLAN 100 bond.
-- name: Base prep for every managed server
-  hosts: all
+# Prepare the DNS host and start BIND before the remaining servers perform
+# package installation or K3s setup. Stop the run if this prerequisite fails.
+- name: Base prep for the DNS server
+  hosts: dns_servers
   become: true
+  any_errors_fatal: true
+  tags: [dns]
   roles:
     - common
 
 - name: Stand up the lab DNS server
   hosts: dns_servers
   become: true
+  any_errors_fatal: true
   tags: [dns]
   roles:
     - bind_dns
+
+- name: Base prep for the remaining managed servers
+  hosts: "all:!dns_servers"
+  become: true
+  roles:
+    - common
 
 - name: Install K3s control plane (servers, one per DC)
   hosts: k3s_servers

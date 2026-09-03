@@ -205,8 +205,12 @@ interfaces:
     ip_addresses: []
     connected_interface:
       name: ens19
+      lag:
+        name: bond0
       device:
         name: DCA-DNS
+    lag:
+      name: Port-Channel7
     tags: []
   - name: Port-Channel7
     description: "DCA-DNS EVPN ESI multihome"

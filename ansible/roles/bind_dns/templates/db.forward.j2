@@ -4,7 +4,7 @@
 $TTL {{ bind_soa_minimum }}
 $ORIGIN {{ lab_domain }}.
 @       IN      SOA     ns1.{{ lab_domain }}. admin.{{ lab_domain }}. (
-                        {{ ansible_date_time.epoch }} ; serial
+                        {{ ansible_facts['date_time']['epoch'] }} ; serial
                         {{ bind_soa_refresh }}       ; refresh
                         {{ bind_soa_retry }}         ; retry
                         {{ bind_soa_expire }}        ; expire
