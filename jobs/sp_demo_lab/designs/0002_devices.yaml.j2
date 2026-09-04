@@ -114,7 +114,11 @@
         enabled: false
         type: "1000base-t"
         # Spine Ethernet10 faces a CE at MTU 1500. Fabric ports remain jumbo.
-        mtu: {% if device.role == "Spine" and i == 10 %}1500{% else %}9214{% endif %}
+        # Must be a {{ }} expression, not an inline {% if %} block. Design Builder
+        # renders with trim_blocks=True, so a block tag ending the line eats the
+        # following newline and concatenates the next interface onto this one,
+        # which fails as "mapping values are not allowed here".
+        mtu: {{ 1500 if (device.role == "Spine" and i == 10) else 9214 }}
 {% endfor %}
 {%- endmacro %}
 
