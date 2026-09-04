@@ -70,13 +70,6 @@ data_schema:
                   type: boolean
                 maximum_routes:
                   type: integer
-                timers:
-                  type: object
-                  properties:
-                    keepalive:
-                      type: integer
-                    hold:
-                      type: integer
         redistribute:
           type: object
           properties:

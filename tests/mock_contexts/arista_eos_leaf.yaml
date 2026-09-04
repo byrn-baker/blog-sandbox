@@ -255,9 +255,6 @@ bgp_routing_instances:
           update_source: "Loopback0"
           ebgp_multihop: 3
           bfd: true
-          timers:
-            keepalive: 30
-            hold: 90
           send_community_extended: true
           maximum_routes: 0
         address_families:

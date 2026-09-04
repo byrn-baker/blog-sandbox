@@ -37,9 +37,6 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% if pg_attrs.ebgp_multihop is defined %}
    neighbor {{ pg.name }} ebgp-multihop {{ pg_attrs.ebgp_multihop }}
 {% endif %}
-{% if pg_attrs.timers is defined %}
-   neighbor {{ pg.name }} timers {{ pg_attrs.timers.keepalive }} {{ pg_attrs.timers.hold }}
-{% endif %}
 {% if pg_attrs.send_community_extended | default(false) %}
    neighbor {{ pg.name }} send-community extended
 {% elif pg_attrs.send_community | default(false) %}
