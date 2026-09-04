@@ -2,11 +2,11 @@
 # =============================================================================
 # Bootstrap: run FIRST on fresh VMs still using password auth
 # =============================================================================
-# Deploys the SSH key and passwordless sudo so site.yml can run key-based.
+# Deploys the SSH key and passwordless sudo so pb.site.yml can run key-based.
 # Reaches every Server-role device over its management IP from Nautobot.
 #
 # Usage:
-#   ansible-playbook bootstrap.yml --ask-pass --ask-become-pass
+#   ansible-playbook pb.bootstrap.yml --ask-pass --ask-become-pass
 # =============================================================================
 
 - name: Bootstrap fresh servers

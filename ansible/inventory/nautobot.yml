@@ -62,6 +62,6 @@ compose:
   k3s_node_labels: "local_config_context_data.k3s.node_labels | default('')"
   k3s_cluster_init: "local_config_context_data.k3s.cluster_init | default(false)"
   # host_network still derives the CIDR addresses used by netplan. K3s needs a
-  # mask-free node IP even when site.yml is run with --tags k3s, so derive it
+  # mask-free node IP even when pb.site.yml is run with --tags k3s, so derive it
   # directly from the queried bond0 interface instead of relying on role facts.
   vlan100_ipv4: "interfaces | selectattr('name', 'equalto', 'bond0') | map(attribute='ip_addresses') | first | map(attribute='address') | reject('search', ':') | first | regex_replace('/.*$', '')"

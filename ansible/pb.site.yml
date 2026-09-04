@@ -8,13 +8,13 @@
 # Usage:
 #   export NAUTOBOT_URL=http://localhost:8080
 #   export NAUTOBOT_TOKEN=<token>
-#   ansible-playbook site.yml
+#   ansible-playbook pb.site.yml
 # =============================================================================
 
 # Plays are tagged so the data plane can be staged ahead of the cluster:
-#   ansible-playbook site.yml --tags network   # VLAN 100 bond only
+#   ansible-playbook pb.site.yml --tags network   # VLAN 100 bond only
 #   (verify server-to-server VLAN 100 reachability)
-#   ansible-playbook site.yml                   # full run: DNS + K3s on top
+#   ansible-playbook pb.site.yml                   # full run: DNS + K3s on top
 # Bring up the VLAN 100 data plane first, on its own tag, so it can be run and
 # verified before anything else. No apt or package work in this stage.
 - name: Bring up the VLAN 100 bond

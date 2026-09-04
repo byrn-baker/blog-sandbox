@@ -8,5 +8,5 @@ ansible/.ansible/
 __pycache__/
 *.pyc
 
-# Fetched kubeconfig from site.yml
+# Fetched kubeconfig from pb.site.yml
 ansible/kubeconfig

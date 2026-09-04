@@ -94,8 +94,8 @@ ansible/
     k3s_server/            embedded-etcd control plane (init + join)
     k3s_agent/             worker join
     bind_dns/              authoritative BIND for sandbox.lab from Nautobot
-  bootstrap.yml            first-run SSH key + sudo
-  site.yml                 full provisioning run
+  pb.bootstrap.yml            first-run SSH key + sudo
+  pb.site.yml                 full provisioning run
 ```
 
 ## Role responsibilities
@@ -129,13 +129,13 @@ export NAUTOBOT_URL=http://localhost:8080
 export NAUTOBOT_TOKEN=<token>
 
 # Fresh VMs still on password auth: seed keys + sudo
-ansible-playbook bootstrap.yml --ask-pass --ask-become-pass
+ansible-playbook pb.bootstrap.yml --ask-pass --ask-become-pass
 
 # Full provisioning
-ansible-playbook site.yml
+ansible-playbook pb.site.yml
 ```
 
-`site.yml` runs `common` + `host_network` everywhere, `bind_dns` on the DNS
+`pb.site.yml` runs `common` + `host_network` everywhere, `bind_dns` on the DNS
 host, then the K3s control plane (`serial: 1`) and agents, and finally fetches
 the kubeconfig to the control machine with the API address rewritten to the
 reachable VLAN 100 IP.
