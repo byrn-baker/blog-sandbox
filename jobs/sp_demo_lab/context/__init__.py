@@ -447,9 +447,6 @@ class SPDemoLabContext(Context):
         # Same relaxed overlay hold timer as the base peer group, so the
         # spine-side leaf-spine and inter-DC EVPN sessions match at 30/90.
         "timers": {"keepalive": 30, "hold": 90},
-        # Path MTU discovery on the spine overlay so the EVPN TCP sessions
-        # negotiate a segment size that fits the inter-DC path.
-        "transport_pmtud": True,
     }
 
     # --- DC Fabric BGP ---

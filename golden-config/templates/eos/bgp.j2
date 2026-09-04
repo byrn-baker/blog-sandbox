@@ -31,9 +31,6 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% if pg_attrs.next_hop_unchanged | default(false) %}
    neighbor {{ pg.name }} next-hop-unchanged
 {% endif %}
-{% if pg_attrs.transport_pmtud | default(false) %}
-   neighbor {{ pg.name }} transport pmtud
-{% endif %}
 {% if pg_attrs.bfd | default(false) %}
    neighbor {{ pg.name }} bfd
 {% endif %}
