@@ -423,6 +423,11 @@ class SPDemoLabContext(Context):
             "bfd": True,
             "send_community_extended": True,
             "maximum_routes": 0,
+            # Relax the overlay hold timer. At the 3/9 instance default the
+            # leaf-spine EVPN sessions expire their hold timer under load in
+            # this virtual fabric and flap, so EVPN routes never install. The
+            # inter-DC DCI already carries the same 30/90 override per neighbor.
+            "timers": {"keepalive": 30, "hold": 90},
         },
     }
     # next_hop_unchanged is a spine-only EVPN overlay attribute. Pre-merge the
@@ -439,6 +444,9 @@ class SPDemoLabContext(Context):
         "send_community_extended": True,
         "maximum_routes": 0,
         "next_hop_unchanged": True,
+        # Same relaxed overlay hold timer as the base peer group, so the
+        # spine-side leaf-spine and inter-DC EVPN sessions match at 30/90.
+        "timers": {"keepalive": 30, "hold": 90},
     }
 
     # --- DC Fabric BGP ---
