@@ -60,6 +60,8 @@ data_schema:
                   type: string
                 next_hop_unchanged:
                   type: boolean
+                transport_pmtud:
+                  type: boolean
                 update_source:
                   type: string
                 ebgp_multihop:

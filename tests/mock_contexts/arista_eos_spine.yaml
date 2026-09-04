@@ -136,6 +136,7 @@ bgp_routing_instances:
           send_community_extended: true
           maximum_routes: 0
           next_hop_unchanged: true
+          transport_pmtud: true
         address_families:
           - afi_safi: L2_EVPN
       - name: IPV4-UNDERLAY-PEERS
