@@ -114,10 +114,13 @@
         enabled: false
         type: "1000base-t"
         # Spine Ethernet10 faces a CE at MTU 1500. Fabric ports remain jumbo.
-        # Must be a {{ }} expression, not an inline {% if %} block. Design Builder
-        # renders with trim_blocks=True, so a block tag ending the line eats the
-        # following newline and concatenates the next interface onto this one,
-        # which fails as "mapping values are not allowed here".
+        # Keep this as a print expression with an inline conditional. A Jinja
+        # block tag closing the line would not work here: Design Builder renders
+        # with trim_blocks enabled, so the tag eats the following newline and the
+        # next interface gets concatenated onto this line, which YAML then
+        # rejects with "mapping values are not allowed here".
+        # Note also that a YAML comment is not a Jinja comment. Jinja still parses
+        # its delimiters here, so do not write them literally in these comments.
         mtu: {{ 1500 if (device.role == "Spine" and i == 10) else 9214 }}
 {% endfor %}
 {%- endmacro %}
