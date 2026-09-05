@@ -4,25 +4,29 @@
 # =============================================================================
 # Agents register against the cluster API on the VLAN 100 stretched segment and
 # run workloads. Node role/labels come from the Nautobot config context.
+#
+# Same offline install as k3s_server: k3s_artifacts stages the binary and the
+# script from the lab mirror, INSTALL_K3S_SKIP_DOWNLOAD=true keeps the installer
+# off the network, and the guard keys on the systemd unit rather than the binary
+# (which now exists before the installer runs).
 
-- name: Check if K3s is already installed
+- name: Check whether the k3s agent is already installed
   ansible.builtin.stat:
-    path: /usr/local/bin/k3s
-  register: k3s_binary
-
-- name: Set K3s version flag
-  ansible.builtin.set_fact:
-    k3s_version_flag: "{{ ('INSTALL_K3S_VERSION=' + k3s_version) if k3s_version else '' }}"
+    path: /etc/systemd/system/k3s-agent.service
+  register: k3s_agent_unit
 
 - name: Install K3s agent and join the cluster
   ansible.builtin.shell: |
-    curl -sfL https://get.k3s.io | {{ k3s_version_flag }} K3S_URL="https://{{ k3s_api_host }}:{{ k3s_api_port }}" \
-      K3S_TOKEN="{{ k3s_token }}" sh -s - agent \
+    {{ k3s_install_script_path }} agent \
       --node-ip {{ vlan100_ipv4 }} \
       --node-label {{ k3s_node_labels | default('') }}
   args:
-    creates: /usr/local/bin/k3s
-  when: not k3s_binary.stat.exists
+    creates: /etc/systemd/system/k3s-agent.service
+  environment:
+    INSTALL_K3S_SKIP_DOWNLOAD: "true"
+    K3S_URL: "https://{{ k3s_api_host }}:{{ k3s_api_port }}"
+    K3S_TOKEN: "{{ k3s_token }}"
+  when: not k3s_agent_unit.stat.exists
 
 - name: Ensure K3s agent is running
   ansible.builtin.systemd:

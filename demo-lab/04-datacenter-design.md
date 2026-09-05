@@ -21,23 +21,29 @@ changed later without changing the shared SERVER identity.
 
 ## K3s Cluster Model
 
-**3 independent clusters** (one per DC) — most realistic for multi-tenant SP:
+**One stretched cluster** across the three DCs, with a three-node control plane
+that all lives in DC-A. The stretched VLAN 100 segment makes every node mutually
+reachable on one subnet, so a single cluster spans all sites.
 
-| DC | Cluster | Server node | Worker nodes | Total |
-|----|---------|-------------|--------------|-------|
-| DC1 | cluster-dc1 | k3s-m1 | k3s-w1, k3s-w2 | 3 |
-| DC2 | cluster-dc2 | k3s-m2 | k3s-w3, k3s-w4 | 3 |
-| DC3 | cluster-dc3 | k3s-m3 | k3s-w5 | 2 |
+| DC | Control-plane (server) | Workers (agent) |
+|----|------------------------|-----------------|
+| DC-A | k3s-m1 (cluster-init), k3s-m2, k3s-m3 | none |
+| DC-B | none | k3s-w1, k3s-w2, k3s-w3 |
+| DC-C | none | k3s-w4, k3s-w5 |
 
-Cross-cluster connectivity relies entirely on the MPLS L3VPN fabric — pods in
-DC1 reach services in DC2 by routing through CE1 → SPE1 → core → SPE2 → CE2.
+All three etcd members sit in DC-A on purpose. Embedded-etcd raft needs tight,
+low-jitter RTT between members, and the emulated cross-DC path cannot provide
+it (see 06 for the measurements). The workers in DC-B and DC-C join over that
+path as agents, which hold one persistent connection to the API server and
+tolerate the jitter. Their pod and service traffic to DC-A still routes through
+the MPLS L3VPN core: CE1 to SPE1 to the core to SPE2 to CE2.
 
 ## K3s Installation
 
-### Server node (one per DC)
+### Server nodes (three, all in DC-A)
 
 ```bash
-# On k3s-m1 (DC1)
+# On k3s-m1 (DC-A) — bootstraps embedded etcd
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server \
   --cluster-init \
   --node-ip=192.168.100.10 \
@@ -46,17 +52,25 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server \
   --disable=traefik \
   --write-kubeconfig-mode=644" sh -
 
-# Get the token for workers
+# Get the token for the other servers and the agents
 cat /var/lib/rancher/k3s/server/node-token
+
+# On k3s-m2 and k3s-m3 (DC-A) — join the existing etcd
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server \
+  --server https://192.168.100.10:6443 \
+  --token <token-from-m1> \
+  --node-ip=192.168.100.11 \
+  --flannel-iface=ens3 \
+  --disable=traefik" sh -   # k3s-m3 uses --node-ip=192.168.100.12
 ```
 
-### Worker nodes
+### Worker nodes (DC-B and DC-C)
 
 ```bash
-# On k3s-w1 (DC1)
+# On k3s-w1 (DC-B)
 curl -sfL https://get.k3s.io | K3S_URL=https://192.168.100.10:6443 \
   K3S_TOKEN=<token-from-server> \
-  INSTALL_K3S_EXEC="agent --node-ip=192.168.100.11 --flannel-iface=ens3" sh -
+  INSTALL_K3S_EXEC="agent --node-ip=192.168.100.20 --flannel-iface=ens3" sh -
 ```
 
 ### K3s node addresses

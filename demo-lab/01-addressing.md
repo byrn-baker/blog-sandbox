@@ -64,12 +64,12 @@ management network.
 | Device | IPv4 | Interface |
 |--------|------|-----------|
 | k3s-m1 | `192.168.3.63` | Eth0 |
-| k3s-w1 | `192.168.3.64` | Eth0 |
-| k3s-w2 | `192.168.3.65` | Eth0 |
-| k3s-m2 | `192.168.3.66` | Eth0 |
-| k3s-w3 | `192.168.3.67` | Eth0 |
-| k3s-w4 | `192.168.3.68` | Eth0 |
-| k3s-m3 | `192.168.3.69` | Eth0 |
+| k3s-m2 | `192.168.3.64` | Eth0 |
+| k3s-m3 | `192.168.3.65` | Eth0 |
+| k3s-w1 | `192.168.3.66` | Eth0 |
+| k3s-w2 | `192.168.3.67` | Eth0 |
+| k3s-w3 | `192.168.3.68` | Eth0 |
+| k3s-w4 | `192.168.3.69` | Eth0 |
 | k3s-w5 | `192.168.3.70` | Eth0 |
 
 ### Management VRF config (IOS-XE, all Cisco routers)
@@ -363,14 +363,14 @@ is `00<oct>:00<oct>:00<oct>:00<oct>:00<oct>`, and the ES import route-target is
 
 | DC | Node | VLAN100 IPv4 | IPv6 | Homed to (leaf pair) | Leaf port / Po# | Role |
 |----|------|--------------|------|----------------------|-----------------|------|
-| DC-A | k3s-m1 | `192.168.100.10` | `fd10:a:100::10` | DCA-Leaf01 + DCA-Leaf02 | Ethernet4 / Po4 | K3s server |
-| DC-A | k3s-w1 | `192.168.100.11` | `fd10:a:100::11` | DCA-Leaf01 + DCA-Leaf02 | Ethernet5 / Po5 | K3s agent |
-| DC-A | k3s-w2 | `192.168.100.12` | `fd10:a:100::12` | DCA-Leaf01 + DCA-Leaf02 | Ethernet6 / Po6 | K3s agent |
+| DC-A | k3s-m1 | `192.168.100.10` | `fd10:a:100::10` | DCA-Leaf01 + DCA-Leaf02 | Ethernet4 / Po4 | K3s server (cluster-init) |
+| DC-A | k3s-m2 | `192.168.100.11` | `fd10:a:100::11` | DCA-Leaf01 + DCA-Leaf02 | Ethernet5 / Po5 | K3s server |
+| DC-A | k3s-m3 | `192.168.100.12` | `fd10:a:100::12` | DCA-Leaf01 + DCA-Leaf02 | Ethernet6 / Po6 | K3s server |
 | DC-A | DCA-DNS | `192.168.100.53` | `fd10:a:100::53` | DCA-Leaf01 + DCA-Leaf02 | Ethernet7 / Po7 | Internal DNS |
-| DC-B | k3s-m2 | `192.168.100.20` | `fd10:a:100::20` | DCB-Leaf01 + DCB-Leaf02 | Ethernet4 / Po4 | K3s server |
-| DC-B | k3s-w3 | `192.168.100.21` | `fd10:a:100::21` | DCB-Leaf01 + DCB-Leaf02 | Ethernet5 / Po5 | K3s agent |
-| DC-B | k3s-w4 | `192.168.100.22` | `fd10:a:100::22` | DCB-Leaf01 + DCB-Leaf02 | Ethernet6 / Po6 | K3s agent |
-| DC-C | k3s-m3 | `192.168.100.30` | `fd10:a:100::30` | DCC-Leaf01 + DCC-Leaf02 | Ethernet4 / Po4 | K3s server |
+| DC-B | k3s-w1 | `192.168.100.20` | `fd10:a:100::20` | DCB-Leaf01 + DCB-Leaf02 | Ethernet4 / Po4 | K3s agent |
+| DC-B | k3s-w2 | `192.168.100.21` | `fd10:a:100::21` | DCB-Leaf01 + DCB-Leaf02 | Ethernet5 / Po5 | K3s agent |
+| DC-B | k3s-w3 | `192.168.100.22` | `fd10:a:100::22` | DCB-Leaf01 + DCB-Leaf02 | Ethernet6 / Po6 | K3s agent |
+| DC-C | k3s-w4 | `192.168.100.30` | `fd10:a:100::30` | DCC-Leaf01 + DCC-Leaf02 | Ethernet4 / Po4 | K3s agent |
 | DC-C | k3s-w5 | `192.168.100.31` | `fd10:a:100::31` | DCC-Leaf01 + DCC-Leaf02 | Ethernet5 / Po5 | K3s agent |
 
 Both leaves in a pair use the same Ethernet member index and port-channel

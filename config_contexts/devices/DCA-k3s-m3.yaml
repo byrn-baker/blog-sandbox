@@ -1,0 +1,9 @@
+---
+# Local config context for DCA-k3s-m3 (K3s control-plane server, DC-A).
+# One of three control-plane nodes, all in DC-A. etcd is kept local to the
+# DC-A fabric because raft cannot tolerate the emulated cross-DC latency.
+k3s:
+  member: true
+  role: "server"
+  cluster_init: false
+  node_labels: "topology.kubernetes.io/zone=dc-a"

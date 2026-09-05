@@ -260,13 +260,13 @@ class SPDemoLabContext(Context):
     # and the port-channel number, identical on both leaves of the pair.
     servers = [
         {"name": "DCA-k3s-m1", "site": "DC-A", "mgmt": "192.168.3.63", "host_octet": 10, "leaves": ["DCA-Leaf01", "DCA-Leaf02"], "eth_index": 4},
-        {"name": "DCA-k3s-w1", "site": "DC-A", "mgmt": "192.168.3.64", "host_octet": 11, "leaves": ["DCA-Leaf01", "DCA-Leaf02"], "eth_index": 5},
-        {"name": "DCA-k3s-w2", "site": "DC-A", "mgmt": "192.168.3.65", "host_octet": 12, "leaves": ["DCA-Leaf01", "DCA-Leaf02"], "eth_index": 6},
+        {"name": "DCA-k3s-m2", "site": "DC-A", "mgmt": "192.168.3.64", "host_octet": 11, "leaves": ["DCA-Leaf01", "DCA-Leaf02"], "eth_index": 5},
+        {"name": "DCA-k3s-m3", "site": "DC-A", "mgmt": "192.168.3.65", "host_octet": 12, "leaves": ["DCA-Leaf01", "DCA-Leaf02"], "eth_index": 6},
         {"name": "DCA-DNS", "site": "DC-A", "mgmt": "192.168.3.71", "host_octet": 53, "leaves": ["DCA-Leaf01", "DCA-Leaf02"], "eth_index": 7},
-        {"name": "DCB-k3s-m2", "site": "DC-B", "mgmt": "192.168.3.66", "host_octet": 20, "leaves": ["DCB-Leaf01", "DCB-Leaf02"], "eth_index": 4},
-        {"name": "DCB-k3s-w3", "site": "DC-B", "mgmt": "192.168.3.67", "host_octet": 21, "leaves": ["DCB-Leaf01", "DCB-Leaf02"], "eth_index": 5},
-        {"name": "DCB-k3s-w4", "site": "DC-B", "mgmt": "192.168.3.68", "host_octet": 22, "leaves": ["DCB-Leaf01", "DCB-Leaf02"], "eth_index": 6},
-        {"name": "DCC-k3s-m3", "site": "DC-C", "mgmt": "192.168.3.69", "host_octet": 30, "leaves": ["DCC-Leaf01", "DCC-Leaf02"], "eth_index": 4},
+        {"name": "DCB-k3s-w1", "site": "DC-B", "mgmt": "192.168.3.66", "host_octet": 20, "leaves": ["DCB-Leaf01", "DCB-Leaf02"], "eth_index": 4},
+        {"name": "DCB-k3s-w2", "site": "DC-B", "mgmt": "192.168.3.67", "host_octet": 21, "leaves": ["DCB-Leaf01", "DCB-Leaf02"], "eth_index": 5},
+        {"name": "DCB-k3s-w3", "site": "DC-B", "mgmt": "192.168.3.68", "host_octet": 22, "leaves": ["DCB-Leaf01", "DCB-Leaf02"], "eth_index": 6},
+        {"name": "DCC-k3s-w4", "site": "DC-C", "mgmt": "192.168.3.69", "host_octet": 30, "leaves": ["DCC-Leaf01", "DCC-Leaf02"], "eth_index": 4},
         {"name": "DCC-k3s-w5", "site": "DC-C", "mgmt": "192.168.3.70", "host_octet": 31, "leaves": ["DCC-Leaf01", "DCC-Leaf02"], "eth_index": 5},
     ]
 

@@ -1,5 +1,12 @@
 # 05 — CML & EVE-NG on Proxmox
 
+> **Superseded in part.** The bridging model below (`vmbr100`/`vmbr200`/`vmbr300`,
+> one bridge per DC) was never built. The lab actually runs a single VLAN-aware
+> `vmbr0` with one VLAN per point-to-point link, and the K3s/DNS hosts are
+> Proxmox VMs rather than EVE-NG nodes. See
+> [08-hypervisor-interconnect.md](08-hypervisor-interconnect.md) for the verified
+> as-built mapping. The concept and resource-sizing sections here still hold.
+
 ## Concept
 
 Two network emulators run as VMs on the same Proxmox host, each handling the
@@ -164,9 +171,9 @@ Each DC has a set of Linux VMs connected to the leaf switches:
 
 | DC | VMs | Connected via | Bridge |
 |----|-----|---------------|--------|
-| DC-A | DCA-Server01, DCA-Storage01, DCA-K3s-ma, DCA-K3srv1, DCA-K3srv2 | DCA-Leaf01/02/03 | vmbr100 |
-| DC-B | DCB-Server01, DCB-Storage01, dcb-k3s-m2, dcb-k3srv2 | DCB-Leaf01/02/03 | vmbr200 |
-| DC-C | DCC-Server01, DCC-Storage01, dcb-k3s-m3, dcb-k3srv-w5 | DCC-Leaf01/02/03 | vmbr300 |
+| DC-A | DCA-k3s-m1, DCA-k3s-m2, DCA-k3s-m3, DCA-DNS | DCA-Leaf01/02 | vmbr100 |
+| DC-B | DCB-k3s-w1, DCB-k3s-w2, DCB-k3s-w3 | DCB-Leaf01/02 | vmbr200 |
+| DC-C | DCC-k3s-w4, DCC-k3s-w5 | DCC-Leaf01/02 | vmbr300 |
 
 These VMs are managed entirely within EVE-NG. Their application traffic routes
 through the leaf-spine fabric → CE → MPLS core for cross-DC connectivity.

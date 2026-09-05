@@ -29,7 +29,25 @@ bond_members:
   - ens20
 # Bond MTU. The SP core underlay stays at the 1500 default (the CML Cat8000v
 # vmxnet3 NIC silently drops jumbo frames, so we cannot raise it). Cross-DC K3s
-# traffic is VXLAN-encapsulated by the Arista leaves onto the inter-DC EVPN DCI,
-# and VXLAN adds 50 bytes. Capping the server bond at 1450 keeps the post-encap
-# frame at or under 1500 so it survives the core instead of being dropped.
-bond_mtu: 1450
+# traffic is VXLAN-encapsulated by the Arista leaves onto the inter-DC EVPN DCI.
+#
+# The overhead is 58 bytes, not 50. VXLAN accounts for 50, but the DCI also
+# crosses the MPLS core, where L3VPN pushes two labels for another 8. The old
+# 1450 counted only the VXLAN half, so a full-size cross-DC segment became
+# 1450 + 50 + 8 = 1508 on a 1500 core link and was silently dropped. Cross-DC
+# ICMP worked, which made it look like a control-plane problem, but any TCP
+# flow that filled a segment stalled: notably etcd between the three K3s
+# servers, which is exactly the traffic a stretched control plane depends on.
+#
+# Measured ceiling from DCA-k3s-m1 to DCB-k3s-w1 with DF set: inner IP 1442
+# passes, 1450 is 100% loss. 1442 is the exact break-even (1442 + 58 = 1500),
+# so 1400 is used instead to leave headroom for anything else the path picks up
+# later. Verify after changing with:
+#   ping -M do -c2 -s $((1400 - 28)) 192.168.100.20
+bond_mtu: 1400
+# Lab artifact mirror, served by lab-mirror.service on the automation host.
+# Every server reaches this over eth0 on the management VLAN, which does not
+# cross the emulated fabric, so it runs at bridge speed rather than the
+# 11-17 KB/s the fabric gives us out to the internet. Anything large enough to
+# matter gets staged here first. See demo-lab/09-lab-artifact-mirror.md.
+lab_mirror_url: "http://192.168.3.21:8888"

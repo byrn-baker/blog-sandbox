@@ -48,12 +48,19 @@
   roles:
     - common
 
-- name: Install K3s control plane (servers, one per DC)
+# k3s_artifacts stages the install payload (binary, install script, airgap image
+# bundle) from the lab mirror on the automation host. It runs alongside the
+# install roles rather than as its own play so that its defaults (binary path,
+# script path, image dir) stay in scope for k3s_server and k3s_agent. Role
+# defaults only apply to the play the role runs in, so splitting them out would
+# leave those paths undefined.
+- name: Install K3s control plane (servers, all in DC-A)
   hosts: k3s_servers
   become: true
   serial: 1
   tags: [k3s]
   roles:
+    - k3s_artifacts
     - k3s_server
 
 - name: Install K3s workers
@@ -61,6 +68,7 @@
   become: true
   tags: [k3s]
   roles:
+    - k3s_artifacts
     - k3s_agent
 
 - name: Fetch kubeconfig to the control machine

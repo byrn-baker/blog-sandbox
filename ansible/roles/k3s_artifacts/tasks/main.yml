@@ -1,0 +1,70 @@
+---
+# =============================================================================
+# k3s_artifacts: stage the k3s install payload from the lab mirror
+# =============================================================================
+# Why this role exists: the servers default-route out through the emulated
+# fabric (bond0 -> Arista leaf -> CML core -> BORDER1 NAT). Measured throughput
+# on that path is 11-17 KB/s, so the 63 MB k3s binary takes 60-96 minutes and
+# the install script gives up long before that. The container image pulls on
+# first start are worse, another 137 MB.
+#
+# Their eth0 sits on the flat lab management VLAN and reaches blog-demo-vm
+# directly at wire speed, no fabric hop. So everything large is staged on the
+# mirror there and pulled over eth0 instead: 63 MB in well under a second.
+#
+# After this role runs, the install script needs no network at all. With
+# INSTALL_K3S_SKIP_DOWNLOAD=true it skips both the binary download and the
+# SELinux RPM lookup, and only checks that {{ k3s_bin_dir }}/k3s is executable.
+- name: Confirm the lab mirror is reachable before doing anything slow
+  ansible.builtin.uri:
+    url: "{{ k3s_mirror_url }}/{{ k3s_version }}/sha256sum-amd64.txt"
+    method: GET
+  register: k3s_mirror_probe
+  retries: 3
+  delay: 2
+  until: k3s_mirror_probe.status == 200
+  changed_when: false
+  failed_when: k3s_mirror_probe.status != 200
+# get_url resolves the checksum by matching the destination filename against
+# the lines in sha256sum-amd64.txt. Upstream ships entries for both the binary
+# and the airgap bundle in that one file, so the same URL covers both.
+- name: Install the k3s binary from the lab mirror
+  ansible.builtin.get_url:
+    url: "{{ k3s_mirror_url }}/{{ k3s_version }}/k3s"
+    dest: "{{ k3s_bin_dir }}/k3s"
+    checksum: "sha256:{{ k3s_mirror_url }}/{{ k3s_version }}/sha256sum-amd64.txt"
+    owner: root
+    group: root
+    mode: "0755"
+- name: Install the k3s install script from the lab mirror
+  ansible.builtin.get_url:
+    url: "{{ k3s_mirror_url }}/install.sh"
+    dest: "{{ k3s_install_script_path }}"
+    owner: root
+    group: root
+    mode: "0755"
+# Without this, k3s pulls pause, coredns, local-path-provisioner, metrics-server
+# and servicelb from the internet on first start, back through the slow path.
+- name: Pre-seed the airgap container images
+  when: k3s_airgap_images | bool
+  block:
+    # check_mode: false so that --check runs still create the directory. Without
+    # it the get_url below fails a dry run with "Destination ... does not exist",
+    # because check mode only pretends to make the parent. An empty directory is
+    # a safe enough side effect to keep --check useful for validating the mirror.
+    - name: Create the k3s agent image directory
+      ansible.builtin.file:
+        path: "{{ k3s_airgap_image_dir }}"
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+      check_mode: false
+    - name: Fetch the airgap image bundle from the lab mirror
+      ansible.builtin.get_url:
+        url: "{{ k3s_mirror_url }}/{{ k3s_version }}/{{ k3s_airgap_image_file }}"
+        dest: "{{ k3s_airgap_image_dir }}/{{ k3s_airgap_image_file }}"
+        checksum: "sha256:{{ k3s_mirror_url }}/{{ k3s_version }}/sha256sum-amd64.txt"
+        owner: root
+        group: root
+        mode: "0644"

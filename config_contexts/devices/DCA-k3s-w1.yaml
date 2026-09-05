@@ -1,6 +1,0 @@
----
-# Local config context for DCA-k3s-w1 (K3s agent, DC-A).
-k3s:
-  member: true
-  role: "agent"
-  node_labels: "topology.kubernetes.io/zone=dc-a"

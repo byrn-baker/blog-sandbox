@@ -5,11 +5,21 @@
 # Three server nodes, one in each DC, form a stretched HA control plane. The
 # init node runs --cluster-init; the other two join it. etcd timers are relaxed
 # because the peer traffic crosses the MPLS core between datacenters.
+#
+# The installer runs offline. k3s_artifacts has already put the binary at
+# {{ k3s_bin_dir }}/k3s and the script at {{ k3s_install_script_path }}, both
+# pulled from the lab mirror, so INSTALL_K3S_SKIP_DOWNLOAD=true makes this a
+# purely local operation. Pulling from get.k3s.io instead means a 63 MB download
+# over the emulated fabric at ~15 KB/s, which the script gives up on.
+#
+# Note the guard below keys on the systemd unit, not on the binary. The binary
+# is present before the installer ever runs now, so `creates: /usr/local/bin/k3s`
+# would skip the install on a fresh node.
 
-- name: Check if K3s is already installed
+- name: Check whether the k3s server is already installed
   ansible.builtin.stat:
-    path: /usr/local/bin/k3s
-  register: k3s_binary
+    path: /etc/systemd/system/k3s.service
+  register: k3s_service_unit
 
 - name: Build common server install args
   ansible.builtin.set_fact:
@@ -22,24 +32,22 @@
       --etcd-arg election-timeout={{ k3s_etcd_election_timeout }}
       --write-kubeconfig-mode 644
 
-- name: Set K3s version flag
-  ansible.builtin.set_fact:
-    k3s_version_flag: "{{ ('INSTALL_K3S_VERSION=' + k3s_version) if k3s_version else '' }}"
-
 # --- Cluster-init node bootstraps embedded etcd ---
 - name: Initialize the cluster (cluster-init node only)
   when:
     - k3s_cluster_init | default(false)
-    - not k3s_binary.stat.exists
+    - not k3s_service_unit.stat.exists
   block:
     - name: Install K3s as the initializing server
       ansible.builtin.shell: |
-        curl -sfL https://get.k3s.io | {{ k3s_version_flag }} sh -s - server \
+        {{ k3s_install_script_path }} server \
           --cluster-init \
           --token "{{ k3s_token }}" \
           {{ k3s_common_args }}
       args:
-        creates: /usr/local/bin/k3s
+        creates: /etc/systemd/system/k3s.service
+      environment:
+        INSTALL_K3S_SKIP_DOWNLOAD: "true"
 
     - name: Wait for the API server to be ready
       ansible.builtin.command: k3s kubectl get --raw='/readyz'
@@ -53,16 +61,18 @@
 - name: Join the cluster (additional servers)
   when:
     - not (k3s_cluster_init | default(false))
-    - not k3s_binary.stat.exists
+    - not k3s_service_unit.stat.exists
   block:
     - name: Install K3s and join the existing cluster
       ansible.builtin.shell: |
-        curl -sfL https://get.k3s.io | {{ k3s_version_flag }} sh -s - server \
+        {{ k3s_install_script_path }} server \
           --server "https://{{ k3s_api_host }}:{{ k3s_api_port }}" \
           --token "{{ k3s_token }}" \
           {{ k3s_common_args }}
       args:
-        creates: /usr/local/bin/k3s
+        creates: /etc/systemd/system/k3s.service
+      environment:
+        INSTALL_K3S_SKIP_DOWNLOAD: "true"
 
     - name: Wait for this node to register
       ansible.builtin.command: k3s kubectl get nodes

@@ -1,5 +1,5 @@
 ---
-# Local config context for DCB-k3s-w4 (K3s agent, DC-B).
+# Local config context for DCB-k3s-w2 (K3s agent, DC-B).
 k3s:
   member: true
   role: "agent"

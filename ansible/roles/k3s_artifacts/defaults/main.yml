@@ -1,0 +1,14 @@
+---
+# =============================================================================
+# k3s_artifacts defaults
+# =============================================================================
+# Where the k3s install script and binary land. These match the defaults the
+# upstream install script uses, so INSTALL_K3S_SKIP_DOWNLOAD finds the binary
+# without any extra environment variables.
+k3s_bin_dir: /usr/local/bin
+k3s_install_script_path: /usr/local/share/k3s-install.sh
+# k3s imports any image archive it finds in this directory on first start, which
+# is what lets the cluster come up without pulling from docker.io.
+k3s_airgap_images: true
+k3s_airgap_image_dir: /var/lib/rancher/k3s/agent/images
+k3s_airgap_image_file: k3s-airgap-images-amd64.tar.zst

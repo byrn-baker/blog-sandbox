@@ -15,23 +15,35 @@ segment (192.168.100.0/24, dual-stack) stretched across DC-A, DC-B, and DC-C, so
 all nodes are mutually reachable on the same subnet regardless of which DC they
 physically live in. That stretched segment is what makes one cluster possible.
 
-The control plane is three server nodes running embedded etcd, one per DC:
+The control plane is three server nodes running embedded etcd, all in DC-A:
 
 | Node | DC | VLAN 100 IP | K3s role |
 |------|----|-------------|----------|
 | DCA-k3s-m1 | DC-A | 192.168.100.10 | server (cluster-init) |
-| DCB-k3s-m2 | DC-B | 192.168.100.20 | server |
-| DCC-k3s-m3 | DC-C | 192.168.100.30 | server |
-| DCA-k3s-w1 | DC-A | 192.168.100.11 | agent |
-| DCA-k3s-w2 | DC-A | 192.168.100.12 | agent |
-| DCB-k3s-w3 | DC-B | 192.168.100.21 | agent |
-| DCB-k3s-w4 | DC-B | 192.168.100.22 | agent |
+| DCA-k3s-m2 | DC-A | 192.168.100.11 | server |
+| DCA-k3s-m3 | DC-A | 192.168.100.12 | server |
+| DCB-k3s-w1 | DC-B | 192.168.100.20 | agent |
+| DCB-k3s-w2 | DC-B | 192.168.100.21 | agent |
+| DCB-k3s-w3 | DC-B | 192.168.100.22 | agent |
+| DCC-k3s-w4 | DC-C | 192.168.100.30 | agent |
 | DCC-k3s-w5 | DC-C | 192.168.100.31 | agent |
 
-Placing one etcd member in each DC means the quorum survives losing any single
-site. The tradeoff is that etcd's peer traffic now crosses the MPLS core. etcd's
-defaults (100ms heartbeat, 1000ms election) assume a LAN, so the cluster relaxes
-them to 500ms/5000ms to absorb the cross-DC jitter in the nested CML/EVE-NG lab.
+All three etcd members live in DC-A on purpose. A one-member-per-DC layout looks
+better on paper, since the quorum would survive losing a site, but it does not
+work on this fabric. etcd's raft needs tight, symmetric, low-latency RTT for its
+heartbeats and elections, and the emulated cross-DC path delivers 100ms+ RTT
+with heavy jitter. That jitter is not congestion or a device limit. It is
+scheduling latency in the emulated node dataplanes under sparse traffic, measured
+by comparing a flooded ping (every hop stays hot, ~5ms) against a spaced ping
+(hops idle between packets, ~25ms intra-DC and 112ms cross-DC). Raft messages are
+exactly the small, spaced pattern that pays that penalty on every hop, so a
+stretched etcd never holds a stable quorum. Keeping all three servers in DC-A
+holds raft inside the DC-A fabric; the DC-B and DC-C nodes join as agents over
+the core and ride out the jitter on one persistent connection to the API server.
+
+The tradeoff is honest: the control plane no longer survives losing DC-A. That
+is the price of this fabric, and it is the right call here because a control
+plane that flaps constantly is worse than one that is simply single-site.
 
 There is no VIP and no keepalived. The VLAN 100 gateway (192.168.100.1) is an
 anycast SVI present identically on every leaf, and agents register against the

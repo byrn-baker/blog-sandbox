@@ -2,10 +2,12 @@
 # =============================================================================
 # K3s cluster settings (applied to every cluster member)
 # =============================================================================
-# The cluster is one stretched control plane across three DCs. All members sit
-# on the VLAN 100 stretched segment (192.168.100.0/24), so they are mutually
-# reachable regardless of which DC they physically live in. The three server
-# nodes (one per DC) form an embedded-etcd HA control plane.
+# One stretched cluster across three DCs, but the control plane is deliberately
+# not stretched: all three embedded-etcd servers (DCA-k3s-m1/m2/m3) live in
+# DC-A. Every node sits on the VLAN 100 stretched segment (192.168.100.0/24) and
+# is mutually reachable regardless of DC, so the DC-B and DC-C nodes join as
+# agents. Raft cannot tolerate the emulated cross-DC latency, so it stays local
+# to the DC-A fabric.
 
 # Pin the K3s version so a rebuild is reproducible. Blank = latest stable.
 k3s_version: "v1.30.5+k3s1"
@@ -23,11 +25,23 @@ k3s_api_port: 6443
 k3s_disable:
   - traefik
 
-# etcd on a stretched cluster crosses the MPLS core between DCs. The defaults
-# (100ms heartbeat, 1000ms election) are tuned for a LAN. Relax them so cross-DC
-# jitter in the nested lab does not trigger spurious leader elections.
+# All three etcd members are in DC-A, so raft stays inside the DC-A fabric and
+# never crosses the MPLS core. These timers are still relaxed from the LAN
+# defaults (100ms heartbeat, 1000ms election) because even intra-DC forwarding
+# in the nested lab is jittery enough (~25ms) to risk spurious elections.
 k3s_etcd_heartbeat_interval: "500"
 k3s_etcd_election_timeout: "5000"
 
 # Where to drop the fetched kubeconfig on the control machine.
 kubeconfig_local_path: "./kubeconfig"
+# Install payload source. The k3s binary, the install script and the airgap
+# image bundle all come from the lab mirror rather than get.k3s.io / GitHub,
+# because the servers' route to the internet crosses the emulated fabric and
+# tops out around 15 KB/s. k3s_artifacts stages them, then k3s_server and
+# k3s_agent run the installer with INSTALL_K3S_SKIP_DOWNLOAD=true.
+#
+# Note: with skip-download the installer never reads INSTALL_K3S_VERSION, since
+# that only feeds the download URL. The version actually installed is whichever
+# binary is staged under {{ k3s_mirror_url }}/{{ k3s_version }}/, so k3s_version
+# above still selects it, just through the mirror path instead of a flag.
+k3s_mirror_url: "{{ lab_mirror_url }}/k3s"
