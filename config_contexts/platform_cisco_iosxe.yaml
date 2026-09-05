@@ -1,10 +1,15 @@
 ---
 # Per-push Netmiko arguments for Golden Config deployment.
 #
-# These are send_config_set() / save_config() arguments, not Netmiko constructor
-# arguments, so they cannot live in PLUGINS_CONFIG connection_options.
-# nornir-nautobot reads netmiko_kwargs only from a device custom field or from
-# config context.
+# These are send_config_set() arguments, not Netmiko constructor arguments, so
+# they cannot live in PLUGINS_CONFIG connection_options. nornir-nautobot reads
+# netmiko_kwargs only from a device custom field or from config context.
+#
+# Scope warning: despite the name, these do NOT reach save_config(). The
+# dispatcher runs the save as `netmiko_save_config(confirm=True)` with no kwargs
+# (nornir_nautobot/plugins/tasks/dispatcher/default.py), and that path uses
+# send_command_timing with a hardcoded read_timeout, which only the
+# connection-level settings in nautobot_config.py PLUGINS_CONFIG can influence.
 #
 # error_pattern: makes Netmiko raise on the exact rejected CLI line instead of
 # returning a generic E1030 that lists every pattern it searched for. The pattern
@@ -14,7 +19,8 @@
 # read_timeout: seconds Netmiko waits for command echo (cmd_verify) and prompt
 # return after each config line. Default is 30s, which is too short when IOS-XE
 # processes commands that trigger syslog output (ISIS adjacency, IPv6 DAD, MPLS
-# LDP). 90s matches the connection-level read_timeout_override in nautobot_config.
+# LDP). Raised to 300 to match the EOS context and the connection-level
+# read_timeout_override in nautobot_config.py.
 #
 # cmd_verify: disabled because IOS-XE syslog messages (%BGP-5-ADJCHANGE,
 # %ISIS-5-ADJCHANGE, %LDP-5-NBRCHG) interleave with command echoes during
@@ -28,5 +34,5 @@ _metadata:
     - name: "cisco_iosxe"
 netmiko_kwargs:
   error_pattern: "^% (Invalid input|Incomplete command|Ambiguous command|Unrecognized command|Too many parameters|Wrong parameter|Cannot execute)"
-  read_timeout: 180
+  read_timeout: 300
   cmd_verify: false

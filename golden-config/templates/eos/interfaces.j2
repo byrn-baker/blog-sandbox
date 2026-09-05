@@ -52,7 +52,17 @@ interface {{ interface.name }}
    channel-group {{ esi.members[interface.name] }} mode on
 {% endif %}
 {% if interface.name.startswith('Ethernet') and interface.ip_addresses %}
-   mtu {{ interface.mtu | default(9214, true) }}
+{# Default fabric MTU is 8950, not the 9214 EOS jumbo default. Every virtual wire
+   under this fabric is MTU 9000: the EVE-NG vnet bridges and vunl taps carrying
+   the leaf-spine links, the ethN/pnetN interfaces, and Proxmox vmbr0/eno1. At
+   9214 the leaf-spine BGP sessions derived a TCP MSS of 9162, so a full-size
+   EVPN UPDATE became a 9202-byte packet that the Linux bridge silently dropped.
+   No ICMP frag-needed comes back from a bridge, so PMTUD blackholed: the output
+   queue never drained, keepalives stalled behind it, and the session reset on
+   hold-timer expiry forever. 8950 leaves headroom under the 9000 ceiling.
+   Any device that needs something else carries an explicit Interface.mtu in
+   Nautobot, which wins over this default (e.g. spine Et10 to the CE at 1500). #}
+   mtu {{ interface.mtu | default(8950, true) }}
    no switchport
 {% endif %}
 {% for addr in interface.ip_addresses %}

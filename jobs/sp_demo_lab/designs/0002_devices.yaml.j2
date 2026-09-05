@@ -113,7 +113,11 @@
         status__name: "Active"
         enabled: false
         type: "1000base-t"
-        # Spine Ethernet10 faces a CE at MTU 1500. Fabric ports remain jumbo.
+        # Spine Ethernet10 faces a CE at MTU 1500. Fabric ports stay jumbo, but
+        # at 8950 rather than the 9214 EOS default: every virtual wire beneath
+        # this fabric (EVE-NG bridges and taps, Proxmox vmbr0/eno1) is MTU 9000,
+        # and 9214 silently blackholed full-size BGP UPDATEs. See the matching
+        # note in golden-config/templates/eos/interfaces.j2.
         # Keep this as a print expression with an inline conditional. A Jinja
         # block tag closing the line would not work here: Design Builder renders
         # with trim_blocks enabled, so the tag eats the following newline and the
@@ -121,7 +125,7 @@
         # rejects with "mapping values are not allowed here".
         # Note also that a YAML comment is not a Jinja comment. Jinja still parses
         # its delimiters here, so do not write them literally in these comments.
-        mtu: {{ 1500 if (device.role == "Spine" and i == 10) else 9214 }}
+        mtu: {{ 1500 if (device.role == "Spine" and i == 10) else 8950 }}
 {% endfor %}
 {%- endmacro %}
 

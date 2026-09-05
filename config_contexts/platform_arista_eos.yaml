@@ -7,7 +7,19 @@
 #
 # read_timeout: Leaf switches with VXLAN/EVPN configs are large enough that
 # default 30s can be exceeded when the device processes interface Vxlan1,
-# VRF routing, or EVPN address-family commands.
+# VRF routing, or EVPN address-family commands. Raised to 300 after pushes to a
+# CPU-saturated vEOS timed out mid-merge on exit_config_mode.
+#
+# Scope warning: these kwargs reach send_config_set() ONLY. The dispatcher calls
+# the save separately as `netmiko_save_config(confirm=True)` with no kwargs
+# (nornir_nautobot/plugins/tasks/dispatcher/default.py), and Arista's
+# save_config(confirm=True) goes through send_command_timing, whose hardcoded
+# last_read=2.0 / read_timeout=120.0 nothing here can influence. Connection-level
+# knobs for that path live in nautobot_config.py PLUGINS_CONFIG.
+#
+# Also note the E1016 "Saving Config Failed" message is the dispatcher's generic
+# fallback error, used for merge failures too, so it does not by itself mean the
+# save was the step that broke.
 #
 # cmd_verify: disabled because EOS informational messages (e.g. "It is
 # recommended to configure larger multi-hop interval") and BGP/EVPN state
@@ -25,5 +37,5 @@ _metadata:
     - name: "arista_eos"
 netmiko_kwargs:
   error_pattern: "^% "
-  read_timeout: 180
+  read_timeout: 300
   cmd_verify: false
