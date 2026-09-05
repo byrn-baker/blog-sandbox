@@ -71,6 +71,7 @@ management network.
 | k3s-w3 | `192.168.3.68` | Eth0 |
 | k3s-w4 | `192.168.3.69` | Eth0 |
 | k3s-w5 | `192.168.3.70` | Eth0 |
+| k3s-w6 | `192.168.3.72` | Eth0 |
 
 ### Management VRF config (IOS-XE, all Cisco routers)
 
@@ -372,6 +373,7 @@ is `00<oct>:00<oct>:00<oct>:00<oct>:00<oct>`, and the ES import route-target is
 | DC-B | k3s-w3 | `192.168.100.22` | `fd10:a:100::22` | DCB-Leaf01 + DCB-Leaf02 | Ethernet6 / Po6 | K3s agent |
 | DC-C | k3s-w4 | `192.168.100.30` | `fd10:a:100::30` | DCC-Leaf01 + DCC-Leaf02 | Ethernet4 / Po4 | K3s agent |
 | DC-C | k3s-w5 | `192.168.100.31` | `fd10:a:100::31` | DCC-Leaf01 + DCC-Leaf02 | Ethernet5 / Po5 | K3s agent |
+| DC-C | k3s-w6 | `192.168.100.32` | `fd10:a:100::32` | DCC-Leaf01 + DCC-Leaf02 | Ethernet6 / Po6 | K3s agent |
 
 Both leaves in a pair use the same Ethernet member index and port-channel
 number for a given server. The server's `ens19` cables to Leaf01, `ens20` to

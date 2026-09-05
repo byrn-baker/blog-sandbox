@@ -28,6 +28,7 @@ config_context:
     DCB-k3s-w3: 22
     DCC-k3s-w4: 30
     DCC-k3s-w5: 31
+    DCC-k3s-w6: 32
   platform:
     spanning_tree_mode: mstp
     spanning_tree_priority: 4096

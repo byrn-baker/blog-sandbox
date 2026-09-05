@@ -1,0 +1,13 @@
+---
+# Local config context for DCC-k3s-w6 (K3s agent + Longhorn storage node, DC-C).
+# Third DC-C worker, added so DC-C can hold a full 3-replica Longhorn volume
+# entirely within its own fabric (matching DC-A and DC-B). Replication stays
+# intra-DC; it never crosses the emulated MPLS core.
+k3s:
+  member: true
+  role: "agent"
+  node_labels: "topology.kubernetes.io/zone=dc-c"
+storage:
+  enabled: true
+  disk_device: "/dev/sdb"
+  mount_path: "/var/lib/longhorn"

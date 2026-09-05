@@ -53,7 +53,7 @@ into a single `bond0` in the guest.
 | CML | 5001 | 192.168.17.10 | 20 cores ×2 sockets, 250 GB RAM |
 | EVE-NG | 118 | 192.168.17.2 | 10 cores ×4 sockets, 256 GB RAM, nested virt |
 | blog-demo-vm (automation host) | 106 | 192.168.3.21 | Nautobot, Ansible, pyATS |
-| K3s + DNS VMs | 3001–3009 | 192.168.3.63–.71 | see table below |
+| K3s + DNS VMs | 3001–3010 | 192.168.3.63–.72 | see table below |
 
 CML lab: `SP Demo Lab`, id `c11c5f8e-daf2-468c-89d9-dfd626f3b2ff`.
 EVE-NG lab: `/Blog-SandBox.unl`, uuid `5913edeb-e573-47c6-b8f0-db65dfbb8e32`.
@@ -154,9 +154,11 @@ as EVPN ESI-multihomed single-member port-channels; the guest runs
 | 422 | DCC-Leaf02 Et5 | Po5 | `DCC-k3s-w5-Leaf02` (`pnet24`) | `eth24` (net24) | DCC-k3s-w5 (3008) | `ens20` (net2) |
 | 423 | DCA-Leaf01 Et7 | Po7 | `DNS-Leaf01` (`pnet25`) | `eth25` (net25) | DCA-DNS (3009) | `ens19` (net1) |
 | 424 | DCA-Leaf02 Et7 | Po7 | `DNS-Leaf02` (`pnet26`) | `eth26` (net26) | DCA-DNS (3009) | `ens20` (net2) |
+| 425 | DCC-Leaf01 Et6 | Po6 | `DCC-k3s-w6-Leaf01` (`pnet27`) | `eth27` (net27) | DCC-k3s-w6 (3010) | `ens19` (net1) |
+| 426 | DCC-Leaf02 Et6 | Po6 | `DCC-k3s-w6-Leaf02` (`pnet28`) | `eth28` (net28) | DCC-k3s-w6 (3010) | `ens20` (net2) |
 
-DC-C has no Et6 pair because it only runs two nodes. The DNS pair (423/424) is
-DC-A only.
+All three DCs now run three K3s workers on Et4/Et5/Et6, so DC-C's Et6 pair
+(425/426) matches DC-A and DC-B. The DNS pair (423/424) is DC-A only.
 
 ### VM addressing on the bonds
 
@@ -175,6 +177,7 @@ regardless of which DC the VM belongs to. Default gateway is the anycast
 | DCC-k3s-w4 | 3007 | 192.168.3.69 | 192.168.100.30/24 |
 | DCC-k3s-w5 | 3008 | 192.168.3.70 | 192.168.100.31/24 |
 | DCA-DNS | 3009 | 192.168.3.71 | 192.168.100.53/24 |
+| DCC-k3s-w6 | 3010 | 192.168.3.72 | 192.168.100.32/24 |
 
 ---
 

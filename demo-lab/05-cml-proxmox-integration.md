@@ -186,7 +186,7 @@ Ethernet ports on Leaf01 and Leaf02 as an EVPN ESI multihome.
 |----|-----|--------------------------|
 | DC-A | DCA-k3s-m1, DCA-k3s-m2, DCA-k3s-m3, DCA-DNS | DCA-Leaf01/02 |
 | DC-B | DCB-k3s-w1, DCB-k3s-w2, DCB-k3s-w3 | DCB-Leaf01/02 |
-| DC-C | DCC-k3s-w4, DCC-k3s-w5 | DCC-Leaf01/02 |
+| DC-C | DCC-k3s-w4, DCC-k3s-w5, DCC-k3s-w6 | DCC-Leaf01/02 |
 
 Application traffic routes through the leaf-spine fabric, out the CE, and across
 the MPLS core for cross-DC connectivity. The exact bridge/VLAN and interface

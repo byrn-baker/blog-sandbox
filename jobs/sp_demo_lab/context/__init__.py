@@ -268,6 +268,7 @@ class SPDemoLabContext(Context):
         {"name": "DCB-k3s-w3", "site": "DC-B", "mgmt": "192.168.3.68", "host_octet": 22, "leaves": ["DCB-Leaf01", "DCB-Leaf02"], "eth_index": 6},
         {"name": "DCC-k3s-w4", "site": "DC-C", "mgmt": "192.168.3.69", "host_octet": 30, "leaves": ["DCC-Leaf01", "DCC-Leaf02"], "eth_index": 4},
         {"name": "DCC-k3s-w5", "site": "DC-C", "mgmt": "192.168.3.70", "host_octet": 31, "leaves": ["DCC-Leaf01", "DCC-Leaf02"], "eth_index": 5},
+        {"name": "DCC-k3s-w6", "site": "DC-C", "mgmt": "192.168.3.72", "host_octet": 32, "leaves": ["DCC-Leaf01", "DCC-Leaf02"], "eth_index": 6},
     ]
 
     # Border leaves: one per site (DCx-Leaf03). Each has a routed link to its

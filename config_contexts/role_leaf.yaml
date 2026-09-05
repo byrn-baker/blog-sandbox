@@ -49,6 +49,7 @@ server_esi_octets:
   DCB-k3s-w3: 22
   DCC-k3s-w4: 30
   DCC-k3s-w5: 31
+  DCC-k3s-w6: 32
 prefix_lists:
   - name: "PL-LOOPBACKS-EVPN-OVERLAY"
     entries:

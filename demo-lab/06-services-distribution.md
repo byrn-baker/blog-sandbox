@@ -27,6 +27,7 @@ The control plane is three server nodes running embedded etcd, all in DC-A:
 | DCB-k3s-w3 | DC-B | 192.168.100.22 | agent |
 | DCC-k3s-w4 | DC-C | 192.168.100.30 | agent |
 | DCC-k3s-w5 | DC-C | 192.168.100.31 | agent |
+| DCC-k3s-w6 | DC-C | 192.168.100.32 | agent |
 
 All three etcd members live in DC-A on purpose. A one-member-per-DC layout looks
 better on paper, since the quorum would survive losing a site, but it does not

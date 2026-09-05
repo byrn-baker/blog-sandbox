@@ -23,4 +23,17 @@ data_schema:
           description: "True on exactly one server node — the node that runs --cluster-init to bootstrap embedded etcd."
       required:
         - member
+    storage:
+      type: object
+      description: "Longhorn storage-node properties. Present on worker nodes that carry a secondary disk for replicated block storage."
+      properties:
+        enabled:
+          type: boolean
+          description: "Whether this node contributes a Longhorn disk. When true, the ansible longhorn_disk role formats and mounts the secondary disk at /var/lib/longhorn."
+        disk_device:
+          type: string
+          description: "The secondary block device to use for Longhorn (e.g. /dev/sdb)."
+        mount_path:
+          type: string
+          description: "Where the Longhorn disk is mounted (default /var/lib/longhorn)."
   additionalProperties: true

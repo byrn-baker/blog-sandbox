@@ -29,7 +29,7 @@ reachable on one subnet, so a single cluster spans all sites.
 |----|------------------------|-----------------|
 | DC-A | k3s-m1 (cluster-init), k3s-m2, k3s-m3 | none |
 | DC-B | none | k3s-w1, k3s-w2, k3s-w3 |
-| DC-C | none | k3s-w4, k3s-w5 |
+| DC-C | none | k3s-w4, k3s-w5, k3s-w6 |
 
 All three etcd members sit in DC-A on purpose. Embedded-etcd raft needs tight,
 low-jitter RTT between members, and the emulated cross-DC path cannot provide

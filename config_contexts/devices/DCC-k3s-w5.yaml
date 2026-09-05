@@ -1,6 +1,10 @@
 ---
-# Local config context for DCC-k3s-w5 (K3s agent, DC-C).
+# Local config context for DCC-k3s-w5 (K3s agent + Longhorn storage node, DC-C).
 k3s:
   member: true
   role: "agent"
   node_labels: "topology.kubernetes.io/zone=dc-c"
+storage:
+  enabled: true
+  disk_device: "/dev/sdb"
+  mount_path: "/var/lib/longhorn"
