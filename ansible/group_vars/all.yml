@@ -51,3 +51,16 @@ bond_mtu: 1400
 # 11-17 KB/s the fabric gives us out to the internet. Anything large enough to
 # matter gets staged here first. See demo-lab/09-lab-artifact-mirror.md.
 lab_mirror_url: "http://192.168.3.21:8888"
+lab_mirror_host: "192.168.3.21"
+
+# Container registry pull-through caches on the mirror host. Same rationale as
+# the file mirror: image pulls from these upstreams over the fabric are
+# impractical (~15 KB/s), so each is proxied by a registry:2 cache on the mirror
+# host and reached over the management VLAN. The registry_mirror role renders
+# /etc/rancher/k3s/registries.yaml from this map. Ports match
+# lab-mirror/registry/docker-compose.yml on the mirror host.
+k3s_registry_mirrors:
+  docker.io: 5000
+  quay.io: 5001
+  ghcr.io: 5002
+  registry.k8s.io: 5003

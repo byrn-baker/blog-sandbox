@@ -84,6 +84,18 @@
     - k3s_artifacts
     - k3s_agent
 
+# Point every node's containerd at the lab registry pull-through caches so
+# workload image pulls (Longhorn, VictoriaMetrics, Argo, etc.) go over the
+# management VLAN instead of the fabric. serial:1 rolls the k3s restarts one
+# node at a time, keeping the three-member etcd quorum intact.
+- name: Point k3s at the lab registry caches
+  hosts: k3s_cluster
+  become: true
+  serial: 1
+  tags: [k3s, registry]
+  roles:
+    - registry_mirror
+
 - name: Fetch kubeconfig to the control machine
   hosts: k3s_init
   become: true

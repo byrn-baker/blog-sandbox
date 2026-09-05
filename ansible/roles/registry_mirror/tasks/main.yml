@@ -1,0 +1,31 @@
+---
+# =============================================================================
+# registry_mirror: point k3s containerd at the lab registry pull-through caches
+# =============================================================================
+# Writes /etc/rancher/k3s/registries.yaml so every image pull for docker.io,
+# quay.io, ghcr.io and registry.k8s.io is served by the caches on the mirror
+# host over the management VLAN, instead of crawling out through the emulated
+# fabric. k3s reads this file at startup and regenerates its containerd config,
+# so a change notifies a k3s restart.
+
+- name: Ensure the k3s config directory exists
+  ansible.builtin.file:
+    path: /etc/rancher/k3s
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Render registries.yaml pointing at the lab caches
+  ansible.builtin.template:
+    src: registries.yaml.j2
+    dest: /etc/rancher/k3s/registries.yaml
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Restart k3s server
+    - Restart k3s agent
+
+- name: Apply the registry config now (restart k3s before continuing)
+  ansible.builtin.meta: flush_handlers

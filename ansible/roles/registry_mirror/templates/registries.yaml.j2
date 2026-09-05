@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+# k3s containerd registry mirrors. Each upstream is redirected to its
+# pull-through cache on the lab mirror host, reached over the management VLAN
+# so image pulls do not cross the emulated fabric. Rendered by the
+# registry_mirror role from k3s_registry_mirrors in group_vars/all.yml.
+mirrors:
+{% for upstream, port in k3s_registry_mirrors.items() %}
+  "{{ upstream }}":
+    endpoint:
+      - "http://{{ lab_mirror_host }}:{{ port }}"
+{% endfor %}

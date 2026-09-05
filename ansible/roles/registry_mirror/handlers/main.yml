@@ -1,0 +1,16 @@
+---
+# Restarting k3s (or k3s-agent) is what makes containerd re-read
+# registries.yaml: k3s regenerates its containerd config.toml from that file on
+# startup. The play runs serial:1 so these restarts roll one node at a time,
+# keeping the three-member etcd quorum intact.
+- name: Restart k3s server
+  ansible.builtin.systemd:
+    name: k3s
+    state: restarted
+  when: k3s_role | default('') == 'server'
+
+- name: Restart k3s agent
+  ansible.builtin.systemd:
+    name: k3s-agent
+    state: restarted
+  when: k3s_role | default('') == 'agent'
