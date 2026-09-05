@@ -58,6 +58,12 @@ into a single `bond0` in the guest.
 CML lab: `SP Demo Lab`, id `c11c5f8e-daf2-468c-89d9-dfd626f3b2ff`.
 EVE-NG lab: `/Blog-SandBox.unl`, uuid `5913edeb-e573-47c6-b8f0-db65dfbb8e32`.
 
+> The checked-in `Blog-SandBox.unl` export predates the K3s node rename (the
+> old one-master-per-DC names). It is an archived topology snapshot, not a
+> source of truth, so it is left as-is. The authoritative server names live in
+> Nautobot and the Design Builder `servers` list; the tables in this doc use
+> the current names.
+
 ---
 
 ## Interface naming, three times over
