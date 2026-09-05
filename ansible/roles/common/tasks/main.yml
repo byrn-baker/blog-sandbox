@@ -10,6 +10,10 @@
   ansible.builtin.apt:
     update_cache: true
     cache_valid_time: 3600
+    # A freshly booted VM runs apt.systemd.daily / unattended-upgrades, which
+    # holds the dpkg lock for the first few minutes. Wait for it instead of
+    # failing the run.
+    lock_timeout: 300
 
 - name: Install base packages
   ansible.builtin.apt:
@@ -24,6 +28,7 @@
       - open-iscsi
       - nfs-common
     state: present
+    lock_timeout: 300
 
 - name: Set timezone
   community.general.timezone:
