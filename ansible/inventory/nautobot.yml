@@ -53,6 +53,10 @@ groups:
   k3s_agents: "local_config_context_data.k3s.member | default(false) and local_config_context_data.k3s.role | default('') == 'agent'"
   k3s_init: "local_config_context_data.k3s.cluster_init | default(false)"
   dns_servers: "not (local_config_context_data.k3s.member | default(false))"
+  # Nodes that contribute a Longhorn disk. Read from the same Git-synced config
+  # context as k3s role, so adding storage to a node is a context change, not an
+  # inventory edit.
+  storage_nodes: "local_config_context_data.storage.enabled | default(false)"
 
 compose:
   ansible_user: "'ubuntu'"
@@ -65,3 +69,8 @@ compose:
   # mask-free node IP even when pb.site.yml is run with --tags k3s, so derive it
   # directly from the queried bond0 interface instead of relying on role facts.
   vlan100_ipv4: "interfaces | selectattr('name', 'equalto', 'bond0') | map(attribute='ip_addresses') | first | map(attribute='address') | reject('search', ':') | first | regex_replace('/.*$', '')"
+  # Longhorn disk properties, surfaced as plain host vars for the longhorn_disk
+  # role. Defaults match the role defaults so a node with storage.enabled but no
+  # explicit device/path still works.
+  storage_disk: "local_config_context_data.storage.disk_device | default('/dev/sdb')"
+  storage_mount: "local_config_context_data.storage.mount_path | default('/var/lib/longhorn')"

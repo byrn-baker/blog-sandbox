@@ -1,0 +1,60 @@
+---
+# =============================================================================
+# longhorn_disk: format and mount the secondary disk for Longhorn replicas
+# =============================================================================
+# Longhorn stores its replica data under /var/lib/longhorn. Putting that on a
+# dedicated disk keeps replica IO off the root disk that the OS and containerd
+# already use, so storage benchmarks are not muddied by system IO.
+#
+# Which nodes get a disk, which device, and where it mounts all come from the
+# device's Git-synced `storage` config context in Nautobot (surfaced as the
+# storage_disk / storage_mount host vars). The play targets the storage_nodes
+# group, so the DC-A control-plane nodes are skipped even though they happen to
+# carry a spare disk.
+#
+# This role is safe to re-run. It never reformats a disk that already carries a
+# filesystem, so a second run does not wipe existing Longhorn replicas.
+
+- name: Stat the storage disk
+  ansible.builtin.stat:
+    path: "{{ storage_disk }}"
+  register: _storage_disk_stat
+
+- name: Assert the storage disk is present as a block device
+  ansible.builtin.assert:
+    that:
+      - _storage_disk_stat.stat.exists
+      - _storage_disk_stat.stat.isblk | default(false)
+    fail_msg: >-
+      Storage disk {{ storage_disk }} is not a block device on
+      {{ inventory_hostname }}. Add the secondary disk to the VM and reboot
+      before running this role.
+
+- name: Create the filesystem on the storage disk (never reformats)
+  community.general.filesystem:
+    fstype: "{{ storage_fstype }}"
+    dev: "{{ storage_disk }}"
+    # force:false is the safety line. If the disk already has a filesystem it
+    # is left untouched, so re-running this role does not destroy Longhorn data.
+    force: false
+
+- name: Read the filesystem UUID
+  ansible.builtin.command: "blkid -s UUID -o value {{ storage_disk }}"
+  register: _storage_disk_uuid
+  changed_when: false
+
+- name: Ensure the Longhorn mount point exists
+  ansible.builtin.file:
+    path: "{{ storage_mount }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Mount the disk and persist it in fstab by UUID
+  ansible.posix.mount:
+    path: "{{ storage_mount }}"
+    src: "UUID={{ _storage_disk_uuid.stdout }}"
+    fstype: "{{ storage_fstype }}"
+    opts: defaults
+    state: mounted

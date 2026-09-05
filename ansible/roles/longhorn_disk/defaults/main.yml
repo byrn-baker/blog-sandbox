@@ -1,0 +1,9 @@
+---
+# =============================================================================
+# longhorn_disk defaults
+# =============================================================================
+# These match the inventory compose defaults, so a node with storage.enabled
+# but no explicit device/path in its config context still gets a sane disk.
+storage_disk: /dev/sdb
+storage_mount: /var/lib/longhorn
+storage_fstype: ext4

@@ -48,6 +48,19 @@
   roles:
     - common
 
+# Format and mount the secondary disk for Longhorn on nodes whose config context
+# sets storage.enabled. Tagged so it can be staged and verified on its own:
+#   ansible-playbook pb.site.yml --tags storage
+# The DC-A control-plane nodes are not in storage_nodes, so they are skipped
+# even if they carry a spare disk. Longhorn itself is deployed later via Argo;
+# this only prepares the mount it will use.
+- name: Prepare Longhorn storage disks
+  hosts: storage_nodes
+  become: true
+  tags: [storage]
+  roles:
+    - longhorn_disk
+
 # k3s_artifacts stages the install payload (binary, install script, airgap image
 # bundle) from the lab mirror on the automation host. It runs alongside the
 # install roles rather than as its own play so that its defaults (binary path,
