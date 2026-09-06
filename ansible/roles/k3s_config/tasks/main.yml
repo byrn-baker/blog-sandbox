@@ -18,6 +18,14 @@
 #
 # This role targets k3s_servers only: node-monitor-grace-period is a
 # kube-controller-manager flag, and the controller-manager runs on the servers.
+#
+# It also carries the control-plane NoSchedule taint. That one is unrelated to
+# the grace period but belongs in the same role for the same reason: it is a
+# node-registration setting (--node-taint) that k3s only applies at initial
+# join, and these three servers already joined before the flag was added to
+# k3s_server. A `kubectl taint` against the running API is the standard way to
+# apply it to an already-registered node; it is a metadata change, not a
+# component restart, so it does not touch etcd quorum.
 
 - name: Ensure the k3s config.yaml.d drop-in directory exists
   ansible.builtin.file:
@@ -52,3 +60,27 @@
   delay: 5
   until: k3s_readyz.rc == 0
   changed_when: false
+
+# Kubernetes lowercases the node name at registration (the OS hostname here is
+# DCA-k3s-m1, the node object is dca-k3s-m1), so the taint target is derived
+# from ansible_hostname rather than assumed to match it.
+- name: Read this server's current node taints
+  ansible.builtin.command: >-
+    k3s kubectl get node {{ ansible_hostname | lower }}
+    -o jsonpath={.spec.taints}
+  register: k3s_current_taints
+  changed_when: false
+
+# `kubectl taint --overwrite` always reports "modified" on stdout, even when
+# the taint already matches, so it cannot drive changed_when on its own. Check
+# first and only taint when it is actually missing, which keeps this an honest
+# no-op on a re-run instead of reporting changed every time. --overwrite is
+# still used on apply so a differing taint on the same key (e.g. a stale value)
+# is replaced rather than rejected.
+- name: Apply the control-plane NoSchedule taint to this server's node
+  ansible.builtin.command: >-
+    k3s kubectl taint node {{ ansible_hostname | lower }}
+    {{ k3s_control_plane_taint }} --overwrite
+  when: k3s_control_plane_taint_key not in k3s_current_taints.stdout
+  vars:
+    k3s_control_plane_taint_key: "{{ k3s_control_plane_taint.split('=')[0] }}"

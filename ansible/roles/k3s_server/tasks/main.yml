@@ -28,6 +28,7 @@
       --tls-san {{ k3s_api_host }}
       --node-ip {{ vlan100_ipv4 }}
       --node-label {{ k3s_node_labels | default('') }}
+      --node-taint {{ k3s_control_plane_taint }}
       --etcd-arg heartbeat-interval={{ k3s_etcd_heartbeat_interval }}
       --etcd-arg election-timeout={{ k3s_etcd_election_timeout }}
       --write-kubeconfig-mode 644

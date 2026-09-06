@@ -77,3 +77,15 @@ k3s_registry_mirrors:
 # lab. Longhorn in particular is sensitive to this flap, so it is set before
 # Longhorn is deployed.
 k3s_node_monitor_grace_period: "300s"
+
+# Taint applied to the three DC-A control-plane nodes so the scheduler keeps
+# them free for etcd/API load and does not also land Argo CD, Longhorn, or the
+# observability stack there. k3s already applies the
+# node-role.kubernetes.io/control-plane label to its servers, and its own
+# system addons (coredns, local-path-provisioner, metrics-server) already carry
+# a matching toleration, but k3s does not taint the node to match; that has to
+# be requested explicitly via --node-taint (install time, in k3s_server) or
+# `kubectl taint` (on an already-registered node, in k3s_config). DC-A has no
+# worker nodes, so without this taint the scheduler would treat the masters as
+# fair game for any pending pod.
+k3s_control_plane_taint: "node-role.kubernetes.io/control-plane=true:NoSchedule"
