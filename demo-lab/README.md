@@ -17,3 +17,5 @@ observability across a realistic multi-tenant SP environment.
 | [06-services-distribution.md](06-services-distribution.md) | K3s workloads split across DCs |
 | [06a-ansible-automation.md](06a-ansible-automation.md) | Nautobot-sourced Ansible: inventory, roles, BIND, K3s |
 | [07-monitoring-scenarios.md](07-monitoring-scenarios.md) | Demo failure scenarios and observables |
+| [08-hypervisor-interconnect.md](08-hypervisor-interconnect.md) | **As-built** VLAN map: CML ↔ EVE-NG ↔ VMs, MTU chain, underlay troubleshooting |
+| [09-lab-artifact-mirror.md](09-lab-artifact-mirror.md) | Why large downloads bypass the fabric, and how the mirror on blog-demo-vm works |
