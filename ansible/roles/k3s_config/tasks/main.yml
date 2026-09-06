@@ -1,0 +1,54 @@
+---
+# =============================================================================
+# k3s_config: control-plane runtime tuning via a config.yaml.d drop-in
+# =============================================================================
+# The k3s_server role passes install-time flags on the CLI, but its install is
+# guarded on the systemd unit already existing, so it will not re-run on a node
+# that is already up. To change control-plane args after install we drop a file
+# into /etc/rancher/k3s/config.yaml.d/ instead; k3s merges every *.yaml there
+# with config.yaml at startup, so a change plus a restart is all it takes.
+#
+# The one setting here relaxes the controller-manager node-monitor-grace-period.
+# On this emulated fabric a cold cross-DC path plus jitter can stall a kubelet's
+# heartbeat POST for tens of seconds. The 40s default marks a node NotReady
+# after ~4 missed heartbeats, so nodes flap in and out even though etcd and the
+# API are healthy. Widening the window to 300s tolerates those bursts. This is
+# the same "accept the fabric, relax the timer" move already used for etcd's
+# heartbeat-interval and election-timeout in the k3s_server role.
+#
+# This role targets k3s_servers only: node-monitor-grace-period is a
+# kube-controller-manager flag, and the controller-manager runs on the servers.
+
+- name: Ensure the k3s config.yaml.d drop-in directory exists
+  ansible.builtin.file:
+    path: /etc/rancher/k3s/config.yaml.d
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Render the node-lifecycle drop-in (controller-manager grace period)
+  ansible.builtin.template:
+    src: node-lifecycle.yaml.j2
+    dest: /etc/rancher/k3s/config.yaml.d/90-node-lifecycle.yaml
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart k3s server
+
+# Apply the change now, one server at a time (the play runs serial:1), so the
+# restart below happens inside this host's turn and the three-member etcd quorum
+# is never down by more than one member.
+- name: Apply the config drop-in now (restart k3s before continuing)
+  ansible.builtin.meta: flush_handlers
+
+# Gate the play on this server coming back healthy before serial:1 moves to the
+# next one. Runs whether or not a restart fired; when nothing changed the API is
+# already up and this returns immediately.
+- name: Wait for the API server to be ready after any restart
+  ansible.builtin.command: k3s kubectl get --raw=/readyz
+  register: k3s_readyz
+  retries: 30
+  delay: 5
+  until: k3s_readyz.rc == 0
+  changed_when: false

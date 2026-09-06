@@ -64,3 +64,16 @@ k3s_registry_mirrors:
   quay.io: 5001
   ghcr.io: 5002
   registry.k8s.io: 5003
+
+# Controller-manager node-monitor-grace-period, applied to the servers by the
+# k3s_config role. This is how long the control plane waits after a node's last
+# kubelet heartbeat before marking it NotReady. The upstream default is 40s,
+# which trips after roughly four missed heartbeats. On this emulated fabric a
+# cold cross-DC path plus jitter can stall a heartbeat POST for tens of seconds
+# (the same physics that forced the etcd timer relaxation and MTU clamp), so
+# healthy nodes flap NotReady/Ready even while etcd and the API are fine.
+# Widening to 300s tolerates those bursts; it costs nothing at steady state and
+# only delays detection of a genuinely dead node, which is an easy trade in a
+# lab. Longhorn in particular is sensitive to this flap, so it is set before
+# Longhorn is deployed.
+k3s_node_monitor_grace_period: "300s"

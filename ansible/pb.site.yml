@@ -84,6 +84,20 @@
     - k3s_artifacts
     - k3s_agent
 
+# Relax the controller-manager node-monitor-grace-period on the control plane so
+# nodes stop flapping NotReady when a heartbeat stalls on the emulated fabric.
+# Servers only (that is where the controller-manager runs). serial:1 rolls the
+# restarts one at a time so the three-member etcd quorum stays intact, and the
+# role waits for /readyz before moving on. Stage it on its own tag with:
+#   ansible-playbook pb.site.yml --tags k3s_config
+- name: Tune K3s control-plane node lifecycle
+  hosts: k3s_servers
+  become: true
+  serial: 1
+  tags: [k3s, k3s_config]
+  roles:
+    - k3s_config
+
 # Point every node's containerd at the lab registry pull-through caches so
 # workload image pulls (Longhorn, VictoriaMetrics, Argo, etc.) go over the
 # management VLAN instead of the fabric. serial:1 rolls the k3s restarts one

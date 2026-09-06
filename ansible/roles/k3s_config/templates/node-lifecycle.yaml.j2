@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+# k3s control-plane tuning drop-in, merged with config.yaml at startup.
+# Rendered by the k3s_config role.
+#
+# node-monitor-grace-period: how long the controller-manager waits after the
+# last kubelet heartbeat before marking a node NotReady. The 40s default trips
+# after ~4 missed heartbeats, which this high-latency emulated fabric hits under
+# jitter, causing healthy nodes to flap. Widened here to tolerate those stalls.
+kube-controller-manager-arg:
+  - "node-monitor-grace-period={{ k3s_node_monitor_grace_period }}"

@@ -1,0 +1,10 @@
+---
+# Restarting k3s makes it re-merge config.yaml.d/*.yaml and regenerate the
+# control-plane component args, which is what applies the new
+# node-monitor-grace-period. The play runs serial:1 so these restarts roll one
+# server at a time, keeping the three-member etcd quorum intact.
+- name: Restart k3s server
+  ansible.builtin.systemd:
+    name: k3s
+    state: restarted
+  when: k3s_role | default('') == 'server'
