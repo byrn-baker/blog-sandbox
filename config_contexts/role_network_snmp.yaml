@@ -1,0 +1,61 @@
+---
+# SNMP polling access for the observability stack (Part 7).
+#
+# Scoped to every network-device role rather than duplicated per role file,
+# since SNMP read access is identical fleet-wide: same community, same
+# contact, same source ACL. Only `location.name` (already a native GraphQL
+# field on every device) varies per device, so it isn't duplicated here.
+#
+# Deliberately v2c, not v3, despite the Cisco design reference's own
+# recommendation to prefer v3. Two reasons, both worth being explicit about
+# rather than silently picking the weaker option:
+#   1. This is a lab focused on proving the GitOps + SoT pipeline end to end,
+#      not a hardening exercise. IOS-XE and EOS have different v3 USM syntax,
+#      which would roughly double the template/testing surface for this task.
+#   2. The exporter side (task 9, snmp_exporter) has a much more turnkey
+#      community-based auth module than SNMPv3 USM. Getting the full chain
+#      (device -> exporter -> VictoriaMetrics -> Grafana) working end to end
+#      matters more here than the auth mechanism.
+# Mitigated per the reference's own fallback guidance: non-default community
+# (not "public"), read-only, ACL-restricted.
+#
+# community: plaintext in git, matching how this entire repo handles config
+# (no secret currently lives behind Nautobot Secrets or vault anywhere in
+# this repo - see platform_cisco_iosxe.yaml / platform_arista_eos.yaml,
+# neither of which has any credential at all to compare against). Fine for a
+# lab; would need to move to a Nautobot Secret before this pattern is reused
+# anywhere real.
+#
+# acl_source: 192.168.3.0/24, not a single exporter-pod IP. The snmp_exporter
+# pod's traffic gets SNAT'd to whichever k3s node it's currently scheduled on
+# (confirmed: `ip route get <device-mgmt-ip>` from a node shows `src
+# 192.168.3.6x`, k3s's default masquerade rule), and that node can change on
+# any reschedule. A single-IP ACL would silently break the first time the
+# scheduler moves the pod. The whole /24 is the flat lab management VLAN
+# every node's eth0 already lives on, so this doesn't open SNMP beyond where
+# it already isn't otherwise reachable from.
+#
+# Stored as CIDR here since eos/snmp.j2's `ip access-list standard` sub-mode
+# accepts it directly. ios/snmp.j2 needs the bare network address instead
+# (IOS standard ACLs take network + wildcard, not CIDR - mixing both on one
+# permit line is invalid and was caught by Batfish, not by the Jinja render
+# tests, which only check for template-level errors, not vendor grammar), so
+# it strips the /24 itself with `.split('/')[0]` rather than duplicating the
+# same address in two different formats here.
+_metadata:
+  name: "Network Device SNMP Access"
+  weight: 200
+  description: "SNMPv2c read-only polling for the VictoriaMetrics observability stack"
+  roles:
+    - name: "Border-Router"
+    - name: "CE-Router"
+    - name: "P-Router"
+    - name: "PE-Router"
+    - name: "Route-Reflector"
+    - name: "Leaf"
+    - name: "Spine"
+snmp:
+  ro_community: "L4bMon1tor-RO"
+  contact: "byrn-baker demo-lab"
+  acl_source: "192.168.3.0/24"
+  acl_source_wildcard: "0.0.0.255"

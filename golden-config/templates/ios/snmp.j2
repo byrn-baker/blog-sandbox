@@ -1,0 +1,9 @@
+{% if config_context.snmp is defined %}
+ip access-list standard ACL-SNMP-RO
+ permit {{ config_context.snmp.acl_source.split('/')[0] }} {{ config_context.snmp.acl_source_wildcard }}
+!
+snmp-server community {{ config_context.snmp.ro_community }} RO ACL-SNMP-RO
+snmp-server location {{ location.name }}
+snmp-server contact {{ config_context.snmp.contact }}
+!
+{% endif %}

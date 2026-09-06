@@ -33,6 +33,11 @@ config_context:
         - "192.168.101.0/24"
         - "192.168.201.0/24"
         - "192.168.31.0/24"
+  snmp:
+    ro_community: "L4bMon1tor-RO"
+    contact: "byrn-baker demo-lab"
+    acl_source: "192.168.3.0/24"
+    acl_source_wildcard: "0.0.0.255"
 
 role:
   name: Border-Router

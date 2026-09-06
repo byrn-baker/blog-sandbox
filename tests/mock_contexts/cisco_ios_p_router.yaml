@@ -19,6 +19,11 @@ config_context:
     ldp_router_id: Loopback0
     ldp_sync: true
     explicit_null: true
+  snmp:
+    ro_community: "L4bMon1tor-RO"
+    contact: "byrn-baker demo-lab"
+    acl_source: "192.168.3.0/24"
+    acl_source_wildcard: "0.0.0.255"
 
 role:
   name: P-Router
