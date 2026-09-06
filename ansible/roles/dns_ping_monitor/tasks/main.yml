@@ -1,0 +1,33 @@
+---
+# =============================================================================
+# dns_ping_monitor: continuous ping to the lab DNS server, one per DC
+# =============================================================================
+# A systemd unit that runs `ping` with no -c and no deadline, so it never
+# exits on its own, plus Restart=always so systemd brings it straight back if
+# it's ever killed. Point is a standing, always-on reachability signal to
+# 192.168.100.53 across the VLAN 100 data plane, from a node in each DC that
+# needs to prove it.
+#
+# Which nodes run this comes from the same place every other per-node flag in
+# this lab comes from: the device's Git-synced local config context in
+# Nautobot (monitor.enabled), surfaced by the inventory as the ping_monitor
+# host var. There is no hardcoded host list here or in the play.
+
+- name: Render the dns-ping-monitor systemd unit
+  ansible.builtin.template:
+    src: dns-ping-monitor.service.j2
+    dest: /etc/systemd/system/dns-ping-monitor.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart dns-ping-monitor
+
+- name: Apply the unit now if it changed
+  ansible.builtin.meta: flush_handlers
+
+- name: Ensure dns-ping-monitor is running and enabled
+  ansible.builtin.systemd:
+    name: dns-ping-monitor
+    state: started
+    enabled: true
+    daemon_reload: true

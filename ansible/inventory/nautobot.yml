@@ -57,6 +57,9 @@ groups:
   # context as k3s role, so adding storage to a node is a context change, not an
   # inventory edit.
   storage_nodes: "local_config_context_data.storage.enabled | default(false)"
+  # Nodes running the continuous DNS reachability ping. Same pattern: a flag in
+  # the Git-synced config context, not a host list in Ansible.
+  dns_ping_nodes: "local_config_context_data.monitor.enabled | default(false)"
 
 compose:
   ansible_user: "'ubuntu'"
@@ -74,3 +77,6 @@ compose:
   # explicit device/path still works.
   storage_disk: "local_config_context_data.storage.disk_device | default('/dev/sdb')"
   storage_mount: "local_config_context_data.storage.mount_path | default('/var/lib/longhorn')"
+  # Ping target for the dns_ping_monitor role. Defaults to the lab DNS server
+  # so a node with monitor.enabled but no explicit target still monitors it.
+  ping_monitor_target: "local_config_context_data.monitor.target | default('192.168.100.53')"

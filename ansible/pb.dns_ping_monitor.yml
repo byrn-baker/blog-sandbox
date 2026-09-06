@@ -1,0 +1,26 @@
+---
+# =============================================================================
+# Continuous DNS reachability ping, one node per DC
+# =============================================================================
+# Standalone playbook, not part of pb.site.yml. It doesn't provision or
+# configure a server's role in the cluster, it just adds a standing ping to
+# the lab DNS server (192.168.100.53) from one node per DC, so there's a
+# constant, visible reachability signal across the VLAN 100 data plane.
+#
+# Which nodes run it comes from each device's Git-synced config context in
+# Nautobot (monitor.enabled), read by the dns_ping_nodes inventory group.
+# There is no host list here or in the role. Add a third DC or move the
+# monitor by editing the config context and re-running, not by editing this
+# file.
+#
+# Usage:
+#   export NAUTOBOT_URL=http://localhost:8080
+#   export NAUTOBOT_TOKEN=<token>
+#   ansible-playbook pb.dns_ping_monitor.yml
+# =============================================================================
+
+- name: Deploy the continuous DNS reachability ping
+  hosts: dns_ping_nodes
+  become: true
+  roles:
+    - dns_ping_monitor

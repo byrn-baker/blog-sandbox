@@ -1,0 +1,19 @@
+[Unit]
+Description=Continuous ping to lab DNS server ({{ ping_monitor_target }})
+# Managed by Ansible (dns_ping_monitor role). Sourced from Nautobot.
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# No -c count and no exit: ping with neither runs until the unit is stopped.
+# Restart=always covers the rest, so a killed or crashed ping resumes rather
+# than leaving the node silently unmonitored.
+ExecStart=/usr/bin/ping {{ ping_monitor_target }}
+Restart=always
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

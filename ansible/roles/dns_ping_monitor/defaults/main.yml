@@ -1,0 +1,7 @@
+---
+# =============================================================================
+# dns_ping_monitor defaults
+# =============================================================================
+# Matches the inventory compose default, so a node with monitor.enabled but no
+# explicit target in its config context still monitors the lab DNS server.
+ping_monitor_target: "{{ lab_dns_server }}"

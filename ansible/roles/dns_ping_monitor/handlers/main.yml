@@ -1,0 +1,6 @@
+---
+- name: Restart dns-ping-monitor
+  ansible.builtin.systemd:
+    name: dns-ping-monitor
+    state: restarted
+    daemon_reload: true

@@ -8,3 +8,6 @@ storage:
   enabled: true
   disk_device: "/dev/sdb"
   mount_path: "/var/lib/longhorn"
+monitor:
+  enabled: true
+  target: "192.168.100.53"

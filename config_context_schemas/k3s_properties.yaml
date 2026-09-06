@@ -36,4 +36,14 @@ data_schema:
         mount_path:
           type: string
           description: "Where the Longhorn disk is mounted (default /var/lib/longhorn)."
+    monitor:
+      type: object
+      description: "Continuous ping reachability monitor. One node per DC runs this against the lab DNS server over the VLAN 100 data plane."
+      properties:
+        enabled:
+          type: boolean
+          description: "Whether this node runs the dns-ping-monitor systemd unit. When true, the ansible dns_ping_monitor role installs and starts it."
+        target:
+          type: string
+          description: "IP address to ping continuously (default 192.168.100.53, the lab DNS server)."
   additionalProperties: true
