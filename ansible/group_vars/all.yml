@@ -64,6 +64,8 @@ k3s_registry_mirrors:
   quay.io: 5001
   ghcr.io: 5002
   registry.k8s.io: 5003
+  # Argo CD's default chart pulls redis from here, not docker.io.
+  ecr-public.aws.com: 5004
 
 # Controller-manager node-monitor-grace-period, applied to the servers by the
 # k3s_config role. This is how long the control plane waits after a node's last
