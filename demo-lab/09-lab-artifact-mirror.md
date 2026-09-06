@@ -158,6 +158,49 @@ runs in, so a separate play would leave `k3s_install_script_path` undefined.
 Anything above roughly a megabyte is worth staging. Below that the fabric is
 merely annoying rather than fatal.
 
+## Adding a Helm chart
+
+`/home/ubuntu/lab-mirror/helm/` is one flat directory of `.tgz` files plus a
+generated `index.yaml`, not a real Helm repository server. Two different
+consumers read it two different ways, and only one of them tolerates skipping
+the index:
+
+- `helm install`/`helm pull` against a direct `.tgz` URL works fine without an
+  index. That is how the Argo CD chart itself was installed
+  (`helm install argocd http://192.168.3.21:8888/helm/argo-cd-10.8.0.tgz ...`).
+- Argo CD's own `Application.spec.sources[].repoURL` + `chart:` does not work
+  this way. Its repo-server always treats `repoURL` as a repo root and
+  appends `/index.yaml`, then resolves the chart by name inside it, the same
+  resolution `helm repo add` + `helm search repo` would do. Point it at a
+  direct `.tgz` URL and it 404s on
+  `<url>/index.yaml` (confirmed, Part 7: Argo CD reported exactly this for
+  both the Longhorn and victoria-metrics-k8s-stack Applications on first
+  apply).
+
+So: any chart an Argo CD `Application` will source needs a real entry in
+`index.yaml`, not just the `.tgz` sitting in the directory. Steps:
+
+1. `helm pull <chart> --repo <upstream>` (or `--version X --repo ...` for a
+   pinned version) on blog-demo-vm.
+2. `cp` the resulting `.tgz` into `/home/ubuntu/lab-mirror/helm/`.
+3. Regenerate the index from that directory:
+   ```bash
+   cd /home/ubuntu/lab-mirror/helm && helm repo index . --url http://192.168.3.21:8888/helm/
+   ```
+   This rewrites `index.yaml` from every `.tgz` present, so it is safe to
+   rerun after adding more charts later; it does not need per-chart flags.
+4. In the Application manifest, set `repoURL` to the directory root
+   (`http://192.168.3.21:8888/helm/`), not the chart's own filename, with
+   `chart: <name>` and `targetRevision: <version>` doing the actual lookup.
+5. Confirm the index served the new entry:
+   `curl -s http://192.168.3.21:8888/helm/index.yaml | grep -A2 '^  <chart-name>:'`
+
+Step 3 is the one that is easy to skip, since the chart already works if you
+test it locally with `helm template <chart> <path-to-tgz>.tgz` or a manual
+`helm pull` against the raw URL. Neither of those goes through
+`Application.spec.sources`, so neither one would have caught the missing
+index entry before Argo CD did.
+
 ## Rebuilding the mirror from scratch
 
 ```bash
