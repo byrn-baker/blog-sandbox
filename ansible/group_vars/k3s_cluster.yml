@@ -32,6 +32,20 @@ k3s_disable:
 k3s_etcd_heartbeat_interval: "500"
 k3s_etcd_election_timeout: "5000"
 
+# The etcd timers above only cover raft itself. The embedded kube-controller-
+# manager and kube-scheduler each run their own leader-election loop against
+# etcd with Kubernetes' upstream defaults (15s lease-duration, 10s renew-
+# deadline, 2s retry-period), and k3s treats a lost lease as fatal: it exits
+# the whole k3s process, not just that controller. On this fabric, an
+# occasional slow etcd apply (observed 5-10s under load, well past the 100ms
+# etcd expects but still under the 5s etcd election-timeout above) is enough
+# to blow the 10s renew-deadline and kill k3s on whichever master holds the
+# lease at the time - seen hitting all three DC-A masters repeatedly, not just
+# one. Widening the renew-deadline (and lease-duration, which must stay larger)
+# gives the same slow applies more room before a lease loss is declared fatal.
+k3s_leader_elect_lease_duration: "30s"
+k3s_leader_elect_renew_deadline: "20s"
+
 # Where to drop the fetched kubeconfig on the control machine.
 kubeconfig_local_path: "./kubeconfig"
 # Install payload source. The k3s binary, the install script and the airgap

@@ -31,6 +31,10 @@
       --node-taint {{ k3s_control_plane_taint }}
       --etcd-arg heartbeat-interval={{ k3s_etcd_heartbeat_interval }}
       --etcd-arg election-timeout={{ k3s_etcd_election_timeout }}
+      --kube-controller-manager-arg leader-elect-lease-duration={{ k3s_leader_elect_lease_duration }}
+      --kube-controller-manager-arg leader-elect-renew-deadline={{ k3s_leader_elect_renew_deadline }}
+      --kube-scheduler-arg leader-elect-lease-duration={{ k3s_leader_elect_lease_duration }}
+      --kube-scheduler-arg leader-elect-renew-deadline={{ k3s_leader_elect_renew_deadline }}
       --write-kubeconfig-mode 644
 
 # --- Cluster-init node bootstraps embedded etcd ---
