@@ -261,12 +261,14 @@ def test_config_plan_declares_routing_before_interfaces():
                     and any(isinstance(target, ast.Name) and target.id == "FEATURES"
                             for target in node.targets))
     order = [feature["name"] for feature in sorted(features, key=lambda f: f["slug"])]
-    assert order.index("routing_global") < order.index("isis") < order.index("interfaces")
+    assert order.index("routing_global") < order.index("loopback_prerequisite") < order.index("isis") < order.index("interfaces")
     for context_file, platform in IOS_SCENARIOS:
         output = render(context_file, platform)
         assert output.index("ipv6 unicast-routing") < output.index("interface GigabitEthernet")
         if "router isis SP-ISIS" in output:
-            assert output.index("router isis SP-ISIS") < output.index("interface GigabitEthernet")
+            assert output.index("ipv6 unicast-routing") < output.index("interface Loopback0")
+            assert output.index("interface Loopback0") < output.index("router isis SP-ISIS") < output.index("interface GigabitEthernet")
+            assert len(re.findall(r"^interface Loopback0$", output, re.M)) == 1
 
 
 def test_ios_deployment_detects_isis_prerequisite_failure():
@@ -275,3 +277,15 @@ def test_ios_deployment_detects_isis_prerequisite_failure():
     assert re.search(pattern, "%ISIS: IPv6 unicast routing not enabled", re.M)
     assert re.search(pattern, "% Invalid input detected at '^' marker.", re.M)
     assert not re.search(pattern, "%ISIS-5-ADJCHANGE: Adjacency changed", re.M)
+
+
+def test_loopback_prerequisite_is_in_config_plans():
+    """The live SPE1 rejection requires a plan feature, not just render order."""
+    tree = ast.parse((REPO_ROOT / "jobs/gc_compliance_setup/__init__.py").read_text())
+    rules = next(ast.literal_eval(node.value) for node in tree.body
+                 if isinstance(node, ast.Assign)
+                 and any(isinstance(target, ast.Name) and target.id == "RULES"
+                         for target in node.targets))
+    rule = next(rule for rule in rules if rule["feature"] == "loopback_prerequisite")
+    assert rule["platform"] == "cisco_iosxe"
+    assert rule["match_config"] == "interface Loopback0"

@@ -39,6 +39,7 @@ FEATURES = [
     {"name": "vlans", "slug": "050-vlans", "description": "VLAN definitions"},
     {"name": "interfaces", "slug": "060-interfaces", "description": "Interface configuration (IPs, descriptions, shutdown state)"},
     {"name": "routing_global", "slug": "045-routing-global", "description": "Global routing enables (ip routing, ipv6 unicast-routing)"},
+    {"name": "loopback_prerequisite", "slug": "052-loopback-prerequisite", "description": "Create Loopback0 before IS-IS passive-interface references it"},
     {"name": "isis", "slug": "055-isis", "description": "IS-IS routing protocol (SP core IGP)"},
     {"name": "mpls", "slug": "090-mpls", "description": "MPLS LDP configuration (label distribution)"},
     {"name": "prefix_lists", "slug": "100-prefix-lists", "description": "IP prefix-list definitions for route filtering"},
@@ -69,6 +70,9 @@ RULES = [
     {"feature": "hostname", "platform": "cisco_iosxe", "match_config": "hostname", "ordered": False},
     {"feature": "vrfs", "platform": "cisco_iosxe", "match_config": "vrf definition", "ordered": False},
     {"feature": "interfaces", "platform": "cisco_iosxe", "match_config": "interface ", "ordered": True},
+    # Loopback0 deliberately also belongs to interfaces. This early feature
+    # supplies the prerequisite in fresh-device plans; later re-entry is safe.
+    {"feature": "loopback_prerequisite", "platform": "cisco_iosxe", "match_config": "interface Loopback0", "ordered": True},
     {"feature": "isis", "platform": "cisco_iosxe", "match_config": "router isis", "ordered": True},
     {"feature": "mpls", "platform": "cisco_iosxe", "match_config": "mpls ldp", "ordered": False},
     {"feature": "bgp", "platform": "cisco_iosxe", "match_config": "router bgp", "ordered": True},
