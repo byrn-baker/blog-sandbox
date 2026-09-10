@@ -11,6 +11,7 @@ operationally invalid on the target device. Examples:
 Run with: pytest tests/test_config_structure.py -v
 """
 
+import ast
 import re
 from pathlib import Path
 
@@ -249,3 +250,28 @@ def test_ios_restores_enabled_ports_and_scopes_jumbo_mtu(context_file, platform)
             management = interface.get("mgmt_only") or (interface.get("vrf") or {}).get("name") == "MGMT-VRF"
             outside = (interface.get("role") or {}).get("name") == "NAT Outside"
             assert (" mtu 9216\n" in block) == (not management and not outside)
+
+
+
+def test_config_plan_declares_routing_before_interfaces():
+    """Plan feature order must preserve IOS routing prerequisites after a wipe."""
+    tree = ast.parse((REPO_ROOT / "jobs/gc_compliance_setup/__init__.py").read_text())
+    features = next(ast.literal_eval(node.value) for node in tree.body
+                    if isinstance(node, ast.Assign)
+                    and any(isinstance(target, ast.Name) and target.id == "FEATURES"
+                            for target in node.targets))
+    order = [feature["name"] for feature in sorted(features, key=lambda f: f["slug"])]
+    assert order.index("routing_global") < order.index("isis") < order.index("interfaces")
+    for context_file, platform in IOS_SCENARIOS:
+        output = render(context_file, platform)
+        assert output.index("ipv6 unicast-routing") < output.index("interface GigabitEthernet")
+        if "router isis SP-ISIS" in output:
+            assert output.index("router isis SP-ISIS") < output.index("interface GigabitEthernet")
+
+
+def test_ios_deployment_detects_isis_prerequisite_failure():
+    context = yaml.safe_load((REPO_ROOT / "config_contexts/platform_cisco_iosxe.yaml").read_text())
+    pattern = context["netmiko_kwargs"]["error_pattern"]
+    assert re.search(pattern, "%ISIS: IPv6 unicast routing not enabled", re.M)
+    assert re.search(pattern, "% Invalid input detected at '^' marker.", re.M)
+    assert not re.search(pattern, "%ISIS-5-ADJCHANGE: Adjacency changed", re.M)
