@@ -230,3 +230,22 @@ def test_ios_peergroup_activate_requires_members(context_file, platform):
             f"'neighbor <ip> peer-group {pg_name}'. IOS-XE rejects activating "
             f"a peer-group with no members."
         )
+
+
+@pytest.mark.parametrize("context_file,platform", IOS_SCENARIOS)
+def test_ios_restores_enabled_ports_and_scopes_jumbo_mtu(context_file, platform):
+    """A wiped router needs enabled ports brought up without changing management MTU."""
+    context = yaml.safe_load((MOCK_DIR / context_file).read_text())
+    rendered = render(context_file, platform)
+    blocks = {m.group(1): m.group(2) for m in re.finditer(
+        r"^interface (\S+)\n(.*?)(?=^!|\Z)", rendered, re.M | re.S
+    )}
+    for interface in context["interfaces"]:
+        block = blocks.get(interface["name"])
+        if block is None:
+            continue
+        assert ("\n no shutdown\n" in "\n" + block) == interface["enabled"]
+        if interface["name"].startswith("GigabitEthernet"):
+            management = interface.get("mgmt_only") or (interface.get("vrf") or {}).get("name") == "MGMT-VRF"
+            outside = (interface.get("role") or {}).get("name") == "NAT Outside"
+            assert (" mtu 9216\n" in block) == (not management and not outside)

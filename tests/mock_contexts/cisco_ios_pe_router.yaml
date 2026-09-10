@@ -4,6 +4,7 @@
 hostname: SPE1
 
 config_context:
+  router_data_mtu: 9216
   bfd:
     interval: 500
     min_rx: 500

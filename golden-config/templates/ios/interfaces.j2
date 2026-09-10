@@ -12,17 +12,19 @@ interface {{ interface.name }}
 {% if interface.vrf %}
  vrf forwarding {{ interface.vrf.name }}
 {% endif %}
-{# No interface MTU override on the SP core. These links ride the CML vmxnet3   #}
-{# virtual NIC, which silently drops frames larger than ~2034 bytes, so a jumbo #}
-{# interface MTU breaks ISIS (hellos pad to the interface MTU and are dropped). #}
-{# The core stays at the 1500 default. VXLAN overhead for the inter-DC EVPN DCI #}
-{# is handled at the edge (host MTU) rather than by raising the underlay.       #}
+{# CML routers use virtio. Apply the managed transport MTU to data ports. #}
+{% set is_management = interface.mgmt_only or (interface.vrf and interface.vrf.name == 'MGMT-VRF') %}
+{% if interface.name.startswith('GigabitEthernet') and not is_management and not is_nat_outside %}
+ mtu {{ interface.mtu | default(none) or config_context.router_data_mtu }}
+{% endif %}
 {% set has_ipv4 = interface.ip_addresses | selectattr('ip_version', 'equalto', 4) | list | length > 0 %}
 {% if not interface.enabled and not has_ipv4 and interface.name.startswith('GigabitEthernet') %}
  no ip address
 {% endif %}
 {% if not interface.enabled %}
  shutdown
+{% else %}
+ no shutdown
 {% endif %}
 {% for addr in interface.ip_addresses %}
 {% if addr.ip_version == 4 %}

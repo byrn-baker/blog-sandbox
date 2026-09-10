@@ -36,3 +36,7 @@ netmiko_kwargs:
   error_pattern: "^% (Invalid input|Incomplete command|Ambiguous command|Unrecognized command|Too many parameters|Wrong parameter|Cannot execute)"
   read_timeout: 300
   cmd_verify: false
+
+# Transport MTU after the CML router migration to virtio. Management and the
+# external NAT uplink retain their service MTUs. Explicit modeled MTUs override.
+router_data_mtu: 9216
