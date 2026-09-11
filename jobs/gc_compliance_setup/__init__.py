@@ -94,7 +94,7 @@ RULES = [
     {"feature": "interfaces", "platform": "arista_eos", "match_config": "interface ", "ordered": True},
     {"feature": "bgp", "platform": "arista_eos", "match_config": "router bgp", "ordered": True},
     {"feature": "routing_global", "platform": "arista_eos", "match_config": "ip routing\nipv6 unicast-routing", "ordered": False},
-    {"feature": "platform", "platform": "arista_eos", "match_config": "service routing protocols model\nspanning-tree\nvlan internal order", "ordered": False},
+    {"feature": "platform", "platform": "arista_eos", "match_config": "service routing protocols model\nspanning-tree\nvlan internal order\nevent-handler lab-gro-off-", "ordered": False},
     {"feature": "vlans", "platform": "arista_eos", "match_config": "vlan ", "ordered": False},
     {"feature": "vxlan", "platform": "arista_eos", "match_config": "interface Vxlan\nip virtual-router", "ordered": False},
     {"feature": "bfd", "platform": "arista_eos", "match_config": "router bfd", "ordered": False},

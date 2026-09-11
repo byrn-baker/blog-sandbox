@@ -14,3 +14,20 @@ spanning-tree mst 0 priority {{ config_context.platform.spanning_tree_priority }
 !
 {% endif %}
 {% endif %}
+{% if config_context.lab_gro_workaround is defined %}
+{% set gro_fix = config_context.lab_gro_workaround %}
+{% if gro_fix.device != hostname or gro_fix.gro not in ['off', 'on'] or not gro_fix.interfaces %}
+{{ invalid_lab_gro_workaround_scope_or_state }}
+{% endif %}
+{% for interface_number in gro_fix.interfaces %}
+{% if interface_number is not integer or interface_number < 1 or interface_number > 64 or ('Ethernet' ~ interface_number) not in (interfaces | map(attribute='name') | list) %}
+{{ invalid_lab_gro_workaround_interface }}
+{% endif %}
+{# Only validated integers and enumerated states enter the shell action. #}
+event-handler lab-gro-off-vmnicet{{ interface_number }}
+   action bash sudo -n /sbin/ethtool -K vmnicet{{ interface_number }} gro {{ gro_fix.gro }}
+   trigger on-boot
+   delay 60
+!
+{% endfor %}
+{% endif %}

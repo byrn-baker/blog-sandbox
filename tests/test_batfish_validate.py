@@ -184,6 +184,7 @@ class TestBatfishEOSValidation:
     EOS_SCENARIOS = [
         ("tests/mock_contexts/arista_eos_leaf.yaml", "golden-config/templates/arista_eos.j2"),
         ("tests/mock_contexts/arista_eos_spine.yaml", "golden-config/templates/arista_eos.j2"),
+        ("tests/mock_contexts/arista_eos_gro.yaml", "golden-config/templates/arista_eos.j2"),
     ]
 
     @pytest.fixture(scope="class")

@@ -1,0 +1,15 @@
+# Lab vEOS workaround verified by captured TCP tests on 2026-09-11.
+lab_gro_workaround:
+  device: DCA-Leaf02
+  interfaces:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  gro: 'off'

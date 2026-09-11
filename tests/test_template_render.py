@@ -35,6 +35,7 @@ DEVICE_SCENARIOS = [
     ("cisco_ios_border_router.yaml", "cisco_ios"),
     ("arista_eos_leaf.yaml", "arista_eos"),
     ("arista_eos_spine.yaml", "arista_eos"),
+    ("arista_eos_gro.yaml", "arista_eos"),
 ]
 
 
@@ -147,3 +148,29 @@ def test_hostname_present(context_file: str, platform: str):
         f"Expected 'hostname {expected_hostname}' as first config line, "
         f"got: {first_meaningful_line!r}"
     )
+
+
+@pytest.mark.parametrize("key,value", [
+    ("device", "DCB-Leaf01"), ("gro", "off; reboot"),
+    ("interfaces", []), ("interfaces", [True]), ("interfaces", [0]),
+    ("interfaces", [65]), ("interfaces", ["1; reboot"]),
+    ("interfaces", [64]),
+])
+def test_gro_rejects_unsafe_or_unmodeled_scope(key, value):
+    context = load_context("arista_eos_gro.yaml")
+    context["config_context"]["lab_gro_workaround"][key] = value
+    with pytest.raises(jinja2.UndefinedError):
+        build_jinja_env().get_template("golden-config/templates/arista_eos.j2").render(**context)
+
+
+def test_gro_only_adds_handlers_and_can_restore_on():
+    import re
+    context = load_context("arista_eos_gro.yaml")
+    template = build_jinja_env().get_template("golden-config/templates/arista_eos.j2")
+    rendered = template.render(**context)
+    assert rendered.count("event-handler lab-gro-off-vmnicet") == 2
+    assert "ethtool -K vmnicet1 gro off" in rendered
+    context["config_context"]["lab_gro_workaround"]["gro"] = "on"
+    assert "ethtool -K vmnicet1 gro on" in template.render(**context)
+    del context["config_context"]["lab_gro_workaround"]
+    assert re.sub(r"event-handler lab-gro-off-vmnicet\d+\n(?:   .*\n)+!\n", "", rendered) == template.render(**context)
