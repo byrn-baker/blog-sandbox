@@ -39,3 +39,8 @@ netmiko_kwargs:
   error_pattern: "^% "
   read_timeout: 300
   cmd_verify: false
+
+# Routed fabric and CE handoffs require the 9500-byte virtual transport first.
+# Server VLAN gateways carry 9000-byte IP packets; VXLAN adds outer overhead.
+fabric_transport_mtu: 9214
+server_mtu: 9000

@@ -289,3 +289,90 @@ def test_loopback_prerequisite_is_in_config_plans():
     rule = next(rule for rule in rules if rule["feature"] == "loopback_prerequisite")
     assert rule["platform"] == "cisco_iosxe"
     assert rule["match_config"] == "interface Loopback0"
+
+
+@pytest.mark.parametrize("context_file,platform", EOS_SCENARIOS)
+def test_standard_eos_mtu_scopes(context_file, platform):
+    """Transport and service packets have distinct budgets; management is excluded."""
+    config = render(context_file, platform)
+    context = yaml.safe_load((MOCK_DIR / context_file).read_text())
+    for interface in context["interfaces"]:
+        name = interface["name"]
+        match = re.search(r"^interface " + re.escape(name) + r"\n(.*?)(?=^interface |\Z)", config, re.M | re.S)
+        if not match:
+            continue
+        block = match.group(1).split("\n!", 1)[0]
+        if name.startswith("Ethernet") and interface["ip_addresses"]:
+            assert "   mtu 9214\n" in block + "\n"
+        elif name.startswith("Vlan") and interface["ip_addresses"]:
+            assert "   mtu 9000\n" in block + "\n"
+        else:
+            assert not re.search(r"^ +mtu ", block, re.M)
+
+
+def test_standard_mtu_budget_and_exclusions():
+    """Check the carrying budget and migration exclusions without importing Nautobot."""
+    tree = ast.parse((REPO_ROOT / "jobs/sp_demo_lab/context/__init__.py").read_text())
+    cls = next(node for node in tree.body if isinstance(node, ast.ClassDef))
+    values = {}
+    for node in cls.body:
+        if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name):
+            if node.targets[0].id in {"mtu_policy", "service_vlans"}:
+                values[node.targets[0].id] = ast.literal_eval(node.value)
+    from types import SimpleNamespace
+    context = SimpleNamespace(**values)
+    job = ast.parse((REPO_ROOT / "jobs/lab_mtu/__init__.py").read_text())
+    function = next(node for node in job.body if isinstance(node, ast.FunctionDef) and node.name == "target_mtu")
+    scope = {"SPDemoLabContext": context}
+    exec(compile(ast.Module(body=[function], type_ignores=[]), "mtu-policy", "exec"), scope)
+    target = scope["target_mtu"]
+    assert target("cisco_iosxe", "GigabitEthernet1") is None
+    assert target("cisco_iosxe", "GigabitEthernet4", role="NAT Outside") is None
+    assert target("cisco_iosxe", "GigabitEthernet2", vrf="MGMT-VRF") is None
+    assert target("arista_eos", "Management1") is None
+    assert target("arista_eos", "Ethernet1", mgmt_only=True) is None
+    assert target("arista_eos", "Vlan4097") is None
+    assert target("cisco_iosxe", "GigabitEthernet2") == 9216
+    assert target("arista_eos", "Ethernet10") == 9214
+    assert target("arista_eos", "Vlan100") == 9000
+    assert target("linux", "bond0", server=True) == 9000
+    assert target("linux", "eth0", server=True) is None
+    policy = values["mtu_policy"]
+    assert policy["server"] + 50 <= policy["fabric"]
+    assert policy["server"] + 50 + 8 <= policy["router"]
+    assert policy["virtual_transport"] >= policy["router"]
+    assert yaml.safe_load((REPO_ROOT / "ansible/group_vars/all.yml").read_text())["bond_mtu"] == policy["server"]
+    eos = yaml.safe_load((REPO_ROOT / "config_contexts/platform_arista_eos.yaml").read_text())
+    assert eos["fabric_transport_mtu"] == policy["fabric"]
+    assert eos["server_mtu"] == policy["server"]
+
+
+def test_standard_mtu_design_renders_all_devices():
+    """A rebuild must preserve the MTU migration, including CE handoffs and hosts."""
+    tree = ast.parse((REPO_ROOT / "jobs/sp_demo_lab/context/__init__.py").read_text())
+    cls = next(node for node in tree.body if isinstance(node, ast.ClassDef))
+    values = {}
+    for node in cls.body:
+        if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name):
+            try:
+                values[node.targets[0].id] = ast.literal_eval(node.value)
+            except (ValueError, TypeError):
+                pass
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(REPO_ROOT), undefined=jinja2.StrictUndefined, trim_blocks=True, lstrip_blocks=True)
+    rendered = env.get_template("jobs/sp_demo_lab/designs/0002_devices.yaml.j2").render(**values)
+    devices = yaml.safe_load(rendered)["devices"]
+    assert len(devices) == 38
+    for device in devices:
+        platform = device.get("platform__name", "")
+        for interface in device["interfaces"]:
+            name = interface["!create_or_update:name"]
+            if platform == "arista_eos" and name.startswith("Ethernet"):
+                assert interface["mtu"] == 9214
+            elif platform == "arista_eos" and name.startswith("Vlan"):
+                assert interface["mtu"] == 9000
+            elif name in {"bond0", "ens19", "ens20"}:
+                assert interface["mtu"] == 9000
+            elif platform == "cisco_iosxe" and name.startswith("GigabitEthernet") and name != "GigabitEthernet1" and interface.get("role__name") != "NAT Outside":
+                assert interface["mtu"] == 9216
+            else:
+                assert "mtu" not in interface

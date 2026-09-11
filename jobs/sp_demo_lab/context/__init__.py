@@ -6,6 +6,10 @@ from nautobot_design_builder.context import Context
 class SPDemoLabContext(Context):
     """All data derived from the addressing plan (01-addressing.md). Dual-stack IPv4+IPv6."""
 
+    # IP packet budgets after the CML virtio migration. Virtual transport
+    # must support 9500 before deploying the larger EOS and server MTUs.
+    mtu_policy = {"router": 9216, "fabric": 9214, "server": 9000, "virtual_transport": 9500}
+
     # SP Core — Cisco IOS-XE (CAT8000v)
     # IPv6 loopbacks: fd10:0:1::<last-octet>/128
     sp_core_devices = [

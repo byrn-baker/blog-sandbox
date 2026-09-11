@@ -50,6 +50,9 @@
         enabled: false
 {% endif %}
         type: "1000base-t"
+{% if not (device.name == internet_edge.device and interface_name == internet_edge.outside_interface.name) %}
+        mtu: {{ mtu_policy.router }}
+{% endif %}
 {% endfor %}
 {%- endmacro %}
 
@@ -96,6 +99,7 @@
         status__name: "Active"
         type: "virtual"
         description: "{{ vlan.name }}"
+        mtu: {{ mtu_policy.server }}
 {% if vlan.vrf is defined %}
         vrf__name: "{{ vlan.vrf }}"
 {% endif %}
@@ -113,19 +117,7 @@
         status__name: "Active"
         enabled: false
         type: "1000base-t"
-        # Spine Ethernet10 faces a CE at MTU 1500. Fabric ports stay jumbo, but
-        # at 8950 rather than the 9214 EOS default: every virtual wire beneath
-        # this fabric (EVE-NG bridges and taps, Proxmox vmbr0/eno1) is MTU 9000,
-        # and 9214 silently blackholed full-size BGP UPDATEs. See the matching
-        # note in golden-config/templates/eos/interfaces.j2.
-        # Keep this as a print expression with an inline conditional. A Jinja
-        # block tag closing the line would not work here: Design Builder renders
-        # with trim_blocks enabled, so the tag eats the following newline and the
-        # next interface gets concatenated onto this line, which YAML then
-        # rejects with "mapping values are not allowed here".
-        # Note also that a YAML comment is not a Jinja comment. Jinja still parses
-        # its delimiters here, so do not write them literally in these comments.
-        mtu: {{ 1500 if (device.role == "Spine" and i == 10) else 8950 }}
+        mtu: {{ mtu_policy.fabric }}
 {% endfor %}
 {%- endmacro %}
 
@@ -147,6 +139,7 @@
         status__name: "Active"
         type: "lag"
         description: "VLAN100 EVPN ESI bond (static LAG)"
+        mtu: {{ mtu_policy.server }}
         # Unique locally-administered MAC keyed off the VLAN 100 host octet.
         # The server VMs are template clones that share a machine-id, so
         # systemd-networkd would otherwise derive the SAME bond0 MAC on every
@@ -164,11 +157,13 @@
         type: "1000base-t"
         description: "bond0 member -> {{ server.leaves[0] }} Ethernet{{ server.eth_index }}"
         lag__name: "bond0"
+        mtu: {{ mtu_policy.server }}
       - "!create_or_update:name": "ens20"
         status__name: "Active"
         type: "1000base-t"
         description: "bond0 member -> {{ server.leaves[1] }} Ethernet{{ server.eth_index }}"
         lag__name: "bond0"
+        mtu: {{ mtu_policy.server }}
 {%- endmacro %}
 
 devices:
