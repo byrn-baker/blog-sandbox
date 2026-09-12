@@ -11,7 +11,7 @@ log pipeline stalls when connectivity degrades.
 
 There is a single K3s cluster stretched across all three datacenters. It is not
 three independent clusters. Every node sits on VLAN 100, the EVPN type-5
-segment (192.168.100.0/24, dual-stack) stretched across DC-A, DC-B, and DC-C, so
+segment (10.100.0.0/24, dual-stack) stretched across DC-A, DC-B, and DC-C, so
 all nodes are mutually reachable on the same subnet regardless of which DC they
 physically live in. That stretched segment is what makes one cluster possible.
 
@@ -19,15 +19,15 @@ The control plane is three server nodes running embedded etcd, all in DC-A:
 
 | Node | DC | VLAN 100 IP | K3s role |
 |------|----|-------------|----------|
-| DCA-k3s-m1 | DC-A | 192.168.100.10 | server (cluster-init) |
-| DCA-k3s-m2 | DC-A | 192.168.100.11 | server |
-| DCA-k3s-m3 | DC-A | 192.168.100.12 | server |
-| DCB-k3s-w1 | DC-B | 192.168.100.20 | agent |
-| DCB-k3s-w2 | DC-B | 192.168.100.21 | agent |
-| DCB-k3s-w3 | DC-B | 192.168.100.22 | agent |
-| DCC-k3s-w4 | DC-C | 192.168.100.30 | agent |
-| DCC-k3s-w5 | DC-C | 192.168.100.31 | agent |
-| DCC-k3s-w6 | DC-C | 192.168.100.32 | agent |
+| DCA-k3s-m1 | DC-A | 10.100.0.10 | server (cluster-init) |
+| DCA-k3s-m2 | DC-A | 10.100.0.11 | server |
+| DCA-k3s-m3 | DC-A | 10.100.0.12 | server |
+| DCB-k3s-w1 | DC-B | 10.100.0.20 | agent |
+| DCB-k3s-w2 | DC-B | 10.100.0.21 | agent |
+| DCB-k3s-w3 | DC-B | 10.100.0.22 | agent |
+| DCC-k3s-w4 | DC-C | 10.100.0.30 | agent |
+| DCC-k3s-w5 | DC-C | 10.100.0.31 | agent |
+| DCC-k3s-w6 | DC-C | 10.100.0.32 | agent |
 
 All three etcd members live in DC-A on purpose. A one-member-per-DC layout looks
 better on paper, since the quorum would survive losing a site, but it does not
@@ -46,7 +46,7 @@ The tradeoff is honest: the control plane no longer survives losing DC-A. That
 is the price of this fabric, and it is the right call here because a control
 plane that flaps constantly is worse than one that is simply single-site.
 
-There is no VIP and no keepalived. The VLAN 100 gateway (192.168.100.1) is an
+There is no VIP and no keepalived. The VLAN 100 gateway (10.100.0.1) is an
 anycast SVI present identically on every leaf, and agents register against the
 cluster-init server's IP directly. A stretched L2 segment does not need VRRP for
 the control-plane endpoint.
@@ -56,7 +56,7 @@ cluster member. It runs standalone BIND (see below).
 
 ## Lab DNS: BIND on DCA-DNS, generated from Nautobot
 
-DCA-DNS (192.168.100.53) is the lab's authoritative DNS server for the
+DCA-DNS (10.100.0.53) is the lab's authoritative DNS server for the
 `sandbox.lab` zone. Every record is generated from Nautobot: the Ansible role
 queries all devices and their primary IPs and renders the forward zone plus
 reverse zones from that data. DNS stays in lockstep with the source of truth,
@@ -144,7 +144,7 @@ Streaming replication generates continuous WAL traffic across the MPLS core:
 ```yaml
 # DC1: PostgreSQL primary
 # DC2: PostgreSQL streaming replica
-#   primary_conninfo = 'host=192.168.100.11 port=5432 ...'
+#   primary_conninfo = 'host=10.100.0.11 port=5432 ...'
 #   (traffic: DC2 → CE2 → SPE2 → core → SPE1 → CE1 → DC1)
 ```
 
@@ -160,7 +160,7 @@ scenarios:
 
 ```bash
 # On DC3 Redis replica:
-replicaof 192.168.100.12 6379
+replicaof 10.100.0.12 6379
 # Traffic flows: DC3 → CE3 → SPE3 → core → SPE1 → CE1 → DC1
 ```
 
@@ -174,9 +174,9 @@ scrape_configs:
   - job_name: 'node-dc1'
     static_configs:
       - targets:
-        - '192.168.100.10:9100'
-        - '192.168.100.11:9100'
-        - '192.168.100.12:9100'
+        - '10.100.0.10:9100'
+        - '10.100.0.11:9100'
+        - '10.100.0.12:9100'
 
   - job_name: 'node-dc2'
     static_configs:
@@ -188,20 +188,20 @@ scrape_configs:
   - job_name: 'node-dc3'
     static_configs:
       - targets:
-        - '192.168.100.10:9100'   # Reached via routing (different VRF)
-        - '192.168.100.11:9100'
+        - '10.100.0.10:9100'   # Reached via routing (different VRF)
+        - '10.100.0.11:9100'
 
   - job_name: 'api-servers'
     static_configs:
       - targets:
-        - '192.168.100.10:8080'   # DC1 API
+        - '10.100.0.10:8080'   # DC1 API
         - '192.168.200.10:8080'   # DC2 API
-        - '192.168.100.10:8080'   # DC3 API (via routing)
+        - '10.100.0.10:8080'   # DC3 API (via routing)
 
   - job_name: 'postgres'
     static_configs:
       - targets:
-        - '192.168.100.11:9187'   # postgres_exporter DC1
+        - '10.100.0.11:9187'   # postgres_exporter DC1
         - '192.168.200.11:9187'   # postgres_exporter DC2
 ```
 
@@ -223,7 +223,7 @@ S3-compatible storage for backups:
 ```bash
 # DC1 PostgreSQL backup ships to DC3 MinIO:
 pg_dump mydb | aws s3 cp - s3://backups/pg/$(date +%Y%m%d).sql \
-  --endpoint-url http://192.168.100.12:9000
+  --endpoint-url http://10.100.0.12:9000
 # (traffic routes through MPLS core to DC3)
 ```
 
@@ -234,7 +234,7 @@ Local collectors aggregate metrics and traces, forward to central Prometheus:
 ```yaml
 exporters:
   prometheusremotewrite:
-    endpoint: "http://192.168.100.10:9090/api/v1/write"
+    endpoint: "http://10.100.0.10:9090/api/v1/write"
     # DC2/DC3 collectors send metrics across the MPLS core to DC1
 ```
 

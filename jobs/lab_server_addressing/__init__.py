@@ -45,9 +45,15 @@ class LabServerAddressing(Job):
                 desired = f"{base}.{octet}/24"
                 if str(address.address) != desired:
                     changes.append((str(address.address), desired))
-                    address.address = desired
-                    address.parent = target
-                    address.validated_save()
+                    replacement = IPAddress(
+                        address=desired, parent=target, status=address.status,
+                        type=address.type, description=address.description,
+                    )
+                    replacement.validated_save()
+                    for interface in address.interfaces.all():
+                        interface.ip_addresses.add(replacement)
+                        interface.ip_addresses.remove(address)
+                    address.delete()
             if seen != set(expected):
                 raise ValueError("Incomplete server addressing inventory")
             for before, after in changes:

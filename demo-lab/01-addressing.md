@@ -339,7 +339,7 @@ type-5. The anycast gateways below are the `SERVERS` SVIs on each leaf.
 
 | DC | VLAN | Subnet (IPv4) | Subnet (IPv6) | VNI | Purpose |
 |----|------|---------------|---------------|-----|---------|
-| DC-A, DC-B, DC-C | 100 | `192.168.100.0/24` | `fd10:a:100::/64` | 10100 | Stretched Server/K3s |
+| DC-A, DC-B, DC-C | 100 | `10.100.0.0/24` | `fd10:a:100::/64` | 10100 | Stretched Server/K3s |
 | DC-A | 101 | `192.168.101.0/24` | `fd10:a:101::/64` | 10101 | Site-local storage |
 | DC-B | 201 | `192.168.201.0/24` | `fd10:a:201::/64` | 10201 | Site-local storage |
 | DC-C | 301 | `192.168.31.0/24` | `fd10:a:301::/64` | 10301 | Site-local storage |
@@ -364,16 +364,16 @@ is `00<oct>:00<oct>:00<oct>:00<oct>:00<oct>`, and the ES import route-target is
 
 | DC | Node | VLAN100 IPv4 | IPv6 | Homed to (leaf pair) | Leaf port / Po# | Role |
 |----|------|--------------|------|----------------------|-----------------|------|
-| DC-A | k3s-m1 | `192.168.100.10` | `fd10:a:100::10` | DCA-Leaf01 + DCA-Leaf02 | Ethernet4 / Po4 | K3s server (cluster-init) |
-| DC-A | k3s-m2 | `192.168.100.11` | `fd10:a:100::11` | DCA-Leaf01 + DCA-Leaf02 | Ethernet5 / Po5 | K3s server |
-| DC-A | k3s-m3 | `192.168.100.12` | `fd10:a:100::12` | DCA-Leaf01 + DCA-Leaf02 | Ethernet6 / Po6 | K3s server |
-| DC-A | DCA-DNS | `192.168.100.53` | `fd10:a:100::53` | DCA-Leaf01 + DCA-Leaf02 | Ethernet7 / Po7 | Internal DNS |
-| DC-B | k3s-w1 | `192.168.100.20` | `fd10:a:100::20` | DCB-Leaf01 + DCB-Leaf02 | Ethernet4 / Po4 | K3s agent |
-| DC-B | k3s-w2 | `192.168.100.21` | `fd10:a:100::21` | DCB-Leaf01 + DCB-Leaf02 | Ethernet5 / Po5 | K3s agent |
-| DC-B | k3s-w3 | `192.168.100.22` | `fd10:a:100::22` | DCB-Leaf01 + DCB-Leaf02 | Ethernet6 / Po6 | K3s agent |
-| DC-C | k3s-w4 | `192.168.100.30` | `fd10:a:100::30` | DCC-Leaf01 + DCC-Leaf02 | Ethernet4 / Po4 | K3s agent |
-| DC-C | k3s-w5 | `192.168.100.31` | `fd10:a:100::31` | DCC-Leaf01 + DCC-Leaf02 | Ethernet5 / Po5 | K3s agent |
-| DC-C | k3s-w6 | `192.168.100.32` | `fd10:a:100::32` | DCC-Leaf01 + DCC-Leaf02 | Ethernet6 / Po6 | K3s agent |
+| DC-A | k3s-m1 | `10.100.0.10` | `fd10:a:100::10` | DCA-Leaf01 + DCA-Leaf02 | Ethernet4 / Po4 | K3s server (cluster-init) |
+| DC-A | k3s-m2 | `10.100.0.11` | `fd10:a:100::11` | DCA-Leaf01 + DCA-Leaf02 | Ethernet5 / Po5 | K3s server |
+| DC-A | k3s-m3 | `10.100.0.12` | `fd10:a:100::12` | DCA-Leaf01 + DCA-Leaf02 | Ethernet6 / Po6 | K3s server |
+| DC-A | DCA-DNS | `10.100.0.53` | `fd10:a:100::53` | DCA-Leaf01 + DCA-Leaf02 | Ethernet7 / Po7 | Internal DNS |
+| DC-B | k3s-w1 | `10.100.0.20` | `fd10:a:100::20` | DCB-Leaf01 + DCB-Leaf02 | Ethernet4 / Po4 | K3s agent |
+| DC-B | k3s-w2 | `10.100.0.21` | `fd10:a:100::21` | DCB-Leaf01 + DCB-Leaf02 | Ethernet5 / Po5 | K3s agent |
+| DC-B | k3s-w3 | `10.100.0.22` | `fd10:a:100::22` | DCB-Leaf01 + DCB-Leaf02 | Ethernet6 / Po6 | K3s agent |
+| DC-C | k3s-w4 | `10.100.0.30` | `fd10:a:100::30` | DCC-Leaf01 + DCC-Leaf02 | Ethernet4 / Po4 | K3s agent |
+| DC-C | k3s-w5 | `10.100.0.31` | `fd10:a:100::31` | DCC-Leaf01 + DCC-Leaf02 | Ethernet5 / Po5 | K3s agent |
+| DC-C | k3s-w6 | `10.100.0.32` | `fd10:a:100::32` | DCC-Leaf01 + DCC-Leaf02 | Ethernet6 / Po6 | K3s agent |
 
 Both leaves in a pair use the same Ethernet member index and port-channel
 number for a given server. The server's `ens19` cables to Leaf01, `ens20` to

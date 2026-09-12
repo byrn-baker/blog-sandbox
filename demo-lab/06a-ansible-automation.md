@@ -115,7 +115,7 @@ ansible/
 - `k3s_agent`: registers against the cluster API on VLAN 100 and runs workloads.
 - `bind_dns`: installs BIND9 on DCA-DNS, queries Nautobot for all device names
   and primary IPs, and renders the `sandbox.lab` forward zone plus the
-  192.168.3.0/24 and 192.168.100.0/24 reverse zones. Serial is the run
+  192.168.3.0/24 and 10.100.0.0/24 reverse zones. Serial is the run
   timestamp so caches see each regeneration.
 
 ## Run order

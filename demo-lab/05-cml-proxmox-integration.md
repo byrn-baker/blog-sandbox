@@ -75,7 +75,7 @@ hypervisor knowing about the other.
 Add to `/etc/network/interfaces` on the Proxmox host:
 
 ```bash
-# DC-A LAN segment (Customer A — 192.168.100.0/24)
+# DC-A LAN segment (Customer A — 10.100.0.0/24)
 auto vmbr100
 iface vmbr100 inet manual
     bridge-ports none
@@ -179,7 +179,7 @@ same bridge.
 
 The K3s and DNS hosts are Proxmox VMs, not nodes inside either emulator. Each
 attaches to its site's leaf pair over the shared VLAN carrying VLAN 100
-(192.168.100.0/24, stretched across all three DCs). Their two NICs bond to
+(10.100.0.0/24, stretched across all three DCs). Their two NICs bond to
 Ethernet ports on Leaf01 and Leaf02 as an EVPN ESI multihome.
 
 | DC | VMs | Connected to (leaf pair) |
@@ -200,7 +200,7 @@ Once everything is wired:
 
 ```bash
 # From a DC-A K3s node, ping CE1 (gateway)
-ping 192.168.100.1
+ping 10.100.0.1
 
 # From DC-A, ping a DC-B node — traffic traverses:
 # K3s → Leaf → Spine → CE1 → SPE1 → MPLS Core → SPE2 → CE2 → Spine → Leaf → K3s

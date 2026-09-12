@@ -1,0 +1,39 @@
+---
+# Destructive reset for the explicitly disposable lab cluster. Run separately
+# from pb.site.yml with -e rebuild_disposable_cluster=true. Management and
+# bond0 configuration are retained. BIND is not a member of k3s_cluster.
+- name: Reset the disposable K3s cluster
+  hosts: k3s_cluster
+  become: true
+  any_errors_fatal: true
+  tasks:
+    - name: Require explicit reset intent and verify host identity
+      ansible.builtin.assert:
+        that:
+          - rebuild_disposable_cluster | default(false) | bool
+          - ansible_facts.hostname | lower == inventory_hostname | lower
+          - local_config_context_data.k3s.member | bool
+          - inventory_hostname in groups['k3s_cluster']
+
+    - name: Uninstall K3s and remove its cluster state
+      ansible.builtin.command:
+        cmd: "/usr/local/bin/{{ 'k3s' if k3s_role == 'server' else 'k3s-agent' }}-uninstall.sh"
+        removes: "/etc/systemd/system/{{ 'k3s' if k3s_role == 'server' else 'k3s-agent' }}.service"
+
+    - name: Inspect the dedicated Longhorn mount
+      ansible.builtin.command: "findmnt -n -o SOURCE --mountpoint {{ storage_mount }}"
+      register: longhorn_mount_source
+      changed_when: false
+      when: inventory_hostname in groups['storage_nodes']
+
+    - name: Confirm the disposable data is on the modeled secondary disk
+      ansible.builtin.assert:
+        that:
+          - storage_mount == '/var/lib/longhorn'
+          - longhorn_mount_source.stdout == storage_disk
+      when: inventory_hostname in groups['storage_nodes']
+
+    - name: Remove disposable Longhorn contents without crossing mounts
+      ansible.builtin.command:
+        argv: [find, /var/lib/longhorn, -xdev, -mindepth, '1', -delete]
+      when: inventory_hostname in groups['storage_nodes']

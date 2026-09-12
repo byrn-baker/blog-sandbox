@@ -46,9 +46,9 @@ the MPLS L3VPN core: CE1 to SPE1 to the core to SPE2 to CE2.
 # On k3s-m1 (DC-A) — bootstraps embedded etcd
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server \
   --cluster-init \
-  --node-ip=192.168.100.10 \
+  --node-ip=10.100.0.10 \
   --flannel-iface=ens3 \
-  --tls-san=192.168.100.10 \
+  --tls-san=10.100.0.10 \
   --disable=traefik \
   --write-kubeconfig-mode=644" sh -
 
@@ -57,20 +57,20 @@ cat /var/lib/rancher/k3s/server/node-token
 
 # On k3s-m2 and k3s-m3 (DC-A) — join the existing etcd
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server \
-  --server https://192.168.100.10:6443 \
+  --server https://10.100.0.10:6443 \
   --token <token-from-m1> \
-  --node-ip=192.168.100.11 \
+  --node-ip=10.100.0.11 \
   --flannel-iface=ens3 \
-  --disable=traefik" sh -   # k3s-m3 uses --node-ip=192.168.100.12
+  --disable=traefik" sh -   # k3s-m3 uses --node-ip=10.100.0.12
 ```
 
 ### Worker nodes (DC-B and DC-C)
 
 ```bash
 # On k3s-w1 (DC-B)
-curl -sfL https://get.k3s.io | K3S_URL=https://192.168.100.10:6443 \
+curl -sfL https://get.k3s.io | K3S_URL=https://10.100.0.10:6443 \
   K3S_TOKEN=<token-from-server> \
-  INSTALL_K3S_EXEC="agent --node-ip=192.168.100.20 --flannel-iface=ens3" sh -
+  INSTALL_K3S_EXEC="agent --node-ip=10.100.0.20 --flannel-iface=ens3" sh -
 ```
 
 ### K3s node addresses
@@ -78,11 +78,11 @@ curl -sfL https://get.k3s.io | K3S_URL=https://192.168.100.10:6443 \
 The SERVER subnet is stretched, so node addresses must be unique across all
 three sites:
 
-- DC-A: `192.168.100.10` through `192.168.100.12`
-- DC-B: `192.168.100.20` through `192.168.100.22`
-- DC-C: `192.168.100.30` and `192.168.100.31`
+- DC-A: `10.100.0.10` through `10.100.0.12`
+- DC-B: `10.100.0.20` through `10.100.0.22`
+- DC-C: `10.100.0.30` and `10.100.0.31`
 
-All nodes use `192.168.100.1` and `fd10:a:100::1` as their anycast gateways.
+All nodes use `10.100.0.1` and `fd10:a:100::1` as their anycast gateways.
 
 ## K3s Networking
 
@@ -129,11 +129,11 @@ network:
       dhcp4: true          # Management NIC (vmbr0) — for SSH access
     ens19:
       addresses:
-        - 192.168.100.10/24
+        - 10.100.0.10/24
         - fd10:a:100::10/64
       routes:
         - to: 0.0.0.0/0
-          via: 192.168.100.1
+          via: 10.100.0.1
         - to: ::/0
           via: fd10:a:100::1
 runcmd:
@@ -148,9 +148,9 @@ site because VLAN 100 is one stretched segment:
 
 | DC | Gateway (IPv4) | Gateway (IPv6) |
 |----|----------------|----------------|
-| DC-A | `192.168.100.1` | `fd10:a:100::1` |
-| DC-B | `192.168.100.1` | `fd10:a:100::1` |
-| DC-C | `192.168.100.1` | `fd10:a:100::1` |
+| DC-A | `10.100.0.1` | `fd10:a:100::1` |
+| DC-B | `10.100.0.1` | `fd10:a:100::1` |
+| DC-C | `10.100.0.1` | `fd10:a:100::1` |
 
 EVPN advertises endpoint reachability between VTEPs. The MPLS path carries the
 routed underlay traffic between those VTEPs.
