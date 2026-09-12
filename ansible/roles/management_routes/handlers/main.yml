@@ -1,0 +1,16 @@
+---
+- name: Generate networkd configuration
+  ansible.builtin.command: netplan generate
+  changed_when: true
+  listen: Reconfigure management routes
+
+- name: Reload networkd configuration
+  ansible.builtin.command: networkctl reload
+  changed_when: true
+  listen: Reconfigure management routes
+
+- name: Apply the management interface configuration
+  ansible.builtin.command:
+    argv: [networkctl, reconfigure, "{{ management_route_interface }}"]
+  changed_when: true
+  listen: Reconfigure management routes

@@ -58,3 +58,8 @@ kubeconfig_local_path: "./kubeconfig"
 # binary is staged under {{ k3s_mirror_url }}/{{ k3s_version }}/, so k3s_version
 # above still selects it, just through the mirror path instead of a flag.
 k3s_mirror_url: "{{ lab_mirror_url }}/k3s"
+
+# Return traffic to the home workstation through the management network.
+management_route_interface: eth0
+management_route_destination: 192.168.100.32/32
+management_route_gateway: 192.168.3.1

@@ -203,3 +203,28 @@ completed. That establishes recovery at the time of the checks, not sustained
 performance under load. Cross-site storage latency, load-related retransmissions,
 and SQLite contention still need a dedicated performance investigation before
 we claim the lab is fully stabilized or move etcd across all three datacenters.
+
+## Workstation return route
+
+All nine K3s VMs use a host route for `192.168.100.32/32` through `192.168.3.1`
+on their management interface, `eth0`. This provides the return path when the
+workstation reaches a VM's management address. The default route remains
+`10.100.0.1` through `bond0`.
+
+The `management_routes` Ansible role owns
+`/etc/netplan/75-management-routes.yaml`. Cluster group variables declare the
+destination, gateway, and interface. Apply it with:
+
+```sh
+ansible-playbook pb.site.yml --tags management_routes --skip-tags always
+```
+
+The play runs one VM at a time and stops on failure. It checks the gateway's
+directly connected management path, generates Netplan configuration, reloads
+networkd, reconfigures `eth0`, and verifies the resulting route. The workstation
+still needs a forward path and firewall permission to reach `192.168.3.0/24`.
+
+The rollout and independent live/persistent route checks passed on all nine
+VMs. A second canary run made no changes. The default routes still use `bond0`,
+and all nine K3s nodes remained Ready. The workstation did not answer ICMP
+from these VMs, so browser access from the workstation was not verified.

@@ -25,6 +25,16 @@
   roles:
     - host_network
 
+- name: Configure K3s management return routes
+  hosts: k3s_cluster
+  become: true
+  gather_facts: false
+  serial: 1
+  any_errors_fatal: true
+  tags: [network, management_routes]
+  roles:
+    - management_routes
+
 # Prepare the DNS host and start BIND before the remaining servers perform
 # package installation or K3s setup. Stop the run if this prerequisite fails.
 - name: Base prep for the DNS server

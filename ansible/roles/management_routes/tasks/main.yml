@@ -1,0 +1,41 @@
+---
+- name: Check that the management gateway is directly connected
+  ansible.builtin.command:
+    argv: [ip, -j, route, get, "{{ management_route_gateway }}"]
+  register: management_gateway_lookup
+  changed_when: false
+  check_mode: false
+
+- name: Validate the management path before changing routes
+  ansible.builtin.assert:
+    that:
+      - (management_gateway_lookup.stdout | from_json | first).dev == management_route_interface
+      - (management_gateway_lookup.stdout | from_json | first).prefsrc == ansible_host
+      - (management_gateway_lookup.stdout | from_json | first).gateway is not defined
+
+- name: Persist the management return route
+  ansible.builtin.template:
+    src: management-routes.yaml.j2
+    dest: /etc/netplan/75-management-routes.yaml
+    owner: root
+    group: root
+    mode: "0600"
+  notify: Reconfigure management routes
+
+- name: Apply the management route before verification
+  ansible.builtin.meta: flush_handlers
+
+- name: Read the return path to the workstation
+  ansible.builtin.command:
+    argv: [ip, -j, route, get, "{{ management_route_destination.split('/')[0] }}"]
+  register: management_return_lookup
+  changed_when: false
+  when: not ansible_check_mode
+
+- name: Verify the live management return path
+  ansible.builtin.assert:
+    that:
+      - (management_return_lookup.stdout | from_json | first).dev == management_route_interface
+      - (management_return_lookup.stdout | from_json | first).gateway == management_route_gateway
+      - (management_return_lookup.stdout | from_json | first).prefsrc == ansible_host
+  when: not ansible_check_mode

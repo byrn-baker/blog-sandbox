@@ -1,0 +1,185 @@
+{
+  "at": "2026-09-12T21:01:16.441647+00:00",
+  "hosts": [
+    {
+      "route": {
+        "rc": 0,
+        "output": "[{\"dst\":\"192.168.100.32\",\"gateway\":\"192.168.3.1\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.3.63\",\"flags\":[],\"uid\":1000,\"cache\":[]}]\n"
+      },
+      "defaults": {
+        "rc": 0,
+        "output": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]}]\n"
+      },
+      "persistent": {
+        "rc": 0,
+        "output": "- to: \"192.168.100.32/32\"\n  via: \"192.168.3.1\"\n"
+      },
+      "pc_ping": {
+        "rc": 1,
+        "output": "PING 192.168.100.32 (192.168.100.32) from 192.168.3.63 eth0: 56(84) bytes of data.\n\n--- 192.168.100.32 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 1063ms\n\n"
+      },
+      "name": "DCA-k3s-m1",
+      "passed": true
+    },
+    {
+      "route": {
+        "rc": 0,
+        "output": "[{\"dst\":\"192.168.100.32\",\"gateway\":\"192.168.3.1\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.3.64\",\"flags\":[],\"uid\":1000,\"cache\":[]}]\n"
+      },
+      "defaults": {
+        "rc": 0,
+        "output": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]}]\n"
+      },
+      "persistent": {
+        "rc": 0,
+        "output": "- to: \"192.168.100.32/32\"\n  via: \"192.168.3.1\"\n"
+      },
+      "pc_ping": {
+        "rc": 1,
+        "output": "PING 192.168.100.32 (192.168.100.32) from 192.168.3.64 eth0: 56(84) bytes of data.\n\n--- 192.168.100.32 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 1062ms\n\n"
+      },
+      "name": "DCA-k3s-m2",
+      "passed": true
+    },
+    {
+      "route": {
+        "rc": 0,
+        "output": "[{\"dst\":\"192.168.100.32\",\"gateway\":\"192.168.3.1\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.3.65\",\"flags\":[],\"uid\":1000,\"cache\":[]}]\n"
+      },
+      "defaults": {
+        "rc": 0,
+        "output": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]}]\n"
+      },
+      "persistent": {
+        "rc": 0,
+        "output": "- to: \"192.168.100.32/32\"\n  via: \"192.168.3.1\"\n"
+      },
+      "pc_ping": {
+        "rc": 1,
+        "output": "PING 192.168.100.32 (192.168.100.32) from 192.168.3.65 eth0: 56(84) bytes of data.\n\n--- 192.168.100.32 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 1055ms\n\n"
+      },
+      "name": "DCA-k3s-m3",
+      "passed": true
+    },
+    {
+      "route": {
+        "rc": 0,
+        "output": "[{\"dst\":\"192.168.100.32\",\"gateway\":\"192.168.3.1\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.3.66\",\"flags\":[],\"uid\":1000,\"cache\":[]}]\n"
+      },
+      "defaults": {
+        "rc": 0,
+        "output": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]}]\n"
+      },
+      "persistent": {
+        "rc": 0,
+        "output": "- to: \"192.168.100.32/32\"\n  via: \"192.168.3.1\"\n"
+      },
+      "pc_ping": {
+        "rc": 1,
+        "output": "PING 192.168.100.32 (192.168.100.32) from 192.168.3.66 eth0: 56(84) bytes of data.\n\n--- 192.168.100.32 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 1008ms\n\n"
+      },
+      "name": "DCB-k3s-w1",
+      "passed": true
+    },
+    {
+      "route": {
+        "rc": 0,
+        "output": "[{\"dst\":\"192.168.100.32\",\"gateway\":\"192.168.3.1\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.3.67\",\"flags\":[],\"uid\":1000,\"cache\":[]}]\n"
+      },
+      "defaults": {
+        "rc": 0,
+        "output": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]}]\n"
+      },
+      "persistent": {
+        "rc": 0,
+        "output": "- to: \"192.168.100.32/32\"\n  via: \"192.168.3.1\"\n"
+      },
+      "pc_ping": {
+        "rc": 1,
+        "output": "PING 192.168.100.32 (192.168.100.32) from 192.168.3.67 eth0: 56(84) bytes of data.\n\n--- 192.168.100.32 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 1027ms\n\n"
+      },
+      "name": "DCB-k3s-w2",
+      "passed": true
+    },
+    {
+      "route": {
+        "rc": 0,
+        "output": "[{\"dst\":\"192.168.100.32\",\"gateway\":\"192.168.3.1\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.3.68\",\"flags\":[],\"uid\":1000,\"cache\":[]}]\n"
+      },
+      "defaults": {
+        "rc": 0,
+        "output": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]}]\n"
+      },
+      "persistent": {
+        "rc": 0,
+        "output": "- to: \"192.168.100.32/32\"\n  via: \"192.168.3.1\"\n"
+      },
+      "pc_ping": {
+        "rc": 1,
+        "output": "PING 192.168.100.32 (192.168.100.32) from 192.168.3.68 eth0: 56(84) bytes of data.\n\n--- 192.168.100.32 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 1031ms\n\n"
+      },
+      "name": "DCB-k3s-w3",
+      "passed": true
+    },
+    {
+      "route": {
+        "rc": 0,
+        "output": "[{\"dst\":\"192.168.100.32\",\"gateway\":\"192.168.3.1\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.3.69\",\"flags\":[],\"uid\":1000,\"cache\":[]}]\n"
+      },
+      "defaults": {
+        "rc": 0,
+        "output": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]}]\n"
+      },
+      "persistent": {
+        "rc": 0,
+        "output": "- to: \"192.168.100.32/32\"\n  via: \"192.168.3.1\"\n"
+      },
+      "pc_ping": {
+        "rc": 1,
+        "output": "PING 192.168.100.32 (192.168.100.32) from 192.168.3.69 eth0: 56(84) bytes of data.\n\n--- 192.168.100.32 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 1022ms\n\n"
+      },
+      "name": "DCC-k3s-w4",
+      "passed": true
+    },
+    {
+      "route": {
+        "rc": 0,
+        "output": "[{\"dst\":\"192.168.100.32\",\"gateway\":\"192.168.3.1\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.3.70\",\"flags\":[],\"uid\":1000,\"cache\":[]}]\n"
+      },
+      "defaults": {
+        "rc": 0,
+        "output": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]}]\n"
+      },
+      "persistent": {
+        "rc": 0,
+        "output": "- to: \"192.168.100.32/32\"\n  via: \"192.168.3.1\"\n"
+      },
+      "pc_ping": {
+        "rc": 1,
+        "output": "PING 192.168.100.32 (192.168.100.32) from 192.168.3.70 eth0: 56(84) bytes of data.\n\n--- 192.168.100.32 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 1020ms\n\n"
+      },
+      "name": "DCC-k3s-w5",
+      "passed": true
+    },
+    {
+      "route": {
+        "rc": 0,
+        "output": "[{\"dst\":\"192.168.100.32\",\"gateway\":\"192.168.3.1\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.3.72\",\"flags\":[],\"uid\":1000,\"cache\":[]}]\n"
+      },
+      "defaults": {
+        "rc": 0,
+        "output": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]}]\n"
+      },
+      "persistent": {
+        "rc": 0,
+        "output": "- to: \"192.168.100.32/32\"\n  via: \"192.168.3.1\"\n"
+      },
+      "pc_ping": {
+        "rc": 1,
+        "output": "PING 192.168.100.32 (192.168.100.32) from 192.168.3.72 eth0: 56(84) bytes of data.\n\n--- 192.168.100.32 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 1017ms\n\n"
+      },
+      "name": "DCC-k3s-w6",
+      "passed": true
+    }
+  ]
+}

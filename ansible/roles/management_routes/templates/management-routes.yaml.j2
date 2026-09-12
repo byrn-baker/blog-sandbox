@@ -1,0 +1,8 @@
+# Managed by Ansible. Workstation return traffic uses the management gateway.
+network:
+  version: 2
+  ethernets:
+    {{ management_route_interface }}:
+      routes:
+        - to: {{ management_route_destination }}
+          via: {{ management_route_gateway }}
