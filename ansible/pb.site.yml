@@ -20,6 +20,7 @@
 - name: Bring up the VLAN 100 bond
   hosts: all
   become: true
+  gather_facts: false
   tags: [network]
   roles:
     - host_network

@@ -77,3 +77,36 @@ This renumbering does not deploy MetalLB, ingress, split DNS, or home-firewall
 rules. It removes the address collision those future changes otherwise need
 to work around. A short recovery check is not proof of site-failure tolerance
 or a long-running stability test.
+
+## Hypervisor storage interruption during restoration
+
+Application restoration exposed a second capacity limit. Proxmox's `local-lvm`
+thin pool reached 100% of its approximately 130 GiB backing capacity. VM 3001
+and BIND VM 3009 reported `qmpstatus: io-error` and failed writes on `scsi0`,
+although the summary VM status still said `running`. Their network interfaces
+stopped responding because QEMU had paused the guests.
+
+Eight K3s OS disks and BIND's OS disk were on this small pool. The affected
+guests still had free space inside their filesystems. Longhorn's separate
+50 GiB disks were already on `vm_disk`, which had approximately 10.6 TiB free.
+The ninth K3s node, VM 3010, already had its OS disk on `vm_disk` too.
+
+Recovery moves the affected OS disks to `vm_disk` and retains the existing
+VMs, network interfaces, disk contents, and data disks. VM identity is checked
+against Nautobot's management addresses and Proxmox's `ipconfig0` and `net0`,
+since several hypervisor display names predate the current K3s roles. The
+sequence for each affected VM is:
+
+```sh
+qm stop <verified-vmid> --timeout 5
+qm disk move <verified-vmid> scsi0 vm_disk --delete 1
+qm config <verified-vmid>
+qm start <verified-vmid>
+```
+
+The move deletes the original volume only after its copy succeeds. BIND was
+moved first to release space; the remaining eight moves run two at a time.
+Do not run this against unrelated VMs or delete the shared template volumes.
+For future lab VM provisioning, place OS disks on `vm_disk` as well as the
+Longhorn data disks. Guest free-space monitoring alone cannot detect an
+exhausted hypervisor thin pool.
