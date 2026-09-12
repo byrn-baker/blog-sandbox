@@ -10,10 +10,9 @@ log pipeline stalls when connectivity degrades.
 ## Cluster topology: one stretched cluster, not three
 
 There is a single K3s cluster stretched across all three datacenters. It is not
-three independent clusters. Every node sits on VLAN 100, the EVPN type-5
-segment (10.100.0.0/24, dual-stack) stretched across DC-A, DC-B, and DC-C, so
-all nodes are mutually reachable on the same subnet regardless of which DC they
-physically live in. That stretched segment is what makes one cluster possible.
+three independent clusters. Every node sits on the VXLAN/EVPN VLAN 100
+segment (`10.100.0.0/24`) stretched across DC-A, DC-B and DC-C. Host IPv6
+uses `fd10:a:100::/64`; Kubernetes Pod and Service networks remain IPv4.
 
 The control plane is three server nodes running embedded etcd, all in DC-A:
 
@@ -29,27 +28,16 @@ The control plane is three server nodes running embedded etcd, all in DC-A:
 | DCC-k3s-w5 | DC-C | 10.100.0.31 | agent |
 | DCC-k3s-w6 | DC-C | 10.100.0.32 | agent |
 
-All three etcd members live in DC-A on purpose. A one-member-per-DC layout looks
-better on paper, since the quorum would survive losing a site, but it does not
-work on this fabric. etcd's raft needs tight, symmetric, low-latency RTT for its
-heartbeats and elections, and the emulated cross-DC path delivers 100ms+ RTT
-with heavy jitter. That jitter is not congestion or a device limit. It is
-scheduling latency in the emulated node dataplanes under sparse traffic, measured
-by comparing a flooded ping (every hop stays hot, ~5ms) against a spaced ping
-(hops idle between packets, ~25ms intra-DC and 112ms cross-DC). Raft messages are
-exactly the small, spaced pattern that pays that penalty on every hop, so a
-stretched etcd never holds a stable quorum. Keeping all three servers in DC-A
-holds raft inside the DC-A fabric; the DC-B and DC-C nodes join as agents over
-the core and ride out the jitter on one persistent connection to the API server.
+All three etcd members remain in DC-A after the earlier cross-site latency
+and lease failures. Flooded and spaced pings behaved differently, but those
+observations did not isolate scheduling as the sole cause. The subsequent
+QEMU and GRO fixes improved packet delivery; residual latency under storage
+load still needs investigation before moving etcd back across sites.
+The current control plane does not survive losing DC-A.
 
-The tradeoff is honest: the control plane no longer survives losing DC-A. That
-is the price of this fabric, and it is the right call here because a control
-plane that flaps constantly is worse than one that is simply single-site.
-
-There is no VIP and no keepalived. The VLAN 100 gateway (10.100.0.1) is an
-anycast SVI present identically on every leaf, and agents register against the
-cluster-init server's IP directly. A stretched L2 segment does not need VRRP for
-the control-plane endpoint.
+There is no API VIP or keepalived. Agents register against m1 at
+`10.100.0.10:6443`. The leaf anycast gateway `10.100.0.1` provides routing,
+not API endpoint failover.
 
 DCA-DNS is a Server-role device on the same VLAN 100 segment but is not a
 cluster member. It runs standalone BIND (see below).
@@ -59,7 +47,9 @@ cluster member. It runs standalone BIND (see below).
 DCA-DNS (10.100.0.53) is the lab's authoritative DNS server for the
 `sandbox.lab` zone. Every record is generated from Nautobot: the Ansible role
 queries all devices and their primary IPs and renders the forward zone plus
-reverse zones from that data. DNS stays in lockstep with the source of truth,
+reverse zones from that data. Device forward records use Nautobot primary IPs, currently management
+addresses; the explicit `ns1` record uses `10.100.0.53`. DNS is updated from
+the source of truth when the playbook runs,
 and a topology change is reflected by re-running the role, never by hand-editing
 a zone file.
 
@@ -75,20 +65,28 @@ VLAN 100 addresses, K3s role) all resolve from the model. See
 
 ---
 
+## Future demonstration workloads
+
+The examples below are proposed scenarios, not the deployed application
+inventory. Current collection uses VictoriaMetrics and an OTel SNMP collector;
+Prometheus, Loki, MinIO and the sample application stacks below are not claims
+of deployment. Concrete example endpoints need matching Services and placement
+before use. See [the verified rebuild record](10-server-network-rebuild.md).
+
 ## Service Placement Matrix
 
 | Namespace | Service | DC1 | DC2 | DC3 | Cross-DC traffic |
 |-----------|---------|-----|-----|-----|------------------|
-| `app` | nginx-frontend | ✓ primary | ✓ standby | — | Client failover |
+| `app` | nginx-frontend | ✓ primary | ✓ standby |: | Client failover |
 | `app` | api-server (Flask/Express) | ✓ | ✓ | ✓ | Any-DC routing |
-| `data` | PostgreSQL | ✓ primary | ✓ streaming replica | — | WAL replication DC1→DC2 |
-| `data` | Redis | ✓ primary | — | ✓ replica | Async replication DC1→DC3 |
+| `data` | PostgreSQL | ✓ primary | ✓ streaming replica |: | WAL replication DC1→DC2 |
+| `data` | Redis | ✓ primary |: | ✓ replica | Async replication DC1→DC3 |
 | `infra` | CoreDNS | ✓ | ✓ | ✓ | Local resolution |
-| `monitoring` | Prometheus | ✓ central | — | — | Scrapes all DCs |
-| `monitoring` | Grafana | ✓ | — | — | Queries Prometheus |
-| `monitoring` | Loki | — | ✓ | — | All DCs push logs here |
+| `monitoring` | Prometheus | ✓ central |: |: | Scrapes all DCs |
+| `monitoring` | Grafana | ✓ |: |: | Queries Prometheus |
+| `monitoring` | Loki |: | ✓ |: | All DCs push logs here |
 | `monitoring` | OTEL Collector | ✓ | ✓ | ✓ | Forward to DC1 Prometheus |
-| `storage` | MinIO | — | — | ✓ | Backup writes from DC1/DC2 |
+| `storage` | MinIO |: |: | ✓ | Backup writes from DC1/DC2 |
 
 ---
 
@@ -149,13 +147,13 @@ Streaming replication generates continuous WAL traffic across the MPLS core:
 ```
 
 Monitoring points:
-- `pg_stat_replication` — replication lag in bytes/seconds
+- `pg_stat_replication`: replication lag in bytes/seconds
 - Connection count
 - Query latency
 
 ### Redis (DC1 primary, DC3 replica)
 
-Async replication — less sensitive to latency but interesting for partition
+Async replication: less sensitive to latency but interesting for partition
 scenarios:
 
 ```bash
@@ -164,7 +162,7 @@ replicaof 10.100.0.12 6379
 # Traffic flows: DC3 → CE3 → SPE3 → core → SPE1 → CE1 → DC1
 ```
 
-### Prometheus (DC1 — central)
+### Prometheus (DC1: central)
 
 Scrapes all nodes and services across all DCs:
 
@@ -188,7 +186,7 @@ scrape_configs:
   - job_name: 'node-dc3'
     static_configs:
       - targets:
-        - '10.100.0.10:9100'   # Reached via routing (different VRF)
+        - '10.100.0.10:9100'   # Example node on shared VLAN 100
         - '10.100.0.11:9100'
 
   - job_name: 'api-servers'
@@ -196,7 +194,7 @@ scrape_configs:
       - targets:
         - '10.100.0.10:8080'   # DC1 API
         - '192.168.200.10:8080'   # DC2 API
-        - '10.100.0.10:8080'   # DC3 API (via routing)
+        - '10.100.0.30:8080'   # Example DC3 API
 
   - job_name: 'postgres'
     static_configs:
@@ -216,7 +214,7 @@ clients:
     # Traffic: DC1 → CE1 → SPE1 → core → SPE2 → CE2 → DC2 Loki
 ```
 
-### MinIO (DC3 — object storage / backup target)
+### MinIO (DC3: object storage / backup target)
 
 S3-compatible storage for backups:
 

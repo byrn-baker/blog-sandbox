@@ -1,10 +1,10 @@
-# 01 — Addressing Plan
+# 01: Addressing Plan
 
 ## Design Principles
 
-- IPv4 and IPv6 dual-stack throughout
-- ULA (`fd10::/16`) for IPv6 — mirrors IPv4 structure in the prefix
-- SP underlay uses `10.x.x.x` space; customer/DC uses RFC 1918 `172.16.x` and `192.168.x`
+- IPv4 and IPv6 on the modeled fabric and host network; K3s Pod and Service CIDRs remain IPv4
+- ULA (`fd10::/16`) for IPv6: mirrors IPv4 structure in the prefix
+- SP underlay and server addressing use distinct `10.x.x.x` prefixes; VLAN 100 uses `10.100.0.0/24`. Other customer/DC prefixes retain their documented RFC 1918 ranges.
 - Last octet/nibble kept consistent between v4 and v6 for easy cross-reference
 
 ---
@@ -21,7 +21,7 @@ management network.
 
 ### Management IP Assignments (Gi1 / Management1, VRF MGMT-VRF)
 
-**Cisco (IOS-XE) — Gi1:**
+**Cisco (IOS-XE): Gi1:**
 
 | Device | IPv4 | Interface |
 |--------|------|-----------|
@@ -39,7 +39,7 @@ management network.
 | CE2 | `192.168.3.61/24` | Gi1 |
 | CE3 | `192.168.3.62/24` | Gi1 |
 
-**Arista (EOS) — Management1, VRF MGMT-VRF:**
+**Arista (EOS): Management1, VRF MGMT-VRF:**
 
 | Device | IPv4 | Interface |
 |--------|------|-----------|
@@ -59,19 +59,20 @@ management network.
 | DCC-Leaf02 | `192.168.3.43/24` | Management1 |
 | DCC-Leaf03 | `192.168.3.44/24` | Management1 |
 
-**Ubuntu (VMs) — Eth0**
+**Ubuntu (VMs): eth0**
 
 | Device | IPv4 | Interface |
 |--------|------|-----------|
-| k3s-m1 | `192.168.3.63` | Eth0 |
-| k3s-m2 | `192.168.3.64` | Eth0 |
-| k3s-m3 | `192.168.3.65` | Eth0 |
-| k3s-w1 | `192.168.3.66` | Eth0 |
-| k3s-w2 | `192.168.3.67` | Eth0 |
-| k3s-w3 | `192.168.3.68` | Eth0 |
-| k3s-w4 | `192.168.3.69` | Eth0 |
-| k3s-w5 | `192.168.3.70` | Eth0 |
-| k3s-w6 | `192.168.3.72` | Eth0 |
+| k3s-m1 | `192.168.3.63` | eth0 |
+| k3s-m2 | `192.168.3.64` | eth0 |
+| k3s-m3 | `192.168.3.65` | eth0 |
+| k3s-w1 | `192.168.3.66` | eth0 |
+| k3s-w2 | `192.168.3.67` | eth0 |
+| k3s-w3 | `192.168.3.68` | eth0 |
+| k3s-w4 | `192.168.3.69` | eth0 |
+| k3s-w5 | `192.168.3.70` | eth0 |
+| k3s-w6 | `192.168.3.72` | eth0 |
+| DCA-DNS | `192.168.3.71` | eth0 |
 
 ### Management VRF config (IOS-XE, all Cisco routers)
 
@@ -109,7 +110,7 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 | P2P links | `10.0.0.0/24` | `fd10::/48` |
 | Loopbacks | `10.1.0.0/24` | `fd10:0:1::/48` |
 
-### P2P links (SP core) — /31 IPv4, /127 IPv6
+### P2P links (SP core): /31 IPv4, /127 IPv6
 
 | Link | IPv4 | IPv6 | A side (intf) | B side (intf) |
 |------|------|------|---------------|---------------|
@@ -133,7 +134,7 @@ ip route vrf MGMT-VRF 0.0.0.0/0 192.168.3.1
 - SPE2: SP4 (Gi2) + SP3 (Gi3)
 - SPE3: SP1 (Gi2) + SP3 (Gi3)
 
-### Loopbacks — /32 IPv4, /128 IPv6
+### Loopbacks: /32 IPv4, /128 IPv6
 
 | Device | IPv4 | IPv6 |
 |--------|------|------|
@@ -332,10 +333,11 @@ only leaves the fabric at the border leaf, over the eBGP handoff above.
 
 ---
 
-## DC Server/Host Subnets (on Leafs — VXLAN VNIs, VRF SERVERS)
+## DC Server/Host Subnets (on Leafs: VXLAN VNIs, VRF SERVERS)
 
-Every server SVI lives in the `SERVERS` VRF and rides the fabric as EVPN
-type-5. The anycast gateways below are the `SERVERS` SVIs on each leaf.
+The server VLAN is stretched over VXLAN with EVPN endpoint reachability.
+Its anycast gateway SVIs belong to VRF `SERVERS` on each leaf. This Layer 2
+stretch is distinct from EVPN type-5 IP-prefix routing.
 
 | DC | VLAN | Subnet (IPv4) | Subnet (IPv6) | VNI | Purpose |
 |----|------|---------------|---------------|-----|---------|
@@ -343,6 +345,18 @@ type-5. The anycast gateways below are the `SERVERS` SVIs on each leaf.
 | DC-A | 101 | `192.168.101.0/24` | `fd10:a:101::/64` | 10101 | Site-local storage |
 | DC-B | 201 | `192.168.201.0/24` | `fd10:a:201::/64` | 10201 | Site-local storage |
 | DC-C | 301 | `192.168.31.0/24` | `fd10:a:301::/64` | 10301 | Site-local storage |
+
+The September 12 rebuild replaced the former `192.168.100.0/24` server
+subnet with `10.100.0.0/24`. The anycast gateway is `10.100.0.1`; host IPv6
+remains `fd10:a:100::/64` with gateway `fd10:a:100::1`. Management stays on
+`192.168.3.0/24`. The external Proxmox endpoint `192.168.100.20` is unchanged.
+
+All nine K3s hosts have a persistent management return route for the workstation:
+`192.168.100.32/32 via 192.168.3.1 dev eth0`. Their default route still uses
+`10.100.0.1 dev bond0`. Kubernetes uses Pod CIDR `10.42.0.0/16` and Service
+CIDR `10.43.0.0/16`. See [the rebuild record](10-server-network-rebuild.md)
+for deployment evidence and remaining drift. The storage VLANs below remain
+modeled prefixes; current Longhorn replication uses the Kubernetes network.
 
 ### Server VLAN 100 Addresses (EVPN ESI multihomed)
 
@@ -361,6 +375,10 @@ Per-server values are deterministic, keyed off the VLAN 100 host octet:
 port-channel number equals the leaf Ethernet member index, the ESI identifier
 is `00<oct>:00<oct>:00<oct>:00<oct>:00<oct>`, and the ES import route-target is
 `00:<oct>:00:<oct>:00:<oct>`.
+
+This describes the model. The September 12 readback still found the DNS
+Ethernet Segment using identifier `0071` rather than modeled `0053`; the
+address migration did not resolve that separate configuration drift.
 
 | DC | Node | VLAN100 IPv4 | IPv6 | Homed to (leaf pair) | Leaf port / Po# | Role |
 |----|------|--------------|------|----------------------|-----------------|------|
