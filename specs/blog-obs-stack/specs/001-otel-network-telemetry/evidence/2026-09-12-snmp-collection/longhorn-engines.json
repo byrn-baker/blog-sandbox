@@ -1,0 +1,29 @@
+[
+  {
+    "volume": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+    "state": "running",
+    "replica_modes": [
+      "RW",
+      "RW",
+      "RW"
+    ]
+  },
+  {
+    "volume": "pvc-a1062d9a-b4b5-4c55-9488-c75fc73218d3",
+    "state": "running",
+    "replica_modes": [
+      "RW",
+      "RW",
+      "RW"
+    ]
+  },
+  {
+    "volume": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+    "state": "running",
+    "replica_modes": [
+      "RW",
+      "RW",
+      "RW"
+    ]
+  }
+]

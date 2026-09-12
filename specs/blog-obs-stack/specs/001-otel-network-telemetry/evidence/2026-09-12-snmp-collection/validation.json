@@ -3,9 +3,10 @@
   "make_ci_tests_passed": 88,
   "pinned_collector_config_validation": true,
   "helm_and_server_dry_runs": true,
-  "live_nonauthed_values_generation_matches_source": true,
   "credential_values_absent_from_generated_values_and_evidence": true,
   "grafana_queries_passed": 16,
   "all_devices": 28,
-  "minimum_polls_in_final_5m_window": 5
+  "minimum_polls_in_final_5m_window": 5,
+  "live_non_secret_generation_matches_source": true,
+  "longhorn_engines_all_three_replicas_rw": true
 }
