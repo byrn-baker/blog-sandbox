@@ -1,0 +1,10 @@
+query NetworkTelemetryFleet {
+  devices {
+    name
+    role { name }
+    platform { name }
+    primary_ip4 { address }
+    location { name }
+    config_context
+  }
+}
