@@ -3,7 +3,7 @@
 
 def dashboard(expected_devices):
     ds = {"type": "prometheus", "uid": "network-snmp"}
-    selected = '{device=~"$device",interface=~"$interface"}'
+    selected = '{job="snmp",if_type!="",device=~"$device",interface=~"$interface"}'
     panels = []
 
     def panel(title, expression, unit, kind="timeseries", description=""):
@@ -14,8 +14,8 @@ def dashboard(expected_devices):
             "fieldConfig": {"defaults": {"unit": unit}, "overrides": []}, "options": {}})
 
     panel("Devices polled in the last 3 minutes (expected " + str(expected_devices) + ")",
-          "count(time() - timestamp(snmp_device_uptime_ticks) < 180) or vector(0)", "short", "stat")
-    panel("Device uptime", 'snmp_device_uptime_ticks{device=~"$device"} / 100', "s", "table",
+          'count(max by (device) (timestamp(snmp_device_uptime_ticks{job="snmp"})) > time() - 180) or vector(0)', "short", "stat")
+    panel("Device uptime", 'snmp_device_uptime_ticks{job="snmp",device=~"$device"} / 100', "s", "table",
           "SNMP sysUpTime is hundredths of a second and wraps after about 497 days.")
     panel("Inbound traffic", "rate(snmp_interface_in_octets_total" + selected + "[5m]) * 8", "bps")
     panel("Outbound traffic", "rate(snmp_interface_out_octets_total" + selected + "[5m]) * 8", "bps")
@@ -30,8 +30,11 @@ def dashboard(expected_devices):
     panel("Outbound discards", "rate(snmp_interface_out_discards_total" + selected + "[5m])", "ops")
     panel("Interface operational state", "snmp_interface_oper_status" + selected, "short", "table",
           "IF-MIB: 1 up, 2 down, 3 testing, 4 unknown, 5 dormant, 6 notPresent, 7 lowerLayerDown.")
-    panel("Sample age", 'time() - timestamp(snmp_device_uptime_ticks{device=~"$device"})', "s", "table",
+    panel("Sample age", 'time() - timestamp(snmp_device_uptime_ticks{job="snmp",device=~"$device"})', "s", "table",
           "Missing samples are unknown, not zero traffic. Devices missing over the query lookback disappear; compare fleet count above.")
+    panel("Interface rows without error counters", "snmp_interface_oper_status" + selected +
+          ' unless on(device,if_index) snmp_interface_in_errors_total{job="snmp",if_type!=""}', "short", "table",
+          "IOS MPLS-layer rows return NoSuchInstance for error/discard counters. They are separate from the physical interface. Missing is not zero; the physical interface has its own counters.")
     return {"uid": "network-snmp", "title": "Network SNMP", "tags": ["network", "snmp"],
             "schemaVersion": 39, "version": 1, "editable": False, "timezone": "browser",
             "refresh": "30s", "time": {"from": "now-1h", "to": "now"}, "panels": panels,
@@ -40,6 +43,6 @@ def dashboard(expected_devices):
                  "query": "label_values(snmp_device_uptime_ticks, device)", "refresh": 1,
                  "multi": True, "includeAll": True, "allValue": ".*", "current": {"text": "All", "value": "$__all"}},
                 {"name": "interface", "type": "query", "datasource": ds,
-                 "query": 'label_values(snmp_interface_oper_status{device=~"$device"}, interface)', "refresh": 1,
+                 "query": 'label_values(snmp_interface_oper_status{job="snmp",if_type!="",device=~"$device"}, interface)', "refresh": 1,
                  "multi": True, "includeAll": True, "allValue": ".*", "current": {"text": "All", "value": "$__all"}}
             ]}}

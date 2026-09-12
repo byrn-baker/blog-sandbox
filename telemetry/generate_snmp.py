@@ -84,13 +84,15 @@ def receiver(device):
     }
     for name, (oid, unit, counter) in columns.items():
         metric = {"unit": unit, "column_oids": [{"oid": oid, "attributes": [
-            {"name": "interface"}, {"name": "if_index"}]}]}
+            {"name": "interface"}, {"name": "if_name"}, {"name": "if_type"}, {"name": "if_index"}]}]}
         metric["sum" if counter else "gauge"] = ({"aggregation": "cumulative", "monotonic": True,
             "value_type": "int"} if counter else {"value_type": "int"})
         metrics["snmp_interface_" + name] = metric
     return {"endpoint": "udp://" + device["address"] + ":161", "version": "v2c",
-            "community": "${env:" + device["key"] + "}", "collection_interval": "60s", "timeout": "3s",
-            "attributes": {"interface": {"oid": "1.3.6.1.2.1.31.1.1.1.1"},
+            "community": "${env:" + device["key"] + "}", "collection_interval": "60s", "timeout": "5s",
+            "attributes": {"interface": {"oid": "1.3.6.1.2.1.2.2.1.2"},
+                           "if_name": {"oid": "1.3.6.1.2.1.31.1.1.1.1"},
+                           "if_type": {"oid": "1.3.6.1.2.1.2.2.1.3"},
                            "if_index": {"indexed_value_prefix": "if"}}, "metrics": metrics}
 
 
@@ -114,10 +116,11 @@ def values(devices, credential_revision=None):
     config["exporters"]["otlp_http/snmp_history"]["metrics_endpoint"] = "http://snmp-metrics.observability.svc:8428/opentelemetry/v1/metrics"
     envs = []
     rules = []
-    for device in devices:
+    for ordinal, device in enumerate(devices):
         name = device["name"]
         rec, proc = "snmp/" + name, "resource/" + name
         config["receivers"][rec] = receiver(device)
+        config["receivers"][rec]["initial_delay"] = str(1 + ordinal * 58 // len(devices)) + "s"
         config["processors"][proc] = {"attributes": [{"key": k, "value": v, "action": "upsert"}
             for k, v in {"device": name, "platform": device["platform"], "site": device["site"],
                          "management_ip": device["address"], "telemetry_source": "snmp",
@@ -155,6 +158,10 @@ def values(devices, credential_revision=None):
              "metadata": {"name": "otel-snmp", "namespace": "observability"},
              "spec": {"selector": {"matchLabels": {"app.kubernetes.io/instance": "otel-snmp"}},
                       "endpoints": [{"port": "metrics", "interval": "30s"}]}},
+            {"apiVersion": "operator.victoriametrics.com/v1beta1", "kind": "VMServiceScrape",
+             "metadata": {"name": "snmp-metrics", "namespace": "observability"},
+             "spec": {"selector": {"matchLabels": {"app.kubernetes.io/instance": "snmp-metrics"}},
+                      "endpoints": [{"port": "http", "interval": "30s"}]}},
             {"apiVersion": "operator.victoriametrics.com/v1beta1", "kind": "VMRule",
              "metadata": {"name": "network-snmp", "namespace": "observability"},
              "spec": {"groups": [{"name": "network-snmp-freshness", "rules": rules}]}}

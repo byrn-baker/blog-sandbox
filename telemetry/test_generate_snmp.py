@@ -27,6 +27,9 @@ def test_deterministic_and_secret_free():
     assert a == g.values(g.fleet(r))
     assert "fixture-only-secret" not in yaml.safe_dump(a)
     assert len(a["alternateConfig"]["receivers"]) == 2
+    delays = [r["initial_delay"] for r in a["alternateConfig"]["receivers"].values()]
+    assert len(set(delays)) == 2
+    assert all(0 < int(d[:-1]) < 60 for d in delays)
     assert a["extraEnvs"][0]["valueFrom"]["secretKeyRef"]["name"] == g.SECRET
 
 
@@ -74,6 +77,8 @@ def test_canary_and_scalar_counter_semantics():
     assert len(devices) == 1
     rec = g.receiver(devices[0])
     assert rec["collection_interval"] == "60s"
+    assert rec["attributes"]["interface"]["oid"] == "1.3.6.1.2.1.2.2.1.2"
+    assert rec["attributes"]["if_name"]["oid"] == "1.3.6.1.2.1.31.1.1.1.1"
     assert rec["metrics"]["snmp_device_uptime_ticks"]["scalar_oids"][0]["oid"].endswith(".3.0")
     assert rec["metrics"]["snmp_interface_in_octets_total"]["column_oids"][0]["oid"] == "1.3.6.1.2.1.31.1.1.1.6"
     with pytest.raises(ValueError, match="ineligible"):

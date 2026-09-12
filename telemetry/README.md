@@ -4,6 +4,10 @@ The generator queries Nautobot for roles, platforms, primary management IPv4,
 location and resolved SNMP context. It selects eligible Cisco IOS-XE and Arista
 EOS network devices, excluding servers. It polls every 60 seconds through the
 device's management VRF using the existing read-only community and ACL.
+Initial poll phases are spread across the minute, with the receiver's standard
+five-second request timeout. The first unspread fleet cycle had one RR1 uptime
+request time out at three seconds; subsequent polls recovered. Errors remain
+visible instead of being treated as valid zero samples.
 
 This is the SNMP portion of the telemetry plan. It does not enable flow export,
 syslog, MetalLB or SuzieQ. Polling initiates outbound traffic from the Collector;
@@ -64,6 +68,13 @@ samples also carry interface name and index. SNMP uptime is in hundredths of a
 second, wrapping after about 497 days. IF-MIB errors/discards are 32-bit counters;
 rate queries account for resets but cannot reconstruct multiple wraps between
 polls. Interface speed in a virtual lab is not measured forwarding capacity.
+The `interface` label uses `ifDescr`, while `if_name` retains the short name and
+`if_type` identifies the layer. IOS MPLS-layer rows can share `ifName` with the
+physical interface but have different indices and descriptions. The September
+12 direct GET check returned `NoSuchInstance` for errors on SP1's MPLS-layer row
+and a real zero Counter32 on the physical row. Both rows' traffic is retained;
+do not sum them as separate physical links. Missing error counters remain absent
+and have a dedicated dashboard table.
 
 Samples go over native OTLP HTTP to the existing VictoriaMetrics instance for
 current queries/alerts, and to `snmp-metrics` for 547-day history. These are two
