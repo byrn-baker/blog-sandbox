@@ -42,6 +42,7 @@
       - dnsutils
     state: present
     update_cache: true
+    cache_valid_time: 3600
 
 - name: Deploy named.conf.options (forwarders, ACL, listen)
   ansible.builtin.template:
@@ -83,7 +84,7 @@
   notify: Reload bind
 
 - name: Validate BIND configuration
-  ansible.builtin.command: named-checkconf
+  ansible.builtin.command: named-checkconf -z
   changed_when: false
 
 - name: Ensure named is running
