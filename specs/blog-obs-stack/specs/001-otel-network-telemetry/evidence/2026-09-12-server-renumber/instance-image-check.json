@@ -1,0 +1,32 @@
+[
+  {
+    "node": "dcb-k3s-w1",
+    "pod": "instance-manager-0dde8a944b2a020b75470acc79d6a423",
+    "result": "e25b2f7e50176a909b9036e2c7598d8997b524a87d24af81d92b796e6dfb4897  /usr/local/bin/grpc_health_probe",
+    "rc": 0
+  },
+  {
+    "node": "dcc-k3s-w6",
+    "pod": "instance-manager-17459023f805b82dc2325032584721c3",
+    "result": "e25b2f7e50176a909b9036e2c7598d8997b524a87d24af81d92b796e6dfb4897  /usr/local/bin/grpc_health_probe",
+    "rc": 0
+  },
+  {
+    "node": "dcc-k3s-w5",
+    "pod": "instance-manager-49d022f8cd160387935de1fe6e2bcb9f",
+    "result": "e25b2f7e50176a909b9036e2c7598d8997b524a87d24af81d92b796e6dfb4897  /usr/local/bin/grpc_health_probe",
+    "rc": 0
+  },
+  {
+    "node": "dcc-k3s-w4",
+    "pod": "instance-manager-8c8a30b7f0d554c75e8eefbb1733839d",
+    "result": "e25b2f7e50176a909b9036e2c7598d8997b524a87d24af81d92b796e6dfb4897  /usr/local/bin/grpc_health_probe",
+    "rc": 0
+  },
+  {
+    "node": "dcb-k3s-w3",
+    "pod": "instance-manager-b7c65f4637ba533732b62cb65894f354",
+    "result": "e25b2f7e50176a909b9036e2c7598d8997b524a87d24af81d92b796e6dfb4897  /usr/local/bin/grpc_health_probe",
+    "rc": 0
+  }
+]

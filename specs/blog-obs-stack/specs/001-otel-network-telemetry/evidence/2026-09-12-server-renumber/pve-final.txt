@@ -1,0 +1,41 @@
+  data <130.22g 9.68  
+3001
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3001-disk-1,size=60G
+3002
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3002-disk-1,size=60G
+3003
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3003-disk-1,size=60G
+3004
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3004-disk-1,size=60G
+3005
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3005-disk-1,size=60G
+3006
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3006-disk-1,size=60G
+3007
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3007-disk-1,size=60G
+3008
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3008-disk-1,size=60G
+3009
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3009-disk-0,size=44544M
+3010
+qmpstatus: running
+status: running
+scsi0: vm_disk:vm-3010-disk-0,size=60G

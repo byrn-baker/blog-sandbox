@@ -11,7 +11,7 @@
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=24.7 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=12.2 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=17.6 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 12.237/18.177/24.653/5.082 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=91.2 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=63.7 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=26.0 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 25.960/60.269/91.170/26.730 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -19,7 +19,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=0.031 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=0.045 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=0.043 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2045ms\nrtt min/avg/max/mdev = 0.031/0.039/0.045/0.006 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=0.037 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=0.048 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=0.061 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2075ms\nrtt min/avg/max/mdev = 0.037/0.048/0.061/0.009 ms\n"
     },
     "expected": "10.100.0.53/24",
     "passed": true
@@ -32,11 +32,11 @@
     },
     "routes": {
       "rc": 0,
-      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.0.1\",\"flags\":[]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.10\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.63\",\"flags\":[]}]\n"
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.0.1\",\"flags\":[]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.2.0/24\",\"gateway\":\"10.42.2.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.3.0/24\",\"gateway\":\"10.42.3.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.4.0/24\",\"gateway\":\"10.42.4.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.5.0/24\",\"gateway\":\"10.42.5.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.6.0/24\",\"gateway\":\"10.42.6.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.7.0/24\",\"gateway\":\"10.42.7.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.8.0/24\",\"gateway\":\"10.42.8.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.10\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.63\",\"flags\":[]}]\n"
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=7.01 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=43.3 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=34.2 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 7.012/28.175/43.295/15.416 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=67.7 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=54.8 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=22.0 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2005ms\nrtt min/avg/max/mdev = 21.976/48.150/67.655/19.235 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -44,7 +44,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=12.3 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=47.5 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=31.9 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 12.251/30.543/47.473/14.411 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=22.8 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=15.5 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=2.36 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2004ms\nrtt min/avg/max/mdev = 2.358/13.543/22.814/8.460 ms\n"
     },
     "expected": "10.100.0.10/24",
     "passed": true
@@ -57,11 +57,11 @@
     },
     "routes": {
       "rc": 0,
-      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.11\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.64\",\"flags\":[]}]\n"
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.1.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.1.1\",\"flags\":[]},{\"dst\":\"10.42.2.0/24\",\"gateway\":\"10.42.2.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.3.0/24\",\"gateway\":\"10.42.3.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.4.0/24\",\"gateway\":\"10.42.4.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.5.0/24\",\"gateway\":\"10.42.5.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.6.0/24\",\"gateway\":\"10.42.6.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.7.0/24\",\"gateway\":\"10.42.7.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.8.0/24\",\"gateway\":\"10.42.8.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.11\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.64\",\"flags\":[]}]\n"
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=61.4 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=48.0 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=65.6 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 48.029/58.344/65.642/7.500 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=51.7 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=29.5 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=62.5 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2004ms\nrtt min/avg/max/mdev = 29.515/47.920/62.540/13.745 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -69,7 +69,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=15.4 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=29.6 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=29.7 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 15.423/24.915/29.685/6.712 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=4.63 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=4.40 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=98.6 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 4.400/35.877/98.604/44.354 ms\n"
     },
     "expected": "10.100.0.11/24",
     "passed": true
@@ -82,11 +82,11 @@
     },
     "routes": {
       "rc": 0,
-      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.12\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.65\",\"flags\":[]}]\n"
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.2.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.2.1\",\"flags\":[]},{\"dst\":\"10.42.3.0/24\",\"gateway\":\"10.42.3.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.4.0/24\",\"gateway\":\"10.42.4.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.5.0/24\",\"gateway\":\"10.42.5.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.6.0/24\",\"gateway\":\"10.42.6.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.7.0/24\",\"gateway\":\"10.42.7.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.8.0/24\",\"gateway\":\"10.42.8.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.12\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.65\",\"flags\":[]}]\n"
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=59.9 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=76.0 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=37.0 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 37.031/57.649/75.987/15.985 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=63.8 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=11.6 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=6.41 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2004ms\nrtt min/avg/max/mdev = 6.414/27.298/63.833/25.921 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -94,7 +94,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=3.36 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=13.0 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=22.2 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 3.363/12.878/22.224/7.700 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=8.94 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=17.5 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=31.5 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 8.940/19.300/31.509/9.305 ms\n"
     },
     "expected": "10.100.0.12/24",
     "passed": true
@@ -107,11 +107,11 @@
     },
     "routes": {
       "rc": 0,
-      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.20\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.66\",\"flags\":[]}]\n"
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.2.0/24\",\"gateway\":\"10.42.2.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.3.0/24\",\"gateway\":\"10.42.3.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.4.0/24\",\"gateway\":\"10.42.4.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.5.0/24\",\"gateway\":\"10.42.5.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.6.0/24\",\"gateway\":\"10.42.6.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.7.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.7.1\",\"flags\":[]},{\"dst\":\"10.42.8.0/24\",\"gateway\":\"10.42.8.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.20\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.66\",\"flags\":[]}]\n"
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=49.5 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=87.0 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=74.2 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 49.533/70.249/87.041/15.562 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=32.2 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=12.0 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=30.3 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 11.954/24.840/32.241/9.145 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -119,7 +119,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=80.9 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=121 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=132 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 80.871/111.317/132.131/22.007 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=85.7 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=126 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=78.2 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 78.167/96.732/126.356/21.170 ms\n"
     },
     "expected": "10.100.0.20/24",
     "passed": true
@@ -132,11 +132,11 @@
     },
     "routes": {
       "rc": 0,
-      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.21\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.67\",\"flags\":[]}]\n"
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.2.0/24\",\"gateway\":\"10.42.2.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.3.0/24\",\"gateway\":\"10.42.3.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.4.0/24\",\"gateway\":\"10.42.4.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.5.0/24\",\"gateway\":\"10.42.5.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.6.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.6.1\",\"flags\":[]},{\"dst\":\"10.42.7.0/24\",\"gateway\":\"10.42.7.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.8.0/24\",\"gateway\":\"10.42.8.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.21\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.67\",\"flags\":[]}]\n"
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=106 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=82.2 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=59.5 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 59.488/82.514/105.808/18.911 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=31.4 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=29.4 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=13.9 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2004ms\nrtt min/avg/max/mdev = 13.859/24.888/31.411/7.842 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -144,7 +144,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=138 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=166 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=189 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 138.443/164.207/188.662/20.522 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=96.7 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=108 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=94.5 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2004ms\nrtt min/avg/max/mdev = 94.454/99.602/107.627/5.749 ms\n"
     },
     "expected": "10.100.0.21/24",
     "passed": true
@@ -157,11 +157,11 @@
     },
     "routes": {
       "rc": 0,
-      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.22\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.68\",\"flags\":[]}]\n"
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.2.0/24\",\"gateway\":\"10.42.2.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.3.0/24\",\"gateway\":\"10.42.3.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.4.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.4.1\",\"flags\":[]},{\"dst\":\"10.42.5.0/24\",\"gateway\":\"10.42.5.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.6.0/24\",\"gateway\":\"10.42.6.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.7.0/24\",\"gateway\":\"10.42.7.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.8.0/24\",\"gateway\":\"10.42.8.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.22\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.68\",\"flags\":[]}]\n"
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=48.9 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=40.1 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=28.2 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 28.229/39.091/48.943/8.486 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=51.0 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=57.5 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=36.5 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 36.457/48.345/57.547/8.817 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -169,7 +169,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=152 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=101 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=147 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 100.579/133.132/151.910/23.109 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=133 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=104 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=128 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2001ms\nrtt min/avg/max/mdev = 103.783/121.875/133.363/12.947 ms\n"
     },
     "expected": "10.100.0.22/24",
     "passed": true
@@ -182,11 +182,11 @@
     },
     "routes": {
       "rc": 0,
-      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.30\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.69\",\"flags\":[]}]\n"
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.2.0/24\",\"gateway\":\"10.42.2.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.3.0/24\",\"gateway\":\"10.42.3.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.4.0/24\",\"gateway\":\"10.42.4.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.5.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.5.1\",\"flags\":[]},{\"dst\":\"10.42.6.0/24\",\"gateway\":\"10.42.6.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.7.0/24\",\"gateway\":\"10.42.7.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.8.0/24\",\"gateway\":\"10.42.8.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.30\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.69\",\"flags\":[]}]\n"
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=43.9 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=81.4 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=90.2 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 43.932/71.837/90.155/20.051 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=84.7 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=17.3 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=54.9 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 17.349/52.300/84.676/27.546 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -194,7 +194,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=135 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=160 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=141 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 135.453/145.623/160.422/10.705 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=104 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=156 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=109 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 103.789/123.087/156.117/23.465 ms\n"
     },
     "expected": "10.100.0.30/24",
     "passed": true
@@ -207,11 +207,11 @@
     },
     "routes": {
       "rc": 0,
-      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.31\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.70\",\"flags\":[]}]\n"
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.2.0/24\",\"gateway\":\"10.42.2.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.3.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.3.1\",\"flags\":[]},{\"dst\":\"10.42.4.0/24\",\"gateway\":\"10.42.4.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.5.0/24\",\"gateway\":\"10.42.5.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.6.0/24\",\"gateway\":\"10.42.6.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.7.0/24\",\"gateway\":\"10.42.7.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.8.0/24\",\"gateway\":\"10.42.8.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.31\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.70\",\"flags\":[]}]\n"
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=27.6 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=37.3 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=29.1 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 27.647/31.337/37.259/4.229 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=45.6 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=45.9 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=98.6 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 45.581/63.337/98.574/24.916 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -219,7 +219,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=162 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=190 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=162 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 161.787/171.419/190.403/13.423 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=103 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=91.5 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=88.8 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 88.806/94.573/103.428/6.356 ms\n"
     },
     "expected": "10.100.0.31/24",
     "passed": true
@@ -232,11 +232,11 @@
     },
     "routes": {
       "rc": 0,
-      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.32\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.72\",\"flags\":[]}]\n"
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.2.0/24\",\"gateway\":\"10.42.2.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.3.0/24\",\"gateway\":\"10.42.3.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.4.0/24\",\"gateway\":\"10.42.4.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.5.0/24\",\"gateway\":\"10.42.5.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.6.0/24\",\"gateway\":\"10.42.6.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.7.0/24\",\"gateway\":\"10.42.7.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.42.8.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.8.1\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.32\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.72\",\"flags\":[]}]\n"
     },
     "gateway": {
       "rc": 0,
-      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=29.7 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=27.7 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=57.6 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2004ms\nrtt min/avg/max/mdev = 27.698/38.310/57.580/13.648 ms\n"
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=59.2 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=77.2 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=28.8 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 28.760/55.045/77.184/19.985 ms\n"
     },
     "dns": {
       "rc": 0,
@@ -244,7 +244,7 @@
     },
     "jumbo": {
       "rc": 0,
-      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=148 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=128 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=153 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 128.094/142.928/153.023/10.714 ms\n"
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=134 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=99.2 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=144 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 99.184/125.737/144.200/19.247 ms\n"
     },
     "expected": "10.100.0.32/24",
     "passed": true

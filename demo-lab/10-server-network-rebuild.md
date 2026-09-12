@@ -91,7 +91,7 @@ guests still had free space inside their filesystems. Longhorn's separate
 50 GiB disks were already on `vm_disk`, which had approximately 10.6 TiB free.
 The ninth K3s node, VM 3010, already had its OS disk on `vm_disk` too.
 
-Recovery moves the affected OS disks to `vm_disk` and retains the existing
+Recovery moved the affected OS disks to `vm_disk` and retains the existing
 VMs, network interfaces, disk contents, and data disks. VM identity is checked
 against Nautobot's management addresses and Proxmox's `ipconfig0` and `net0`,
 since several hypervisor display names predate the current K3s roles. The
@@ -105,8 +105,29 @@ qm start <verified-vmid>
 ```
 
 The move deletes the original volume only after its copy succeeds. BIND was
-moved first to release space; the remaining eight moves run two at a time.
+moved first to release space; the remaining eight moves ran two at a time.
 Do not run this against unrelated VMs or delete the shared template volumes.
 For future lab VM provisioning, place OS disks on `vm_disk` as well as the
 Longhorn data disks. Guest free-space monitoring alone cannot detect an
 exhausted hypervisor thin pool.
+
+
+All ten lab VMs subsequently reported `qmpstatus: running`, with their OS disks
+on `vm_disk`. The original thin pool fell to 9.68% usage. The final network play
+passed on all ten hosts and the registry play passed on all nine K3s nodes.
+
+One extracted container image on DCB-k3s-w2 contained a zero-byte
+`/usr/local/bin/grpc_health_probe`. The other five Longhorn instance managers
+had the same intact 14,072,256-byte executable. Restarting the affected pod
+reused the damaged image and did not fix its replica health checks. We drained
+that worker, stopped K3s, ran `k3s-killall.sh`, cleared only
+`/var/lib/rancher/k3s/agent/containerd`, and restarted the agent to extract clean
+images. The separate Longhorn data disk was retained. The timing is consistent
+with the full-pool interruption, but we did not trace the original failed write
+to this individual file.
+
+After the VM moves, all ten hosts again passed addressing, gateway, BIND DNS,
+and 9000-byte IPv4 DF ping checks. Three cross-site pairs each transferred
+1 MiB in both directions with MSS 8948, matching SHA-256 hashes and zero
+retransmissions across the six streams. Each sender was limited to 125,000
+bytes per second, so this verifies delivery rather than maximum throughput.
