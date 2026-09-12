@@ -131,3 +131,30 @@ and 9000-byte IPv4 DF ping checks. Three cross-site pairs each transferred
 1 MiB in both directions with MSS 8948, matching SHA-256 hashes and zero
 retransmissions across the six streams. Each sender was limited to 125,000
 bytes per second, so this verifies delivery rather than maximum throughput.
+
+The low-rate TCP result does not describe storage traffic under load. While
+Longhorn formatted volumes and rebuilt replicas, an actual cross-site replica
+connection had roughly 3 MiB retransmitted out of 31 MiB sent, with a TCP RTT
+estimate near 734 ms. Transfers were progressing, but this remains a performance
+limitation to investigate. All 13 running CML router QEMU processes still used
+the patched executable SHA-256
+`605b893d815e96962cca4a8960b5a32289745721774e2db40a4c5876c2446a3e`.
+The nine leaves retained GRO disabled on all 90 data NICs and saved handlers.
+
+
+Grafana's default liveness probe restarted the fresh database during migrations.
+The pinned Grafana subchart exposes liveness and readiness settings, but no
+main-container startup probe. Commit `53a93bd` in blog-sandbox-argo-cd therefore
+sets a 1,800-second initial liveness delay and a 2,100-second deployment progress
+deadline, while leaving readiness active. It also uses `Recreate` for the single
+Grafana instance and its RWO database. This allows initialization to finish; it
+does not improve the underlying storage latency. A future chart with a startup
+probe can gate liveness until initialization succeeds instead of using a fixed
+delay. See the [Kubernetes probe documentation](https://kubernetes.io/docs/concepts/workloads/pods/probes/).
+
+The initial strategy update was rejected because server-side apply retained
+Kubernetes' defaulted `rollingUpdate` fields alongside `Recreate`. The follow-up
+Argo repository commit `a07291e` explicitly clears those fields and selects
+client-side apply for this Deployment only. A server dry run accepted that
+manifest, and the live Deployment showed `Recreate` with the 2,100-second
+deadline after Argo CD applied it. Other workloads retain server-side apply.
