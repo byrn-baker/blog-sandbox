@@ -26,6 +26,7 @@
     k3s_common_args: >-
       {% for c in k3s_disable %}--disable {{ c }} {% endfor %}
       --tls-san {{ k3s_api_host }}
+      --tls-san {{ ansible_host }}
       --node-ip {{ vlan100_ipv4 }}
       --node-label {{ k3s_node_labels | default('') }}
       --node-taint {{ k3s_control_plane_taint }}

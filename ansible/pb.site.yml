@@ -125,7 +125,7 @@
     - name: Save kubeconfig locally with the reachable API address
       no_log: true
       ansible.builtin.copy:
-        content: "{{ k3s_kubeconfig.content | b64decode | replace('127.0.0.1', k3s_api_host) }}"
+        content: "{{ k3s_kubeconfig.content | b64decode | replace('127.0.0.1', ansible_host) }}"
         dest: "{{ kubeconfig_local_path }}"
         mode: "0600"
       delegate_to: localhost
