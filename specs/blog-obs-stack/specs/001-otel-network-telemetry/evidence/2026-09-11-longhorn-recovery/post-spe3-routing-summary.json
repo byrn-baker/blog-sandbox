@@ -1,0 +1,7 @@
+{
+  "devices": 28,
+  "reachable": 28,
+  "isis_up": 28,
+  "eos_underlay": 42,
+  "evpn": 60
+}

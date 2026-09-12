@@ -1,0 +1,6 @@
+Four packet captures ready
+client 1 {"sent": 262144, "send_seconds": 37.82860596495448, "send_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6", "mode": "client", "local": "192.168.100.11", "peer": "192.168.100.20", "requested_mss": 1200, "negotiated_mss": 1188, "total_retrans": 117, "errors": ["receive: ConnectionResetError: [Errno 104] Connection reset by peer"], "ok": false}
+
+server 1 {"mode": "server", "local": "192.168.100.20", "peer": "192.168.100.11", "requested_mss": 1200, "negotiated_mss": 1188, "total_retrans": 95, "errors": ["send: TimeoutError: global deadline", "receive: TimeoutError: global deadline"], "ok": false}
+
+CAPTURES_COMPLETE

@@ -1,0 +1,26 @@
+[
+  {
+    "bytes_each_direction": 1048576,
+    "seconds": 15.105,
+    "sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+    "ok": true,
+    "source": "DCB-k3s-w1",
+    "destination": "DCA-k3s-m1"
+  },
+  {
+    "bytes_each_direction": 1048576,
+    "seconds": 42.524,
+    "sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+    "ok": true,
+    "source": "DCC-k3s-w4",
+    "destination": "DCA-k3s-m1"
+  },
+  {
+    "bytes_each_direction": 1048576,
+    "seconds": 48.462,
+    "sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+    "ok": true,
+    "source": "DCB-k3s-w1",
+    "destination": "DCC-k3s-w4"
+  }
+]

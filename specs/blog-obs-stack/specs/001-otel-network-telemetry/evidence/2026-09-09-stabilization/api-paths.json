@@ -1,0 +1,1867 @@
+{
+  "at": "2026-09-09T01:04:26.986777+00:00",
+  "results": [
+    {
+      "source": "192.168.3.63",
+      "probes": [
+        {
+          "target": "192.168.100.10",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000411 0.003651 0.005121"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000146 0.003288 0.003921"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000131 0.003238 0.003975"
+            }
+          ]
+        },
+        {
+          "target": "192.168.100.11",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.008772 0.316999 0.330747"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.011365 0.344875 0.350173"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.002202 0.022131 0.035848"
+            }
+          ]
+        },
+        {
+          "target": "192.168.100.12",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.003454 0.425194 0.438323"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.004882 0.425462 0.432587"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.002093 0.016459 0.025636"
+            }
+          ]
+        },
+        {
+          "target": "192.168.3.63",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000134 0.003409 0.004182"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000137 0.003385 0.004202"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000182 0.003381 0.004172"
+            }
+          ]
+        },
+        {
+          "target": "192.168.3.64",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000359 0.003609 0.004475"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000310 0.003710 0.004571"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000321 0.003514 0.004384"
+            }
+          ]
+        },
+        {
+          "target": "192.168.3.65",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000301 0.003405 0.004244"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000253 0.003632 0.004396"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000362 0.003689 0.004512"
+            }
+          ]
+        }
+      ],
+      "routes": "default via 192.168.100.1 dev bond0 proto static \n10.42.1.0/24 via 10.42.1.0 dev flannel.1 onlink \n10.42.2.0/24 via 10.42.2.0 dev flannel.1 onlink \n10.42.3.0/24 via 10.42.3.0 dev flannel.1 onlink \n10.42.4.0/24 via 10.42.4.0 dev flannel.1 onlink \n10.42.5.0/24 via 10.42.5.0 dev flannel.1 onlink \n10.42.6.0/24 via 10.42.6.0 dev flannel.1 onlink \n10.42.7.0/24 via 10.42.7.0 dev flannel.1 onlink \n10.42.8.0/24 via 10.42.8.0 dev flannel.1 onlink \n192.168.3.0/24 dev eth0 proto kernel scope link src 192.168.3.63 \n192.168.100.0/24 dev bond0 proto kernel scope link src 192.168.100.10 \n",
+      "links": [
+        {
+          "ifindex": 1,
+          "ifname": "lo",
+          "flags": [
+            "LOOPBACK",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 65536,
+          "qdisc": "noqueue",
+          "operstate": "UNKNOWN",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "loopback",
+          "address": "00:00:00:00:00:00",
+          "broadcast": "00:00:00:00:00:00",
+          "stats64": {
+            "rx": {
+              "bytes": 9037849594,
+              "packets": 35361505,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 9037849594,
+              "packets": 35361505,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 2,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 9000,
+          "qdisc": "fq_codel",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "bc:24:11:39:00:0b",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 11446050,
+              "packets": 165041,
+              "errors": 0,
+              "dropped": 1728,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 8531411,
+              "packets": 7875,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          },
+          "altnames": [
+            "enp0s18",
+            "enxbc241139000b"
+          ]
+        },
+        {
+          "ifindex": 3,
+          "ifname": "ens19",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "SLAVE",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1400,
+          "qdisc": "fq_codel",
+          "master": "bond0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "02:00:00:00:01:0a",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "permaddr": "bc:24:11:f9:b5:98",
+          "stats64": {
+            "rx": {
+              "bytes": 2620209997,
+              "packets": 13021173,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 4355576421,
+              "packets": 11759356,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          },
+          "altnames": [
+            "enp0s19",
+            "enxbc2411f9b598"
+          ]
+        },
+        {
+          "ifindex": 4,
+          "ifname": "ens20",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "SLAVE",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1400,
+          "qdisc": "fq_codel",
+          "master": "bond0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "02:00:00:00:01:0a",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "permaddr": "bc:24:11:a6:21:99",
+          "stats64": {
+            "rx": {
+              "bytes": 2253045812,
+              "packets": 11739402,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 6868347172,
+              "packets": 14130876,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          },
+          "altnames": [
+            "enp0s20",
+            "enxbc2411a62199"
+          ]
+        },
+        {
+          "ifindex": 5,
+          "ifname": "bond0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "MASTER",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1400,
+          "qdisc": "noqueue",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "02:00:00:00:01:0a",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 4873255809,
+              "packets": 24760575,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 11223923593,
+              "packets": 25890232,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 6,
+          "ifname": "flannel.1",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "operstate": "UNKNOWN",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "06:c7:00:f1:22:25",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 108361511,
+              "packets": 233057,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 93975090,
+              "packets": 233814,
+              "errors": 0,
+              "dropped": 5,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "source": "192.168.3.67",
+      "probes": [
+        {
+          "target": "192.168.100.10",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.045139 0.913378 1.007734"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.033611 0.844493 0.912930"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.028239 0.883055 0.954119"
+            }
+          ]
+        },
+        {
+          "target": "192.168.100.11",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.029840 0.167559 0.223547"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.039769 0.214646 0.285221"
+            },
+            {
+              "rc": 28,
+              "timings": "000 0.000000 0.000000 2.002488"
+            }
+          ]
+        },
+        {
+          "target": "192.168.100.12",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.032294 0.158630 0.212279"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.040437 0.425365 0.491149"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.039595 0.215561 0.263406"
+            }
+          ]
+        },
+        {
+          "target": "192.168.3.63",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000344 0.003675 0.004476"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000307 0.003409 0.004398"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000352 0.004013 0.004723"
+            }
+          ]
+        },
+        {
+          "target": "192.168.3.64",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000284 0.003401 0.004317"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000321 0.003717 0.004637"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000353 0.004125 0.005116"
+            }
+          ]
+        },
+        {
+          "target": "192.168.3.65",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000410 0.004355 0.005281"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000297 0.003834 0.004604"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000345 0.003783 0.004618"
+            }
+          ]
+        }
+      ],
+      "routes": "default via 192.168.100.1 dev bond0 proto static \n10.42.0.0/24 via 10.42.0.0 dev flannel.1 onlink \n10.42.1.0/24 via 10.42.1.0 dev flannel.1 onlink \n10.42.2.0/24 via 10.42.2.0 dev flannel.1 onlink \n10.42.3.0/24 via 10.42.3.0 dev flannel.1 onlink \n10.42.4.0/24 via 10.42.4.0 dev flannel.1 onlink \n10.42.5.0/24 via 10.42.5.0 dev flannel.1 onlink \n10.42.6.0/24 dev cni0 proto kernel scope link src 10.42.6.1 \n10.42.7.0/24 via 10.42.7.0 dev flannel.1 onlink \n10.42.8.0/24 via 10.42.8.0 dev flannel.1 onlink \n192.168.3.0/24 dev eth0 proto kernel scope link src 192.168.3.67 \n192.168.100.0/24 dev bond0 proto kernel scope link src 192.168.100.21 \n",
+      "links": [
+        {
+          "ifindex": 1,
+          "ifname": "lo",
+          "flags": [
+            "LOOPBACK",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 65536,
+          "qdisc": "noqueue",
+          "operstate": "UNKNOWN",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "loopback",
+          "address": "00:00:00:00:00:00",
+          "broadcast": "00:00:00:00:00:00",
+          "stats64": {
+            "rx": {
+              "bytes": 474613090,
+              "packets": 1326947,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 474613090,
+              "packets": 1326947,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 2,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 9000,
+          "qdisc": "fq_codel",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "bc:24:11:dd:4c:19",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 138429249,
+              "packets": 161451,
+              "errors": 0,
+              "dropped": 1727,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 348196,
+              "packets": 3484,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          },
+          "altnames": [
+            "enp0s18",
+            "enxbc2411dd4c19"
+          ]
+        },
+        {
+          "ifindex": 3,
+          "ifname": "ens19",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "SLAVE",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1400,
+          "qdisc": "fq_codel",
+          "master": "bond0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "02:00:00:00:01:15",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "permaddr": "bc:24:11:35:0c:f6",
+          "stats64": {
+            "rx": {
+              "bytes": 3663289126,
+              "packets": 7567457,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 7512930185,
+              "packets": 10067316,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          },
+          "altnames": [
+            "enp0s19",
+            "enxbc2411350cf6"
+          ]
+        },
+        {
+          "ifindex": 4,
+          "ifname": "ens20",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "SLAVE",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1400,
+          "qdisc": "fq_codel",
+          "master": "bond0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "02:00:00:00:01:15",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "permaddr": "bc:24:11:0b:6c:07",
+          "stats64": {
+            "rx": {
+              "bytes": 5428265558,
+              "packets": 9271994,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 7376367534,
+              "packets": 9436635,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          },
+          "altnames": [
+            "enp0s20",
+            "enxbc24110b6c07"
+          ]
+        },
+        {
+          "ifindex": 5,
+          "ifname": "bond0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "MASTER",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1400,
+          "qdisc": "noqueue",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "02:00:00:00:01:15",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 9091546641,
+              "packets": 16839366,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 14889297719,
+              "packets": 19503951,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 6,
+          "ifname": "flannel.1",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "operstate": "UNKNOWN",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "1a:6e:e6:cf:b7:0b",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 4957906609,
+              "packets": 11583412,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 12322368550,
+              "packets": 10171602,
+              "errors": 0,
+              "dropped": 5,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 7,
+          "ifname": "cni0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "4e:5c:c6:00:91:35",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 13387199249,
+              "packets": 15353682,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 714
+            },
+            "tx": {
+              "bytes": 10140584886,
+              "packets": 17265088,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 8,
+          "link_index": 2,
+          "ifname": "vethcd18f658",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "6a:24:c9:b8:93:c1",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "stats64": {
+            "rx": {
+              "bytes": 434772649,
+              "packets": 2616973,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 2082175496,
+              "packets": 2647524,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 9,
+          "link_index": 2,
+          "ifname": "veth1e4de7b7",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "fe:57:ed:85:47:ce",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 1,
+          "stats64": {
+            "rx": {
+              "bytes": 15110899,
+              "packets": 104650,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 24485631,
+              "packets": 103430,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 10,
+          "link_index": 2,
+          "ifname": "vethc1dc216c",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "e6:51:6a:79:fe:8c",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 2,
+          "stats64": {
+            "rx": {
+              "bytes": 4812,
+              "packets": 68,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 52666,
+              "packets": 739,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 11,
+          "link_index": 2,
+          "ifname": "vethd4685edf",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "62:14:03:86:b3:6e",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 3,
+          "stats64": {
+            "rx": {
+              "bytes": 18916339,
+              "packets": 199390,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 19327170,
+              "packets": 200903,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 12,
+          "link_index": 2,
+          "ifname": "veth1ee23a38",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "ea:aa:3b:95:5d:fb",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 4,
+          "stats64": {
+            "rx": {
+              "bytes": 15610741,
+              "packets": 124501,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 44698687,
+              "packets": 124252,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 14,
+          "link_index": 2,
+          "ifname": "veth5c09a6e3",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "4e:51:9b:dc:ec:c4",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 5,
+          "stats64": {
+            "rx": {
+              "bytes": 5909224414,
+              "packets": 4575052,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 4554517018,
+              "packets": 6383404,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 25,
+          "link_index": 2,
+          "ifname": "vetha957b0be",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "ce:c2:27:e2:e7:72",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 6,
+          "stats64": {
+            "rx": {
+              "bytes": 4686486900,
+              "packets": 2872338,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 693440226,
+              "packets": 3012051,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 29,
+          "link_index": 2,
+          "ifname": "vetha786ac01",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "76:12:ca:0c:44:84",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 7,
+          "stats64": {
+            "rx": {
+              "bytes": 2225901030,
+              "packets": 4204977,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 1414338921,
+              "packets": 3733945,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 30,
+          "link_index": 2,
+          "ifname": "vethc0899468",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "4a:21:fb:b4:af:4e",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 8,
+          "stats64": {
+            "rx": {
+              "bytes": 327654984,
+              "packets": 857470,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 332965451,
+              "packets": 884213,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "source": "192.168.3.69",
+      "probes": [
+        {
+          "target": "192.168.100.10",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.027704 0.760817 0.819032"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.026688 0.696121 0.735050"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.020604 0.659280 0.699769"
+            }
+          ]
+        },
+        {
+          "target": "192.168.100.11",
+          "samples": [
+            {
+              "rc": 28,
+              "timings": "000 0.000000 0.000000 2.002407"
+            },
+            {
+              "rc": 28,
+              "timings": "000 0.000000 0.000000 2.002669"
+            },
+            {
+              "rc": 28,
+              "timings": "000 0.000000 0.000000 2.001907"
+            }
+          ]
+        },
+        {
+          "target": "192.168.100.12",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.021702 1.020124 1.061815"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.019514 1.144370 1.399352"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.152867 1.537448 1.815254"
+            }
+          ]
+        },
+        {
+          "target": "192.168.3.63",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000549 0.004048 0.005083"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000331 0.003718 0.004538"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000268 0.003622 0.004592"
+            }
+          ]
+        },
+        {
+          "target": "192.168.3.64",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000459 0.003616 0.004339"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000236 0.003199 0.003860"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000250 0.003540 0.004356"
+            }
+          ]
+        },
+        {
+          "target": "192.168.3.65",
+          "samples": [
+            {
+              "rc": 0,
+              "timings": "401 0.000529 0.004279 0.005214"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000353 0.004983 0.005882"
+            },
+            {
+              "rc": 0,
+              "timings": "401 0.000278 0.003821 0.004558"
+            }
+          ]
+        }
+      ],
+      "routes": "default via 192.168.100.1 dev bond0 proto static \n10.42.0.0/24 via 10.42.0.0 dev flannel.1 onlink \n10.42.1.0/24 via 10.42.1.0 dev flannel.1 onlink \n10.42.2.0/24 via 10.42.2.0 dev flannel.1 onlink \n10.42.3.0/24 via 10.42.3.0 dev flannel.1 onlink \n10.42.4.0/24 via 10.42.4.0 dev flannel.1 onlink \n10.42.5.0/24 via 10.42.5.0 dev flannel.1 onlink \n10.42.6.0/24 via 10.42.6.0 dev flannel.1 onlink \n10.42.7.0/24 dev cni0 proto kernel scope link src 10.42.7.1 \n10.42.8.0/24 via 10.42.8.0 dev flannel.1 onlink \n192.168.3.0/24 dev eth0 proto kernel scope link src 192.168.3.69 \n192.168.100.0/24 dev bond0 proto kernel scope link src 192.168.100.30 \n",
+      "links": [
+        {
+          "ifindex": 1,
+          "ifname": "lo",
+          "flags": [
+            "LOOPBACK",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 65536,
+          "qdisc": "noqueue",
+          "operstate": "UNKNOWN",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "loopback",
+          "address": "00:00:00:00:00:00",
+          "broadcast": "00:00:00:00:00:00",
+          "stats64": {
+            "rx": {
+              "bytes": 457552521,
+              "packets": 1307602,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 457552521,
+              "packets": 1307602,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 2,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 9000,
+          "qdisc": "fq_codel",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "bc:24:11:75:8a:73",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 421039989,
+              "packets": 181278,
+              "errors": 0,
+              "dropped": 1728,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 1196796,
+              "packets": 17776,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          },
+          "altnames": [
+            "enp0s18",
+            "enxbc2411758a73"
+          ]
+        },
+        {
+          "ifindex": 3,
+          "ifname": "ens19",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "SLAVE",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1400,
+          "qdisc": "fq_codel",
+          "master": "bond0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "02:00:00:00:01:1e",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "permaddr": "bc:24:11:6f:f3:b1",
+          "stats64": {
+            "rx": {
+              "bytes": 31584813808,
+              "packets": 26675807,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 5113386680,
+              "packets": 19011661,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          },
+          "altnames": [
+            "enp0s19",
+            "enxbc24116ff3b1"
+          ]
+        },
+        {
+          "ifindex": 4,
+          "ifname": "ens20",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "SLAVE",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1400,
+          "qdisc": "fq_codel",
+          "master": "bond0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "02:00:00:00:01:1e",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "permaddr": "bc:24:11:bc:aa:c1",
+          "stats64": {
+            "rx": {
+              "bytes": 33192067352,
+              "packets": 27177545,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 4825778039,
+              "packets": 18961644,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          },
+          "altnames": [
+            "enp0s20",
+            "enxbc2411bcaac1"
+          ]
+        },
+        {
+          "ifindex": 5,
+          "ifname": "bond0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "MASTER",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1400,
+          "qdisc": "noqueue",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "02:00:00:00:01:1e",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 64776880327,
+              "packets": 53853345,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 9939164719,
+              "packets": 37973305,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 6,
+          "ifname": "flannel.1",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "operstate": "UNKNOWN",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "d2:66:ad:10:8a:45",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 57326010249,
+              "packets": 48097946,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 5923071298,
+              "packets": 30460171,
+              "errors": 0,
+              "dropped": 5,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 7,
+          "ifname": "cni0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "7e:9c:fc:3c:e7:cf",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "stats64": {
+            "rx": {
+              "bytes": 6785731538,
+              "packets": 35912762,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 665
+            },
+            "tx": {
+              "bytes": 63129628094,
+              "packets": 53769362,
+              "errors": 0,
+              "dropped": 2,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 8,
+          "link_index": 2,
+          "ifname": "veth8a958608",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "2a:5e:b6:94:f0:a9",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "stats64": {
+            "rx": {
+              "bytes": 22311782,
+              "packets": 243296,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 48278705,
+              "packets": 241654,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 9,
+          "link_index": 2,
+          "ifname": "vethae861f1e",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "ee:c2:88:c6:d2:2d",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 1,
+          "stats64": {
+            "rx": {
+              "bytes": 192442784,
+              "packets": 864050,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 296275345,
+              "packets": 1086066,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 10,
+          "link_index": 2,
+          "ifname": "vethc2848da1",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "ea:a1:ff:92:d6:7a",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 2,
+          "stats64": {
+            "rx": {
+              "bytes": 18841530,
+              "packets": 143001,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 53183528,
+              "packets": 140819,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 11,
+          "link_index": 2,
+          "ifname": "veth5897f376",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "0e:9a:7a:23:ce:a3",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 3,
+          "stats64": {
+            "rx": {
+              "bytes": 6263384,
+              "packets": 68683,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 19016724,
+              "packets": 69653,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 12,
+          "link_index": 2,
+          "ifname": "vethd5e613e3",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "ca:94:b3:71:c9:2c",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 4,
+          "stats64": {
+            "rx": {
+              "bytes": 14464804,
+              "packets": 104227,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 24685594,
+              "packets": 110174,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 13,
+          "link_index": 2,
+          "ifname": "vethbd078391",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "1e:50:dc:69:89:78",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 5,
+          "stats64": {
+            "rx": {
+              "bytes": 18642804,
+              "packets": 118735,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 26399921,
+              "packets": 109212,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 14,
+          "link_index": 2,
+          "ifname": "vethb15d59ad",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "de:2f:1b:69:21:af",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 6,
+          "stats64": {
+            "rx": {
+              "bytes": 5844616170,
+              "packets": 31380105,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 58999018910,
+              "packets": 48988706,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 15,
+          "link_index": 2,
+          "ifname": "vethc2d41020",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "4a:25:21:ec:99:c2",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 7,
+          "stats64": {
+            "rx": {
+              "bytes": 4742,
+              "packets": 67,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 45564,
+              "packets": 648,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 16,
+          "link_index": 2,
+          "ifname": "veth6edffc3b",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "9a:1e:57:d3:fc:03",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 8,
+          "stats64": {
+            "rx": {
+              "bytes": 787447441,
+              "packets": 3564209,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 2147468767,
+              "packets": 3508331,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        },
+        {
+          "ifindex": 17,
+          "link_index": 2,
+          "ifname": "veth642b1bde",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "mtu": 1350,
+          "qdisc": "noqueue",
+          "master": "cni0",
+          "operstate": "UP",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "link_type": "ether",
+          "address": "2e:4f:28:9a:a6:d7",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 9,
+          "stats64": {
+            "rx": {
+              "bytes": 658798334,
+              "packets": 1804477,
+              "errors": 0,
+              "dropped": 0,
+              "over_errors": 0,
+              "multicast": 0
+            },
+            "tx": {
+              "bytes": 1791036895,
+              "packets": 1898682,
+              "errors": 0,
+              "dropped": 0,
+              "carrier_errors": 0,
+              "collisions": 0
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

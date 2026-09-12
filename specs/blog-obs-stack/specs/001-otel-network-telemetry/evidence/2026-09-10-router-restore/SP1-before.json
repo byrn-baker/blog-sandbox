@@ -1,0 +1,12 @@
+{
+  "name": "SP1",
+  "id": "d735794d-f868-4c63-a45f-396dd78eace6",
+  "ip": "192.168.3.53",
+  "at": "2026-09-10T02:54:01.031735+00:00",
+  "commands": {},
+  "ok": false,
+  "error": "NetmikoTimeoutException",
+  "signals": [
+    "TCP connection"
+  ]
+}

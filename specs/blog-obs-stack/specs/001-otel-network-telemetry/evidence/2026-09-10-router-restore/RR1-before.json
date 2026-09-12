@@ -1,0 +1,16 @@
+{
+  "name": "RR1",
+  "id": "2cf22f7b-6704-49c3-ab06-9a1c73c55816",
+  "ip": "192.168.3.51",
+  "at": "2026-09-10T02:53:47.223785+00:00",
+  "commands": {
+    "show version | include uptime|Cisco IOS XE Software": "Cisco IOS XE Software, Version 17.15.01a\nRR1 uptime is 20 minutes",
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.51    YES TFTP   up                    up      \nGigabitEthernet2       unassigned      YES unset  administratively down down    ",
+    "show interfaces | include ^GigabitEthernet|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, ",
+    "show isis neighbors": "",
+    "show isis interface": "% Incomplete command.\n",
+    "show ip route summary": "IP routing table name is default (0x0)\nIP routing table maximum-paths is 32\nRoute Source    Networks    Subnets     Replicates  Overhead    Memory (bytes)\nconnected       0           0           0           0           0\nstatic          0           0           0           0           0\napplication     0           0           0           0           0\ninternal        0                                               40\nTotal           0           0           0           0           40\n",
+    "show platform software vnic-if interface-mapping": "-------------------------------------------------------------\n Interface Name        Driver Name         Mac Addr\n-------------------------------------------------------------\n GigabitEthernet2       net_virtio         5254.008b.1b4b \n GigabitEthernet1       net_virtio         5254.00d1.2d58 \n-------------------------------------------------------------\n"
+  },
+  "ok": true
+}

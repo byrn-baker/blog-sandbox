@@ -1,0 +1,45 @@
+{
+  "name": "SPE2",
+  "started": "2026-09-09T03:08:54.782385+00:00",
+  "os": "iosxe",
+  "commands": [
+    {
+      "command": "show platform hardware throughput level",
+      "at": "2026-09-09T03:09:00.369830+00:00",
+      "output": "The current throughput level is 20000 kb/s",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active datapath utilization",
+      "at": "2026-09-09T03:09:02.756197+00:00",
+      "output": "  CPP 0: Subdev 0            5 secs        1 min        5 min       60 min\r\nInput:  Priority (pps)            0            0            0            0\r\n                 (bps)            0            0            0            0\r\n    Non-Priority (pps)          732          805          808          649\r\n                 (bps)      4731968      5254072      5203152      3925064\r\n           Total (pps)          732          805          808          649\r\n                 (bps)      4731968      5254072      5203152      3925064\r\nOutput: Priority (pps)            0            0            0            0\r\n                 (bps)            0            0            0            0\r\n    Non-Priority (pps)          728          803          806          648\r\n                 (bps)      4741664      5270776      5218880      3937024\r\n           Total (pps)          728          803          806          648\r\n                 (bps)      4741664      5270776      5218880      3937024\r\nProcessing: Load (pct)           21           21           22           19",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active statistics drop",
+      "at": "2026-09-09T03:09:06.403570+00:00",
+      "output": "Last clearing of QFP drops statistics : never\r\n\r\n-------------------------------------------------------------------------\r\nGlobal Drop Stats                         Packets                  Octets  \r\n-------------------------------------------------------------------------\r\nDisabled                                        3                     180  \r\nIpTtlExceeded                                 109                    9343  \r\nIpv4NoRoute                                    12                     561  \r\nIpv4Unclassified                              268                  149129  \r\nIpv6NoRoute                                     2                     112  \r\nMplsFragReq                                  9546                14447424  \r\nMplsUnclassified                               31                   40130  \r\nUnconfiguredIpv4Fia                         10390                 1340108  \r\nUnconfiguredIpv6Fia                          2313                  186296",
+      "ok": true
+    },
+    {
+      "command": "show ip ospf neighbor",
+      "at": "2026-09-09T03:09:10.401705+00:00",
+      "output": "",
+      "ok": true
+    },
+    {
+      "command": "show ip bgp summary",
+      "at": "2026-09-09T03:09:12.049048+00:00",
+      "output": "",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active statistics drop",
+      "at": "2026-09-09T03:09:22.746877+00:00",
+      "output": "Last clearing of QFP drops statistics : never\r\n\r\n-------------------------------------------------------------------------\r\nGlobal Drop Stats                         Packets                  Octets  \r\n-------------------------------------------------------------------------\r\nDisabled                                        3                     180  \r\nIpTtlExceeded                                 109                    9343  \r\nIpv4NoRoute                                    12                     561  \r\nIpv4Unclassified                              268                  149129  \r\nIpv6NoRoute                                     2                     112  \r\nMplsFragReq                                  9546                14447424  \r\nMplsUnclassified                               31                   40130  \r\nUnconfiguredIpv4Fia                         10390                 1340108  \r\nUnconfiguredIpv6Fia                          2313                  186296",
+      "ok": true
+    }
+  ],
+  "connected": true,
+  "finished": "2026-09-09T03:09:35.693112+00:00"
+}

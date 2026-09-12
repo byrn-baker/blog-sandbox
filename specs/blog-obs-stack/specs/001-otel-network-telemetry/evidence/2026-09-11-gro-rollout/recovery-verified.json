@@ -1,0 +1,11 @@
+[
+  {
+    "name": "DCC-Leaf02",
+    "device_id": "765a141a-457d-40b7-abb4-f7a500cc8908",
+    "commands": "event-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "backup_at": "2026-09-11 21:47:09.909594+00:00",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_handler_count": 10,
+    "plan_id": "1fa47d17-f34f-499a-8ed6-c9f43e55c9c6"
+  }
+]

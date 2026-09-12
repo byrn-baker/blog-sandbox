@@ -1,0 +1,163 @@
+{
+  "name": "CE1",
+  "at": "2026-09-10T04:40:31.064281+00:00",
+  "checks": [
+    {
+      "interface": "GigabitEthernet2",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet3",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet4",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet5",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet6",
+      "expected_mtu": 9216,
+      "expected_enabled": false,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": false,
+      "startup_mtu": 9216,
+      "startup_enabled": false,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet7",
+      "expected_mtu": 9216,
+      "expected_enabled": false,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": false,
+      "startup_mtu": 9216,
+      "startup_enabled": false,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet8",
+      "expected_mtu": 9216,
+      "expected_enabled": false,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": false,
+      "startup_mtu": 9216,
+      "startup_enabled": false,
+      "ok": true
+    }
+  ],
+  "commands": {
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.60    YES NVRAM  up                    up      \nGigabitEthernet2       172.16.1.1      YES manual up                    up      \nGigabitEthernet3       10.1.1.0        YES manual up                    up      \nGigabitEthernet4       10.1.1.2        YES manual up                    up      \nGigabitEthernet5       10.1.1.17       YES manual up                    up      \nGigabitEthernet6       unassigned      YES NVRAM  administratively down down    \nGigabitEthernet7       unassigned      YES NVRAM  administratively down down    \nGigabitEthernet8       unassigned      YES NVRAM  administratively down down    \nLoopback0              10.2.1.1        YES manual up                    up      ",
+    "show isis neighbors": "",
+    "show isis neighbors detail": "",
+    "show mpls ldp neighbor": "",
+    "show ip bgp summary": "BGP router identifier 10.2.1.1, local AS number 65001\nBGP table version is 75, main routing table version 75\n65 network entries using 16120 bytes of memory\n87 path entries using 11832 bytes of memory\n23/19 BGP path/bestpath attribute entries using 6808 bytes of memory\n23 BGP AS-PATH entries using 888 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 35648 total bytes of memory\nBGP activity 65/0 prefixes, 88/1 paths, scan interval 60 secs\n65 networks peaked at 04:38:38 Sep 10 2026 UTC (00:02:23.977 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.1.1        4        65101     671     580       75    0    0 00:28:28       14\n10.1.1.3        4        65101     677     581       75    0    0 00:28:30       14\n10.1.1.16       4        65113     680     579       75    0    0 00:28:35       17\n172.16.1.0      4        65000      83      94       75    0    0 00:10:43       42",
+    "show bgp vpnv4 unicast all summary": "",
+    "show ipv6 route isis": "IPv6 Routing Table - default - 8 entries\nCodes: C - Connected, L - Local, S - Static, U - Per-user Static route\n       B - BGP, R - RIP, H - NHRP, HG - NHRP registered\n       Hg - NHRP registration summary, HE - NHRP External, I1 - ISIS L1\n       I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, D - EIGRP\n       EX - EIGRP external, ND - ND Default, NDp - ND Prefix, DCE - Destination\n       NDr - Redirect, RL - RPL, O - OSPF Intra, OI - OSPF Inter\n       OE1 - OSPF ext 1, OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1\n       ON2 - OSPF NSSA ext 2, la - LISP alt, lr - LISP site-registrations\n       ld - LISP dyn-eid, lA - LISP away, le - LISP extranet-policy\n       lp - LISP publications, ls - LISP destinations-summary, a - Application\n       m - OMP"
+  },
+  "interface_evidence": {
+    "running": {
+      "Loopback0": [],
+      "GigabitEthernet1": [],
+      "GigabitEthernet2": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet3": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet4": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet5": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet6": [
+        " mtu 9216",
+        " shutdown"
+      ],
+      "GigabitEthernet7": [
+        " mtu 9216",
+        " shutdown"
+      ],
+      "GigabitEthernet8": [
+        " mtu 9216",
+        " shutdown"
+      ]
+    },
+    "startup": {
+      "Loopback0": [],
+      "GigabitEthernet1": [],
+      "GigabitEthernet2": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet3": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet4": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet5": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet6": [
+        " mtu 9216",
+        " shutdown"
+      ],
+      "GigabitEthernet7": [
+        " mtu 9216",
+        " shutdown"
+      ],
+      "GigabitEthernet8": [
+        " mtu 9216",
+        " shutdown"
+      ]
+    }
+  },
+  "ipv6_isis_checks": [],
+  "expected_isis_interfaces": [],
+  "up_isis_interfaces": [],
+  "config_ok": true,
+  "isis_complete": true,
+  "connected": true
+}

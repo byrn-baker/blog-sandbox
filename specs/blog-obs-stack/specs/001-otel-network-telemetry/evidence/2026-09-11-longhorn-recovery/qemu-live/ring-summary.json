@@ -1,0 +1,19 @@
+{
+  "samples": 8,
+  "start": "2026-09-11T20:32:31.466090+00:00",
+  "end": "2026-09-11T20:34:26.711874+00:00",
+  "observed_wraps": {
+    "d231029f-bb79-4907-9c85-caf0dccbc753:net1": 1,
+    "b9c5395e-b7db-4aec-83d1-9d4cf523aae4:net2": 3,
+    "9a06d961-338d-4255-ad5b-24c4e884ed7e:net4": 3,
+    "48f90381-26ee-4d78-a6d9-46896932b9a0:net2": 2,
+    "d5dcd284-012b-430c-a9ea-ed20bff19e64:net3": 1,
+    "d231029f-bb79-4907-9c85-caf0dccbc753:net3": 2,
+    "2956ef3f-cb88-414e-a2e1-f47b56e8d8a0:net1": 3,
+    "9a06d961-338d-4255-ad5b-24c4e884ed7e:net2": 1,
+    "3b472459-f1ee-437f-9d36-0c7c526466ad:net1": 1,
+    "370f77b4-9fc0-4148-a0e3-f9a9eed4671c:net4": 1
+  },
+  "advancing_nics": 57,
+  "sampled_nics": 69
+}

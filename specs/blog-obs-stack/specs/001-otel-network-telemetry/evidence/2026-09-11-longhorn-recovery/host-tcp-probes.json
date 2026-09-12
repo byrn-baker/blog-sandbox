@@ -1,0 +1,14 @@
+[
+  {
+    "bytes_each_direction": 1048576,
+    "seconds": 39.712,
+    "combined_mbps": 0.422,
+    "mss": 8948,
+    "tcp_stats": "State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port \nCLOSE-WAIT 0      0      192.168.100.20:38638 192.168.100.30:49491\n\t cubic wscale:7,7 rto:334 rtt:132.302/22.471 ato:40 mss:8948 pmtu:9000 rcvmss:8948 advmss:8948 cwnd:4 ssthresh:2 bytes_sent:1612300 bytes_retrans:563724 bytes_acked:1048577 bytes_received:1048577 segs_out:296 segs_in:233 data_segs_out:181 data_segs_in:120 send 2164261bps lastsnd:23299 lastrcv:5 lastack:5 pacing_rate 2597104bps delivery_rate 642904bps delivered:119 busy:16357ms rwnd_limited:272ms(1.7%) retrans:0/63 rcv_rtt:248.73 rcv_space:56588 rcv_ssthresh:109568 minrtt:70 rcv_ooopack:15 snd_wnd:109568 rcv_wnd:90240 rehash:5\n",
+    "sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+    "ok": true,
+    "source": "DCB-k3s-w1",
+    "destination": "DCC-k3s-w4",
+    "server_exit": 0
+  }
+]

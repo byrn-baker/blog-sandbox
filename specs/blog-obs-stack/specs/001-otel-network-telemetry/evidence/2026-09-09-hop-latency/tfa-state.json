@@ -1,0 +1,22 @@
+[
+  {
+    "device": "DCA-Leaf02",
+    "ip": "192.168.3.33",
+    "readback_ok": true,
+    "commands": {
+      "show running-config all | section platform tfa": "platform tfa\n   no interface mode\n   no flow tracking sampled hardware offload lag member\ninterface Ethernet1\n   no platform tfa phy control-frame disabled\ninterface Ethernet2\n   no platform tfa phy control-frame disabled\ninterface Ethernet3\n   no platform tfa phy control-frame disabled\ninterface Ethernet4\n   no platform tfa phy control-frame disabled\ninterface Ethernet5\n   no platform tfa phy control-frame disabled\ninterface Ethernet6\n   no platform tfa phy control-frame disabled\ninterface Ethernet7\n   no platform tfa phy control-frame disabled\ninterface Ethernet8\n   no platform tfa phy control-frame disabled\ninterface Ethernet9\n   no platform tfa phy control-frame disabled\ninterface Ethernet10\n   no platform tfa phy control-frame disabled",
+      "show platform tfa": "% Incomplete command",
+      "bash ps -eo pid,comm,pcpu --sort=-pcpu | head -15": "  PID COMMAND         %CPU\n 2120 Etba            52.4\n27425 CliShell        12.0\n27435 bash             5.0\n27418 sshd-session     4.2\n 1894 VxlanSwFwd       4.0\n 2114 Bgp-main         2.8\n27424 sshd-session     2.0\n 2119 PhyEthtool-1     1.2\n 1548 ProcMgr          0.9\n 1637 ConfigAgent      0.9\n 1905 AgentMonitor     0.9\n 1641 Sysdb            0.8\n14329 kworker/1:0-eve  0.8\n 1866 StpTxRx          0.6"
+    }
+  },
+  {
+    "device": "DCC-Spine01",
+    "ip": "192.168.3.40",
+    "readback_ok": true,
+    "commands": {
+      "show running-config all | section platform tfa": "platform tfa\n   no interface mode\n   no flow tracking sampled hardware offload lag member\ninterface Ethernet1\n   no platform tfa phy control-frame disabled\ninterface Ethernet2\n   no platform tfa phy control-frame disabled\ninterface Ethernet3\n   no platform tfa phy control-frame disabled\ninterface Ethernet4\n   no platform tfa phy control-frame disabled\ninterface Ethernet5\n   no platform tfa phy control-frame disabled\ninterface Ethernet6\n   no platform tfa phy control-frame disabled\ninterface Ethernet7\n   no platform tfa phy control-frame disabled\ninterface Ethernet8\n   no platform tfa phy control-frame disabled\ninterface Ethernet9\n   no platform tfa phy control-frame disabled\ninterface Ethernet10\n   no platform tfa phy control-frame disabled",
+      "show platform tfa": "% Incomplete command",
+      "bash ps -eo pid,comm,pcpu --sort=-pcpu | head -15": "  PID COMMAND         %CPU\n 2069 Etba            45.8\n26405 CliShell        17.5\n26398 sshd-session     5.3\n 2082 Bgp-main         4.7\n26404 sshd-session     1.6\n 1549 ProcMgr          1.0\n 2068 PhyEthtool-1     1.0\n 1639 ConfigAgent      0.9\n 1921 AgentMonitor     0.8\n10917 kworker/1:2-eve  0.8\n19107 kworker/0:2-eve  0.8\n 1643 Sysdb            0.7\n   12 ksoftirqd/0      0.4\n 1657 psimon           0.3"
+    }
+  }
+]

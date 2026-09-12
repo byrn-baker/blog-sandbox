@@ -1,0 +1,11 @@
+{
+  "name": "CE2",
+  "id": "ee02957b-ae98-4ba3-a430-1c0f6283d2b2",
+  "ip": "192.168.3.61",
+  "at": "2026-09-11T03:59:21.235596+00:00",
+  "commands": {
+    "show interfaces | include line protocol|Description|MTU": "GigabitEthernet1 is up, line protocol is up \n  Description: Management - MGMT-VRF\n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  Description: PE-CE to SPE2 GigabitEthernet5\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  Description: to DCB-Spine01 Ethernet10\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  Description: to DCB-Spine02 Ethernet10\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  Description: DCB-Leaf03 Ethernet10\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet6 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet7 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet8 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  Description: Router-ID\n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.61    YES TFTP   up                    up      \nGigabitEthernet2       172.16.2.1      YES manual up                    up      \nGigabitEthernet3       10.1.2.0        YES manual up                    up      \nGigabitEthernet4       10.1.2.2        YES manual up                    up      \nGigabitEthernet5       10.1.2.17       YES manual up                    up      \nGigabitEthernet6       unassigned      YES unset  administratively down down    \nGigabitEthernet7       unassigned      YES unset  administratively down down    \nGigabitEthernet8       unassigned      YES unset  administratively down down    \nLoopback0              10.2.2.1        YES manual up                    up      "
+  },
+  "ok": true
+}

@@ -1,0 +1,433 @@
+
+PLAY [Bring up the VLAN 100 bond] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [DCA-DNS]
+ok: [DCA-k3s-m1]
+ok: [DCB-k3s-w3]
+ok: [DCB-k3s-w2]
+ok: [DCC-k3s-w5]
+ok: [DCC-k3s-w6]
+ok: [DCB-k3s-w1]
+ok: [DCA-k3s-m2]
+ok: [DCA-k3s-m3]
+ok: [DCC-k3s-w4]
+
+TASK [host_network : Derive the bond address from the device's bond0 interface] ***
+ok: [DCA-DNS]
+ok: [DCA-k3s-m1]
+ok: [DCA-k3s-m2]
+ok: [DCA-k3s-m3]
+ok: [DCB-k3s-w1]
+ok: [DCB-k3s-w2]
+ok: [DCB-k3s-w3]
+ok: [DCC-k3s-w4]
+ok: [DCC-k3s-w5]
+ok: [DCC-k3s-w6]
+
+TASK [host_network : Split the bond address into IPv4 and IPv6] ****************
+ok: [DCA-DNS]
+ok: [DCA-k3s-m1]
+ok: [DCA-k3s-m2]
+ok: [DCA-k3s-m3]
+ok: [DCB-k3s-w1]
+ok: [DCB-k3s-w2]
+ok: [DCB-k3s-w3]
+ok: [DCC-k3s-w4]
+ok: [DCC-k3s-w5]
+ok: [DCC-k3s-w6]
+
+TASK [host_network : Read the bond0 MAC from Nautobot] *************************
+ok: [DCA-DNS]
+ok: [DCA-k3s-m1]
+ok: [DCA-k3s-m2]
+ok: [DCA-k3s-m3]
+ok: [DCB-k3s-w1]
+ok: [DCB-k3s-w2]
+ok: [DCB-k3s-w3]
+ok: [DCC-k3s-w4]
+ok: [DCC-k3s-w5]
+ok: [DCC-k3s-w6]
+
+TASK [host_network : Assert the bond has a unique MAC in Nautobot] *************
+ok: [DCA-DNS] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCA-k3s-m1] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCA-k3s-m2] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCA-k3s-m3] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCB-k3s-w1] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCB-k3s-w2] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCB-k3s-w3] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCC-k3s-w4] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCC-k3s-w5] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCC-k3s-w6] => 
+    changed: false
+    msg: All assertions passed
+
+TASK [host_network : Assert the bond has an IPv4 address in Nautobot] **********
+ok: [DCA-k3s-m1] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCA-DNS] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCA-k3s-m2] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCA-k3s-m3] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCB-k3s-w1] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCB-k3s-w2] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCB-k3s-w3] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCC-k3s-w4] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCC-k3s-w5] => 
+    changed: false
+    msg: All assertions passed
+ok: [DCC-k3s-w6] => 
+    changed: false
+    msg: All assertions passed
+
+TASK [host_network : Render netplan for the data-plane bond] *******************
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmp799fky6r/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:0A"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.10/24"
+         - "fd10:a:100::10/64"
+
+changed: [DCA-k3s-m1]
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmpp342tfhc/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:35"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.53/24"
+         - "fd10:a:100::53/64"
+
+changed: [DCA-DNS]
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmpe65mw8_e/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:15"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.21/24"
+         - "fd10:a:100::21/64"
+
+changed: [DCB-k3s-w2]
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmp5uvxbt9z/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:16"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.22/24"
+         - "fd10:a:100::22/64"
+
+changed: [DCB-k3s-w3]
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmp42oxacf5/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:1E"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.30/24"
+         - "fd10:a:100::30/64"
+
+changed: [DCC-k3s-w4]
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmphzyf6_zv/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:1F"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.31/24"
+         - "fd10:a:100::31/64"
+
+changed: [DCC-k3s-w5]
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmp1hiclnuv/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:20"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.32/24"
+         - "fd10:a:100::32/64"
+
+changed: [DCC-k3s-w6]
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmpy27i8ywl/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:0C"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.12/24"
+         - "fd10:a:100::12/64"
+
+changed: [DCA-k3s-m3]
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmpkhjk867f/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:14"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.20/24"
+         - "fd10:a:100::20/64"
+
+changed: [DCB-k3s-w1]
+--- before: /etc/netplan/60-bond0.yaml
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-3785026djtfm8t_/tmpwpgpbot0/bond0.yaml.j2
+@@ -7,16 +7,16 @@
+     ens19:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+     ens20:
+       dhcp4: false
+       dhcp6: false
+-      mtu: 1400
++      mtu: 9000
+   bonds:
+     bond0:
+       interfaces: [ens19, ens20]
+       macaddress: "02:00:00:00:01:0B"
+-      mtu: 1400
++      mtu: 9000
+       addresses:
+         - "192.168.100.11/24"
+         - "fd10:a:100::11/64"
+
+changed: [DCA-k3s-m2]
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+RUNNING HANDLER [host_network : Apply netplan] *********************************
+skipping: [DCA-k3s-m1]
+skipping: [DCA-DNS]
+skipping: [DCB-k3s-w2]
+skipping: [DCB-k3s-w3]
+[WARNING]: Could not match supplied host pattern, ignoring: dns_servers
+[WARNING]: Could not match supplied host pattern, ignoring: storage_nodes
+[WARNING]: Could not match supplied host pattern, ignoring: k3s_servers
+[WARNING]: Could not match supplied host pattern, ignoring: k3s_agents
+[WARNING]: Could not match supplied host pattern, ignoring: k3s_cluster
+[WARNING]: Could not match supplied host pattern, ignoring: k3s_init
+skipping: [DCC-k3s-w4]
+skipping: [DCC-k3s-w5]
+skipping: [DCC-k3s-w6]
+skipping: [DCA-k3s-m3]
+skipping: [DCB-k3s-w1]
+skipping: [DCA-k3s-m2]
+
+PLAY [Base prep for the DNS server] ********************************************
+skipping: no hosts matched
+
+PLAY [Stand up the lab DNS server] *********************************************
+skipping: no hosts matched
+
+PLAY [Base prep for the remaining managed servers] *****************************
+
+PLAY [Prepare Longhorn storage disks] ******************************************
+skipping: no hosts matched
+
+PLAY [Install K3s control plane (servers, all in DC-A)] ************************
+skipping: no hosts matched
+
+PLAY [Install K3s workers] *****************************************************
+skipping: no hosts matched
+
+PLAY [Tune K3s control-plane node lifecycle] ***********************************
+skipping: no hosts matched
+
+PLAY [Point k3s at the lab registry caches] ************************************
+skipping: no hosts matched
+
+PLAY [Fetch kubeconfig to the control machine] *********************************
+skipping: no hosts matched
+
+PLAY RECAP *********************************************************************
+DCA-DNS                    : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+DCA-k3s-m1                 : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+DCA-k3s-m2                 : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+DCA-k3s-m3                 : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+DCB-k3s-w1                 : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+DCB-k3s-w2                 : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+DCB-k3s-w3                 : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+DCC-k3s-w4                 : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+DCC-k3s-w5                 : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+DCC-k3s-w6                 : ok=7    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

@@ -1,0 +1,88 @@
+{
+  "name": "BORDER1",
+  "at": "2026-09-10T04:06:28.125549+00:00",
+  "checks": [
+    {
+      "interface": "GigabitEthernet2",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet3",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    }
+  ],
+  "commands": {
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.50    YES TFTP   up                    up      \nGigabitEthernet2       10.0.0.25       YES manual up                    up      \nGigabitEthernet3       10.0.0.27       YES manual up                    up      \nGigabitEthernet4       192.168.255.140 YES DHCP   up                    up      \nLoopback0              10.1.0.10       YES manual up                    up      ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id",
+    "show isis neighbors detail": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id",
+    "show mpls ldp neighbor": "",
+    "show ip bgp summary": "",
+    "show bgp vpnv4 unicast all summary": "BGP router identifier 10.1.0.10, local AS number 65000\nBGP table version is 2, main routing table version 2\n1 network entries using 264 bytes of memory\n1 path entries using 136 bytes of memory\n1/1 BGP path/bestpath attribute entries using 312 bytes of memory\n1 BGP extended community entries using 24 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 736 total bytes of memory\nBGP activity 1/0 prefixes, 1/0 paths, scan interval 60 secs\n1 networks peaked at 03:38:44 Sep 10 2026 UTC (00:27:49.187 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.0.1        4        65000       0       0        1    0    0 never    Idle\n10.1.0.2        4        65000       0       0        1    0    0 never    Idle",
+    "show ipv6 route isis": "IPv6 Routing Table - default - 6 entries\nCodes: C - Connected, L - Local, S - Static, U - Per-user Static route\n       B - BGP, R - RIP, H - NHRP, HG - NHRP registered\n       Hg - NHRP registration summary, HE - NHRP External, I1 - ISIS L1\n       I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, D - EIGRP\n       EX - EIGRP external, ND - ND Default, NDp - ND Prefix, DCE - Destination\n       NDr - Redirect, RL - RPL, O - OSPF Intra, OI - OSPF Inter\n       OE1 - OSPF ext 1, OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1\n       ON2 - OSPF NSSA ext 2, la - LISP alt, lr - LISP site-registrations\n       ld - LISP dyn-eid, lA - LISP away, le - LISP extranet-policy\n       lp - LISP publications, ls - LISP destinations-summary, a - Application\n       m - OMP"
+  },
+  "interface_evidence": {
+    "running": {
+      "Loopback0": [],
+      "GigabitEthernet1": [],
+      "GigabitEthernet2": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet3": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet4": []
+    },
+    "startup": {
+      "Loopback0": [],
+      "GigabitEthernet1": [],
+      "GigabitEthernet2": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet3": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet4": []
+    }
+  },
+  "ipv6_isis_checks": [
+    {
+      "interface": "GigabitEthernet2",
+      "running": true,
+      "startup": true
+    },
+    {
+      "interface": "GigabitEthernet3",
+      "running": true,
+      "startup": true
+    },
+    {
+      "interface": "Loopback0",
+      "running": true,
+      "startup": true
+    }
+  ],
+  "expected_isis_interfaces": [
+    "Gi2",
+    "Gi3"
+  ],
+  "up_isis_interfaces": [],
+  "config_ok": true,
+  "isis_complete": false,
+  "connected": true
+}

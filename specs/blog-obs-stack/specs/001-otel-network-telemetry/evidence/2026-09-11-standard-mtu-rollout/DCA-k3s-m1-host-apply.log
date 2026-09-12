@@ -1,0 +1,68 @@
+
+PLAY [Bring up the VLAN 100 bond] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [DCA-k3s-m1]
+
+TASK [host_network : Derive the bond address from the device's bond0 interface] ***
+ok: [DCA-k3s-m1]
+
+TASK [host_network : Split the bond address into IPv4 and IPv6] ****************
+ok: [DCA-k3s-m1]
+
+TASK [host_network : Read the bond0 MAC from Nautobot] *************************
+ok: [DCA-k3s-m1]
+
+TASK [host_network : Assert the bond has a unique MAC in Nautobot] *************
+ok: [DCA-k3s-m1] => 
+    changed: false
+    msg: All assertions passed
+
+TASK [host_network : Assert the bond has an IPv4 address in Nautobot] **********
+ok: [DCA-k3s-m1] => 
+    changed: false
+    msg: All assertions passed
+
+TASK [host_network : Render netplan for the data-plane bond] *******************
+changed: [DCA-k3s-m1]
+
+TASK [host_network : Ensure netplan is applied before continuing] **************
+
+RUNNING HANDLER [host_network : Apply netplan] *********************************
+[WARNING]: Could not match supplied host pattern, ignoring: dns_servers
+[WARNING]: Could not match supplied host pattern, ignoring: storage_nodes
+[WARNING]: Could not match supplied host pattern, ignoring: k3s_servers
+[WARNING]: Could not match supplied host pattern, ignoring: k3s_agents
+[WARNING]: Could not match supplied host pattern, ignoring: k3s_cluster
+[WARNING]: Could not match supplied host pattern, ignoring: k3s_init
+changed: [DCA-k3s-m1]
+
+PLAY [Base prep for the DNS server] ********************************************
+skipping: no hosts matched
+
+PLAY [Stand up the lab DNS server] *********************************************
+skipping: no hosts matched
+
+PLAY [Base prep for the remaining managed servers] *****************************
+
+PLAY [Prepare Longhorn storage disks] ******************************************
+skipping: no hosts matched
+
+PLAY [Install K3s control plane (servers, all in DC-A)] ************************
+skipping: no hosts matched
+
+PLAY [Install K3s workers] *****************************************************
+skipping: no hosts matched
+
+PLAY [Tune K3s control-plane node lifecycle] ***********************************
+skipping: no hosts matched
+
+PLAY [Point k3s at the lab registry caches] ************************************
+skipping: no hosts matched
+
+PLAY [Fetch kubeconfig to the control machine] *********************************
+skipping: no hosts matched
+
+PLAY RECAP *********************************************************************
+DCA-k3s-m1                 : ok=8    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

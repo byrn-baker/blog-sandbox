@@ -1,0 +1,217 @@
+{
+  "nodes": [
+    {
+      "label": "RR1",
+      "id": "2fcbec70-e98b-4b9d-a198-9003b07600c6",
+      "state": "BOOTED",
+      "priority": 1,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "RR2",
+      "id": "bd530a07-db54-4fdc-8d77-e29c8d3bc4f9",
+      "state": "BOOTED",
+      "priority": 1,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "SP1",
+      "id": "5eeb26bb-de28-45cc-999a-2d75d296ca63",
+      "state": "BOOTED",
+      "priority": 3,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "SP2",
+      "id": "3b472459-f1ee-437f-9d36-0c7c526466ad",
+      "state": "BOOTED",
+      "priority": 3,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "SP3",
+      "id": "d231029f-bb79-4907-9c85-caf0dccbc753",
+      "state": "BOOTED",
+      "priority": 3,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "SP4",
+      "id": "ad3d06bc-a45f-408b-a6d2-e64ce86e0718",
+      "state": "BOOTED",
+      "priority": 3,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "SPE1",
+      "id": "370f77b4-9fc0-4148-a0e3-f9a9eed4671c",
+      "state": "BOOTED",
+      "priority": 4,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "SPE2",
+      "id": "9a06d961-338d-4255-ad5b-24c4e884ed7e",
+      "state": "BOOTED",
+      "priority": 4,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "SPE3",
+      "id": "48f90381-26ee-4d78-a6d9-46896932b9a0",
+      "state": "BOOTED",
+      "priority": 4,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "CE1",
+      "id": "d5dcd284-012b-430c-a9ea-ed20bff19e64",
+      "state": "BOOTED",
+      "priority": 5,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "CE2",
+      "id": "b9c5395e-b7db-4aec-83d1-9d4cf523aae4",
+      "state": "BOOTED",
+      "priority": 5,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "CE3",
+      "id": "2956ef3f-cb88-414e-a2e1-f47b56e8d8a0",
+      "state": "BOOTED",
+      "priority": 5,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "DCA-Spine01-E10",
+      "id": "c354f15c-1560-4afd-9d02-bd62eb292817",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "DCA-Spine02-E10",
+      "id": "902338e4-641b-4ea2-a1b9-96504a8fb6c0",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "DCB-Spine01-E10",
+      "id": "751bc336-f2bc-4bda-90d7-3d457b4c1a68",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "DCB-Spine02-E10",
+      "id": "e74884fd-5eca-4ed3-8d18-6747878acc8f",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "DCC-Spine01-E10",
+      "id": "005f6228-ccd4-4524-b342-8899526596ee",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "DCC-Spine02-E10",
+      "id": "33aa2a8a-d066-4b82-8b82-2b8a1ae3ddd4",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "lab-mgmt",
+      "id": "5bd992dd-dd02-4ffd-82d8-8735df77c7b7",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "BORDER1",
+      "id": "262fdf0a-cc4a-4a12-bce3-7f3b4e347206",
+      "state": "BOOTED",
+      "priority": 2,
+      "definition": "cat8000v"
+    },
+    {
+      "label": "ext-internet",
+      "id": "001181b8-531b-4b8c-870c-ae6f794f362b",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "DCA-Leaf03-E10",
+      "id": "bbff2acc-6699-42e8-81a3-a6c7c11b787a",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "DCB-Leaf03-E10",
+      "id": "10e6314a-d554-41c6-b40e-30d79355d9c4",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "DCC-Leaf03-E10",
+      "id": "c459c192-55b2-4568-b152-2f5ebd72209e",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "external_connector"
+    },
+    {
+      "label": "mgmt-switch-0",
+      "id": "9a89b788-4db2-4664-82d8-755ac0f2dff2",
+      "state": "BOOTED",
+      "priority": null,
+      "definition": "unmanaged_switch"
+    }
+  ],
+  "restored_priorities": [
+    {
+      "name": "SP1",
+      "priority": 3
+    },
+    {
+      "name": "SPE1",
+      "priority": 4
+    },
+    {
+      "name": "CE2",
+      "priority": 5
+    },
+    {
+      "name": "SP4",
+      "priority": 3
+    },
+    {
+      "name": "RR1",
+      "priority": 1
+    },
+    {
+      "name": "BORDER1",
+      "priority": 2
+    },
+    {
+      "name": "SP2",
+      "priority": 3
+    },
+    {
+      "name": "SPE2",
+      "priority": 4
+    },
+    {
+      "name": "CE3",
+      "priority": 5
+    }
+  ]
+}

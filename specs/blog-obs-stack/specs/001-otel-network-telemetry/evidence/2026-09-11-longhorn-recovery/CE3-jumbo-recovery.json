@@ -1,0 +1,11 @@
+{
+  "name": "CE3",
+  "id": "d44de994-46da-488b-be78-1afac0d04078",
+  "ip": "192.168.3.62",
+  "at": "2026-09-11T15:18:04.025057+00:00",
+  "commands": {
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet6 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet7 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet8 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show ip bgp summary": "BGP router identifier 10.2.3.1, local AS number 65003\nBGP table version is 262, main routing table version 262\n66 network entries using 16368 bytes of memory\n89 path entries using 12104 bytes of memory\n25/20 BGP path/bestpath attribute entries using 7400 bytes of memory\n25 BGP AS-PATH entries using 952 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 36824 total bytes of memory\nBGP activity 87/21 prefixes, 197/108 paths, scan interval 60 secs\n66 networks peaked at 05:10:18 Sep 11 2026 UTC (10:07:46.766 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.3.1        4        65301   14382   12028      262    0    0 10:13:16       14\n10.1.3.3        4        65301   14388   12028      262    0    0 10:13:15       14\n10.1.3.16       4        65313   14451   12026      262    0    0 10:13:06       17\n172.16.3.0      4        65000    3954    3972      262    0    0 10:22:07       44"
+  },
+  "ok": true
+}

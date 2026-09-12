@@ -1,0 +1,53 @@
+{
+  "samples": [
+    {
+      "at": "2026-09-11T02:52:13.481892+00:00",
+      "neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.24       UP    25       06\nSP2             L2   Gi3           10.0.0.26       UP    24       06",
+      "hello_counters": [
+        "IS-IS: PTP Hellos     (sent/rcvd): 26/22"
+      ]
+    },
+    {
+      "at": "2026-09-11T02:52:33.685828+00:00",
+      "neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.24       UP    23       06\nSP2             L2   Gi3           10.0.0.26       UP    23       06",
+      "hello_counters": [
+        "IS-IS: PTP Hellos     (sent/rcvd): 30/26"
+      ]
+    },
+    {
+      "at": "2026-09-11T02:52:53.879092+00:00",
+      "neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.24       UP    29       06\nSP2             L2   Gi3           10.0.0.26       UP    21       06",
+      "hello_counters": [
+        "IS-IS: PTP Hellos     (sent/rcvd): 34/31"
+      ]
+    },
+    {
+      "at": "2026-09-11T02:53:14.653516+00:00",
+      "neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.24       UP    24       06\nSP2             L2   Gi3           10.0.0.26       UP    29       06",
+      "hello_counters": [
+        "IS-IS: PTP Hellos     (sent/rcvd): 39/36"
+      ]
+    },
+    {
+      "at": "2026-09-11T02:53:35.671483+00:00",
+      "neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.24       UP    21       06\nSP2             L2   Gi3           10.0.0.26       UP    25       06",
+      "hello_counters": [
+        "IS-IS: PTP Hellos     (sent/rcvd): 44/41"
+      ]
+    },
+    {
+      "at": "2026-09-11T02:53:56.913530+00:00",
+      "neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.24       UP    26       06\nSP2             L2   Gi3           10.0.0.26       UP    29       06",
+      "hello_counters": [
+        "IS-IS: PTP Hellos     (sent/rcvd): 48/46"
+      ]
+    },
+    {
+      "at": "2026-09-11T02:54:17.108159+00:00",
+      "neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.24       UP    22       06\nSP2             L2   Gi3           10.0.0.26       UP    25       06",
+      "hello_counters": [
+        "IS-IS: PTP Hellos     (sent/rcvd): 54/50"
+      ]
+    }
+  ]
+}

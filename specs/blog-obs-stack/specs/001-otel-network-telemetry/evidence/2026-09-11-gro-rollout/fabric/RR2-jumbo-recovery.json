@@ -1,0 +1,13 @@
+{
+  "name": "RR2",
+  "id": "573692b3-a60e-49bb-859f-61bf9285e7a0",
+  "ip": "192.168.3.52",
+  "at": "2026-09-11T21:42:52.519666+00:00",
+  "commands": {
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.22       UP    24       05",
+    "show ip bgp summary": "",
+    "show ip bgp vpnv4 all summary": "BGP router identifier 10.1.0.2, local AS number 65000\nBGP table version is 564, main routing table version 564\n66 network entries using 17424 bytes of memory\n68 path entries using 9248 bytes of memory\n19/19 BGP path/bestpath attribute entries using 5928 bytes of memory\n18 BGP AS-PATH entries using 720 bytes of memory\n2 BGP extended community entries using 64 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 33384 total bytes of memory\nBGP activity 218/152 prefixes, 327/259 paths, scan interval 60 secs\n66 networks peaked at 20:23:14 Sep 11 2026 UTC (01:19:41.648 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.0.7        4        65000     504     539      564    0    0 01:17:59       23\n10.1.0.8        4        65000     466     480      564    0    0 01:12:17       22\n10.1.0.9        4        65000     518     551      564    0    0 01:19:22       22\n10.1.0.10       4        65000     455     474      564    0    0 01:11:38        1"
+  },
+  "ok": true
+}

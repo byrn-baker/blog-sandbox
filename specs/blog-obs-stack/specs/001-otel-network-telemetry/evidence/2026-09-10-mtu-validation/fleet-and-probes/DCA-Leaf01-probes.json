@@ -1,0 +1,154 @@
+{
+  "device": "DCA-Leaf01",
+  "ip": "192.168.3.32",
+  "platform": "arista_eos",
+  "at": "2026-09-10T01:20:16.528258+00:00",
+  "modeled_interfaces": [
+    {
+      "name": "Ethernet1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.1.5/31",
+        "fd10:1:1::5/127"
+      ]
+    },
+    {
+      "name": "Ethernet2",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.1.11/31",
+        "fd10:1:1::11/127"
+      ]
+    },
+    {
+      "name": "Ethernet3",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet4",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Ethernet5",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Ethernet6",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Ethernet7",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Ethernet8",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet9",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet10",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Loopback0",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.2.1.4/32",
+        "fd10:2:1::4/128"
+      ]
+    },
+    {
+      "name": "Loopback1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.3.1.4/32"
+      ]
+    },
+    {
+      "name": "Management1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.3.32/24"
+      ]
+    },
+    {
+      "name": "Port-Channel4",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Port-Channel5",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Port-Channel6",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Port-Channel7",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Vlan100",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.100.1/24",
+        "fd10:a:100::1/64"
+      ]
+    },
+    {
+      "name": "Vlan101",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.101.1/24",
+        "fd10:a:101::1/64"
+      ]
+    }
+  ],
+  "commands": {
+    "bash sudo -n ip netns exec default ip -o address show": "1: lo    inet 127.0.0.1/24 scope host lo\\       valid_lft forever preferred_lft forever\n1: lo    inet6 ::1/128 scope host \\       valid_lft forever preferred_lft forever\n13: lo1    inet 10.3.1.4/32 brd 255.255.255.255 scope global lo1\\       valid_lft forever preferred_lft forever\n14: lo0    inet 10.2.1.4/32 brd 255.255.255.255 scope global lo0\\       valid_lft forever preferred_lft forever\n14: lo0    inet6 fd10:2:1::4/128 scope global \\       valid_lft forever preferred_lft forever\n14: lo0    inet6 fe80::ff:fe00:0/64 scope link \\       valid_lft forever preferred_lft forever\n31: fwd0    inet6 fe80::5200:ff:fed5:5dc0/64 scope link \\       valid_lft forever preferred_lft forever\n36: et1    inet 10.1.1.5/31 brd 255.255.255.255 scope global et1\\       valid_lft forever preferred_lft forever\n36: et1    inet6 fd10:1:1::5/127 scope global \\       valid_lft forever preferred_lft forever\n36: et1    inet6 fe80::5200:ff:fed5:5dc0/64 scope link \\       valid_lft forever preferred_lft forever\n40: et2    inet 10.1.1.11/31 brd 255.255.255.255 scope global et2\\       valid_lft forever preferred_lft forever\n40: et2    inet6 fd10:1:1::11/127 scope global \\       valid_lft forever preferred_lft forever\n40: et2    inet6 fe80::5200:ff:fed5:5dc0/64 scope link \\       valid_lft forever preferred_lft forever",
+    "show ip route 10.3.3.4": "\nVRF: default\nSource Codes:\n       C - connected, S - static, K - kernel,\n       O - OSPF, O IA - OSPF inter area, O E1 - OSPF external type 1,\n       O E2 - OSPF external type 2, O N1 - OSPF NSSA external type 1,\n       O N2 - OSPF NSSA external type2, O3 - OSPFv3,\n       O3 IA - OSPFv3 inter area, O3 E1 - OSPFv3 external type 1,\n       O3 E2 - OSPFv3 external type 2,\n       O3 N1 - OSPFv3 NSSA external type 1,\n       O3 N2 - OSPFv3 NSSA external type2, B - Other BGP Routes,\n       B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,\n       I L2 - IS-IS level 2, A B - BGP Aggregate,\n       A O - OSPF Summary, NG - Nexthop Group Static Route,\n       V - VXLAN Control Service, M - Martian,\n       DH - DHCP client installed default route,\n       DP - Dynamic Policy Route, L - VRF Leaked,\n       G  - gRIBI, RC - Route Cache Route,\n       CL - CBF Leaked Route\n\n B E      10.3.3.4/32 [200/0]\n           via 10.1.1.4, Ethernet1\n           via 10.1.1.10, Ethernet2\n",
+    "bash sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 1422 10.3.1.5": "PING 10.3.1.5 (10.3.1.5) from 10.3.1.4 : 1422(1450) bytes of data.\n1430 bytes from 10.3.1.5: icmp_seq=1 ttl=63 time=37.7 ms\n1430 bytes from 10.3.1.5: icmp_seq=2 ttl=63 time=38.8 ms\n1430 bytes from 10.3.1.5: icmp_seq=3 ttl=63 time=32.4 ms\n\n--- 10.3.1.5 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2004ms\nrtt min/avg/max/mdev = 32.397/36.289/38.771/2.786 ms",
+    "bash sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 1472 10.3.1.5": "PING 10.3.1.5 (10.3.1.5) from 10.3.1.4 : 1472(1500) bytes of data.\n1480 bytes from 10.3.1.5: icmp_seq=1 ttl=63 time=48.5 ms\n1480 bytes from 10.3.1.5: icmp_seq=2 ttl=63 time=31.7 ms\n1480 bytes from 10.3.1.5: icmp_seq=3 ttl=63 time=33.8 ms\n\n--- 10.3.1.5 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 31.690/37.999/48.477/7.460 ms",
+    "bash sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 1496 10.3.1.5": "PING 10.3.1.5 (10.3.1.5) from 10.3.1.4 : 1496(1524) bytes of data.\n1504 bytes from 10.3.1.5: icmp_seq=1 ttl=63 time=27.4 ms\n1504 bytes from 10.3.1.5: icmp_seq=2 ttl=63 time=82.2 ms\n1504 bytes from 10.3.1.5: icmp_seq=3 ttl=63 time=37.3 ms\n\n--- 10.3.1.5 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 27.436/48.987/82.189/23.822 ms",
+    "bash sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 7972 10.3.1.5": "PING 10.3.1.5 (10.3.1.5) from 10.3.1.4 : 7972(8000) bytes of data.\n7980 bytes from 10.3.1.5: icmp_seq=1 ttl=63 time=100 ms\n7980 bytes from 10.3.1.5: icmp_seq=2 ttl=63 time=33.3 ms\n7980 bytes from 10.3.1.5: icmp_seq=3 ttl=63 time=64.6 ms\n\n--- 10.3.1.5 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2004ms\nrtt min/avg/max/mdev = 33.271/65.965/100.026/27.269 ms",
+    "bash sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 1422 10.3.3.4": "PING 10.3.3.4 (10.3.3.4) from 10.3.1.4 : 1422(1450) bytes of data.\n1430 bytes from 10.3.3.4: icmp_seq=1 ttl=56 time=239 ms\n1430 bytes from 10.3.3.4: icmp_seq=2 ttl=56 time=83.8 ms\n1430 bytes from 10.3.3.4: icmp_seq=3 ttl=56 time=104 ms\n\n--- 10.3.3.4 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 83.849/142.343/239.366/69.087 ms",
+    "bash sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 1472 10.3.3.4": "PING 10.3.3.4 (10.3.3.4) from 10.3.1.4 : 1472(1500) bytes of data.\nFrom 172.16.1.0 icmp_seq=1 Frag needed and DF set (mtu = 1492)\nping: local error: message too long, mtu=1492\nping: local error: message too long, mtu=1492\n\n--- 10.3.3.4 ping statistics ---\n3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2042ms\n\n% 'sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 1472 10.3.3.4' returned error code: 1",
+    "bash sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 1496 10.3.3.4": "PING 10.3.3.4 (10.3.3.4) from 10.3.1.4 : 1496(1524) bytes of data.\nping: local error: message too long, mtu=1492\nping: local error: message too long, mtu=1492\nping: local error: message too long, mtu=1492\n\n--- 10.3.3.4 ping statistics ---\n3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2036ms\n\n% 'sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 1496 10.3.3.4' returned error code: 1",
+    "bash sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 7972 10.3.3.4": "PING 10.3.3.4 (10.3.3.4) from 10.3.1.4 : 7972(8000) bytes of data.\nping: local error: message too long, mtu=1492\nping: local error: message too long, mtu=1492\nping: local error: message too long, mtu=1492\n\n--- 10.3.3.4 ping statistics ---\n3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2047ms\n\n% 'sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 7972 10.3.3.4' returned error code: 1"
+  },
+  "ok": true
+}

@@ -8,7 +8,11 @@
 # into /etc/rancher/k3s/config.yaml.d/ instead; k3s merges every *.yaml there
 # with config.yaml at startup, so a change plus a restart is all it takes.
 #
-# The one setting here relaxes the controller-manager node-monitor-grace-period.
+# The drop-in also configures cloud-controller-manager leader election for
+# already-installed servers. This is separate from the controller-manager
+# and scheduler flags in the install role; those CLI lists retain precedence.
+#
+# The node-lifecycle setting relaxes node-monitor-grace-period.
 # On this emulated fabric a cold cross-DC path plus jitter can stall a kubelet's
 # heartbeat POST for tens of seconds. The 40s default marks a node NotReady
 # after ~4 missed heartbeats, so nodes flap in and out even though etcd and the
@@ -35,7 +39,7 @@
     group: root
     mode: "0755"
 
-- name: Render the node-lifecycle drop-in (controller-manager grace period)
+- name: Render the control-plane runtime drop-in
   ansible.builtin.template:
     src: node-lifecycle.yaml.j2
     dest: /etc/rancher/k3s/config.yaml.d/90-node-lifecycle.yaml

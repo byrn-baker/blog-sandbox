@@ -1,0 +1,15 @@
+{
+  "name": "SP3",
+  "id": "dde570e2-8b17-437c-8f43-02ba637a0816",
+  "ip": "192.168.3.55",
+  "at": "2026-09-11T17:51:01.821977+00:00",
+  "commands": {
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.55    YES NVRAM  up                    up      \nGigabitEthernet2       10.0.0.18       YES NVRAM  up                    up      \nGigabitEthernet3       10.0.0.7        YES NVRAM  up                    up      \nGigabitEthernet4       10.0.0.14       YES NVRAM  up                    up      \nGigabitEthernet5       10.0.0.4        YES NVRAM  up                    up      \nLoopback0              10.1.0.5        YES NVRAM  up                    up      ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi3           10.0.0.6        UP    26       03\nSP4             L2   Gi5           10.0.0.5        UP    24       05\nSPE3            L2   Gi2           10.0.0.19       INIT  20       03",
+    "show ip bgp summary": "% BGP not active\n",
+    "show ip bgp vpnv4 all summary": "% BGP not active\n",
+    "show ip route vrf CUST-A 10.2.1.2": "% IP routing table vrf CUST-A does not exist",
+    "show ip route 10.2.1.2": "% Subnet not in table"
+  },
+  "ok": true
+}

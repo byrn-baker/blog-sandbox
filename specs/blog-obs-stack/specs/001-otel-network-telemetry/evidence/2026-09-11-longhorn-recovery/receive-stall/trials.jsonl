@@ -1,0 +1,4 @@
+{"trial": 0, "requested_mss": 1200, "bytes_each_direction": 262144, "offered_mbps": 1, "ok": false, "error": "OSError: [Errno 113] No route to host", "seconds": 1.425}
+{"trial": 1, "requested_mss": 8960, "bytes_each_direction": 262144, "offered_mbps": 1, "ok": false, "error": "OSError: [Errno 113] No route to host", "seconds": 2.072}
+{"trial": 2, "requested_mss": 1200, "bytes_each_direction": 262144, "offered_mbps": 1, "ok": false, "error": "OSError: [Errno 113] No route to host", "seconds": 2.072}
+{"trial": 3, "requested_mss": 8960, "bytes_each_direction": 262144, "offered_mbps": 1, "ok": false, "error": "OSError: [Errno 113] No route to host", "seconds": 5.146}

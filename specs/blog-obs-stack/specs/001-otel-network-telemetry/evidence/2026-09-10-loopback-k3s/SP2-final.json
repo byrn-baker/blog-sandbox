@@ -1,0 +1,163 @@
+{
+  "name": "SP2",
+  "at": "2026-09-10T04:41:20.427664+00:00",
+  "checks": [
+    {
+      "interface": "GigabitEthernet2",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet3",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet4",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet5",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet6",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 9216,
+      "running_enabled": true,
+      "startup_mtu": 9216,
+      "startup_enabled": true,
+      "ok": true
+    }
+  ],
+  "commands": {
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.54    YES TFTP   up                    up      \nGigabitEthernet2       10.0.0.1        YES manual up                    up      \nGigabitEthernet3       10.0.0.2        YES manual up                    up      \nGigabitEthernet4       10.0.0.8        YES manual up                    up      \nGigabitEthernet5       10.0.0.22       YES manual up                    up      \nGigabitEthernet6       10.0.0.26       YES manual up                    up      \nLoopback0              10.1.0.4        YES manual up                    up      ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nRR2             L2   Gi5           10.0.0.23       UP    27       02\nSP1             L2   Gi2           10.0.0.0        UP    23       02\nSP4             L2   Gi3           10.0.0.3        UP    28       02\nSPE1            L2   Gi4           10.0.0.9        UP    23       02",
+    "show isis neighbors detail": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nRR2             L2   Gi5           10.0.0.23       UP    26       02\n  Area Address(es): 49.0001\n  SNPA: 5254.0044.774e      \n  IPv6 Address(es): FE80::5054:FF:FE44:774E\n  IPv6 Global Address: FD10::23\n  State Changed: 01:06:09\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet5\n  Neighbor Circuit Id: 2\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full\nSP1             L2   Gi2           10.0.0.0        UP    22       02\n  Area Address(es): 49.0001\n  SNPA: 5254.00a0.ee34      \n  IPv6 Address(es): FE80::5054:FF:FEA0:EE34\n  IPv6 Global Address: FD10::\n  State Changed: 01:03:27\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet2\n  Neighbor Circuit Id: 2\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full\nSP4             L2   Gi3           10.0.0.3        UP    27       02\n  Area Address(es): 49.0001\n  SNPA: 5254.00d2.7e17      \n  IPv6 Address(es): FE80::5054:FF:FED2:7E17\n  IPv6 Global Address: FD10::3\n  State Changed: 00:54:59\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet3\n  Neighbor Circuit Id: 2\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full\nSPE1            L2   Gi4           10.0.0.9        UP    22       02\n  Area Address(es): 49.0001\n  SNPA: 5254.0007.99ee      \n  IPv6 Address(es): FE80::5054:FF:FE07:99EE\n  IPv6 Global Address: FD10::9\n  State Changed: 00:14:16\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet4\n  Neighbor Circuit Id: 2\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full",
+    "show mpls ldp neighbor": "    Peer LDP Ident: 10.1.0.2:0; Local LDP Ident 10.1.0.4:0\n\tTCP connection: 10.1.0.2.646 - 10.1.0.4.20139\n\tState: Oper; Msgs sent/rcvd: 100/102; Downstream\n\tUp time: 01:06:08\n\tLDP discovery sources:\n\t  GigabitEthernet5, Src IP addr: 10.0.0.23\n        Addresses bound to peer LDP Ident:\n          10.0.0.23       10.1.0.2        \n    Peer LDP Ident: 10.1.0.3:0; Local LDP Ident 10.1.0.4:0\n\tTCP connection: 10.1.0.3.646 - 10.1.0.4.28128\n\tState: Oper; Msgs sent/rcvd: 100/105; Downstream\n\tUp time: 01:03:25\n\tLDP discovery sources:\n\t  GigabitEthernet2, Src IP addr: 10.0.0.0\n        Addresses bound to peer LDP Ident:\n          10.0.0.0        10.0.0.6        10.0.0.16       10.0.0.20       \n          10.0.0.24       10.1.0.3        \n    Peer LDP Ident: 10.1.0.6:0; Local LDP Ident 10.1.0.4:0\n\tTCP connection: 10.1.0.6.33589 - 10.1.0.4.646\n\tState: Oper; Msgs sent/rcvd: 89/89; Downstream\n\tUp time: 00:54:56\n\tLDP discovery sources:\n\t  GigabitEthernet3, Src IP addr: 10.0.0.3\n        Addresses bound to peer LDP Ident:\n          10.0.0.3        10.0.0.12       10.0.0.10       10.0.0.5        \n          10.1.0.6        \n    Peer LDP Ident: 10.1.0.7:0; Local LDP Ident 10.1.0.4:0\n\tTCP connection: 10.1.0.7.27078 - 10.1.0.4.646\n\tState: Oper; Msgs sent/rcvd: 44/50; Downstream\n\tUp time: 00:14:06\n\tLDP discovery sources:\n\t  GigabitEthernet4, Src IP addr: 10.0.0.9\n        Addresses bound to peer LDP Ident:\n          10.0.0.9        10.1.0.7        10.0.0.11       ",
+    "show ip bgp summary": "% BGP not active\n",
+    "show bgp vpnv4 unicast all summary": "% BGP not active\n",
+    "show ipv6 route isis": "IPv6 Routing Table - default - 29 entries\nCodes: C - Connected, L - Local, S - Static, U - Per-user Static route\n       B - BGP, R - RIP, H - NHRP, HG - NHRP registered\n       Hg - NHRP registration summary, HE - NHRP External, I1 - ISIS L1\n       I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, D - EIGRP\n       EX - EIGRP external, ND - ND Default, NDp - ND Prefix, DCE - Destination\n       NDr - Redirect, RL - RPL, O - OSPF Intra, OI - OSPF Inter\n       OE1 - OSPF ext 1, OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1\n       ON2 - OSPF NSSA ext 2, la - LISP alt, lr - LISP site-registrations\n       ld - LISP dyn-eid, lA - LISP away, le - LISP extranet-policy\n       lp - LISP publications, ls - LISP destinations-summary, a - Application\n       m - OMP\nI2  FD10::4/127 [115/20]\n     via FE80::5054:FF:FED2:7E17, GigabitEthernet3\nI2  FD10::6/127 [115/20]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2\nI2  FD10::10/127 [115/20]\n     via FE80::5054:FF:FED2:7E17, GigabitEthernet3\n     via FE80::5054:FF:FE07:99EE, GigabitEthernet4\nI2  FD10::12/127 [115/20]\n     via FE80::5054:FF:FED2:7E17, GigabitEthernet3\nI2  FD10::14/127 [115/30]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2\n     via FE80::5054:FF:FED2:7E17, GigabitEthernet3\nI2  FD10::16/127 [115/20]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2\nI2  FD10::18/127 [115/30]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2\n     via FE80::5054:FF:FED2:7E17, GigabitEthernet3\nI2  FD10::20/127 [115/20]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2\nI2  FD10::24/127 [115/20]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2\nI2  FD10:0:1::1/128 [115/30]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2\nI2  FD10:0:1::2/128 [115/20]\n     via FE80::5054:FF:FE44:774E, GigabitEthernet5\nI2  FD10:0:1::3/128 [115/20]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2\nI2  FD10:0:1::5/128 [115/30]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2\n     via FE80::5054:FF:FED2:7E17, GigabitEthernet3\nI2  FD10:0:1::6/128 [115/20]\n     via FE80::5054:FF:FED2:7E17, GigabitEthernet3\nI2  FD10:0:1::7/128 [115/20]\n     via FE80::5054:FF:FE07:99EE, GigabitEthernet4\nI2  FD10:0:1::8/128 [115/30]\n     via FE80::5054:FF:FED2:7E17, GigabitEthernet3\nI2  FD10:0:1::9/128 [115/30]\n     via FE80::5054:FF:FEA0:EE34, GigabitEthernet2"
+  },
+  "interface_evidence": {
+    "running": {
+      "Loopback0": [],
+      "GigabitEthernet1": [],
+      "GigabitEthernet2": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet3": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet4": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet5": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet6": [
+        " mtu 9216"
+      ]
+    },
+    "startup": {
+      "Loopback0": [],
+      "GigabitEthernet1": [],
+      "GigabitEthernet2": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet3": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet4": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet5": [
+        " mtu 9216"
+      ],
+      "GigabitEthernet6": [
+        " mtu 9216"
+      ]
+    }
+  },
+  "ipv6_isis_checks": [
+    {
+      "interface": "GigabitEthernet2",
+      "running": true,
+      "startup": true
+    },
+    {
+      "interface": "GigabitEthernet3",
+      "running": true,
+      "startup": true
+    },
+    {
+      "interface": "GigabitEthernet4",
+      "running": true,
+      "startup": true
+    },
+    {
+      "interface": "GigabitEthernet5",
+      "running": true,
+      "startup": true
+    },
+    {
+      "interface": "GigabitEthernet6",
+      "running": true,
+      "startup": true
+    },
+    {
+      "interface": "Loopback0",
+      "running": true,
+      "startup": true
+    }
+  ],
+  "expected_isis_interfaces": [
+    "Gi2",
+    "Gi3",
+    "Gi4",
+    "Gi5",
+    "Gi6"
+  ],
+  "up_isis_interfaces": [
+    "Gi5",
+    "Gi2",
+    "Gi3",
+    "Gi4"
+  ],
+  "config_ok": true,
+  "isis_complete": false,
+  "connected": true
+}

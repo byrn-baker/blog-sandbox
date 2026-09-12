@@ -1,0 +1,13 @@
+{
+  "name": "SP2",
+  "id": "45b2a3a1-9ae2-4efe-9d8a-2c51e458b326",
+  "ip": "192.168.3.54",
+  "at": "2026-09-11T20:32:22.307987+00:00",
+  "commands": {
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet6 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nRR2             L2   Gi5           10.0.0.23       UP    24       02\nSP1             L2   Gi2           10.0.0.0        UP    23       02\nSP4             L2   Gi3           10.0.0.3        UP    28       02\nSPE1            L2   Gi4           10.0.0.9        UP    28       02\nBORDER1         L2   Gi6           10.0.0.27       UP    28       03",
+    "show ip bgp summary": "% BGP not active\n",
+    "show ip bgp vpnv4 all summary": "% BGP not active\n"
+  },
+  "ok": true
+}

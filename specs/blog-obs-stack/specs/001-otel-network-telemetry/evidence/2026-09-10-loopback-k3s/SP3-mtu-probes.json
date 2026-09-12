@@ -1,0 +1,105 @@
+{
+  "name": "SP3",
+  "at": "2026-09-10T04:41:43.445432+00:00",
+  "tests": [
+    {
+      "interface": "GigabitEthernet2",
+      "peer": "SPE3",
+      "peer_interface": "GigabitEthernet3",
+      "source": "10.0.0.18",
+      "destination": "10.0.0.19",
+      "size": 1500,
+      "command": "ping 10.0.0.19 source 10.0.0.18 size 1500 df-bit repeat 3 timeout 1",
+      "output": "Type escape sequence to abort.\nSending 3, 1500-byte ICMP Echos to 10.0.0.19, timeout is 1 seconds:\nPacket sent with a source address of 10.0.0.18 \nPacket sent with the DF bit set\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 3/6/10 ms",
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet2",
+      "peer": "SPE3",
+      "peer_interface": "GigabitEthernet3",
+      "source": "10.0.0.18",
+      "destination": "10.0.0.19",
+      "size": 9000,
+      "command": "ping 10.0.0.19 source 10.0.0.18 size 9000 df-bit repeat 3 timeout 1",
+      "output": "Type escape sequence to abort.\nSending 3, 9000-byte ICMP Echos to 10.0.0.19, timeout is 1 seconds:\nPacket sent with a source address of 10.0.0.18 \nPacket sent with the DF bit set\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 16/20/22 ms",
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet2",
+      "peer": "SPE3",
+      "peer_interface": "GigabitEthernet3",
+      "source": "10.0.0.18",
+      "destination": "10.0.0.19",
+      "size": 9216,
+      "command": "ping 10.0.0.19 source 10.0.0.18 size 9216 df-bit repeat 3 timeout 1",
+      "output": "Type escape sequence to abort.\nSending 3, 9216-byte ICMP Echos to 10.0.0.19, timeout is 1 seconds:\nPacket sent with a source address of 10.0.0.18 \nPacket sent with the DF bit set\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 15/27/36 ms",
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet4",
+      "peer": "SPE2",
+      "peer_interface": "GigabitEthernet3",
+      "source": "10.0.0.14",
+      "destination": "10.0.0.15",
+      "size": 1500,
+      "command": "ping 10.0.0.15 source 10.0.0.14 size 1500 df-bit repeat 3 timeout 1",
+      "output": "Type escape sequence to abort.\nSending 3, 1500-byte ICMP Echos to 10.0.0.15, timeout is 1 seconds:\nPacket sent with a source address of 10.0.0.14 \nPacket sent with the DF bit set\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 9/15/24 ms",
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet4",
+      "peer": "SPE2",
+      "peer_interface": "GigabitEthernet3",
+      "source": "10.0.0.14",
+      "destination": "10.0.0.15",
+      "size": 9000,
+      "command": "ping 10.0.0.15 source 10.0.0.14 size 9000 df-bit repeat 3 timeout 1",
+      "output": "Type escape sequence to abort.\nSending 3, 9000-byte ICMP Echos to 10.0.0.15, timeout is 1 seconds:\nPacket sent with a source address of 10.0.0.14 \nPacket sent with the DF bit set\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 23/28/34 ms",
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet4",
+      "peer": "SPE2",
+      "peer_interface": "GigabitEthernet3",
+      "source": "10.0.0.14",
+      "destination": "10.0.0.15",
+      "size": 9216,
+      "command": "ping 10.0.0.15 source 10.0.0.14 size 9216 df-bit repeat 3 timeout 1",
+      "output": "Type escape sequence to abort.\nSending 3, 9216-byte ICMP Echos to 10.0.0.15, timeout is 1 seconds:\nPacket sent with a source address of 10.0.0.14 \nPacket sent with the DF bit set\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 6/25/46 ms",
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet5",
+      "peer": "SP4",
+      "peer_interface": "GigabitEthernet5",
+      "source": "10.0.0.4",
+      "destination": "10.0.0.5",
+      "size": 1500,
+      "command": "ping 10.0.0.5 source 10.0.0.4 size 1500 df-bit repeat 3 timeout 1",
+      "output": "Type escape sequence to abort.\nSending 3, 1500-byte ICMP Echos to 10.0.0.5, timeout is 1 seconds:\nPacket sent with a source address of 10.0.0.4 \nPacket sent with the DF bit set\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 8/22/50 ms",
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet5",
+      "peer": "SP4",
+      "peer_interface": "GigabitEthernet5",
+      "source": "10.0.0.4",
+      "destination": "10.0.0.5",
+      "size": 9000,
+      "command": "ping 10.0.0.5 source 10.0.0.4 size 9000 df-bit repeat 3 timeout 1",
+      "output": "Type escape sequence to abort.\nSending 3, 9000-byte ICMP Echos to 10.0.0.5, timeout is 1 seconds:\nPacket sent with a source address of 10.0.0.4 \nPacket sent with the DF bit set\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 13/16/20 ms",
+      "ok": true
+    },
+    {
+      "interface": "GigabitEthernet5",
+      "peer": "SP4",
+      "peer_interface": "GigabitEthernet5",
+      "source": "10.0.0.4",
+      "destination": "10.0.0.5",
+      "size": 9216,
+      "command": "ping 10.0.0.5 source 10.0.0.4 size 9216 df-bit repeat 3 timeout 1",
+      "output": "Type escape sequence to abort.\nSending 3, 9216-byte ICMP Echos to 10.0.0.5, timeout is 1 seconds:\nPacket sent with a source address of 10.0.0.4 \nPacket sent with the DF bit set\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 19/23/30 ms",
+      "ok": true
+    }
+  ]
+}

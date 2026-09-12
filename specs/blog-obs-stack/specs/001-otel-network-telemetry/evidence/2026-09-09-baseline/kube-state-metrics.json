@@ -1,0 +1,4 @@
+[
+  "2026-09-09T00:15:50.018559270Z I0909 00:15:50.018468       1 server.go:223] \"Used resources\" resources=[\"ingresses\",\"limitranges\",\"mutatingwebhookconfigurations\",\"persistentvolumes\",\"pods\",\"validatingwebhookconfigurations\",\"daemonsets\",\"jobs\",\"services\",\"statefulsets\",\"storageclasses\",\"volumeattachments\",\"certificatesigningrequests\",\"endpointslices\",\"horizontalpodautoscalers\",\"leases\",\"networkpolicies\",\"nodes\",\"persistentvolumeclaims\",\"replicasets\",\"configmaps\",\"cronjobs\",\"deployments\",\"namespaces\",\"poddisruptionbudgets\",\"replicationcontrollers\",\"resourcequotas\",\"secrets\"]",
+  "2026-09-09T00:16:00.339763542Z E0909 00:16:00.339542       1 wrapper.go:40] \"Failed to run kube-state-metrics\" err=\"failed to create client: error while trying to communicate with apiserver: Get \\\"https://10.43.0.1:443/version\\\": net/http: TLS handshake timeout\""
+]

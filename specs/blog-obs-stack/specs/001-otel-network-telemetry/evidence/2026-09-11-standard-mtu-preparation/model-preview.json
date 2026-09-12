@@ -1,0 +1,1524 @@
+{
+  "dry_run": true,
+  "count": 253,
+  "changes": [
+    {
+      "device": "BORDER1",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "BORDER1",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE1",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE1",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE1",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE1",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE1",
+      "interface": "GigabitEthernet6",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE1",
+      "interface": "GigabitEthernet7",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE1",
+      "interface": "GigabitEthernet8",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE2",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE2",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE2",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE2",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE2",
+      "interface": "GigabitEthernet6",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE2",
+      "interface": "GigabitEthernet7",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE2",
+      "interface": "GigabitEthernet8",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE3",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE3",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE3",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE3",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE3",
+      "interface": "GigabitEthernet6",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE3",
+      "interface": "GigabitEthernet7",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "CE3",
+      "interface": "GigabitEthernet8",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "DCA-DNS",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-DNS",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-DNS",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Ethernet10",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Vlan100",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-Leaf01",
+      "interface": "Vlan101",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Ethernet10",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Vlan100",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-Leaf02",
+      "interface": "Vlan101",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Ethernet10",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Vlan100",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-Leaf03",
+      "interface": "Vlan101",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine01",
+      "interface": "Ethernet10",
+      "before": 1500,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCA-Spine02",
+      "interface": "Ethernet10",
+      "before": 1500,
+      "after": 9214
+    },
+    {
+      "device": "DCA-k3s-m1",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-k3s-m1",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-k3s-m1",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-k3s-m2",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-k3s-m2",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-k3s-m2",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-k3s-m3",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-k3s-m3",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCA-k3s-m3",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Ethernet10",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Vlan100",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-Leaf01",
+      "interface": "Vlan201",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Ethernet10",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Vlan100",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-Leaf02",
+      "interface": "Vlan201",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Ethernet10",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Vlan100",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-Leaf03",
+      "interface": "Vlan201",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine01",
+      "interface": "Ethernet10",
+      "before": 1500,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCB-Spine02",
+      "interface": "Ethernet10",
+      "before": 1500,
+      "after": 9214
+    },
+    {
+      "device": "DCB-k3s-w1",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-k3s-w1",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-k3s-w1",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-k3s-w2",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-k3s-w2",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-k3s-w2",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-k3s-w3",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-k3s-w3",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCB-k3s-w3",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Ethernet10",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Vlan100",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-Leaf01",
+      "interface": "Vlan301",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Ethernet10",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Vlan100",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-Leaf02",
+      "interface": "Vlan301",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Ethernet10",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Vlan100",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-Leaf03",
+      "interface": "Vlan301",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine01",
+      "interface": "Ethernet10",
+      "before": 1500,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet1",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet2",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet3",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet4",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet5",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet6",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet7",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet8",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet9",
+      "before": null,
+      "after": 9214
+    },
+    {
+      "device": "DCC-Spine02",
+      "interface": "Ethernet10",
+      "before": 1500,
+      "after": 9214
+    },
+    {
+      "device": "DCC-k3s-w4",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-k3s-w4",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-k3s-w4",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-k3s-w5",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-k3s-w5",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-k3s-w5",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-k3s-w6",
+      "interface": "bond0",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-k3s-w6",
+      "interface": "ens19",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "DCC-k3s-w6",
+      "interface": "ens20",
+      "before": null,
+      "after": 9000
+    },
+    {
+      "device": "RR1",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "RR2",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP1",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP1",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP1",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP1",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP1",
+      "interface": "GigabitEthernet6",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP2",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP2",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP2",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP2",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP2",
+      "interface": "GigabitEthernet6",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP3",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP3",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP3",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP3",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP4",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP4",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP4",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SP4",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE1",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE1",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE1",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE1",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE2",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE2",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE2",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE2",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE3",
+      "interface": "GigabitEthernet2",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE3",
+      "interface": "GigabitEthernet3",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE3",
+      "interface": "GigabitEthernet4",
+      "before": null,
+      "after": 9216
+    },
+    {
+      "device": "SPE3",
+      "interface": "GigabitEthernet5",
+      "before": null,
+      "after": 9216
+    }
+  ]
+}

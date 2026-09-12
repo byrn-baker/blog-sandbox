@@ -1,0 +1,52 @@
+{
+  "hostname": "DCB-k3s-w3",
+  "links": [
+    {
+      "ifname": "eth0",
+      "mtu": 9000,
+      "max_mtu": 9000,
+      "master": null,
+      "address": "bc:24:11:06:6c:a4"
+    },
+    {
+      "ifname": "ens19",
+      "mtu": 9000,
+      "max_mtu": 9000,
+      "master": "bond0",
+      "address": "02:00:00:00:01:16"
+    },
+    {
+      "ifname": "ens20",
+      "mtu": 9000,
+      "max_mtu": 9000,
+      "master": "bond0",
+      "address": "02:00:00:00:01:16"
+    },
+    {
+      "ifname": "bond0",
+      "mtu": 9000,
+      "max_mtu": 65535,
+      "master": null,
+      "address": "02:00:00:00:01:16"
+    },
+    {
+      "ifname": "flannel.1",
+      "mtu": 8950,
+      "max_mtu": 65535,
+      "master": null,
+      "address": "7a:f5:10:7c:2a:e1"
+    },
+    {
+      "ifname": "cni0",
+      "mtu": 8950,
+      "max_mtu": 65535,
+      "master": null,
+      "address": "fe:a7:1f:0d:86:9b"
+    }
+  ],
+  "flannel_mtu": [
+    "FLANNEL_MTU=8950"
+  ],
+  "ok": true,
+  "name": "DCB-k3s-w3"
+}

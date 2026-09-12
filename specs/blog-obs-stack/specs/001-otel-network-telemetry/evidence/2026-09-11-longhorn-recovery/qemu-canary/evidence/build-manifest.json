@@ -1,0 +1,7 @@
+{
+  "source": "Ubuntu qemu 1:8.2.2+ds-0ubuntu1.18 with all Debian quilt patches",
+  "patch": "f937309fbdbb48c354220a3e7110c202ae4aa7fa, header declaration adapted for 8.2.2",
+  "configure": "--prefix=/opt/cml-qemu-canary --target-list=x86_64-softmmu --disable-docs --disable-werror --enable-kvm --enable-slirp --enable-debug --disable-gtk --disable-sdl --disable-spice --disable-install-blobs --enable-numa --enable-seccomp",
+  "stock_qtest": "Installed Ubuntu binary lacks qtest accelerator; regression used a binary rebuilt from the same Ubuntu source with qtest enabled.",
+  "runtime_sha256": "605b893d815e96962cca4a8960b5a32289745721774e2db40a4c5876c2446a3e"
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "ok": true,
+    "output": "PING 10.42.3.24 (10.42.3.24) 8922(8950) bytes of data.\n8930 bytes from 10.42.3.24: icmp_seq=1 ttl=62 time=41.7 ms\n8930 bytes from 10.42.3.24: icmp_seq=2 ttl=62 time=18.9 ms\n8930 bytes from 10.42.3.24: icmp_seq=3 ttl=62 time=18.3 ms\n\n--- 10.42.3.24 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 18.262/26.286/41.686/10.892 ms\n",
+    "source": {
+      "node": "DCA-k3s-m3",
+      "name": "coredns-7b98449c4-58lwd",
+      "uid": "41374371-14b5-4490-b08b-dc2e8482ca62",
+      "ip": "10.42.2.8"
+    },
+    "destination": {
+      "node": "DCB-k3s-w1",
+      "name": "engine-image-ei-493e04e7-9ml2l",
+      "uid": "ccd861aa-531c-4607-ad47-4f0c943b2549",
+      "ip": "10.42.3.24"
+    },
+    "size": 8950
+  },
+  {
+    "ok": true,
+    "output": "PING 10.42.7.17 (10.42.7.17) 8922(8950) bytes of data.\n8930 bytes from 10.42.7.17: icmp_seq=1 ttl=62 time=76.8 ms\n8930 bytes from 10.42.7.17: icmp_seq=2 ttl=62 time=70.5 ms\n8930 bytes from 10.42.7.17: icmp_seq=3 ttl=62 time=167 ms\n\n--- 10.42.7.17 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 70.497/104.683/166.723/43.944 ms\n",
+    "source": {
+      "node": "DCA-k3s-m3",
+      "name": "coredns-7b98449c4-58lwd",
+      "uid": "41374371-14b5-4490-b08b-dc2e8482ca62",
+      "ip": "10.42.2.8"
+    },
+    "destination": {
+      "node": "DCC-k3s-w4",
+      "name": "engine-image-ei-493e04e7-lllzp",
+      "uid": "8c3593e7-b682-4089-a61c-f33a808e9bc7",
+      "ip": "10.42.7.17"
+    },
+    "size": 8950
+  },
+  {
+    "ok": true,
+    "output": "PING 10.42.2.8 (10.42.2.8) 8922(8950) bytes of data.\n8930 bytes from 10.42.2.8: icmp_seq=1 ttl=62 time=66.2 ms\n8930 bytes from 10.42.2.8: icmp_seq=2 ttl=62 time=28.3 ms\n8930 bytes from 10.42.2.8: icmp_seq=3 ttl=62 time=31.0 ms\n\n--- 10.42.2.8 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 28.264/41.839/66.235/17.286 ms\n",
+    "source": {
+      "node": "DCB-k3s-w1",
+      "name": "engine-image-ei-493e04e7-9ml2l",
+      "uid": "ccd861aa-531c-4607-ad47-4f0c943b2549",
+      "ip": "10.42.3.24"
+    },
+    "destination": {
+      "node": "DCA-k3s-m3",
+      "name": "coredns-7b98449c4-58lwd",
+      "uid": "41374371-14b5-4490-b08b-dc2e8482ca62",
+      "ip": "10.42.2.8"
+    },
+    "size": 8950
+  },
+  {
+    "ok": true,
+    "output": "PING 10.42.7.17 (10.42.7.17) 8922(8950) bytes of data.\n8930 bytes from 10.42.7.17: icmp_seq=1 ttl=62 time=54.1 ms\n8930 bytes from 10.42.7.17: icmp_seq=2 ttl=62 time=202 ms\n8930 bytes from 10.42.7.17: icmp_seq=3 ttl=62 time=155 ms\n\n--- 10.42.7.17 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 54.074/136.974/201.964/61.689 ms\n",
+    "source": {
+      "node": "DCB-k3s-w1",
+      "name": "engine-image-ei-493e04e7-9ml2l",
+      "uid": "ccd861aa-531c-4607-ad47-4f0c943b2549",
+      "ip": "10.42.3.24"
+    },
+    "destination": {
+      "node": "DCC-k3s-w4",
+      "name": "engine-image-ei-493e04e7-lllzp",
+      "uid": "8c3593e7-b682-4089-a61c-f33a808e9bc7",
+      "ip": "10.42.7.17"
+    },
+    "size": 8950
+  },
+  {
+    "ok": true,
+    "output": "PING 10.42.2.8 (10.42.2.8) 8922(8950) bytes of data.\n8930 bytes from 10.42.2.8: icmp_seq=1 ttl=62 time=154 ms\n8930 bytes from 10.42.2.8: icmp_seq=2 ttl=62 time=200 ms\n8930 bytes from 10.42.2.8: icmp_seq=3 ttl=62 time=19.6 ms\n\n--- 10.42.2.8 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 19.578/124.363/199.943/76.475 ms\n",
+    "source": {
+      "node": "DCC-k3s-w4",
+      "name": "engine-image-ei-493e04e7-lllzp",
+      "uid": "8c3593e7-b682-4089-a61c-f33a808e9bc7",
+      "ip": "10.42.7.17"
+    },
+    "destination": {
+      "node": "DCA-k3s-m3",
+      "name": "coredns-7b98449c4-58lwd",
+      "uid": "41374371-14b5-4490-b08b-dc2e8482ca62",
+      "ip": "10.42.2.8"
+    },
+    "size": 8950
+  },
+  {
+    "ok": true,
+    "output": "PING 10.42.3.24 (10.42.3.24) 8922(8950) bytes of data.\n8930 bytes from 10.42.3.24: icmp_seq=1 ttl=62 time=124 ms\n8930 bytes from 10.42.3.24: icmp_seq=2 ttl=62 time=199 ms\n8930 bytes from 10.42.3.24: icmp_seq=3 ttl=62 time=133 ms\n\n--- 10.42.3.24 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 124.127/152.066/199.285/33.575 ms\n",
+    "source": {
+      "node": "DCC-k3s-w4",
+      "name": "engine-image-ei-493e04e7-lllzp",
+      "uid": "8c3593e7-b682-4089-a61c-f33a808e9bc7",
+      "ip": "10.42.7.17"
+    },
+    "destination": {
+      "node": "DCB-k3s-w1",
+      "name": "engine-image-ei-493e04e7-9ml2l",
+      "uid": "ccd861aa-531c-4607-ad47-4f0c943b2549",
+      "ip": "10.42.3.24"
+    },
+    "size": 8950
+  }
+]

@@ -1,0 +1,8 @@
+{"port": 47000, "requested_mss": null, "at": "2026-09-09T03:12:36.557037+00:00", "tcp_seconds": 0.11828184800106101, "ok": false, "phase": "tls", "error": "TimeoutError", "total_seconds": 2.6263376690039877}
+{"port": 47001, "requested_mss": 1200, "at": "2026-09-09T03:12:39.183597+00:00", "tcp_seconds": 0.16772391300764866, "ok": false, "phase": "tls", "error": "TimeoutError", "total_seconds": 2.671411724993959}
+{"port": 47002, "requested_mss": null, "at": "2026-09-09T03:12:41.855200+00:00", "tcp_seconds": 0.20772038801806048, "ok": false, "phase": "tls", "error": "TimeoutError", "total_seconds": 2.709720348007977}
+{"port": 47003, "requested_mss": 1200, "at": "2026-09-09T03:12:44.565072+00:00", "tcp_seconds": 0.17669259701506235, "ok": false, "phase": "tls", "error": "TimeoutError", "total_seconds": 2.6802379070140887}
+{"port": 47004, "requested_mss": null, "at": "2026-09-09T03:12:47.245462+00:00", "tcp_seconds": 0.2135867640026845, "ok": false, "phase": "tls", "error": "TimeoutError", "total_seconds": 2.717088462988613}
+{"port": 47005, "requested_mss": 1200, "at": "2026-09-09T03:12:49.962662+00:00", "tcp_seconds": 0.28877863398520276, "ok": false, "phase": "tls", "error": "TimeoutError", "total_seconds": 2.792068542999914}
+{"port": 47006, "requested_mss": null, "at": "2026-09-09T03:12:52.754847+00:00", "tcp_seconds": 0.1523592069861479, "tls_seconds": 0.7481183960044291, "response": "HTTP/1.0 401 Unauthorized", "ok": true, "total_seconds": 1.1444754599942826}
+{"port": 47007, "requested_mss": 1200, "at": "2026-09-09T03:12:53.899479+00:00", "tcp_seconds": 0.17191062701749615, "ok": false, "phase": "tls", "error": "TimeoutError", "total_seconds": 2.675553517998196}

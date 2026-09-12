@@ -1,0 +1,6 @@
+{
+  "probe_size": 9214,
+  "expected_mtu": 9208,
+  "boundary_verified": true,
+  "output": "PING 10.3.3.4 (10.3.3.4) from 10.3.1.4 : 9186(9214) bytes of data.\nFrom 172.16.1.0 icmp_seq=1 Frag needed and DF set (mtu = 9208)\nping: local error: message too long, mtu=9208\nping: local error: message too long, mtu=9208\n\n--- 10.3.3.4 ping statistics ---\n3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2011ms\n\n% 'sudo -n ip netns exec default ping -n -I 10.3.1.4 -M do -c 3 -W 2 -s 9186 10.3.3.4' returned error code: 1"
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "at": "2026-09-11T15:33:25Z",
+    "reason": "FailedRebuilding",
+    "message": "Failed rebuilding replica with Address 10.42.8.43:10032: proxyServer=10.42.6.35:8501 destination=10.42.6.35:10011: failed to add replica tcp://10.42.8.43:10032 for volume: rpc error: code = Unavailable desc = failed to sync files [{FromFileName:volume-snap-604cc547-1658-4b83-8ea2-3532f27cc98a.img ToFileName:volume-snap-604cc547-1658-4b83-8ea2-3532f27cc98a.img ActualSize:721444864} {FromFileName:volume-snap-604cc547-1658-4b83-8ea2-3532f27cc98a.img.meta ToFileName:volume-snap-604cc547-1658-4b83-8ea2-3532f27cc98a.img.meta ActualSize:0} {FromFileName:volume-snap-033ab6df-2a17-4b91-89ba-c671a21fb041.img ToFileName:volume-snap-033ab6df-2a17-4b91-89ba-c671a21fb041.img ActualSize:4206862336} {FromFileName:volume-snap-033ab6df-2a17-4b91-89ba-c671a21fb041.img.meta ToFileName:volume-snap-033ab6df-2a17-4b91-89ba-c671a21fb041.img.meta ActualSize:0}] from map[tcp://10.42.6.35:10012:true]: rpc error: code = Unavailable desc = error reading from server: connection reset by peer"
+  },
+  {
+    "at": "2026-09-11T15:34:07Z",
+    "reason": "FailedRebuilding",
+    "message": "Failed rebuilding replica with Address 10.42.8.43:10032: proxyServer=10.42.6.35:8501 destination=10.42.6.35:10011: failed to add replica tcp://10.42.8.43:10032 for volume: rpc error: code = Unknown desc = failed to sync files [{FromFileName:volume-snap-1b1a9f5b-4789-483b-8a4f-a15ca04fb693.img ToFileName:volume-snap-1b1a9f5b-4789-483b-8a4f-a15ca04fb693.img ActualSize:54210560} {FromFileName:volume-snap-1b1a9f5b-4789-483b-8a4f-a15ca04fb693.img.meta ToFileName:volume-snap-1b1a9f5b-4789-483b-8a4f-a15ca04fb693.img.meta ActualSize:0} {FromFileName:volume-snap-604cc547-1658-4b83-8ea2-3532f27cc98a.img ToFileName:volume-snap-604cc547-1658-4b83-8ea2-3532f27cc98a.img ActualSize:4870320128} {FromFileName:volume-snap-604cc547-1658-4b83-8ea2-3532f27cc98a.img.meta ToFileName:volume-snap-604cc547-1658-4b83-8ea2-3532f27cc98a.img.meta ActualSize:0}] from map[tcp://10.42.6.35:10012:true]: rpc error: code = Unknown desc = replica is already rebuilding"
+  },
+  {
+    "at": "2026-09-11T15:16:48Z",
+    "reason": "FailedRebuilding",
+    "message": "Failed rebuilding replica with Address 10.42.3.26:10000: proxyServer=10.42.8.43:8501 destination=10.42.8.43:10031: failed to add replica tcp://10.42.3.26:10000 for volume: rpc error: code = Unavailable desc = failed to get replica 10.42.3.26:10000: rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing: dial tcp 10.42.3.26:10000: connect: connection refused\""
+  }
+]

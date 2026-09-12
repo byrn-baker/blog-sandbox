@@ -1,0 +1,43 @@
+{
+  "label": "small-4",
+  "source": "DCB-k3s-w2",
+  "destination": "DCC-k3s-w5",
+  "endpoints": [
+    {
+      "sent": 262144,
+      "send_seconds": 2.097267512988765,
+      "send_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6",
+      "received": 262144,
+      "receive_seconds": 2.859790154034272,
+      "receive_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6",
+      "mode": "client",
+      "local": "192.168.100.21",
+      "peer": "192.168.100.31",
+      "requested_mss": 1200,
+      "negotiated_mss": 1188,
+      "total_retrans": 11,
+      "errors": [],
+      "ok": true,
+      "exit_code": 0,
+      "role": "client"
+    },
+    {
+      "sent": 262144,
+      "send_seconds": 2.097280394984409,
+      "send_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6",
+      "received": 262144,
+      "receive_seconds": 3.03843533503823,
+      "receive_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6",
+      "mode": "server",
+      "local": "192.168.100.31",
+      "peer": "192.168.100.21",
+      "requested_mss": 1200,
+      "negotiated_mss": 1188,
+      "total_retrans": 0,
+      "errors": [],
+      "ok": true,
+      "exit_code": 0,
+      "role": "server"
+    }
+  ]
+}

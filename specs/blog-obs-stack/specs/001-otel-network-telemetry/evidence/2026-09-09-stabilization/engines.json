@@ -1,0 +1,23 @@
+[
+  {
+    "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-e-0",
+    "status": {
+      "currentState": "running",
+      "replicaModeMap": {
+        "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-dc5f7018": "RW"
+      },
+      "rebuildStatus": {}
+    }
+  },
+  {
+    "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-e-0",
+    "status": {
+      "currentState": "running",
+      "replicaModeMap": {
+        "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-5de7a02d": "RW",
+        "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-7e1af619": "RW"
+      },
+      "rebuildStatus": {}
+    }
+  }
+]

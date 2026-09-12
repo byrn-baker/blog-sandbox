@@ -1,0 +1,65 @@
+{
+  "pvcs": [
+    {
+      "name": "victoria-metrics-k8s-stack-grafana",
+      "namespace": "observability",
+      "status": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "capacity": {
+          "storage": "2Gi"
+        },
+        "phase": "Bound"
+      },
+      "storageClass": "longhorn",
+      "requested": {
+        "requests": {
+          "storage": "2Gi"
+        }
+      }
+    },
+    {
+      "name": "vmsingle-victoria-metrics-k8s-stack",
+      "namespace": "observability",
+      "status": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "capacity": {
+          "storage": "20Gi"
+        },
+        "phase": "Bound"
+      },
+      "storageClass": "longhorn",
+      "requested": {
+        "requests": {
+          "storage": "20Gi"
+        }
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "state": "attached",
+      "robustness": "degraded",
+      "node": "dcb-k3s-w3"
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "state": "attached",
+      "robustness": "healthy",
+      "node": "dcc-k3s-w4"
+    }
+  ],
+  "w6_readback": {
+    "root_filesystem": "/dev/sda1",
+    "root_size": "5.2G",
+    "root_used_percent": 92,
+    "root_available": "457M",
+    "virtual_disk_size": "6.5G",
+    "longhorn_disk_size": "50G",
+    "longhorn_filesystem_used_percent": 1
+  }
+}

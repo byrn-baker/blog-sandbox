@@ -1,0 +1,16 @@
+{
+  "device": "SPE1",
+  "at": "2026-09-11T20:15:24.929694+00:00",
+  "mode": "verify",
+  "commands": {
+    "show version | include uptime|Version": "Cisco IOS XE Software, Version 17.15.01a\nCisco IOS Software [IOSXE], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.15.1a, RELEASE SOFTWARE (fc1)\nlicensed under the GNU General Public License (\"GPL\") Version 2.0.  The\nsoftware code licensed under GPL Version 2.0 is free software that comes\nGPL code under the terms of GPL Version 2.0.  For more details, see the\nSPE1 uptime is 0 minutes",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.8        UP    28       04\nSP4             L2   Gi4           10.0.0.10       UP    22       04",
+    "show ip bgp summary": "",
+    "show ip bgp vpnv4 all summary": "BGP router identifier 10.1.0.7, local AS number 65000\nBGP table version is 106, main routing table version 106\n65 network entries using 17160 bytes of memory\n106 path entries using 14416 bytes of memory\n31/19 BGP path/bestpath attribute entries using 9672 bytes of memory\n6 BGP rrinfo entries using 240 bytes of memory\n18 BGP AS-PATH entries using 720 bytes of memory\n2 BGP extended community entries using 64 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 42272 total bytes of memory\nBGP activity 65/0 prefixes, 108/2 paths, scan interval 60 secs\n65 networks peaked at 20:15:24 Sep 11 2026 UTC (00:00:02.803 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.0.1        4        65000      25       8      106    0    0 00:00:13       41\n10.1.0.2        4        65000      26       9      106    0    0 00:00:17       41\n172.16.1.1      4        65001      26      16      106    0    0 00:00:16       23",
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, "
+  },
+  "ok": true,
+  "management_ip": "192.168.3.57",
+  "platform": "cisco_iosxe",
+  "configuration_preserved": true
+}

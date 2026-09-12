@@ -1,0 +1,103 @@
+{
+  "device": "DCB-Spine02",
+  "ip": "192.168.3.36",
+  "platform": "arista_eos",
+  "at": "2026-09-10T01:17:21.382167+00:00",
+  "modeled_interfaces": [
+    {
+      "name": "Ethernet1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.2.10/31",
+        "fd10:1:2::10/127"
+      ]
+    },
+    {
+      "name": "Ethernet2",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.2.12/31",
+        "fd10:1:2::12/127"
+      ]
+    },
+    {
+      "name": "Ethernet3",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.2.14/31",
+        "fd10:1:2::14/127"
+      ]
+    },
+    {
+      "name": "Ethernet4",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet5",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet6",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet7",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet8",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet9",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet10",
+      "mtu": 1500,
+      "enabled": true,
+      "ips": [
+        "10.1.2.3/31",
+        "fd10:1:2::3/127"
+      ]
+    },
+    {
+      "name": "Loopback0",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.2.2.3/32",
+        "fd10:2:2::3/128"
+      ]
+    },
+    {
+      "name": "Management1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.3.36/24"
+      ]
+    }
+  ],
+  "commands": {
+    "show interfaces": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet3 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet4 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is up, line protocol is up (connected)\n  IP MTU 1500 bytes, BW 1000000 kbit\nLoopback0 is up, line protocol is up (connected)\n  IP MTU 65535 bytes (default)\nManagement1 is up, line protocol is up (connected)\n  IP MTU 1500 bytes (default), BW 1000000 kbit",
+    "show ip interface brief": "                                                                                Address\nInterface         IP Address            Status       Protocol            MTU    Owner  \n----------------- --------------------- ------------ -------------- ----------- -------\nEthernet1         10.1.2.10/31          up           up                 8950           \nEthernet2         10.1.2.12/31          up           up                 8950           \nEthernet3         10.1.2.14/31          up           up                 8950           \nEthernet10        10.1.2.3/31           up           up                 1500           \nLoopback0         10.2.2.3/32           up           up                65535           \nManagement1       192.168.3.36/24       up           up                 1500           \n",
+    "show platform tfa counters debug": "Action:\nInPipe: Traffic class is set to : %s: 142490781\nIpRoute: IPv6 is hop by hop, trapping: 35\nIpRoute: Routing is disabled, trapping packet from %s: 61\nIpRoute: Trapping broadcast address %s: 1871\nIpRoute: Trapping multicast address %s: 6757\nQos: Trust mode for %s is %s: 285020245\nRoutingPipeline: Trapping mtu exceeded packet on fwd0: 652305\n\nExceptional:\nIpRoute: No match found for %s: 77\nIpRoute: No valid fecId for route %s: 21\nRoutingPipeline: Pkt bytes %s exceeds mtu %s for port %s: 652305\nRoutingPipeline: TTL not set in rCtx: 29214\n\nLearning:\nMacTable: No entry deleting from fid 1 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1006 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1007 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1008 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1009 requested by FhrpArfa: 1\n"
+  },
+  "ok": true
+}

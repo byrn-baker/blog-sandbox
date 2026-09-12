@@ -1,0 +1,12 @@
+{
+  "hostname": "DCA-k3s-m1",
+  "pods": [
+    {
+      "id": "8e09784cf7dfbeff38053c66b9e5abf811ee08e266af9fcb326c63b063f500e2",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-vxj2t",
+      "namespace": "observability",
+      "pid": 1363,
+      "hostNetwork": true
+    }
+  ]
+}

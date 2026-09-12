@@ -1,0 +1,117 @@
+{
+  "at": "2026-09-11T20:29:20.028071+00:00",
+  "nodes_ready": [
+    "dca-k3s-m1",
+    "dca-k3s-m2",
+    "dca-k3s-m3",
+    "dcb-k3s-w1",
+    "dcb-k3s-w2",
+    "dcb-k3s-w3",
+    "dcc-k3s-w4",
+    "dcc-k3s-w5",
+    "dcc-k3s-w6"
+  ],
+  "nodes_total": 9,
+  "pods_ready": 62,
+  "pods_total": 65,
+  "volumes": [
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "state": "attached",
+      "robustness": "unknown",
+      "currentNodeID": "dcc-k3s-w6",
+      "numberOfReplicas": 3,
+      "conditions": [
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:29Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "OfflineRebuilding"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:57Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "WaitForBackingImage"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:57Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "TooManySnapshots"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:57Z",
+          "message": "Reset schedulable due to allow volume creation with degraded availability",
+          "reason": "",
+          "status": "True",
+          "type": "Scheduled"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:35Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "Restore"
+        }
+      ]
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "state": "attached",
+      "robustness": "degraded",
+      "currentNodeID": "dcb-k3s-w3",
+      "numberOfReplicas": 3,
+      "conditions": [
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:33Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "OfflineRebuilding"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:27Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "WaitForBackingImage"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:27Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "TooManySnapshots"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:27Z",
+          "message": "",
+          "reason": "",
+          "status": "True",
+          "type": "Scheduled"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:32Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "Restore"
+        }
+      ]
+    }
+  ]
+}

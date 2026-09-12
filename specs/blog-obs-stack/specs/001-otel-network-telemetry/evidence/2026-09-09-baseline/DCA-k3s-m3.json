@@ -1,0 +1,92 @@
+{
+  "configured_leader_flags": [
+    "--kube-controller-manager-arg leader-elect-lease-duration=30s",
+    "--kube-controller-manager-arg leader-elect-renew-deadline=20s",
+    "--kube-scheduler-arg leader-elect-lease-duration=30s",
+    "--kube-scheduler-arg leader-elect-renew-deadline=20s"
+  ],
+  "service": "NRestarts=4\nExecMainStartTimestamp=Tue 2026-09-08 23:25:43 UTC\nActiveState=active\n",
+  "config_files": {
+    "/etc/rancher/k3s/config.yaml.d/90-node-lifecycle.yaml": [
+      "# node-monitor-grace-period: how long the controller-manager waits after the",
+      "kube-controller-manager-arg:",
+      "  - \"node-monitor-grace-period=300s\""
+    ]
+  },
+  "six_hour_counts": {
+    "lease_lost": 3,
+    "renew_failure": 4,
+    "exits": 3,
+    "slow_apply": 7556,
+    "slow_fsync": 0,
+    "oom": 0
+  },
+  "recent_failures": [
+    "2026-09-08T19:17:56+00:00 DCA-k3s-m3 k3s[104726]: I0908 19:17:56.849856  104726 leaderelection.go:285] failed to renew lease kube-system/k3s-cloud-controller-manager: timed out waiting for the condition",
+    "2026-09-08T19:17:56+00:00 DCA-k3s-m3 k3s[104726]: E0908 19:17:56.849970  104726 controllermanager.go:274] \"leaderelection lost\"",
+    "2026-09-08T19:17:57+00:00 DCA-k3s-m3 systemd[1]: k3s.service: Main process exited, code=exited, status=1/FAILURE",
+    "2026-09-08T22:59:35+00:00 DCA-k3s-m3 k3s[120012]: I0908 22:59:35.132998  120012 leaderelection.go:285] failed to renew lease kube-system/k3s-cloud-controller-manager: timed out waiting for the condition",
+    "2026-09-08T22:59:35+00:00 DCA-k3s-m3 k3s[120012]: E0908 22:59:35.133075  120012 controllermanager.go:274] \"leaderelection lost\"",
+    "2026-09-08T22:59:35+00:00 DCA-k3s-m3 systemd[1]: k3s.service: Main process exited, code=exited, status=1/FAILURE",
+    "2026-09-08T23:25:19+00:00 DCA-k3s-m3 k3s[128063]: I0908 23:25:19.206133  128063 leaderelection.go:285] failed to renew lease kube-system/k3s: timed out waiting for the condition",
+    "2026-09-08T23:25:19+00:00 DCA-k3s-m3 k3s[128063]: I0908 23:25:19.397032  128063 leaderelection.go:285] failed to renew lease kube-system/k3s-etcd: timed out waiting for the condition",
+    "2026-09-08T23:25:38+00:00 DCA-k3s-m3 k3s[128063]: time=\"2026-09-08T23:25:38Z\" level=fatal msg=\"leaderelection lost for k3s-etcd\"",
+    "2026-09-08T23:25:38+00:00 DCA-k3s-m3 systemd[1]: k3s.service: Main process exited, code=exited, status=1/FAILURE"
+  ],
+  "recent_slow_apply": [
+    "2026-09-09T00:14:46+00:00 DCA-k3s-m3 k3s[129221]: {\"level\":\"warn\",\"ts\":\"2026-09-09T00:14:46.641214Z\",\"caller\":\"etcdserver/util.go:170\",\"msg\":\"apply request took too long\",\"took\":\"238.2405ms\",\"expected-duration\":\"100ms\",\"prefix\":\"read-only range \",\"request\":\"key:\\\"/registry/leases/longhorn-system/external-snapshotter-leader-driver-longhorn-io\\\" \",\"response\":\"range_response_count:1 size:544\"}",
+    "2026-09-09T00:14:46+00:00 DCA-k3s-m3 k3s[129221]: {\"level\":\"warn\",\"ts\":\"2026-09-09T00:14:46.641225Z\",\"caller\":\"etcdserver/util.go:170\",\"msg\":\"apply request took too long\",\"took\":\"442.679382ms\",\"expected-duration\":\"100ms\",\"prefix\":\"read-only range \",\"request\":\"key:\\\"/registry/endpointslices/default/kubernetes\\\" \",\"response\":\"range_response_count:1 size:517\"}",
+    "2026-09-09T00:14:46+00:00 DCA-k3s-m3 k3s[129221]: {\"level\":\"warn\",\"ts\":\"2026-09-09T00:14:46.641214Z\",\"caller\":\"etcdserver/util.go:170\",\"msg\":\"apply request took too long\",\"took\":\"432.512987ms\",\"expected-duration\":\"100ms\",\"prefix\":\"read-only range \",\"request\":\"key:\\\"/registry/leases/longhorn-system/driver-longhorn-io\\\" \",\"response\":\"range_response_count:1 size:493\"}"
+  ],
+  "startup_leader_args": [
+    {
+      "component": "kube-proxy",
+      "flags": []
+    },
+    {
+      "component": "kube-apiserver",
+      "flags": []
+    },
+    {
+      "component": "kube-scheduler",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-controller-manager",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-proxy",
+      "flags": []
+    },
+    {
+      "component": "kube-apiserver",
+      "flags": []
+    },
+    {
+      "component": "kube-scheduler",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-controller-manager",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-proxy",
+      "flags": []
+    }
+  ],
+  "device": "DCA-k3s-m3"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "longhorn",
+    "health": "Healthy",
+    "sync": "Synced",
+    "conditions": []
+  },
+  {
+    "name": "root-app",
+    "health": "Healthy",
+    "sync": "Synced",
+    "conditions": []
+  },
+  {
+    "name": "victoria-metrics-k8s-stack",
+    "health": "Healthy",
+    "sync": "Synced",
+    "conditions": []
+  }
+]

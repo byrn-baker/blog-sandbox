@@ -1,0 +1,33 @@
+{
+  "name": "DCC-Leaf03",
+  "started": "2026-09-09T03:07:48.891275+00:00",
+  "os": "eos",
+  "commands": [
+    {
+      "command": "show interfaces counters discards",
+      "at": "2026-09-09T03:07:50.236016+00:00",
+      "output": "Port               InDiscards    OutDiscards\r\n--------------- ---------------- -----------\r\nEt1                         0              0\r\nEt2                         0              0\r\nEt3                         0              0\r\nEt4                         0              0\r\nEt5                         0              0\r\nEt6                         0              0\r\nEt7                         0              0\r\nEt8                         0              0\r\nEt9                         0              0\r\nEt10                        0              0\r\nMa1                         0              0\r\n---------           ---------      ---------\r\nTotals                      0              0",
+      "ok": true
+    },
+    {
+      "command": "show interfaces counters rates",
+      "at": "2026-09-09T03:07:50.536376+00:00",
+      "output": "Port      Name                 Intvl  In Kbps      %   In Pps Out Kbps      %\r\nEt1       to DCC-Spine01 Ether  5:00      4.1   0.0%        6      2.7   0.0%\r\nEt2       to DCC-Spine02 Ether  5:00      2.8   0.0%        5      2.9   0.0%\r\nEt3                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt4                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt5                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt6                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt7                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt8                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt9                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt10      Border handoff to CE  5:00      0.5   0.0%        1      0.5   0.0%\r\nMa1       Management - MGMT-VR  5:00      0.7   0.0%        2      0.4   0.0%\r\n\r\nPort       Out Pps\r\nEt1              5\r\nEt2              5\r\nEt3              0\r\nEt4              0\r\nEt5              0\r\nEt6              0\r\nEt7              0\r\nEt8              0\r\nEt9              0\r\nEt10             1\r\nMa1              0",
+      "ok": true
+    },
+    {
+      "command": "show bgp evpn summary",
+      "at": "2026-09-09T03:07:50.807747+00:00",
+      "output": "BGP summary information for VRF default\r\nRouter identifier 10.2.3.6, local AS number 65313\r\nNeighbor Status Codes: m - Under maintenance\r\n  Description              Neighbor V AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc PfxAdv\r\n  DCC-Spine01              10.2.3.2 4 65301          21730     16672    0    0 01:57:06 Estab   216    216    273\r\n  DCC-Spine02              10.2.3.3 4 65301          20635     16582    0    0 01:57:07 Estab   216    216    59",
+      "ok": true
+    },
+    {
+      "command": "show interfaces counters discards",
+      "at": "2026-09-09T03:08:01.099744+00:00",
+      "output": "Port               InDiscards    OutDiscards\r\n--------------- ---------------- -----------\r\nEt1                         0              0\r\nEt2                         0              0\r\nEt3                         0              0\r\nEt4                         0              0\r\nEt5                         0              0\r\nEt6                         0              0\r\nEt7                         0              0\r\nEt8                         0              0\r\nEt9                         0              0\r\nEt10                        0              0\r\nMa1                         0              0\r\n---------           ---------      ---------\r\nTotals                      0              0",
+      "ok": true
+    }
+  ],
+  "connected": true,
+  "finished": "2026-09-09T03:08:12.375568+00:00"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "SPE2",
+    "plan": "14d16bb0-a200-4864-aa16-a18fb93665d8",
+    "lines": 134,
+    "loopback_before_isis": true
+  },
+  {
+    "name": "SPE1",
+    "plan": "696f1c36-3ad7-4906-8bd1-2ab30fea7af5",
+    "lines": 93,
+    "loopback_before_isis": true
+  }
+]

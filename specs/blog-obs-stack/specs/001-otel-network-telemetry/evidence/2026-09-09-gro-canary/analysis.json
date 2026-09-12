@@ -1,0 +1,578 @@
+{
+  "gro-off": {
+    "summary": {
+      "DCA-Leaf01": {
+        "connections": 12,
+        "successes": 12,
+        "median_s": 1.268839,
+        "min_s": 0.786977,
+        "max_s": 2.033027,
+        "oversized_packets": 0,
+        "source_retransmissions": 1,
+        "worker_sacks": 1,
+        "source_data_packets": 109
+      },
+      "DCA-Leaf02": {
+        "connections": 12,
+        "successes": 5,
+        "median_s": 2.002028,
+        "min_s": 1.323062,
+        "max_s": 2.264154,
+        "oversized_packets": 12,
+        "source_retransmissions": 22,
+        "worker_sacks": 18,
+        "source_data_packets": 74
+      }
+    },
+    "connections": [
+      {
+        "at": "2026-09-09T20:59:28.350393+00:00",
+        "port": 48200,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.002520",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.00252,
+        "oversized": 1,
+        "oversized_lengths": [
+          1522
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 3,
+        "worker_sacks": 2
+      },
+      {
+        "at": "2026-09-09T20:59:30.513419+00:00",
+        "port": 48201,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.002276",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.002276,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 1,
+        "source_data_packets": 2,
+        "worker_sacks": 2
+      },
+      {
+        "at": "2026-09-09T20:59:32.507541+00:00",
+        "port": 48202,
+        "rc": 0,
+        "timing": "401 48202 0.616593 1.117103 1.833938",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.833938,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T20:59:34.209894+00:00",
+        "port": 48203,
+        "rc": 0,
+        "timing": "401 48203 0.624555 1.062557 1.540930",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.54093,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T20:59:36.371996+00:00",
+        "port": 48204,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.001780",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.00178,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 3,
+        "worker_sacks": 2
+      },
+      {
+        "at": "2026-09-09T20:59:38.533135+00:00",
+        "port": 48205,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.001412",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.001412,
+        "oversized": 1,
+        "oversized_lengths": [
+          1522
+        ],
+        "source_retransmissions": 0,
+        "source_data_packets": 1,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T20:59:40.191940+00:00",
+        "port": 48206,
+        "rc": 0,
+        "timing": "401 48206 0.332052 1.037092 1.496246",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.496246,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T20:59:41.563977+00:00",
+        "port": 48207,
+        "rc": 0,
+        "timing": "401 48207 0.572713 0.942182 1.212131",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.212131,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T20:59:43.261789+00:00",
+        "port": 48208,
+        "rc": 0,
+        "timing": "401 48208 0.304230 1.206422 1.538373",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 1.538373,
+        "oversized": 1,
+        "oversized_lengths": [
+          1524
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 11,
+        "worker_sacks": 1
+      },
+      {
+        "at": "2026-09-09T20:59:45.424513+00:00",
+        "port": 48209,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.001741",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.001741,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 3,
+        "worker_sacks": 2
+      },
+      {
+        "at": "2026-09-09T20:59:46.837707+00:00",
+        "port": 48210,
+        "rc": 0,
+        "timing": "401 48210 0.533712 0.789270 1.253753",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.253753,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T20:59:49.029550+00:00",
+        "port": 48211,
+        "rc": 0,
+        "timing": "401 48211 0.691981 1.226253 2.033027",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 2.033027,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T20:59:51.270483+00:00",
+        "port": 48212,
+        "rc": 0,
+        "timing": "401 48212 0.257411 1.857841 2.081996",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.081996,
+        "oversized": 1,
+        "oversized_lengths": [
+          1522
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 11,
+        "worker_sacks": 1
+      },
+      {
+        "at": "2026-09-09T20:59:53.432444+00:00",
+        "port": 48213,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.002639",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.002639,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 3,
+        "worker_sacks": 2
+      },
+      {
+        "at": "2026-09-09T20:59:54.935896+00:00",
+        "port": 48214,
+        "rc": 0,
+        "timing": "401 48214 0.612509 1.104403 1.345067",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.345067,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T20:59:56.319017+00:00",
+        "port": 48215,
+        "rc": 0,
+        "timing": "401 48215 0.345918 0.745003 1.224745",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.224745,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T20:59:57.800579+00:00",
+        "port": 48216,
+        "rc": 0,
+        "timing": "401 48216 0.249319 0.876963 1.323062",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 1.323062,
+        "oversized": 1,
+        "oversized_lengths": [
+          1524
+        ],
+        "source_retransmissions": 3,
+        "source_data_packets": 12,
+        "worker_sacks": 2
+      },
+      {
+        "at": "2026-09-09T20:59:59.961817+00:00",
+        "port": 48217,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.001339",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.001339,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 3,
+        "worker_sacks": 2
+      },
+      {
+        "at": "2026-09-09T21:00:01.406270+00:00",
+        "port": 48218,
+        "rc": 0,
+        "timing": "401 48218 0.543057 0.974187 1.283926",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.283926,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T21:00:02.768656+00:00",
+        "port": 48219,
+        "rc": 0,
+        "timing": "401 48219 0.235651 0.515338 1.203433",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.203433,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 1,
+        "source_data_packets": 10,
+        "worker_sacks": 1
+      },
+      {
+        "at": "2026-09-09T21:00:05.191011+00:00",
+        "port": 48220,
+        "rc": 0,
+        "timing": "401 48220 0.449354 1.951995 2.264154",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.264154,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 11,
+        "worker_sacks": 1
+      },
+      {
+        "at": "2026-09-09T21:00:07.563255+00:00",
+        "port": 48221,
+        "rc": 0,
+        "timing": "401 48221 0.301684 1.927303 2.213102",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.213102,
+        "oversized": 1,
+        "oversized_lengths": [
+          1522
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 11,
+        "worker_sacks": 1
+      },
+      {
+        "at": "2026-09-09T21:00:08.508895+00:00",
+        "port": 48222,
+        "rc": 0,
+        "timing": "401 48222 0.246409 0.579476 0.786977",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 0.786977,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T21:00:09.847435+00:00",
+        "port": 48223,
+        "rc": 0,
+        "timing": "401 48223 0.312573 0.794986 1.178973",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 1.178973,
+        "oversized": 0,
+        "oversized_lengths": [],
+        "source_retransmissions": 0,
+        "source_data_packets": 9,
+        "worker_sacks": 0
+      }
+    ]
+  },
+  "restored": {
+    "summary": {
+      "DCA-Leaf01": {
+        "connections": 4,
+        "successes": 1,
+        "median_s": 2.001121,
+        "min_s": 0.960137,
+        "max_s": 2.001991,
+        "oversized_packets": 4,
+        "source_retransmissions": 8,
+        "worker_sacks": 4,
+        "source_data_packets": 20
+      },
+      "DCA-Leaf02": {
+        "connections": 4,
+        "successes": 2,
+        "median_s": 2.030952,
+        "min_s": 2.000839,
+        "max_s": 2.408538,
+        "oversized_packets": 4,
+        "source_retransmissions": 5,
+        "worker_sacks": 2,
+        "source_data_packets": 21
+      }
+    },
+    "connections": [
+      {
+        "at": "2026-09-09T21:01:25.226878+00:00",
+        "port": 48300,
+        "rc": 0,
+        "timing": "401 48300 0.307894 1.934398 2.408538",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.408538,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 11,
+        "worker_sacks": 1
+      },
+      {
+        "at": "2026-09-09T21:01:27.389971+00:00",
+        "port": 48301,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.000860",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.00086,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 1,
+        "source_data_packets": 2,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T21:01:29.552327+00:00",
+        "port": 48302,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.000846",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 2.000846,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 1,
+        "source_data_packets": 2,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T21:01:31.716885+00:00",
+        "port": 48303,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.001397",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 2.001397,
+        "oversized": 1,
+        "oversized_lengths": [
+          1522
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 3,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T21:01:33.877179+00:00",
+        "port": 48304,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.000839",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.000839,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 0,
+        "source_data_packets": 1,
+        "worker_sacks": 0
+      },
+      {
+        "at": "2026-09-09T21:01:36.097317+00:00",
+        "port": 48305,
+        "rc": 0,
+        "timing": "401 48305 0.203669 1.631660 2.061044",
+        "leaf": [
+          "DCA-Leaf02"
+        ],
+        "total_s": 2.061044,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 7,
+        "worker_sacks": 1
+      },
+      {
+        "at": "2026-09-09T21:01:38.257708+00:00",
+        "port": 48306,
+        "rc": 28,
+        "timing": "000 -1 0.000000 0.000000 2.001991",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 2.001991,
+        "oversized": 1,
+        "oversized_lengths": [
+          1524
+        ],
+        "source_retransmissions": 2,
+        "source_data_packets": 3,
+        "worker_sacks": 2
+      },
+      {
+        "at": "2026-09-09T21:01:39.376647+00:00",
+        "port": 48307,
+        "rc": 0,
+        "timing": "401 48307 0.072286 0.610814 0.960137",
+        "leaf": [
+          "DCA-Leaf01"
+        ],
+        "total_s": 0.960137,
+        "oversized": 1,
+        "oversized_lengths": [
+          1523
+        ],
+        "source_retransmissions": 3,
+        "source_data_packets": 12,
+        "worker_sacks": 2
+      }
+    ]
+  }
+}

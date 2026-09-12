@@ -1,0 +1,6 @@
+QEMU emulator version 8.2.2
+Copyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers
+
+Adding 'local diversion of /usr/bin/qemu-system-x86_64 to /usr/bin/qemu-system-x86_64.distrib'
+{"installed_sha256": "605b893d815e96962cca4a8960b5a32289745721774e2db40a4c5876c2446a3e", "vendor_sha256": "8a35ccba41582fc6c38b9df85fc9e35fa1d42f414d2d7d8090ee9b2f5e7c0854", "rollback": "/opt/cml-qemu-canary/rollback.py", "diversion": "local diversion of /usr/bin/qemu-system-x86_64 to /usr/bin/qemu-system-x86_64.distrib\n"}
+

@@ -1,0 +1,13 @@
+{
+  "device": "RR1",
+  "at": "2026-09-11T20:44:30.545805+00:00",
+  "mode": "verify",
+  "commands": {
+    "show isis neighbors detail": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.20       UP    24       05\n  Area Address(es): 49.0001\n  SNPA: 5254.0044.0974      \n  IPv6 Address(es): FE80::5054:FF:FE44:974\n  IPv6 Global Address: FD10::20\n  State Changed: 00:13:17\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet2\n  Neighbor Circuit Id: 5\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full",
+    "show logging | include CLNS-5-ADJCHANGE": "*Sep 11 20:31:17.774: %CLNS-5-ADJCHANGE: ISIS (SP-ISIS): Adjacency to 0000.0003.0001 (GigabitEthernet2) Up, new adjacency"
+  },
+  "ok": true,
+  "management_ip": "192.168.3.51",
+  "platform": "cisco_iosxe",
+  "configuration_preserved": true
+}

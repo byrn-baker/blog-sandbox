@@ -1,0 +1,14 @@
+{
+  "name": "BORDER1",
+  "id": "0c775cc6-32cb-4f53-b9c3-0f22fbf33eeb",
+  "ip": "192.168.3.50",
+  "at": "2026-09-10T21:04:20.020310+00:00",
+  "commands": {
+    "show debugging": "IOSXE Conditional Debug Configs:\n\nConditional Debug Global State: Stop\n\n\nIOSXE Packet Tracing Configs: \n\n\n\n\n\nPacket Infra debugs:\n\nIp Address                                               Port\n------------------------------------------------------|----------\n\n\n\n \n \n\n\n\n",
+    "show clns traffic": "CLNS:  Time since last clear: never\nCLNS queue depth: 0/100, drops: 0, highest: 3\nCLNS & ESIS Output: 3584, Input: 16783\nDropped Protocol not enabled on interface: 4\nCLNS Local: 0, Forward: 0\nCLNS Discards:\n  Hdr Syntax: 0, Checksum: 0, Lifetime: 0, Output cngstn: 0\n  No Route: 0, Discard Route: 0, Dst Unreachable 0, Encaps. Failed: 0\n  NLP Unknown: 9, Not an IS: 0\nCLNS Options: Packets 0, total 0 , bad 0, GQOS 0, cngstn exprncd 0\nCLNS Segments:  Segmented: 0, Failed: 0\nCLNS Broadcasts: sent: 0, rcvd: 0\nEchos: Rcvd 0 requests, 0 replies\n      Sent 0 requests, 0 replies\nESIS(sent/rcvd): ESHs: 0/0, ISHs: 3584/2402, RDs: 0/0, QCF: 0/0\nTunneling (sent/rcvd): IP: 0/0, IPv6: 0/0\nTunneling dropped (rcvd) IP/IPV6:  0\nISO-IGRP: Querys (sent/rcvd): 0/0 Updates (sent/rcvd): 0/0\nISO-IGRP: Router Hellos: (sent/rcvd): 0/0\nISO-IGRP Syntax Errors: 0\n\nTag SP-ISIS:\nIS-IS: Time since last clear: never\nIS-IS: Level-2 Hellos (sent/rcvd): 0/0\nIS-IS: PTP Hellos     (sent/rcvd): 11/2\nIS-IS: Level-2 LSPs sourced (new/refresh): 21/79\nIS-IS: Level-2 LSPs flooded (sent/rcvd): 2/3\nIS-IS: LSP Retransmissions: 0\nIS-IS: Level-2 CSNPs (sent/rcvd): 1/1\nIS-IS: Level-2 PSNPs (sent/rcvd): 2/1\nIS-IS: Level-2 DR Elections: 2\nIS-IS: Level-2 SPF Calculations: 151\nIS-IS: Level-2 Partial Route Calculations: 25\nIS-IS: LSP checksum errors received: 0\nIS-IS: Adjacency process queue depth: 0/unlimited, drops: 0, highest: 3\nIS-IS: Update process LSP queue depth: 0/200, drops: 0, highest: 2\nIS-IS: Update process SNP queue depth: 0/200, drops: 0, highest: 1\nIS-IS: Decision process workq depth: 0/unlimited, drops: 0, highest: 2"
+  },
+  "enabled": "IS-IS Adjacency related packets debugging is on for router process SP-ISIS",
+  "disabled": "IS-IS Adjacency related packets debugging is off for router process SP-ISIS",
+  "debug_signals": [],
+  "ok": true
+}

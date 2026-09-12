@@ -1,0 +1,186 @@
+[
+  {
+    "namespace": "argocd",
+    "type": "Warning",
+    "reason": "Unhealthy",
+    "count": 135,
+    "lastTimestamp": "2026-09-10T04:07:30Z",
+    "object": "argocd-repo-server-b9c6c66f-znwvx"
+  },
+  {
+    "namespace": "argocd",
+    "type": "Warning",
+    "reason": "BackOff",
+    "count": 483,
+    "lastTimestamp": "2026-09-10T04:22:37Z",
+    "object": "argocd-repo-server-b9c6c66f-znwvx"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-attacher-6d698df559-68fwm"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-attacher-6d698df559-f5dpv"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-attacher-6d698df559-mvcdt"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-provisioner-cd78b7b67-5rkmd"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-provisioner-cd78b7b67-wtmdl"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-provisioner-cd78b7b67-xx8hx"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-resizer-cb7655d45-76cvr"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-resizer-cb7655d45-lhbpd"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-resizer-cb7655d45-x4xsh"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-snapshotter-799f9f96cf-7x6wn"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-snapshotter-799f9f96cf-cg25z"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "csi-snapshotter-799f9f96cf-hkt2w"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "longhorn-driver-deployer-56c87bf855-ksqs8"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "longhorn-ui-787c958bcf-h488l"
+  },
+  {
+    "namespace": "longhorn-system",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "longhorn-ui-787c958bcf-qhfkf"
+  },
+  {
+    "namespace": "observability",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "victoria-metrics-k8s-stack-grafana-55964d88c-br4fb"
+  },
+  {
+    "namespace": "observability",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "victoria-metrics-k8s-stack-kube-state-metrics-545f7c6df4-hx5mh"
+  },
+  {
+    "namespace": "observability",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "victoria-metrics-k8s-stack-victoria-metrics-operator-77cdb6wxcr"
+  },
+  {
+    "namespace": "observability",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "vmagent-victoria-metrics-k8s-stack-5dcd6959d9-tsrzq"
+  },
+  {
+    "namespace": "observability",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "vmalert-victoria-metrics-k8s-stack-78689f75d9-ws9s6"
+  },
+  {
+    "namespace": "observability",
+    "type": "Warning",
+    "reason": "FailedScheduling",
+    "count": null,
+    "lastTimestamp": null,
+    "object": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-ll8zr"
+  }
+]

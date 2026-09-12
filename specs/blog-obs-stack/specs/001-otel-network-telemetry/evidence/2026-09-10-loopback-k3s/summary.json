@@ -1,0 +1,20 @@
+{
+  "at": "2026-09-10T04:45:17.206342+00:00",
+  "routers_verified": 13,
+  "data_mtu": 9216,
+  "isis_links_up": 12,
+  "isis_links_expected": 14,
+  "df_tests_passed": 42,
+  "df_tests_expected": 42,
+  "sizes": [
+    1500,
+    9000,
+    9216
+  ],
+  "worker_https_completions_before": 0,
+  "worker_https_completions_after": 18,
+  "worker_https_probes": 18,
+  "worker_https_median_ms": 1128.935,
+  "dns_nodes_passed": 9,
+  "k3s_nodes_ready": 9
+}

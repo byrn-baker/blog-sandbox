@@ -1,0 +1,104 @@
+[
+  {
+    "binary": "original",
+    "tail": 1,
+    "returncode": 0,
+    "seconds": 0.865,
+    "messages": [
+      "# \t\t|-> dest='lsm303dlhc_mag-tests/regwrap' type=2 (node=0x603d9cd9f860)",
+      "# \t\t|-> dest='virtio-net-tests/rx-jumbo-wrap' type=2 (node=0x603d9cda58a0)",
+      "# \t name='lsm303dlhc_mag-tests/regwrap' type=3 cmd_line='(null)' [available]",
+      "# \t name='virtio-net-tests/rx-jumbo-wrap' type=3 cmd_line='(null)' [available]",
+      "# Confirmed RX stall at used=65535 with 256 available buffers",
+      "ok 1 /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap",
+      "# slow test /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap executed in 0.59 secs"
+    ],
+    "error": ""
+  },
+  {
+    "binary": "original",
+    "tail": 2,
+    "returncode": 0,
+    "seconds": 0.863,
+    "messages": [
+      "# \t\t|-> dest='lsm303dlhc_mag-tests/regwrap' type=2 (node=0x61af82023860)",
+      "# \t\t|-> dest='virtio-net-tests/rx-jumbo-wrap' type=2 (node=0x61af820298a0)",
+      "# \t name='lsm303dlhc_mag-tests/regwrap' type=3 cmd_line='(null)' [available]",
+      "# \t name='virtio-net-tests/rx-jumbo-wrap' type=3 cmd_line='(null)' [available]",
+      "# Confirmed RX stall at used=65534 with 256 available buffers",
+      "ok 1 /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap",
+      "# slow test /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap executed in 0.58 secs"
+    ],
+    "error": ""
+  },
+  {
+    "binary": "original",
+    "tail": 3,
+    "returncode": 0,
+    "seconds": 0.87,
+    "messages": [
+      "# \t\t|-> dest='lsm303dlhc_mag-tests/regwrap' type=2 (node=0x6153bdf4a860)",
+      "# \t\t|-> dest='virtio-net-tests/rx-jumbo-wrap' type=2 (node=0x6153bdf508a0)",
+      "# \t name='lsm303dlhc_mag-tests/regwrap' type=3 cmd_line='(null)' [available]",
+      "# \t name='virtio-net-tests/rx-jumbo-wrap' type=3 cmd_line='(null)' [available]",
+      "# Confirmed RX stall at used=65533 with 256 available buffers",
+      "ok 1 /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap",
+      "# slow test /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap executed in 0.60 secs"
+    ],
+    "error": ""
+  },
+  {
+    "binary": "patched",
+    "tail": 1,
+    "returncode": 0,
+    "seconds": 1.053,
+    "messages": [
+      "# \t\t|-> dest='lsm303dlhc_mag-tests/regwrap' type=2 (node=0x65159abde850)",
+      "# \t\t|-> dest='virtio-net-tests/rx-jumbo-wrap' type=2 (node=0x65159abe4890)",
+      "# \t name='lsm303dlhc_mag-tests/regwrap' type=3 cmd_line='(null)' [available]",
+      "# \t name='virtio-net-tests/rx-jumbo-wrap' type=3 cmd_line='(null)' [available]",
+      "# Jumbo delivered intact across wrap 1; used=4",
+      "# Jumbo delivered intact across wrap 2; used=4",
+      "# Jumbo delivered intact across wrap 3; used=4",
+      "ok 1 /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap",
+      "# slow test /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap executed in 0.76 secs"
+    ],
+    "error": ""
+  },
+  {
+    "binary": "patched",
+    "tail": 2,
+    "returncode": 0,
+    "seconds": 1.042,
+    "messages": [
+      "# \t\t|-> dest='lsm303dlhc_mag-tests/regwrap' type=2 (node=0x5f9efcdff850)",
+      "# \t\t|-> dest='virtio-net-tests/rx-jumbo-wrap' type=2 (node=0x5f9efce05890)",
+      "# \t name='lsm303dlhc_mag-tests/regwrap' type=3 cmd_line='(null)' [available]",
+      "# \t name='virtio-net-tests/rx-jumbo-wrap' type=3 cmd_line='(null)' [available]",
+      "# Jumbo delivered intact across wrap 1; used=3",
+      "# Jumbo delivered intact across wrap 2; used=3",
+      "# Jumbo delivered intact across wrap 3; used=3",
+      "ok 1 /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap",
+      "# slow test /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap executed in 0.77 secs"
+    ],
+    "error": ""
+  },
+  {
+    "binary": "patched",
+    "tail": 3,
+    "returncode": 0,
+    "seconds": 1.008,
+    "messages": [
+      "# \t\t|-> dest='lsm303dlhc_mag-tests/regwrap' type=2 (node=0x57ea2a4fb850)",
+      "# \t\t|-> dest='virtio-net-tests/rx-jumbo-wrap' type=2 (node=0x57ea2a501890)",
+      "# \t name='lsm303dlhc_mag-tests/regwrap' type=3 cmd_line='(null)' [available]",
+      "# \t name='virtio-net-tests/rx-jumbo-wrap' type=3 cmd_line='(null)' [available]",
+      "# Jumbo delivered intact across wrap 1; used=2",
+      "# Jumbo delivered intact across wrap 2; used=2",
+      "# Jumbo delivered intact across wrap 3; used=2",
+      "ok 1 /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap",
+      "# slow test /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx-jumbo-wrap executed in 0.74 secs"
+    ],
+    "error": ""
+  }
+]

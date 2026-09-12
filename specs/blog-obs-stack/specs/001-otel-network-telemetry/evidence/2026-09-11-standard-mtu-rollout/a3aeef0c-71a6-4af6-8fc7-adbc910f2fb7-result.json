@@ -1,0 +1,31 @@
+{
+  "job": "a3aeef0c-71a6-4af6-8fc7-adbc910f2fb7",
+  "status": "FAILURE",
+  "errors": [
+    {
+      "level": "error",
+      "object": "DCB-Spine01"
+    },
+    {
+      "level": "error",
+      "object": "DCB-Spine01"
+    },
+    {
+      "level": "error",
+      "object": "DCC-Spine02"
+    },
+    {
+      "level": "error",
+      "object": "DCC-Spine02"
+    },
+    {
+      "level": "error",
+      "object": ""
+    }
+  ],
+  "saved": [
+    "DCB-Spine02",
+    "DCC-Spine01",
+    "DCA-Spine02"
+  ]
+}

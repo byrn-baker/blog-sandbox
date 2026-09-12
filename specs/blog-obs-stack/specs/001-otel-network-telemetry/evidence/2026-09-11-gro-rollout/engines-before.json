@@ -1,0 +1,397 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "longhorn.io/v1beta2",
+            "kind": "Engine",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T18:02:28Z",
+                "finalizers": [
+                    "longhorn.io"
+                ],
+                "generation": 942,
+                "labels": {
+                    "longhornnode": "dcb-k3s-w1",
+                    "longhornvolume": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd"
+                },
+                "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-e-0",
+                "namespace": "longhorn-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "longhorn.io/v1beta2",
+                        "kind": "Volume",
+                        "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+                        "uid": "4b0c88f8-5406-46e9-ad2d-24ae8fb72fd4"
+                    }
+                ],
+                "resourceVersion": "2871778",
+                "uid": "8db5f8f7-2334-491a-bbc2-b17867ca75aa"
+            },
+            "spec": {
+                "active": true,
+                "backupVolume": "",
+                "dataEngine": "v1",
+                "desireState": "running",
+                "disableFrontend": false,
+                "frontend": "blockdev",
+                "image": "docker.io/longhornio/longhorn-engine:v1.12.1",
+                "logRequested": false,
+                "nodeID": "dcb-k3s-w1",
+                "rebuildConcurrentSyncLimit": 1,
+                "replicaAddressMap": {
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-03220116": "10.42.5.87:10021",
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-3212170a": "10.42.6.41:10040",
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-dc5f7018": "10.42.4.31:10031"
+                },
+                "requestedBackupRestore": "",
+                "requestedDataSource": "",
+                "revisionCounterDisabled": true,
+                "salvageRequested": false,
+                "snapshotMaxCount": 250,
+                "snapshotMaxSize": "0",
+                "unmapMarkSnapChainRemovedEnabled": false,
+                "upgradedReplicaAddressMap": {},
+                "volumeName": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+                "volumeSize": "21474836480"
+            },
+            "status": {
+                "backupStatus": null,
+                "cloneStatus": null,
+                "conditions": [
+                    {
+                        "lastProbeTime": "",
+                        "lastTransitionTime": "2026-09-06T22:33:59Z",
+                        "message": "",
+                        "reason": "",
+                        "status": "True",
+                        "type": "InstanceCreation"
+                    },
+                    {
+                        "lastProbeTime": "",
+                        "lastTransitionTime": "2026-09-11T06:25:32Z",
+                        "message": "",
+                        "reason": "",
+                        "status": "False",
+                        "type": "FilesystemReadOnly"
+                    }
+                ],
+                "currentImage": "docker.io/longhornio/longhorn-engine:v1.12.1",
+                "currentReplicaAddressMap": {
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-03220116": "10.42.5.87:10021",
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-3212170a": "10.42.6.41:10040",
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-dc5f7018": "10.42.4.31:10031"
+                },
+                "currentSize": "21474836480",
+                "currentState": "running",
+                "endpoint": "/dev/longhorn/pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+                "instanceManagerName": "instance-manager-0dde8a944b2a020b75470acc79d6a423",
+                "ip": "10.42.3.36",
+                "isExpanding": false,
+                "lastExpansionError": "",
+                "lastExpansionFailedAt": "",
+                "lastRestoredBackup": "",
+                "logFetched": false,
+                "ownerID": "dcb-k3s-w1",
+                "port": 10010,
+                "purgeStatus": {
+                    "tcp://10.42.4.31:10031": {
+                        "error": "",
+                        "isPurging": false,
+                        "progress": 100,
+                        "state": "complete"
+                    },
+                    "tcp://10.42.5.87:10021": {
+                        "error": "",
+                        "isPurging": false,
+                        "progress": 0,
+                        "state": ""
+                    },
+                    "tcp://10.42.6.41:10040": {
+                        "error": "",
+                        "isPurging": false,
+                        "progress": 100,
+                        "state": "complete"
+                    }
+                },
+                "rebuildConcurrentSyncLimit": 1,
+                "rebuildStatus": {
+                    "tcp://10.42.5.87:10021": {
+                        "appliedRebuildingMBps": 0,
+                        "error": "",
+                        "fromReplicaAddress": "",
+                        "fromReplicaAddressList": [
+                            "tcp://10.42.6.41:10040"
+                        ],
+                        "isRebuilding": true,
+                        "progress": 59,
+                        "state": "in_progress"
+                    }
+                },
+                "replicaModeMap": {
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-03220116": "WO",
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-3212170a": "RW",
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-dc5f7018": "RW"
+                },
+                "replicaTransitionTimeMap": {
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-03220116": "2026-09-11T21:04:55Z",
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-3212170a": "2026-09-11T20:50:35Z",
+                    "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-dc5f7018": "2026-09-11T20:32:40Z"
+                },
+                "restoreStatus": {
+                    "tcp://10.42.4.31:10031": {
+                        "backupURL": "",
+                        "currentRestoringBackup": "",
+                        "isRestoring": false,
+                        "lastRestored": "",
+                        "state": ""
+                    },
+                    "tcp://10.42.5.87:10021": {
+                        "backupURL": "",
+                        "currentRestoringBackup": "",
+                        "isRestoring": false,
+                        "lastRestored": "",
+                        "state": ""
+                    },
+                    "tcp://10.42.6.41:10040": {
+                        "backupURL": "",
+                        "currentRestoringBackup": "",
+                        "isRestoring": false,
+                        "lastRestored": "",
+                        "state": ""
+                    }
+                },
+                "salvageExecuted": false,
+                "snapshotMaxCount": 250,
+                "snapshotMaxSize": "0",
+                "snapshots": {
+                    "12b2d591-88ab-4df3-b741-cca8c2f76847": {
+                        "children": {
+                            "e35e3f30-84c7-4c31-82b7-6e7cbeada2b0": true
+                        },
+                        "created": "2026-09-11T20:50:58Z",
+                        "labels": {},
+                        "name": "12b2d591-88ab-4df3-b741-cca8c2f76847",
+                        "parent": "",
+                        "removed": true,
+                        "size": "4846063616",
+                        "usercreated": false
+                    },
+                    "e35e3f30-84c7-4c31-82b7-6e7cbeada2b0": {
+                        "children": {
+                            "volume-head": true
+                        },
+                        "created": "2026-09-11T21:04:52Z",
+                        "labels": {},
+                        "name": "e35e3f30-84c7-4c31-82b7-6e7cbeada2b0",
+                        "parent": "12b2d591-88ab-4df3-b741-cca8c2f76847",
+                        "removed": false,
+                        "size": "109195264",
+                        "usercreated": false
+                    },
+                    "volume-head": {
+                        "children": {},
+                        "created": "2026-09-11T21:04:52Z",
+                        "labels": {},
+                        "name": "volume-head",
+                        "parent": "e35e3f30-84c7-4c31-82b7-6e7cbeada2b0",
+                        "removed": false,
+                        "size": "155512832",
+                        "usercreated": false
+                    }
+                },
+                "snapshotsError": "",
+                "started": true,
+                "starting": false,
+                "storageIP": "10.42.3.36",
+                "unmapMarkSnapChainRemovedEnabled": false,
+                "uuid": "a4c59e08-926f-4899-a4b6-5552e6ef2b87"
+            }
+        },
+        {
+            "apiVersion": "longhorn.io/v1beta2",
+            "kind": "Engine",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T18:02:25Z",
+                "finalizers": [
+                    "longhorn.io"
+                ],
+                "generation": 161,
+                "labels": {
+                    "longhornnode": "dcb-k3s-w3",
+                    "longhornvolume": "pvc-b304711d-13db-443b-a1bd-e832606f8230"
+                },
+                "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-e-0",
+                "namespace": "longhorn-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "longhorn.io/v1beta2",
+                        "kind": "Volume",
+                        "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+                        "uid": "421e9829-139e-4684-b593-8ab78f81a976"
+                    }
+                ],
+                "resourceVersion": "2871828",
+                "uid": "9ec00593-aeb0-4a89-911f-02e460a84247"
+            },
+            "spec": {
+                "active": true,
+                "backupVolume": "",
+                "dataEngine": "v1",
+                "desireState": "running",
+                "disableFrontend": false,
+                "frontend": "blockdev",
+                "image": "docker.io/longhornio/longhorn-engine:v1.12.1",
+                "logRequested": false,
+                "nodeID": "dcb-k3s-w3",
+                "rebuildConcurrentSyncLimit": 1,
+                "replicaAddressMap": {
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-586eaedc": "10.42.8.58:10002",
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-9c5ca91f": "10.42.3.36:10000",
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-a8ad4a11": "10.42.7.36:10000"
+                },
+                "requestedBackupRestore": "",
+                "requestedDataSource": "",
+                "revisionCounterDisabled": true,
+                "salvageRequested": false,
+                "snapshotMaxCount": 250,
+                "snapshotMaxSize": "0",
+                "unmapMarkSnapChainRemovedEnabled": false,
+                "upgradedReplicaAddressMap": {},
+                "volumeName": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+                "volumeSize": "2147483648"
+            },
+            "status": {
+                "backupStatus": null,
+                "cloneStatus": null,
+                "conditions": [
+                    {
+                        "lastProbeTime": "",
+                        "lastTransitionTime": "2026-09-06T18:02:38Z",
+                        "message": "",
+                        "reason": "",
+                        "status": "True",
+                        "type": "InstanceCreation"
+                    },
+                    {
+                        "lastProbeTime": "",
+                        "lastTransitionTime": "2026-09-06T18:02:38Z",
+                        "message": "",
+                        "reason": "",
+                        "status": "False",
+                        "type": "FilesystemReadOnly"
+                    }
+                ],
+                "currentImage": "docker.io/longhornio/longhorn-engine:v1.12.1",
+                "currentReplicaAddressMap": {
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-586eaedc": "10.42.8.58:10002",
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-9c5ca91f": "10.42.3.36:10000",
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-a8ad4a11": "10.42.7.36:10000"
+                },
+                "currentSize": "2147483648",
+                "currentState": "running",
+                "endpoint": "/dev/longhorn/pvc-b304711d-13db-443b-a1bd-e832606f8230",
+                "instanceManagerName": "instance-manager-b7c65f4637ba533732b62cb65894f354",
+                "ip": "10.42.4.31",
+                "isExpanding": false,
+                "lastExpansionError": "",
+                "lastExpansionFailedAt": "",
+                "lastRestoredBackup": "",
+                "logFetched": false,
+                "ownerID": "dcb-k3s-w3",
+                "port": 10000,
+                "purgeStatus": {
+                    "tcp://10.42.3.36:10000": {
+                        "error": "",
+                        "isPurging": false,
+                        "progress": 100,
+                        "state": "complete"
+                    },
+                    "tcp://10.42.7.36:10000": {
+                        "error": "",
+                        "isPurging": false,
+                        "progress": 100,
+                        "state": "complete"
+                    },
+                    "tcp://10.42.8.58:10002": {
+                        "error": "",
+                        "isPurging": false,
+                        "progress": 100,
+                        "state": "complete"
+                    }
+                },
+                "rebuildConcurrentSyncLimit": 1,
+                "rebuildStatus": {},
+                "replicaModeMap": {
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-586eaedc": "RW",
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-9c5ca91f": "RW",
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-a8ad4a11": "RW"
+                },
+                "replicaTransitionTimeMap": {
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-586eaedc": "2026-09-11T20:38:04Z",
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-9c5ca91f": "2026-09-11T20:28:36Z",
+                    "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-a8ad4a11": "2026-09-11T20:34:52Z"
+                },
+                "restoreStatus": {
+                    "tcp://10.42.3.36:10000": {
+                        "backupURL": "",
+                        "currentRestoringBackup": "",
+                        "isRestoring": false,
+                        "lastRestored": "",
+                        "state": ""
+                    },
+                    "tcp://10.42.7.36:10000": {
+                        "backupURL": "",
+                        "currentRestoringBackup": "",
+                        "isRestoring": false,
+                        "lastRestored": "",
+                        "state": ""
+                    },
+                    "tcp://10.42.8.58:10002": {
+                        "backupURL": "",
+                        "currentRestoringBackup": "",
+                        "isRestoring": false,
+                        "lastRestored": "",
+                        "state": ""
+                    }
+                },
+                "salvageExecuted": false,
+                "snapshotMaxCount": 250,
+                "snapshotMaxSize": "0",
+                "snapshots": {
+                    "67aca3a0-069b-4ddc-94b0-e9e0a11c9389": {
+                        "children": {
+                            "volume-head": true
+                        },
+                        "created": "2026-09-11T20:35:21Z",
+                        "labels": {},
+                        "name": "67aca3a0-069b-4ddc-94b0-e9e0a11c9389",
+                        "parent": "",
+                        "removed": true,
+                        "size": "282492928",
+                        "usercreated": false
+                    },
+                    "volume-head": {
+                        "children": {},
+                        "created": "2026-09-11T20:35:21Z",
+                        "labels": {},
+                        "name": "volume-head",
+                        "parent": "67aca3a0-069b-4ddc-94b0-e9e0a11c9389",
+                        "removed": false,
+                        "size": "11595776",
+                        "usercreated": false
+                    }
+                },
+                "snapshotsError": "",
+                "started": true,
+                "starting": false,
+                "storageIP": "10.42.4.31",
+                "unmapMarkSnapChainRemovedEnabled": false,
+                "uuid": "6056683b-519f-4183-b2a7-e7b2f9829998"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

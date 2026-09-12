@@ -1,0 +1,36 @@
+{
+  "samples": [
+    {
+      "elapsed": 10.0,
+      "border_neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id"
+    },
+    {
+      "elapsed": 20.74,
+      "border_neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id"
+    },
+    {
+      "elapsed": 31.33,
+      "border_neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id"
+    },
+    {
+      "elapsed": 41.71,
+      "border_neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id"
+    },
+    {
+      "elapsed": 52.26,
+      "border_neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id"
+    },
+    {
+      "elapsed": 63.07,
+      "border_neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id"
+    }
+  ],
+  "before": "Building configuration...\n\nCurrent configuration : 312 bytes\n!\ninterface GigabitEthernet6\n description to BORDER1 GigabitEthernet2\n mtu 9216\n ip address 10.0.0.24 255.255.255.254\n ip router isis SP-ISIS\n negotiation auto\n ipv6 address FD10::24/127\n ipv6 router isis SP-ISIS\n mpls ip\n bfd interval 500 min_rx 500 multiplier 5\n no bfd echo\n isis network point-to-point \nend\n",
+  "border_before": "CLNS:  Time since last clear: never\nCLNS queue depth: 0/100, drops: 0, highest: 3\nCLNS & ESIS Output: 3625, Input: 16968\nDropped Protocol not enabled on interface: 4\nCLNS Local: 0, Forward: 0\nCLNS Discards:\n  Hdr Syntax: 0, Checksum: 0, Lifetime: 0, Output cngstn: 0\n  No Route: 0, Discard Route: 0, Dst Unreachable 0, Encaps. Failed: 0\n  NLP Unknown: 9, Not an IS: 0\nCLNS Options: Packets 0, total 0 , bad 0, GQOS 0, cngstn exprncd 0\nCLNS Segments:  Segmented: 0, Failed: 0\nCLNS Broadcasts: sent: 0, rcvd: 0\nEchos: Rcvd 0 requests, 0 replies\n      Sent 0 requests, 0 replies\nESIS(sent/rcvd): ESHs: 0/0, ISHs: 3625/2428, RDs: 0/0, QCF: 0/0\nTunneling (sent/rcvd): IP: 0/0, IPv6: 0/0\nTunneling dropped (rcvd) IP/IPV6:  0\nISO-IGRP: Querys (sent/rcvd): 0/0 Updates (sent/rcvd): 0/0\nISO-IGRP: Router Hellos: (sent/rcvd): 0/0\nISO-IGRP Syntax Errors: 0\n\nTag SP-ISIS:\nIS-IS: Time since last clear: never\nIS-IS: Level-2 Hellos (sent/rcvd): 0/0\nIS-IS: PTP Hellos     (sent/rcvd): 11/2\nIS-IS: Level-2 LSPs sourced (new/refresh): 21/80\nIS-IS: Level-2 LSPs flooded (sent/rcvd): 2/3\nIS-IS: LSP Retransmissions: 0\nIS-IS: Level-2 CSNPs (sent/rcvd): 1/1\nIS-IS: Level-2 PSNPs (sent/rcvd): 2/1\nIS-IS: Level-2 DR Elections: 2\nIS-IS: Level-2 SPF Calculations: 153\nIS-IS: Level-2 Partial Route Calculations: 25\nIS-IS: LSP checksum errors received: 0\nIS-IS: Adjacency process queue depth: 0/unlimited, drops: 0, highest: 3\nIS-IS: Update process LSP queue depth: 0/200, drops: 0, highest: 2\nIS-IS: Update process SNP queue depth: 0/200, drops: 0, highest: 1\nIS-IS: Decision process workq depth: 0/unlimited, drops: 0, highest: 2",
+  "change": "configure terminal\nEnter configuration commands, one per line.  End with CNTL/Z.\nSP1(config)#interface GigabitEthernet6\nSP1(config-if)#no isis hello padding always\nSP1(config-if)#end\nSP1#",
+  "restore": "configure terminal\nEnter configuration commands, one per line.  End with CNTL/Z.\nSP1(config)#interface GigabitEthernet6\nSP1(config-if)#isis hello padding\nSP1(config-if)#end\nSP1#",
+  "configuration_restored": true,
+  "after": "Building configuration...\n\nCurrent configuration : 312 bytes\n!\ninterface GigabitEthernet6\n description to BORDER1 GigabitEthernet2\n mtu 9216\n ip address 10.0.0.24 255.255.255.254\n ip router isis SP-ISIS\n negotiation auto\n ipv6 address FD10::24/127\n ipv6 router isis SP-ISIS\n mpls ip\n bfd interval 500 min_rx 500 multiplier 5\n no bfd echo\n isis network point-to-point \nend\n",
+  "border_after": "CLNS:  Time since last clear: never\nCLNS queue depth: 0/100, drops: 0, highest: 3\nCLNS & ESIS Output: 3628, Input: 16988\nDropped Protocol not enabled on interface: 4\nCLNS Local: 0, Forward: 0\nCLNS Discards:\n  Hdr Syntax: 0, Checksum: 0, Lifetime: 0, Output cngstn: 0\n  No Route: 0, Discard Route: 0, Dst Unreachable 0, Encaps. Failed: 0\n  NLP Unknown: 9, Not an IS: 0\nCLNS Options: Packets 0, total 0 , bad 0, GQOS 0, cngstn exprncd 0\nCLNS Segments:  Segmented: 0, Failed: 0\nCLNS Broadcasts: sent: 0, rcvd: 0\nEchos: Rcvd 0 requests, 0 replies\n      Sent 0 requests, 0 replies\nESIS(sent/rcvd): ESHs: 0/0, ISHs: 3628/2432, RDs: 0/0, QCF: 0/0\nTunneling (sent/rcvd): IP: 0/0, IPv6: 0/0\nTunneling dropped (rcvd) IP/IPV6:  0\nISO-IGRP: Querys (sent/rcvd): 0/0 Updates (sent/rcvd): 0/0\nISO-IGRP: Router Hellos: (sent/rcvd): 0/0\nISO-IGRP Syntax Errors: 0\n\nTag SP-ISIS:\nIS-IS: Time since last clear: never\nIS-IS: Level-2 Hellos (sent/rcvd): 0/0\nIS-IS: PTP Hellos     (sent/rcvd): 11/2\nIS-IS: Level-2 LSPs sourced (new/refresh): 21/80\nIS-IS: Level-2 LSPs flooded (sent/rcvd): 2/3\nIS-IS: LSP Retransmissions: 0\nIS-IS: Level-2 CSNPs (sent/rcvd): 1/1\nIS-IS: Level-2 PSNPs (sent/rcvd): 2/1\nIS-IS: Level-2 DR Elections: 2\nIS-IS: Level-2 SPF Calculations: 153\nIS-IS: Level-2 Partial Route Calculations: 25\nIS-IS: LSP checksum errors received: 0\nIS-IS: Adjacency process queue depth: 0/unlimited, drops: 0, highest: 3\nIS-IS: Update process LSP queue depth: 0/200, drops: 0, highest: 2\nIS-IS: Update process SNP queue depth: 0/200, drops: 0, highest: 1\nIS-IS: Decision process workq depth: 0/unlimited, drops: 0, highest: 2",
+  "border_neighbors_after": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id"
+}

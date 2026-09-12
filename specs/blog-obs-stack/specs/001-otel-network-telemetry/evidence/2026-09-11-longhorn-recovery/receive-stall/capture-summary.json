@@ -1,0 +1,42 @@
+[
+  {
+    "link": "SP1-SPE3",
+    "frames": [
+      {
+        "source_mac": "52:54:00:57:4e:0b",
+        "wire_length": 9229,
+        "count": 4
+      },
+      {
+        "source_mac": "52:54:00:43:d6:02",
+        "wire_length": 9229,
+        "count": 4
+      },
+      {
+        "source_mac": "52:54:00:57:4e:0b",
+        "wire_length": 60,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "link": "SP3-SPE3",
+    "frames": [
+      {
+        "source_mac": "52:54:00:bb:44:da",
+        "wire_length": 9229,
+        "count": 4
+      },
+      {
+        "source_mac": "52:54:00:85:c3:9f",
+        "wire_length": 9229,
+        "count": 3
+      },
+      {
+        "source_mac": "52:54:00:85:c3:9f",
+        "wire_length": 60,
+        "count": 1
+      }
+    ]
+  }
+]

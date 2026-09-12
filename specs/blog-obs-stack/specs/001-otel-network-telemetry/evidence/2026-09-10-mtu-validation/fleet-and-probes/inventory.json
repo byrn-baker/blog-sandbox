@@ -1,0 +1,32 @@
+{
+  "inventory": [
+    "BORDER1",
+    "CE1",
+    "CE2",
+    "CE3",
+    "DCA-Leaf01",
+    "DCA-Leaf02",
+    "DCA-Leaf03",
+    "DCA-Spine01",
+    "DCA-Spine02",
+    "DCB-Leaf01",
+    "DCB-Leaf02",
+    "DCB-Leaf03",
+    "DCB-Spine01",
+    "DCB-Spine02",
+    "DCC-Leaf01",
+    "DCC-Leaf02",
+    "DCC-Leaf03",
+    "DCC-Spine01",
+    "DCC-Spine02",
+    "RR1",
+    "RR2",
+    "SP1",
+    "SP2",
+    "SP3",
+    "SP4",
+    "SPE1",
+    "SPE2",
+    "SPE3"
+  ]
+}

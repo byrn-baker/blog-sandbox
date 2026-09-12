@@ -1,0 +1,19 @@
+{
+  "samples": 8,
+  "start": "2026-09-11T20:32:31.466090+00:00",
+  "end": "2026-09-11T20:34:26.711874+00:00",
+  "observed_wraps": {
+    "SP3 Gi2": 1,
+    "CE2 Gi3": 3,
+    "SPE2 Gi5": 3,
+    "SPE3 Gi3": 2,
+    "CE1 Gi4": 1,
+    "SP3 Gi4": 2,
+    "CE3 Gi2": 3,
+    "SPE2 Gi3": 1,
+    "SP2 Gi2": 1,
+    "SPE1 Gi5": 1
+  },
+  "advancing_nics": 57,
+  "sampled_nics": 69
+}

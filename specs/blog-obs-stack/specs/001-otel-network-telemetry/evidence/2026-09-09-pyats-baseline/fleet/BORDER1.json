@@ -1,0 +1,45 @@
+{
+  "name": "BORDER1",
+  "started": "2026-09-09T03:06:06.010747+00:00",
+  "os": "iosxe",
+  "commands": [
+    {
+      "command": "show platform hardware throughput level",
+      "at": "2026-09-09T03:06:10.590805+00:00",
+      "output": "The current throughput level is 20000 kb/s",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active datapath utilization",
+      "at": "2026-09-09T03:06:12.076933+00:00",
+      "output": "  CPP 0: Subdev 0            5 secs        1 min        5 min       60 min\r\nInput:  Priority (pps)            0            0            0            0\r\n                 (bps)            0            0            0            0\r\n    Non-Priority (pps)           27           11           10           10\r\n                 (bps)        18920         8528         8600         8528\r\n           Total (pps)           27           11           10           10\r\n                 (bps)        18920         8528         8600         8528\r\nOutput: Priority (pps)            0            0            0            0\r\n                 (bps)            0            0            0            0\r\n    Non-Priority (pps)           29           10            8            8\r\n                 (bps)        19968        23072        22872        22792\r\n           Total (pps)           29           10            8            8\r\n                 (bps)        19968        23072        22872        22792\r\nProcessing: Load (pct)           12           11            9            9",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active statistics drop",
+      "at": "2026-09-09T03:06:14.106840+00:00",
+      "output": "Last clearing of QFP drops statistics : never\r\n\r\n-------------------------------------------------------------------------\r\nGlobal Drop Stats                         Packets                  Octets  \r\n-------------------------------------------------------------------------\r\nDisabled                                        5                     380  \r\nIpv6NoRoute                                     2                     112  \r\nMplsFragReq                                    50                   75700  \r\nUnconfiguredIpv4Fia                         10390                 1340108  \r\nUnconfiguredIpv6Fia                          2313                  186296",
+      "ok": true
+    },
+    {
+      "command": "show ip ospf neighbor",
+      "at": "2026-09-09T03:06:15.805276+00:00",
+      "output": "",
+      "ok": true
+    },
+    {
+      "command": "show ip bgp summary",
+      "at": "2026-09-09T03:06:16.534086+00:00",
+      "output": "",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active statistics drop",
+      "at": "2026-09-09T03:06:27.133307+00:00",
+      "output": "Last clearing of QFP drops statistics : never\r\n\r\n-------------------------------------------------------------------------\r\nGlobal Drop Stats                         Packets                  Octets  \r\n-------------------------------------------------------------------------\r\nDisabled                                        5                     380  \r\nIpv6NoRoute                                     2                     112  \r\nMplsFragReq                                    50                   75700  \r\nUnconfiguredIpv4Fia                         10390                 1340108  \r\nUnconfiguredIpv6Fia                          2313                  186296",
+      "ok": true
+    }
+  ],
+  "connected": true,
+  "finished": "2026-09-09T03:06:39.681988+00:00"
+}

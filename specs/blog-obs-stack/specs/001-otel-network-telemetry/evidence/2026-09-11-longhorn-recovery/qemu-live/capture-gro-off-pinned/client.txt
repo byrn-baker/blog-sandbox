@@ -1,0 +1,2 @@
+{"sent": 262144, "send_seconds": 2.0973376680049114, "send_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6", "received": 262144, "receive_seconds": 2.5037048819940537, "receive_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6", "mode": "client", "local": "192.168.100.11", "peer": "192.168.100.20", "requested_mss": 1200, "negotiated_mss": 1188, "total_retrans": 0, "errors": [], "ok": true}
+

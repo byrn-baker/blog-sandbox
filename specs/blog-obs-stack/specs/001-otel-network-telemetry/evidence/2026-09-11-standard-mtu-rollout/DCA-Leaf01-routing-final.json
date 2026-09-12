@@ -1,0 +1,27 @@
+{
+  "name": "DCA-Leaf01",
+  "at": "2026-09-11T06:05:23.117417+00:00",
+  "ok": true,
+  "running_mtus": {
+    "Ethernet1": 9214,
+    "Ethernet2": 9214,
+    "Vlan100": 9000,
+    "Vlan101": 9000
+  },
+  "startup_mtus": {
+    "Ethernet1": 9214,
+    "Ethernet2": 9214,
+    "Vlan100": 9000,
+    "Vlan101": 9000
+  },
+  "commands": {
+    "show ip bgp summary": "BGP summary information for VRF default\nRouter identifier 10.2.1.4, local AS number 65111\nNeighbor Status Codes: m - Under maintenance\n  Description              Neighbor  V AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc PfxAdv\n  DCA-Spine01              10.1.1.4  4 65101           1728      1720    0    0 01:12:55 Estab   51     51     34\n  DCA-Spine02              10.1.1.10 4 65101           1725      1715    0    0 01:12:55 Estab   51     51     26",
+    "show bgp evpn summary": "BGP summary information for VRF default\nRouter identifier 10.2.1.4, local AS number 65111\nNeighbor Status Codes: m - Under maintenance\n  Description              Neighbor V AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc PfxAdv\n  DCA-Spine01              10.2.1.2 4 65101            399       345    0    0 01:12:55 Estab   227    227    156\n  DCA-Spine02              10.2.1.3 4 65101            424       335    0    0 01:12:54 Estab   227    227    129",
+    "show interfaces | include line protocol|MTU": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 9214 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 9214 bytes, BW 1000000 kbit\nEthernet3 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nLoopback0 is up, line protocol is up (connected)\n  IP MTU 65535 bytes (default)\nLoopback1 is up, line protocol is up (connected)\n  IP MTU 65535 bytes (default)\nManagement1 is up, line protocol is up (connected)\n  IP MTU 1500 bytes (default), BW 1000000 kbit\nPort-Channel4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel7 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nVlan100 is up, line protocol is up (connected)\n  IP MTU 9000 bytes\nVlan101 is up, line protocol is up (connected)\n  IP MTU 9000 bytes\nVlan4097 is up, line protocol is up (connected)\n  IP MTU 9164 bytes (default)\nVxlan1 is up, line protocol is up (connected)"
+  },
+  "mtu_verified": true,
+  "underlay_established": 2,
+  "evpn_established": 2,
+  "service_established": 0,
+  "nonzero_queues": []
+}

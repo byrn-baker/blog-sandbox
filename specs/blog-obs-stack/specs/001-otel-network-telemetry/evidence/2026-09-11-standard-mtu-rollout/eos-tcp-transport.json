@@ -1,0 +1,16 @@
+[
+  {
+    "role": "server",
+    "received": 1048576,
+    "ok": true
+  },
+  {
+    "role": "client",
+    "bytes_each_direction": 1048576,
+    "seconds": 18.844,
+    "mss_before": 9156,
+    "mss_after": 9156,
+    "tcp_stats": "State      Recv-Q Send-Q Local Address:Port  Peer Address:Port Process\nCLOSE-WAIT 0      0           10.3.3.4:52001     10.3.1.4:50099\n\t cubic wscale:7,7 rto:592 rtt:172.885/82.317 ato:232 mss:9156 pmtu:9214 rcvmss:9156 advmss:9162 cwnd:5 ssthresh:2 bytes_sent:1452952 bytes_retrans:404376 bytes_acked:1048577 bytes_received:1048577 segs_out:268 segs_in:210 data_segs_out:162 data_segs_in:115 send 2118402bps lastsnd:9140 lastrcv:32 lastack:32 pacing_rate 2542072bps delivery_rate 1073080bps delivered:117 busy:9836ms rwnd_limited:600ms(6.1%) retrans:0/46 rcv_rtt:178.843 rcv_space:155652 rcv_ssthresh:839111 minrtt:14.549\n",
+    "ok": true
+  }
+]

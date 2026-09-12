@@ -1,0 +1,38 @@
+[
+  {
+    "target": "192.168.100.10",
+    "result": "http=401 connect=0.026560 tls=0.141673 total=0.188505",
+    "rc": 0,
+    "error": ""
+  },
+  {
+    "target": "192.168.100.11",
+    "result": "http=000 connect=0.000000 tls=0.000000 total=2.001986",
+    "rc": 28,
+    "error": "curl: (28) Connection timed out after 2001 milliseconds\n"
+  },
+  {
+    "target": "192.168.100.12",
+    "result": "http=401 connect=0.037060 tls=0.176529 total=0.236607",
+    "rc": 0,
+    "error": ""
+  },
+  {
+    "target": "192.168.3.63",
+    "result": "http=401 connect=0.000459 tls=0.003706 total=0.004339",
+    "rc": 0,
+    "error": ""
+  },
+  {
+    "target": "192.168.3.64",
+    "result": "http=401 connect=0.000499 tls=0.003695 total=0.004696",
+    "rc": 0,
+    "error": ""
+  },
+  {
+    "target": "192.168.3.65",
+    "result": "http=401 connect=0.000332 tls=0.003445 total=0.004218",
+    "rc": 0,
+    "error": ""
+  }
+]

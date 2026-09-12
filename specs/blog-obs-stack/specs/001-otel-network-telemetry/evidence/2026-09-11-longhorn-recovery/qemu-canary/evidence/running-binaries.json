@@ -1,0 +1,14 @@
+[
+  {
+    "node": "48f90381-26ee-4d78-a6d9-46896932b9a0",
+    "pid": 26844,
+    "executable": "/opt/cml-qemu-canary/patched/qemu-system-x86_64",
+    "sha256": "605b893d815e96962cca4a8960b5a32289745721774e2db40a4c5876c2446a3e"
+  },
+  {
+    "node": "5eeb26bb-de28-45cc-999a-2d75d296ca63",
+    "pid": 26888,
+    "executable": "/opt/cml-qemu-canary/patched/qemu-system-x86_64",
+    "sha256": "605b893d815e96962cca4a8960b5a32289745721774e2db40a4c5876c2446a3e"
+  }
+]

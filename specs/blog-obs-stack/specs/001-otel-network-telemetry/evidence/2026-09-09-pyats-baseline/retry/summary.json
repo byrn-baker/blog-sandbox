@@ -1,0 +1,23 @@
+{
+  "finished": "2026-09-09T03:11:11.100630+00:00",
+  "results": [
+    {
+      "name": "CE1",
+      "connected": false,
+      "commands_ok": 0,
+      "error": "ConnectionError"
+    },
+    {
+      "name": "CE2",
+      "connected": false,
+      "commands_ok": 0,
+      "error": "ConnectionError"
+    },
+    {
+      "name": "RR1",
+      "connected": false,
+      "commands_ok": 0,
+      "error": "ConnectionError"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "CE2",
+  "id": "ee02957b-ae98-4ba3-a430-1c0f6283d2b2",
+  "ip": "192.168.3.61",
+  "at": "2026-09-11T21:42:41.358615+00:00",
+  "commands": {
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet6 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet7 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet8 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show isis neighbors": "",
+    "show ip bgp summary": "BGP router identifier 10.2.2.1, local AS number 65002\nBGP table version is 413, main routing table version 413\n66 network entries using 16368 bytes of memory\n89 path entries using 12104 bytes of memory\n25/19 BGP path/bestpath attribute entries using 7400 bytes of memory\n25 BGP AS-PATH entries using 952 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 36824 total bytes of memory\nBGP activity 133/67 prefixes, 271/182 paths, scan interval 60 secs\n66 networks peaked at 20:15:24 Sep 11 2026 UTC (01:27:20.543 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.2.1        4        65201    1842    1575      413    0    0 01:18:09       14\n10.1.2.3        4        65201    1842    1573      413    0    0 01:18:14       14\n10.1.2.16       4        65213    1875    1575      413    0    0 01:18:10       17\n172.16.2.0      4        65000     552     540      413    0    0 01:18:06       44",
+    "show ip bgp vpnv4 all summary": ""
+  },
+  "ok": true
+}

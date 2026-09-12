@@ -1,0 +1,10 @@
+PING 10.0.0.18 (10.0.0.18) 8972(9000) bytes of data.
+8980 bytes from 10.0.0.18: icmp_seq=1 ttl=62 time=1.26 ms
+8980 bytes from 10.0.0.18: icmp_seq=2 ttl=62 time=1.29 ms
+8980 bytes from 10.0.0.18: icmp_seq=3 ttl=62 time=1.38 ms
+8980 bytes from 10.0.0.18: icmp_seq=4 ttl=62 time=1.35 ms
+8980 bytes from 10.0.0.18: icmp_seq=5 ttl=62 time=1.53 ms
+
+--- 10.0.0.18 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4006ms
+rtt min/avg/max/mdev = 1.263/1.361/1.526/0.092 ms

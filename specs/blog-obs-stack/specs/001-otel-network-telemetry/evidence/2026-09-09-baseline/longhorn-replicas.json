@@ -1,0 +1,52 @@
+[
+  {
+    "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-a054cc3c",
+    "volume": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+    "node": "dcb-k3s-w1",
+    "desiredState": "running",
+    "currentState": "running",
+    "failedAt": "",
+    "healthyAt": "",
+    "rebuildRetryCount": 2
+  },
+  {
+    "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-dc5f7018",
+    "volume": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+    "node": "dcb-k3s-w3",
+    "desiredState": "running",
+    "currentState": "running",
+    "failedAt": "",
+    "healthyAt": "2026-09-07T00:14:08Z",
+    "rebuildRetryCount": 0
+  },
+  {
+    "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-5de7a02d",
+    "volume": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+    "node": "dcb-k3s-w2",
+    "desiredState": "running",
+    "currentState": "running",
+    "failedAt": "",
+    "healthyAt": "2026-09-08T19:37:53Z",
+    "rebuildRetryCount": 0
+  },
+  {
+    "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-7e1af619",
+    "volume": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+    "node": "dcc-k3s-w5",
+    "desiredState": "running",
+    "currentState": "running",
+    "failedAt": "",
+    "healthyAt": "2026-09-06T18:20:56Z",
+    "rebuildRetryCount": 0
+  },
+  {
+    "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-a9d0b19a",
+    "volume": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+    "node": "dcb-k3s-w1",
+    "desiredState": "running",
+    "currentState": "running",
+    "failedAt": "",
+    "healthyAt": "2026-09-08T23:50:37Z",
+    "rebuildRetryCount": 0
+  }
+]

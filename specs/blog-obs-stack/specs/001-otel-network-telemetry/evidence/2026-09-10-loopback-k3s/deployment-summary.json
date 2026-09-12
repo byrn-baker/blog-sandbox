@@ -1,0 +1,16 @@
+[
+  {
+    "name": "SPE1",
+    "job": "df37a225-7316-420b-94c5-ac323b222681",
+    "status": "SUCCESS",
+    "save_completed": true,
+    "cli_errors": []
+  },
+  {
+    "name": "SPE2",
+    "job": "37cf573d-b70c-4e02-83a1-69a6eac97e72",
+    "status": "SUCCESS",
+    "save_completed": true,
+    "cli_errors": []
+  }
+]

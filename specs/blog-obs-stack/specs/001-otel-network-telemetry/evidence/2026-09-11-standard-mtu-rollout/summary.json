@@ -1,0 +1,18 @@
+{
+  "at": "2026-09-11T06:10:07.013107+00:00",
+  "network_devices_reachable": 28,
+  "cisco_data_interfaces_at_9216": 55,
+  "eos_devices_at_target": 15,
+  "hosts_at_9000": 10,
+  "k3s_nodes_ready": 9,
+  "pods_ready": 65,
+  "pod_network_namespaces_at_8950": 56,
+  "isis_directed_up": 28,
+  "underlay_peers": 42,
+  "evpn_peers": 60,
+  "service_peers": 3,
+  "queued_bgp_rows": 0,
+  "required_df_probe_cases_passed": 33,
+  "published_source_commit": "2ed1024",
+  "unpublished_persistence_commit": "30eed0c"
+}

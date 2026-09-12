@@ -1,0 +1,53 @@
+[
+  {
+    "nodes": [
+      "SP1",
+      "SP2"
+    ],
+    "capture": {
+      "config": {
+        "maxpackets": null,
+        "maxtime": null,
+        "bpfilter": null,
+        "encap": null,
+        "link_capture_key": null
+      },
+      "starttime": null,
+      "packetscaptured": null
+    }
+  },
+  {
+    "nodes": [
+      "BORDER1",
+      "SP1"
+    ],
+    "capture": {
+      "config": {
+        "maxpackets": null,
+        "maxtime": null,
+        "bpfilter": null,
+        "encap": null,
+        "link_capture_key": null
+      },
+      "starttime": null,
+      "packetscaptured": null
+    }
+  },
+  {
+    "nodes": [
+      "BORDER1",
+      "SP2"
+    ],
+    "capture": {
+      "config": {
+        "maxpackets": null,
+        "maxtime": null,
+        "bpfilter": null,
+        "encap": null,
+        "link_capture_key": null
+      },
+      "starttime": null,
+      "packetscaptured": null
+    }
+  }
+]

@@ -1,0 +1,78 @@
+{
+  "hostname": "DCC-k3s-w4",
+  "unit": "k3s-agent",
+  "flannel_mtu": 8950,
+  "pods": [
+    {
+      "id": "208f98068a98a3109d0136587e0b7c67644c9f77d615b4d2e62190e0470a578e",
+      "name": "instance-manager-8c8a30b7f0d554c75e8eefbb1733839d",
+      "namespace": "longhorn-system",
+      "pid": 575910,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 1350,
+          "link_index": 22
+        }
+      ],
+      "after": 8950,
+      "host_peer": "veth861ef8b2"
+    },
+    {
+      "id": "2f9bfa9b7e464adc65f451f0a0fbe7254feeef7772aeec6627e30963b09faa2f",
+      "name": "longhorn-manager-lvxf8",
+      "namespace": "longhorn-system",
+      "pid": 4346,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 1350,
+          "link_index": 16
+        }
+      ],
+      "after": 8950,
+      "host_peer": "veth6edffc3b"
+    },
+    {
+      "id": "17790237afbe70ce31756fe4ecf66719d0302f7409a1ee20d8be17fcf85e90cb",
+      "name": "engine-image-ei-493e04e7-lllzp",
+      "namespace": "longhorn-system",
+      "pid": 4347,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 1350,
+          "link_index": 15
+        }
+      ],
+      "after": 8950,
+      "host_peer": "vethc2d41020"
+    },
+    {
+      "id": "bf9763ebff6d9d85b619d2bec5a8b4f15aaea39ec92cec420c95683858c41ac7",
+      "name": "longhorn-csi-plugin-74ffw",
+      "namespace": "longhorn-system",
+      "pid": 2589,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 1350,
+          "link_index": 8
+        }
+      ],
+      "after": 8950,
+      "host_peer": "veth8a958608"
+    },
+    {
+      "id": "63c282c5da444ba6efb47271ff8a459a3bd3c4d7bc4995661da3cccec287ffce",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-mpvxz",
+      "namespace": "observability",
+      "pid": 1354,
+      "hostNetwork": true
+    }
+  ]
+}

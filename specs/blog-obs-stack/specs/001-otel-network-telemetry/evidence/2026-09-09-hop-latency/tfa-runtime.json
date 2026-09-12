@@ -1,0 +1,13 @@
+[
+  {
+    "device": "DCC-Spine01",
+    "ip": "192.168.3.40",
+    "readback_ok": true,
+    "commands": {
+      "show platform tfa rates mac": "% Incomplete command",
+      "show platform tfa counters debug": "Action:\nInPipe: Traffic class is set to : %s: 122482273\nIpRoute: IPv6 is hop by hop, trapping: 39\nIpRoute: Routing is disabled, trapping packet from %s: 4\nIpRoute: Trapping broadcast address %s: 1767\nIpRoute: Trapping multicast address %s: 6361\nQos: Trust mode for %s is %s: 245017486\nRouting: Rewrite %s has exception %s: 3\nRoutingPipeline: Trapping mtu exceeded packet on fwd0: 272329\n\nExceptional:\nIpRoute: No match found for %s: 1\nIpRoute: No valid fecId for route %s: 14\nRouting: TTL exception: 3\nRoutingPipeline: Pkt bytes %s exceeds mtu %s for port %s: 272329\nRoutingPipeline: TTL not set in rCtx: 27495\n\nLearning:\nMacTable: No entry deleting from fid 1 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1006 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1007 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1008 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1009 requested by FhrpArfa: 1\n",
+      "show platform tfa counters kernel": "% Incomplete command",
+      "show platform tfa kernel interfaces": "% Incomplete command"
+    }
+  }
+]

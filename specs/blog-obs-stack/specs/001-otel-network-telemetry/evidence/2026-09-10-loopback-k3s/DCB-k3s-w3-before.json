@@ -1,0 +1,59 @@
+{
+  "hostname": "DCB-k3s-w3",
+  "at": "2026-09-10T04:24:21.972360+00:00",
+  "unit": "k3s-agent",
+  "service_read_ok": true,
+  "service": "NRestarts=0\nExecMainStartTimestamp=Sun 2026-09-06 18:14:14 UTC\nActiveState=active\nSubState=running\n",
+  "journal_read_ok": true,
+  "window_minutes": 30,
+  "counts": {
+    "lease_lost": 0,
+    "renew_failure": 0,
+    "exits": 0,
+    "slow_apply": 0,
+    "slow_fsync": 0,
+    "oom": 0,
+    "deadline": 110
+  },
+  "probes": [
+    {
+      "path": "fabric",
+      "status": null,
+      "elapsed_ms": 5009.19,
+      "error": "URLError"
+    },
+    {
+      "path": "fabric",
+      "status": null,
+      "elapsed_ms": 4219.12,
+      "error": "URLError"
+    },
+    {
+      "path": "fabric",
+      "status": null,
+      "elapsed_ms": 5005.99,
+      "error": "URLError"
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 3.99,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 2.54,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 2.21,
+      "error": null
+    }
+  ],
+  "identity_matches": true,
+  "name": "DCB-k3s-w3",
+  "management": "192.168.3.68"
+}

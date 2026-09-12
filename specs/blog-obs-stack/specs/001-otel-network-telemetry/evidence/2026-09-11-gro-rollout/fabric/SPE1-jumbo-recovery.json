@@ -1,0 +1,13 @@
+{
+  "name": "SPE1",
+  "id": "e451a6ef-c0bd-4f1c-b885-cb10e0767e2d",
+  "ip": "192.168.3.57",
+  "at": "2026-09-11T21:42:57.223178+00:00",
+  "commands": {
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.8        UP    29       04\nSP4             L2   Gi4           10.0.0.10       UP    26       04",
+    "show ip bgp summary": "",
+    "show ip bgp vpnv4 all summary": "BGP router identifier 10.1.0.7, local AS number 65000\nBGP table version is 726, main routing table version 726\n67 network entries using 17688 bytes of memory\n117 path entries using 15912 bytes of memory\n29/19 BGP path/bestpath attribute entries using 9048 bytes of memory\n6 BGP rrinfo entries using 240 bytes of memory\n20 BGP AS-PATH entries using 800 bytes of memory\n2 BGP extended community entries using 64 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 43752 total bytes of memory\nBGP activity 169/102 prefixes, 436/319 paths, scan interval 60 secs\n67 networks peaked at 20:24:30 Sep 11 2026 UTC (01:18:30.809 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.0.1        4        65000     471     459      726    0    0 01:11:30       44\n10.1.0.2        4        65000     540     505      726    0    0 01:18:04       43\n172.16.1.1      4        65001     535     547      726    0    0 01:18:20       29"
+  },
+  "ok": true
+}

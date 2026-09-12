@@ -1,0 +1,13 @@
+{
+  "device": "SP4",
+  "at": "2026-09-11T20:32:15.101433+00:00",
+  "mode": "verify",
+  "commands": {
+    "show isis neighbors detail": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.2        UP    27       03\n  Area Address(es): 49.0001\n  SNPA: 5254.00f3.c9e9      \n  IPv6 Address(es): FE80::5054:FF:FEF3:C9E9\n  IPv6 Global Address: FD10::2\n  State Changed: 00:00:48\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet2\n  Neighbor Circuit Id: 3\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full\nSP3             L2   Gi5           10.0.0.4        UP    27       05\n  Area Address(es): 49.0001\n  SNPA: 5254.00f9.fbd6      \n  IPv6 Address(es): FE80::5054:FF:FEF9:FBD6\n  IPv6 Global Address: FD10::4\n  State Changed: 00:00:48\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet5\n  Neighbor Circuit Id: 5\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full\nSPE1            L2   Gi4           10.0.0.11       UP    27       04\n  Area Address(es): 49.0001\n  SNPA: 5254.0026.02d0      \n  IPv6 Address(es): FE80::5054:FF:FE26:2D0\n  IPv6 Global Address: FD10::11\n  State Changed: 00:00:48\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet4\n  Neighbor Circuit Id: 4\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full\nSPE2            L2   Gi3           10.0.0.13       UP    27       02\n  Area Address(es): 49.0001\n  SNPA: 5254.00b6.ea6a      \n  IPv6 Address(es): FE80::5054:FF:FEB6:EA6A\n  IPv6 Global Address: FD10::13\n  State Changed: 00:00:48\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet3\n  Neighbor Circuit Id: 2\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full",
+    "show logging | include CLNS-5-ADJCHANGE": "*Sep 11 20:31:27.281: %CLNS-5-ADJCHANGE: ISIS: Adjacency to 0000.0005.0001 (GigabitEthernet5) Up, new adjacency\n*Sep 11 20:31:27.285: %CLNS-5-ADJCHANGE: ISIS: Adjacency to 0000.0008.0001 (GigabitEthernet3) Up, new adjacency\n*Sep 11 20:31:27.287: %CLNS-5-ADJCHANGE: ISIS: Adjacency to 0000.0007.0001 (GigabitEthernet4) Up, new adjacency\n*Sep 11 20:31:27.288: %CLNS-5-ADJCHANGE: ISIS: Adjacency to 0000.0004.0001 (GigabitEthernet2) Up, new adjacency"
+  },
+  "ok": true,
+  "management_ip": "192.168.3.56",
+  "platform": "cisco_iosxe",
+  "configuration_preserved": true
+}

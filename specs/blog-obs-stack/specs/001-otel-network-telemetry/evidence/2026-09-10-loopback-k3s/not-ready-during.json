@@ -1,0 +1,240 @@
+[
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-attacher-6d698df559-cmskp",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-attacher-6d698df559-nkjwz",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-provisioner-cd78b7b67-j5fzx",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-provisioner-cd78b7b67-ncj7z",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-resizer-cb7655d45-56vjf",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-resizer-cb7655d45-cwnc2",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-snapshotter-799f9f96cf-2lffk",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-snapshotter-799f9f96cf-z2s6f",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "engine-image-ei-493e04e7-5fptx",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "engine-image-ei-493e04e7-q2psv",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "engine-image-ei-493e04e7-snh5l",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "instance-manager-0dde8a944b2a020b75470acc79d6a423",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "instance-manager-3a90a13802fb6ba486824445adfbf9a4",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "instance-manager-b7c65f4637ba533732b62cb65894f354",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-csi-plugin-pk2s4",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-csi-plugin-s58sd",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-csi-plugin-vsjjg",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-manager-2k24v",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-manager-km8j9",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-manager-pfc2h",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-grafana-55964d88c-br4fb",
+    "node": "dcc-k3s-w5",
+    "phase": "Pending",
+    "reasons": [
+      "PodInitializing",
+      "PodInitializing",
+      "PodInitializing"
+    ],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-kube-state-metrics-545f7c6df4-5xfzq",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-p79tf",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-pzq42",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-xk965",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-victoria-metrics-operator-77cdbcp5cb",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "observability",
+    "name": "vmalert-victoria-metrics-k8s-stack-78689f75d9-zmvrz",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "observability",
+    "name": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-2mq9w",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "reasons": [],
+    "scheduled": "True"
+  },
+  {
+    "namespace": "observability",
+    "name": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-ll8zr",
+    "node": "dcc-k3s-w5",
+    "phase": "Pending",
+    "reasons": [
+      "ContainerCreating"
+    ],
+    "scheduled": "True"
+  }
+]

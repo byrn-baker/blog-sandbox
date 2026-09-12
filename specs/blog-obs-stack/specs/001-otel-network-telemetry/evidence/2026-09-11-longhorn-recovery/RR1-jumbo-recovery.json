@@ -1,0 +1,11 @@
+{
+  "name": "RR1",
+  "id": "2cf22f7b-6704-49c3-ab06-9a1c73c55816",
+  "ip": "192.168.3.51",
+  "at": "2026-09-11T15:18:12.203319+00:00",
+  "commands": {
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.20       UP    28       05"
+  },
+  "ok": true
+}

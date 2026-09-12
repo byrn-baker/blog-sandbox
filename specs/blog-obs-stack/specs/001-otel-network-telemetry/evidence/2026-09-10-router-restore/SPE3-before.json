@@ -1,0 +1,12 @@
+{
+  "name": "SPE3",
+  "id": "2ff21746-a5b7-495a-bcac-0da59a215647",
+  "ip": "192.168.3.59",
+  "at": "2026-09-10T02:54:29.016002+00:00",
+  "commands": {},
+  "ok": false,
+  "error": "NetmikoTimeoutException",
+  "signals": [
+    "TCP connection"
+  ]
+}

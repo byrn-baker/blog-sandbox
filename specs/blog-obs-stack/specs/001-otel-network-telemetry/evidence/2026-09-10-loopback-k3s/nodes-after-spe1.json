@@ -1,0 +1,2376 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.168.100.10",
+          "etcd.k3s.cattle.io/local-snapshots-timestamp": "2026-09-10T00:00:04Z",
+          "etcd.k3s.cattle.io/node-address": "192.168.100.10",
+          "etcd.k3s.cattle.io/node-name": "dca-k3s-m1-04a4dfb2",
+          "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"06:c7:00:f1:22:25\"}",
+          "flannel.alpha.coreos.com/backend-type": "vxlan",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.168.100.10",
+          "k3s.io/hostname": "DCA-k3s-m1",
+          "k3s.io/internal-ip": "192.168.100.10",
+          "k3s.io/node-args": "[\"server\",\"--kube-controller-manager-arg\",\"node-monitor-grace-period=300s\",\"--kube-cloud-controller-manager-arg\",\"leader-elect-lease-duration=30s\",\"--kube-cloud-controller-manager-arg\",\"leader-elect-renew-deadline=20s\",\"--cluster-init\",\"--token\",\"********\",\"--disable\",\"traefik\",\"--tls-san\",\"192.168.100.10\",\"--node-ip\",\"192.168.100.10\",\"--node-label\",\"topology.kubernetes.io/zone=dc-a\",\"--etcd-arg\",\"heartbeat-interval=500\",\"--etcd-arg\",\"election-timeout=5000\",\"--kube-controller-manager-arg\",\"leader-elect-lease-duration=30s\",\"--kube-controller-manager-arg\",\"leader-elect-renew-deadline=20s\",\"--kube-scheduler-arg\",\"leader-elect-lease-duration=30s\",\"--kube-scheduler-arg\",\"leader-elect-renew-deadline=20s\",\"--write-kubeconfig-mode\",\"644\"]",
+          "k3s.io/node-config-hash": "V3LHCZLWEROAD3W7PFTZRN6P75Y7I4CJHLKN4TCVGOMF422BBRLA====",
+          "k3s.io/node-env": "{}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-09-05T02:56:14Z",
+        "finalizers": [
+          "wrangler.cattle.io/node",
+          "wrangler.cattle.io/managed-etcd-controller"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/zone": "dc-a",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "dca-k3s-m1",
+          "kubernetes.io/os": "linux",
+          "node-role.kubernetes.io/control-plane": "true",
+          "node-role.kubernetes.io/etcd": "true",
+          "node-role.kubernetes.io/master": "true",
+          "node.kubernetes.io/instance-type": "k3s",
+          "topology.kubernetes.io/zone": "dc-a"
+        },
+        "name": "dca-k3s-m1",
+        "resourceVersion": "2110236",
+        "uid": "95f5facf-83c6-49f4-8de7-b889f9feb560"
+      },
+      "spec": {
+        "podCIDR": "10.42.0.0/24",
+        "podCIDRs": [
+          "10.42.0.0/24"
+        ],
+        "providerID": "k3s://dca-k3s-m1",
+        "taints": [
+          {
+            "effect": "NoSchedule",
+            "key": "node-role.kubernetes.io/control-plane",
+            "value": "true"
+          }
+        ]
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.168.100.10",
+            "type": "InternalIP"
+          },
+          {
+            "address": "DCA-k3s-m1",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "58192296710",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008532Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "59819384Ki",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008532Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-09-10T04:28:42Z",
+            "lastTransitionTime": "2026-09-09T01:07:43Z",
+            "message": "Node is a voting member of the etcd cluster",
+            "reason": "MemberNotLearner",
+            "status": "True",
+            "type": "EtcdIsVoter"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:57Z",
+            "lastTransitionTime": "2026-09-06T18:02:56Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:57Z",
+            "lastTransitionTime": "2026-09-06T18:02:56Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:57Z",
+            "lastTransitionTime": "2026-09-06T18:02:56Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:57Z",
+            "lastTransitionTime": "2026-09-06T18:02:56Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "images": [
+          {
+            "names": [
+              "quay.io/argoproj/argocd@sha256:e2aadfae709d904e87f46ba4aa49601d827b3022db22cd4d03aae816a2e7097b",
+              "quay.io/argoproj/argocd:v3.5.2"
+            ],
+            "sizeBytes": 210607287
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm:v0.9.2-build20240828"
+            ],
+            "sizeBytes": 198005682
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik:2.11.8"
+            ],
+            "sizeBytes": 170707347
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-metrics-server:v0.7.2"
+            ],
+            "sizeBytes": 68121199
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns:1.11.3"
+            ],
+            "sizeBytes": 63267477
+          },
+          {
+            "names": [
+              "docker.io/rancher/local-path-provisioner:v0.0.28"
+            ],
+            "sizeBytes": 50480515
+          },
+          {
+            "names": [
+              "docker.io/library/redis@sha256:2cc044fc5a07c9b701f8f1255a309ae9ad7856e694ac03513bf3648c01e40763",
+              "docker.io/library/redis:8.6.4-alpine"
+            ],
+            "sizeBytes": 34498212
+          },
+          {
+            "names": [
+              "quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241",
+              "quay.io/prometheus/node-exporter:v1.11.1"
+            ],
+            "sizeBytes": 13308798
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb:v0.4.9"
+            ],
+            "sizeBytes": 12651284
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-busybox:1.36.1"
+            ],
+            "sizeBytes": 4496154
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 685866
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "7d40df05-70c0-4bf9-a181-bd2330fb750f",
+          "containerRuntimeVersion": "containerd://1.7.21-k3s2",
+          "kernelVersion": "6.14.0-37-generic",
+          "kubeProxyVersion": "v1.30.5+k3s1",
+          "kubeletVersion": "v1.30.5+k3s1",
+          "machineID": "a3e27511d22849c895c434d785f44699",
+          "operatingSystem": "linux",
+          "osImage": "Ubuntu 25.04",
+          "systemUUID": "2862de93-5fad-40a9-ba4e-71b720761fb4"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.168.100.11",
+          "etcd.k3s.cattle.io/local-snapshots-timestamp": "2026-09-10T00:00:01Z",
+          "etcd.k3s.cattle.io/node-address": "192.168.100.11",
+          "etcd.k3s.cattle.io/node-name": "dca-k3s-m2-88c3dd32",
+          "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"6a:ad:5f:72:2b:d3\"}",
+          "flannel.alpha.coreos.com/backend-type": "vxlan",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.168.100.11",
+          "k3s.io/hostname": "DCA-k3s-m2",
+          "k3s.io/internal-ip": "192.168.100.11",
+          "k3s.io/node-args": "[\"server\",\"--kube-controller-manager-arg\",\"node-monitor-grace-period=300s\",\"--kube-cloud-controller-manager-arg\",\"leader-elect-lease-duration=30s\",\"--kube-cloud-controller-manager-arg\",\"leader-elect-renew-deadline=20s\",\"--server\",\"https://192.168.100.10:6443\",\"--token\",\"********\",\"--disable\",\"traefik\",\"--tls-san\",\"192.168.100.10\",\"--node-ip\",\"192.168.100.11\",\"--node-label\",\"topology.kubernetes.io/zone=dc-a\",\"--etcd-arg\",\"heartbeat-interval=500\",\"--etcd-arg\",\"election-timeout=5000\",\"--kube-controller-manager-arg\",\"leader-elect-lease-duration=30s\",\"--kube-controller-manager-arg\",\"leader-elect-renew-deadline=20s\",\"--kube-scheduler-arg\",\"leader-elect-lease-duration=30s\",\"--kube-scheduler-arg\",\"leader-elect-renew-deadline=20s\",\"--write-kubeconfig-mode\",\"644\"]",
+          "k3s.io/node-config-hash": "OXOP2GA3CLCCR2UQN3MT32SWT3KMRZLV3W64Y4TUNMBWWY7TOJJQ====",
+          "k3s.io/node-env": "{}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-09-05T16:55:57Z",
+        "finalizers": [
+          "wrangler.cattle.io/node",
+          "wrangler.cattle.io/managed-etcd-controller"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/zone": "dc-a",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "dca-k3s-m2",
+          "kubernetes.io/os": "linux",
+          "node-role.kubernetes.io/control-plane": "true",
+          "node-role.kubernetes.io/etcd": "true",
+          "node-role.kubernetes.io/master": "true",
+          "node.kubernetes.io/instance-type": "k3s",
+          "topology.kubernetes.io/zone": "dc-a"
+        },
+        "name": "dca-k3s-m2",
+        "resourceVersion": "2109972",
+        "uid": "f0d434ee-6d1c-4119-8760-793ba7e2113b"
+      },
+      "spec": {
+        "podCIDR": "10.42.1.0/24",
+        "podCIDRs": [
+          "10.42.1.0/24"
+        ],
+        "providerID": "k3s://dca-k3s-m2",
+        "taints": [
+          {
+            "effect": "NoSchedule",
+            "key": "node-role.kubernetes.io/control-plane",
+            "value": "true"
+          }
+        ]
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.168.100.11",
+            "type": "InternalIP"
+          },
+          {
+            "address": "DCA-k3s-m2",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "58192296710",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008524Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "59819384Ki",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008524Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:27Z",
+            "lastTransitionTime": "2026-09-09T21:24:12Z",
+            "message": "Node is a voting member of the etcd cluster",
+            "reason": "MemberNotLearner",
+            "status": "True",
+            "type": "EtcdIsVoter"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:29:36Z",
+            "lastTransitionTime": "2026-09-05T16:55:57Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:29:36Z",
+            "lastTransitionTime": "2026-09-05T16:55:57Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:29:36Z",
+            "lastTransitionTime": "2026-09-05T16:55:57Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:29:36Z",
+            "lastTransitionTime": "2026-09-05T16:55:58Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "images": [
+          {
+            "names": [
+              "quay.io/argoproj/argocd@sha256:e2aadfae709d904e87f46ba4aa49601d827b3022db22cd4d03aae816a2e7097b",
+              "quay.io/argoproj/argocd:v3.5.2"
+            ],
+            "sizeBytes": 210607287
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm:v0.9.2-build20240828"
+            ],
+            "sizeBytes": 198005682
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik:2.11.8"
+            ],
+            "sizeBytes": 170707347
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-metrics-server:v0.7.2"
+            ],
+            "sizeBytes": 68121199
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns:1.11.3"
+            ],
+            "sizeBytes": 63267477
+          },
+          {
+            "names": [
+              "docker.io/rancher/local-path-provisioner:v0.0.28"
+            ],
+            "sizeBytes": 50480515
+          },
+          {
+            "names": [
+              "docker.io/library/redis@sha256:2cc044fc5a07c9b701f8f1255a309ae9ad7856e694ac03513bf3648c01e40763",
+              "ecr-public.aws.com/docker/library/redis@sha256:2cc044fc5a07c9b701f8f1255a309ae9ad7856e694ac03513bf3648c01e40763",
+              "docker.io/library/redis:8.6.4-alpine",
+              "ecr-public.aws.com/docker/library/redis:8.6.4-alpine"
+            ],
+            "sizeBytes": 34498212
+          },
+          {
+            "names": [
+              "quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241",
+              "quay.io/prometheus/node-exporter:v1.11.1"
+            ],
+            "sizeBytes": 13308798
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb:v0.4.9"
+            ],
+            "sizeBytes": 12651284
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-busybox:1.36.1"
+            ],
+            "sizeBytes": 4496154
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 685866
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "88c5a8db-e7b1-47b3-9f2f-c74a61d32081",
+          "containerRuntimeVersion": "containerd://1.7.21-k3s2",
+          "kernelVersion": "6.14.0-37-generic",
+          "kubeProxyVersion": "v1.30.5+k3s1",
+          "kubeletVersion": "v1.30.5+k3s1",
+          "machineID": "a3e27511d22849c895c434d785f44699",
+          "operatingSystem": "linux",
+          "osImage": "Ubuntu 25.04",
+          "systemUUID": "521bd409-173a-4af4-8415-9680b637d2e4"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.168.100.12",
+          "etcd.k3s.cattle.io/local-snapshots-timestamp": "2026-09-10T00:00:03Z",
+          "etcd.k3s.cattle.io/node-address": "192.168.100.12",
+          "etcd.k3s.cattle.io/node-name": "dca-k3s-m3-ada08d30",
+          "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"46:4b:65:67:4b:be\"}",
+          "flannel.alpha.coreos.com/backend-type": "vxlan",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.168.100.12",
+          "k3s.io/hostname": "DCA-k3s-m3",
+          "k3s.io/internal-ip": "192.168.100.12",
+          "k3s.io/node-args": "[\"server\",\"--kube-controller-manager-arg\",\"node-monitor-grace-period=300s\",\"--kube-cloud-controller-manager-arg\",\"leader-elect-lease-duration=30s\",\"--kube-cloud-controller-manager-arg\",\"leader-elect-renew-deadline=20s\",\"--server\",\"https://192.168.100.10:6443\",\"--token\",\"********\",\"--disable\",\"traefik\",\"--tls-san\",\"192.168.100.10\",\"--node-ip\",\"192.168.100.12\",\"--node-label\",\"topology.kubernetes.io/zone=dc-a\",\"--etcd-arg\",\"heartbeat-interval=500\",\"--etcd-arg\",\"election-timeout=5000\",\"--kube-controller-manager-arg\",\"leader-elect-lease-duration=30s\",\"--kube-controller-manager-arg\",\"leader-elect-renew-deadline=20s\",\"--kube-scheduler-arg\",\"leader-elect-lease-duration=30s\",\"--kube-scheduler-arg\",\"leader-elect-renew-deadline=20s\",\"--write-kubeconfig-mode\",\"644\"]",
+          "k3s.io/node-config-hash": "KLMSI3BZLDB4JHGOUE2LICAVHWR546LOGYSIJ66X5NCF2RIO2NBA====",
+          "k3s.io/node-env": "{}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-09-05T16:57:02Z",
+        "finalizers": [
+          "wrangler.cattle.io/node",
+          "wrangler.cattle.io/managed-etcd-controller"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/zone": "dc-a",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "dca-k3s-m3",
+          "kubernetes.io/os": "linux",
+          "node-role.kubernetes.io/control-plane": "true",
+          "node-role.kubernetes.io/etcd": "true",
+          "node-role.kubernetes.io/master": "true",
+          "node.kubernetes.io/instance-type": "k3s",
+          "topology.kubernetes.io/zone": "dc-a"
+        },
+        "name": "dca-k3s-m3",
+        "resourceVersion": "2110485",
+        "uid": "12a1d7da-b351-4613-9e37-2f1682ce4c04"
+      },
+      "spec": {
+        "podCIDR": "10.42.2.0/24",
+        "podCIDRs": [
+          "10.42.2.0/24"
+        ],
+        "providerID": "k3s://dca-k3s-m3",
+        "taints": [
+          {
+            "effect": "NoSchedule",
+            "key": "node-role.kubernetes.io/control-plane",
+            "value": "true"
+          }
+        ]
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.168.100.12",
+            "type": "InternalIP"
+          },
+          {
+            "address": "DCA-k3s-m3",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "58192296710",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "59819384Ki",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-09-10T04:30:27Z",
+            "lastTransitionTime": "2026-09-10T00:55:12Z",
+            "message": "Node is a voting member of the etcd cluster",
+            "reason": "MemberNotLearner",
+            "status": "True",
+            "type": "EtcdIsVoter"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:32:21Z",
+            "lastTransitionTime": "2026-09-09T08:39:47Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:32:21Z",
+            "lastTransitionTime": "2026-09-09T08:39:47Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:32:21Z",
+            "lastTransitionTime": "2026-09-09T08:39:47Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:32:21Z",
+            "lastTransitionTime": "2026-09-09T08:39:47Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "images": [
+          {
+            "names": [
+              "quay.io/argoproj/argocd@sha256:e2aadfae709d904e87f46ba4aa49601d827b3022db22cd4d03aae816a2e7097b",
+              "quay.io/argoproj/argocd:v3.5.2"
+            ],
+            "sizeBytes": 210607287
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm:v0.9.2-build20240828"
+            ],
+            "sizeBytes": 198005682
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik:2.11.8"
+            ],
+            "sizeBytes": 170707347
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-metrics-server:v0.7.2"
+            ],
+            "sizeBytes": 68121199
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns:1.11.3"
+            ],
+            "sizeBytes": 63267477
+          },
+          {
+            "names": [
+              "docker.io/rancher/local-path-provisioner:v0.0.28"
+            ],
+            "sizeBytes": 50479526
+          },
+          {
+            "names": [
+              "ghcr.io/dexidp/dex@sha256:8499afd690c437f52301efd2b05b2455da5bd2dfc20332cd697dc9937f808462",
+              "ghcr.io/dexidp/dex:v2.45.1"
+            ],
+            "sizeBytes": 48093166
+          },
+          {
+            "names": [
+              "ecr-public.aws.com/docker/library/redis@sha256:2cc044fc5a07c9b701f8f1255a309ae9ad7856e694ac03513bf3648c01e40763",
+              "ecr-public.aws.com/docker/library/redis:8.6.4-alpine"
+            ],
+            "sizeBytes": 34498212
+          },
+          {
+            "names": [
+              "quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241",
+              "quay.io/prometheus/node-exporter:v1.11.1"
+            ],
+            "sizeBytes": 13308798
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb:v0.4.9"
+            ],
+            "sizeBytes": 12651284
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-busybox:1.36.1"
+            ],
+            "sizeBytes": 4496154
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 685866
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "256f7314-e17e-4857-841e-a9d428e2af1e",
+          "containerRuntimeVersion": "containerd://1.7.21-k3s2",
+          "kernelVersion": "6.14.0-37-generic",
+          "kubeProxyVersion": "v1.30.5+k3s1",
+          "kubeletVersion": "v1.30.5+k3s1",
+          "machineID": "a3e27511d22849c895c434d785f44699",
+          "operatingSystem": "linux",
+          "osImage": "Ubuntu 25.04",
+          "systemUUID": "3706fefd-97fe-4645-91e4-24ff73ff3670"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.168.100.20",
+          "csi.volume.kubernetes.io/nodeid": "{\"driver.longhorn.io\":\"dcb-k3s-w1\"}",
+          "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"c2:c4:02:dc:4a:f9\"}",
+          "flannel.alpha.coreos.com/backend-type": "vxlan",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.168.100.20",
+          "k3s.io/hostname": "DCB-k3s-w1",
+          "k3s.io/internal-ip": "192.168.100.20",
+          "k3s.io/node-args": "[\"agent\",\"--node-ip\",\"192.168.100.20\",\"--node-label\",\"topology.kubernetes.io/zone=dc-b\"]",
+          "k3s.io/node-config-hash": "FN6BYR5APAE2VW7WBVYZVBRL3UXSDK4ZTIVE7RIMUTZX3FNVQ2FA====",
+          "k3s.io/node-env": "{\"K3S_TOKEN\":\"********\",\"K3S_URL\":\"https://192.168.100.10:6443\"}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-09-05T16:57:52Z",
+        "finalizers": [
+          "wrangler.cattle.io/node",
+          "wrangler.cattle.io/managed-etcd-controller"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/zone": "dc-b",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "dcb-k3s-w1",
+          "kubernetes.io/os": "linux",
+          "node.kubernetes.io/instance-type": "k3s",
+          "topology.kubernetes.io/zone": "dc-b"
+        },
+        "name": "dcb-k3s-w1",
+        "resourceVersion": "2079973",
+        "uid": "85e82c3d-bc7b-4e7e-bdf9-77f51b117796"
+      },
+      "spec": {
+        "podCIDR": "10.42.3.0/24",
+        "podCIDRs": [
+          "10.42.3.0/24"
+        ],
+        "providerID": "k3s://dcb-k3s-w1",
+        "taints": [
+          {
+            "effect": "NoSchedule",
+            "key": "node.kubernetes.io/unreachable",
+            "timeAdded": "2026-09-10T02:10:03Z"
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "timeAdded": "2026-09-10T02:10:14Z"
+          }
+        ]
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.168.100.20",
+            "type": "InternalIP"
+          },
+          {
+            "address": "DCB-k3s-w1",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "58192296710",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "59819384Ki",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-09-10T02:00:27Z",
+            "lastTransitionTime": "2026-09-10T02:10:03Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T02:00:27Z",
+            "lastTransitionTime": "2026-09-10T02:10:03Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T02:00:27Z",
+            "lastTransitionTime": "2026-09-10T02:10:03Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T02:00:27Z",
+            "lastTransitionTime": "2026-09-10T02:10:03Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "images": [
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-instance-manager@sha256:b255f3279dd9d830ea153e9369928646dee519fd853036388926dddb5c66094b",
+              "docker.io/longhornio/longhorn-instance-manager:v1.12.1"
+            ],
+            "sizeBytes": 498107704
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm:v0.9.2-build20240828"
+            ],
+            "sizeBytes": 198005682
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-engine@sha256:9b1b720b56df6612c9589cbc156acbca6419fa61de818d05db7226b0722f2868",
+              "docker.io/longhornio/longhorn-engine:v1.12.1"
+            ],
+            "sizeBytes": 175039107
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik:2.11.8"
+            ],
+            "sizeBytes": 170707347
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-manager@sha256:83b79f57043fe1405e68bc0d4c7987accbc6bb512def3e0db12b31966c070801",
+              "docker.io/longhornio/longhorn-manager:v1.12.1"
+            ],
+            "sizeBytes": 134264362
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-share-manager@sha256:efaf47aeb4e8615e312f0880df860bf2e5b9fa53006fe075f057c6dd4089f47d",
+              "docker.io/longhornio/longhorn-share-manager:v1.12.1"
+            ],
+            "sizeBytes": 125642384
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-metrics-server:v0.7.2"
+            ],
+            "sizeBytes": 68121199
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns:1.11.3"
+            ],
+            "sizeBytes": 63267477
+          },
+          {
+            "names": [
+              "docker.io/rancher/local-path-provisioner:v0.0.28"
+            ],
+            "sizeBytes": 50480515
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-snapshotter@sha256:2bca9ac55170efa61dc50e5cc8d9550373db2e3e5161d82d3fdaac5c25150360",
+              "docker.io/longhornio/csi-snapshotter:v8.6.0"
+            ],
+            "sizeBytes": 38897543
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-attacher@sha256:a814aa4784197116983ea13e376fc691e000a390de9d0b9fca2bc4a2fb7c4a1f",
+              "docker.io/longhornio/csi-attacher:v4.12.0"
+            ],
+            "sizeBytes": 38607714
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-resizer@sha256:63d0aef25114d4a682b25afa6d9623a3cfcc19aca910269124408476bbe2c6fd",
+              "docker.io/longhornio/csi-resizer:v2.2.1"
+            ],
+            "sizeBytes": 38544199
+          },
+          {
+            "names": [
+              "docker.io/prom/alertmanager@sha256:51a825c2a40acc3e338fdd00d622e01ec090f72be2b3ea46be0839cd47a4d286",
+              "docker.io/prom/alertmanager:v0.32.1"
+            ],
+            "sizeBytes": 36170464
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/operator@sha256:2ad04439b0cb092765126f7947eff5ad6949d0332c5dbadf5fdd45b418569120",
+              "docker.io/victoriametrics/operator:config-reloader-v0.74.0"
+            ],
+            "sizeBytes": 19530599
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/victoria-metrics@sha256:54467c7764a3e6579199af1914bb779f01ce32265cd552eb5ae0d4f8a2b80a97",
+              "docker.io/victoriametrics/victoria-metrics:v1.150.0"
+            ],
+            "sizeBytes": 18328695
+          },
+          {
+            "names": [
+              "ghcr.io/victoriametrics/sync-job@sha256:68df9707e9124561ad45598b3c433f873db5b8588403a10ef166f9f64a7c159d",
+              "ghcr.io/victoriametrics/sync-job:v0.0.16"
+            ],
+            "sizeBytes": 18312854
+          },
+          {
+            "names": [
+              "docker.io/longhornio/livenessprobe@sha256:d0cb76b565ba9d36da0dc2b38e2b6a49a0ae4fe067b03086110682f32c600318",
+              "docker.io/longhornio/livenessprobe:v2.19.0"
+            ],
+            "sizeBytes": 14770279
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-node-driver-registrar@sha256:29f7cfd519008fe8f8dff5e79db43f70d65c43a89c08f1bafbb199ca90df79f0",
+              "docker.io/longhornio/csi-node-driver-registrar:v2.17.0"
+            ],
+            "sizeBytes": 14640199
+          },
+          {
+            "names": [
+              "quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241",
+              "quay.io/prometheus/node-exporter:v1.11.1"
+            ],
+            "sizeBytes": 13308798
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb:v0.4.9"
+            ],
+            "sizeBytes": 12651284
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-busybox:1.36.1"
+            ],
+            "sizeBytes": 4496154
+          },
+          {
+            "names": [
+              "docker.io/library/busybox@sha256:dc2d74b28e4cf8984fa52af1f39bc7c3d9c73760b41a74d629f5d11b1ab28616",
+              "docker.io/library/busybox:latest"
+            ],
+            "sizeBytes": 2236931
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 685866
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "a46c9b51-e129-4ac8-be8a-4d2e443ccdf1",
+          "containerRuntimeVersion": "containerd://1.7.21-k3s2",
+          "kernelVersion": "6.14.0-37-generic",
+          "kubeProxyVersion": "v1.30.5+k3s1",
+          "kubeletVersion": "v1.30.5+k3s1",
+          "machineID": "a3e27511d22849c895c434d785f44699",
+          "operatingSystem": "linux",
+          "osImage": "Ubuntu 25.04",
+          "systemUUID": "3da7e69c-4f66-4bae-9fa0-b67ce2d55ef9"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.168.100.21",
+          "csi.volume.kubernetes.io/nodeid": "{\"driver.longhorn.io\":\"dcb-k3s-w2\"}",
+          "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"1a:6e:e6:cf:b7:0b\"}",
+          "flannel.alpha.coreos.com/backend-type": "vxlan",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.168.100.21",
+          "k3s.io/hostname": "DCB-k3s-w2",
+          "k3s.io/internal-ip": "192.168.100.21",
+          "k3s.io/node-args": "[\"agent\",\"--node-ip\",\"192.168.100.21\",\"--node-label\",\"topology.kubernetes.io/zone=dc-b\"]",
+          "k3s.io/node-config-hash": "PB55JIMTST7Z6XA7JPRD3ZNFPRM3FA5AZNBJ2SCRZEUXG6GVJHTA====",
+          "k3s.io/node-env": "{\"K3S_TOKEN\":\"********\",\"K3S_URL\":\"https://192.168.100.10:6443\"}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-09-05T16:57:52Z",
+        "finalizers": [
+          "wrangler.cattle.io/node",
+          "wrangler.cattle.io/managed-etcd-controller"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/zone": "dc-b",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "dcb-k3s-w2",
+          "kubernetes.io/os": "linux",
+          "node.kubernetes.io/instance-type": "k3s",
+          "topology.kubernetes.io/zone": "dc-b"
+        },
+        "name": "dcb-k3s-w2",
+        "resourceVersion": "2080133",
+        "uid": "882ff14a-fc7f-4b9d-9272-a0251bc06946"
+      },
+      "spec": {
+        "podCIDR": "10.42.6.0/24",
+        "podCIDRs": [
+          "10.42.6.0/24"
+        ],
+        "providerID": "k3s://dcb-k3s-w2",
+        "taints": [
+          {
+            "effect": "NoSchedule",
+            "key": "node.kubernetes.io/unreachable",
+            "timeAdded": "2026-09-10T02:10:14Z"
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "timeAdded": "2026-09-10T02:10:35Z"
+          }
+        ]
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.168.100.21",
+            "type": "InternalIP"
+          },
+          {
+            "address": "DCB-k3s-w2",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "58192296710",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "59819384Ki",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-09-10T02:00:00Z",
+            "lastTransitionTime": "2026-09-10T02:10:14Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T02:00:00Z",
+            "lastTransitionTime": "2026-09-10T02:10:14Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T02:00:00Z",
+            "lastTransitionTime": "2026-09-10T02:10:14Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T02:00:00Z",
+            "lastTransitionTime": "2026-09-10T02:10:14Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "images": [
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-instance-manager@sha256:b255f3279dd9d830ea153e9369928646dee519fd853036388926dddb5c66094b",
+              "docker.io/longhornio/longhorn-instance-manager:v1.12.1"
+            ],
+            "sizeBytes": 498107704
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm:v0.9.2-build20240828"
+            ],
+            "sizeBytes": 198005682
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-engine@sha256:9b1b720b56df6612c9589cbc156acbca6419fa61de818d05db7226b0722f2868",
+              "docker.io/longhornio/longhorn-engine:v1.12.1"
+            ],
+            "sizeBytes": 175039107
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik:2.11.8"
+            ],
+            "sizeBytes": 170707347
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-manager@sha256:83b79f57043fe1405e68bc0d4c7987accbc6bb512def3e0db12b31966c070801",
+              "docker.io/longhornio/longhorn-manager:v1.12.1"
+            ],
+            "sizeBytes": 134264362
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-share-manager@sha256:efaf47aeb4e8615e312f0880df860bf2e5b9fa53006fe075f057c6dd4089f47d",
+              "docker.io/longhornio/longhorn-share-manager:v1.12.1"
+            ],
+            "sizeBytes": 125642384
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-metrics-server:v0.7.2"
+            ],
+            "sizeBytes": 68121199
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns:1.11.3"
+            ],
+            "sizeBytes": 63267477
+          },
+          {
+            "names": [
+              "docker.io/rancher/local-path-provisioner:v0.0.28"
+            ],
+            "sizeBytes": 50480515
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/operator@sha256:c4fde419a4f03c7c45d7ee554e7039c12c75af161f7f7e1baef1b343015e3df9",
+              "docker.io/victoriametrics/operator:v0.74.0"
+            ],
+            "sizeBytes": 39222124
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-resizer@sha256:63d0aef25114d4a682b25afa6d9623a3cfcc19aca910269124408476bbe2c6fd",
+              "docker.io/longhornio/csi-resizer:v2.2.1"
+            ],
+            "sizeBytes": 38544199
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-provisioner@sha256:1bbb7b11d8087130e722e3249f364d0ab49ee3545e847c2f299e87b7e1ce5c4f",
+              "docker.io/longhornio/csi-provisioner:v5.3.0"
+            ],
+            "sizeBytes": 35708854
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/operator@sha256:2ad04439b0cb092765126f7947eff5ad6949d0332c5dbadf5fdd45b418569120",
+              "docker.io/victoriametrics/operator:config-reloader-v0.74.0"
+            ],
+            "sizeBytes": 19530599
+          },
+          {
+            "names": [
+              "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:85108987d044b18a098126732f98602df408888c0f7d456241f5abefb9744bc1",
+              "registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.19.1"
+            ],
+            "sizeBytes": 18897162
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/victoria-metrics@sha256:54467c7764a3e6579199af1914bb779f01ce32265cd552eb5ae0d4f8a2b80a97",
+              "docker.io/victoriametrics/victoria-metrics:v1.150.0"
+            ],
+            "sizeBytes": 18328695
+          },
+          {
+            "names": [
+              "ghcr.io/victoriametrics/sync-job@sha256:68df9707e9124561ad45598b3c433f873db5b8588403a10ef166f9f64a7c159d",
+              "ghcr.io/victoriametrics/sync-job:v0.0.16"
+            ],
+            "sizeBytes": 18312854
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/vmalert@sha256:c6e6c1ef6e43c09510dd0aff264bf0ea319c1bdfced1ccc79dad1545950a7989",
+              "docker.io/victoriametrics/vmalert:v1.150.0"
+            ],
+            "sizeBytes": 17940473
+          },
+          {
+            "names": [
+              "docker.io/longhornio/livenessprobe@sha256:d0cb76b565ba9d36da0dc2b38e2b6a49a0ae4fe067b03086110682f32c600318",
+              "docker.io/longhornio/livenessprobe:v2.19.0"
+            ],
+            "sizeBytes": 14770279
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-node-driver-registrar@sha256:29f7cfd519008fe8f8dff5e79db43f70d65c43a89c08f1bafbb199ca90df79f0",
+              "docker.io/longhornio/csi-node-driver-registrar:v2.17.0"
+            ],
+            "sizeBytes": 14640199
+          },
+          {
+            "names": [
+              "quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241",
+              "quay.io/prometheus/node-exporter:v1.11.1"
+            ],
+            "sizeBytes": 13308798
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb:v0.4.9"
+            ],
+            "sizeBytes": 12651284
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-busybox:1.36.1"
+            ],
+            "sizeBytes": 4496154
+          },
+          {
+            "names": [
+              "docker.io/library/busybox@sha256:dc2d74b28e4cf8984fa52af1f39bc7c3d9c73760b41a74d629f5d11b1ab28616",
+              "docker.io/library/busybox:latest"
+            ],
+            "sizeBytes": 2236931
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 685866
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "1b0969e0-c466-4c0e-bd2f-25612bb68e2a",
+          "containerRuntimeVersion": "containerd://1.7.21-k3s2",
+          "kernelVersion": "6.14.0-37-generic",
+          "kubeProxyVersion": "v1.30.5+k3s1",
+          "kubeletVersion": "v1.30.5+k3s1",
+          "machineID": "a3e27511d22849c895c434d785f44699",
+          "operatingSystem": "linux",
+          "osImage": "Ubuntu 25.04",
+          "systemUUID": "b52c3ffe-5fba-4924-b3e9-bac1a79fdb99"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.168.100.22",
+          "csi.volume.kubernetes.io/nodeid": "{\"driver.longhorn.io\":\"dcb-k3s-w3\"}",
+          "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"7a:f5:10:7c:2a:e1\"}",
+          "flannel.alpha.coreos.com/backend-type": "vxlan",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.168.100.22",
+          "k3s.io/hostname": "DCB-k3s-w3",
+          "k3s.io/internal-ip": "192.168.100.22",
+          "k3s.io/node-args": "[\"agent\",\"--node-ip\",\"192.168.100.22\",\"--node-label\",\"topology.kubernetes.io/zone=dc-b\"]",
+          "k3s.io/node-config-hash": "YSUL2SN3O2WYOB6WKHU7GABOVXNVEDAJ7BI2QDZF2YCA4TIKAE7A====",
+          "k3s.io/node-env": "{\"K3S_TOKEN\":\"********\",\"K3S_URL\":\"https://192.168.100.10:6443\"}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-09-05T16:57:52Z",
+        "finalizers": [
+          "wrangler.cattle.io/node",
+          "wrangler.cattle.io/managed-etcd-controller"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/zone": "dc-b",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "dcb-k3s-w3",
+          "kubernetes.io/os": "linux",
+          "node.kubernetes.io/instance-type": "k3s",
+          "topology.kubernetes.io/zone": "dc-b"
+        },
+        "name": "dcb-k3s-w3",
+        "resourceVersion": "2080099",
+        "uid": "fdb0d7c7-6651-4eb4-a29a-cf1250e1c797"
+      },
+      "spec": {
+        "podCIDR": "10.42.4.0/24",
+        "podCIDRs": [
+          "10.42.4.0/24"
+        ],
+        "providerID": "k3s://dcb-k3s-w3",
+        "taints": [
+          {
+            "effect": "NoSchedule",
+            "key": "node.kubernetes.io/unreachable",
+            "timeAdded": "2026-09-10T02:10:03Z"
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "timeAdded": "2026-09-10T02:10:24Z"
+          }
+        ]
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.168.100.22",
+            "type": "InternalIP"
+          },
+          {
+            "address": "DCB-k3s-w3",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "58192296710",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008524Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "59819384Ki",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008524Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-09-10T02:03:15Z",
+            "lastTransitionTime": "2026-09-10T02:10:03Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T02:03:15Z",
+            "lastTransitionTime": "2026-09-10T02:10:03Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T02:03:15Z",
+            "lastTransitionTime": "2026-09-10T02:10:03Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T02:03:15Z",
+            "lastTransitionTime": "2026-09-10T02:10:03Z",
+            "message": "Kubelet stopped posting node status.",
+            "reason": "NodeStatusUnknown",
+            "status": "Unknown",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "images": [
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-instance-manager@sha256:b255f3279dd9d830ea153e9369928646dee519fd853036388926dddb5c66094b",
+              "docker.io/longhornio/longhorn-instance-manager:v1.12.1"
+            ],
+            "sizeBytes": 498107704
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm:v0.9.2-build20240828"
+            ],
+            "sizeBytes": 198005682
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-engine@sha256:9b1b720b56df6612c9589cbc156acbca6419fa61de818d05db7226b0722f2868",
+              "docker.io/longhornio/longhorn-engine:v1.12.1"
+            ],
+            "sizeBytes": 175039107
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik:2.11.8"
+            ],
+            "sizeBytes": 170707347
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-manager@sha256:83b79f57043fe1405e68bc0d4c7987accbc6bb512def3e0db12b31966c070801",
+              "docker.io/longhornio/longhorn-manager:v1.12.1"
+            ],
+            "sizeBytes": 134264362
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-share-manager@sha256:efaf47aeb4e8615e312f0880df860bf2e5b9fa53006fe075f057c6dd4089f47d",
+              "docker.io/longhornio/longhorn-share-manager:v1.12.1"
+            ],
+            "sizeBytes": 125642384
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-metrics-server:v0.7.2"
+            ],
+            "sizeBytes": 68121199
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns:1.11.3"
+            ],
+            "sizeBytes": 63267477
+          },
+          {
+            "names": [
+              "docker.io/rancher/local-path-provisioner:v0.0.28"
+            ],
+            "sizeBytes": 50480515
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-snapshotter@sha256:2bca9ac55170efa61dc50e5cc8d9550373db2e3e5161d82d3fdaac5c25150360",
+              "docker.io/longhornio/csi-snapshotter:v8.6.0"
+            ],
+            "sizeBytes": 38897543
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-attacher@sha256:a814aa4784197116983ea13e376fc691e000a390de9d0b9fca2bc4a2fb7c4a1f",
+              "docker.io/longhornio/csi-attacher:v4.12.0"
+            ],
+            "sizeBytes": 38607714
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-provisioner@sha256:1bbb7b11d8087130e722e3249f364d0ab49ee3545e847c2f299e87b7e1ce5c4f",
+              "docker.io/longhornio/csi-provisioner:v5.3.0"
+            ],
+            "sizeBytes": 35708854
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/operator@sha256:2ad04439b0cb092765126f7947eff5ad6949d0332c5dbadf5fdd45b418569120",
+              "docker.io/victoriametrics/operator:config-reloader-v0.74.0"
+            ],
+            "sizeBytes": 19530599
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/victoria-metrics@sha256:54467c7764a3e6579199af1914bb779f01ce32265cd552eb5ae0d4f8a2b80a97",
+              "docker.io/victoriametrics/victoria-metrics:v1.150.0"
+            ],
+            "sizeBytes": 18328695
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/vmagent@sha256:3eff5874d59292714878dcb6aee14f048bf19b7312b727860ba5e7d29e2e0c07",
+              "docker.io/victoriametrics/vmagent:v1.150.0"
+            ],
+            "sizeBytes": 15808366
+          },
+          {
+            "names": [
+              "docker.io/longhornio/livenessprobe@sha256:d0cb76b565ba9d36da0dc2b38e2b6a49a0ae4fe067b03086110682f32c600318",
+              "docker.io/longhornio/livenessprobe:v2.19.0"
+            ],
+            "sizeBytes": 14770279
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-node-driver-registrar@sha256:29f7cfd519008fe8f8dff5e79db43f70d65c43a89c08f1bafbb199ca90df79f0",
+              "docker.io/longhornio/csi-node-driver-registrar:v2.17.0"
+            ],
+            "sizeBytes": 14640199
+          },
+          {
+            "names": [
+              "quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241",
+              "quay.io/prometheus/node-exporter:v1.11.1"
+            ],
+            "sizeBytes": 13308798
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb:v0.4.9"
+            ],
+            "sizeBytes": 12651284
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-busybox:1.36.1"
+            ],
+            "sizeBytes": 4496154
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 685866
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "246be33e-c4fc-4a5e-a551-586c0b1a9947",
+          "containerRuntimeVersion": "containerd://1.7.21-k3s2",
+          "kernelVersion": "6.14.0-37-generic",
+          "kubeProxyVersion": "v1.30.5+k3s1",
+          "kubeletVersion": "v1.30.5+k3s1",
+          "machineID": "a3e27511d22849c895c434d785f44699",
+          "operatingSystem": "linux",
+          "osImage": "Ubuntu 25.04",
+          "systemUUID": "1deda1e3-0690-4de2-83b9-d1d232ccf472"
+        },
+        "volumesAttached": [
+          {
+            "devicePath": "",
+            "name": "kubernetes.io/csi/driver.longhorn.io^pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd"
+          }
+        ],
+        "volumesInUse": [
+          "kubernetes.io/csi/driver.longhorn.io^pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd"
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.168.100.30",
+          "csi.volume.kubernetes.io/nodeid": "{\"driver.longhorn.io\":\"dcc-k3s-w4\"}",
+          "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"d2:66:ad:10:8a:45\"}",
+          "flannel.alpha.coreos.com/backend-type": "vxlan",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.168.100.30",
+          "k3s.io/hostname": "DCC-k3s-w4",
+          "k3s.io/internal-ip": "192.168.100.30",
+          "k3s.io/node-args": "[\"agent\",\"--node-ip\",\"192.168.100.30\",\"--node-label\",\"topology.kubernetes.io/zone=dc-c\"]",
+          "k3s.io/node-config-hash": "6AMUZPPWJC7ZE6UMJVXWS5L2JFBOFJBVVNT6KWVUVGT7H6LJBSNA====",
+          "k3s.io/node-env": "{\"K3S_TOKEN\":\"********\",\"K3S_URL\":\"https://192.168.100.10:6443\"}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-09-05T16:57:53Z",
+        "finalizers": [
+          "wrangler.cattle.io/node",
+          "wrangler.cattle.io/managed-etcd-controller"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/zone": "dc-c",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "dcc-k3s-w4",
+          "kubernetes.io/os": "linux",
+          "node.kubernetes.io/instance-type": "k3s",
+          "topology.kubernetes.io/zone": "dc-c"
+        },
+        "name": "dcc-k3s-w4",
+        "resourceVersion": "2110579",
+        "uid": "9889e729-ac69-431b-b07b-2d2d26048e0c"
+      },
+      "spec": {
+        "podCIDR": "10.42.7.0/24",
+        "podCIDRs": [
+          "10.42.7.0/24"
+        ],
+        "providerID": "k3s://dcc-k3s-w4"
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.168.100.30",
+            "type": "InternalIP"
+          },
+          {
+            "address": "DCC-k3s-w4",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "58192296710",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "59819384Ki",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:54Z",
+            "lastTransitionTime": "2026-09-10T04:30:28Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:54Z",
+            "lastTransitionTime": "2026-09-10T04:30:28Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:54Z",
+            "lastTransitionTime": "2026-09-10T04:30:28Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:54Z",
+            "lastTransitionTime": "2026-09-10T04:30:28Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "images": [
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-instance-manager@sha256:b255f3279dd9d830ea153e9369928646dee519fd853036388926dddb5c66094b",
+              "docker.io/longhornio/longhorn-instance-manager:v1.12.1"
+            ],
+            "sizeBytes": 498107704
+          },
+          {
+            "names": [
+              "docker.io/grafana/grafana@sha256:7cb8c64c4d57a57e734073f3cc94620adb24a0acb929bd80ba9f14017e3a975b",
+              "docker.io/grafana/grafana:13.1.1"
+            ],
+            "sizeBytes": 378373023
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm:v0.9.2-build20240828"
+            ],
+            "sizeBytes": 198005682
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-engine@sha256:9b1b720b56df6612c9589cbc156acbca6419fa61de818d05db7226b0722f2868",
+              "docker.io/longhornio/longhorn-engine:v1.12.1"
+            ],
+            "sizeBytes": 175039107
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik:2.11.8"
+            ],
+            "sizeBytes": 170707347
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-manager@sha256:83b79f57043fe1405e68bc0d4c7987accbc6bb512def3e0db12b31966c070801",
+              "docker.io/longhornio/longhorn-manager:v1.12.1"
+            ],
+            "sizeBytes": 134264362
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-share-manager@sha256:efaf47aeb4e8615e312f0880df860bf2e5b9fa53006fe075f057c6dd4089f47d",
+              "docker.io/longhornio/longhorn-share-manager:v1.12.1"
+            ],
+            "sizeBytes": 125642384
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-metrics-server:v0.7.2"
+            ],
+            "sizeBytes": 68121199
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns:1.11.3"
+            ],
+            "sizeBytes": 63267477
+          },
+          {
+            "names": [
+              "docker.io/rancher/local-path-provisioner:v0.0.28"
+            ],
+            "sizeBytes": 50480515
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-snapshotter@sha256:2bca9ac55170efa61dc50e5cc8d9550373db2e3e5161d82d3fdaac5c25150360",
+              "docker.io/longhornio/csi-snapshotter:v8.6.0"
+            ],
+            "sizeBytes": 38897543
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-attacher@sha256:a814aa4784197116983ea13e376fc691e000a390de9d0b9fca2bc4a2fb7c4a1f",
+              "docker.io/longhornio/csi-attacher:v4.12.0"
+            ],
+            "sizeBytes": 38607714
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-resizer@sha256:63d0aef25114d4a682b25afa6d9623a3cfcc19aca910269124408476bbe2c6fd",
+              "docker.io/longhornio/csi-resizer:v2.2.1"
+            ],
+            "sizeBytes": 38544199
+          },
+          {
+            "names": [
+              "docker.io/prom/alertmanager@sha256:51a825c2a40acc3e338fdd00d622e01ec090f72be2b3ea46be0839cd47a4d286",
+              "docker.io/prom/alertmanager:v0.32.1"
+            ],
+            "sizeBytes": 36170464
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-provisioner@sha256:1bbb7b11d8087130e722e3249f364d0ab49ee3545e847c2f299e87b7e1ce5c4f",
+              "docker.io/longhornio/csi-provisioner:v5.3.0"
+            ],
+            "sizeBytes": 35708854
+          },
+          {
+            "names": [
+              "quay.io/kiwigrid/k8s-sidecar@sha256:abb55b2165c60e8f97e473862c7a3123df6f67d44f592949577c29b8fb2df9d6",
+              "quay.io/kiwigrid/k8s-sidecar:2.8.1"
+            ],
+            "sizeBytes": 28673366
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/operator@sha256:2ad04439b0cb092765126f7947eff5ad6949d0332c5dbadf5fdd45b418569120",
+              "docker.io/victoriametrics/operator:config-reloader-v0.74.0"
+            ],
+            "sizeBytes": 19530599
+          },
+          {
+            "names": [
+              "docker.io/longhornio/livenessprobe@sha256:d0cb76b565ba9d36da0dc2b38e2b6a49a0ae4fe067b03086110682f32c600318",
+              "docker.io/longhornio/livenessprobe:v2.19.0"
+            ],
+            "sizeBytes": 14770279
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-node-driver-registrar@sha256:29f7cfd519008fe8f8dff5e79db43f70d65c43a89c08f1bafbb199ca90df79f0",
+              "docker.io/longhornio/csi-node-driver-registrar:v2.17.0"
+            ],
+            "sizeBytes": 14640199
+          },
+          {
+            "names": [
+              "quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241",
+              "quay.io/prometheus/node-exporter:v1.11.1"
+            ],
+            "sizeBytes": 13308798
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb:v0.4.9"
+            ],
+            "sizeBytes": 12651284
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-busybox:1.36.1"
+            ],
+            "sizeBytes": 4496154
+          },
+          {
+            "names": [
+              "docker.io/library/busybox@sha256:dc2d74b28e4cf8984fa52af1f39bc7c3d9c73760b41a74d629f5d11b1ab28616",
+              "docker.io/library/busybox:1.38.0"
+            ],
+            "sizeBytes": 2236931
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 685866
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "9a997df2-7224-45d9-862d-3de1c866b5f7",
+          "containerRuntimeVersion": "containerd://1.7.21-k3s2",
+          "kernelVersion": "6.14.0-37-generic",
+          "kubeProxyVersion": "v1.30.5+k3s1",
+          "kubeletVersion": "v1.30.5+k3s1",
+          "machineID": "a3e27511d22849c895c434d785f44699",
+          "operatingSystem": "linux",
+          "osImage": "Ubuntu 25.04",
+          "systemUUID": "64fcadfe-0e25-470b-89f1-0d50fc86fb2d"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.168.100.31",
+          "csi.volume.kubernetes.io/nodeid": "{\"driver.longhorn.io\":\"dcc-k3s-w5\"}",
+          "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"1e:79:ac:cb:16:a7\"}",
+          "flannel.alpha.coreos.com/backend-type": "vxlan",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.168.100.31",
+          "k3s.io/hostname": "DCC-k3s-w5",
+          "k3s.io/internal-ip": "192.168.100.31",
+          "k3s.io/node-args": "[\"agent\",\"--node-ip\",\"192.168.100.31\",\"--node-label\",\"topology.kubernetes.io/zone=dc-c\"]",
+          "k3s.io/node-config-hash": "GEKS4TWR35J72MIR3LAKO4DVH2QMY2ZBV43FIOV5M4MU7QVC5H5A====",
+          "k3s.io/node-env": "{\"K3S_TOKEN\":\"********\",\"K3S_URL\":\"https://192.168.100.10:6443\"}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-09-05T16:57:52Z",
+        "finalizers": [
+          "wrangler.cattle.io/node",
+          "wrangler.cattle.io/managed-etcd-controller"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/zone": "dc-c",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "dcc-k3s-w5",
+          "kubernetes.io/os": "linux",
+          "node.kubernetes.io/instance-type": "k3s",
+          "topology.kubernetes.io/zone": "dc-c"
+        },
+        "name": "dcc-k3s-w5",
+        "resourceVersion": "2110034",
+        "uid": "06f4932f-14b2-4e54-8b36-2af23ab091c3"
+      },
+      "spec": {
+        "podCIDR": "10.42.5.0/24",
+        "podCIDRs": [
+          "10.42.5.0/24"
+        ],
+        "providerID": "k3s://dcc-k3s-w5"
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.168.100.31",
+            "type": "InternalIP"
+          },
+          {
+            "address": "DCC-k3s-w5",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "58192296710",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008524Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "59819384Ki",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008524Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:33Z",
+            "lastTransitionTime": "2026-09-10T04:30:24Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:33Z",
+            "lastTransitionTime": "2026-09-10T04:30:24Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:33Z",
+            "lastTransitionTime": "2026-09-10T04:30:24Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:31:33Z",
+            "lastTransitionTime": "2026-09-10T04:30:24Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "images": [
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-instance-manager@sha256:b255f3279dd9d830ea153e9369928646dee519fd853036388926dddb5c66094b",
+              "docker.io/longhornio/longhorn-instance-manager:v1.12.1"
+            ],
+            "sizeBytes": 498107704
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm:v0.9.2-build20240828"
+            ],
+            "sizeBytes": 198005682
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-engine@sha256:9b1b720b56df6612c9589cbc156acbca6419fa61de818d05db7226b0722f2868",
+              "docker.io/longhornio/longhorn-engine:v1.12.1"
+            ],
+            "sizeBytes": 175039107
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik:2.11.8"
+            ],
+            "sizeBytes": 170707347
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-manager@sha256:83b79f57043fe1405e68bc0d4c7987accbc6bb512def3e0db12b31966c070801",
+              "docker.io/longhornio/longhorn-manager:v1.12.1"
+            ],
+            "sizeBytes": 134264362
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-share-manager@sha256:efaf47aeb4e8615e312f0880df860bf2e5b9fa53006fe075f057c6dd4089f47d",
+              "docker.io/longhornio/longhorn-share-manager:v1.12.1"
+            ],
+            "sizeBytes": 125642384
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-ui@sha256:03a3ce6673df6e948c261fe978a695adaa8fb190d68bfe5c358af8ee3d3fbef5",
+              "docker.io/longhornio/longhorn-ui:v1.12.1"
+            ],
+            "sizeBytes": 75535572
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-metrics-server:v0.7.2"
+            ],
+            "sizeBytes": 68121199
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns:1.11.3"
+            ],
+            "sizeBytes": 63267477
+          },
+          {
+            "names": [
+              "docker.io/rancher/local-path-provisioner:v0.0.28"
+            ],
+            "sizeBytes": 50480515
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/operator@sha256:c4fde419a4f03c7c45d7ee554e7039c12c75af161f7f7e1baef1b343015e3df9",
+              "docker.io/victoriametrics/operator:v0.74.0"
+            ],
+            "sizeBytes": 39222124
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-snapshotter@sha256:2bca9ac55170efa61dc50e5cc8d9550373db2e3e5161d82d3fdaac5c25150360",
+              "docker.io/longhornio/csi-snapshotter:v8.6.0"
+            ],
+            "sizeBytes": 38897543
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-attacher@sha256:a814aa4784197116983ea13e376fc691e000a390de9d0b9fca2bc4a2fb7c4a1f",
+              "docker.io/longhornio/csi-attacher:v4.12.0"
+            ],
+            "sizeBytes": 38607714
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-resizer@sha256:63d0aef25114d4a682b25afa6d9623a3cfcc19aca910269124408476bbe2c6fd",
+              "docker.io/longhornio/csi-resizer:v2.2.1"
+            ],
+            "sizeBytes": 38544199
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-provisioner@sha256:1bbb7b11d8087130e722e3249f364d0ab49ee3545e847c2f299e87b7e1ce5c4f",
+              "docker.io/longhornio/csi-provisioner:v5.3.0"
+            ],
+            "sizeBytes": 35708854
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/operator@sha256:2ad04439b0cb092765126f7947eff5ad6949d0332c5dbadf5fdd45b418569120",
+              "docker.io/victoriametrics/operator:config-reloader-v0.74.0"
+            ],
+            "sizeBytes": 19530599
+          },
+          {
+            "names": [
+              "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:85108987d044b18a098126732f98602df408888c0f7d456241f5abefb9744bc1",
+              "registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.19.1"
+            ],
+            "sizeBytes": 18897162
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/vmalert@sha256:c6e6c1ef6e43c09510dd0aff264bf0ea319c1bdfced1ccc79dad1545950a7989",
+              "docker.io/victoriametrics/vmalert:v1.150.0"
+            ],
+            "sizeBytes": 17940473
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/vmagent@sha256:3eff5874d59292714878dcb6aee14f048bf19b7312b727860ba5e7d29e2e0c07",
+              "docker.io/victoriametrics/vmagent:v1.150.0"
+            ],
+            "sizeBytes": 15808366
+          },
+          {
+            "names": [
+              "docker.io/longhornio/livenessprobe@sha256:d0cb76b565ba9d36da0dc2b38e2b6a49a0ae4fe067b03086110682f32c600318",
+              "docker.io/longhornio/livenessprobe:v2.19.0"
+            ],
+            "sizeBytes": 14770279
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-node-driver-registrar@sha256:29f7cfd519008fe8f8dff5e79db43f70d65c43a89c08f1bafbb199ca90df79f0",
+              "docker.io/longhornio/csi-node-driver-registrar:v2.17.0"
+            ],
+            "sizeBytes": 14640199
+          },
+          {
+            "names": [
+              "quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241",
+              "quay.io/prometheus/node-exporter:v1.11.1"
+            ],
+            "sizeBytes": 13308798
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb:v0.4.9"
+            ],
+            "sizeBytes": 12651284
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-busybox:1.36.1"
+            ],
+            "sizeBytes": 4496154
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 685866
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "f4b04670-7f45-4908-a01a-c46988a65b5d",
+          "containerRuntimeVersion": "containerd://1.7.21-k3s2",
+          "kernelVersion": "6.14.0-37-generic",
+          "kubeProxyVersion": "v1.30.5+k3s1",
+          "kubeletVersion": "v1.30.5+k3s1",
+          "machineID": "a3e27511d22849c895c434d785f44699",
+          "operatingSystem": "linux",
+          "osImage": "Ubuntu 25.04",
+          "systemUUID": "aafb58b4-bffd-4cc6-ac7b-a3b5c15be1f3"
+        },
+        "volumesInUse": [
+          "kubernetes.io/csi/driver.longhorn.io^pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+          "kubernetes.io/csi/driver.longhorn.io^pvc-b304711d-13db-443b-a1bd-e832606f8230"
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.168.100.32",
+          "csi.volume.kubernetes.io/nodeid": "{\"driver.longhorn.io\":\"dcc-k3s-w6\"}",
+          "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"e2:24:59:eb:07:cb\"}",
+          "flannel.alpha.coreos.com/backend-type": "vxlan",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.168.100.32",
+          "k3s.io/hostname": "DCC-k3s-w6",
+          "k3s.io/internal-ip": "192.168.100.32",
+          "k3s.io/node-args": "[\"agent\",\"--node-ip\",\"192.168.100.32\",\"--node-label\",\"topology.kubernetes.io/zone=dc-c\"]",
+          "k3s.io/node-config-hash": "NQF654LVQCXNLQL7SVF4ERHCAX7RZYAC6URQRVKAYHE4MH3RTZYA====",
+          "k3s.io/node-env": "{\"K3S_TOKEN\":\"********\",\"K3S_URL\":\"https://192.168.100.10:6443\"}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-09-05T21:43:29Z",
+        "finalizers": [
+          "wrangler.cattle.io/node",
+          "wrangler.cattle.io/managed-etcd-controller"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/zone": "dc-c",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "dcc-k3s-w6",
+          "kubernetes.io/os": "linux",
+          "node.kubernetes.io/instance-type": "k3s",
+          "topology.kubernetes.io/zone": "dc-c"
+        },
+        "name": "dcc-k3s-w6",
+        "resourceVersion": "2110320",
+        "uid": "622fe7fc-b8c9-4000-9e97-00b517907945"
+      },
+      "spec": {
+        "podCIDR": "10.42.8.0/24",
+        "podCIDRs": [
+          "10.42.8.0/24"
+        ],
+        "providerID": "k3s://dcc-k3s-w6"
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.168.100.32",
+            "type": "InternalIP"
+          },
+          {
+            "address": "DCC-k3s-w6",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "5259824534",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "5406892Ki",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "4008528Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-09-10T04:32:04Z",
+            "lastTransitionTime": "2026-09-10T04:30:47Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:32:04Z",
+            "lastTransitionTime": "2026-09-10T04:30:47Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:32:04Z",
+            "lastTransitionTime": "2026-09-10T04:30:47Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-09-10T04:32:04Z",
+            "lastTransitionTime": "2026-09-10T04:30:47Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "images": [
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-instance-manager@sha256:b255f3279dd9d830ea153e9369928646dee519fd853036388926dddb5c66094b",
+              "docker.io/longhornio/longhorn-instance-manager:v1.12.1"
+            ],
+            "sizeBytes": 498107704
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm:v0.9.2-build20240828"
+            ],
+            "sizeBytes": 198005682
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-engine@sha256:9b1b720b56df6612c9589cbc156acbca6419fa61de818d05db7226b0722f2868",
+              "docker.io/longhornio/longhorn-engine:v1.12.1"
+            ],
+            "sizeBytes": 175039107
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik:2.11.8"
+            ],
+            "sizeBytes": 170707347
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-manager@sha256:83b79f57043fe1405e68bc0d4c7987accbc6bb512def3e0db12b31966c070801",
+              "docker.io/longhornio/longhorn-manager:v1.12.1"
+            ],
+            "sizeBytes": 134264362
+          },
+          {
+            "names": [
+              "docker.io/longhornio/longhorn-share-manager@sha256:efaf47aeb4e8615e312f0880df860bf2e5b9fa53006fe075f057c6dd4089f47d",
+              "docker.io/longhornio/longhorn-share-manager:v1.12.1"
+            ],
+            "sizeBytes": 125642384
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-metrics-server:v0.7.2"
+            ],
+            "sizeBytes": 68121199
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns:1.11.3"
+            ],
+            "sizeBytes": 63267477
+          },
+          {
+            "names": [
+              "docker.io/rancher/local-path-provisioner:v0.0.28"
+            ],
+            "sizeBytes": 50480515
+          },
+          {
+            "names": [
+              "docker.io/prom/alertmanager@sha256:51a825c2a40acc3e338fdd00d622e01ec090f72be2b3ea46be0839cd47a4d286",
+              "docker.io/prom/alertmanager:v0.32.1"
+            ],
+            "sizeBytes": 36170464
+          },
+          {
+            "names": [
+              "docker.io/victoriametrics/operator@sha256:2ad04439b0cb092765126f7947eff5ad6949d0332c5dbadf5fdd45b418569120",
+              "docker.io/victoriametrics/operator:config-reloader-v0.74.0"
+            ],
+            "sizeBytes": 19530599
+          },
+          {
+            "names": [
+              "docker.io/longhornio/livenessprobe@sha256:d0cb76b565ba9d36da0dc2b38e2b6a49a0ae4fe067b03086110682f32c600318",
+              "docker.io/longhornio/livenessprobe:v2.19.0"
+            ],
+            "sizeBytes": 14770279
+          },
+          {
+            "names": [
+              "docker.io/longhornio/csi-node-driver-registrar@sha256:29f7cfd519008fe8f8dff5e79db43f70d65c43a89c08f1bafbb199ca90df79f0",
+              "docker.io/longhornio/csi-node-driver-registrar:v2.17.0"
+            ],
+            "sizeBytes": 14640199
+          },
+          {
+            "names": [
+              "quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241",
+              "quay.io/prometheus/node-exporter:v1.11.1"
+            ],
+            "sizeBytes": 13308798
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb:v0.4.9"
+            ],
+            "sizeBytes": 12651284
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-busybox:1.36.1"
+            ],
+            "sizeBytes": 4496154
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 685866
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "80c882cf-0525-4aec-bea0-f04e9572de6c",
+          "containerRuntimeVersion": "containerd://1.7.21-k3s2",
+          "kernelVersion": "6.14.0-36-generic",
+          "kubeProxyVersion": "v1.30.5+k3s1",
+          "kubeletVersion": "v1.30.5+k3s1",
+          "machineID": "a3e27511d22849c895c434d785f44699",
+          "operatingSystem": "linux",
+          "osImage": "Ubuntu 25.04",
+          "systemUUID": "92f198cd-0963-4532-8ebe-31642a81ad63"
+        }
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

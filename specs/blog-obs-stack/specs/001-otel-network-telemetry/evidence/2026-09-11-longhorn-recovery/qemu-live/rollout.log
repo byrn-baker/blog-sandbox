@@ -1,0 +1,24 @@
+{"device": "SP3", "isis_up": 4}
+{"device": "RR2", "isis_up": 1}
+{"device": "CE1", "bgp_up": 4, "bgp_total": 4}
+
+{"wave": 1, "verified": ["SP3", "RR2", "CE1"], "total_updated": 4}
+{"starting_wave": 2, "devices": ["SP1", "SPE1", "CE2"]}
+{"device": "SP1", "isis_up": 5}
+{"device": "SPE1", "isis_up": 2}
+{"device": "CE2", "bgp_up": 4, "bgp_total": 4}
+
+{"wave": 2, "verified": ["SP1", "SPE1", "CE2"], "total_updated": 7}
+{"starting_wave": 3, "devices": ["SP2", "SPE2", "CE3"]}
+{"device": "SP2", "isis_up": 5}
+{"device": "SPE2", "isis_up": 2}
+{"device": "CE3", "bgp_up": 4, "bgp_total": 4}
+
+{"wave": 3, "verified": ["SP2", "SPE2", "CE3"], "total_updated": 10}
+{"starting_wave": 4, "devices": ["SP4", "RR1", "BORDER1"]}
+{"device": "SP4", "isis_up": 4}
+{"device": "RR1", "isis_up": 1}
+{"device": "BORDER1", "isis_up": 2}
+
+{"wave": 4, "verified": ["SP4", "RR1", "BORDER1"], "total_updated": 13}
+ROLLOUT_COMPLETE

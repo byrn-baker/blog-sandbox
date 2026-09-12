@@ -1,0 +1,145 @@
+{
+  "returncode": 0,
+  "devices": [
+    {
+      "device": "BORDER1",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "CE1",
+      "ok": false,
+      "error": "NetmikoTimeoutException"
+    },
+    {
+      "device": "CE2",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "CE3",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCA-Leaf01",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCA-Leaf02",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCA-Leaf03",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCA-Spine01",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCA-Spine02",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCB-Leaf01",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCB-Leaf02",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCB-Leaf03",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCB-Spine01",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCB-Spine02",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCC-Leaf01",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCC-Leaf02",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCC-Leaf03",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCC-Spine01",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCC-Spine02",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "RR1",
+      "ok": false,
+      "error": "NetmikoTimeoutException"
+    },
+    {
+      "device": "RR2",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SP1",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SP2",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SP3",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SP4",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SPE1",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SPE2",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SPE3",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

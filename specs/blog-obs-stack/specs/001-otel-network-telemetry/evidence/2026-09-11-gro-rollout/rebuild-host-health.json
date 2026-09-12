@@ -1,0 +1,17 @@
+{
+  "w3": {
+    "uptime": " 21:52:41 up 5 days,  3:38,  2 users,  load average: 0.57, 0.42, 0.33\n",
+    "memory": "               total        used        free      shared  buff/cache   available\nMem:            3914        1347         143           2        2724        2567\nSwap:              0           0           0\n",
+    "kernel": ""
+  },
+  "w5": {
+    "uptime": " 21:52:41 up 5 days,  3:38,  2 users,  load average: 0.12, 0.13, 0.15\n",
+    "memory": "               total        used        free      shared  buff/cache   available\nMem:            3914        1409         562           5        2221        2505\nSwap:              0           0           0\n",
+    "kernel": ""
+  },
+  "w6": {
+    "uptime": " 21:52:41 up 5 days,  3:38,  2 users,  load average: 0.39, 0.13, 0.04\n",
+    "memory": "               total        used        free      shared  buff/cache   available\nMem:            3914        1022         379          38        2847        2891\nSwap:              0           0           0\n",
+    "kernel": ""
+  }
+}

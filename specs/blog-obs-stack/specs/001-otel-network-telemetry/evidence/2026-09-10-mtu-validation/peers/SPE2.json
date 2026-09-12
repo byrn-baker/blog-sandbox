@@ -1,0 +1,64 @@
+{
+  "device": "SPE2",
+  "ip": "192.168.3.58",
+  "platform": "cisco_iosxe",
+  "at": "2026-09-10T01:22:17.337811+00:00",
+  "modeled_interfaces": [
+    {
+      "name": "GigabitEthernet1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.3.58/24"
+      ]
+    },
+    {
+      "name": "GigabitEthernet2",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.0.0.13/31",
+        "fd10::13/127"
+      ]
+    },
+    {
+      "name": "GigabitEthernet3",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.0.0.15/31",
+        "fd10::15/127"
+      ]
+    },
+    {
+      "name": "GigabitEthernet4",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "GigabitEthernet5",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "172.16.2.0/31",
+        "fd10:c:2::/127"
+      ]
+    },
+    {
+      "name": "Loopback0",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.0.8/32",
+        "fd10:0:1::8/128"
+      ]
+    }
+  ],
+  "commands": {
+    "show mpls forwarding-table": "Local      Outgoing   Prefix           Bytes Label   Outgoing   Next Hop    \nLabel      Label      or Tunnel Id     Switched      interface              \n16         explicit-n 10.1.0.5/32      0             Gi3        10.0.0.14   \n17         explicit-n 10.0.0.4/31      0             Gi2        10.0.0.12   \n           explicit-n 10.0.0.4/31      0             Gi3        10.0.0.14   \n18         explicit-n 10.0.0.6/31      0             Gi3        10.0.0.14   \n19         explicit-n 10.0.0.18/31     0             Gi3        10.0.0.14   \n20         18         10.1.0.9/32      0             Gi3        10.0.0.14   \n21         19         10.1.0.3/32      0             Gi3        10.0.0.14   \n22         18         10.1.0.4/32      0             Gi2        10.0.0.12   \n23         17         10.1.0.7/32      0             Gi2        10.0.0.12   \n24         22         10.0.0.16/31     0             Gi3        10.0.0.14   \n25         24         10.0.0.0/31      0             Gi2        10.0.0.12   \n           23         10.0.0.0/31      0             Gi3        10.0.0.14   \n26         24         10.0.0.20/31     0             Gi3        10.0.0.14   \n27         25         10.0.0.24/31     0             Gi3        10.0.0.14   \n28         explicit-n 10.0.0.2/31      0             Gi2        10.0.0.12   \n29         23         10.0.0.8/31      0             Gi2        10.0.0.12   \n30         25         10.0.0.22/31     0             Gi2        10.0.0.12   \n31         26         10.0.0.26/31     0             Gi2        10.0.0.12   \n32         explicit-n 10.0.0.10/31     0             Gi2        10.0.0.12   \n33         explicit-n 10.1.0.6/32      0             Gi2        10.0.0.12   \n34         32         10.1.0.10/32     0             Gi2        10.0.0.12   \n           32         10.1.0.10/32     0             Gi3        10.0.0.14   \n35         33         10.1.0.1/32      0             Gi3        10.0.0.14   \n36         34         10.1.0.2/32      0             Gi2        10.0.0.12   \n37         No Label   10.3.2.6/32[V]   7248449       Gi5        172.16.2.1  \n38         No Label   10.1.2.4/31[V]   0             Gi5        172.16.2.1  \n40         No Label   10.1.2.10/31[V]  0             Gi5        172.16.2.1  \n41         No Label   10.1.2.0/31[V]   0             Gi5        172.16.2.1  \n42         No Label   10.1.2.2/31[V]   0             Gi5        172.16.2.1  \n43         No Label   192.168.201.0/24[V]   \\\n                                       0             Gi5        172.16.2.1  \n47         No Label   192.168.100.21/32[V]   \\\n                                       90            Gi5        172.16.2.1  \n48         No Label   192.168.100.20/32[V]   \\\n                                       180           Gi5        172.16.2.1  \n49         No Label   10.1.2.14/31[V]  0             Gi5        172.16.2.1  \n50         No Label   10.2.2.4/32[V]   0             Gi5        172.16.2.1  \n51         No Label   10.3.2.4/32[V]   3942917700    Gi5        172.16.2.1  \n52         No Label   10.2.2.6/32[V]   0             Gi5        172.16.2.1  \n53         No Label   192.168.100.0/24[V]   \\\n                                       0             Gi5        172.16.2.1  \n54         No Label   10.1.2.12/31[V]  0             Gi5        172.16.2.1  \n55         No Label   10.2.2.3/32[V]   13047066      Gi5        172.16.2.1  \n56         No Label   10.2.2.5/32[V]   0             Gi5        172.16.2.1  \n57         No Label   10.3.2.5/32[V]   4596842666    Gi5        172.16.2.1  \n58         No Label   10.1.2.16/31[V]  0             Gi5        172.16.2.1  \n59         No Label   192.168.100.22/32[V]   \\\n                                       90            Gi5        172.16.2.1  \n62         No Label   10.1.2.6/31[V]   0             Gi5        172.16.2.1  \n63         No Label   10.2.2.2/32[V]   61634522      Gi5        172.16.2.1  \n64         No Label   10.1.2.8/31[V]   0             Gi5        172.16.2.1  ",
+    "show ip vrf": "  Name                             Default RD            Interfaces\n  CUST-A                           65000:100             Gi5\n  CUST-B                           65000:200             \n  MGMT-VRF                         65000:999             Gi1",
+    "show ip route vrf UNDERLAY 10.3.1.4": "% IP routing table vrf UNDERLAY does not exist"
+  },
+  "ok": true
+}

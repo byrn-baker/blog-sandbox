@@ -1,0 +1,114 @@
+[
+  {
+    "interface": "vunl0_3_5",
+    "source": "192.168.100.11",
+    "vxlan": false,
+    "checksum_valid": true,
+    "count": 243
+  },
+  {
+    "interface": "vunl0_3_2",
+    "source": "192.168.100.11",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 243
+  },
+  {
+    "interface": "vunl0_2_1",
+    "source": "192.168.100.11",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 243
+  },
+  {
+    "interface": "vunl0_2_10",
+    "source": "192.168.100.11",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 243
+  },
+  {
+    "interface": "vunl0_7_10",
+    "source": "192.168.100.11",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 243
+  },
+  {
+    "interface": "vunl0_7_1",
+    "source": "192.168.100.11",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 243
+  },
+  {
+    "interface": "vunl0_8_2",
+    "source": "192.168.100.11",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 243
+  },
+  {
+    "interface": "vunl0_8_4",
+    "source": "192.168.100.20",
+    "vxlan": false,
+    "checksum_valid": true,
+    "count": 222
+  },
+  {
+    "interface": "vunl0_8_4",
+    "source": "192.168.100.11",
+    "vxlan": false,
+    "checksum_valid": true,
+    "count": 243
+  },
+  {
+    "interface": "vunl0_8_1",
+    "source": "192.168.100.20",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 222
+  },
+  {
+    "interface": "vunl0_6_1",
+    "source": "192.168.100.20",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 222
+  },
+  {
+    "interface": "vunl0_6_10",
+    "source": "192.168.100.20",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 221
+  },
+  {
+    "interface": "vunl0_2_10",
+    "source": "192.168.100.20",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 221
+  },
+  {
+    "interface": "vunl0_2_2",
+    "source": "192.168.100.20",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 221
+  },
+  {
+    "interface": "vunl0_4_2",
+    "source": "192.168.100.20",
+    "vxlan": true,
+    "checksum_valid": true,
+    "count": 221
+  },
+  {
+    "interface": "vunl0_4_5",
+    "source": "192.168.100.20",
+    "vxlan": false,
+    "checksum_valid": true,
+    "count": 221
+  }
+]

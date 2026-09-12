@@ -1,0 +1,119 @@
+{
+  "scope": "Local arithmetic model of QEMU 8.2.2 split-ring availability scan, not a patched-QEMU integration test",
+  "results": [
+    {
+      "case": "SPE3-Gi2",
+      "last": 65535,
+      "shadow": 1,
+      "actual": 255,
+      "required": 1212,
+      "original": {
+        "bytes_found": 2060,
+        "sufficient": true,
+        "guest_index_reads": 0,
+        "descriptors": 1
+      },
+      "narrowed_comparison": {
+        "bytes_found": 2060,
+        "sufficient": true,
+        "guest_index_reads": 0,
+        "descriptors": 1
+      }
+    },
+    {
+      "case": "SPE3-Gi2",
+      "last": 65535,
+      "shadow": 1,
+      "actual": 255,
+      "required": 9241,
+      "original": {
+        "bytes_found": 4120,
+        "sufficient": false,
+        "guest_index_reads": 0,
+        "descriptors": 2
+      },
+      "narrowed_comparison": {
+        "bytes_found": 10300,
+        "sufficient": true,
+        "guest_index_reads": 1,
+        "descriptors": 5
+      }
+    },
+    {
+      "case": "SPE3-Gi3",
+      "last": 65533,
+      "shadow": 0,
+      "actual": 253,
+      "required": 1212,
+      "original": {
+        "bytes_found": 2060,
+        "sufficient": true,
+        "guest_index_reads": 0,
+        "descriptors": 1
+      },
+      "narrowed_comparison": {
+        "bytes_found": 2060,
+        "sufficient": true,
+        "guest_index_reads": 0,
+        "descriptors": 1
+      }
+    },
+    {
+      "case": "SPE3-Gi3",
+      "last": 65533,
+      "shadow": 0,
+      "actual": 253,
+      "required": 9241,
+      "original": {
+        "bytes_found": 6180,
+        "sufficient": false,
+        "guest_index_reads": 0,
+        "descriptors": 3
+      },
+      "narrowed_comparison": {
+        "bytes_found": 10300,
+        "sufficient": true,
+        "guest_index_reads": 1,
+        "descriptors": 5
+      }
+    },
+    {
+      "case": "nonwrap",
+      "last": 100,
+      "shadow": 102,
+      "actual": 356,
+      "required": 1212,
+      "original": {
+        "bytes_found": 2060,
+        "sufficient": true,
+        "guest_index_reads": 0,
+        "descriptors": 1
+      },
+      "narrowed_comparison": {
+        "bytes_found": 2060,
+        "sufficient": true,
+        "guest_index_reads": 0,
+        "descriptors": 1
+      }
+    },
+    {
+      "case": "nonwrap",
+      "last": 100,
+      "shadow": 102,
+      "actual": 356,
+      "required": 9241,
+      "original": {
+        "bytes_found": 10300,
+        "sufficient": true,
+        "guest_index_reads": 1,
+        "descriptors": 5
+      },
+      "narrowed_comparison": {
+        "bytes_found": 10300,
+        "sufficient": true,
+        "guest_index_reads": 1,
+        "descriptors": 5
+      }
+    }
+  ]
+}

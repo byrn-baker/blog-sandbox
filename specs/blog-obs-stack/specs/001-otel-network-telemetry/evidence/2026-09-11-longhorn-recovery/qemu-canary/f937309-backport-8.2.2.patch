@@ -1,0 +1,166 @@
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -744,6 +744,60 @@
+     }
+ }
+ 
++static bool virtio_queue_split_poll(VirtQueue *vq, unsigned shadow_idx)
++{
++    if (unlikely(!vq->vring.avail)) {
++        return false;
++    }
++
++    return (uint16_t)shadow_idx != vring_avail_idx(vq);
++}
++
++static bool virtio_queue_packed_poll(VirtQueue *vq, unsigned shadow_idx)
++{
++    VRingPackedDesc desc;
++    VRingMemoryRegionCaches *caches;
++
++    if (unlikely(!vq->vring.desc)) {
++        return false;
++    }
++
++    caches = vring_get_region_caches(vq);
++    if (!caches) {
++        return false;
++    }
++
++    vring_packed_desc_read(vq->vdev, &desc, &caches->desc,
++                           shadow_idx, true);
++
++    return is_desc_avail(desc.flags, vq->shadow_avail_wrap_counter);
++}
++
++static bool virtio_queue_poll(VirtQueue *vq, unsigned shadow_idx)
++{
++    if (virtio_device_disabled(vq->vdev)) {
++        return false;
++    }
++
++    if (virtio_vdev_has_feature(vq->vdev, VIRTIO_F_RING_PACKED)) {
++        return virtio_queue_packed_poll(vq, shadow_idx);
++    } else {
++        return virtio_queue_split_poll(vq, shadow_idx);
++    }
++}
++
++bool virtio_queue_enable_notification_and_check(VirtQueue *vq,
++                                                int opaque)
++{
++    virtio_queue_set_notification(vq, 1);
++
++    if (opaque >= 0) {
++        return virtio_queue_poll(vq, (unsigned)opaque);
++    } else {
++        return false;
++    }
++}
++
+ static void virtqueue_unmap_sg(VirtQueue *vq, const VirtQueueElement *elem,
+                                unsigned int len)
+ {
+@@ -1323,9 +1377,9 @@
+     goto done;
+ }
+ 
+-void virtqueue_get_avail_bytes(VirtQueue *vq, unsigned int *in_bytes,
+-                               unsigned int *out_bytes,
+-                               unsigned max_in_bytes, unsigned max_out_bytes)
++int virtqueue_get_avail_bytes(VirtQueue *vq, unsigned int *in_bytes,
++                              unsigned int *out_bytes, unsigned max_in_bytes,
++                              unsigned max_out_bytes)
+ {
+     uint16_t desc_size;
+     VRingMemoryRegionCaches *caches;
+@@ -1358,7 +1412,7 @@
+                                         caches);
+     }
+ 
+-    return;
++    return (int)vq->shadow_avail_idx;
+ err:
+     if (in_bytes) {
+         *in_bytes = 0;
+@@ -1366,6 +1420,8 @@
+     if (out_bytes) {
+         *out_bytes = 0;
+     }
++
++    return -1;
+ }
+ 
+ int virtqueue_avail_bytes(VirtQueue *vq, unsigned int in_bytes,
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -1640,24 +1640,28 @@
+ 
+ static int virtio_net_has_buffers(VirtIONetQueue *q, int bufsize)
+ {
++    int opaque;
++    unsigned int in_bytes;
+     VirtIONet *n = q->n;
+-    if (virtio_queue_empty(q->rx_vq) ||
+-        (n->mergeable_rx_bufs &&
+-         !virtqueue_avail_bytes(q->rx_vq, bufsize, 0))) {
+-        virtio_queue_set_notification(q->rx_vq, 1);
+-
+-        /* To avoid a race condition where the guest has made some buffers
+-         * available after the above check but before notification was
+-         * enabled, check for available buffers again.
+-         */
+-        if (virtio_queue_empty(q->rx_vq) ||
+-            (n->mergeable_rx_bufs &&
+-             !virtqueue_avail_bytes(q->rx_vq, bufsize, 0))) {
++
++    while (virtio_queue_empty(q->rx_vq) || n->mergeable_rx_bufs) {
++        opaque = virtqueue_get_avail_bytes(q->rx_vq, &in_bytes, NULL,
++                                           bufsize, 0);
++        /* Buffer is enough, disable notifiaction */
++        if (bufsize <= in_bytes) {
++            break;
++        }
++
++        if (virtio_queue_enable_notification_and_check(q->rx_vq, opaque)) {
++            /* Guest has added some buffers, try again */
++            continue;
++        } else {
+             return 0;
+         }
+     }
+ 
+     virtio_queue_set_notification(q->rx_vq, 0);
++
+     return 1;
+ }
+ 
+--- a/include/hw/virtio/virtio.h
++++ b/include/hw/virtio/virtio.h
+@@ -270,9 +270,13 @@
+                                 VirtQueueElement *elem);
+ int virtqueue_avail_bytes(VirtQueue *vq, unsigned int in_bytes,
+                           unsigned int out_bytes);
+-void virtqueue_get_avail_bytes(VirtQueue *vq, unsigned int *in_bytes,
+-                               unsigned int *out_bytes,
+-                               unsigned max_in_bytes, unsigned max_out_bytes);
++/**
++ * Return <0 on error or an opaque >=0 to pass to
++ * virtio_queue_enable_notification_and_check on success.
++ */
++int virtqueue_get_avail_bytes(VirtQueue *vq, unsigned int *in_bytes,
++                              unsigned int *out_bytes, unsigned max_in_bytes,
++                              unsigned max_out_bytes);
+ 
+ void virtio_notify_irqfd(VirtIODevice *vdev, VirtQueue *vq);
+ void virtio_notify(VirtIODevice *vdev, VirtQueue *vq);
+@@ -305,6 +309,9 @@
+ int virtio_queue_ready(VirtQueue *vq);
+ 
+ int virtio_queue_empty(VirtQueue *vq);
++
++/* Enable notification and check for buffers added since the scan. */
++bool virtio_queue_enable_notification_and_check(VirtQueue *vq, int opaque);
+ 
+ /* Host binding interface.  */
+ 

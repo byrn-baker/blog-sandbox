@@ -1,0 +1,24 @@
+[
+  {
+    "device": "BORDER1",
+    "ip": "192.168.3.50",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCA-Leaf01",
+    "ip": "192.168.3.32",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  }
+]

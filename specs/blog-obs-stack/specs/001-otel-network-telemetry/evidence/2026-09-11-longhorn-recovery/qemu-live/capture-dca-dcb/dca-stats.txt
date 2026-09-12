@@ -1,0 +1,3 @@
+1430 packets captured
+1431 packets received by filter
+0 packets dropped by kernel

@@ -1,0 +1,15 @@
+{
+  "name": "CE3",
+  "id": "d44de994-46da-488b-be78-1afac0d04078",
+  "ip": "192.168.3.62",
+  "at": "2026-09-11T17:38:00.260136+00:00",
+  "commands": {
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.62    YES NVRAM  up                    up      \nGigabitEthernet2       172.16.3.1      YES NVRAM  up                    up      \nGigabitEthernet3       10.1.3.0        YES NVRAM  up                    up      \nGigabitEthernet4       10.1.3.2        YES NVRAM  up                    up      \nGigabitEthernet5       10.1.3.17       YES NVRAM  up                    up      \nGigabitEthernet6       unassigned      YES NVRAM  administratively down down    \nGigabitEthernet7       unassigned      YES NVRAM  administratively down down    \nGigabitEthernet8       unassigned      YES NVRAM  administratively down down    \nLoopback0              10.2.3.1        YES NVRAM  up                    up      ",
+    "show isis neighbors": "",
+    "show ip bgp summary": "BGP router identifier 10.2.3.1, local AS number 65003\nBGP table version is 645, main routing table version 645\n22 network entries using 5456 bytes of memory\n34 path entries using 4624 bytes of memory\n6/6 BGP path/bestpath attribute entries using 1776 bytes of memory\n6 BGP AS-PATH entries using 208 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 12064 total bytes of memory\nBGP activity 175/153 prefixes, 368/334 paths, scan interval 60 secs\n66 networks peaked at 05:10:18 Sep 11 2026 UTC (12:27:43.067 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.3.1        4        65301   17663   14816      645    0    0 12:33:12       14\n10.1.3.3        4        65301   17667   14816      645    0    0 12:33:11       14\n10.1.3.16       4        65313   17783   14814      645    0    0 12:33:03        6\n172.16.3.0      4        65000     622     638      645    0    0 01:33:54        0",
+    "show ip bgp vpnv4 all summary": "",
+    "show ip route vrf CUST-A 10.2.1.2": "% IP routing table vrf CUST-A does not exist",
+    "show ip route 10.2.1.2": "% Subnet not in table"
+  },
+  "ok": true
+}

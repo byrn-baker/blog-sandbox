@@ -1,0 +1,12 @@
+{
+  "name": "SP1",
+  "id": "d735794d-f868-4c63-a45f-396dd78eace6",
+  "ip": "192.168.3.53",
+  "at": "2026-09-10T21:20:04.687516+00:00",
+  "commands": {
+    "show running-config interface GigabitEthernet6": "Building configuration...\n\nCurrent configuration : 312 bytes\n!\ninterface GigabitEthernet6\n description to BORDER1 GigabitEthernet2\n mtu 9216\n ip address 10.0.0.24 255.255.255.254\n ip router isis SP-ISIS\n negotiation auto\n ipv6 address FD10::24/127\n ipv6 router isis SP-ISIS\n mpls ip\n bfd interval 500 min_rx 500 multiplier 5\n no bfd echo\n isis network point-to-point \nend\n",
+    "show startup-config | section ^interface GigabitEthernet6": "interface GigabitEthernet6\n description to BORDER1 GigabitEthernet2\n mtu 9216\n ip address 10.0.0.24 255.255.255.254\n ip router isis SP-ISIS\n negotiation auto\n ipv6 address FD10::24/127\n ipv6 router isis SP-ISIS\n mpls ip\n bfd interval 500 min_rx 500 multiplier 5\n no bfd echo\n isis network point-to-point ",
+    "show debugging": "IOSXE Conditional Debug Configs:\n\nConditional Debug Global State: Stop\n\n\nIOSXE Packet Tracing Configs: \n\n\n\n\n\nPacket Infra debugs:\n\nIp Address                                               Port\n------------------------------------------------------|----------\n\n\n\n \n \n\n\n\n"
+  },
+  "ok": true
+}

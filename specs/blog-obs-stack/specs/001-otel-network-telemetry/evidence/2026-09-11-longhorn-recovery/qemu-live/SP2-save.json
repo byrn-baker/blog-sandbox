@@ -1,0 +1,20 @@
+{
+  "device": "SP2",
+  "at": "2026-09-11T19:38:51.419262+00:00",
+  "mode": "save",
+  "commands": {
+    "show version | include uptime|Version": "Cisco IOS XE Software, Version 17.15.01a\nCisco IOS Software [IOSXE], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.15.1a, RELEASE SOFTWARE (fc1)\nlicensed under the GNU General Public License (\"GPL\") Version 2.0.  The\nsoftware code licensed under GPL Version 2.0 is free software that comes\nGPL code under the terms of GPL Version 2.0.  For more details, see the\nSP2 uptime is 14 hours, 40 minutes",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nRR2             L2   Gi5           10.0.0.23       UP    25       02\nSP1             L2   Gi2           10.0.0.0        UP    27       02\nSP4             L2   Gi3           10.0.0.3        UP    25       02\nSPE1            L2   Gi4           10.0.0.9        UP    28       02\nBORDER1         L2   Gi6           10.0.0.27       UP    28       03",
+    "show ip bgp summary": "% BGP not active\n",
+    "show ip bgp vpnv4 all summary": "% BGP not active\n",
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet6 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, "
+  },
+  "ok": true,
+  "management_ip": "192.168.3.54",
+  "platform": "cisco_iosxe",
+  "running_hash": "4fd3102fde1fef8d458b236d4e4790a649ea11748a01d11c5b3d1cc3fc1dd1d0",
+  "startup_hash": "4fd3102fde1fef8d458b236d4e4790a649ea11748a01d11c5b3d1cc3fc1dd1d0",
+  "operational_configs_equal": true,
+  "save_confirmed": true,
+  "saved_hash": "4fd3102fde1fef8d458b236d4e4790a649ea11748a01d11c5b3d1cc3fc1dd1d0"
+}

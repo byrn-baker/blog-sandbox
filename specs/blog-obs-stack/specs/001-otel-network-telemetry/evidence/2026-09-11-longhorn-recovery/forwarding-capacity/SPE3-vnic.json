@@ -1,0 +1,10 @@
+{
+  "name": "SPE3",
+  "id": "2ff21746-a5b7-495a-bcac-0da59a215647",
+  "ip": "192.168.3.59",
+  "at": "2026-09-11T16:12:35.911305+00:00",
+  "commands": {
+    "show platform software vnic-if interface-mapping": "-------------------------------------------------------------\n Interface Name        Driver Name         Mac Addr\n-------------------------------------------------------------\n GigabitEthernet5       net_virtio         5254.0060.c311 \n GigabitEthernet4       net_virtio         5254.0073.4585 \n GigabitEthernet3       net_virtio         5254.0085.c39f \n GigabitEthernet2       net_virtio         5254.0043.d602 \n GigabitEthernet1       net_virtio         5254.0090.fe5c \n-------------------------------------------------------------\n"
+  },
+  "ok": true
+}

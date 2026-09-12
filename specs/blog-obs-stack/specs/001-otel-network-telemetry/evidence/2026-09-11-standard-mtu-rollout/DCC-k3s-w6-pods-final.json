@@ -1,0 +1,82 @@
+{
+  "hostname": "DCC-k3s-w6",
+  "pods": [
+    {
+      "id": "3fca3af73aa1f60c18f84cdde2ed2afe3ad0f1b015b9901caa917071e5fa57c9",
+      "name": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-ft9tl",
+      "namespace": "observability",
+      "pid": 73244,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 40
+        }
+      ]
+    },
+    {
+      "id": "29935bdf4b09cc403607ed25ddfafa416ecfecd033a02d804f395d3f17b70ef4",
+      "name": "instance-manager-17459023f805b82dc2325032584721c3",
+      "namespace": "longhorn-system",
+      "pid": 53283,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 39
+        }
+      ]
+    },
+    {
+      "id": "25d0db39f196a0150537dee66731843e1ae0a5c48b298aeb2cc346254ff6ef0b",
+      "name": "longhorn-manager-ld4pv",
+      "namespace": "longhorn-system",
+      "pid": 131629,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 34
+        }
+      ]
+    },
+    {
+      "id": "a0ab8fc918baeec2bc4405b6ff8c6b4607d360574c9812b00526299528106c14",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-bwtqz",
+      "namespace": "observability",
+      "pid": 131106,
+      "hostNetwork": true
+    },
+    {
+      "id": "2f5d4bdf14a4d9aa44ac9df377c42c2fb48ff49b526413d96306758ccc397b46",
+      "name": "longhorn-csi-plugin-drg4t",
+      "namespace": "longhorn-system",
+      "pid": 104508,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 31
+        }
+      ]
+    },
+    {
+      "id": "4b6df0044c02065b2fd0c8e20a83a652ce10538cacd44c7f15e21679ac0ad815",
+      "name": "engine-image-ei-493e04e7-vrfqh",
+      "namespace": "longhorn-system",
+      "pid": 101086,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 30
+        }
+      ]
+    }
+  ]
+}

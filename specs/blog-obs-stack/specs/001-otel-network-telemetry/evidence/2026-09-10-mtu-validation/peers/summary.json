@@ -1,0 +1,30 @@
+{
+  "returncode": 0,
+  "devices": [
+    {
+      "device": "DCB-Leaf03",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "DCC-Leaf03",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SPE1",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SPE2",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SPE3",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

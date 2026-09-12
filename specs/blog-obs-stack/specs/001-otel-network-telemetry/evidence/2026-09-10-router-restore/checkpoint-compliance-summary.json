@@ -1,0 +1,78 @@
+{
+  "BORDER1": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis"
+  ],
+  "CE1": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - bgp",
+    "cisco_iosxe - interfaces"
+  ],
+  "CE2": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - bgp",
+    "cisco_iosxe - interfaces"
+  ],
+  "CE3": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - bgp",
+    "cisco_iosxe - interfaces"
+  ],
+  "RR1": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis"
+  ],
+  "RR2": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis"
+  ],
+  "SP1": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis"
+  ],
+  "SP2": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis"
+  ],
+  "SP3": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis"
+  ],
+  "SP4": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis"
+  ],
+  "SPE1": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - bgp",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis",
+    "cisco_iosxe - mpls",
+    "cisco_iosxe - snmp",
+    "cisco_iosxe - vty"
+  ],
+  "SPE2": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - bgp",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis",
+    "cisco_iosxe - mpls",
+    "cisco_iosxe - routing_global",
+    "cisco_iosxe - snmp",
+    "cisco_iosxe - vrfs",
+    "cisco_iosxe - vty"
+  ],
+  "SPE3": [
+    "cisco_iosxe - acl",
+    "cisco_iosxe - bgp",
+    "cisco_iosxe - interfaces",
+    "cisco_iosxe - isis"
+  ]
+}

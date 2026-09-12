@@ -1,0 +1,8 @@
+{
+  "master": "DCA-k3s-m2",
+  "bond": "bond0",
+  "tcp-segmentation-offload": "on",
+  "generic-segmentation-offload": "on",
+  "readyz": "ok",
+  "note": "Verified after canary. Scheduled rollback timer had already expired; explicit restore also succeeded. Attempt to stop expired timer returned unit-not-loaded."
+}

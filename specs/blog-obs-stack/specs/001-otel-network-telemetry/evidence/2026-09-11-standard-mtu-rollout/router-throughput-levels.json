@@ -1,0 +1,21 @@
+[
+  {
+    "device": "SP1",
+    "command": "show platform hardware throughput level",
+    "output": "The current throughput level is 20000 kb/s",
+    "read_ok": true
+  },
+  {
+    "device": "BORDER1",
+    "command": "show platform hardware throughput level",
+    "output": "The current throughput level is 20000 kb/s",
+    "read_ok": true
+  },
+  {
+    "device": "CE1",
+    "command": "show platform hardware throughput level",
+    "output": "The current throughput level is 20000 kb/s",
+    "read_ok": true,
+    "evidence_note": "Preserved from the successful read in this session before the command-output file was replaced by the utilization sample."
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "configured_leader_flags": [
+    "--kube-controller-manager-arg leader-elect-lease-duration=30s",
+    "--kube-controller-manager-arg leader-elect-renew-deadline=20s",
+    "--kube-scheduler-arg leader-elect-lease-duration=30s",
+    "--kube-scheduler-arg leader-elect-renew-deadline=20s"
+  ],
+  "service": "NRestarts=2\nExecMainStartTimestamp=Wed 2026-09-09 00:05:41 UTC\nActiveState=active\n",
+  "config_files": {
+    "/etc/rancher/k3s/config.yaml.d/90-node-lifecycle.yaml": [
+      "# node-monitor-grace-period: how long the controller-manager waits after the",
+      "kube-controller-manager-arg:",
+      "  - \"node-monitor-grace-period=300s\""
+    ]
+  },
+  "six_hour_counts": {
+    "lease_lost": 1,
+    "renew_failure": 1,
+    "exits": 1,
+    "slow_apply": 1766,
+    "slow_fsync": 0,
+    "oom": 0
+  },
+  "recent_failures": [
+    "2026-09-09T00:05:35+00:00 DCA-k3s-m2 k3s[108740]: I0909 00:05:35.899092  108740 leaderelection.go:285] failed to renew lease kube-system/k3s-cloud-controller-manager: timed out waiting for the condition",
+    "2026-09-09T00:05:35+00:00 DCA-k3s-m2 k3s[108740]: E0909 00:05:35.899166  108740 controllermanager.go:274] \"leaderelection lost\"",
+    "2026-09-09T00:05:36+00:00 DCA-k3s-m2 systemd[1]: k3s.service: Main process exited, code=exited, status=1/FAILURE"
+  ],
+  "recent_slow_apply": [
+    "2026-09-09T00:14:58+00:00 DCA-k3s-m2 k3s[134179]: {\"level\":\"warn\",\"ts\":\"2026-09-09T00:14:58.834091Z\",\"caller\":\"etcdserver/util.go:170\",\"msg\":\"apply request took too long\",\"took\":\"547.730478ms\",\"expected-duration\":\"100ms\",\"prefix\":\"read-only range \",\"request\":\"key:\\\"/registry/controllerrevisions/\\\" range_end:\\\"/registry/controllerrevisions0\\\" count_only:true \",\"response\":\"range_response_count:0 size:8\"}",
+    "2026-09-09T00:14:58+00:00 DCA-k3s-m2 k3s[134179]: {\"level\":\"warn\",\"ts\":\"2026-09-09T00:14:58.834087Z\",\"caller\":\"etcdserver/util.go:170\",\"msg\":\"apply request took too long\",\"took\":\"590.074987ms\",\"expected-duration\":\"100ms\",\"prefix\":\"read-only range \",\"request\":\"key:\\\"/registry/leases/longhorn-system/external-resizer-driver-longhorn-io\\\" \",\"response\":\"range_response_count:1 size:512\"}",
+    "2026-09-09T00:14:58+00:00 DCA-k3s-m2 k3s[134179]: {\"level\":\"warn\",\"ts\":\"2026-09-09T00:14:58.834117Z\",\"caller\":\"etcdserver/util.go:170\",\"msg\":\"apply request took too long\",\"took\":\"535.409491ms\",\"expected-duration\":\"100ms\",\"prefix\":\"read-only range \",\"request\":\"key:\\\"/registry/leases/kube-system/kube-scheduler\\\" \",\"response\":\"range_response_count:1 size:474\"}"
+  ],
+  "startup_leader_args": [
+    {
+      "component": "kube-apiserver",
+      "flags": []
+    },
+    {
+      "component": "kube-scheduler",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-controller-manager",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-proxy",
+      "flags": []
+    }
+  ],
+  "device": "DCA-k3s-m2"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "BORDER1",
+  "id": "0c775cc6-32cb-4f53-b9c3-0f22fbf33eeb",
+  "ip": "192.168.3.50",
+  "at": "2026-09-10T04:03:39.012310+00:00",
+  "commands": {
+    "clear isis SP-ISIS *": "Clearing tag SP-ISIS\nRestart ISIS process SP-ISIS",
+    "show isis neighbors detail": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id",
+    "show clns interface GigabitEthernet2": "GigabitEthernet2 is up, line protocol is up\n Attached to: isis  (SP-ISIS)\n  Checksums enabled, MTU 9213, Encapsulation SAP\n  ERPDUs enabled, min. interval 10 msec.\n  CLNS fast switching enabled\n  CLNS SSE switching disabled\n  DEC compatibility mode OFF for this interface\n  Next ESH/ISH in 30 seconds\n  Routing Protocol: IS-IS (SP-ISIS)\n    Circuit Type: level-1-2\n    Interface number 0x0, local circuit ID 0x2\n    Neighbor Extended Local Circuit ID: 0x0\n    P2P retransmit queue size: 0\n    P2P retransmits: 0\n    LSP fast flooding: Disabled\n    Level-2 Metric: 10, Priority: 64, Circuit ID: BORDER1.02\n    Level-2 IPv6 Metric: 10\n    Number of active level-2 adjacencies: 0\n    Next IS-IS Hello in 0 seconds\n    if state DOWN\n  BFD enabled: (MTID:0, ipv4)"
+  },
+  "ok": true
+}

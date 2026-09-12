@@ -1,0 +1,11 @@
+{
+  "name": "SP4",
+  "id": "82801c5b-e0c5-4459-b879-01b20837ff7f",
+  "ip": "192.168.3.56",
+  "at": "2026-09-11T15:18:13.206151+00:00",
+  "commands": {
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.2        UP    29       03\nSP3             L2   Gi5           10.0.0.4        UP    22       05\nSPE1            L2   Gi4           10.0.0.11       UP    28       04\nSPE2            L2   Gi3           10.0.0.13       UP    21       02"
+  },
+  "ok": true
+}

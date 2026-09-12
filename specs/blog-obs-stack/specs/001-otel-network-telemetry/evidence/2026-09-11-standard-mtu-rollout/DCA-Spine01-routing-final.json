@@ -1,0 +1,27 @@
+{
+  "name": "DCA-Spine01",
+  "at": "2026-09-11T06:05:24.434135+00:00",
+  "ok": true,
+  "running_mtus": {
+    "Ethernet1": 9214,
+    "Ethernet2": 9214,
+    "Ethernet3": 9214,
+    "Ethernet10": 9214
+  },
+  "startup_mtus": {
+    "Ethernet1": 9214,
+    "Ethernet2": 9214,
+    "Ethernet3": 9214,
+    "Ethernet10": 9214
+  },
+  "commands": {
+    "show ip bgp summary": "BGP summary information for VRF default\nRouter identifier 10.2.1.2, local AS number 65101\nNeighbor Status Codes: m - Under maintenance\n  Description              Neighbor V AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc PfxAdv\n  CE1                      10.1.1.0 4 65001           1212      1434    0    0 01:00:35 Estab   40     40     14\n  DCA-Leaf01               10.1.1.5 4 65111           1721      1728    0    0 01:12:55 Estab   4      4      51\n  DCA-Leaf02               10.1.1.7 4 65112           1727      1723    0    0 01:12:53 Estab   4      4      51\n  DCA-Leaf03               10.1.1.9 4 65113           1716      1723    0    0 01:12:54 Estab   4      4      51",
+    "show bgp evpn summary": "BGP summary information for VRF default\nRouter identifier 10.2.1.2, local AS number 65101\nNeighbor Status Codes: m - Under maintenance\n  Description              Neighbor V AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc PfxAdv\n  DCA-Leaf01               10.2.1.4 4 65111            344       400    0    0 01:12:55 Estab   29     29     227\n  DCA-Leaf02               10.2.1.5 4 65112            352       396    0    0 01:12:52 Estab   31     31     225\n  DCA-Leaf03               10.2.1.6 4 65113            328       418    0    0 01:12:52 Estab   44     44     212\n  DCB-Spine01              10.2.2.2 4 65201            297       358    0    0 01:00:03 Estab   136    136    220\n  DCB-Spine02              10.2.2.3 4 65201            309       332    0    0 01:00:03 Estab   136    136    215\n  DCC-Spine01              10.2.3.2 4 65301            443       441    0    0 00:10:04 Estab   136    136    256\n  DCC-Spine02              10.2.3.3 4 65301            347       357    0    0 01:00:05 Estab   136    136    181",
+    "show interfaces | include line protocol|MTU": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 9214 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 9214 bytes, BW 1000000 kbit\nEthernet3 is up, line protocol is up (connected)\n  IP MTU 9214 bytes, BW 1000000 kbit\nEthernet4 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is up, line protocol is up (connected)\n  IP MTU 9214 bytes, BW 1000000 kbit\nLoopback0 is up, line protocol is up (connected)\n  IP MTU 65535 bytes (default)\nManagement1 is up, line protocol is up (connected)\n  IP MTU 1500 bytes (default), BW 1000000 kbit"
+  },
+  "mtu_verified": true,
+  "underlay_established": 4,
+  "evpn_established": 7,
+  "service_established": 0,
+  "nonzero_queues": []
+}

@@ -1,0 +1,23 @@
+{
+  "finished": "2026-09-09T20:30:54.266652+00:00",
+  "results": [
+    {
+      "name": "CE3",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "DCA-Leaf01",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCC-Leaf01",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    }
+  ]
+}

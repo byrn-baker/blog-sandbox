@@ -8,3 +8,12 @@
 # jitter, causing healthy nodes to flap. Widened here to tolerate those stalls.
 kube-controller-manager-arg:
   - "node-monitor-grace-period={{ k3s_node_monitor_grace_period }}"
+
+# The cloud controller renews a separate lease from kube-controller-manager
+# and the scheduler. The 2026-09-09 audit found fatal losses of
+# kube-system/k3s-cloud-controller-manager on all three masters.
+# Keep this in the runtime drop-in so existing servers receive the setting
+# through the serial k3s_config play, without rerunning the installer.
+kube-cloud-controller-manager-arg:
+  - "leader-elect-lease-duration={{ k3s_leader_elect_lease_duration }}"
+  - "leader-elect-renew-deadline={{ k3s_leader_elect_renew_deadline }}"

@@ -1,0 +1,15 @@
+{
+  "name": "RR2",
+  "id": "573692b3-a60e-49bb-859f-61bf9285e7a0",
+  "ip": "192.168.3.52",
+  "at": "2026-09-11T13:56:27.731064+00:00",
+  "commands": {
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.52    YES NVRAM  up                    up      \nGigabitEthernet2       10.0.0.23       YES NVRAM  up                    up      \nLoopback0              10.1.0.2        YES NVRAM  up                    up      ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.22       UP    26       05",
+    "show ip bgp summary": "",
+    "show ip bgp vpnv4 all summary": "BGP router identifier 10.1.0.2, local AS number 65000\nBGP table version is 103, main routing table version 103\n45 network entries using 11880 bytes of memory\n46 path entries using 6256 bytes of memory\n14/14 BGP path/bestpath attribute entries using 4368 bytes of memory\n13 BGP AS-PATH entries using 520 bytes of memory\n2 BGP extended community entries using 64 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 23088 total bytes of memory\nBGP activity 66/21 prefixes, 76/30 paths, scan interval 60 secs\n66 networks peaked at 05:10:18 Sep 11 2026 UTC (08:46:13.011 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.0.7        4        65000    3369    3379      103    0    0 08:51:41       23\n10.1.0.8        4        65000    3360    3381      103    0    0 08:51:41        0\n10.1.0.9        4        65000    3367    3380      103    0    0 08:51:37       22\n10.1.0.10       4        65000    3364    3388      103    0    0 08:51:41        1",
+    "show ip route vrf CUST-A 10.2.1.2": "% IP routing table vrf CUST-A does not exist",
+    "show ip route 10.2.1.2": "% Subnet not in table"
+  },
+  "ok": true
+}

@@ -1,0 +1,1291 @@
+[
+  {
+    "namespace": "argocd",
+    "name": "argocd-application-controller-0",
+    "node": "dca-k3s-m2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "application-controller",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "argocd",
+    "name": "argocd-applicationset-controller-64b8d6b789-pk7th",
+    "node": "dca-k3s-m3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "applicationset-controller",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "argocd",
+    "name": "argocd-dex-server-7966c79795-2mvzc",
+    "node": "dca-k3s-m3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "dex-server",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "argocd",
+    "name": "argocd-notifications-controller-75ff9596f5-zmcgs",
+    "node": "dca-k3s-m2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "notifications-controller",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "argocd",
+    "name": "argocd-redis-7894c9779c-l27mf",
+    "node": "dca-k3s-m2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "redis",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "argocd",
+    "name": "argocd-repo-server-b9c6c66f-znwvx",
+    "node": "dca-k3s-m3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "repo-server",
+        "ready": true,
+        "restarts": 456,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "argocd",
+    "name": "argocd-server-5998cbb96f-2jclk",
+    "node": "dca-k3s-m3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "server",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "kube-system",
+    "name": "coredns-7b98449c4-58lwd",
+    "node": "dca-k3s-m3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "coredns",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "kube-system",
+    "name": "local-path-provisioner-6795b5f9d8-tv4bc",
+    "node": "dca-k3s-m2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "local-path-provisioner",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "kube-system",
+    "name": "metrics-server-cdcc87586-tgwtl",
+    "node": "dca-k3s-m2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "metrics-server",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-attacher-6d698df559-gq42v",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-attacher",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-attacher-6d698df559-sgn5k",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-attacher",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-attacher-6d698df559-smh97",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-attacher",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-provisioner-cd78b7b67-9krmk",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-provisioner",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-provisioner-cd78b7b67-ckt66",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-provisioner",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-provisioner-cd78b7b67-j8ftw",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-provisioner",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-resizer-cb7655d45-4q7mf",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-resizer",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-resizer-cb7655d45-b4hxb",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-resizer",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-resizer-cb7655d45-n2j4m",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-resizer",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-snapshotter-799f9f96cf-7jgzx",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-snapshotter",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-snapshotter-799f9f96cf-tc4mt",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-snapshotter",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "csi-snapshotter-799f9f96cf-wnx86",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "csi-snapshotter",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "engine-image-ei-493e04e7-5fptx",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "engine-image-ei-493e04e7",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "engine-image-ei-493e04e7-9ml2l",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "engine-image-ei-493e04e7",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "engine-image-ei-493e04e7-lllzp",
+    "node": "dcc-k3s-w4",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "engine-image-ei-493e04e7",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "engine-image-ei-493e04e7-pm269",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "engine-image-ei-493e04e7",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "engine-image-ei-493e04e7-snh5l",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "engine-image-ei-493e04e7",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "engine-image-ei-493e04e7-vrfqh",
+    "node": "dcc-k3s-w6",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "engine-image-ei-493e04e7",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "instance-manager-0dde8a944b2a020b75470acc79d6a423",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "instance-manager",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "instance-manager-17459023f805b82dc2325032584721c3",
+    "node": "dcc-k3s-w6",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "instance-manager",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "instance-manager-3a90a13802fb6ba486824445adfbf9a4",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "instance-manager",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "instance-manager-49d022f8cd160387935de1fe6e2bcb9f",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "instance-manager",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "instance-manager-8c8a30b7f0d554c75e8eefbb1733839d",
+    "node": "dcc-k3s-w4",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "instance-manager",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "instance-manager-b7c65f4637ba533732b62cb65894f354",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "instance-manager",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-csi-plugin-74ffw",
+    "node": "dcc-k3s-w4",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-csi-plugin",
+        "ready": true,
+        "restarts": 2,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "longhorn-liveness-probe",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "node-driver-registrar",
+        "ready": true,
+        "restarts": 4,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-csi-plugin-drg4t",
+    "node": "dcc-k3s-w6",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-csi-plugin",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "longhorn-liveness-probe",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "node-driver-registrar",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-csi-plugin-pk2s4",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-csi-plugin",
+        "ready": true,
+        "restarts": 2,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "longhorn-liveness-probe",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "node-driver-registrar",
+        "ready": true,
+        "restarts": 4,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-csi-plugin-s58sd",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-csi-plugin",
+        "ready": true,
+        "restarts": 2,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "longhorn-liveness-probe",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "node-driver-registrar",
+        "ready": true,
+        "restarts": 4,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-csi-plugin-vsjjg",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-csi-plugin",
+        "ready": true,
+        "restarts": 2,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "longhorn-liveness-probe",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "node-driver-registrar",
+        "ready": true,
+        "restarts": 4,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-csi-plugin-zndnr",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-csi-plugin",
+        "ready": true,
+        "restarts": 2,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "longhorn-liveness-probe",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "node-driver-registrar",
+        "ready": true,
+        "restarts": 2,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-driver-deployer-56c87bf855-p7wtt",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-driver-deployer",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-manager-2k24v",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-manager",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "pre-pull-share-manager-image",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-manager-8x78h",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-manager",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "pre-pull-share-manager-image",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-manager-km8j9",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-manager",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "pre-pull-share-manager-image",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-manager-ld4pv",
+    "node": "dcc-k3s-w6",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-manager",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "pre-pull-share-manager-image",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-manager-lvxf8",
+    "node": "dcc-k3s-w4",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-manager",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "pre-pull-share-manager-image",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-manager-pfc2h",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-manager",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "pre-pull-share-manager-image",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-ui-787c958bcf-2kw8b",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-ui",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "longhorn-ui-787c958bcf-gksrk",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "longhorn-ui",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-grafana-55964d88c-fqznx",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "grafana",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "grafana-sc-dashboard",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "grafana-sc-datasources",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-kube-state-metrics-545f7c6df4-jz9qn",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "kube-state-metrics",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-2whgg",
+    "node": "dca-k3s-m3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-98mng",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-bwtqz",
+    "node": "dcc-k3s-w6",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-mpvxz",
+    "node": "dcc-k3s-w4",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-nz8cw",
+    "node": "dca-k3s-m2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-p79tf",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-pzq42",
+    "node": "dcb-k3s-w1",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-vxj2t",
+    "node": "dca-k3s-m1",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-xk965",
+    "node": "dcb-k3s-w2",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "victoria-metrics-k8s-stack-victoria-metrics-operator-77cdb2x467",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "operator",
+        "ready": true,
+        "restarts": 3,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "vmagent-victoria-metrics-k8s-stack-5dcd6959d9-fz7sf",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "config-reloader",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "vmagent",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "vmalert-victoria-metrics-k8s-stack-78689f75d9-tq655",
+    "node": "dcc-k3s-w5",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "config-reloader",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "vmalert",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "vmalertmanager-victoria-metrics-k8s-stack-0",
+    "node": "dcb-k3s-w3",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "alertmanager",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      },
+      {
+        "name": "config-reloader",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "observability",
+    "name": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-ft9tl",
+    "node": "dcc-k3s-w6",
+    "phase": "Running",
+    "ready": true,
+    "containers": [
+      {
+        "name": "vmsingle",
+        "ready": true,
+        "restarts": 0,
+        "state": [
+          "running"
+        ]
+      }
+    ]
+  }
+]

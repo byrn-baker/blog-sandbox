@@ -1,0 +1,33 @@
+{
+  "name": "DCC-Spine01",
+  "started": "2026-09-09T03:07:52.351493+00:00",
+  "os": "eos",
+  "commands": [
+    {
+      "command": "show interfaces counters discards",
+      "at": "2026-09-09T03:07:54.340436+00:00",
+      "output": "Port               InDiscards    OutDiscards\r\n--------------- ---------------- -----------\r\nEt1                      1522              0\r\nEt2                         0            577\r\nEt3                         0              0\r\nEt4                         0              0\r\nEt5                         0              0\r\nEt6                         0              0\r\nEt7                         0              0\r\nEt8                         0              0\r\nEt9                         0              0\r\nEt10                   666650              0\r\nMa1                         0              0\r\n---------           ---------      ---------\r\nTotals                 668172            577",
+      "ok": true
+    },
+    {
+      "command": "show interfaces counters rates",
+      "at": "2026-09-09T03:07:54.666240+00:00",
+      "output": "Port      Name                 Intvl  In Kbps      %   In Pps Out Kbps      %\r\nEt1       to DCC-Leaf01 Ethern  5:00    368.5   0.0%      160   1561.7   0.2%\r\nEt2       to DCC-Leaf02 Ethern  5:00    478.7   0.1%      137   2115.9   0.2%\r\nEt3       to DCC-Leaf03 Ethern  5:00      2.7   0.0%        5      4.2   0.0%\r\nEt4                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt5                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt6                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt7                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt8                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt9                             5:00      0.0   0.0%        0      0.0   0.0%\r\nEt10      to CE3 GigabitEthern  5:00   3674.5   0.4%      381    826.5   0.1%\r\nMa1       Management - MGMT-VR  5:00      0.7   0.0%        2      0.3   0.0%\r\n\r\nPort       Out Pps\r\nEt1            166\r\nEt2            209\r\nEt3              6\r\nEt4              0\r\nEt5              0\r\nEt6              0\r\nEt7              0\r\nEt8              0\r\nEt9              0\r\nEt10           301\r\nMa1              0",
+      "ok": true
+    },
+    {
+      "command": "show bgp evpn summary",
+      "at": "2026-09-09T03:07:55.060497+00:00",
+      "output": "BGP summary information for VRF default\r\nRouter identifier 10.2.3.2, local AS number 65301\r\nNeighbor Status Codes: m - Under maintenance\r\n  Description              Neighbor V AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc PfxAdv\r\n  DCA-Spine01              10.2.1.2 4 65101          25417     25701    0    0 00:15:12 Estab   153    153    264\r\n  DCA-Spine02              10.2.1.3 4 65101          26426     27472    0    0 00:15:12 Estab   153    153    174\r\n  DCB-Spine01              10.2.2.2 4 65201          24863     25599    0    0 00:15:12 Estab   153    153    185\r\n  DCB-Spine02              10.2.2.3 4 65201          26720     26757    0    0 00:15:12 Estab   153    153    264\r\n  DCC-Leaf01               10.2.3.4 4 65311          18337     23304    0    0 01:57:11 Estab   27     27     237\r\n  DCC-Leaf02               10.2.3.5 4 65312          16941     22179    0    0 01:57:11 Estab   24     24     240\r\n  DCC-Leaf03               10.2.3.6 4 65313          16658     21774    0    0 01:57:11 Estab   44     44     220",
+      "ok": true
+    },
+    {
+      "command": "show interfaces counters discards",
+      "at": "2026-09-09T03:08:05.478141+00:00",
+      "output": "Port               InDiscards    OutDiscards\r\n--------------- ---------------- -----------\r\nEt1                      1522              0\r\nEt2                         0            577\r\nEt3                         0              0\r\nEt4                         0              0\r\nEt5                         0              0\r\nEt6                         0              0\r\nEt7                         0              0\r\nEt8                         0              0\r\nEt9                         0              0\r\nEt10                   666763              0\r\nMa1                         0              0\r\n---------           ---------      ---------\r\nTotals                 668285            577",
+      "ok": true
+    }
+  ],
+  "connected": true,
+  "finished": "2026-09-09T03:08:16.781411+00:00"
+}

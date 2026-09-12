@@ -1,0 +1,32 @@
+[
+  {
+    "namespace": "longhorn-system",
+    "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+    "state": "attached",
+    "robustness": "degraded",
+    "node": "dcb-k3s-w3",
+    "workloads": [
+      {
+        "podName": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-2mq9w",
+        "podStatus": "Running",
+        "workloadName": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c",
+        "workloadType": "ReplicaSet"
+      }
+    ]
+  },
+  {
+    "namespace": "longhorn-system",
+    "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+    "state": "attached",
+    "robustness": "healthy",
+    "node": "dcc-k3s-w4",
+    "workloads": [
+      {
+        "podName": "victoria-metrics-k8s-stack-grafana-55964d88c-bcn9h",
+        "podStatus": "Running",
+        "workloadName": "victoria-metrics-k8s-stack-grafana-55964d88c",
+        "workloadType": "ReplicaSet"
+      }
+    ]
+  }
+]

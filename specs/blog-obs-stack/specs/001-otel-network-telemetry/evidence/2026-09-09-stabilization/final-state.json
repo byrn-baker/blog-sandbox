@@ -1,0 +1,69 @@
+{
+  "at": "2026-09-09T01:15:49.719152+00:00",
+  "nodes": [
+    {
+      "name": "dca-k3s-m1",
+      "ready": "True",
+      "cordoned": false
+    },
+    {
+      "name": "dca-k3s-m2",
+      "ready": "True",
+      "cordoned": false
+    },
+    {
+      "name": "dca-k3s-m3",
+      "ready": "True",
+      "cordoned": false
+    },
+    {
+      "name": "dcb-k3s-w1",
+      "ready": "True",
+      "cordoned": false
+    },
+    {
+      "name": "dcb-k3s-w2",
+      "ready": "True",
+      "cordoned": false
+    },
+    {
+      "name": "dcb-k3s-w3",
+      "ready": "True",
+      "cordoned": false
+    },
+    {
+      "name": "dcc-k3s-w4",
+      "ready": "True",
+      "cordoned": false
+    },
+    {
+      "name": "dcc-k3s-w5",
+      "ready": "True",
+      "cordoned": false
+    },
+    {
+      "name": "dcc-k3s-w6",
+      "ready": "True",
+      "cordoned": true
+    }
+  ],
+  "lease": {
+    "acquireTime": "2026-09-09T01:07:45.007339Z",
+    "holderIdentity": "DCA-k3s-m1_a099f8f4-1e19-4b92-bbe6-e7bd4b58feaf",
+    "leaseDurationSeconds": 30,
+    "leaseTransitions": 35,
+    "renewTime": "2026-09-09T01:15:49.447972Z"
+  },
+  "volumes": [
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "state": "attached",
+      "robustness": "degraded"
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "state": "attached",
+      "robustness": "healthy"
+    }
+  ]
+}

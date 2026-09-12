@@ -1,0 +1,36 @@
+[
+  {
+    "sent": 262144,
+    "send_seconds": 2.0972906430251896,
+    "send_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6",
+    "received": 262144,
+    "receive_seconds": 2.100566850975156,
+    "receive_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6",
+    "mode": "client",
+    "local": "192.168.100.10",
+    "peer": "192.168.100.11",
+    "requested_mss": 8960,
+    "negotiated_mss": 8948,
+    "total_retrans": 0,
+    "errors": [],
+    "ok": true,
+    "exit_code": 0
+  },
+  {
+    "received": 262144,
+    "receive_seconds": 2.0964259690372273,
+    "receive_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6",
+    "sent": 262144,
+    "send_seconds": 2.0972947729751468,
+    "send_sha256": "6505faeb2fa4fb5bc90c5d48592ab7e1b921e7891953bf80f1c2b38aaa3d80f6",
+    "mode": "server",
+    "local": "192.168.100.11",
+    "peer": "192.168.100.10",
+    "requested_mss": 8960,
+    "negotiated_mss": 8948,
+    "total_retrans": 0,
+    "errors": [],
+    "ok": true,
+    "exit_code": 0
+  }
+]

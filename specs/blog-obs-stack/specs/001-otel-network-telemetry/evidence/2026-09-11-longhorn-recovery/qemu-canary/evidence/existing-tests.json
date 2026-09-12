@@ -1,0 +1,20 @@
+[
+  {
+    "test": "basic",
+    "returncode": 0,
+    "output": "anary/patched/qemu-system-x86_64 -qtest unix:/tmp/qtest-28824.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-28824.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -M pc  -device virtio-net-pci,netdev=hs0,addr=04.0 -netdev socket,fd=4,id=hs0  -accel qtest\nok 1 /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/basic\n# End of virtio-net-tests tests\n# End of virtio-net tests\n# End of virtio-net-pci tests\n# End of pci-bus tests\n# End of pci-bus-pc tests\n# End of i440FX-pcihost tests\n# End of pc tests\n# End of x86_64 tests\n1..1\n",
+    "error": ""
+  },
+  {
+    "test": "rx_stop_cont",
+    "returncode": 0,
+    "output": "atched/qemu-system-x86_64 -qtest unix:/tmp/qtest-28837.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-28837.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -M pc  -device virtio-net-pci,netdev=hs0,addr=04.0 -netdev socket,fd=4,id=hs0  -accel qtest\nok 1 /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/rx_stop_cont\n# End of virtio-net-tests tests\n# End of virtio-net tests\n# End of virtio-net-pci tests\n# End of pci-bus tests\n# End of pci-bus-pc tests\n# End of i440FX-pcihost tests\n# End of pc tests\n# End of x86_64 tests\n1..1\n",
+    "error": ""
+  },
+  {
+    "test": "large_tx/net_bufsize",
+    "returncode": 0,
+    "output": "x:/tmp/qtest-28850.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-28850.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -M pc  -device virtio-net-pci,netdev=hs0,addr=04.0 -netdev hubport,hubid=0,id=hs0  -accel qtest\nok 1 /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net/virtio-net-tests/large_tx/net_bufsize\n# End of large_tx tests\n# End of virtio-net-tests tests\n# End of virtio-net tests\n# End of virtio-net-pci tests\n# End of pci-bus tests\n# End of pci-bus-pc tests\n# End of i440FX-pcihost tests\n# End of pc tests\n# End of x86_64 tests\n1..1\n",
+    "error": ""
+  }
+]

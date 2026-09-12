@@ -1,0 +1,67 @@
+{
+  "dns": {
+    "server": "10.43.0.10",
+    "query": "kubernetes.default.svc.cluster.local",
+    "elapsed_ms": 83.62,
+    "rcode": 0,
+    "answers": 1,
+    "ok": true
+  },
+  "hostname": "DCA-k3s-m2",
+  "at": "2026-09-10T04:40:40.793489+00:00",
+  "unit": "k3s",
+  "service_read_ok": true,
+  "service": "NRestarts=0\nExecMainStartTimestamp=Wed 2026-09-09 01:10:37 UTC\nActiveState=active\nSubState=running\n",
+  "journal_read_ok": true,
+  "window_minutes": 30,
+  "counts": {
+    "lease_lost": 0,
+    "renew_failure": 0,
+    "exits": 0,
+    "slow_apply": 806,
+    "slow_fsync": 0,
+    "oom": 0,
+    "deadline": 0
+  },
+  "probes": [
+    {
+      "path": "fabric",
+      "status": 401,
+      "elapsed_ms": 6.06,
+      "error": null
+    },
+    {
+      "path": "fabric",
+      "status": 401,
+      "elapsed_ms": 2.45,
+      "error": null
+    },
+    {
+      "path": "fabric",
+      "status": 401,
+      "elapsed_ms": 2.19,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 2.36,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 2.16,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 2.16,
+      "error": null
+    }
+  ],
+  "identity_matches": true,
+  "name": "DCA-k3s-m2",
+  "management": "192.168.3.64"
+}

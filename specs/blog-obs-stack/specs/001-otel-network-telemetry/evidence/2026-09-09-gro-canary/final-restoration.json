@@ -1,0 +1,25 @@
+[
+  {
+    "device": "DCA-Leaf01",
+    "ip": "192.168.3.32",
+    "readback_ok": true,
+    "commands": [
+      {
+        "command": "bash sudo -n /sbin/ethtool -k vmnicet5",
+        "output": "Features for vmnicet5:\nrx-checksumming: off\ntx-checksumming: on\n\ttx-checksum-ipv4: off [fixed]\n\ttx-checksum-ip-generic: on\n\ttx-checksum-ipv6: off [fixed]\n\ttx-checksum-fcoe-crc: off [fixed]\n\ttx-checksum-sctp: off [fixed]\nscatter-gather: on\n\ttx-scatter-gather: on\n\ttx-scatter-gather-fraglist: off [fixed]\ntcp-segmentation-offload: on\n\ttx-tcp-segmentation: on\n\ttx-tcp-ecn-segmentation: off [fixed]\n\ttx-tcp-mangleid-segmentation: off\n\ttx-tcp6-segmentation: off [fixed]\ngeneric-segmentation-offload: on\ngeneric-receive-offload: on\nlarge-receive-offload: off [fixed]\nrx-vlan-offload: on\ntx-vlan-offload: on [fixed]\nntuple-filters: off [fixed]\nreceive-hashing: off [fixed]\nhighdma: off [fixed]\nrx-vlan-filter: on [fixed]\nvlan-challenged: off [fixed]\ntx-lockless: off [fixed]\nnetns-local: off [fixed]\ntx-gso-robust: off [fixed]\ntx-fcoe-segmentation: off [fixed]\ntx-gre-segmentation: off [fixed]\ntx-gre-csum-segmentation: off [fixed]\ntx-ipxip4-segmentation: off [fixed]\ntx-ipxip6-segmentation: off [fixed]\ntx-udp_tnl-segmentation: off [fixed]\ntx-udp_tnl-csum-segmentation: off [fixed]\ntx-gso-partial: off [fixed]\ntx-tunnel-remcsum-segmentation: off [fixed]\ntx-sctp-segmentation: off [fixed]\ntx-esp-segmentation: off [fixed]\ntx-udp-segmentation: off [fixed]\ntx-gso-list: off [fixed]\nfcoe-mtu: off [fixed]\ntx-nocache-copy: off\nloopback: off [fixed]\nrx-fcs: off\nrx-all: off\ntx-vlan-stag-hw-insert: off [fixed]\nrx-vlan-stag-hw-parse: off [fixed]\nrx-vlan-stag-filter: off [fixed]\nl2-fwd-offload: off [fixed]\nhw-tc-offload: off [fixed]\nesp-hw-offload: off [fixed]\nesp-tx-csum-hw-offload: off [fixed]\nrx-udp_tunnel-port-offload: off [fixed]\ntls-hw-tx-offload: off [fixed]\ntls-hw-rx-offload: off [fixed]\nrx-gro-hw: off [fixed]\ntls-hw-record: off [fixed]\nrx-gro-list: off\nmacsec-hw-offload: off [fixed]"
+      },
+      {
+        "command": "bash sudo -n systemctl stop lab-gro-canary-20260909T205915.timer",
+        "output": ""
+      },
+      {
+        "command": "bash sudo -n systemctl show lab-gro-canary-20260909T205915.timer -p ActiveState",
+        "output": "\u001b[?1h\u001b=\nActiveState=inactive\n"
+      },
+      {
+        "command": "bash sudo -n /sbin/ethtool -k vmnicet5",
+        "output": "Features for vmnicet5:\nrx-checksumming: off\ntx-checksumming: on\n\ttx-checksum-ipv4: off [fixed]\n\ttx-checksum-ip-generic: on\n\ttx-checksum-ipv6: off [fixed]\n\ttx-checksum-fcoe-crc: off [fixed]\n\ttx-checksum-sctp: off [fixed]\nscatter-gather: on\n\ttx-scatter-gather: on\n\ttx-scatter-gather-fraglist: off [fixed]\ntcp-segmentation-offload: on\n\ttx-tcp-segmentation: on\n\ttx-tcp-ecn-segmentation: off [fixed]\n\ttx-tcp-mangleid-segmentation: off\n\ttx-tcp6-segmentation: off [fixed]\ngeneric-segmentation-offload: on\ngeneric-receive-offload: on\nlarge-receive-offload: off [fixed]\nrx-vlan-offload: on\ntx-vlan-offload: on [fixed]\nntuple-filters: off [fixed]\nreceive-hashing: off [fixed]\nhighdma: off [fixed]\nrx-vlan-filter: on [fixed]\nvlan-challenged: off [fixed]\ntx-lockless: off [fixed]\nnetns-local: off [fixed]\ntx-gso-robust: off [fixed]\ntx-fcoe-segmentation: off [fixed]\ntx-gre-segmentation: off [fixed]\ntx-gre-csum-segmentation: off [fixed]\ntx-ipxip4-segmentation: off [fixed]\ntx-ipxip6-segmentation: off [fixed]\ntx-udp_tnl-segmentation: off [fixed]\ntx-udp_tnl-csum-segmentation: off [fixed]\ntx-gso-partial: off [fixed]\ntx-tunnel-remcsum-segmentation: off [fixed]\ntx-sctp-segmentation: off [fixed]\ntx-esp-segmentation: off [fixed]\ntx-udp-segmentation: off [fixed]\ntx-gso-list: off [fixed]\nfcoe-mtu: off [fixed]\ntx-nocache-copy: off\nloopback: off [fixed]\nrx-fcs: off\nrx-all: off\ntx-vlan-stag-hw-insert: off [fixed]\nrx-vlan-stag-hw-parse: off [fixed]\nrx-vlan-stag-filter: off [fixed]\nl2-fwd-offload: off [fixed]\nhw-tc-offload: off [fixed]\nesp-hw-offload: off [fixed]\nesp-tx-csum-hw-offload: off [fixed]\nrx-udp_tunnel-port-offload: off [fixed]\ntls-hw-tx-offload: off [fixed]\ntls-hw-rx-offload: off [fixed]\nrx-gro-hw: off [fixed]\ntls-hw-record: off [fixed]\nrx-gro-list: off\nmacsec-hw-offload: off [fixed]"
+      }
+    ]
+  }
+]

@@ -1,0 +1,141 @@
+{
+  "device": "DCC-Leaf02",
+  "ip": "192.168.3.43",
+  "platform": "arista_eos",
+  "at": "2026-09-10T01:17:22.412856+00:00",
+  "modeled_interfaces": [
+    {
+      "name": "Ethernet1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.3.7/31",
+        "fd10:1:3::7/127"
+      ]
+    },
+    {
+      "name": "Ethernet2",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.3.13/31",
+        "fd10:1:3::13/127"
+      ]
+    },
+    {
+      "name": "Ethernet3",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet4",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Ethernet5",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Ethernet6",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Ethernet7",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet8",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet9",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Ethernet10",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Loopback0",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.2.3.5/32",
+        "fd10:2:3::5/128"
+      ]
+    },
+    {
+      "name": "Loopback1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.3.3.5/32"
+      ]
+    },
+    {
+      "name": "Management1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.3.43/24"
+      ]
+    },
+    {
+      "name": "Port-Channel4",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Port-Channel5",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Port-Channel6",
+      "mtu": null,
+      "enabled": true,
+      "ips": []
+    },
+    {
+      "name": "Vlan100",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.100.1/24",
+        "fd10:a:100::1/64"
+      ]
+    },
+    {
+      "name": "Vlan301",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.31.1/24",
+        "fd10:a:301::1/64"
+      ]
+    }
+  ],
+  "commands": {
+    "show interfaces": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet3 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nLoopback0 is up, line protocol is up (connected)\n  IP MTU 65535 bytes (default)\nLoopback1 is up, line protocol is up (connected)\n  IP MTU 65535 bytes (default)\nManagement1 is up, line protocol is up (connected)\n  IP MTU 1500 bytes (default), BW 1000000 kbit\nPort-Channel4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nVlan100 is up, line protocol is up (connected)\n  IP MTU 1500 bytes (default)\nVlan301 is up, line protocol is up (connected)\n  IP MTU 1500 bytes (default)\nVlan4097 is up, line protocol is up (connected)\n  IP MTU 9164 bytes (default)\nVxlan1 is up, line protocol is up (connected)",
+    "show ip interface brief": "                                                                                 Address\nInterface         IP Address             Status       Protocol            MTU    Owner  \n----------------- ---------------------- ------------ -------------- ----------- -------\nEthernet1         10.1.3.7/31            up           up                 8950           \nEthernet2         10.1.3.13/31           up           up                 8950           \nLoopback0         10.2.3.5/32            up           up                65535           \nLoopback1         10.3.3.5/32            up           up                65535           \nManagement1       192.168.3.43/24        up           up                 1500           \nVlan100           192.168.100.1/24       up           up                 1500           \nVlan301           192.168.31.1/24        up           up                 1500           \nVlan4097          unassigned             up           up                 9164           \n",
+    "show platform tfa counters debug": "Action:\nBridgePipeline: Dropping packet: 1058\nBridgePipeline: Learning packet: 43755330\nBridgePipeline: Not adding SVI to output interfaces with dst mac %s: 9895\nBridgePipeline: Removing %s from final intfs since it is the ingress port: 328897\nBridgePipeline: Stripping native vlan from packet: %s: 55057250\nBridgePipeline: Trapping packet: 57\nDecap: Bridged decapped packet: 49617791\nDecap: Found demux map for addr %s proto %x port %s name %s: 49697090\nDecap: Routed decapped packet: 79299\nFhrp: Not learning vArp MAC: 17346\nFhrp: Rewriting outgoing ARP packet with vARP MAC as source: 828\nFhrp: Rewriting outgoing ICMP6 packet with vARP MAC as source: 8708\nFhrp: Updating ARP cache: 1\nInPipe: Traffic class is set to : %s: 96344885\nIpRoute: Decapped packet received. Allowing it: 79299\nIpRoute: IPv6 is hop by hop, trapping: 19\nIpRoute: Routing is disabled, trapping packet from %s: 21\nIpRoute: Trapping multicast address %s: 3417\nLag: Remapping incoming frame with source: %s destination: %s from physical port %s to aggregate port %s: 43692200\nMacTable: Not learning on fabric port %s: 63326\nQos: Trust mode for %s is %s: 231658854\nRoutingPipeline: Trapping mtu exceeded packet on fwd0: 9956\nStp: Removing %s from final intfs since it is in stp state %s: 515\nStp: no topPort for port %s: 27\nVxlan: Bridging decapsulated inner packet due to L2-Vxlan: 49617791\nVxlan: Datapath learning disabled for VTI %s, not learning packet: 49600514\nVxlan: Not learning vArp MAC: 17277\nVxlan: Routing decapsulated inner packet due to L3-Vxlan: 79299\nVxlan: Sending encapsulated ARP or NDP packet to agent: 862\n\nAging:\nMacTable: Entry was gone when I tried to age it: 5\nMacTable: Not aging entry of type EVPN intf dynamic mac: 7\n\nDrop:\nBridgeImpl: Dropping frame received on extended VLAN interface Cpu1: 1666\nFhrp: Redirect NS for virtual link-local from Cpu to VxlanSwFwd and ArpSuppression: 69\nInPipe: Packet is not routable: 311083\nStp: input forwarding state discarding: 196\nVxlan: Dropping packet due to handling via VxlanSwFwd: 862\n\nExceptional:\nIpRoute: No match found for %s: 144\nIpRoute: No valid fecId for route %s: 5\nRoutingPipeline: Pkt bytes %s exceeds mtu %s for port %s: 9956\nRoutingPipeline: TTL not set in rCtx: 19450\n\nFlushing:\nMacTable: Task yielded: 2\n\nLearning:\nMacTable: No entry deleting from fid 1 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 100 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1006 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 1007 requested by FhrpArfa: 1\nMacTable: No entry deleting from fid 301 requested by FhrpArfa: 1\n"
+  },
+  "ok": true
+}

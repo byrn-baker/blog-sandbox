@@ -1,0 +1,120 @@
+{
+  "name": "SPE1",
+  "at": "2026-09-10T04:03:11.470626+00:00",
+  "checks": [
+    {
+      "interface": "GigabitEthernet2",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 1500,
+      "running_enabled": false,
+      "startup_mtu": 1500,
+      "startup_enabled": false,
+      "ok": false
+    },
+    {
+      "interface": "GigabitEthernet3",
+      "expected_mtu": 9216,
+      "expected_enabled": false,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 1500,
+      "running_enabled": false,
+      "startup_mtu": 1500,
+      "startup_enabled": false,
+      "ok": false
+    },
+    {
+      "interface": "GigabitEthernet4",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 1500,
+      "running_enabled": false,
+      "startup_mtu": 1500,
+      "startup_enabled": false,
+      "ok": false
+    },
+    {
+      "interface": "GigabitEthernet5",
+      "expected_mtu": 9216,
+      "expected_enabled": true,
+      "running_present": true,
+      "startup_present": true,
+      "running_mtu": 1500,
+      "running_enabled": false,
+      "startup_mtu": 1500,
+      "startup_enabled": false,
+      "ok": false
+    }
+  ],
+  "commands": {
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.57    YES manual up                    up      \nGigabitEthernet2       unassigned      YES unset  administratively down down    \nGigabitEthernet3       unassigned      YES unset  administratively down down    \nGigabitEthernet4       unassigned      YES unset  administratively down down    \nGigabitEthernet5       unassigned      YES unset  administratively down down    ",
+    "show isis neighbors": "\nTag SP-ISIS:",
+    "show isis neighbors detail": "\nTag SP-ISIS:",
+    "show mpls ldp neighbor": "",
+    "show ip bgp summary": "% BGP not active\n",
+    "show bgp vpnv4 unicast all summary": "% BGP not active\n",
+    "show ipv6 route isis": "IPv6 Routing Table - default - 1 entries\nCodes: C - Connected, L - Local, S - Static, U - Per-user Static route\n       B - BGP, R - RIP, H - NHRP, HG - NHRP registered\n       Hg - NHRP registration summary, HE - NHRP External, I1 - ISIS L1\n       I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, D - EIGRP\n       EX - EIGRP external, RL - RPL, O - OSPF Intra, OI - OSPF Inter\n       OE1 - OSPF ext 1, OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1\n       ON2 - OSPF NSSA ext 2, la - LISP alt, lr - LISP site-registrations\n       ld - LISP dyn-eid, lA - LISP away, le - LISP extranet-policy\n       lp - LISP publications, ls - LISP destinations-summary, a - Application\n       m - OMP"
+  },
+  "interface_evidence": {
+    "running": {
+      "GigabitEthernet1": [],
+      "GigabitEthernet2": [
+        " shutdown"
+      ],
+      "GigabitEthernet3": [
+        " shutdown"
+      ],
+      "GigabitEthernet4": [
+        " shutdown"
+      ],
+      "GigabitEthernet5": [
+        " shutdown"
+      ]
+    },
+    "startup": {
+      "GigabitEthernet1": [],
+      "GigabitEthernet2": [
+        " shutdown"
+      ],
+      "GigabitEthernet3": [
+        " shutdown"
+      ],
+      "GigabitEthernet4": [
+        " shutdown"
+      ],
+      "GigabitEthernet5": [
+        " shutdown"
+      ]
+    }
+  },
+  "ipv6_isis_checks": [
+    {
+      "interface": "GigabitEthernet2",
+      "running": false,
+      "startup": false
+    },
+    {
+      "interface": "GigabitEthernet4",
+      "running": false,
+      "startup": false
+    },
+    {
+      "interface": "Loopback0",
+      "running": false,
+      "startup": false
+    }
+  ],
+  "expected_isis_interfaces": [
+    "Gi2",
+    "Gi4"
+  ],
+  "up_isis_interfaces": [],
+  "config_ok": false,
+  "isis_complete": false,
+  "connected": true
+}

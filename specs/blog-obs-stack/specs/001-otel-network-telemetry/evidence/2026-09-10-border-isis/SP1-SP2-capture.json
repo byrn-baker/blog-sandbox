@@ -1,0 +1,19 @@
+{
+  "at": "2026-09-10T21:02:00.860214+00:00",
+  "link": "3b14e688-5c0b-4654-af11-aeea513ae6de",
+  "endpoints": [
+    "SP1",
+    "SP2"
+  ],
+  "status": {
+    "config": {
+      "maxpackets": 200,
+      "maxtime": 90,
+      "bpfilter": "ether[14:2] = 0xfefe",
+      "encap": "ethernet",
+      "link_capture_key": "3b14e688-5c0b-4654-af11-aeea513ae6de"
+    },
+    "starttime": "2026-09-10T21:01:25Z",
+    "packetscaptured": 13
+  }
+}

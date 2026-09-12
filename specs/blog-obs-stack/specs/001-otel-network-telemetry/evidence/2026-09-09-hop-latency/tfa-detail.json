@@ -1,0 +1,14 @@
+[
+  {
+    "device": "DCC-Spine01",
+    "ip": "192.168.3.40",
+    "readback_ok": true,
+    "commands": {
+      "show platform tfa personality": "arfa",
+      "show platform tfa status": "% Invalid input",
+      "bash readlink /proc/2069/exe": "% 'readlink /proc/2069/exe' returned error code: 1",
+      "bash ls /usr/bin/Arfa* /usr/bin/Etba*": "/usr/bin/ArfaAegis  /usr/bin/ArfaState\t/usr/bin/Etba",
+      "show running-config | section platform": ""
+    }
+  }
+]

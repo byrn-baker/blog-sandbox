@@ -1,0 +1,14 @@
+{
+  "name": "SPE3",
+  "id": "2ff21746-a5b7-495a-bcac-0da59a215647",
+  "ip": "192.168.3.59",
+  "at": "2026-09-11T15:40:39.317136+00:00",
+  "commands": {
+    "show interfaces GigabitEthernet3": "GigabitEthernet3 is up, line protocol is up \n  Hardware is vNIC, address is 5254.0085.c39f (bia 5254.0085.c39f)\n  Description: to SP3 GigabitEthernet2\n  Internet address is 10.0.0.19/31\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \n     reliability 255/255, txload 1/255, rxload 1/255\n  Encapsulation ARPA, loopback not set\n  Keepalive set (10 sec)\n  Full Duplex, 1000Mbps, link type is auto, media type is Virtual\n  output flow-control is unsupported, input flow-control is unsupported\n  ARP type: ARPA, ARP Timeout 04:00:00\n  Last input 02:04:30, output 00:00:03, output hang never\n  Last clearing of \"show interface\" counters never\n  Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0\n  Queueing strategy: fifo\n  Output queue: 0/40 (size/max)\n  5 minute input rate 0 bits/sec, 0 packets/sec\n  5 minute output rate 11000 bits/sec, 1 packets/sec\n     4666931 packets input, 6395854934 bytes, 0 no buffer\n     Received 0 broadcasts (0 IP multicasts)\n     0 runts, 0 giants, 0 throttles \n     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n     0 watchdog, 0 multicast, 0 pause input\n     4289812 packets output, 2032020376 bytes, 0 underruns\n     Output 0 broadcasts (0 IP multicasts)\n     0 output errors, 0 collisions, 3 interface resets\n     0 unknown protocol drops\n     0 babbles, 0 late collision, 0 deferred\n     0 lost carrier, 0 no carrier, 0 pause output\n     0 output buffer failures, 0 output buffers swapped out",
+    "ping 10.0.0.18 repeat 3 timeout 1": "Type escape sequence to abort.\nSending 3, 100-byte ICMP Echos to 10.0.0.18, timeout is 1 seconds:\n...\nSuccess rate is 0 percent (0/3)",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.16       UP    25       04"
+  },
+  "before": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.16       UP    27       04",
+  "recovery": "configure terminal\nEnter configuration commands, one per line.  End with CNTL/Z.\nSPE3(config)#interface GigabitEthernet3\nSPE3(config-if)#shutdown\nSPE3(config-if)#no shutdown\nSPE3(config-if)#end\nSPE3#",
+  "ok": true
+}

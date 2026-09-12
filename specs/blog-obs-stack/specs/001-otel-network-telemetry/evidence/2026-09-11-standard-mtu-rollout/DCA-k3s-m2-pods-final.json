@@ -1,0 +1,82 @@
+{
+  "hostname": "DCA-k3s-m2",
+  "pods": [
+    {
+      "id": "fc54bd632eeb150f22f928d50b3a194d12929ee8ac16c6c8abd9e951d6376027",
+      "name": "argocd-notifications-controller-75ff9596f5-zmcgs",
+      "namespace": "argocd",
+      "pid": 2812,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 12
+        }
+      ]
+    },
+    {
+      "id": "1752276446613cffe578465617ce3c3fa6e14fd68b70e4458a2f63a6b158246d",
+      "name": "local-path-provisioner-6795b5f9d8-tv4bc",
+      "namespace": "kube-system",
+      "pid": 2610,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 11
+        }
+      ]
+    },
+    {
+      "id": "a4cdea4047fdacafbc7579e7632ebcee8765ed41eec6844ab06c9afaf68986a9",
+      "name": "argocd-redis-7894c9779c-l27mf",
+      "namespace": "argocd",
+      "pid": 2443,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 10
+        }
+      ]
+    },
+    {
+      "id": "6ed49c611c1178cc34d8ea6f014a8bf1cc6c3a5c22cf936068d362a36459d2e4",
+      "name": "argocd-application-controller-0",
+      "namespace": "argocd",
+      "pid": 2236,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 9
+        }
+      ]
+    },
+    {
+      "id": "591830f7b7d8c1aecd0f6ee96cee6fc0f7f24b8e2bbb72cc6351c1960b5d51a1",
+      "name": "metrics-server-cdcc87586-tgwtl",
+      "namespace": "kube-system",
+      "pid": 2005,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 8
+        }
+      ]
+    },
+    {
+      "id": "0763ca9d64811b175ffc3b3dd4e1924a3ac6441f6e47fd86740d127dcfe43652",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-nz8cw",
+      "namespace": "observability",
+      "pid": 1924,
+      "hostNetwork": true
+    }
+  ]
+}

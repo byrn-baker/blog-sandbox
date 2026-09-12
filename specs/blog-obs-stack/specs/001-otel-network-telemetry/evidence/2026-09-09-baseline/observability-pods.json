@@ -1,0 +1,337 @@
+[
+  {
+    "name": "victoria-metrics-k8s-stack-grafana-55964d88c-bcn9h",
+    "node": "dcc-k3s-w4",
+    "created": "2026-09-06T17:34:43Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "grafana",
+        "ready": true,
+        "restarts": 3,
+        "started": "2026-09-06T18:31:26Z",
+        "last_exit": {
+          "exitCode": 2,
+          "finishedAt": "2026-09-06T18:31:25Z",
+          "reason": "Error"
+        }
+      },
+      {
+        "name": "grafana-sc-dashboard",
+        "ready": true,
+        "restarts": 0,
+        "started": "2026-09-06T18:23:30Z",
+        "last_exit": {}
+      },
+      {
+        "name": "grafana-sc-datasources",
+        "ready": true,
+        "restarts": 0,
+        "started": "2026-09-06T18:23:12Z",
+        "last_exit": {}
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-kube-state-metrics-545f7c6df4-5xfzq",
+    "node": "dcb-k3s-w2",
+    "created": "2026-09-07T01:12:09Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "kube-state-metrics",
+        "ready": true,
+        "restarts": 394,
+        "started": "2026-09-09T00:12:19Z",
+        "last_exit": {
+          "exitCode": 2,
+          "finishedAt": "2026-09-09T00:12:19Z",
+          "reason": "Error"
+        }
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-2whgg",
+    "node": "dca-k3s-m3",
+    "created": "2026-09-06T17:34:43Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:17:11Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:14:19Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-98mng",
+    "node": "dcc-k3s-w5",
+    "created": "2026-09-06T17:34:44Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:17:41Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:17:22Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-bwtqz",
+    "node": "dcc-k3s-w6",
+    "created": "2026-09-06T21:23:48Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 0,
+        "started": "2026-09-06T21:23:49Z",
+        "last_exit": {}
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-mpvxz",
+    "node": "dcc-k3s-w4",
+    "created": "2026-09-06T17:34:43Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:15:05Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:14:36Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-nz8cw",
+    "node": "dca-k3s-m2",
+    "created": "2026-09-06T17:34:43Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:14:34Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:14:09Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-p79tf",
+    "node": "dcb-k3s-w3",
+    "created": "2026-09-06T17:34:43Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:15:01Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:14:32Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-pzq42",
+    "node": "dcb-k3s-w1",
+    "created": "2026-09-06T17:34:43Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:14:58Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:14:30Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-vxj2t",
+    "node": "dca-k3s-m1",
+    "created": "2026-09-06T17:34:43Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:14:30Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:14:07Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-xk965",
+    "node": "dcb-k3s-w2",
+    "created": "2026-09-06T17:34:43Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "node-exporter",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:14:56Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:14:26Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "victoria-metrics-k8s-stack-victoria-metrics-operator-77cdbcp5cb",
+    "node": "dcb-k3s-w2",
+    "created": "2026-09-07T03:19:53Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "operator",
+        "ready": true,
+        "restarts": 127,
+        "started": "2026-09-09T00:05:46Z",
+        "last_exit": {
+          "exitCode": 1,
+          "finishedAt": "2026-09-09T00:05:46Z",
+          "reason": "Error"
+        }
+      }
+    ]
+  },
+  {
+    "name": "vmagent-victoria-metrics-k8s-stack-5dcd6959d9-zv9x5",
+    "node": "dcc-k3s-w5",
+    "created": "2026-09-06T17:53:38Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "config-reloader",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:17:58Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:17:22Z",
+          "reason": "Unknown"
+        }
+      },
+      {
+        "name": "vmagent",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:17:57Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:17:22Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "vmalert-victoria-metrics-k8s-stack-78689f75d9-zmvrz",
+    "node": "dcb-k3s-w2",
+    "created": "2026-09-07T02:18:31Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "config-reloader",
+        "ready": true,
+        "restarts": 0,
+        "started": "2026-09-07T02:18:35Z",
+        "last_exit": {}
+      },
+      {
+        "name": "vmalert",
+        "ready": true,
+        "restarts": 0,
+        "started": "2026-09-07T02:18:35Z",
+        "last_exit": {}
+      }
+    ]
+  },
+  {
+    "name": "vmalertmanager-victoria-metrics-k8s-stack-0",
+    "node": "dcc-k3s-w4",
+    "created": "2026-09-06T17:58:16Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "alertmanager",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:15:16Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:14:36Z",
+          "reason": "Unknown"
+        }
+      },
+      {
+        "name": "config-reloader",
+        "ready": true,
+        "restarts": 1,
+        "started": "2026-09-06T18:15:17Z",
+        "last_exit": {
+          "exitCode": 255,
+          "finishedAt": "2026-09-06T18:14:36Z",
+          "reason": "Unknown"
+        }
+      }
+    ]
+  },
+  {
+    "name": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-2mq9w",
+    "node": "dcb-k3s-w3",
+    "created": "2026-09-06T23:59:41Z",
+    "phase": "Running",
+    "containers": [
+      {
+        "name": "vmsingle",
+        "ready": true,
+        "restarts": 0,
+        "started": "2026-09-07T00:15:50Z",
+        "last_exit": {}
+      }
+    ]
+  }
+]

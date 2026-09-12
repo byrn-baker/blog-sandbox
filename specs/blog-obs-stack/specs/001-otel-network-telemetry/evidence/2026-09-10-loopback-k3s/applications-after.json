@@ -1,0 +1,20 @@
+[
+  {
+    "namespace": "argocd",
+    "name": "longhorn",
+    "health": "Healthy",
+    "sync": "Unknown"
+  },
+  {
+    "namespace": "argocd",
+    "name": "root-app",
+    "health": "Healthy",
+    "sync": "Unknown"
+  },
+  {
+    "namespace": "argocd",
+    "name": "victoria-metrics-k8s-stack",
+    "health": "Progressing",
+    "sync": "Unknown"
+  }
+]

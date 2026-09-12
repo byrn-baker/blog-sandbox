@@ -18,7 +18,17 @@
 #   ansible-inventory -i inventory/nautobot.yml --graph
 # =============================================================================
 plugin: networktocode.nautobot.gql_inventory
-# api_endpoint and token are read from NAUTOBOT_URL / NAUTOBOT_TOKEN.
+# api_endpoint and token are read from NAUTOBOT_URL / NAUTOBOT_TOKEN via the
+# plugin's own `env:` option resolution (see its DOCUMENTATION block), not
+# Jinja templating. Inventory plugin options are read as literal strings by
+# get_option(); only the groups:/compose: sections below actually go through
+# the templar. A `token: "{{ lookup('env', 'NAUTOBOT_TOKEN') }}"` line here
+# doesn't get evaluated at all, it gets read as that literal 41-character
+# string, spaces and all, which is exactly what Nautobot's "Token string
+# should not contain spaces" error was reporting. Confirmed by patching a
+# temporary debug print into the installed plugin: token came back as the
+# literal, un-rendered template text. Omitting both keys lets the plugin
+# read NAUTOBOT_URL/NAUTOBOT_TOKEN directly instead.
 validate_certs: false
 
 query:

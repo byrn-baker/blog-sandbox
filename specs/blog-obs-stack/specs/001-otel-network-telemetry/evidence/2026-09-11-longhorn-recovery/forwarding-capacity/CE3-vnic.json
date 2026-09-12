@@ -1,0 +1,10 @@
+{
+  "name": "CE3",
+  "id": "d44de994-46da-488b-be78-1afac0d04078",
+  "ip": "192.168.3.62",
+  "at": "2026-09-11T16:12:35.909243+00:00",
+  "commands": {
+    "show platform software vnic-if interface-mapping": "-------------------------------------------------------------\n Interface Name        Driver Name         Mac Addr\n-------------------------------------------------------------\n GigabitEthernet8       net_virtio         5254.0070.ab64 \n GigabitEthernet7       net_virtio         5254.0061.7abc \n GigabitEthernet6       net_virtio         5254.0088.2fd7 \n GigabitEthernet5       net_virtio         5254.002c.3eda \n GigabitEthernet4       net_virtio         5254.001e.a0a5 \n GigabitEthernet3       net_virtio         5254.00d4.e9f2 \n GigabitEthernet2       net_virtio         5254.00c4.3a39 \n GigabitEthernet1       net_virtio         5254.00c8.49a9 \n-------------------------------------------------------------\n"
+  },
+  "ok": true
+}

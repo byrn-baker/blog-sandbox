@@ -1,0 +1,33 @@
+{
+  "118": {
+    "hostname": "eve-ng",
+    "files": {
+      "/etc/network/if-down.d/bridge": [
+        "      if [ \"$IF_MTU\" ]",
+        "        ip link set dev $port mtu \"$IF_MTU\""
+      ],
+      "/etc/network/if-pre-up.d/bridge": [
+        "      if [ \"$IF_MTU\" ]",
+        "        ip link set dev $port mtu \"$IF_MTU\""
+      ],
+      "/etc/network/if-post-down.d/bridge": [
+        "      if [ \"$IF_MTU\" ]",
+        "        ip link set dev $port mtu \"$IF_MTU\""
+      ]
+    }
+  },
+  "5001": {
+    "hostname": "cml-controller",
+    "files": {
+      "/usr/local/bin/virl2-lowlevel-driver.sh": [
+        "    local controller mtu",
+        "    mtu=$(<\"/sys/class/net/$VIRL_COMPUTE_IFACE/mtu\")",
+        "    echo \"cluster interface $VIRL_COMPUTE_IFACE MTU $mtu\"",
+        "    if ! ping -c 3 \"$controller\" -s \"$((mtu - 50))\"; then",
+        "        echo \"controller is not reachable at desired MTU\"",
+        "                # the image definition need not be present in the domain, try the description",
+        "                node_def=$(sed -n -e '/<description>/{s|.*[(]||;s|[)].*||;p;q}' <\"$domain_xml\")"
+      ]
+    }
+  }
+}

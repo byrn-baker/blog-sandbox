@@ -1,0 +1,460 @@
+{
+  "at": "2026-09-10T04:44:00.887251+00:00",
+  "rows": [
+    {
+      "namespace": "argocd",
+      "name": "argocd-application-controller-0",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-applicationset-controller-64b8d6b789-pk7th",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-dex-server-7966c79795-2mvzc",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-notifications-controller-75ff9596f5-zmcgs",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-redis-7894c9779c-l27mf",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-repo-server-b9c6c66f-znwvx",
+      "phase": "Running",
+      "ready": false,
+      "deleting": false
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-server-5998cbb96f-2jclk",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "kube-system",
+      "name": "coredns-7b98449c4-58lwd",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "kube-system",
+      "name": "local-path-provisioner-6795b5f9d8-tv4bc",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "kube-system",
+      "name": "metrics-server-cdcc87586-tgwtl",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-attacher-6d698df559-68fwm",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-attacher-6d698df559-f5dpv",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-attacher-6d698df559-mvcdt",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-provisioner-cd78b7b67-5rkmd",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-provisioner-cd78b7b67-wtmdl",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-provisioner-cd78b7b67-xx8hx",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-resizer-cb7655d45-76cvr",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-resizer-cb7655d45-lhbpd",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-resizer-cb7655d45-x4xsh",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-snapshotter-799f9f96cf-7x6wn",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-snapshotter-799f9f96cf-cg25z",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-snapshotter-799f9f96cf-hkt2w",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-5fptx",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-lllzp",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-pm269",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-q2psv",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-snh5l",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-vrfqh",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-0dde8a944b2a020b75470acc79d6a423",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-17459023f805b82dc2325032584721c3",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-3a90a13802fb6ba486824445adfbf9a4",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-49d022f8cd160387935de1fe6e2bcb9f",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-8c8a30b7f0d554c75e8eefbb1733839d",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-b7c65f4637ba533732b62cb65894f354",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-74ffw",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-drg4t",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-pk2s4",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-s58sd",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-vsjjg",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-zndnr",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-driver-deployer-56c87bf855-ksqs8",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-2k24v",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-8x78h",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-km8j9",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-ld4pv",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-lvxf8",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-pfc2h",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-ui-787c958bcf-h488l",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-ui-787c958bcf-qhfkf",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-grafana-55964d88c-br4fb",
+      "phase": "Pending",
+      "ready": false,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-kube-state-metrics-545f7c6df4-hx5mh",
+      "phase": "Running",
+      "ready": false,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-2whgg",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-98mng",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-bwtqz",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-mpvxz",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-nz8cw",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-p79tf",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-pzq42",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-vxj2t",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-xk965",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-victoria-metrics-operator-77cdb6wxcr",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "vmagent-victoria-metrics-k8s-stack-5dcd6959d9-tsrzq",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "vmalert-victoria-metrics-k8s-stack-78689f75d9-ws9s6",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "vmalertmanager-victoria-metrics-k8s-stack-0",
+      "phase": "Running",
+      "ready": true,
+      "deleting": false
+    },
+    {
+      "namespace": "observability",
+      "name": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-ll8zr",
+      "phase": "Pending",
+      "ready": false,
+      "deleting": false
+    }
+  ]
+}

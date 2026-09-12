@@ -1,0 +1,1 @@
+{"device": "SPE3", "command": "ping 10.0.0.16 size 9216 df-bit repeat 5 timeout 2", "output": "Type escape sequence to abort.\nSending 5, 9216-byte ICMP Echos to 10.0.0.16, timeout is 2 seconds:\nPacket sent with the DF bit set\n!!!!!\nSuccess rate is 100 percent (5/5), round-trip min/avg/max = 19/26/44 ms", "read_ok": true}

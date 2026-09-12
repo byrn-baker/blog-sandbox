@@ -1,0 +1,161 @@
+[
+  {
+    "name": "dca-k3s-m1",
+    "unschedulable": false,
+    "taints": [
+      {
+        "effect": "NoSchedule",
+        "key": "node-role.kubernetes.io/control-plane",
+        "value": "true"
+      }
+    ],
+    "ready": [
+      {
+        "lastHeartbeatTime": "2026-09-09T00:10:26Z",
+        "lastTransitionTime": "2026-09-06T18:02:56Z",
+        "message": "kubelet is posting ready status",
+        "reason": "KubeletReady",
+        "status": "True",
+        "type": "Ready"
+      }
+    ]
+  },
+  {
+    "name": "dca-k3s-m2",
+    "unschedulable": false,
+    "taints": [
+      {
+        "effect": "NoSchedule",
+        "key": "node-role.kubernetes.io/control-plane",
+        "value": "true"
+      }
+    ],
+    "ready": [
+      {
+        "lastHeartbeatTime": "2026-09-09T00:11:18Z",
+        "lastTransitionTime": "2026-09-05T16:55:58Z",
+        "message": "kubelet is posting ready status",
+        "reason": "KubeletReady",
+        "status": "True",
+        "type": "Ready"
+      }
+    ]
+  },
+  {
+    "name": "dca-k3s-m3",
+    "unschedulable": false,
+    "taints": [
+      {
+        "effect": "NoSchedule",
+        "key": "node-role.kubernetes.io/control-plane",
+        "value": "true"
+      }
+    ],
+    "ready": [
+      {
+        "lastHeartbeatTime": "2026-09-09T00:12:42Z",
+        "lastTransitionTime": "2026-09-06T01:18:47Z",
+        "message": "kubelet is posting ready status",
+        "reason": "KubeletReady",
+        "status": "True",
+        "type": "Ready"
+      }
+    ]
+  },
+  {
+    "name": "dcb-k3s-w1",
+    "unschedulable": false,
+    "taints": [],
+    "ready": [
+      {
+        "lastHeartbeatTime": "2026-09-09T00:12:45Z",
+        "lastTransitionTime": "2026-09-06T18:15:01Z",
+        "message": "kubelet is posting ready status",
+        "reason": "KubeletReady",
+        "status": "True",
+        "type": "Ready"
+      }
+    ]
+  },
+  {
+    "name": "dcb-k3s-w2",
+    "unschedulable": false,
+    "taints": [],
+    "ready": [
+      {
+        "lastHeartbeatTime": "2026-09-09T00:11:52Z",
+        "lastTransitionTime": "2026-09-06T18:14:55Z",
+        "message": "kubelet is posting ready status",
+        "reason": "KubeletReady",
+        "status": "True",
+        "type": "Ready"
+      }
+    ]
+  },
+  {
+    "name": "dcb-k3s-w3",
+    "unschedulable": false,
+    "taints": [],
+    "ready": [
+      {
+        "lastHeartbeatTime": "2026-09-09T00:10:03Z",
+        "lastTransitionTime": "2026-09-06T18:15:06Z",
+        "message": "kubelet is posting ready status",
+        "reason": "KubeletReady",
+        "status": "True",
+        "type": "Ready"
+      }
+    ]
+  },
+  {
+    "name": "dcc-k3s-w4",
+    "unschedulable": false,
+    "taints": [],
+    "ready": [
+      {
+        "lastHeartbeatTime": "2026-09-09T00:10:21Z",
+        "lastTransitionTime": "2026-09-06T18:15:08Z",
+        "message": "kubelet is posting ready status",
+        "reason": "KubeletReady",
+        "status": "True",
+        "type": "Ready"
+      }
+    ]
+  },
+  {
+    "name": "dcc-k3s-w5",
+    "unschedulable": false,
+    "taints": [],
+    "ready": [
+      {
+        "lastHeartbeatTime": "2026-09-09T00:13:12Z",
+        "lastTransitionTime": "2026-09-06T18:17:44Z",
+        "message": "kubelet is posting ready status",
+        "reason": "KubeletReady",
+        "status": "True",
+        "type": "Ready"
+      }
+    ]
+  },
+  {
+    "name": "dcc-k3s-w6",
+    "unschedulable": true,
+    "taints": [
+      {
+        "effect": "NoSchedule",
+        "key": "node.kubernetes.io/unschedulable",
+        "timeAdded": "2026-09-06T21:45:17Z"
+      }
+    ],
+    "ready": [
+      {
+        "lastHeartbeatTime": "2026-09-09T00:13:33Z",
+        "lastTransitionTime": "2026-09-06T18:14:43Z",
+        "message": "kubelet is posting ready status",
+        "reason": "KubeletReady",
+        "status": "True",
+        "type": "Ready"
+      }
+    ]
+  }
+]

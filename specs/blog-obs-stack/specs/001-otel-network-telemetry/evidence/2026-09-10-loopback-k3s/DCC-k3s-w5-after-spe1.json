@@ -1,0 +1,59 @@
+{
+  "hostname": "DCC-k3s-w5",
+  "at": "2026-09-10T04:32:36.527479+00:00",
+  "unit": "k3s-agent",
+  "service_read_ok": true,
+  "service": "NRestarts=0\nExecMainStartTimestamp=Sun 2026-09-06 18:14:20 UTC\nActiveState=active\nSubState=running\n",
+  "journal_read_ok": true,
+  "window_minutes": 30,
+  "counts": {
+    "lease_lost": 0,
+    "renew_failure": 0,
+    "exits": 0,
+    "slow_apply": 0,
+    "slow_fsync": 0,
+    "oom": 0,
+    "deadline": 144
+  },
+  "probes": [
+    {
+      "path": "fabric",
+      "status": 401,
+      "elapsed_ms": 1418.89,
+      "error": null
+    },
+    {
+      "path": "fabric",
+      "status": 401,
+      "elapsed_ms": 1295.94,
+      "error": null
+    },
+    {
+      "path": "fabric",
+      "status": 401,
+      "elapsed_ms": 1469.16,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 3.21,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 2.64,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 2.6,
+      "error": null
+    }
+  ],
+  "identity_matches": true,
+  "name": "DCC-k3s-w5",
+  "management": "192.168.3.70"
+}

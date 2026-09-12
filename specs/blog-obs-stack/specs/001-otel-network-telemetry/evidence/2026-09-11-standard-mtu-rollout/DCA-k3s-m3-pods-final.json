@@ -1,0 +1,82 @@
+{
+  "hostname": "DCA-k3s-m3",
+  "pods": [
+    {
+      "id": "890ce1257db5dfa398500fcde47e713522faa81c16be9d0ece25c3bd3b8dec9b",
+      "name": "argocd-repo-server-b9c6c66f-znwvx",
+      "namespace": "argocd",
+      "pid": 2194,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 12
+        }
+      ]
+    },
+    {
+      "id": "0ed1a35e3f333892b53afe64f2ca8bb6efc3cf502f21fd362c3e8d504f38da62",
+      "name": "argocd-server-5998cbb96f-2jclk",
+      "namespace": "argocd",
+      "pid": 2168,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 11
+        }
+      ]
+    },
+    {
+      "id": "53152fd52bac47595ac97e9990cb9ce1554d4470ad5cd5113185192bf6f8160f",
+      "name": "argocd-dex-server-7966c79795-2mvzc",
+      "namespace": "argocd",
+      "pid": 1791,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 10
+        }
+      ]
+    },
+    {
+      "id": "cdd6440ec5acf2544fc5a8b5571ca36d0a4f43216a49e5e60332dd5b5ce778df",
+      "name": "coredns-7b98449c4-58lwd",
+      "namespace": "kube-system",
+      "pid": 1787,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 9
+        }
+      ]
+    },
+    {
+      "id": "25545f06ee094430bd6473228d652504f365f4bfadf1f669aa605b437f312892",
+      "name": "argocd-applicationset-controller-64b8d6b789-pk7th",
+      "namespace": "argocd",
+      "pid": 1784,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 8950,
+          "link_index": 8
+        }
+      ]
+    },
+    {
+      "id": "e72bad66113483ab13f7c94559bafa9b647d0557d3e190a5afe0423e195e50b4",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-2whgg",
+      "namespace": "observability",
+      "pid": 1795,
+      "hostNetwork": true
+    }
+  ]
+}

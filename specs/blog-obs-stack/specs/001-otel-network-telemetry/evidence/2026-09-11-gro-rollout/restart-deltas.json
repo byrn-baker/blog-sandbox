@@ -1,0 +1,30 @@
+[
+  {
+    "namespace": "longhorn-system",
+    "pod": "csi-attacher-6d698df559-6knwx",
+    "before": 4,
+    "after": 5,
+    "increase": 1
+  },
+  {
+    "namespace": "longhorn-system",
+    "pod": "csi-provisioner-cd78b7b67-khlh6",
+    "before": 4,
+    "after": 5,
+    "increase": 1
+  },
+  {
+    "namespace": "longhorn-system",
+    "pod": "csi-resizer-cb7655d45-znktt",
+    "before": 4,
+    "after": 5,
+    "increase": 1
+  },
+  {
+    "namespace": "longhorn-system",
+    "pod": "csi-snapshotter-799f9f96cf-c479d",
+    "before": 0,
+    "after": 1,
+    "increase": 1
+  }
+]

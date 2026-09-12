@@ -10,3 +10,4 @@ __pycache__/
 
 # Fetched kubeconfig from pb.site.yml
 ansible/kubeconfig
+AGENTS.md

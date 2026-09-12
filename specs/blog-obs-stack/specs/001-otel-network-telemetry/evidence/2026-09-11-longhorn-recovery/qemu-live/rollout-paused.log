@@ -1,0 +1,17 @@
+{"device": "SP3", "isis_up": 4}
+{"device": "RR2", "isis_up": 1}
+{"device": "CE1", "bgp_up": 4, "bgp_total": 4}
+
+{"wave": 1, "verified": ["SP3", "RR2", "CE1"], "total_updated": 4}
+{"starting_wave": 2, "devices": ["SP1", "SPE1", "CE2"]}
+{"device": "SP1", "isis_up": 5}
+{"device": "SPE1", "isis_up": 2}
+{"device": "CE2", "bgp_up": 4, "bgp_total": 4}
+
+{"wave": 2, "verified": ["SP1", "SPE1", "CE2"], "total_updated": 7}
+{"starting_wave": 3, "devices": ["SP2", "SPE2", "CE3"]}
+Traceback (most recent call last):
+  File "/home/ubuntu/cml-qemu-live/finish-rollout.py", line 26, in <module>
+    assert p.returncode==0,'Wave '+str(wave)+' failed; inspect log'
+           ^^^^^^^^^^^^^^^
+AssertionError: Wave 3 failed; inspect log

@@ -1,0 +1,226 @@
+[
+  {
+    "name": "SPE3",
+    "ok": true,
+    "isis_up": 1,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "SPE2",
+    "ok": true,
+    "isis_up": 2,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "SPE1",
+    "ok": true,
+    "isis_up": 2,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "SP4",
+    "ok": true,
+    "isis_up": 4,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "SP3",
+    "ok": true,
+    "isis_up": 3,
+    "isis_init": 1,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "SP2",
+    "ok": true,
+    "isis_up": 5,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "SP1",
+    "ok": true,
+    "isis_up": 5,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "RR2",
+    "ok": true,
+    "isis_up": 1,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "RR1",
+    "ok": true,
+    "isis_up": 1,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "DCC-Spine02",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 4,
+    "evpn": 7
+  },
+  {
+    "name": "DCC-Spine01",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 4,
+    "evpn": 7
+  },
+  {
+    "name": "DCC-Leaf03",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 2,
+    "evpn": 2
+  },
+  {
+    "name": "DCC-Leaf02",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 2,
+    "evpn": 2
+  },
+  {
+    "name": "DCC-Leaf01",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 2,
+    "evpn": 2
+  },
+  {
+    "name": "DCB-Spine02",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 4,
+    "evpn": 7
+  },
+  {
+    "name": "DCB-Spine01",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 4,
+    "evpn": 7
+  },
+  {
+    "name": "DCB-Leaf03",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 2,
+    "evpn": 2
+  },
+  {
+    "name": "DCB-Leaf02",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 2,
+    "evpn": 2
+  },
+  {
+    "name": "DCB-Leaf01",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 2,
+    "evpn": 2
+  },
+  {
+    "name": "DCA-Spine02",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 4,
+    "evpn": 7
+  },
+  {
+    "name": "DCA-Spine01",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 4,
+    "evpn": 7
+  },
+  {
+    "name": "DCA-Leaf03",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 2,
+    "evpn": 2
+  },
+  {
+    "name": "DCA-Leaf02",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 2,
+    "evpn": 2
+  },
+  {
+    "name": "DCA-Leaf01",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 2,
+    "evpn": 2
+  },
+  {
+    "name": "CE3",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "CE2",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "CE1",
+    "ok": true,
+    "isis_up": 0,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  },
+  {
+    "name": "BORDER1",
+    "ok": true,
+    "isis_up": 2,
+    "isis_init": 0,
+    "underlay": 0,
+    "evpn": 0
+  }
+]

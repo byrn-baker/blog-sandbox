@@ -1,0 +1,649 @@
+[
+  {
+    "device": "BORDER1",
+    "ok": true,
+    "isis_up": 2,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "CE1",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "CE2",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "CE3",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "DCA-Leaf01",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9000",
+      "9164",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCA-Leaf02",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9000",
+      "9164",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCA-Leaf03",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9000",
+      "9164",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCA-Spine01",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 7,
+        "total": 7,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCA-Spine02",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 7,
+        "total": 7,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCB-Leaf01",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9000",
+      "9164",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCB-Leaf02",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9000",
+      "9164",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCB-Leaf03",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9000",
+      "9164",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCB-Spine01",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 7,
+        "total": 7,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCB-Spine02",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 7,
+        "total": 7,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCC-Leaf01",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9000",
+      "9164",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCC-Leaf02",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9000",
+      "9164",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCC-Leaf03",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 2,
+        "total": 2,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9000",
+      "9164",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCC-Spine01",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 7,
+        "total": 7,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9214"
+    ]
+  },
+  {
+    "device": "DCC-Spine02",
+    "ok": true,
+    "isis_up": 0,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      },
+      "show bgp evpn summary": {
+        "up": 7,
+        "total": 7,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "65535",
+      "9214"
+    ]
+  },
+  {
+    "device": "RR1",
+    "ok": true,
+    "isis_up": 1,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "RR2",
+    "ok": true,
+    "isis_up": 1,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 4,
+        "total": 4,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "SP1",
+    "ok": true,
+    "isis_up": 5,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "SP2",
+    "ok": true,
+    "isis_up": 5,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "SP3",
+    "ok": true,
+    "isis_up": 4,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "SP4",
+    "ok": true,
+    "isis_up": 4,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "SPE1",
+    "ok": true,
+    "isis_up": 2,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 3,
+        "total": 3,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "SPE2",
+    "ok": true,
+    "isis_up": 2,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 3,
+        "total": 3,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  },
+  {
+    "device": "SPE3",
+    "ok": true,
+    "isis_up": 2,
+    "bgp": {
+      "show ip bgp summary": {
+        "up": 0,
+        "total": 0,
+        "other": []
+      },
+      "show ip bgp vpnv4 all summary": {
+        "up": 3,
+        "total": 3,
+        "other": []
+      }
+    },
+    "mtus": [
+      "1500",
+      "1514",
+      "9216"
+    ],
+    "isis_other": []
+  }
+]

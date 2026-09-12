@@ -1,0 +1,16 @@
+[
+  {
+    "device": "DCA-Leaf01",
+    "interface": "vmnicet5",
+    "before": "on",
+    "after": "off",
+    "verified": true
+  },
+  {
+    "device": "DCB-Leaf01",
+    "interface": "vmnicet4",
+    "before": "on",
+    "after": "off",
+    "verified": true
+  }
+]

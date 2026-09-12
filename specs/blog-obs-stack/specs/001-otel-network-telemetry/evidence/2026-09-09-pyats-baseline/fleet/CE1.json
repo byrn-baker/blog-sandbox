@@ -1,0 +1,8 @@
+{
+  "name": "CE1",
+  "started": "2026-09-09T03:06:06.011389+00:00",
+  "os": "iosxe",
+  "commands": [],
+  "error": "ConnectionError",
+  "finished": "2026-09-09T03:06:40.195213+00:00"
+}

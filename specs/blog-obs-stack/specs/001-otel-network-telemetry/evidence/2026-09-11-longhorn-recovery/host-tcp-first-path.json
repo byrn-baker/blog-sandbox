@@ -1,0 +1,13 @@
+{
+  "source": "DCB-k3s-w1",
+  "destination": "DCA-k3s-m1",
+  "bytes_each_direction": 1048576,
+  "seconds": 48.388,
+  "combined_mbps": 0.347,
+  "mss": 8948,
+  "pmtu": 9000,
+  "retransmissions": 97,
+  "bytes_retrans": 860668,
+  "ok": true,
+  "context": "VictoriaMetrics cross-site replica rebuild active"
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "DCA-Leaf01",
+    "device_id": "c1a57aef-c57c-4dc6-9f80-1a8200945895",
+    "commands": "event-handler lab-gro-off-vmnicet1\n   action bash sudo -n /sbin/ethtool -K vmnicet1 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet2\n   action bash sudo -n /sbin/ethtool -K vmnicet2 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet3\n   action bash sudo -n /sbin/ethtool -K vmnicet3 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet4\n   action bash sudo -n /sbin/ethtool -K vmnicet4 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet5\n   action bash sudo -n /sbin/ethtool -K vmnicet5 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet6\n   action bash sudo -n /sbin/ethtool -K vmnicet6 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet7\n   action bash sudo -n /sbin/ethtool -K vmnicet7 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet8\n   action bash sudo -n /sbin/ethtool -K vmnicet8 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet9\n   action bash sudo -n /sbin/ethtool -K vmnicet9 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_at": "2026-09-11 21:22:33.215196+00:00",
+    "plan_id": "634e1f56-69ca-4ecc-96af-ea7b69a26323"
+  },
+  {
+    "name": "DCA-Leaf02",
+    "device_id": "bb0e5e60-57cd-4385-83fd-5f63f0bebb88",
+    "commands": "event-handler lab-gro-off-vmnicet1\n   action bash sudo -n /sbin/ethtool -K vmnicet1 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet2\n   action bash sudo -n /sbin/ethtool -K vmnicet2 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet3\n   action bash sudo -n /sbin/ethtool -K vmnicet3 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet4\n   action bash sudo -n /sbin/ethtool -K vmnicet4 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet5\n   action bash sudo -n /sbin/ethtool -K vmnicet5 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet6\n   action bash sudo -n /sbin/ethtool -K vmnicet6 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet7\n   action bash sudo -n /sbin/ethtool -K vmnicet7 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet8\n   action bash sudo -n /sbin/ethtool -K vmnicet8 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet9\n   action bash sudo -n /sbin/ethtool -K vmnicet9 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_at": "2026-09-11 21:22:33.215196+00:00",
+    "plan_id": "cb49b1e0-81d9-46f8-abb9-86d9801da3f6"
+  },
+  {
+    "name": "DCA-Leaf03",
+    "device_id": "1758abf8-5347-4bc8-b8a0-27d5a0c8f969",
+    "commands": "event-handler lab-gro-off-vmnicet1\n   action bash sudo -n /sbin/ethtool -K vmnicet1 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet2\n   action bash sudo -n /sbin/ethtool -K vmnicet2 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet3\n   action bash sudo -n /sbin/ethtool -K vmnicet3 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet4\n   action bash sudo -n /sbin/ethtool -K vmnicet4 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet5\n   action bash sudo -n /sbin/ethtool -K vmnicet5 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet6\n   action bash sudo -n /sbin/ethtool -K vmnicet6 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet7\n   action bash sudo -n /sbin/ethtool -K vmnicet7 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet8\n   action bash sudo -n /sbin/ethtool -K vmnicet8 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet9\n   action bash sudo -n /sbin/ethtool -K vmnicet9 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_at": "2026-09-11 21:22:33.215196+00:00",
+    "plan_id": "25bed082-c274-4a88-a8ea-c0b7a83adb99"
+  },
+  {
+    "name": "DCB-Leaf01",
+    "device_id": "5c75f595-9ae5-4998-aafd-8fd3d48343ba",
+    "commands": "event-handler lab-gro-off-vmnicet1\n   action bash sudo -n /sbin/ethtool -K vmnicet1 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet2\n   action bash sudo -n /sbin/ethtool -K vmnicet2 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet3\n   action bash sudo -n /sbin/ethtool -K vmnicet3 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet4\n   action bash sudo -n /sbin/ethtool -K vmnicet4 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet5\n   action bash sudo -n /sbin/ethtool -K vmnicet5 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet6\n   action bash sudo -n /sbin/ethtool -K vmnicet6 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet7\n   action bash sudo -n /sbin/ethtool -K vmnicet7 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet8\n   action bash sudo -n /sbin/ethtool -K vmnicet8 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet9\n   action bash sudo -n /sbin/ethtool -K vmnicet9 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_at": "2026-09-11 21:22:33.215196+00:00",
+    "plan_id": "de4dd769-c471-467a-a903-e4cf86e13002"
+  },
+  {
+    "name": "DCB-Leaf02",
+    "device_id": "ebefaa1f-c4a3-4fbc-969b-68b0feeefb23",
+    "commands": "event-handler lab-gro-off-vmnicet1\n   action bash sudo -n /sbin/ethtool -K vmnicet1 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet2\n   action bash sudo -n /sbin/ethtool -K vmnicet2 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet3\n   action bash sudo -n /sbin/ethtool -K vmnicet3 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet4\n   action bash sudo -n /sbin/ethtool -K vmnicet4 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet5\n   action bash sudo -n /sbin/ethtool -K vmnicet5 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet6\n   action bash sudo -n /sbin/ethtool -K vmnicet6 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet7\n   action bash sudo -n /sbin/ethtool -K vmnicet7 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet8\n   action bash sudo -n /sbin/ethtool -K vmnicet8 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet9\n   action bash sudo -n /sbin/ethtool -K vmnicet9 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_at": "2026-09-11 21:22:33.215196+00:00",
+    "plan_id": "de573cb2-1a45-4870-8bf5-adb6f4ceb45f"
+  },
+  {
+    "name": "DCB-Leaf03",
+    "device_id": "153bee91-242d-48b3-83f0-21b61592cec4",
+    "commands": "event-handler lab-gro-off-vmnicet1\n   action bash sudo -n /sbin/ethtool -K vmnicet1 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet2\n   action bash sudo -n /sbin/ethtool -K vmnicet2 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet3\n   action bash sudo -n /sbin/ethtool -K vmnicet3 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet4\n   action bash sudo -n /sbin/ethtool -K vmnicet4 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet5\n   action bash sudo -n /sbin/ethtool -K vmnicet5 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet6\n   action bash sudo -n /sbin/ethtool -K vmnicet6 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet7\n   action bash sudo -n /sbin/ethtool -K vmnicet7 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet8\n   action bash sudo -n /sbin/ethtool -K vmnicet8 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet9\n   action bash sudo -n /sbin/ethtool -K vmnicet9 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_at": "2026-09-11 21:22:33.215196+00:00",
+    "plan_id": "33ea6956-db64-4268-89e3-d8d59e5082d7"
+  },
+  {
+    "name": "DCC-Leaf01",
+    "device_id": "1d843b83-265b-4004-945e-c72c67e2059d",
+    "commands": "event-handler lab-gro-off-vmnicet1\n   action bash sudo -n /sbin/ethtool -K vmnicet1 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet2\n   action bash sudo -n /sbin/ethtool -K vmnicet2 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet3\n   action bash sudo -n /sbin/ethtool -K vmnicet3 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet4\n   action bash sudo -n /sbin/ethtool -K vmnicet4 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet5\n   action bash sudo -n /sbin/ethtool -K vmnicet5 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet6\n   action bash sudo -n /sbin/ethtool -K vmnicet6 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet7\n   action bash sudo -n /sbin/ethtool -K vmnicet7 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet8\n   action bash sudo -n /sbin/ethtool -K vmnicet8 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet9\n   action bash sudo -n /sbin/ethtool -K vmnicet9 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_at": "2026-09-11 21:22:33.215196+00:00",
+    "plan_id": "0c0198ae-16ed-4f41-8b26-a83387bac6c3"
+  },
+  {
+    "name": "DCC-Leaf02",
+    "device_id": "765a141a-457d-40b7-abb4-f7a500cc8908",
+    "commands": "event-handler lab-gro-off-vmnicet1\n   action bash sudo -n /sbin/ethtool -K vmnicet1 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet2\n   action bash sudo -n /sbin/ethtool -K vmnicet2 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet3\n   action bash sudo -n /sbin/ethtool -K vmnicet3 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet4\n   action bash sudo -n /sbin/ethtool -K vmnicet4 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet5\n   action bash sudo -n /sbin/ethtool -K vmnicet5 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet6\n   action bash sudo -n /sbin/ethtool -K vmnicet6 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet7\n   action bash sudo -n /sbin/ethtool -K vmnicet7 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet8\n   action bash sudo -n /sbin/ethtool -K vmnicet8 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet9\n   action bash sudo -n /sbin/ethtool -K vmnicet9 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_at": "2026-09-11 21:22:33.215196+00:00",
+    "plan_id": "d9740e50-0d4a-4862-aae7-c28b032885f3"
+  },
+  {
+    "name": "DCC-Leaf03",
+    "device_id": "001e233d-b849-4da5-a7fd-c32547af4775",
+    "commands": "event-handler lab-gro-off-vmnicet1\n   action bash sudo -n /sbin/ethtool -K vmnicet1 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet2\n   action bash sudo -n /sbin/ethtool -K vmnicet2 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet3\n   action bash sudo -n /sbin/ethtool -K vmnicet3 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet4\n   action bash sudo -n /sbin/ethtool -K vmnicet4 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet5\n   action bash sudo -n /sbin/ethtool -K vmnicet5 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet6\n   action bash sudo -n /sbin/ethtool -K vmnicet6 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet7\n   action bash sudo -n /sbin/ethtool -K vmnicet7 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet8\n   action bash sudo -n /sbin/ethtool -K vmnicet8 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet9\n   action bash sudo -n /sbin/ethtool -K vmnicet9 gro off\n   trigger on-boot\n   delay 60\n!\nevent-handler lab-gro-off-vmnicet10\n   action bash sudo -n /sbin/ethtool -K vmnicet10 gro off\n   trigger on-boot\n   delay 60\n!\n",
+    "intended_at": "2026-09-11 21:22:16.679643+00:00",
+    "backup_at": "2026-09-11 21:22:33.215196+00:00",
+    "plan_id": "24f84ced-3ef7-44f2-a0d4-4c3130962fb5"
+  }
+]

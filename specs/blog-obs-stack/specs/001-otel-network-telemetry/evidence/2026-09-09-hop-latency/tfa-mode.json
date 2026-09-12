@@ -1,0 +1,13 @@
+[
+  {
+    "device": "DCC-Spine01",
+    "ip": "192.168.3.40",
+    "readback_ok": true,
+    "commands": {
+      "show platform tfa ?": "  counters        Counters for TFA\n  kernel          Kernel counters for TFA\n  lookups         Lookups for TFA\n  rates           Show rates of token buckets for TFA\n  traffic-policy  Traffic policy information\n\nDCC-Spine01#show platform tfa \n% Incomplete command",
+      "show platform tfa interface mode": "% Unavailable command (not supported on this hardware platform)",
+      "bash sudo -n readlink /proc/2069/exe": "/usr/bin/python3.9",
+      "bash top -b -d 1 -n 3 -p 2069 | head -45": "top - 20:35:49 up 3 days,  4:11,  1 user,  load average: 1.47, 1.27, 1.16\nTasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie\n%Cpu(s): 25.8 us, 12.9 sy,  0.0 ni, 45.2 id,  0.0 wa,  9.7 hi,  6.5 si,  0.0 st\nMiB Mem :   3877.2 total,   1672.7 free,   1115.5 used,   1414.5 buff/cache\nMiB Swap:      0.0 total,      0.0 free,      0.0 used.   2761.7 avail Mem \n\n  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND\n 2069 root       0 -20  440304 192520 167440 S  53.3   4.8   2093:27 Etba\n\ntop - 20:35:50 up 3 days,  4:11,  1 user,  load average: 1.47, 1.27, 1.16\nTasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie\n%Cpu(s): 22.4 us, 11.9 sy,  0.0 ni, 49.8 id,  0.0 wa, 10.4 hi,  5.5 si,  0.0 st\nMiB Mem :   3877.2 total,   1672.7 free,   1115.5 used,   1414.5 buff/cache\nMiB Swap:      0.0 total,      0.0 free,      0.0 used.   2761.7 avail Mem \n\n  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND\n 2069 root       0 -20  440304 192520 167440 R  46.5   4.8   2093:28 Etba\n\ntop - 20:35:51 up 3 days,  4:11,  1 user,  load average: 1.52, 1.29, 1.17\nTasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie\n%Cpu(s): 23.4 us,  9.0 sy,  0.0 ni, 52.7 id,  0.0 wa, 10.0 hi,  5.0 si,  0.0 st\nMiB Mem :   3877.2 total,   1672.7 free,   1115.5 used,   1414.5 buff/cache\nMiB Swap:      0.0 total,      0.0 free,      0.0 used.   2761.7 avail Mem \n\n  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND\n 2069 root       0 -20  440304 192520 167440 R  49.0   4.8   2093:28 Etba"
+    }
+  }
+]

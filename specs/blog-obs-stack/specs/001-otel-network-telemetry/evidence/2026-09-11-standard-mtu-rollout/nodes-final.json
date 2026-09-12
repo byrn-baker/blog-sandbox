@@ -1,0 +1,137 @@
+[
+  {
+    "name": "dca-k3s-m1",
+    "ready": true,
+    "addresses": [
+      {
+        "address": "192.168.100.10",
+        "type": "InternalIP"
+      },
+      {
+        "address": "DCA-k3s-m1",
+        "type": "Hostname"
+      }
+    ],
+    "kubelet_version": "v1.30.5+k3s1"
+  },
+  {
+    "name": "dca-k3s-m2",
+    "ready": true,
+    "addresses": [
+      {
+        "address": "192.168.100.11",
+        "type": "InternalIP"
+      },
+      {
+        "address": "DCA-k3s-m2",
+        "type": "Hostname"
+      }
+    ],
+    "kubelet_version": "v1.30.5+k3s1"
+  },
+  {
+    "name": "dca-k3s-m3",
+    "ready": true,
+    "addresses": [
+      {
+        "address": "192.168.100.12",
+        "type": "InternalIP"
+      },
+      {
+        "address": "DCA-k3s-m3",
+        "type": "Hostname"
+      }
+    ],
+    "kubelet_version": "v1.30.5+k3s1"
+  },
+  {
+    "name": "dcb-k3s-w1",
+    "ready": true,
+    "addresses": [
+      {
+        "address": "192.168.100.20",
+        "type": "InternalIP"
+      },
+      {
+        "address": "DCB-k3s-w1",
+        "type": "Hostname"
+      }
+    ],
+    "kubelet_version": "v1.30.5+k3s1"
+  },
+  {
+    "name": "dcb-k3s-w2",
+    "ready": true,
+    "addresses": [
+      {
+        "address": "192.168.100.21",
+        "type": "InternalIP"
+      },
+      {
+        "address": "DCB-k3s-w2",
+        "type": "Hostname"
+      }
+    ],
+    "kubelet_version": "v1.30.5+k3s1"
+  },
+  {
+    "name": "dcb-k3s-w3",
+    "ready": true,
+    "addresses": [
+      {
+        "address": "192.168.100.22",
+        "type": "InternalIP"
+      },
+      {
+        "address": "DCB-k3s-w3",
+        "type": "Hostname"
+      }
+    ],
+    "kubelet_version": "v1.30.5+k3s1"
+  },
+  {
+    "name": "dcc-k3s-w4",
+    "ready": true,
+    "addresses": [
+      {
+        "address": "192.168.100.30",
+        "type": "InternalIP"
+      },
+      {
+        "address": "DCC-k3s-w4",
+        "type": "Hostname"
+      }
+    ],
+    "kubelet_version": "v1.30.5+k3s1"
+  },
+  {
+    "name": "dcc-k3s-w5",
+    "ready": true,
+    "addresses": [
+      {
+        "address": "192.168.100.31",
+        "type": "InternalIP"
+      },
+      {
+        "address": "DCC-k3s-w5",
+        "type": "Hostname"
+      }
+    ],
+    "kubelet_version": "v1.30.5+k3s1"
+  },
+  {
+    "name": "dcc-k3s-w6",
+    "ready": true,
+    "addresses": [
+      {
+        "address": "192.168.100.32",
+        "type": "InternalIP"
+      },
+      {
+        "address": "DCC-k3s-w6",
+        "type": "Hostname"
+      }
+    ],
+    "kubelet_version": "v1.30.5+k3s1"
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "source": "DCA-k3s-m1",
+    "destination": "DCB-k3s-w1",
+    "ip": "192.168.100.20",
+    "size": 9000,
+    "ok": true,
+    "output": "PING 192.168.100.20 (192.168.100.20) from 192.168.100.10 bond0: 8972(9000) bytes of data.\n8980 bytes from 192.168.100.20: icmp_seq=1 ttl=64 time=117 ms\n8980 bytes from 192.168.100.20: icmp_seq=2 ttl=64 time=241 ms\n8980 bytes from 192.168.100.20: icmp_seq=3 ttl=64 time=168 ms\n\n--- 192.168.100.20 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2001ms\nrtt min/avg/max/mdev = 116.897/175.208/241.093/50.984 ms\n"
+  },
+  {
+    "source": "DCA-k3s-m1",
+    "destination": "DCB-k3s-w1",
+    "ip": "fd10:a:100::20",
+    "size": 9000,
+    "ok": true,
+    "output": "PING fd10:a:100::20 (fd10:a:100::20) from fd10:a:100::ff:fe00:10a bond0: 8952 data bytes\n8960 bytes from fd10:a:100::20: icmp_seq=1 ttl=64 time=130 ms\n8960 bytes from fd10:a:100::20: icmp_seq=2 ttl=64 time=219 ms\n8960 bytes from fd10:a:100::20: icmp_seq=3 ttl=64 time=219 ms\n\n--- fd10:a:100::20 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 130.005/189.591/219.444/42.133 ms\n"
+  },
+  {
+    "source": "DCA-k3s-m1",
+    "destination": "DCC-k3s-w4",
+    "ip": "192.168.100.30",
+    "size": 9000,
+    "ok": true,
+    "output": "PING 192.168.100.30 (192.168.100.30) from 192.168.100.10 bond0: 8972(9000) bytes of data.\n8980 bytes from 192.168.100.30: icmp_seq=1 ttl=64 time=186 ms\n8980 bytes from 192.168.100.30: icmp_seq=2 ttl=64 time=115 ms\n8980 bytes from 192.168.100.30: icmp_seq=3 ttl=64 time=140 ms\n\n--- 192.168.100.30 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 114.777/146.721/185.700/29.378 ms\n"
+  },
+  {
+    "source": "DCA-k3s-m1",
+    "destination": "DCC-k3s-w4",
+    "ip": "fd10:a:100::30",
+    "size": 9000,
+    "ok": true,
+    "output": "PING fd10:a:100::30 (fd10:a:100::30) from fd10:a:100::ff:fe00:10a bond0: 8952 data bytes\n8960 bytes from fd10:a:100::30: icmp_seq=1 ttl=64 time=73.7 ms\n8960 bytes from fd10:a:100::30: icmp_seq=2 ttl=64 time=128 ms\n8960 bytes from fd10:a:100::30: icmp_seq=3 ttl=64 time=142 ms\n\n--- fd10:a:100::30 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 73.687/114.541/141.522/29.379 ms\n"
+  },
+  {
+    "source": "DCB-k3s-w1",
+    "destination": "DCA-k3s-m1",
+    "ip": "192.168.100.10",
+    "size": 9000,
+    "ok": true,
+    "output": "PING 192.168.100.10 (192.168.100.10) from 192.168.100.20 bond0: 8972(9000) bytes of data.\n8980 bytes from 192.168.100.10: icmp_seq=1 ttl=64 time=140 ms\n8980 bytes from 192.168.100.10: icmp_seq=2 ttl=64 time=175 ms\n8980 bytes from 192.168.100.10: icmp_seq=3 ttl=64 time=107 ms\n\n--- 192.168.100.10 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 107.271/140.771/175.429/27.837 ms\n"
+  },
+  {
+    "source": "DCB-k3s-w1",
+    "destination": "DCA-k3s-m1",
+    "ip": "fd10:a:100::10",
+    "size": 9000,
+    "ok": true,
+    "output": "PING fd10:a:100::10 (fd10:a:100::10) from fd10:a:100::ff:fe00:114 bond0: 8952 data bytes\n8960 bytes from fd10:a:100::10: icmp_seq=1 ttl=64 time=154 ms\n8960 bytes from fd10:a:100::10: icmp_seq=2 ttl=64 time=172 ms\n8960 bytes from fd10:a:100::10: icmp_seq=3 ttl=64 time=184 ms\n\n--- fd10:a:100::10 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 154.197/170.121/184.478/12.411 ms\n"
+  },
+  {
+    "source": "DCB-k3s-w1",
+    "destination": "DCC-k3s-w4",
+    "ip": "192.168.100.30",
+    "size": 9000,
+    "ok": true,
+    "output": "PING 192.168.100.30 (192.168.100.30) from 192.168.100.20 bond0: 8972(9000) bytes of data.\n8980 bytes from 192.168.100.30: icmp_seq=1 ttl=64 time=103 ms\n8980 bytes from 192.168.100.30: icmp_seq=2 ttl=64 time=108 ms\n8980 bytes from 192.168.100.30: icmp_seq=3 ttl=64 time=121 ms\n\n--- 192.168.100.30 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 102.506/110.511/121.411/7.984 ms\n"
+  },
+  {
+    "source": "DCB-k3s-w1",
+    "destination": "DCC-k3s-w4",
+    "ip": "fd10:a:100::30",
+    "size": 9000,
+    "ok": true,
+    "output": "PING fd10:a:100::30 (fd10:a:100::30) from fd10:a:100::ff:fe00:114 bond0: 8952 data bytes\n8960 bytes from fd10:a:100::30: icmp_seq=1 ttl=64 time=222 ms\n8960 bytes from fd10:a:100::30: icmp_seq=2 ttl=64 time=87.5 ms\n8960 bytes from fd10:a:100::30: icmp_seq=3 ttl=64 time=164 ms\n\n--- fd10:a:100::30 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 87.506/157.896/221.777/55.008 ms\n"
+  },
+  {
+    "source": "DCC-k3s-w4",
+    "destination": "DCA-k3s-m1",
+    "ip": "192.168.100.10",
+    "size": 9000,
+    "ok": true,
+    "output": "PING 192.168.100.10 (192.168.100.10) from 192.168.100.30 bond0: 8972(9000) bytes of data.\n8980 bytes from 192.168.100.10: icmp_seq=1 ttl=64 time=200 ms\n8980 bytes from 192.168.100.10: icmp_seq=2 ttl=64 time=130 ms\n8980 bytes from 192.168.100.10: icmp_seq=3 ttl=64 time=143 ms\n\n--- 192.168.100.10 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 129.703/157.635/200.478/30.757 ms\n"
+  },
+  {
+    "source": "DCC-k3s-w4",
+    "destination": "DCA-k3s-m1",
+    "ip": "fd10:a:100::10",
+    "size": 9000,
+    "ok": true,
+    "output": "PING fd10:a:100::10 (fd10:a:100::10) from fd10:a:100::ff:fe00:11e bond0: 8952 data bytes\n8960 bytes from fd10:a:100::10: icmp_seq=1 ttl=64 time=99.8 ms\n8960 bytes from fd10:a:100::10: icmp_seq=2 ttl=64 time=193 ms\n8960 bytes from fd10:a:100::10: icmp_seq=3 ttl=64 time=198 ms\n\n--- fd10:a:100::10 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2001ms\nrtt min/avg/max/mdev = 99.782/163.649/198.086/45.207 ms\n"
+  },
+  {
+    "source": "DCC-k3s-w4",
+    "destination": "DCB-k3s-w1",
+    "ip": "192.168.100.20",
+    "size": 9000,
+    "ok": true,
+    "output": "PING 192.168.100.20 (192.168.100.20) from 192.168.100.30 bond0: 8972(9000) bytes of data.\n8980 bytes from 192.168.100.20: icmp_seq=1 ttl=64 time=164 ms\n8980 bytes from 192.168.100.20: icmp_seq=2 ttl=64 time=118 ms\n8980 bytes from 192.168.100.20: icmp_seq=3 ttl=64 time=82.1 ms\n\n--- 192.168.100.20 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 82.082/121.282/163.918/33.497 ms\n"
+  },
+  {
+    "source": "DCC-k3s-w4",
+    "destination": "DCB-k3s-w1",
+    "ip": "fd10:a:100::20",
+    "size": 9000,
+    "ok": true,
+    "output": "PING fd10:a:100::20 (fd10:a:100::20) from fd10:a:100::ff:fe00:11e bond0: 8952 data bytes\n8960 bytes from fd10:a:100::20: icmp_seq=1 ttl=64 time=183 ms\n8960 bytes from fd10:a:100::20: icmp_seq=2 ttl=64 time=109 ms\n8960 bytes from fd10:a:100::20: icmp_seq=3 ttl=64 time=147 ms\n\n--- fd10:a:100::20 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 109.297/146.724/183.381/30.249 ms\n"
+  }
+]

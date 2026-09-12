@@ -1,0 +1,12 @@
+{
+  "old": {
+    "name": "engine-image-ei-493e04e7-q2psv",
+    "uid": "501f452a-ebb2-4190-8943-383943751790"
+  },
+  "new": {
+    "name": "engine-image-ei-493e04e7-9ml2l",
+    "uid": "ccd861aa-531c-4607-ad47-4f0c943b2549"
+  },
+  "ready": true,
+  "mtu": 8950
+}

@@ -1,0 +1,59 @@
+{
+  "hostname": "DCA-k3s-m1",
+  "at": "2026-09-10T04:23:18.543034+00:00",
+  "unit": "k3s",
+  "service_read_ok": true,
+  "service": "NRestarts=0\nExecMainStartTimestamp=Wed 2026-09-09 01:06:00 UTC\nActiveState=active\nSubState=running\n",
+  "journal_read_ok": true,
+  "window_minutes": 30,
+  "counts": {
+    "lease_lost": 0,
+    "renew_failure": 0,
+    "exits": 0,
+    "slow_apply": 4,
+    "slow_fsync": 0,
+    "oom": 0,
+    "deadline": 0
+  },
+  "probes": [
+    {
+      "path": "fabric",
+      "status": 401,
+      "elapsed_ms": 46.02,
+      "error": null
+    },
+    {
+      "path": "fabric",
+      "status": 401,
+      "elapsed_ms": 101.57,
+      "error": null
+    },
+    {
+      "path": "fabric",
+      "status": 401,
+      "elapsed_ms": 306.94,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 3.56,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 3.58,
+      "error": null
+    },
+    {
+      "path": "management",
+      "status": 401,
+      "elapsed_ms": 3.01,
+      "error": null
+    }
+  ],
+  "identity_matches": true,
+  "name": "DCA-k3s-m1",
+  "management": "192.168.3.63"
+}

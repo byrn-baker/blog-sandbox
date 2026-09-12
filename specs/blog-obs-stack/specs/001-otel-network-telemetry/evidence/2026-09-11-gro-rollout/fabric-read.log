@@ -1,0 +1,28 @@
+{"name": "BORDER1", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.24       UP    26       06\nSP2             L2   Gi3           10.0.0.26       UP    29       06", "vnic": null}
+{"name": "CE1", "ok": true, "error": null, "interfaces": null, "isis": "", "vnic": null}
+{"name": "CE2", "ok": true, "error": null, "interfaces": null, "isis": "", "vnic": null}
+{"name": "CE3", "ok": true, "error": null, "interfaces": null, "isis": "", "vnic": null}
+{"name": "DCA-Leaf01", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCA-Leaf02", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCA-Leaf03", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCA-Spine01", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCA-Spine02", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCB-Leaf01", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCB-Leaf02", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCB-Leaf03", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCB-Spine01", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCB-Spine02", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCC-Leaf01", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCC-Leaf02", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCC-Leaf03", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCC-Spine01", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "DCC-Spine02", "ok": true, "error": null, "interfaces": null, "isis": null, "vnic": null}
+{"name": "RR1", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.20       UP    24       05", "vnic": null}
+{"name": "RR2", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.22       UP    24       05", "vnic": null}
+{"name": "SP1", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nRR1             L2   Gi5           10.0.0.21       UP    28       02\nSP2             L2   Gi2           10.0.0.1        UP    23       02\nSP3             L2   Gi3           10.0.0.7        UP    28       03\nSPE3            L2   Gi4           10.0.0.17       UP    25       02\nBORDER1         L2   Gi6           10.0.0.25       UP    28       02", "vnic": null}
+{"name": "SP2", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nRR2             L2   Gi5           10.0.0.23       UP    23       02\nSP1             L2   Gi2           10.0.0.0        UP    26       02\nSP4             L2   Gi3           10.0.0.3        UP    27       02\nSPE1            L2   Gi4           10.0.0.9        UP    29       02\nBORDER1         L2   Gi6           10.0.0.27       UP    20       03", "vnic": null}
+{"name": "SP3", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi3           10.0.0.6        UP    29       03\nSP4             L2   Gi5           10.0.0.5        UP    24       05\nSPE2            L2   Gi4           10.0.0.15       UP    23       03\nSPE3            L2   Gi2           10.0.0.19       UP    29       03", "vnic": null}
+{"name": "SP4", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.2        UP    26       03\nSP3             L2   Gi5           10.0.0.4        UP    22       05\nSPE1            L2   Gi4           10.0.0.11       UP    25       04\nSPE2            L2   Gi3           10.0.0.13       UP    27       02", "vnic": null}
+{"name": "SPE1", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.8        UP    29       04\nSP4             L2   Gi4           10.0.0.10       UP    26       04", "vnic": null}
+{"name": "SPE2", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP3             L2   Gi3           10.0.0.14       UP    21       04\nSP4             L2   Gi2           10.0.0.12       UP    27       03", "vnic": null}
+{"name": "SPE3", "ok": true, "error": null, "interfaces": null, "isis": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP1             L2   Gi2           10.0.0.16       UP    29       04\nSP3             L2   Gi3           10.0.0.18       UP    26       02", "vnic": null}

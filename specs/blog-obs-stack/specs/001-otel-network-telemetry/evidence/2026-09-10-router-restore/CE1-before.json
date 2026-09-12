@@ -1,0 +1,12 @@
+{
+  "name": "CE1",
+  "id": "fb6d551f-bb73-4839-a093-9acf5eff481e",
+  "ip": "192.168.3.60",
+  "at": "2026-09-10T02:53:44.022123+00:00",
+  "commands": {},
+  "ok": false,
+  "error": "NetmikoTimeoutException",
+  "signals": [
+    "TCP connection"
+  ]
+}

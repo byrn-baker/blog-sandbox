@@ -1,0 +1,180 @@
+{
+  "source_commit": "d3fdafe",
+  "leaf_count": 9,
+  "gro_off_nics": 90,
+  "handlers_saved": 90,
+  "cold_boot_tested": false,
+  "small_tests": [
+    {
+      "label": "small-0",
+      "source": "DCA-k3s-m1",
+      "destination": "DCB-k3s-w1",
+      "retrans": [
+        0,
+        3
+      ],
+      "ok": true
+    },
+    {
+      "label": "small-1",
+      "source": "DCA-k3s-m2",
+      "destination": "DCB-k3s-w2",
+      "retrans": [
+        0,
+        0
+      ],
+      "ok": true
+    },
+    {
+      "label": "small-2",
+      "source": "DCA-k3s-m3",
+      "destination": "DCB-k3s-w3",
+      "retrans": [
+        0,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "label": "small-3",
+      "source": "DCB-k3s-w1",
+      "destination": "DCC-k3s-w4",
+      "retrans": [
+        16,
+        0
+      ],
+      "ok": true
+    },
+    {
+      "label": "small-4",
+      "source": "DCB-k3s-w2",
+      "destination": "DCC-k3s-w5",
+      "retrans": [
+        11,
+        0
+      ],
+      "ok": true
+    },
+    {
+      "label": "small-5",
+      "source": "DCB-k3s-w3",
+      "destination": "DCC-k3s-w6",
+      "retrans": [
+        0,
+        0
+      ],
+      "ok": true
+    },
+    {
+      "label": "small-6",
+      "source": "DCC-k3s-w4",
+      "destination": "DCA-k3s-m1",
+      "retrans": [
+        0,
+        9
+      ],
+      "ok": true
+    },
+    {
+      "label": "small-7",
+      "source": "DCC-k3s-w5",
+      "destination": "DCA-k3s-m2",
+      "retrans": [
+        0,
+        0
+      ],
+      "ok": true
+    },
+    {
+      "label": "small-8",
+      "source": "DCC-k3s-w6",
+      "destination": "DCA-k3s-m3",
+      "retrans": [
+        0,
+        0
+      ],
+      "ok": true
+    }
+  ],
+  "cluster": {
+    "before": "2026-09-11T21:19:00.592134+00:00",
+    "after": "2026-09-11T21:56:26.459654+00:00",
+    "nodes_ready": 9,
+    "pods_ready": 65,
+    "restarts_increased": [
+      [
+        "longhorn-system",
+        "csi-attacher-6d698df559-6knwx"
+      ],
+      [
+        "longhorn-system",
+        "csi-provisioner-cd78b7b67-khlh6"
+      ],
+      [
+        "longhorn-system",
+        "csi-resizer-cb7655d45-znktt"
+      ],
+      [
+        "longhorn-system",
+        "csi-snapshotter-799f9f96cf-c479d"
+      ]
+    ],
+    "pods_added": [],
+    "pods_removed": [],
+    "volumes": [
+      {
+        "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+        "state": "attached",
+        "robustness": "degraded"
+      },
+      {
+        "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+        "state": "attached",
+        "robustness": "healthy"
+      }
+    ]
+  },
+  "bounded_soak": {
+    "label": "bounded-soak",
+    "source": "DCA-k3s-m2",
+    "destination": "DCB-k3s-w1",
+    "endpoints": [
+      {
+        "sent": 22504220,
+        "send_seconds": 180.03394577698782,
+        "send_sha256": "eccc2d3b95788720d6bf046c30a94265a799c69660fb731bbbdc2c7634c64e8c",
+        "received": 22504220,
+        "receive_seconds": 180.49915192800108,
+        "receive_sha256": "eccc2d3b95788720d6bf046c30a94265a799c69660fb731bbbdc2c7634c64e8c",
+        "mode": "client",
+        "local": "192.168.100.11",
+        "peer": "192.168.100.20",
+        "requested_mss": 8960,
+        "negotiated_mss": 8948,
+        "total_retrans": 2,
+        "errors": [],
+        "ok": true,
+        "exit_code": 0,
+        "role": "client"
+      },
+      {
+        "sent": 22504220,
+        "send_seconds": 180.03398864198243,
+        "send_sha256": "eccc2d3b95788720d6bf046c30a94265a799c69660fb731bbbdc2c7634c64e8c",
+        "received": 22504220,
+        "receive_seconds": 180.08667498402065,
+        "receive_sha256": "eccc2d3b95788720d6bf046c30a94265a799c69660fb731bbbdc2c7634c64e8c",
+        "mode": "server",
+        "local": "192.168.100.20",
+        "peer": "192.168.100.11",
+        "requested_mss": 8960,
+        "negotiated_mss": 8948,
+        "total_retrans": 8,
+        "errors": [],
+        "ok": true,
+        "exit_code": 0,
+        "role": "server"
+      }
+    ]
+  }
+}

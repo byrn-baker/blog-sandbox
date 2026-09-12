@@ -1,0 +1,2076 @@
+{
+  "nodes": [
+    {
+      "pid": 8593,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/6",
+      "-name": "DCB-Spine01",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_6_0,script=no",
+        "tap,id=net1,ifname=vunl0_6_1,script=no",
+        "tap,id=net2,ifname=vunl0_6_2,script=no",
+        "tap,id=net3,ifname=vunl0_6_3,script=no",
+        "tap,id=net4,ifname=vunl0_6_4,script=no",
+        "tap,id=net5,ifname=vunl0_6_5,script=no",
+        "tap,id=net6,ifname=vunl0_6_6,script=no",
+        "tap,id=net7,ifname=vunl0_6_7,script=no",
+        "tap,id=net8,ifname=vunl0_6_8,script=no",
+        "tap,id=net9,ifname=vunl0_6_9,script=no",
+        "tap,id=net10,ifname=vunl0_6_10,script=no"
+      ]
+    },
+    {
+      "pid": 10182,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/2",
+      "-name": "DCA-Spine02",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_2_0,script=no",
+        "tap,id=net1,ifname=vunl0_2_1,script=no",
+        "tap,id=net2,ifname=vunl0_2_2,script=no",
+        "tap,id=net3,ifname=vunl0_2_3,script=no",
+        "tap,id=net4,ifname=vunl0_2_4,script=no",
+        "tap,id=net5,ifname=vunl0_2_5,script=no",
+        "tap,id=net6,ifname=vunl0_2_6,script=no",
+        "tap,id=net7,ifname=vunl0_2_7,script=no",
+        "tap,id=net8,ifname=vunl0_2_8,script=no",
+        "tap,id=net9,ifname=vunl0_2_9,script=no",
+        "tap,id=net10,ifname=vunl0_2_10,script=no"
+      ]
+    },
+    {
+      "pid": 10544,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/1",
+      "-name": "DCA-Spine01",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_1_0,script=no",
+        "tap,id=net1,ifname=vunl0_1_1,script=no",
+        "tap,id=net2,ifname=vunl0_1_2,script=no",
+        "tap,id=net3,ifname=vunl0_1_3,script=no",
+        "tap,id=net4,ifname=vunl0_1_4,script=no",
+        "tap,id=net5,ifname=vunl0_1_5,script=no",
+        "tap,id=net6,ifname=vunl0_1_6,script=no",
+        "tap,id=net7,ifname=vunl0_1_7,script=no",
+        "tap,id=net8,ifname=vunl0_1_8,script=no",
+        "tap,id=net9,ifname=vunl0_1_9,script=no",
+        "tap,id=net10,ifname=vunl0_1_10,script=no"
+      ]
+    },
+    {
+      "pid": 10890,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/12",
+      "-name": "DCC-Spine02",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_12_0,script=no",
+        "tap,id=net1,ifname=vunl0_12_1,script=no",
+        "tap,id=net2,ifname=vunl0_12_2,script=no",
+        "tap,id=net3,ifname=vunl0_12_3,script=no",
+        "tap,id=net4,ifname=vunl0_12_4,script=no",
+        "tap,id=net5,ifname=vunl0_12_5,script=no",
+        "tap,id=net6,ifname=vunl0_12_6,script=no",
+        "tap,id=net7,ifname=vunl0_12_7,script=no",
+        "tap,id=net8,ifname=vunl0_12_8,script=no",
+        "tap,id=net9,ifname=vunl0_12_9,script=no",
+        "tap,id=net10,ifname=vunl0_12_10,script=no"
+      ]
+    },
+    {
+      "pid": 10900,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/11",
+      "-name": "DCC-Spine01",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_11_0,script=no",
+        "tap,id=net1,ifname=vunl0_11_1,script=no",
+        "tap,id=net2,ifname=vunl0_11_2,script=no",
+        "tap,id=net3,ifname=vunl0_11_3,script=no",
+        "tap,id=net4,ifname=vunl0_11_4,script=no",
+        "tap,id=net5,ifname=vunl0_11_5,script=no",
+        "tap,id=net6,ifname=vunl0_11_6,script=no",
+        "tap,id=net7,ifname=vunl0_11_7,script=no",
+        "tap,id=net8,ifname=vunl0_11_8,script=no",
+        "tap,id=net9,ifname=vunl0_11_9,script=no",
+        "tap,id=net10,ifname=vunl0_11_10,script=no"
+      ]
+    },
+    {
+      "pid": 10969,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/7",
+      "-name": "DCB-Spine02",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_7_0,script=no",
+        "tap,id=net1,ifname=vunl0_7_1,script=no",
+        "tap,id=net2,ifname=vunl0_7_2,script=no",
+        "tap,id=net3,ifname=vunl0_7_3,script=no",
+        "tap,id=net4,ifname=vunl0_7_4,script=no",
+        "tap,id=net5,ifname=vunl0_7_5,script=no",
+        "tap,id=net6,ifname=vunl0_7_6,script=no",
+        "tap,id=net7,ifname=vunl0_7_7,script=no",
+        "tap,id=net8,ifname=vunl0_7_8,script=no",
+        "tap,id=net9,ifname=vunl0_7_9,script=no",
+        "tap,id=net10,ifname=vunl0_7_10,script=no"
+      ]
+    },
+    {
+      "pid": 11385,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/5",
+      "-name": "DCA-Leaf03",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_5_0,script=no",
+        "tap,id=net1,ifname=vunl0_5_1,script=no",
+        "tap,id=net2,ifname=vunl0_5_2,script=no",
+        "tap,id=net3,ifname=vunl0_5_3,script=no",
+        "tap,id=net4,ifname=vunl0_5_4,script=no",
+        "tap,id=net5,ifname=vunl0_5_5,script=no",
+        "tap,id=net6,ifname=vunl0_5_6,script=no",
+        "tap,id=net7,ifname=vunl0_5_7,script=no",
+        "tap,id=net8,ifname=vunl0_5_8,script=no",
+        "tap,id=net9,ifname=vunl0_5_9,script=no",
+        "tap,id=net10,ifname=vunl0_5_10,script=no"
+      ]
+    },
+    {
+      "pid": 11402,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/4",
+      "-name": "DCA-Leaf02",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_4_0,script=no",
+        "tap,id=net1,ifname=vunl0_4_1,script=no",
+        "tap,id=net2,ifname=vunl0_4_2,script=no",
+        "tap,id=net3,ifname=vunl0_4_3,script=no",
+        "tap,id=net4,ifname=vunl0_4_4,script=no",
+        "tap,id=net5,ifname=vunl0_4_5,script=no",
+        "tap,id=net6,ifname=vunl0_4_6,script=no",
+        "tap,id=net7,ifname=vunl0_4_7,script=no",
+        "tap,id=net8,ifname=vunl0_4_8,script=no",
+        "tap,id=net9,ifname=vunl0_4_9,script=no",
+        "tap,id=net10,ifname=vunl0_4_10,script=no"
+      ]
+    },
+    {
+      "pid": 11417,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/3",
+      "-name": "DCA-Leaf01",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_3_0,script=no",
+        "tap,id=net1,ifname=vunl0_3_1,script=no",
+        "tap,id=net2,ifname=vunl0_3_2,script=no",
+        "tap,id=net3,ifname=vunl0_3_3,script=no",
+        "tap,id=net4,ifname=vunl0_3_4,script=no",
+        "tap,id=net5,ifname=vunl0_3_5,script=no",
+        "tap,id=net6,ifname=vunl0_3_6,script=no",
+        "tap,id=net7,ifname=vunl0_3_7,script=no",
+        "tap,id=net8,ifname=vunl0_3_8,script=no",
+        "tap,id=net9,ifname=vunl0_3_9,script=no",
+        "tap,id=net10,ifname=vunl0_3_10,script=no"
+      ]
+    },
+    {
+      "pid": 11759,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/10",
+      "-name": "DCB-Leaf03",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_10_0,script=no",
+        "tap,id=net1,ifname=vunl0_10_1,script=no",
+        "tap,id=net2,ifname=vunl0_10_2,script=no",
+        "tap,id=net3,ifname=vunl0_10_3,script=no",
+        "tap,id=net4,ifname=vunl0_10_4,script=no",
+        "tap,id=net5,ifname=vunl0_10_5,script=no",
+        "tap,id=net6,ifname=vunl0_10_6,script=no",
+        "tap,id=net7,ifname=vunl0_10_7,script=no",
+        "tap,id=net8,ifname=vunl0_10_8,script=no",
+        "tap,id=net9,ifname=vunl0_10_9,script=no",
+        "tap,id=net10,ifname=vunl0_10_10,script=no"
+      ]
+    },
+    {
+      "pid": 11829,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/9",
+      "-name": "DCB-Leaf02",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_9_0,script=no",
+        "tap,id=net1,ifname=vunl0_9_1,script=no",
+        "tap,id=net2,ifname=vunl0_9_2,script=no",
+        "tap,id=net3,ifname=vunl0_9_3,script=no",
+        "tap,id=net4,ifname=vunl0_9_4,script=no",
+        "tap,id=net5,ifname=vunl0_9_5,script=no",
+        "tap,id=net6,ifname=vunl0_9_6,script=no",
+        "tap,id=net7,ifname=vunl0_9_7,script=no",
+        "tap,id=net8,ifname=vunl0_9_8,script=no",
+        "tap,id=net9,ifname=vunl0_9_9,script=no",
+        "tap,id=net10,ifname=vunl0_9_10,script=no"
+      ]
+    },
+    {
+      "pid": 11838,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/8",
+      "-name": "DCB-Leaf01",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_8_0,script=no",
+        "tap,id=net1,ifname=vunl0_8_1,script=no",
+        "tap,id=net2,ifname=vunl0_8_2,script=no",
+        "tap,id=net3,ifname=vunl0_8_3,script=no",
+        "tap,id=net4,ifname=vunl0_8_4,script=no",
+        "tap,id=net5,ifname=vunl0_8_5,script=no",
+        "tap,id=net6,ifname=vunl0_8_6,script=no",
+        "tap,id=net7,ifname=vunl0_8_7,script=no",
+        "tap,id=net8,ifname=vunl0_8_8,script=no",
+        "tap,id=net9,ifname=vunl0_8_9,script=no",
+        "tap,id=net10,ifname=vunl0_8_10,script=no"
+      ]
+    },
+    {
+      "pid": 12184,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/15",
+      "-name": "DCC-Leaf03",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_15_0,script=no",
+        "tap,id=net1,ifname=vunl0_15_1,script=no",
+        "tap,id=net2,ifname=vunl0_15_2,script=no",
+        "tap,id=net3,ifname=vunl0_15_3,script=no",
+        "tap,id=net4,ifname=vunl0_15_4,script=no",
+        "tap,id=net5,ifname=vunl0_15_5,script=no",
+        "tap,id=net6,ifname=vunl0_15_6,script=no",
+        "tap,id=net7,ifname=vunl0_15_7,script=no",
+        "tap,id=net8,ifname=vunl0_15_8,script=no",
+        "tap,id=net9,ifname=vunl0_15_9,script=no",
+        "tap,id=net10,ifname=vunl0_15_10,script=no"
+      ]
+    },
+    {
+      "pid": 12194,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/14",
+      "-name": "DCC-Leaf02",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_14_0,script=no",
+        "tap,id=net1,ifname=vunl0_14_1,script=no",
+        "tap,id=net2,ifname=vunl0_14_2,script=no",
+        "tap,id=net3,ifname=vunl0_14_3,script=no",
+        "tap,id=net4,ifname=vunl0_14_4,script=no",
+        "tap,id=net5,ifname=vunl0_14_5,script=no",
+        "tap,id=net6,ifname=vunl0_14_6,script=no",
+        "tap,id=net7,ifname=vunl0_14_7,script=no",
+        "tap,id=net8,ifname=vunl0_14_8,script=no",
+        "tap,id=net9,ifname=vunl0_14_9,script=no",
+        "tap,id=net10,ifname=vunl0_14_10,script=no"
+      ]
+    },
+    {
+      "pid": 12203,
+      "cwd": "/opt/unetlab/tmp/0/5913edeb-e573-47c6-b8f0-db65dfbb8e32/13",
+      "-name": "DCC-Leaf01",
+      "-smp": "2",
+      "netdev": [
+        "tap,id=net0,ifname=vunl0_13_0,script=no",
+        "tap,id=net1,ifname=vunl0_13_1,script=no",
+        "tap,id=net2,ifname=vunl0_13_2,script=no",
+        "tap,id=net3,ifname=vunl0_13_3,script=no",
+        "tap,id=net4,ifname=vunl0_13_4,script=no",
+        "tap,id=net5,ifname=vunl0_13_5,script=no",
+        "tap,id=net6,ifname=vunl0_13_6,script=no",
+        "tap,id=net7,ifname=vunl0_13_7,script=no",
+        "tap,id=net8,ifname=vunl0_13_8,script=no",
+        "tap,id=net9,ifname=vunl0_13_9,script=no",
+        "tap,id=net10,ifname=vunl0_13_10,script=no"
+      ]
+    }
+  ],
+  "bridges": [
+    {
+      "ifindex": 2,
+      "ifname": "eth0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet0",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 3,
+      "ifname": "eth1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet1",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 4,
+      "ifname": "eth2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 5,
+      "ifname": "eth3",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet3",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 6,
+      "ifname": "eth4",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet4",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 7,
+      "ifname": "eth5",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet5",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 8,
+      "ifname": "eth6",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet6",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 9,
+      "ifname": "eth7",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet7",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 10,
+      "ifname": "eth8",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet8",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 11,
+      "ifname": "eth9",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet9",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 12,
+      "ifname": "eth10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet10",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 13,
+      "ifname": "eth11",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet11",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 14,
+      "ifname": "eth12",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet12",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 15,
+      "ifname": "eth13",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet13",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 16,
+      "ifname": "eth14",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet14",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 17,
+      "ifname": "eth15",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet15",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 18,
+      "ifname": "eth16",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet16",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 19,
+      "ifname": "eth17",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet17",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 20,
+      "ifname": "eth18",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet18",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 21,
+      "ifname": "eth19",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet19",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 22,
+      "ifname": "eth20",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet20",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 23,
+      "ifname": "eth21",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet21",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 24,
+      "ifname": "eth22",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet22",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 25,
+      "ifname": "eth23",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet23",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 26,
+      "ifname": "eth24",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet24",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 27,
+      "ifname": "eth25",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet25",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 28,
+      "ifname": "eth26",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet26",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 29,
+      "ifname": "eth27",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet27",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 30,
+      "ifname": "eth28",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet28",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 31,
+      "ifname": "eth29",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet29",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 32,
+      "ifname": "eth30",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet30",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 33,
+      "ifname": "eth31",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet31",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 100
+    },
+    {
+      "ifindex": 68,
+      "ifname": "vunl0_15_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 69,
+      "ifname": "vunl0_15_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_22",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 70,
+      "ifname": "vunl0_15_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_25",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 78,
+      "ifname": "vunl0_15_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet29",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 82,
+      "ifname": "vunl0_14_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 83,
+      "ifname": "vunl0_14_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_21",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 84,
+      "ifname": "vunl0_14_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_24",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 86,
+      "ifname": "vunl0_14_4",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet22",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 87,
+      "ifname": "vunl0_14_5",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet24",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 88,
+      "ifname": "vunl0_14_6",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet31",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 92,
+      "ifname": "vunl0_14_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_34",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 95,
+      "ifname": "vunl0_13_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 96,
+      "ifname": "vunl0_13_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_20",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 97,
+      "ifname": "vunl0_13_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_23",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 99,
+      "ifname": "vunl0_13_4",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet21",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 100,
+      "ifname": "vunl0_13_5",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet23",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 101,
+      "ifname": "vunl0_13_6",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet30",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 105,
+      "ifname": "vunl0_13_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_34",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 106,
+      "ifname": "vunl0_12_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 107,
+      "ifname": "vunl0_12_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_23",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 108,
+      "ifname": "vunl0_12_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_24",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 109,
+      "ifname": "vunl0_12_3",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_25",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 116,
+      "ifname": "vunl0_12_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet8",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 117,
+      "ifname": "vunl0_11_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 118,
+      "ifname": "vunl0_11_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_20",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 119,
+      "ifname": "vunl0_11_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_21",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 120,
+      "ifname": "vunl0_11_3",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_22",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 127,
+      "ifname": "vunl0_11_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet7",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 130,
+      "ifname": "vunl0_10_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 131,
+      "ifname": "vunl0_10_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_16",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 132,
+      "ifname": "vunl0_10_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_19",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 140,
+      "ifname": "vunl0_10_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet28",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 144,
+      "ifname": "vunl0_9_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 145,
+      "ifname": "vunl0_9_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_15",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 146,
+      "ifname": "vunl0_9_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_18",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 148,
+      "ifname": "vunl0_9_4",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet16",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 149,
+      "ifname": "vunl0_9_5",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet18",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 150,
+      "ifname": "vunl0_9_6",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet20",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 154,
+      "ifname": "vunl0_9_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_33",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 157,
+      "ifname": "vunl0_8_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 158,
+      "ifname": "vunl0_8_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_14",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 159,
+      "ifname": "vunl0_8_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_17",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 161,
+      "ifname": "vunl0_8_4",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet15",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 162,
+      "ifname": "vunl0_8_5",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet17",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 163,
+      "ifname": "vunl0_8_6",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet19",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 167,
+      "ifname": "vunl0_8_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_33",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 168,
+      "ifname": "vunl0_7_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 169,
+      "ifname": "vunl0_7_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_17",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 170,
+      "ifname": "vunl0_7_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_18",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 171,
+      "ifname": "vunl0_7_3",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_19",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 178,
+      "ifname": "vunl0_7_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet6",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 179,
+      "ifname": "vunl0_6_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 180,
+      "ifname": "vunl0_6_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_14",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 181,
+      "ifname": "vunl0_6_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_15",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 182,
+      "ifname": "vunl0_6_3",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_16",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 189,
+      "ifname": "vunl0_6_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet5",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 192,
+      "ifname": "vunl0_5_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 193,
+      "ifname": "vunl0_5_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_10",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 194,
+      "ifname": "vunl0_5_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_13",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 202,
+      "ifname": "vunl0_5_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet27",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 206,
+      "ifname": "vunl0_4_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 207,
+      "ifname": "vunl0_4_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_9",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 208,
+      "ifname": "vunl0_4_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_12",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 210,
+      "ifname": "vunl0_4_4",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet10",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 211,
+      "ifname": "vunl0_4_5",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet12",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 212,
+      "ifname": "vunl0_4_6",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet14",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 213,
+      "ifname": "vunl0_4_7",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet26",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 216,
+      "ifname": "vunl0_4_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_32",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 219,
+      "ifname": "vunl0_3_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 220,
+      "ifname": "vunl0_3_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_8",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 221,
+      "ifname": "vunl0_3_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_11",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 223,
+      "ifname": "vunl0_3_4",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet9",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 224,
+      "ifname": "vunl0_3_5",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet11",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 225,
+      "ifname": "vunl0_3_6",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet13",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 226,
+      "ifname": "vunl0_3_7",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet25",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 227,
+      "ifname": "vunl0_3_8",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet1",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 229,
+      "ifname": "vunl0_3_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_32",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 230,
+      "ifname": "vunl0_2_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 231,
+      "ifname": "vunl0_2_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_11",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 232,
+      "ifname": "vunl0_2_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_12",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 233,
+      "ifname": "vunl0_2_3",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_13",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 240,
+      "ifname": "vunl0_2_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet4",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 241,
+      "ifname": "vunl0_1_0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet2",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 242,
+      "ifname": "vunl0_1_1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_8",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 243,
+      "ifname": "vunl0_1_2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_9",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 244,
+      "ifname": "vunl0_1_3",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "vnet0_10",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    },
+    {
+      "ifindex": 251,
+      "ifname": "vunl0_1_10",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 9000,
+      "master": "pnet3",
+      "state": "forwarding",
+      "priority": 32,
+      "cost": 2
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+[
+  {
+    "job": "5d8e2d1d-6bc3-46a1-bd5a-b7ced9703cce",
+    "missed_cli_errors": [
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled"
+    ]
+  },
+  {
+    "job": "e78b3bdf-01f7-4fae-ae22-9c3a5caf8d37",
+    "missed_cli_errors": [
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled"
+    ]
+  },
+  {
+    "job": "086d8210-0827-4f71-af4c-531d988f016c",
+    "missed_cli_errors": [
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled"
+    ]
+  },
+  {
+    "job": "3ffcc7ba-2ff2-4ea7-91f3-dc489cc40398",
+    "missed_cli_errors": [
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled",
+      "%ISIS: IPv6 unicast routing not enabled"
+    ]
+  }
+]

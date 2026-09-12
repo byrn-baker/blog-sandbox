@@ -1,0 +1,11 @@
+{
+  "name": "CE1",
+  "id": "fb6d551f-bb73-4839-a093-9acf5eff481e",
+  "ip": "192.168.3.60",
+  "at": "2026-09-11T03:59:21.237589+00:00",
+  "commands": {
+    "show interfaces | include line protocol|Description|MTU": "GigabitEthernet1 is up, line protocol is up \n  Description: Management - MGMT-VRF\n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  Description: PE-CE to SPE1 GigabitEthernet5\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  Description: to DCA-Spine01 Ethernet10\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  Description: to DCA-Spine02 Ethernet10\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  Description: DCA-Leaf03 Ethernet10\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet6 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet7 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet8 is administratively down, line protocol is down \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  Description: Router-ID\n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.60    YES NVRAM  up                    up      \nGigabitEthernet2       172.16.1.1      YES manual up                    up      \nGigabitEthernet3       10.1.1.0        YES manual up                    up      \nGigabitEthernet4       10.1.1.2        YES manual up                    up      \nGigabitEthernet5       10.1.1.17       YES manual up                    up      \nGigabitEthernet6       unassigned      YES NVRAM  administratively down down    \nGigabitEthernet7       unassigned      YES NVRAM  administratively down down    \nGigabitEthernet8       unassigned      YES NVRAM  administratively down down    \nLoopback0              10.2.1.1        YES manual up                    up      "
+  },
+  "ok": true
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "exists": true,
+    "files": [
+      {
+        "name": "volume-head-002.img",
+        "bytes": 21474836480,
+        "allocated_bytes": 195248128,
+        "modified_ns": 1789107717317295017
+      },
+      {
+        "name": "volume-head-002.img.meta",
+        "bytes": 178,
+        "allocated_bytes": 4096,
+        "modified_ns": 1789107062974727719,
+        "metadata": {
+          "Name": "volume-head-002.img",
+          "Parent": "volume-snap-491e2df2-1369-4739-bcdd-0184aa25c452.img",
+          "Removed": false,
+          "UserCreated": false,
+          "Created": "2026-09-11T06:11:02Z",
+          "Labels": null
+        }
+      },
+      {
+        "name": "volume-snap-491e2df2-1369-4739-bcdd-0184aa25c452.img",
+        "bytes": 21474836480,
+        "allocated_bytes": 133132288,
+        "modified_ns": 1789107061789717792
+      },
+      {
+        "name": "volume-snap-491e2df2-1369-4739-bcdd-0184aa25c452.img.meta",
+        "bytes": 178,
+        "allocated_bytes": 4096,
+        "modified_ns": 1789107062974727719,
+        "metadata": {
+          "Name": "volume-head-001.img",
+          "Parent": "volume-snap-88e9b2de-e43a-4bb1-b3be-f38567742ad3.img",
+          "Removed": false,
+          "UserCreated": false,
+          "Created": "2026-09-11T06:11:02Z",
+          "Labels": null
+        }
+      },
+      {
+        "name": "volume-snap-88e9b2de-e43a-4bb1-b3be-f38567742ad3.img",
+        "bytes": 21474836480,
+        "allocated_bytes": 4762034176,
+        "modified_ns": 1789107051873634658
+      },
+      {
+        "name": "volume-snap-88e9b2de-e43a-4bb1-b3be-f38567742ad3.img.meta",
+        "bytes": 158,
+        "allocated_bytes": 4096,
+        "modified_ns": 1789107050856626123,
+        "metadata": {
+          "Name": "volume-snap-88e9b2de-e43a-4bb1-b3be-f38567742ad3.img",
+          "Parent": "",
+          "Removed": true,
+          "UserCreated": false,
+          "Created": "2026-09-11T06:04:03Z",
+          "Labels": null
+        }
+      },
+      {
+        "name": "volume.meta",
+        "bytes": 213,
+        "allocated_bytes": 4096,
+        "modified_ns": 1789107062974727719,
+        "metadata": {
+          "Size": 21474836480,
+          "Head": "volume-head-002.img",
+          "Dirty": true,
+          "Rebuilding": false,
+          "Error": "",
+          "Parent": "volume-snap-491e2df2-1369-4739-bcdd-0184aa25c452.img",
+          "SectorSize": 512,
+          "BackingFilePath": "",
+          "Encrypted": false
+        }
+      }
+    ],
+    "node": "dcb-k3s-w2",
+    "replica": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-3212170a"
+  },
+  {
+    "exists": true,
+    "files": [
+      {
+        "name": "volume-head-005.img",
+        "bytes": 21474836480,
+        "allocated_bytes": 23568384,
+        "modified_ns": 1789107151799126869
+      },
+      {
+        "name": "volume-head-005.img.meta",
+        "bytes": 178,
+        "allocated_bytes": 4096,
+        "modified_ns": 1789107062957258343,
+        "metadata": {
+          "Name": "volume-head-005.img",
+          "Parent": "volume-snap-491e2df2-1369-4739-bcdd-0184aa25c452.img",
+          "Removed": false,
+          "UserCreated": false,
+          "Created": "2026-09-11T06:11:02Z",
+          "Labels": null
+        }
+      },
+      {
+        "name": "volume-snap-491e2df2-1369-4739-bcdd-0184aa25c452.img",
+        "bytes": 21474836480,
+        "allocated_bytes": 133132288,
+        "modified_ns": 1789107061778260227
+      },
+      {
+        "name": "volume-snap-491e2df2-1369-4739-bcdd-0184aa25c452.img.meta",
+        "bytes": 178,
+        "allocated_bytes": 4096,
+        "modified_ns": 1789107062957258343,
+        "metadata": {
+          "Name": "volume-head-004.img",
+          "Parent": "volume-snap-88e9b2de-e43a-4bb1-b3be-f38567742ad3.img",
+          "Removed": false,
+          "UserCreated": false,
+          "Created": "2026-09-11T06:11:02Z",
+          "Labels": null
+        }
+      },
+      {
+        "name": "volume-snap-88e9b2de-e43a-4bb1-b3be-f38567742ad3.img",
+        "bytes": 21474836480,
+        "allocated_bytes": 4762042368,
+        "modified_ns": 1789107051811276309
+      },
+      {
+        "name": "volume-snap-88e9b2de-e43a-4bb1-b3be-f38567742ad3.img.meta",
+        "bytes": 158,
+        "allocated_bytes": 4096,
+        "modified_ns": 1789107050619278251,
+        "metadata": {
+          "Name": "volume-snap-88e9b2de-e43a-4bb1-b3be-f38567742ad3.img",
+          "Parent": "",
+          "Removed": true,
+          "UserCreated": false,
+          "Created": "2026-09-11T06:04:03Z",
+          "Labels": null
+        }
+      },
+      {
+        "name": "volume.meta",
+        "bytes": 213,
+        "allocated_bytes": 4096,
+        "modified_ns": 1789107062957258343,
+        "metadata": {
+          "Size": 21474836480,
+          "Head": "volume-head-005.img",
+          "Dirty": true,
+          "Rebuilding": false,
+          "Error": "",
+          "Parent": "volume-snap-491e2df2-1369-4739-bcdd-0184aa25c452.img",
+          "SectorSize": 512,
+          "BackingFilePath": "",
+          "Encrypted": false
+        }
+      }
+    ],
+    "node": "dcb-k3s-w3",
+    "replica": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-dc5f7018"
+  }
+]

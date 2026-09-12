@@ -1,0 +1,94 @@
+{
+  "hostname": "DCB-k3s-w2",
+  "unit": "k3s-agent",
+  "flannel_mtu": 8950,
+  "pods": [
+    {
+      "id": "fed79c4cbf563941993eb66cd3b93e3d2ce24a8ff2fa449d89281c08cb52f3f3",
+      "name": "victoria-metrics-k8s-stack-grafana-55964d88c-fqznx",
+      "namespace": "observability",
+      "pid": 694598,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 1350,
+          "link_index": 34
+        }
+      ],
+      "after": 8950,
+      "host_peer": "vethdd845182"
+    },
+    {
+      "id": "8153583fab041c8c04894449a2f105ebae75451717a9914b4ee7bd7ed7ec44a9",
+      "name": "instance-manager-3a90a13802fb6ba486824445adfbf9a4",
+      "namespace": "longhorn-system",
+      "pid": 689901,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 1350,
+          "link_index": 33
+        }
+      ],
+      "after": 8950,
+      "host_peer": "vethea2176d9"
+    },
+    {
+      "id": "906baa50bb6c877bd9ce8edd07dee2b420ccccbcb005d93a8c8a936cdd894347",
+      "name": "longhorn-csi-plugin-s58sd",
+      "namespace": "longhorn-system",
+      "pid": 2931,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 1350,
+          "link_index": 11
+        }
+      ],
+      "after": 8950,
+      "host_peer": "vethd4685edf"
+    },
+    {
+      "id": "2a033af1885b87a726ef0c58d1736fa0000eb0d014860c6fcad47666975d40af",
+      "name": "engine-image-ei-493e04e7-5fptx",
+      "namespace": "longhorn-system",
+      "pid": 2765,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 1350,
+          "link_index": 10
+        }
+      ],
+      "after": 8950,
+      "host_peer": "vethc1dc216c"
+    },
+    {
+      "id": "e0f9c401f59a408fbecee8300fe4cee7821d0d8cb0ed19bcf7d7389b5c33d463",
+      "name": "longhorn-manager-km8j9",
+      "namespace": "longhorn-system",
+      "pid": 2423,
+      "hostNetwork": false,
+      "interfaces": [
+        {
+          "ifname": "eth0",
+          "mtu": 1350,
+          "link_index": 8
+        }
+      ],
+      "after": 8950,
+      "host_peer": "vethcd18f658"
+    },
+    {
+      "id": "c3e35b5b94635254228bd27b139c4f095a9fcfd63bbda45afb6d94c8bd87bb8b",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-xk965",
+      "namespace": "observability",
+      "pid": 1393,
+      "hostNetwork": true
+    }
+  ]
+}

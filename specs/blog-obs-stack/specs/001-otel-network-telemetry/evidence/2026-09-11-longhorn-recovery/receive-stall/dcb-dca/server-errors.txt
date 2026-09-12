@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/usr/lib/python3.13/socket.py", line 295, in accept
+    fd, addr = self._accept()
+               ~~~~~~~~~~~~^^
+TimeoutError: timed out

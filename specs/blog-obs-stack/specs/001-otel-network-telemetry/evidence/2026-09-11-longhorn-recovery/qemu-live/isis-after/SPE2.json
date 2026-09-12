@@ -1,0 +1,13 @@
+{
+  "device": "SPE2",
+  "at": "2026-09-11T20:44:39.654923+00:00",
+  "mode": "verify",
+  "commands": {
+    "show isis neighbors detail": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP3             L2   Gi3           10.0.0.14       UP    21       04\n  Area Address(es): 49.0001\n  SNPA: 5254.0099.cd04      \n  IPv6 Address(es): FE80::5054:FF:FE99:CD04\n  IPv6 Global Address: FD10::14\n  State Changed: 00:22:15\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet3\n  Neighbor Circuit Id: 4\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full\nSP4             L2   Gi2           10.0.0.12       UP    29       03\n  Area Address(es): 49.0001\n  SNPA: 5254.0071.8afb      \n  IPv6 Address(es): FE80::5054:FF:FE71:8AFB\n  IPv6 Global Address: FD10::12\n  State Changed: 00:13:18\n  Format: Phase V\n  Remote TID: 0, 2\n  Local TID:  0, 2\n  Interface name: GigabitEthernet2\n  Neighbor Circuit Id: 3\n  Remote PSNP Interval: 50\n  Remote BFD Support:TLV (MTID:0, IPV4) \n  BFD enabled: (MTID:0, ipv4)\n  Adj sync: Full",
+    "show logging | include CLNS-5-ADJCHANGE": "*Sep 11 20:22:30.178: %CLNS-5-ADJCHANGE: ISIS (SP-ISIS): Adjacency to 0000.0005.0001 (GigabitEthernet3) Up, new adjacency\n*Sep 11 20:22:30.353: %CLNS-5-ADJCHANGE: ISIS (SP-ISIS): Adjacency to 0000.0006.0001 (GigabitEthernet2) Up, new adjacency\n*Sep 11 20:27:56.337: %CLNS-5-ADJCHANGE: ISIS (SP-ISIS): Adjacency to SP4 (GigabitEthernet2) Down, hold time expired\n*Sep 11 20:31:26.741: %CLNS-5-ADJCHANGE: ISIS (SP-ISIS): Adjacency to SP4 (GigabitEthernet2) Up, new adjacency"
+  },
+  "ok": true,
+  "management_ip": "192.168.3.58",
+  "platform": "cisco_iosxe",
+  "configuration_preserved": true
+}

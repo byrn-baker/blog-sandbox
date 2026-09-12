@@ -1,0 +1,20 @@
+[
+  {
+    "device": "DCA-Leaf01",
+    "ip": "192.168.3.32",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "commands": {
+      "show interfaces counters discards": "Port               InDiscards    OutDiscards\n--------------- ---------------- -----------\nEt1                         5              0\nEt2                       374            315\nEt3                         0              0\nEt4                        10              0\nEt5                         0              0\nEt6                       317              0\nEt7                         0              0\nEt8                         0              0\nEt9                         0              0\nEt10                        0              0\nMa1                         0              0\nPo4                        10              0\nPo5                         0              0\nPo6                       317              0\nPo7                         0              0\n---------           ---------      ---------\nTotals                   1033            315\n"
+    }
+  },
+  {
+    "device": "DCC-Leaf01",
+    "ip": "192.168.3.42",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "commands": {
+      "show interfaces counters discards": "Port               InDiscards    OutDiscards\n--------------- ---------------- -----------\nEt1                     96074            166\nEt2                     15933             83\nEt3                         0              0\nEt4                      3145             91\nEt5                      1360              0\nEt6                         0              0\nEt7                         0              0\nEt8                         0              0\nEt9                         0              0\nEt10                        0              0\nMa1                         0              0\nPo4                      3145             86\nPo5                      1360              0\nPo6                         0              0\n---------           ---------      ---------\nTotals                 121017            426\n"
+    }
+  }
+]

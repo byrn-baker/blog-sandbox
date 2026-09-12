@@ -1,0 +1,64 @@
+[
+  {
+    "device": "DCA-Leaf01",
+    "ip": "192.168.3.32",
+    "readback_ok": true,
+    "commands": {
+      "show interfaces | include ^Ethernet|^Port-Channel|^Vxlan|MTU": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet3 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\n  IP MTU 65535 bytes (default)\n  IP MTU 65535 bytes (default)\n  IP MTU 1500 bytes (default), BW 1000000 kbit\nPort-Channel4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel7 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\n  IP MTU 1500 bytes (default)\n  IP MTU 1500 bytes (default)\n  IP MTU 9164 bytes (default)\nVxlan1 is up, line protocol is up (connected)"
+    }
+  },
+  {
+    "device": "DCA-Leaf02",
+    "ip": "192.168.3.33",
+    "readback_ok": true,
+    "commands": {
+      "show interfaces | include ^Ethernet|^Port-Channel|^Vxlan|MTU": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet3 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\n  IP MTU 65535 bytes (default)\n  IP MTU 65535 bytes (default)\n  IP MTU 1500 bytes (default), BW 1000000 kbit\nPort-Channel4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel7 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\n  IP MTU 1500 bytes (default)\n  IP MTU 1500 bytes (default)\n  IP MTU 9164 bytes (default)\nVxlan1 is up, line protocol is up (connected)"
+    }
+  },
+  {
+    "device": "DCA-Spine01",
+    "ip": "192.168.3.30",
+    "readback_ok": true,
+    "commands": {
+      "show interfaces | include ^Ethernet|^Port-Channel|^Vxlan|MTU": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet3 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet4 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is up, line protocol is up (connected)\n  IP MTU 1500 bytes, BW 1000000 kbit\n  IP MTU 65535 bytes (default)\n  IP MTU 1500 bytes (default), BW 1000000 kbit"
+    }
+  },
+  {
+    "device": "DCC-Spine01",
+    "ip": "192.168.3.40",
+    "readback_ok": true,
+    "commands": {
+      "show interfaces | include ^Ethernet|^Port-Channel|^Vxlan|MTU": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet3 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet4 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is up, line protocol is up (connected)\n  IP MTU 1500 bytes, BW 1000000 kbit\n  IP MTU 65535 bytes (default)\n  IP MTU 1500 bytes (default), BW 1000000 kbit"
+    }
+  },
+  {
+    "device": "DCC-Leaf01",
+    "ip": "192.168.3.42",
+    "readback_ok": true,
+    "commands": {
+      "show interfaces | include ^Ethernet|^Port-Channel|^Vxlan|MTU": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet3 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\n  IP MTU 65535 bytes (default)\n  IP MTU 65535 bytes (default)\n  IP MTU 1500 bytes (default), BW 1000000 kbit\nPort-Channel4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\n  IP MTU 1500 bytes (default)\n  IP MTU 1500 bytes (default)\n  IP MTU 9164 bytes (default)\nVxlan1 is up, line protocol is up (connected)"
+    }
+  },
+  {
+    "device": "DCC-Leaf02",
+    "ip": "192.168.3.43",
+    "readback_ok": true,
+    "commands": {
+      "show interfaces | include ^Ethernet|^Port-Channel|^Vxlan|MTU": "Ethernet1 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet2 is up, line protocol is up (connected)\n  IP MTU 8950 bytes, BW 1000000 kbit\nEthernet3 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet7 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet8 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet9 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nEthernet10 is administratively down, line protocol is down (disabled)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\n  IP MTU 65535 bytes (default)\n  IP MTU 65535 bytes (default)\n  IP MTU 1500 bytes (default), BW 1000000 kbit\nPort-Channel4 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel5 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\nPort-Channel6 is up, line protocol is up (connected)\n  Ethernet MTU 9214 bytes, BW 1000000 kbit\n  IP MTU 1500 bytes (default)\n  IP MTU 1500 bytes (default)\n  IP MTU 9164 bytes (default)\nVxlan1 is up, line protocol is up (connected)"
+    }
+  },
+  {
+    "device": "CE1",
+    "ip": "192.168.3.60",
+    "readback_ok": false,
+    "error": "NetmikoTimeoutException"
+  },
+  {
+    "device": "CE3",
+    "ip": "192.168.3.62",
+    "readback_ok": true,
+    "commands": {
+      "show interfaces | include ^GigabitEthernet|^Tunnel|^Loopback|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet6 is administratively down, line protocol is down \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet7 is administratively down, line protocol is down \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet8 is administratively down, line protocol is down \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, "
+    }
+  }
+]

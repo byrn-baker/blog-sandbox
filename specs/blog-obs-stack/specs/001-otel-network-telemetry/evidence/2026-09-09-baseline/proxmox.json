@@ -1,0 +1,5 @@
+{
+  "service": "proxmox",
+  "error": "HTTPError",
+  "detail": "HTTP Error 503: Service Unavailable"
+}

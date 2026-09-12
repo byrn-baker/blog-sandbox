@@ -1,0 +1,173 @@
+{
+  "finished": "2026-09-09T03:09:55.304862+00:00",
+  "results": [
+    {
+      "name": "BORDER1",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "CE1",
+      "connected": false,
+      "commands_ok": 0,
+      "error": "ConnectionError"
+    },
+    {
+      "name": "CE2",
+      "connected": false,
+      "commands_ok": 0,
+      "error": "ConnectionError"
+    },
+    {
+      "name": "CE3",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "DCA-Leaf01",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCA-Leaf02",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCA-Leaf03",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCA-Spine01",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCA-Spine02",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCB-Leaf01",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCB-Leaf02",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCB-Leaf03",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCB-Spine01",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCB-Spine02",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCC-Leaf01",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCC-Leaf02",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCC-Leaf03",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCC-Spine01",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "DCC-Spine02",
+      "connected": true,
+      "commands_ok": 4,
+      "error": null
+    },
+    {
+      "name": "RR1",
+      "connected": false,
+      "commands_ok": 0,
+      "error": "ConnectionError"
+    },
+    {
+      "name": "RR2",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "SP1",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "SP2",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "SP3",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "SP4",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "SPE1",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "SPE2",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    },
+    {
+      "name": "SPE3",
+      "connected": true,
+      "commands_ok": 6,
+      "error": null
+    }
+  ]
+}

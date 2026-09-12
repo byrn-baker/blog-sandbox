@@ -1,0 +1,302 @@
+[
+  {
+    "device": "BORDER1",
+    "ip": "192.168.3.50",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "CE1",
+    "ip": "192.168.3.60",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": false,
+    "error": "NetmikoTimeoutException"
+  },
+  {
+    "device": "CE2",
+    "ip": "192.168.3.61",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "CE3",
+    "ip": "192.168.3.62",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCA-Leaf01",
+    "ip": "192.168.3.32",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCA-Leaf02",
+    "ip": "192.168.3.33",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCA-Leaf03",
+    "ip": "192.168.3.34",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCA-Spine01",
+    "ip": "192.168.3.30",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCA-Spine02",
+    "ip": "192.168.3.31",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCB-Leaf01",
+    "ip": "192.168.3.37",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCB-Leaf02",
+    "ip": "192.168.3.38",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCB-Leaf03",
+    "ip": "192.168.3.39",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCB-Spine01",
+    "ip": "192.168.3.35",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCB-Spine02",
+    "ip": "192.168.3.36",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCC-Leaf01",
+    "ip": "192.168.3.42",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCC-Leaf02",
+    "ip": "192.168.3.43",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCC-Leaf03",
+    "ip": "192.168.3.44",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCC-Spine01",
+    "ip": "192.168.3.40",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "DCC-Spine02",
+    "ip": "192.168.3.41",
+    "credential_group": "ARISTA_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "RR1",
+    "ip": "192.168.3.51",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": false,
+    "error": "NetmikoTimeoutException"
+  },
+  {
+    "device": "RR2",
+    "ip": "192.168.3.52",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "SP1",
+    "ip": "192.168.3.53",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "SP2",
+    "ip": "192.168.3.54",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "SP3",
+    "ip": "192.168.3.55",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "SP4",
+    "ip": "192.168.3.56",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "SPE1",
+    "ip": "192.168.3.57",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "SPE2",
+    "ip": "192.168.3.58",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  },
+  {
+    "device": "SPE3",
+    "ip": "192.168.3.59",
+    "credential_group": "CISCO_SSH",
+    "readback_ok": true,
+    "snmp_lines_present": false,
+    "expected_community_present": false,
+    "acl_reference_present": false,
+    "snmp_redacted": "",
+    "acl": ""
+  }
+]

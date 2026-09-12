@@ -1,0 +1,45 @@
+{
+  "name": "CE3",
+  "started": "2026-09-09T20:30:19.188740+00:00",
+  "os": "iosxe",
+  "commands": [
+    {
+      "command": "show platform hardware throughput level",
+      "at": "2026-09-09T20:30:24.732243+00:00",
+      "output": "The current throughput level is 20000 kb/s",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active datapath utilization",
+      "at": "2026-09-09T20:30:26.497821+00:00",
+      "output": "  CPP 0: Subdev 0            5 secs        1 min        5 min       60 min\r\nInput:  Priority (pps)            0            0            0            0\r\n                 (bps)            0            0            0            0\r\n    Non-Priority (pps)          298          376          375          509\r\n                 (bps)       892344      1663336      1675320      2833592\r\n           Total (pps)          298          376          375          509\r\n                 (bps)       892344      1663336      1675320      2833592\r\nOutput: Priority (pps)            0            0            0            0\r\n                 (bps)            0            0            0            0\r\n    Non-Priority (pps)          297          375          373          508\r\n                 (bps)       915608      1671440      1682968      2841216\r\n           Total (pps)          297          375          373          508\r\n                 (bps)       915608      1671440      1682968      2841216\r\nProcessing: Load (pct)           15           14           11           14",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active statistics drop",
+      "at": "2026-09-09T20:30:28.143682+00:00",
+      "output": "Last clearing of QFP drops statistics : never\r\n\r\n-------------------------------------------------------------------------\r\nGlobal Drop Stats                         Packets                  Octets  \r\n-------------------------------------------------------------------------\r\nIpTtlExceeded                                 316                   68941  \r\nIpv4NoAdj                                       4                     212  \r\nIpv4NoRoute                                   146                   18940  \r\nIpv6NoRoute                                     1                      56  \r\nMaxTu                                         641                 1013786  \r\nUnconfiguredIpv4Fia                         10966                 1413292  \r\nUnconfiguredIpv6Fia                          2817                  223102",
+      "ok": true
+    },
+    {
+      "command": "show ip ospf neighbor",
+      "at": "2026-09-09T20:30:30.334877+00:00",
+      "output": "",
+      "ok": true
+    },
+    {
+      "command": "show ip bgp summary",
+      "at": "2026-09-09T20:30:31.101711+00:00",
+      "output": "BGP router identifier 10.2.3.1, local AS number 65003\r\nBGP table version is 9379, main routing table version 9379\r\n66 network entries using 16368 bytes of memory\r\n89 path entries using 12104 bytes of memory\r\n24/20 BGP path/bestpath attribute entries using 7104 bytes of memory\r\n24 BGP AS-PATH entries using 912 bytes of memory\r\n0 BGP route-map cache entries using 0 bytes of memory\r\n0 BGP filter-list cache entries using 0 bytes of memory\r\nBGP using 36488 total bytes of memory\r\nBGP activity 305/239 prefixes, 3824/3735 paths, scan interval 60 secs\r\n66 networks peaked at 21:29:33 Sep 5 2026 UTC (3d23h ago)\r\n\r\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\r\n10.1.3.1        4        65301  103045   86289     9379    0    0 3d01h          14\r\n10.1.3.3        4        65301   87033   72828     9379    0    0 2d13h          14\r\n10.1.3.16       4        65313  103851   86289     9379    0    0 3d01h          17\r\n172.16.3.0      4        65000   64055   64225     9379    0    0 6d21h          44",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active statistics drop",
+      "at": "2026-09-09T20:30:41.766424+00:00",
+      "output": "Last clearing of QFP drops statistics : never\r\n\r\n-------------------------------------------------------------------------\r\nGlobal Drop Stats                         Packets                  Octets  \r\n-------------------------------------------------------------------------\r\nIpTtlExceeded                                 316                   68941  \r\nIpv4NoAdj                                       4                     212  \r\nIpv4NoRoute                                   146                   18940  \r\nIpv6NoRoute                                     1                      56  \r\nMaxTu                                         641                 1013786  \r\nUnconfiguredIpv4Fia                         10966                 1413292  \r\nUnconfiguredIpv6Fia                          2817                  223102",
+      "ok": true
+    }
+  ],
+  "connected": true,
+  "finished": "2026-09-09T20:30:54.265739+00:00"
+}

@@ -32,17 +32,15 @@ k3s_disable:
 k3s_etcd_heartbeat_interval: "500"
 k3s_etcd_election_timeout: "5000"
 
-# The etcd timers above only cover raft itself. The embedded kube-controller-
-# manager and kube-scheduler each run their own leader-election loop against
-# etcd with Kubernetes' upstream defaults (15s lease-duration, 10s renew-
-# deadline, 2s retry-period), and k3s treats a lost lease as fatal: it exits
-# the whole k3s process, not just that controller. On this fabric, an
-# occasional slow etcd apply (observed 5-10s under load, well past the 100ms
-# etcd expects but still under the 5s etcd election-timeout above) is enough
-# to blow the 10s renew-deadline and kill k3s on whichever master holds the
-# lease at the time - seen hitting all three DC-A masters repeatedly, not just
-# one. Widening the renew-deadline (and lease-duration, which must stay larger)
-# gives the same slow applies more room before a lease loss is declared fatal.
+# Raft timers do not configure Kubernetes controller leader-election leases.
+# kube-controller-manager and kube-scheduler use these values in the install
+# role. k3s_config also renders them for kube-cloud-controller-manager in a
+# runtime drop-in, so existing servers can receive that missing setting.
+# CLI lists override config-file lists: existing controller-manager/scheduler
+# settings still need a separate migration to make all tuning runtime-managed.
+# The September 9 audit found cloud-controller lease losses and one internal
+# k3s-etcd lease loss. This change covers the cloud controller only; it does
+# not fix the emulated fabric latency or tune K3s's internal etcd lease.
 k3s_leader_elect_lease_duration: "30s"
 k3s_leader_elect_renew_deadline: "20s"
 

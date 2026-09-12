@@ -1,0 +1,532 @@
+{
+  "at": "2026-09-11T14:01:49.282258+00:00",
+  "volumes.longhorn.io": [
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "namespace": "longhorn-system",
+      "spec": {
+        "nodeID": "",
+        "numberOfReplicas": 3,
+        "revisionCounterDisabled": true,
+        "image": "docker.io/longhornio/longhorn-engine:v1.12.1"
+      },
+      "status": {
+        "state": "detached",
+        "robustness": "faulted",
+        "conditions": [
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:02:29Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "OfflineRebuilding"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:02:57Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "WaitForBackingImage"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:02:57Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "TooManySnapshots"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:02:57Z",
+            "message": "",
+            "reason": "",
+            "status": "True",
+            "type": "Scheduled"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:19:35Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "Restore"
+          }
+        ],
+        "ownerID": "dcc-k3s-w6",
+        "currentNodeID": "",
+        "lastBackup": "",
+        "lastBackupAt": "",
+        "kubernetesStatus": {
+          "lastPVCRefAt": "",
+          "lastPodRefAt": "",
+          "namespace": "observability",
+          "pvName": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+          "pvStatus": "Bound",
+          "pvcName": "vmsingle-victoria-metrics-k8s-stack",
+          "workloadsStatus": [
+            {
+              "podName": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-ft9tl",
+              "podStatus": "Running",
+              "workloadName": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c",
+              "workloadType": "ReplicaSet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "namespace": "longhorn-system",
+      "spec": {
+        "nodeID": "dcb-k3s-w2",
+        "numberOfReplicas": 3,
+        "revisionCounterDisabled": true,
+        "image": "docker.io/longhornio/longhorn-engine:v1.12.1"
+      },
+      "status": {
+        "state": "attaching",
+        "robustness": "unknown",
+        "conditions": [
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:02:33Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "OfflineRebuilding"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:19:27Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "WaitForBackingImage"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:19:27Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "TooManySnapshots"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:19:27Z",
+            "message": "Reset schedulable due to allow volume creation with degraded availability",
+            "reason": "",
+            "status": "True",
+            "type": "Scheduled"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:19:32Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "Restore"
+          }
+        ],
+        "ownerID": "dcc-k3s-w4",
+        "currentNodeID": "",
+        "lastBackup": "",
+        "lastBackupAt": "",
+        "kubernetesStatus": {
+          "lastPVCRefAt": "",
+          "lastPodRefAt": "",
+          "namespace": "observability",
+          "pvName": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+          "pvStatus": "Bound",
+          "pvcName": "victoria-metrics-k8s-stack-grafana",
+          "workloadsStatus": [
+            {
+              "podName": "victoria-metrics-k8s-stack-grafana-55964d88c-8fzht",
+              "podStatus": "Pending",
+              "workloadName": "victoria-metrics-k8s-stack-grafana-55964d88c",
+              "workloadType": "ReplicaSet"
+            },
+            {
+              "podName": "victoria-metrics-k8s-stack-grafana-55964d88c-fqznx",
+              "podStatus": "Running",
+              "workloadName": "victoria-metrics-k8s-stack-grafana-55964d88c",
+              "workloadType": "ReplicaSet"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "replicas.longhorn.io": [
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-3212170a",
+      "namespace": "longhorn-system",
+      "spec": {
+        "volumeName": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+        "nodeID": "dcb-k3s-w2",
+        "dataDirectoryName": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-d5dc58a4",
+        "diskID": "14b2a286-6b1f-4ca3-9b02-370c9df7ca15",
+        "failedAt": "2026-09-11T06:25:04Z",
+        "healthyAt": "2026-09-11T06:10:49Z",
+        "desireState": "stopped",
+        "revisionCounterDisabled": true,
+        "salvageRequested": false,
+        "image": "docker.io/longhornio/longhorn-engine:v1.12.1"
+      },
+      "status": {
+        "currentState": "stopped",
+        "conditions": [
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-11T06:03:13Z",
+            "message": "",
+            "reason": "",
+            "status": "True",
+            "type": "InstanceCreation"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-11T06:03:13Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "FilesystemReadOnly"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-11T06:03:45Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "WaitForBackingImage"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-11T06:03:47Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "RebuildFailed"
+          }
+        ],
+        "ownerID": "dcc-k3s-w4"
+      }
+    },
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-dc5f7018",
+      "namespace": "longhorn-system",
+      "spec": {
+        "volumeName": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+        "nodeID": "dcb-k3s-w3",
+        "dataDirectoryName": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-1f2524ee",
+        "diskID": "22a1c015-176a-49e2-91da-60a4baef8762",
+        "failedAt": "2026-09-11T06:13:58Z",
+        "healthyAt": "2026-09-07T00:14:08Z",
+        "desireState": "stopped",
+        "revisionCounterDisabled": true,
+        "salvageRequested": false,
+        "image": "docker.io/longhornio/longhorn-engine:v1.12.1"
+      },
+      "status": {
+        "currentState": "stopped",
+        "conditions": [
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:21:00Z",
+            "message": "",
+            "reason": "",
+            "status": "True",
+            "type": "InstanceCreation"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:21:00Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "FilesystemReadOnly"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:21:05Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "WaitForBackingImage"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T23:57:29Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "RebuildFailed"
+          }
+        ],
+        "ownerID": "dcc-k3s-w4"
+      }
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-7e1af619",
+      "namespace": "longhorn-system",
+      "spec": {
+        "volumeName": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+        "nodeID": "dcc-k3s-w5",
+        "dataDirectoryName": "pvc-b304711d-13db-443b-a1bd-e832606f8230-e341c3c4",
+        "diskID": "f42a337f-8f44-410d-be8a-193f6b33e46b",
+        "failedAt": "",
+        "healthyAt": "2026-09-11T05:51:02Z",
+        "desireState": "running",
+        "revisionCounterDisabled": true,
+        "salvageRequested": false,
+        "image": "docker.io/longhornio/longhorn-engine:v1.12.1"
+      },
+      "status": {
+        "currentState": "running",
+        "conditions": [
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:02:47Z",
+            "message": "",
+            "reason": "",
+            "status": "True",
+            "type": "InstanceCreation"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:02:47Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "FilesystemReadOnly"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:20:27Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "WaitForBackingImage"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-10T05:07:45Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "RebuildFailed"
+          }
+        ],
+        "ownerID": "dcc-k3s-w5"
+      }
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-8eae43e7",
+      "namespace": "longhorn-system",
+      "spec": {
+        "volumeName": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+        "nodeID": "dcc-k3s-w4",
+        "dataDirectoryName": "pvc-b304711d-13db-443b-a1bd-e832606f8230-e44bd6fa",
+        "diskID": "c6a96d76-d4a9-4ef9-99bb-76e45f729e19",
+        "failedAt": "",
+        "healthyAt": "2026-09-11T06:03:48Z",
+        "desireState": "running",
+        "revisionCounterDisabled": true,
+        "salvageRequested": false,
+        "image": "docker.io/longhornio/longhorn-engine:v1.12.1"
+      },
+      "status": {
+        "currentState": "running",
+        "conditions": [
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-09T09:27:35Z",
+            "message": "",
+            "reason": "",
+            "status": "True",
+            "type": "InstanceCreation"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-09T09:27:35Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "FilesystemReadOnly"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-09T09:29:39Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "WaitForBackingImage"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-09T09:38:13Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "RebuildFailed"
+          }
+        ],
+        "ownerID": "dcc-k3s-w4"
+      }
+    }
+  ],
+  "engines.longhorn.io": [
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-e-0",
+      "namespace": "longhorn-system",
+      "spec": {
+        "volumeName": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+        "nodeID": "",
+        "desireState": "stopped",
+        "revisionCounterDisabled": true,
+        "salvageRequested": true,
+        "image": "docker.io/longhornio/longhorn-engine:v1.12.1"
+      },
+      "status": {
+        "currentState": "stopped",
+        "conditions": [
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T22:33:59Z",
+            "message": "",
+            "reason": "",
+            "status": "True",
+            "type": "InstanceCreation"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-11T06:25:32Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "FilesystemReadOnly"
+          }
+        ],
+        "ownerID": "dcc-k3s-w6",
+        "replicaModeMap": null
+      }
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-e-0",
+      "namespace": "longhorn-system",
+      "spec": {
+        "volumeName": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+        "nodeID": "dcb-k3s-w2",
+        "desireState": "running",
+        "revisionCounterDisabled": true,
+        "salvageRequested": false,
+        "image": "docker.io/longhornio/longhorn-engine:v1.12.1"
+      },
+      "status": {
+        "currentState": "stopped",
+        "conditions": [
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:02:38Z",
+            "message": "",
+            "reason": "",
+            "status": "True",
+            "type": "InstanceCreation"
+          },
+          {
+            "lastProbeTime": "",
+            "lastTransitionTime": "2026-09-06T18:02:38Z",
+            "message": "",
+            "reason": "",
+            "status": "False",
+            "type": "FilesystemReadOnly"
+          }
+        ],
+        "ownerID": "dcc-k3s-w4",
+        "replicaModeMap": {
+          "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-7e1af619": "RW",
+          "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-8eae43e7": "RW",
+          "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-df6d65fb": "RW"
+        }
+      }
+    }
+  ],
+  "settings.longhorn.io": [
+    {
+      "name": "auto-salvage",
+      "namespace": "longhorn-system",
+      "value": "true"
+    },
+    {
+      "name": "replica-auto-balance",
+      "namespace": "longhorn-system",
+      "value": "disabled"
+    },
+    {
+      "name": "replica-replenishment-wait-interval",
+      "namespace": "longhorn-system",
+      "value": "600"
+    }
+  ],
+  "deployments": [
+    {
+      "name": "csi-attacher",
+      "namespace": "longhorn-system",
+      "images": [
+        "docker.io/longhornio/csi-attacher:v4.12.0"
+      ]
+    },
+    {
+      "name": "csi-provisioner",
+      "namespace": "longhorn-system",
+      "images": [
+        "docker.io/longhornio/csi-provisioner:v5.3.0"
+      ]
+    },
+    {
+      "name": "csi-resizer",
+      "namespace": "longhorn-system",
+      "images": [
+        "docker.io/longhornio/csi-resizer:v2.2.1"
+      ]
+    },
+    {
+      "name": "csi-snapshotter",
+      "namespace": "longhorn-system",
+      "images": [
+        "docker.io/longhornio/csi-snapshotter:v8.6.0"
+      ]
+    },
+    {
+      "name": "longhorn-driver-deployer",
+      "namespace": "longhorn-system",
+      "images": [
+        "docker.io/longhornio/longhorn-manager:v1.12.1"
+      ]
+    },
+    {
+      "name": "longhorn-ui",
+      "namespace": "longhorn-system",
+      "images": [
+        "docker.io/longhornio/longhorn-ui:v1.12.1"
+      ]
+    }
+  ],
+  "persistentvolumeclaims": [
+    {
+      "name": "victoria-metrics-k8s-stack-grafana",
+      "namespace": "observability",
+      "volume": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "phase": "Bound"
+    },
+    {
+      "name": "vmsingle-victoria-metrics-k8s-stack",
+      "namespace": "observability",
+      "volume": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "phase": "Bound"
+    }
+  ]
+}

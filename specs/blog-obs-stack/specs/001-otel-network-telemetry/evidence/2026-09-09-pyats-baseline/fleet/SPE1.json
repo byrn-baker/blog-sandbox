@@ -1,0 +1,45 @@
+{
+  "name": "SPE1",
+  "started": "2026-09-09T03:08:52.174528+00:00",
+  "os": "iosxe",
+  "commands": [
+    {
+      "command": "show platform hardware throughput level",
+      "at": "2026-09-09T03:08:56.886977+00:00",
+      "output": "The current throughput level is 20000 kb/s",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active datapath utilization",
+      "at": "2026-09-09T03:08:58.332288+00:00",
+      "output": "  CPP 0: Subdev 0            5 secs        1 min        5 min       60 min\r\nInput:  Priority (pps)            0            0            0            0\r\n                 (bps)            0            0            0            0\r\n    Non-Priority (pps)          344          319          291          340\r\n                 (bps)      1151224      1248096      1028648      1279024\r\n           Total (pps)          344          319          291          340\r\n                 (bps)      1151224      1248096      1028648      1279024\r\nOutput: Priority (pps)            0            0            0            0\r\n                 (bps)            0            0            0            0\r\n    Non-Priority (pps)          346          319          290          339\r\n                 (bps)      1159672      1256672      1036528      1286608\r\n           Total (pps)          346          319          290          339\r\n                 (bps)      1159672      1256672      1036528      1286608\r\nProcessing: Load (pct)           15           15           15           14",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active statistics drop",
+      "at": "2026-09-09T03:08:59.892533+00:00",
+      "output": "Last clearing of QFP drops statistics : never\r\n\r\n-------------------------------------------------------------------------\r\nGlobal Drop Stats                         Packets                  Octets  \r\n-------------------------------------------------------------------------\r\nDisabled                                        2                     120  \r\nIpTtlExceeded                                  20                    1540  \r\nIpv4Unclassified                               84                   61401  \r\nIpv6NoRoute                                     1                      56  \r\nMplsFragReq                                 10154                15366137  \r\nMplsUnclassified                               17                    1336  \r\nUnconfiguredIpv4Fia                         10390                 1340108  \r\nUnconfiguredIpv6Fia                          2313                  186296",
+      "ok": true
+    },
+    {
+      "command": "show ip ospf neighbor",
+      "at": "2026-09-09T03:09:02.124923+00:00",
+      "output": "",
+      "ok": true
+    },
+    {
+      "command": "show ip bgp summary",
+      "at": "2026-09-09T03:09:02.724994+00:00",
+      "output": "",
+      "ok": true
+    },
+    {
+      "command": "show platform hardware qfp active statistics drop",
+      "at": "2026-09-09T03:09:13.489459+00:00",
+      "output": "Last clearing of QFP drops statistics : never\r\n\r\n-------------------------------------------------------------------------\r\nGlobal Drop Stats                         Packets                  Octets  \r\n-------------------------------------------------------------------------\r\nDisabled                                        2                     120  \r\nIpTtlExceeded                                  20                    1540  \r\nIpv4Unclassified                               84                   61401  \r\nIpv6NoRoute                                     1                      56  \r\nMplsFragReq                                 10155                15367647  \r\nMplsUnclassified                               17                    1336  \r\nUnconfiguredIpv4Fia                         10390                 1340108  \r\nUnconfiguredIpv6Fia                          2313                  186296",
+      "ok": true
+    }
+  ],
+  "connected": true,
+  "finished": "2026-09-09T03:09:25.728835+00:00"
+}

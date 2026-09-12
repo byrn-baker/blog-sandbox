@@ -1,0 +1,1547 @@
+{
+  "vm": 118,
+  "links": [
+    {
+      "name": "lo",
+      "mtu": 65536,
+      "master": null
+    },
+    {
+      "name": "eth0",
+      "mtu": 9000,
+      "master": "pnet0"
+    },
+    {
+      "name": "eth1",
+      "mtu": 9000,
+      "master": "pnet1"
+    },
+    {
+      "name": "eth2",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "eth3",
+      "mtu": 9000,
+      "master": "pnet3"
+    },
+    {
+      "name": "eth4",
+      "mtu": 9000,
+      "master": "pnet4"
+    },
+    {
+      "name": "eth5",
+      "mtu": 9000,
+      "master": "pnet5"
+    },
+    {
+      "name": "eth6",
+      "mtu": 9000,
+      "master": "pnet6"
+    },
+    {
+      "name": "eth7",
+      "mtu": 9000,
+      "master": "pnet7"
+    },
+    {
+      "name": "eth8",
+      "mtu": 9000,
+      "master": "pnet8"
+    },
+    {
+      "name": "eth9",
+      "mtu": 9000,
+      "master": "pnet9"
+    },
+    {
+      "name": "eth10",
+      "mtu": 9000,
+      "master": "pnet10"
+    },
+    {
+      "name": "eth11",
+      "mtu": 9000,
+      "master": "pnet11"
+    },
+    {
+      "name": "eth12",
+      "mtu": 9000,
+      "master": "pnet12"
+    },
+    {
+      "name": "eth13",
+      "mtu": 9000,
+      "master": "pnet13"
+    },
+    {
+      "name": "eth14",
+      "mtu": 9000,
+      "master": "pnet14"
+    },
+    {
+      "name": "eth15",
+      "mtu": 9000,
+      "master": "pnet15"
+    },
+    {
+      "name": "eth16",
+      "mtu": 9000,
+      "master": "pnet16"
+    },
+    {
+      "name": "eth17",
+      "mtu": 9000,
+      "master": "pnet17"
+    },
+    {
+      "name": "eth18",
+      "mtu": 9000,
+      "master": "pnet18"
+    },
+    {
+      "name": "eth19",
+      "mtu": 9000,
+      "master": "pnet19"
+    },
+    {
+      "name": "eth20",
+      "mtu": 9000,
+      "master": "pnet20"
+    },
+    {
+      "name": "eth21",
+      "mtu": 9000,
+      "master": "pnet21"
+    },
+    {
+      "name": "eth22",
+      "mtu": 9000,
+      "master": "pnet22"
+    },
+    {
+      "name": "eth23",
+      "mtu": 9000,
+      "master": "pnet23"
+    },
+    {
+      "name": "eth24",
+      "mtu": 9000,
+      "master": "pnet24"
+    },
+    {
+      "name": "eth25",
+      "mtu": 9000,
+      "master": "pnet25"
+    },
+    {
+      "name": "eth26",
+      "mtu": 9000,
+      "master": "pnet26"
+    },
+    {
+      "name": "eth27",
+      "mtu": 9000,
+      "master": "pnet27"
+    },
+    {
+      "name": "eth28",
+      "mtu": 9000,
+      "master": "pnet28"
+    },
+    {
+      "name": "eth29",
+      "mtu": 9000,
+      "master": "pnet29"
+    },
+    {
+      "name": "eth30",
+      "mtu": 9000,
+      "master": "pnet30"
+    },
+    {
+      "name": "eth31",
+      "mtu": 9000,
+      "master": "pnet31"
+    },
+    {
+      "name": "pnet0",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet1",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet2",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet10",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet11",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet12",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet13",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet14",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet15",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet16",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet17",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet18",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet19",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet20",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet21",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet22",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet23",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet24",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet25",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet26",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet27",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet28",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet29",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet30",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "pnet31",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_22",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_25",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_15_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_15_1",
+      "mtu": 9000,
+      "master": "vnet0_22"
+    },
+    {
+      "name": "vunl0_15_2",
+      "mtu": 9000,
+      "master": "vnet0_25"
+    },
+    {
+      "name": "vunl0_15_3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_15_4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_15_5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_15_6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_15_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_15_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_15_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_15_10",
+      "mtu": 9000,
+      "master": "pnet29"
+    },
+    {
+      "name": "vnet0_21",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_24",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_34",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_14_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_14_1",
+      "mtu": 9000,
+      "master": "vnet0_21"
+    },
+    {
+      "name": "vunl0_14_2",
+      "mtu": 9000,
+      "master": "vnet0_24"
+    },
+    {
+      "name": "vunl0_14_3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_14_4",
+      "mtu": 9000,
+      "master": "pnet22"
+    },
+    {
+      "name": "vunl0_14_5",
+      "mtu": 9000,
+      "master": "pnet24"
+    },
+    {
+      "name": "vunl0_14_6",
+      "mtu": 9000,
+      "master": "pnet31"
+    },
+    {
+      "name": "vunl0_14_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_14_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_14_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_14_10",
+      "mtu": 9000,
+      "master": "vnet0_34"
+    },
+    {
+      "name": "vnet0_20",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_23",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_13_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_13_1",
+      "mtu": 9000,
+      "master": "vnet0_20"
+    },
+    {
+      "name": "vunl0_13_2",
+      "mtu": 9000,
+      "master": "vnet0_23"
+    },
+    {
+      "name": "vunl0_13_3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_13_4",
+      "mtu": 9000,
+      "master": "pnet21"
+    },
+    {
+      "name": "vunl0_13_5",
+      "mtu": 9000,
+      "master": "pnet23"
+    },
+    {
+      "name": "vunl0_13_6",
+      "mtu": 9000,
+      "master": "pnet30"
+    },
+    {
+      "name": "vunl0_13_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_13_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_13_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_13_10",
+      "mtu": 9000,
+      "master": "vnet0_34"
+    },
+    {
+      "name": "vunl0_12_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_12_1",
+      "mtu": 9000,
+      "master": "vnet0_23"
+    },
+    {
+      "name": "vunl0_12_2",
+      "mtu": 9000,
+      "master": "vnet0_24"
+    },
+    {
+      "name": "vunl0_12_3",
+      "mtu": 9000,
+      "master": "vnet0_25"
+    },
+    {
+      "name": "vunl0_12_4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_12_5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_12_6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_12_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_12_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_12_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_12_10",
+      "mtu": 9000,
+      "master": "pnet8"
+    },
+    {
+      "name": "vunl0_11_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_11_1",
+      "mtu": 9000,
+      "master": "vnet0_20"
+    },
+    {
+      "name": "vunl0_11_2",
+      "mtu": 9000,
+      "master": "vnet0_21"
+    },
+    {
+      "name": "vunl0_11_3",
+      "mtu": 9000,
+      "master": "vnet0_22"
+    },
+    {
+      "name": "vunl0_11_4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_11_5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_11_6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_11_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_11_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_11_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_11_10",
+      "mtu": 9000,
+      "master": "pnet7"
+    },
+    {
+      "name": "vnet0_16",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_19",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_10_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_10_1",
+      "mtu": 9000,
+      "master": "vnet0_16"
+    },
+    {
+      "name": "vunl0_10_2",
+      "mtu": 9000,
+      "master": "vnet0_19"
+    },
+    {
+      "name": "vunl0_10_3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_10_4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_10_5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_10_6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_10_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_10_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_10_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_10_10",
+      "mtu": 9000,
+      "master": "pnet28"
+    },
+    {
+      "name": "vnet0_15",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_18",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_33",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_9_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_9_1",
+      "mtu": 9000,
+      "master": "vnet0_15"
+    },
+    {
+      "name": "vunl0_9_2",
+      "mtu": 9000,
+      "master": "vnet0_18"
+    },
+    {
+      "name": "vunl0_9_3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_9_4",
+      "mtu": 9000,
+      "master": "pnet16"
+    },
+    {
+      "name": "vunl0_9_5",
+      "mtu": 9000,
+      "master": "pnet18"
+    },
+    {
+      "name": "vunl0_9_6",
+      "mtu": 9000,
+      "master": "pnet20"
+    },
+    {
+      "name": "vunl0_9_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_9_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_9_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_9_10",
+      "mtu": 9000,
+      "master": "vnet0_33"
+    },
+    {
+      "name": "vnet0_14",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_17",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_8_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_8_1",
+      "mtu": 9000,
+      "master": "vnet0_14"
+    },
+    {
+      "name": "vunl0_8_2",
+      "mtu": 9000,
+      "master": "vnet0_17"
+    },
+    {
+      "name": "vunl0_8_3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_8_4",
+      "mtu": 9000,
+      "master": "pnet15"
+    },
+    {
+      "name": "vunl0_8_5",
+      "mtu": 9000,
+      "master": "pnet17"
+    },
+    {
+      "name": "vunl0_8_6",
+      "mtu": 9000,
+      "master": "pnet19"
+    },
+    {
+      "name": "vunl0_8_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_8_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_8_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_8_10",
+      "mtu": 9000,
+      "master": "vnet0_33"
+    },
+    {
+      "name": "vunl0_7_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_7_1",
+      "mtu": 9000,
+      "master": "vnet0_17"
+    },
+    {
+      "name": "vunl0_7_2",
+      "mtu": 9000,
+      "master": "vnet0_18"
+    },
+    {
+      "name": "vunl0_7_3",
+      "mtu": 9000,
+      "master": "vnet0_19"
+    },
+    {
+      "name": "vunl0_7_4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_7_5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_7_6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_7_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_7_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_7_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_7_10",
+      "mtu": 9000,
+      "master": "pnet6"
+    },
+    {
+      "name": "vunl0_6_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_6_1",
+      "mtu": 9000,
+      "master": "vnet0_14"
+    },
+    {
+      "name": "vunl0_6_2",
+      "mtu": 9000,
+      "master": "vnet0_15"
+    },
+    {
+      "name": "vunl0_6_3",
+      "mtu": 9000,
+      "master": "vnet0_16"
+    },
+    {
+      "name": "vunl0_6_4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_6_5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_6_6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_6_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_6_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_6_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_6_10",
+      "mtu": 9000,
+      "master": "pnet5"
+    },
+    {
+      "name": "vnet0_10",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_13",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_5_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_5_1",
+      "mtu": 9000,
+      "master": "vnet0_10"
+    },
+    {
+      "name": "vunl0_5_2",
+      "mtu": 9000,
+      "master": "vnet0_13"
+    },
+    {
+      "name": "vunl0_5_3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_5_4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_5_5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_5_6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_5_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_5_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_5_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_5_10",
+      "mtu": 9000,
+      "master": "pnet27"
+    },
+    {
+      "name": "vnet0_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_12",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_32",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_4_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_4_1",
+      "mtu": 9000,
+      "master": "vnet0_9"
+    },
+    {
+      "name": "vunl0_4_2",
+      "mtu": 9000,
+      "master": "vnet0_12"
+    },
+    {
+      "name": "vunl0_4_3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_4_4",
+      "mtu": 9000,
+      "master": "pnet10"
+    },
+    {
+      "name": "vunl0_4_5",
+      "mtu": 9000,
+      "master": "pnet12"
+    },
+    {
+      "name": "vunl0_4_6",
+      "mtu": 9000,
+      "master": "pnet14"
+    },
+    {
+      "name": "vunl0_4_7",
+      "mtu": 9000,
+      "master": "pnet26"
+    },
+    {
+      "name": "vunl0_4_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_4_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_4_10",
+      "mtu": 9000,
+      "master": "vnet0_32"
+    },
+    {
+      "name": "vnet0_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vnet0_11",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_3_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_3_1",
+      "mtu": 9000,
+      "master": "vnet0_8"
+    },
+    {
+      "name": "vunl0_3_2",
+      "mtu": 9000,
+      "master": "vnet0_11"
+    },
+    {
+      "name": "vunl0_3_3",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_3_4",
+      "mtu": 9000,
+      "master": "pnet9"
+    },
+    {
+      "name": "vunl0_3_5",
+      "mtu": 9000,
+      "master": "pnet11"
+    },
+    {
+      "name": "vunl0_3_6",
+      "mtu": 9000,
+      "master": "pnet13"
+    },
+    {
+      "name": "vunl0_3_7",
+      "mtu": 9000,
+      "master": "pnet25"
+    },
+    {
+      "name": "vunl0_3_8",
+      "mtu": 9000,
+      "master": "pnet1"
+    },
+    {
+      "name": "vunl0_3_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_3_10",
+      "mtu": 9000,
+      "master": "vnet0_32"
+    },
+    {
+      "name": "vunl0_2_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_2_1",
+      "mtu": 9000,
+      "master": "vnet0_11"
+    },
+    {
+      "name": "vunl0_2_2",
+      "mtu": 9000,
+      "master": "vnet0_12"
+    },
+    {
+      "name": "vunl0_2_3",
+      "mtu": 9000,
+      "master": "vnet0_13"
+    },
+    {
+      "name": "vunl0_2_4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_2_5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_2_6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_2_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_2_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_2_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_2_10",
+      "mtu": 9000,
+      "master": "pnet4"
+    },
+    {
+      "name": "vunl0_1_0",
+      "mtu": 9000,
+      "master": "pnet2"
+    },
+    {
+      "name": "vunl0_1_1",
+      "mtu": 9000,
+      "master": "vnet0_8"
+    },
+    {
+      "name": "vunl0_1_2",
+      "mtu": 9000,
+      "master": "vnet0_9"
+    },
+    {
+      "name": "vunl0_1_3",
+      "mtu": 9000,
+      "master": "vnet0_10"
+    },
+    {
+      "name": "vunl0_1_4",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_1_5",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_1_6",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_1_7",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_1_8",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_1_9",
+      "mtu": 9000,
+      "master": null
+    },
+    {
+      "name": "vunl0_1_10",
+      "mtu": 9000,
+      "master": "pnet3"
+    }
+  ],
+  "qemu_options": [
+    {
+      "-smp": "2",
+      "-name": "DCB-Spine01",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCA-Spine02",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCA-Spine01",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCC-Spine02",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCC-Spine01",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCB-Spine02",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCA-Leaf03",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCA-Leaf02",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCA-Leaf01",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCB-Leaf03",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCB-Leaf02",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCB-Leaf01",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCC-Leaf03",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCC-Leaf02",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    },
+    {
+      "-smp": "2",
+      "-name": "DCC-Leaf01",
+      "-machine": "type=pc,accel=kvm",
+      "-cpu": "host,vmx=off,svm=off",
+      "nic_models": [
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000",
+        "e1000"
+      ]
+    }
+  ]
+}

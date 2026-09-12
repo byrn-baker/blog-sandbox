@@ -1,0 +1,7 @@
+{"mode": "server", "local": "192.168.100.20", "peer": "192.168.100.11", "requested_mss": 1200, "negotiated_mss": 1188, "total_retrans": 140, "errors": ["send: TimeoutError: global deadline", "receive: TimeoutError: global deadline"], "ok": false}
+
+Traceback (most recent call last):
+  File "<string>", line 31, in <module>
+    assert results['ok']
+           ~~~~~~~^^^^^^
+AssertionError

@@ -1,0 +1,18 @@
+{
+  "device": "SP4",
+  "at": "2026-09-11T19:28:03.994026+00:00",
+  "mode": "baseline",
+  "commands": {
+    "show version | include uptime|Version": "Cisco IOS XE Software, Version 17.15.01a\nCisco IOS Software [IOSXE], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.15.1a, RELEASE SOFTWARE (fc1)\nlicensed under the GNU General Public License (\"GPL\") Version 2.0.  The\nsoftware code licensed under GPL Version 2.0 is free software that comes\nGPL code under the terms of GPL Version 2.0.  For more details, see the\nSP4 uptime is 14 hours, 29 minutes",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.2        UP    27       03\nSP3             L2   Gi5           10.0.0.4        UP    27       05\nSPE1            L2   Gi4           10.0.0.11       UP    23       04\nSPE2            L2   Gi3           10.0.0.13       UP    20       02",
+    "show ip bgp summary": "% BGP not active\n",
+    "show ip bgp vpnv4 all summary": "% BGP not active\n",
+    "show interfaces | include line protocol|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, "
+  },
+  "ok": true,
+  "management_ip": "192.168.3.56",
+  "platform": "cisco_iosxe",
+  "running_hash": "73e7b7f6f0dad892c69f9138836dbae1922a7b973bab8548e035300e762185d7",
+  "startup_hash": "73e7b7f6f0dad892c69f9138836dbae1922a7b973bab8548e035300e762185d7",
+  "operational_configs_equal": true
+}

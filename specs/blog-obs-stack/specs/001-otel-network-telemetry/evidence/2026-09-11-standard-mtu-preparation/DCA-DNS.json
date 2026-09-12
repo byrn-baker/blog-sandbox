@@ -1,0 +1,36 @@
+{
+  "hostname": "DCA-DNS",
+  "links": [
+    {
+      "ifname": "eth0",
+      "mtu": 9000,
+      "max_mtu": 9000,
+      "master": null,
+      "address": "bc:24:11:cc:a5:2a"
+    },
+    {
+      "ifname": "ens19",
+      "mtu": 1400,
+      "max_mtu": 9000,
+      "master": "bond0",
+      "address": "02:00:00:00:01:35"
+    },
+    {
+      "ifname": "ens20",
+      "mtu": 1400,
+      "max_mtu": 9000,
+      "master": "bond0",
+      "address": "02:00:00:00:01:35"
+    },
+    {
+      "ifname": "bond0",
+      "mtu": 1400,
+      "max_mtu": 65535,
+      "master": null,
+      "address": "02:00:00:00:01:35"
+    }
+  ],
+  "flannel_mtu": [],
+  "ok": true,
+  "name": "DCA-DNS"
+}

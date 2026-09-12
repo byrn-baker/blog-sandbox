@@ -1,0 +1,64 @@
+{
+  "device": "SPE3",
+  "ip": "192.168.3.59",
+  "platform": "cisco_iosxe",
+  "at": "2026-09-10T01:22:58.658097+00:00",
+  "modeled_interfaces": [
+    {
+      "name": "GigabitEthernet1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.3.59/24"
+      ]
+    },
+    {
+      "name": "GigabitEthernet2",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.0.0.17/31",
+        "fd10::17/127"
+      ]
+    },
+    {
+      "name": "GigabitEthernet3",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.0.0.19/31",
+        "fd10::19/127"
+      ]
+    },
+    {
+      "name": "GigabitEthernet4",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "172.16.3.0/31",
+        "fd10:c:3::/127"
+      ]
+    },
+    {
+      "name": "GigabitEthernet5",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "Loopback0",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.0.9/32",
+        "fd10:0:1::9/128"
+      ]
+    }
+  ],
+  "commands": {
+    "show ip cef vrf CUST-A 10.3.1.4 detail": "10.3.1.4/32, epoch 2, flags [rib defined all labels]\n  recursive via 10.1.0.7 label 45\n    nexthop 10.0.0.16 GigabitEthernet2 label 19-(local:24)\n    nexthop 10.0.0.18 GigabitEthernet3 label 21-(local:24)",
+    "show ip cef vrf CUST-A 10.3.2.4 detail": "10.3.2.4/32, epoch 2, flags [rib defined all labels]\n  recursive via 10.1.0.8 label 51\n    nexthop 10.0.0.18 GigabitEthernet3 label 16-(local:22)",
+    "show ip cef vrf CUST-A 10.3.3.4 detail": "10.3.3.4/32, epoch 2, flags [rib only nolabel, rib defined all labels]\n  dflt local label info: other/61 [0x2]\n  recursive via 172.16.3.1\n    attached to GigabitEthernet4"
+  },
+  "ok": true
+}

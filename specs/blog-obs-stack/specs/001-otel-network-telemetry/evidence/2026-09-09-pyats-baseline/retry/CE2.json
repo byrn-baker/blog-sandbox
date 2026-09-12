@@ -1,0 +1,22 @@
+{
+  "name": "CE2",
+  "started": "2026-09-09T03:10:36.910534+00:00",
+  "os": "iosxe",
+  "commands": [],
+  "error": "ConnectionError",
+  "error_chain": [
+    {
+      "type": "ConnectionError",
+      "signals": []
+    },
+    {
+      "type": "StateMachineError",
+      "signals": []
+    },
+    {
+      "type": "EOF",
+      "signals": []
+    }
+  ],
+  "finished": "2026-09-09T03:11:08.425167+00:00"
+}

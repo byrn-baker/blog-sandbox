@@ -1,0 +1,84 @@
+{
+  "configured_leader_flags": [
+    "--kube-controller-manager-arg leader-elect-lease-duration=30s",
+    "--kube-controller-manager-arg leader-elect-renew-deadline=20s",
+    "--kube-scheduler-arg leader-elect-lease-duration=30s",
+    "--kube-scheduler-arg leader-elect-renew-deadline=20s"
+  ],
+  "service": "NRestarts=3\nExecMainStartTimestamp=Wed 2026-09-09 00:09:50 UTC\nActiveState=active\n",
+  "config_files": {
+    "/etc/rancher/k3s/config.yaml.d/90-node-lifecycle.yaml": [
+      "# node-monitor-grace-period: how long the controller-manager waits after the",
+      "kube-controller-manager-arg:",
+      "  - \"node-monitor-grace-period=300s\""
+    ]
+  },
+  "six_hour_counts": {
+    "lease_lost": 2,
+    "renew_failure": 2,
+    "exits": 2,
+    "slow_apply": 10677,
+    "slow_fsync": 0,
+    "oom": 0
+  },
+  "recent_failures": [
+    "2026-09-08T22:39:15+00:00 DCA-k3s-m1 k3s[119570]: I0908 22:39:15.383884  119570 leaderelection.go:285] failed to renew lease kube-system/k3s-cloud-controller-manager: timed out waiting for the condition",
+    "2026-09-08T22:39:15+00:00 DCA-k3s-m1 k3s[119570]: E0908 22:39:15.383970  119570 controllermanager.go:274] \"leaderelection lost\"",
+    "2026-09-08T22:39:15+00:00 DCA-k3s-m1 systemd[1]: k3s.service: Main process exited, code=exited, status=1/FAILURE",
+    "2026-09-09T00:09:45+00:00 DCA-k3s-m1 k3s[130092]: I0909 00:09:45.702478  130092 leaderelection.go:285] failed to renew lease kube-system/k3s-cloud-controller-manager: timed out waiting for the condition",
+    "2026-09-09T00:09:45+00:00 DCA-k3s-m1 k3s[130092]: E0909 00:09:45.702550  130092 controllermanager.go:274] \"leaderelection lost\"",
+    "2026-09-09T00:09:45+00:00 DCA-k3s-m1 systemd[1]: k3s.service: Main process exited, code=exited, status=1/FAILURE"
+  ],
+  "recent_slow_apply": [
+    "2026-09-09T00:14:46+00:00 DCA-k3s-m1 k3s[133347]: {\"level\":\"warn\",\"ts\":\"2026-09-09T00:14:46.8833Z\",\"caller\":\"etcdserver/util.go:170\",\"msg\":\"apply request took too long\",\"took\":\"601.697092ms\",\"expected-duration\":\"100ms\",\"prefix\":\"read-only range \",\"request\":\"key:\\\"/registry/endpointslices/default/kubernetes\\\" \",\"response\":\"range_response_count:1 size:517\"}",
+    "2026-09-09T00:14:47+00:00 DCA-k3s-m1 k3s[133347]: {\"level\":\"warn\",\"ts\":\"2026-09-09T00:14:47.520451Z\",\"caller\":\"etcdserver/util.go:170\",\"msg\":\"apply request took too long\",\"took\":\"263.936637ms\",\"expected-duration\":\"100ms\",\"prefix\":\"read-only range \",\"request\":\"key:\\\"/registry/leases/kube-system/k3s-cloud-controller-manager\\\" \",\"response\":\"range_response_count:1 size:502\"}",
+    "2026-09-09T00:14:48+00:00 DCA-k3s-m1 k3s[133347]: {\"level\":\"warn\",\"ts\":\"2026-09-09T00:14:48.036714Z\",\"caller\":\"etcdserver/util.go:170\",\"msg\":\"apply request took too long\",\"took\":\"125.014054ms\",\"expected-duration\":\"100ms\",\"prefix\":\"read-only range \",\"request\":\"key:\\\"/registry/leases/kube-system/kube-scheduler\\\" \",\"response\":\"range_response_count:1 size:474\"}"
+  ],
+  "startup_leader_args": [
+    {
+      "component": "kube-apiserver",
+      "flags": []
+    },
+    {
+      "component": "kube-scheduler",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-controller-manager",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-proxy",
+      "flags": []
+    },
+    {
+      "component": "kube-apiserver",
+      "flags": []
+    },
+    {
+      "component": "kube-scheduler",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-controller-manager",
+      "flags": [
+        "--leader-elect-lease-duration=30s",
+        "--leader-elect-renew-deadline=20s"
+      ]
+    },
+    {
+      "component": "kube-proxy",
+      "flags": []
+    }
+  ],
+  "device": "DCA-k3s-m1"
+}

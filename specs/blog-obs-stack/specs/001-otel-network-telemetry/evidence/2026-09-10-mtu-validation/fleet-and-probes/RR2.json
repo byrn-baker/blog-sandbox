@@ -1,0 +1,41 @@
+{
+  "device": "RR2",
+  "ip": "192.168.3.52",
+  "platform": "cisco_iosxe",
+  "at": "2026-09-10T01:17:24.350938+00:00",
+  "modeled_interfaces": [
+    {
+      "name": "GigabitEthernet1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.3.52/24"
+      ]
+    },
+    {
+      "name": "GigabitEthernet2",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.0.0.23/31",
+        "fd10::23/127"
+      ]
+    },
+    {
+      "name": "Loopback0",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.0.2/32",
+        "fd10:0:1::2/128"
+      ]
+    }
+  ],
+  "commands": {
+    "show interfaces": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.52    YES NVRAM  up                    up      \nGigabitEthernet2       10.0.0.23       YES NVRAM  up                    up      \nLoopback0              10.1.0.2        YES NVRAM  up                    up      ",
+    "show mpls interfaces detail": "Interface GigabitEthernet2:\n\tType Unknown\n\tIP labeling enabled (ldp) :\n\t  Interface config\n\tLSP Tunnel labeling not enabled\n\tIP FRR labeling not enabled\n\tBGP labeling not enabled\n\tMPLS operational\n\tMTU = 1500",
+    "show ip interface | include ^GigabitEthernet|MTU": "GigabitEthernet1 is up, line protocol is up\n  MTU is 1500 bytes\nGigabitEthernet2 is up, line protocol is up\n  MTU is 1500 bytes\n  MTU is 1514 bytes"
+  },
+  "ok": true
+}

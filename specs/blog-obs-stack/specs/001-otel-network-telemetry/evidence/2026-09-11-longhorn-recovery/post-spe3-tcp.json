@@ -1,0 +1,35 @@
+[
+  {
+    "bytes_each_direction": 1048576,
+    "seconds": 52.213,
+    "combined_mbps": 0.321,
+    "mss": 8948,
+    "tcp_stats": "State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port \nCLOSE-WAIT 0      0      192.168.100.30:45352 192.168.100.10:49491\n\t cubic wscale:7,7 rto:864 rtt:285.221/119.465 ato:199 mss:8948 pmtu:9000 rcvmss:8948 advmss:8948 cwnd:2 ssthresh:2 bytes_sent:1524480 bytes_retrans:475904 bytes_acked:1048577 bytes_received:1048577 segs_out:281 segs_in:233 data_segs_out:172 data_segs_in:118 send 501955bps lastsnd:27348 lastrcv:24 lastack:24 pacing_rate 602344bps delivery_rate 74344bps delivered:119 busy:24930ms rwnd_limited:434ms(1.7%) retrans:0/54 rcv_rtt:130 rcv_space:56588 rcv_ssthresh:88064 minrtt:92 rcv_ooopack:21 snd_wnd:109568 rcv_wnd:76416 rehash:4\n",
+    "sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+    "ok": true,
+    "source": "DCC-k3s-w4",
+    "destination": "DCA-k3s-m1",
+    "server_exit": 0
+  },
+  {
+    "ok": false,
+    "exit_code": 1,
+    "error": "Traceback (most recent call last):\n  File \"<stdin>\", line 7, in <module>\nRuntimeError: Incomplete reply\n",
+    "source": "DCB-k3s-w1",
+    "destination": "DCC-k3s-w4",
+    "server_exit": 1,
+    "server_error": "Traceback (most recent call last):\n  File \"<stdin>\", line 11, in <module>\nTimeoutError: timed out\n"
+  },
+  {
+    "bytes_each_direction": 1048576,
+    "seconds": 15.056,
+    "combined_mbps": 1.114,
+    "mss": 8948,
+    "tcp_stats": "State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port \nCLOSE-WAIT 0      0      192.168.100.20:34536 192.168.100.10:49491\n\t cubic wscale:7,7 rto:237 rtt:36.523/20.12 ato:41 mss:8948 pmtu:9000 rcvmss:8948 advmss:8948 cwnd:2 ssthresh:2 bytes_sent:1730284 bytes_retrans:681708 bytes_acked:1048577 bytes_received:1048577 segs_out:304 segs_in:219 data_segs_out:195 data_segs_in:119 send 3919941bps lastsnd:8325 lastrcv:6 lastack:6 pacing_rate 4703816bps delivery_rate 3859384bps delivered:119 busy:6733ms rwnd_limited:116ms(1.7%) retrans:0/77 rcv_rtt:22 rcv_space:56588 rcv_ssthresh:115200 minrtt:14 rcv_ooopack:13 snd_wnd:115200 rcv_wnd:98176 rehash:12\n",
+    "sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+    "ok": true,
+    "source": "DCB-k3s-w1",
+    "destination": "DCA-k3s-m1",
+    "server_exit": 0
+  }
+]

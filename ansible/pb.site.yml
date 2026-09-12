@@ -94,6 +94,7 @@
   hosts: k3s_servers
   become: true
   serial: 1
+  any_errors_fatal: true
   tags: [k3s, k3s_config]
   roles:
     - k3s_config

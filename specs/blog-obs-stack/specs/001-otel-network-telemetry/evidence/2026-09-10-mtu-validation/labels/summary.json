@@ -1,0 +1,20 @@
+{
+  "returncode": 0,
+  "devices": [
+    {
+      "device": "SPE1",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SPE2",
+      "ok": true,
+      "error": null
+    },
+    {
+      "device": "SPE3",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

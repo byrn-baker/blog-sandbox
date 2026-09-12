@@ -1,0 +1,1796 @@
+{
+  "at": "2026-09-11T21:00:35.549293+00:00",
+  "nodes": [
+    {
+      "name": "dca-k3s-m1",
+      "conditions": [
+        {
+          "type": "EtcdIsVoter",
+          "status": "True",
+          "reason": "MemberNotLearner",
+          "lastTransitionTime": "2026-09-11T20:27:11Z"
+        },
+        {
+          "type": "MemoryPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientMemory",
+          "lastTransitionTime": "2026-09-06T18:02:56Z"
+        },
+        {
+          "type": "DiskPressure",
+          "status": "False",
+          "reason": "KubeletHasNoDiskPressure",
+          "lastTransitionTime": "2026-09-06T18:02:56Z"
+        },
+        {
+          "type": "PIDPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientPID",
+          "lastTransitionTime": "2026-09-06T18:02:56Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": "KubeletReady",
+          "lastTransitionTime": "2026-09-06T18:02:56Z"
+        }
+      ]
+    },
+    {
+      "name": "dca-k3s-m2",
+      "conditions": [
+        {
+          "type": "EtcdIsVoter",
+          "status": "True",
+          "reason": "MemberNotLearner",
+          "lastTransitionTime": "2026-09-09T21:24:12Z"
+        },
+        {
+          "type": "MemoryPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientMemory",
+          "lastTransitionTime": "2026-09-05T16:55:57Z"
+        },
+        {
+          "type": "DiskPressure",
+          "status": "False",
+          "reason": "KubeletHasNoDiskPressure",
+          "lastTransitionTime": "2026-09-05T16:55:57Z"
+        },
+        {
+          "type": "PIDPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientPID",
+          "lastTransitionTime": "2026-09-05T16:55:57Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": "KubeletReady",
+          "lastTransitionTime": "2026-09-05T16:55:58Z"
+        }
+      ]
+    },
+    {
+      "name": "dca-k3s-m3",
+      "conditions": [
+        {
+          "type": "EtcdIsVoter",
+          "status": "True",
+          "reason": "MemberNotLearner",
+          "lastTransitionTime": "2026-09-11T04:35:35Z"
+        },
+        {
+          "type": "MemoryPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientMemory",
+          "lastTransitionTime": "2026-09-09T08:39:47Z"
+        },
+        {
+          "type": "DiskPressure",
+          "status": "False",
+          "reason": "KubeletHasNoDiskPressure",
+          "lastTransitionTime": "2026-09-09T08:39:47Z"
+        },
+        {
+          "type": "PIDPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientPID",
+          "lastTransitionTime": "2026-09-09T08:39:47Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": "KubeletReady",
+          "lastTransitionTime": "2026-09-11T04:53:04Z"
+        }
+      ]
+    },
+    {
+      "name": "dcb-k3s-w1",
+      "conditions": [
+        {
+          "type": "MemoryPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientMemory",
+          "lastTransitionTime": "2026-09-11T20:25:28Z"
+        },
+        {
+          "type": "DiskPressure",
+          "status": "False",
+          "reason": "KubeletHasNoDiskPressure",
+          "lastTransitionTime": "2026-09-11T20:25:28Z"
+        },
+        {
+          "type": "PIDPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientPID",
+          "lastTransitionTime": "2026-09-11T20:25:28Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": "KubeletReady",
+          "lastTransitionTime": "2026-09-11T20:25:28Z"
+        }
+      ]
+    },
+    {
+      "name": "dcb-k3s-w2",
+      "conditions": [
+        {
+          "type": "MemoryPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientMemory",
+          "lastTransitionTime": "2026-09-11T20:26:11Z"
+        },
+        {
+          "type": "DiskPressure",
+          "status": "False",
+          "reason": "KubeletHasNoDiskPressure",
+          "lastTransitionTime": "2026-09-11T20:26:11Z"
+        },
+        {
+          "type": "PIDPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientPID",
+          "lastTransitionTime": "2026-09-11T20:26:11Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": "KubeletReady",
+          "lastTransitionTime": "2026-09-11T20:26:11Z"
+        }
+      ]
+    },
+    {
+      "name": "dcb-k3s-w3",
+      "conditions": [
+        {
+          "type": "MemoryPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientMemory",
+          "lastTransitionTime": "2026-09-11T20:25:26Z"
+        },
+        {
+          "type": "DiskPressure",
+          "status": "False",
+          "reason": "KubeletHasNoDiskPressure",
+          "lastTransitionTime": "2026-09-11T20:25:26Z"
+        },
+        {
+          "type": "PIDPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientPID",
+          "lastTransitionTime": "2026-09-11T20:25:26Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": "KubeletReady",
+          "lastTransitionTime": "2026-09-11T20:25:26Z"
+        }
+      ]
+    },
+    {
+      "name": "dcc-k3s-w4",
+      "conditions": [
+        {
+          "type": "MemoryPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientMemory",
+          "lastTransitionTime": "2026-09-11T20:22:19Z"
+        },
+        {
+          "type": "DiskPressure",
+          "status": "False",
+          "reason": "KubeletHasNoDiskPressure",
+          "lastTransitionTime": "2026-09-11T20:22:19Z"
+        },
+        {
+          "type": "PIDPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientPID",
+          "lastTransitionTime": "2026-09-11T20:22:19Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": "KubeletReady",
+          "lastTransitionTime": "2026-09-11T20:22:19Z"
+        }
+      ]
+    },
+    {
+      "name": "dcc-k3s-w5",
+      "conditions": [
+        {
+          "type": "MemoryPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientMemory",
+          "lastTransitionTime": "2026-09-11T20:22:18Z"
+        },
+        {
+          "type": "DiskPressure",
+          "status": "False",
+          "reason": "KubeletHasNoDiskPressure",
+          "lastTransitionTime": "2026-09-11T20:22:18Z"
+        },
+        {
+          "type": "PIDPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientPID",
+          "lastTransitionTime": "2026-09-11T20:22:18Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": "KubeletReady",
+          "lastTransitionTime": "2026-09-11T20:22:18Z"
+        }
+      ]
+    },
+    {
+      "name": "dcc-k3s-w6",
+      "conditions": [
+        {
+          "type": "MemoryPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientMemory",
+          "lastTransitionTime": "2026-09-11T20:22:16Z"
+        },
+        {
+          "type": "DiskPressure",
+          "status": "False",
+          "reason": "KubeletHasNoDiskPressure",
+          "lastTransitionTime": "2026-09-11T20:22:16Z"
+        },
+        {
+          "type": "PIDPressure",
+          "status": "False",
+          "reason": "KubeletHasSufficientPID",
+          "lastTransitionTime": "2026-09-11T20:22:16Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": "KubeletReady",
+          "lastTransitionTime": "2026-09-11T20:22:16Z"
+        }
+      ]
+    }
+  ],
+  "pods": [
+    {
+      "namespace": "argocd",
+      "name": "argocd-application-controller-0",
+      "node": "dca-k3s-m2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "application-controller",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-applicationset-controller-64b8d6b789-pk7th",
+      "node": "dca-k3s-m3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "applicationset-controller",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-dex-server-7966c79795-2mvzc",
+      "node": "dca-k3s-m3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "dex-server",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-notifications-controller-75ff9596f5-zmcgs",
+      "node": "dca-k3s-m2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "notifications-controller",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-redis-7894c9779c-l27mf",
+      "node": "dca-k3s-m2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "redis",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-repo-server-b9c6c66f-znwvx",
+      "node": "dca-k3s-m3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "repo-server",
+          "ready": true,
+          "restarts": 461,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "argocd",
+      "name": "argocd-server-5998cbb96f-2jclk",
+      "node": "dca-k3s-m3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "server",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "kube-system",
+      "name": "coredns-7b98449c4-58lwd",
+      "node": "dca-k3s-m3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "coredns",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "kube-system",
+      "name": "local-path-provisioner-6795b5f9d8-tv4bc",
+      "node": "dca-k3s-m2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "local-path-provisioner",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "kube-system",
+      "name": "metrics-server-cdcc87586-tgwtl",
+      "node": "dca-k3s-m2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "metrics-server",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-attacher-6d698df559-6knwx",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-attacher",
+          "ready": true,
+          "restarts": 4,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-attacher-6d698df559-884z9",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-attacher",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-attacher-6d698df559-d4f52",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-attacher",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-provisioner-cd78b7b67-27hcf",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-provisioner",
+          "ready": true,
+          "restarts": 9,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-provisioner-cd78b7b67-khlh6",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-provisioner",
+          "ready": true,
+          "restarts": 4,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-provisioner-cd78b7b67-mcd52",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-provisioner",
+          "ready": true,
+          "restarts": 8,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-resizer-cb7655d45-cm5w8",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-resizer",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-resizer-cb7655d45-zcrr7",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-resizer",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-resizer-cb7655d45-znktt",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-resizer",
+          "ready": true,
+          "restarts": 4,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-snapshotter-799f9f96cf-56wnf",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-snapshotter",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-snapshotter-799f9f96cf-c479d",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-snapshotter",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "csi-snapshotter-799f9f96cf-plsh4",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "csi-snapshotter",
+          "ready": true,
+          "restarts": 3,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-5fptx",
+      "node": "dcb-k3s-w2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "engine-image-ei-493e04e7",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-9ml2l",
+      "node": "dcb-k3s-w1",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "engine-image-ei-493e04e7",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-lllzp",
+      "node": "dcc-k3s-w4",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "engine-image-ei-493e04e7",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-pm269",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "engine-image-ei-493e04e7",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-snh5l",
+      "node": "dcb-k3s-w3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "engine-image-ei-493e04e7",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "engine-image-ei-493e04e7-vrfqh",
+      "node": "dcc-k3s-w6",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "engine-image-ei-493e04e7",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-0dde8a944b2a020b75470acc79d6a423",
+      "node": "dcb-k3s-w1",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "instance-manager",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-17459023f805b82dc2325032584721c3",
+      "node": "dcc-k3s-w6",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "instance-manager",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-3a90a13802fb6ba486824445adfbf9a4",
+      "node": "dcb-k3s-w2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "instance-manager",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-49d022f8cd160387935de1fe6e2bcb9f",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "instance-manager",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-8c8a30b7f0d554c75e8eefbb1733839d",
+      "node": "dcc-k3s-w4",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "instance-manager",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "instance-manager-b7c65f4637ba533732b62cb65894f354",
+      "node": "dcb-k3s-w3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "instance-manager",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-74ffw",
+      "node": "dcc-k3s-w4",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-csi-plugin",
+          "ready": true,
+          "restarts": 2,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "longhorn-liveness-probe",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "node-driver-registrar",
+          "ready": true,
+          "restarts": 4,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-drg4t",
+      "node": "dcc-k3s-w6",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-csi-plugin",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "longhorn-liveness-probe",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "node-driver-registrar",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-pk2s4",
+      "node": "dcb-k3s-w3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-csi-plugin",
+          "ready": true,
+          "restarts": 2,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "longhorn-liveness-probe",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "node-driver-registrar",
+          "ready": true,
+          "restarts": 4,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-s58sd",
+      "node": "dcb-k3s-w2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-csi-plugin",
+          "ready": true,
+          "restarts": 2,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "longhorn-liveness-probe",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "node-driver-registrar",
+          "ready": true,
+          "restarts": 4,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-vsjjg",
+      "node": "dcb-k3s-w1",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-csi-plugin",
+          "ready": true,
+          "restarts": 2,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "longhorn-liveness-probe",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "node-driver-registrar",
+          "ready": true,
+          "restarts": 4,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-csi-plugin-zndnr",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-csi-plugin",
+          "ready": true,
+          "restarts": 2,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "longhorn-liveness-probe",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "node-driver-registrar",
+          "ready": true,
+          "restarts": 2,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-driver-deployer-56c87bf855-g4w8f",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-driver-deployer",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-2k24v",
+      "node": "dcb-k3s-w3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-manager",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "pre-pull-share-manager-image",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-8x78h",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-manager",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "pre-pull-share-manager-image",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-km8j9",
+      "node": "dcb-k3s-w2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-manager",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "pre-pull-share-manager-image",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-ld4pv",
+      "node": "dcc-k3s-w6",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-manager",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "pre-pull-share-manager-image",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-lvxf8",
+      "node": "dcc-k3s-w4",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-manager",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "pre-pull-share-manager-image",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-manager-pfc2h",
+      "node": "dcb-k3s-w1",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-manager",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "pre-pull-share-manager-image",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-ui-787c958bcf-chjbl",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-ui",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "longhorn-system",
+      "name": "longhorn-ui-787c958bcf-gts6z",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "longhorn-ui",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-grafana-55964d88c-dqrkk",
+      "node": "dcb-k3s-w3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "grafana",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "grafana-sc-dashboard",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "grafana-sc-datasources",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-kube-state-metrics-545f7c6df4-44wq8",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "kube-state-metrics",
+          "ready": true,
+          "restarts": 16,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-2whgg",
+      "node": "dca-k3s-m3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-98mng",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-bwtqz",
+      "node": "dcc-k3s-w6",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-mpvxz",
+      "node": "dcc-k3s-w4",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-nz8cw",
+      "node": "dca-k3s-m2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-p79tf",
+      "node": "dcb-k3s-w3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-pzq42",
+      "node": "dcb-k3s-w1",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-vxj2t",
+      "node": "dca-k3s-m1",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-xk965",
+      "node": "dcb-k3s-w2",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "ready": true,
+          "restarts": 1,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "victoria-metrics-k8s-stack-victoria-metrics-operator-77cdbm76xx",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "operator",
+          "ready": true,
+          "restarts": 15,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "vmagent-victoria-metrics-k8s-stack-5dcd6959d9-nh5vj",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "config-reloader",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "vmagent",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "vmalert-victoria-metrics-k8s-stack-78689f75d9-ft7w9",
+      "node": "dcc-k3s-w5",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "config-reloader",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "vmalert",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "vmalertmanager-victoria-metrics-k8s-stack-0",
+      "node": "dcb-k3s-w3",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "alertmanager",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        },
+        {
+          "name": "config-reloader",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "observability",
+      "name": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-fb9vj",
+      "node": "dcb-k3s-w1",
+      "phase": "Running",
+      "deleting": null,
+      "ready": true,
+      "containers": [
+        {
+          "name": "vmsingle",
+          "ready": true,
+          "restarts": 0,
+          "state": [
+            "running"
+          ]
+        }
+      ]
+    }
+  ],
+  "volumes": [
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "state": "attached",
+      "robustness": "degraded",
+      "currentNodeID": "dcb-k3s-w1",
+      "numberOfReplicas": 3,
+      "conditions": [
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:29Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "OfflineRebuilding"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:57Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "WaitForBackingImage"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:57Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "TooManySnapshots"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:57Z",
+          "message": "",
+          "reason": "",
+          "status": "True",
+          "type": "Scheduled"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:35Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "Restore"
+        }
+      ]
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "state": "attached",
+      "robustness": "healthy",
+      "currentNodeID": "dcb-k3s-w3",
+      "numberOfReplicas": 3,
+      "conditions": [
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:02:33Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "OfflineRebuilding"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:27Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "WaitForBackingImage"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:27Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "TooManySnapshots"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:27Z",
+          "message": "",
+          "reason": "",
+          "status": "True",
+          "type": "Scheduled"
+        },
+        {
+          "lastProbeTime": "",
+          "lastTransitionTime": "2026-09-06T18:19:32Z",
+          "message": "",
+          "reason": "",
+          "status": "False",
+          "type": "Restore"
+        }
+      ]
+    }
+  ],
+  "replicas": [
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-00ad9e2d",
+      "volume": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "node": "dcc-k3s-w5",
+      "state": "running",
+      "failedAt": "",
+      "healthyAt": "",
+      "rebuildRetryCount": 5
+    },
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-3212170a",
+      "volume": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "node": "dcb-k3s-w2",
+      "state": "running",
+      "failedAt": "",
+      "healthyAt": "2026-09-11T20:50:36Z",
+      "rebuildRetryCount": 0
+    },
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd-r-dc5f7018",
+      "volume": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "node": "dcb-k3s-w3",
+      "state": "running",
+      "failedAt": "",
+      "healthyAt": "2026-09-07T00:14:08Z",
+      "rebuildRetryCount": 0
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-586eaedc",
+      "volume": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "node": "dcc-k3s-w6",
+      "state": "running",
+      "failedAt": "",
+      "healthyAt": "2026-09-11T20:38:09Z",
+      "rebuildRetryCount": 0
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-9c5ca91f",
+      "volume": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "node": "dcb-k3s-w1",
+      "state": "running",
+      "failedAt": "",
+      "healthyAt": "2026-09-11T16:06:34Z",
+      "rebuildRetryCount": 0
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230-r-a8ad4a11",
+      "volume": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "node": "dcc-k3s-w4",
+      "state": "running",
+      "failedAt": "",
+      "healthyAt": "2026-09-11T20:34:53Z",
+      "rebuildRetryCount": 0
+    }
+  ]
+}

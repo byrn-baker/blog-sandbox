@@ -1,0 +1,16 @@
+{
+  "name": "SP3",
+  "id": "dde570e2-8b17-437c-8f43-02ba637a0816",
+  "ip": "192.168.3.55",
+  "at": "2026-09-10T02:54:12.388245+00:00",
+  "commands": {
+    "show version | include uptime|Cisco IOS XE Software": "Cisco IOS XE Software, Version 17.15.01a\nSP3 uptime is 23 minutes",
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.55    YES TFTP   up                    up      \nGigabitEthernet2       unassigned      YES unset  administratively down down    \nGigabitEthernet3       unassigned      YES unset  administratively down down    \nGigabitEthernet4       unassigned      YES unset  administratively down down    \nGigabitEthernet5       unassigned      YES unset  administratively down down    ",
+    "show interfaces | include ^GigabitEthernet|MTU": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is administratively down, line protocol is down \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is administratively down, line protocol is down \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is administratively down, line protocol is down \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is administratively down, line protocol is down \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, ",
+    "show isis neighbors": "",
+    "show isis interface": "% Incomplete command.\n",
+    "show ip route summary": "IP routing table name is default (0x0)\nIP routing table maximum-paths is 32\nRoute Source    Networks    Subnets     Replicates  Overhead    Memory (bytes)\nconnected       0           0           0           0           0\nstatic          0           0           0           0           0\napplication     0           0           0           0           0\ninternal        0                                               40\nTotal           0           0           0           0           40\n",
+    "show platform software vnic-if interface-mapping": "-------------------------------------------------------------\n Interface Name        Driver Name         Mac Addr\n-------------------------------------------------------------\n GigabitEthernet5       net_virtio         5254.00f9.fbd6 \n GigabitEthernet4       net_virtio         5254.0099.cd04 \n GigabitEthernet3       net_virtio         5254.0063.edcb \n GigabitEthernet2       net_virtio         5254.00bb.44da \n GigabitEthernet1       net_virtio         5254.004f.fbd0 \n-------------------------------------------------------------\n"
+  },
+  "ok": true
+}

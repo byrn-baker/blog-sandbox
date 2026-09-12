@@ -1,0 +1,332 @@
+[
+  {
+    "device": "BORDER1",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "BORDER1",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "RR1",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE3",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE3",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE3",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE3",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP2",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP2",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP2",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP2",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP2",
+    "interface": "GigabitEthernet6",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "RR2",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP4",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP4",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP4",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP4",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE3",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE3",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE3",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE3",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE3",
+    "interface": "GigabitEthernet6",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE3",
+    "interface": "GigabitEthernet7",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE3",
+    "interface": "GigabitEthernet8",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP1",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP1",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP1",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP1",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP1",
+    "interface": "GigabitEthernet6",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP3",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP3",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP3",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SP3",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE1",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE1",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE1",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE1",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE2",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE2",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE2",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE2",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE2",
+    "interface": "GigabitEthernet6",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE2",
+    "interface": "GigabitEthernet7",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE2",
+    "interface": "GigabitEthernet8",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE2",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE2",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE2",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "SPE2",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE1",
+    "interface": "GigabitEthernet3",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE1",
+    "interface": "GigabitEthernet4",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE1",
+    "interface": "GigabitEthernet5",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE1",
+    "interface": "GigabitEthernet6",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE1",
+    "interface": "GigabitEthernet7",
+    "mtu": 9216,
+    "ok": true
+  },
+  {
+    "device": "CE1",
+    "interface": "GigabitEthernet8",
+    "mtu": 9216,
+    "ok": true
+  }
+]

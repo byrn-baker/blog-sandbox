@@ -1,0 +1,15 @@
+{
+  "name": "SPE1",
+  "id": "e451a6ef-c0bd-4f1c-b885-cb10e0767e2d",
+  "ip": "192.168.3.57",
+  "at": "2026-09-11T17:51:01.822753+00:00",
+  "commands": {
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.57    YES NVRAM  up                    up      \nGigabitEthernet2       10.0.0.9        YES NVRAM  up                    up      \nGigabitEthernet3       unassigned      YES NVRAM  administratively down down    \nGigabitEthernet4       10.0.0.11       YES NVRAM  up                    up      \nGigabitEthernet5       172.16.1.0      YES NVRAM  up                    up      \nLoopback0              10.1.0.7        YES NVRAM  up                    up      ",
+    "show isis neighbors": "\nTag SP-ISIS:\nSystem Id       Type Interface     IP Address      State Holdtime Circuit Id\nSP2             L2   Gi2           10.0.0.8        UP    22       04\nSP4             L2   Gi4           10.0.0.10       UP    25       04",
+    "show ip bgp summary": "",
+    "show ip bgp vpnv4 all summary": "BGP router identifier 10.1.0.7, local AS number 65000\nBGP table version is 596, main routing table version 596\n25 network entries using 6600 bytes of memory\n26 path entries using 3536 bytes of memory\n15/8 BGP path/bestpath attribute entries using 4680 bytes of memory\n2 BGP rrinfo entries using 80 bytes of memory\n7 BGP AS-PATH entries using 280 bytes of memory\n2 BGP extended community entries using 64 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 15240 total bytes of memory\nBGP activity 146/121 prefixes, 336/310 paths, scan interval 60 secs\n67 networks peaked at 05:10:18 Sep 11 2026 UTC (12:40:46.338 ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.0.1        4        65000    4900    4853      596    0    0 12:46:23        1\n10.1.0.2        4        65000    4895    4861      596    0    0 12:46:14        1\n172.16.1.1      4        65001    4955    4945      596    0    0 12:55:18       23",
+    "show ip route vrf CUST-A 10.2.1.2": "\nRouting Table: CUST-A\nRouting entry for 10.2.1.2/32\n  Known via \"bgp 65000\", distance 20, metric 0\n  Tag 65001, type external\n  Last update from 172.16.1.1 12:45:45 ago\n  Routing Descriptor Blocks:\n  * 172.16.1.1, from 172.16.1.1, 12:45:45 ago\n      opaque_ptr 0x73F6524A5A00 \n      Route metric is 0, traffic share count is 1\n      AS Hops 2\n      Route tag 65001\n      MPLS label: none",
+    "show ip route 10.2.1.2": "% Subnet not in table"
+  },
+  "ok": true
+}

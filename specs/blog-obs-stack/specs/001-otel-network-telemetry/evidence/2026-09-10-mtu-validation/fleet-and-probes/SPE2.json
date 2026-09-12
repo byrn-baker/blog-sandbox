@@ -1,0 +1,65 @@
+{
+  "device": "SPE2",
+  "ip": "192.168.3.58",
+  "platform": "cisco_iosxe",
+  "at": "2026-09-10T01:17:29.755096+00:00",
+  "modeled_interfaces": [
+    {
+      "name": "GigabitEthernet1",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "192.168.3.58/24"
+      ]
+    },
+    {
+      "name": "GigabitEthernet2",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.0.0.13/31",
+        "fd10::13/127"
+      ]
+    },
+    {
+      "name": "GigabitEthernet3",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.0.0.15/31",
+        "fd10::15/127"
+      ]
+    },
+    {
+      "name": "GigabitEthernet4",
+      "mtu": null,
+      "enabled": false,
+      "ips": []
+    },
+    {
+      "name": "GigabitEthernet5",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "172.16.2.0/31",
+        "fd10:c:2::/127"
+      ]
+    },
+    {
+      "name": "Loopback0",
+      "mtu": null,
+      "enabled": true,
+      "ips": [
+        "10.1.0.8/32",
+        "fd10:0:1::8/128"
+      ]
+    }
+  ],
+  "commands": {
+    "show interfaces": "GigabitEthernet1 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet2 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet3 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet4 is administratively down, line protocol is down \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nGigabitEthernet5 is up, line protocol is up \n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \nLoopback0 is up, line protocol is up \n  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, ",
+    "show ip interface brief": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.3.58    YES NVRAM  up                    up      \nGigabitEthernet2       10.0.0.13       YES NVRAM  up                    up      \nGigabitEthernet3       10.0.0.15       YES NVRAM  up                    up      \nGigabitEthernet4       unassigned      YES NVRAM  administratively down down    \nGigabitEthernet5       172.16.2.0      YES NVRAM  up                    up      \nLoopback0              10.1.0.8        YES NVRAM  up                    up      ",
+    "show mpls interfaces detail": "Interface GigabitEthernet2:\n\tType Unknown\n\tIP labeling enabled (ldp) :\n\t  Interface config\n\tLSP Tunnel labeling not enabled\n\tIP FRR labeling not enabled\n\tBGP labeling not enabled\n\tMPLS operational\n\tMTU = 1500\nInterface GigabitEthernet3:\n\tType Unknown\n\tIP labeling enabled (ldp) :\n\t  Interface config\n\tLSP Tunnel labeling not enabled\n\tIP FRR labeling not enabled\n\tBGP labeling not enabled\n\tMPLS operational\n\tMTU = 1500",
+    "show ip interface | include ^GigabitEthernet|MTU": "GigabitEthernet1 is up, line protocol is up\n  MTU is 1500 bytes\nGigabitEthernet2 is up, line protocol is up\n  MTU is 1500 bytes\nGigabitEthernet3 is up, line protocol is up\n  MTU is 1500 bytes\nGigabitEthernet4 is administratively down, line protocol is down\nGigabitEthernet5 is up, line protocol is up\n  MTU is 1500 bytes\n  MTU is 1514 bytes"
+  },
+  "ok": true
+}

@@ -1,0 +1,12 @@
+{
+  "name": "SPE2",
+  "id": "f6370ee5-1388-4cb9-b793-caac543fb4a5",
+  "ip": "192.168.3.58",
+  "at": "2026-09-11T15:16:32.204321+00:00",
+  "commands": {
+    "show interfaces GigabitEthernet5": "GigabitEthernet5 is up, line protocol is up \n  Hardware is vNIC, address is 5254.00d5.3551 (bia 5254.00d5.3551)\n  Description: PE-CE to CE2 GigabitEthernet2 (VRF CUST-B)\n  Internet address is 172.16.2.0/31\n  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \n     reliability 255/255, txload 1/255, rxload 1/255\n  Encapsulation ARPA, loopback not set\n  Keepalive set (10 sec)\n  Full Duplex, 1000Mbps, link type is auto, media type is Virtual\n  output flow-control is unsupported, input flow-control is unsupported\n  ARP type: ARPA, ARP Timeout 04:00:00\n  Last input 00:00:04, output 00:00:04, output hang never\n  Last clearing of \"show interface\" counters never\n  Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0\n  Queueing strategy: fifo\n  Output queue: 0/40 (size/max)\n  5 minute input rate 359000 bits/sec, 90 packets/sec\n  5 minute output rate 3296000 bits/sec, 110 packets/sec\n     75280 packets input, 38306225 bytes, 0 no buffer\n     Received 0 broadcasts (0 IP multicasts)\n     0 runts, 0 giants, 0 throttles \n     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n     0 watchdog, 0 multicast, 0 pause input\n     89147 packets output, 373395018 bytes, 0 underruns\n     Output 0 broadcasts (0 IP multicasts)\n     0 output errors, 0 collisions, 1 interface resets\n     0 unknown protocol drops\n     0 babbles, 0 late collision, 0 deferred\n     0 lost carrier, 0 no carrier, 0 pause output\n     0 output buffer failures, 0 output buffers swapped out",
+    "show ip arp vrf CUST-A 172.16.2.1": "Protocol  Address          Age (min)  Hardware Addr   Type   Interface\nInternet  172.16.2.1              9   5254.006a.3dc3  ARPA   GigabitEthernet5",
+    "ping vrf CUST-A 172.16.2.1 repeat 3 timeout 1": "Type escape sequence to abort.\nSending 3, 100-byte ICMP Echos to 172.16.2.1, timeout is 1 seconds:\n!!!\nSuccess rate is 100 percent (3/3), round-trip min/avg/max = 1/1/1 ms"
+  },
+  "ok": true
+}
