@@ -5,7 +5,7 @@
 # A systemd unit that runs `ping` with no -c and no deadline, so it never
 # exits on its own, plus Restart=always so systemd brings it straight back if
 # it's ever killed. Point is a standing, always-on reachability signal to
-# 192.168.100.53 across the VLAN 100 data plane, from a node in each DC that
+# 10.100.0.53 across the VLAN 100 data plane, from a node in each DC that
 # needs to prove it.
 #
 # Which nodes run this comes from the same place every other per-node flag in

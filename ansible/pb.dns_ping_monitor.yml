@@ -4,7 +4,7 @@
 # =============================================================================
 # Standalone playbook, not part of pb.site.yml. It doesn't provision or
 # configure a server's role in the cluster, it just adds a standing ping to
-# the lab DNS server (192.168.100.53) from one node per DC, so there's a
+# the lab DNS server (10.100.0.53) from one node per DC, so there's a
 # constant, visible reachability signal across the VLAN 100 data plane.
 #
 # Which nodes run it comes from each device's Git-synced config context in

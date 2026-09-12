@@ -3,7 +3,7 @@
 # host_network: bring up the server data-plane bond
 # =============================================================================
 # The server sees a plain bond of two NICs (ens19 + ens20) with an address on
-# the 192.168.100.0/24 subnet. It is not VLAN-aware: the VLAN 100 tagging and
+# the 10.100.0.0/24 subnet. It is not VLAN-aware: the VLAN 100 tagging and
 # the EVPN Ethernet Segment live on the Arista leaf switch ports, not here. The
 # bond is a static LAG (balance-xor) because the nested-lab bridges do not
 # forward LACP. Addresses come from the device's bond0 interface in Nautobot.
@@ -41,7 +41,7 @@
       - bond_ipv4 | length > 0
     fail_msg: >-
       No bond0 IPv4 address found for {{ inventory_hostname }} in Nautobot.
-      The device's bond0 interface must carry a 192.168.100.0/24 address.
+      The device's bond0 interface must carry a 10.100.0.0/24 address.
 
 - name: Render netplan for the data-plane bond
   ansible.builtin.template:

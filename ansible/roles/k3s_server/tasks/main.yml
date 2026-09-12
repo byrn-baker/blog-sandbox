@@ -35,7 +35,8 @@
       --kube-controller-manager-arg leader-elect-renew-deadline={{ k3s_leader_elect_renew_deadline }}
       --kube-scheduler-arg leader-elect-lease-duration={{ k3s_leader_elect_lease_duration }}
       --kube-scheduler-arg leader-elect-renew-deadline={{ k3s_leader_elect_renew_deadline }}
-      --write-kubeconfig-mode 644
+      --flannel-iface bond0
+      --write-kubeconfig-mode 600
 
 # --- Cluster-init node bootstraps embedded etcd ---
 - name: Initialize the cluster (cluster-init node only)
@@ -44,6 +45,7 @@
     - not k3s_service_unit.stat.exists
   block:
     - name: Install K3s as the initializing server
+      no_log: true
       ansible.builtin.shell: |
         {{ k3s_install_script_path }} server \
           --cluster-init \
@@ -69,6 +71,7 @@
     - not k3s_service_unit.stat.exists
   block:
     - name: Install K3s and join the existing cluster
+      no_log: true
       ansible.builtin.shell: |
         {{ k3s_install_script_path }} server \
           --server "https://{{ k3s_api_host }}:{{ k3s_api_port }}" \

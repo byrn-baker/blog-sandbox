@@ -151,10 +151,10 @@ interfaces:
     _custom_field_data:
       vni: 10000
   ip_addresses:
-  - address: 192.168.100.1/24
+  - address: 10.100.0.1/24
     ip_version: 4
     parent:
-      prefix: 192.168.100.0/24
+      prefix: 10.100.0.0/24
   - address: fd10:a:100::1/64
     ip_version: 6
   tags: []

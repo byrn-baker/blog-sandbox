@@ -15,12 +15,12 @@ timezone: "UTC"
 # Lab DNS. Every node resolves against the BIND server once it is up. Until
 # then, host_network lays down a resolvable path via the same address.
 lab_domain: "sandbox.lab"
-lab_dns_server: "192.168.100.53"
+lab_dns_server: "10.100.0.53"
 
 # Server data-plane gateway. This is the anycast SVI on the Arista leaves for
-# the 192.168.100.0/24 subnet. The server just points its default route here;
+# the 10.100.0.0/24 subnet. The server just points its default route here;
 # it has no idea it's VLAN 100 on the switch side.
-bond_gateway: "192.168.100.1"
+bond_gateway: "10.100.0.1"
 bond_gateway6: "fd10:a:100::1"
 
 # The two NICs every server bundles into bond0. ens19 -> Leaf01, ens20 -> Leaf02.

@@ -192,8 +192,8 @@ class SPDemoLabContext(Context):
             "vrf": "SERVERS",
             "locations": ["DC-A", "DC-B", "DC-C"],
             "location_refs": ["dc_a", "dc_b", "dc_c"],
-            "ipv4_prefix": "192.168.100.0/24",
-            "ipv4_gateway": "192.168.100.1/24",
+            "ipv4_prefix": "10.100.0.0/24",
+            "ipv4_gateway": "10.100.0.1/24",
             "ipv6_prefix": "fd10:a:100::/64",
             "ipv6_gateway": "fd10:a:100::1/64",
         },
@@ -259,7 +259,7 @@ class SPDemoLabContext(Context):
     # re-keys it to its VLAN 100 octet (.53) so the whole fleet follows one
     # rule; the live leaves reconcile to this on the next deploy.
     #
-    # host_octet drives the VLAN 100 IP (192.168.100.<octet>), the ESI, and
+    # host_octet drives the VLAN 100 IP (10.100.0.<octet>), the ESI, and
     # the ES import RT. eth_index is the leaf Ethernet port (Ethernet<index>)
     # and the port-channel number, identical on both leaves of the pair.
     servers = [

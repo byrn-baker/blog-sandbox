@@ -117,11 +117,13 @@
   tags: [k3s]
   tasks:
     - name: Read kubeconfig from the init server
+      no_log: true
       ansible.builtin.slurp:
         src: /etc/rancher/k3s/k3s.yaml
       register: k3s_kubeconfig
 
     - name: Save kubeconfig locally with the reachable API address
+      no_log: true
       ansible.builtin.copy:
         content: "{{ k3s_kubeconfig.content | b64decode | replace('127.0.0.1', k3s_api_host) }}"
         dest: "{{ kubeconfig_local_path }}"

@@ -89,4 +89,4 @@ compose:
   storage_mount: "local_config_context_data.storage.mount_path | default('/var/lib/longhorn')"
   # Ping target for the dns_ping_monitor role. Defaults to the lab DNS server
   # so a node with monitor.enabled but no explicit target still monitors it.
-  ping_monitor_target: "local_config_context_data.monitor.target | default('192.168.100.53')"
+  ping_monitor_target: "local_config_context_data.monitor.target | default('10.100.0.53')"

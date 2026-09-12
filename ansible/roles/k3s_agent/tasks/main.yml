@@ -16,9 +16,11 @@
   register: k3s_agent_unit
 
 - name: Install K3s agent and join the cluster
+  no_log: true
   ansible.builtin.shell: |
     {{ k3s_install_script_path }} agent \
       --node-ip {{ vlan100_ipv4 }} \
+      --flannel-iface bond0 \
       --node-label {{ k3s_node_labels | default('') }}
   args:
     creates: /etc/systemd/system/k3s-agent.service
