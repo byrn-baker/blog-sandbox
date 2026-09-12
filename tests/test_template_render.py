@@ -174,3 +174,55 @@ def test_gro_only_adds_handlers_and_can_restore_on():
     assert "ethtool -K vmnicet1 gro on" in template.render(**context)
     del context["config_context"]["lab_gro_workaround"]
     assert re.sub(r"event-handler lab-gro-off-vmnicet\d+\n(?:   .*\n)+!\n", "", rendered) == template.render(**context)
+
+
+@pytest.mark.parametrize("context_file,expected_vrf", [
+    ("arista_eos_leaf.yaml", "MGMT-VRF"),
+    ("arista_eos_spine.yaml", "MGMT-VRF"),
+    ("arista_eos_gro.yaml", "MGMT-VRF"),
+])
+def test_eos_snmp_binds_agent_to_management_vrf(context_file: str, expected_vrf: str):
+    """SNMP polling reaches the device over the Management interface's VRF.
+
+    Without `snmp-server vrf <name>`, the agent only listens in the default
+    VRF and never sees requests arriving via Management1/MGMT-VRF.
+    """
+    context = load_context(context_file)
+    template = build_jinja_env().get_template("golden-config/templates/arista_eos.j2")
+    rendered = template.render(**context)
+
+    assert f"snmp-server vrf {expected_vrf}" in rendered
+    # Community line must still be present and unaffected by the VRF line.
+    ro_community = context["config_context"]["snmp"]["ro_community"]
+    assert f"snmp-server community {ro_community} ro ACL-SNMP-RO" in rendered
+    # Exactly one binding, not one per Management interface or per render pass.
+    assert rendered.count(f"snmp-server vrf {expected_vrf}") == 1
+
+
+def test_eos_snmp_vrf_line_is_deduplicated_across_management_interfaces():
+    """Two Management interfaces sharing a VRF emit one `snmp-server vrf` line."""
+    context = load_context("arista_eos_leaf.yaml")
+    management1 = next(i for i in context["interfaces"] if i["name"] == "Management1")
+    context["interfaces"].append({**management1, "name": "Management2"})
+    template = build_jinja_env().get_template("golden-config/templates/arista_eos.j2")
+    rendered = template.render(**context)
+    assert rendered.count("snmp-server vrf MGMT-VRF") == 1
+
+
+def test_eos_snmp_omits_vrf_line_when_management_has_no_vrf():
+    """A Management interface modeled without a VRF must not render a bare `snmp-server vrf`."""
+    context = load_context("arista_eos_leaf.yaml")
+    for interface in context["interfaces"]:
+        if interface["name"] == "Management1":
+            interface["vrf"] = None
+    template = build_jinja_env().get_template("golden-config/templates/arista_eos.j2")
+    rendered = template.render(**context)
+    assert "snmp-server vrf" not in rendered
+
+
+def test_ios_snmp_template_has_no_vrf_line():
+    """IOS SNMP stays scoped to community/ACL/location/contact - no VRF binding added."""
+    context = load_context("cisco_ios_ce_router.yaml")
+    template = build_jinja_env().get_template("golden-config/templates/cisco_ios.j2")
+    rendered = template.render(**context)
+    assert "snmp-server vrf" not in rendered

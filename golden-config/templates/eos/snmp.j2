@@ -3,6 +3,17 @@ ip access-list standard ACL-SNMP-RO
    10 permit {{ config_context.snmp.acl_source }}
 !
 snmp-server community {{ config_context.snmp.ro_community }} ro ACL-SNMP-RO
+{# SNMP agent must be bound to the Management interface's VRF, or polling   #}
+{# from the exporter (which reaches the device via that VRF) never reaches  #}
+{# the agent. One line per unique VRF seen across Management interfaces -   #}
+{# same dedup pattern as eos/vrfs.j2. #}
+{% set seen_snmp_vrfs = [] %}
+{% for interface in interfaces if interface.name.startswith('Management') and interface.vrf %}
+{% if interface.vrf.name not in seen_snmp_vrfs %}
+{% if seen_snmp_vrfs.append(interface.vrf.name) %}{% endif %}
+snmp-server vrf {{ interface.vrf.name }}
+{% endif %}
+{% endfor %}
 snmp-server location {{ location.name }}
 snmp-server contact {{ config_context.snmp.contact }}
 !
