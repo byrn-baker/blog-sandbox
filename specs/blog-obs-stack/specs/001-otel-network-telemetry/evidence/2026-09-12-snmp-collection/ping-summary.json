@@ -1,0 +1,134 @@
+[
+  {
+    "kind": "small",
+    "source": "DCA",
+    "destination": "DCB",
+    "sent": 100,
+    "received": 100,
+    "min_ms": 15.3,
+    "median_ms": 108.0,
+    "p99_ms": 244.0,
+    "max_ms": 403.0
+  },
+  {
+    "kind": "small",
+    "source": "DCA",
+    "destination": "DCC",
+    "sent": 100,
+    "received": 100,
+    "min_ms": 14.6,
+    "median_ms": 98.0,
+    "p99_ms": 278.0,
+    "max_ms": 338.0
+  },
+  {
+    "kind": "small",
+    "source": "DCB",
+    "destination": "DCA",
+    "sent": 100,
+    "received": 100,
+    "min_ms": 16.0,
+    "median_ms": 101.0,
+    "p99_ms": 224.0,
+    "max_ms": 382.0
+  },
+  {
+    "kind": "small",
+    "source": "DCB",
+    "destination": "DCC",
+    "sent": 100,
+    "received": 100,
+    "min_ms": 13.8,
+    "median_ms": 19.1,
+    "p99_ms": 70.1,
+    "max_ms": 111.0
+  },
+  {
+    "kind": "small",
+    "source": "DCC",
+    "destination": "DCA",
+    "sent": 100,
+    "received": 100,
+    "min_ms": 13.8,
+    "median_ms": 21.4,
+    "p99_ms": 61.1,
+    "max_ms": 67.8
+  },
+  {
+    "kind": "small",
+    "source": "DCC",
+    "destination": "DCB",
+    "sent": 100,
+    "received": 100,
+    "min_ms": 12.6,
+    "median_ms": 19.3,
+    "p99_ms": 68.4,
+    "max_ms": 78.8
+  },
+  {
+    "kind": "jumbo",
+    "source": "DCA",
+    "destination": "DCB",
+    "sent": 5,
+    "received": 5,
+    "min_ms": 100.0,
+    "median_ms": 118.0,
+    "p99_ms": 150.0,
+    "max_ms": 184.0
+  },
+  {
+    "kind": "jumbo",
+    "source": "DCA",
+    "destination": "DCC",
+    "sent": 5,
+    "received": 5,
+    "min_ms": 84.0,
+    "median_ms": 111.0,
+    "p99_ms": 131.0,
+    "max_ms": 182.0
+  },
+  {
+    "kind": "jumbo",
+    "source": "DCB",
+    "destination": "DCA",
+    "sent": 5,
+    "received": 5,
+    "min_ms": 99.9,
+    "median_ms": 116.0,
+    "p99_ms": 133.0,
+    "max_ms": 145.0
+  },
+  {
+    "kind": "jumbo",
+    "source": "DCB",
+    "destination": "DCC",
+    "sent": 5,
+    "received": 5,
+    "min_ms": 53.1,
+    "median_ms": 83.5,
+    "p99_ms": 112.0,
+    "max_ms": 154.0
+  },
+  {
+    "kind": "jumbo",
+    "source": "DCC",
+    "destination": "DCA",
+    "sent": 5,
+    "received": 5,
+    "min_ms": 130.0,
+    "median_ms": 140.0,
+    "p99_ms": 159.0,
+    "max_ms": 220.0
+  },
+  {
+    "kind": "jumbo",
+    "source": "DCC",
+    "destination": "DCB",
+    "sent": 5,
+    "received": 5,
+    "min_ms": 84.7,
+    "median_ms": 153.0,
+    "p99_ms": 156.0,
+    "max_ms": 203.0
+  }
+]

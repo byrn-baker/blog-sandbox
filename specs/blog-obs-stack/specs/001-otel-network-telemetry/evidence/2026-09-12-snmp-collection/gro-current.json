@@ -1,0 +1,65 @@
+[
+  {
+    "device": "DCA-Leaf01",
+    "at": "2026-09-12T18:41:30.637256+00:00",
+    "gro_off": 10,
+    "gro_on": 0,
+    "saved_handlers": true
+  },
+  {
+    "device": "DCA-Leaf02",
+    "at": "2026-09-12T18:41:30.638004+00:00",
+    "gro_off": 10,
+    "gro_on": 0,
+    "saved_handlers": true
+  },
+  {
+    "device": "DCA-Leaf03",
+    "at": "2026-09-12T18:41:30.641739+00:00",
+    "gro_off": 10,
+    "gro_on": 0,
+    "saved_handlers": true
+  },
+  {
+    "device": "DCB-Leaf01",
+    "at": "2026-09-12T18:41:43.856584+00:00",
+    "gro_off": 10,
+    "gro_on": 0,
+    "saved_handlers": true
+  },
+  {
+    "device": "DCB-Leaf02",
+    "at": "2026-09-12T18:41:44.255411+00:00",
+    "gro_off": 10,
+    "gro_on": 0,
+    "saved_handlers": true
+  },
+  {
+    "device": "DCB-Leaf03",
+    "at": "2026-09-12T18:41:44.580543+00:00",
+    "gro_off": 10,
+    "gro_on": 0,
+    "saved_handlers": true
+  },
+  {
+    "device": "DCC-Leaf01",
+    "at": "2026-09-12T18:41:57.643185+00:00",
+    "gro_off": 10,
+    "gro_on": 0,
+    "saved_handlers": true
+  },
+  {
+    "device": "DCC-Leaf02",
+    "at": "2026-09-12T18:41:57.883703+00:00",
+    "gro_off": 10,
+    "gro_on": 0,
+    "saved_handlers": true
+  },
+  {
+    "device": "DCC-Leaf03",
+    "at": "2026-09-12T18:41:58.096937+00:00",
+    "gro_off": 10,
+    "gro_on": 0,
+    "saved_handlers": true
+  }
+]

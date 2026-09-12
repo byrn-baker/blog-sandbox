@@ -1,0 +1,541 @@
+{
+  "at": "2026-09-12T18:39:26.986155+00:00",
+  "stores": {
+    "18428": {
+      "samples": [
+        {
+          "metric": {
+            "device": "CE1",
+            "management_ip": "192.168.3.60",
+            "platform": "cisco_iosxe",
+            "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+            "scope.version": "0.154.0",
+            "site": "DC-A",
+            "telemetry_source": "snmp"
+          },
+          "value": [
+            1789238367,
+            "2"
+          ]
+        },
+        {
+          "metric": {
+            "device": "DCA-Leaf01",
+            "management_ip": "192.168.3.32",
+            "platform": "arista_eos",
+            "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+            "scope.version": "0.154.0",
+            "site": "DC-A",
+            "telemetry_source": "snmp"
+          },
+          "value": [
+            1789238367,
+            "2"
+          ]
+        }
+      ],
+      "families": [
+        {
+          "metric": {
+            "__name__": "snmp_device_uptime_ticks",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_device_uptime_ticks",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_admin_status",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_admin_status",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_discards_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_discards_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_errors_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_errors_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_octets_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_octets_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_oper_status",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_oper_status",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_discards_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_discards_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_errors_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_errors_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_octets_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_octets_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_speed_mbps",
+            "device": "CE1"
+          },
+          "value": [
+            1789238368,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_speed_mbps",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238368,
+            "20"
+          ]
+        }
+      ],
+      "freshness": [
+        {
+          "metric": {
+            "device": "CE1",
+            "management_ip": "192.168.3.60",
+            "platform": "cisco_iosxe",
+            "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+            "scope.version": "0.154.0",
+            "site": "DC-A",
+            "telemetry_source": "snmp"
+          },
+          "value": [
+            1789238368,
+            "19.211999893188477"
+          ]
+        },
+        {
+          "metric": {
+            "device": "DCA-Leaf01",
+            "management_ip": "192.168.3.32",
+            "platform": "arista_eos",
+            "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+            "scope.version": "0.154.0",
+            "site": "DC-A",
+            "telemetry_source": "snmp"
+          },
+          "value": [
+            1789238368,
+            "19.211999893188477"
+          ]
+        }
+      ]
+    },
+    "18429": {
+      "samples": [
+        {
+          "metric": {
+            "device": "CE1",
+            "management_ip": "192.168.3.60",
+            "platform": "cisco_iosxe",
+            "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+            "scope.version": "0.154.0",
+            "site": "DC-A",
+            "telemetry_source": "snmp"
+          },
+          "value": [
+            1789238369,
+            "2"
+          ]
+        },
+        {
+          "metric": {
+            "device": "DCA-Leaf01",
+            "management_ip": "192.168.3.32",
+            "platform": "arista_eos",
+            "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+            "scope.version": "0.154.0",
+            "site": "DC-A",
+            "telemetry_source": "snmp"
+          },
+          "value": [
+            1789238369,
+            "2"
+          ]
+        }
+      ],
+      "families": [
+        {
+          "metric": {
+            "__name__": "snmp_device_uptime_ticks",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_device_uptime_ticks",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_admin_status",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_admin_status",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_discards_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_discards_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_errors_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_errors_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_octets_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_in_octets_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_oper_status",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_oper_status",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_discards_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_discards_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_errors_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_errors_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_octets_total",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_out_octets_total",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "20"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_speed_mbps",
+            "device": "CE1"
+          },
+          "value": [
+            1789238369,
+            "11"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "snmp_interface_speed_mbps",
+            "device": "DCA-Leaf01"
+          },
+          "value": [
+            1789238369,
+            "20"
+          ]
+        }
+      ],
+      "freshness": [
+        {
+          "metric": {
+            "device": "CE1",
+            "management_ip": "192.168.3.60",
+            "platform": "cisco_iosxe",
+            "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+            "scope.version": "0.154.0",
+            "site": "DC-A",
+            "telemetry_source": "snmp"
+          },
+          "value": [
+            1789238370,
+            "20.763999938964844"
+          ]
+        },
+        {
+          "metric": {
+            "device": "DCA-Leaf01",
+            "management_ip": "192.168.3.32",
+            "platform": "arista_eos",
+            "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+            "scope.version": "0.154.0",
+            "site": "DC-A",
+            "telemetry_source": "snmp"
+          },
+          "value": [
+            1789238370,
+            "20.763999938964844"
+          ]
+        }
+      ]
+    }
+  }
+}

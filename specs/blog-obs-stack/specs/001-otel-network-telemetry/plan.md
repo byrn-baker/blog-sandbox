@@ -3,6 +3,33 @@
 **Date**: 2026-09-09 | **Spec**: [spec.md](spec.md)
 **Status**: Draft; design gates and deployment evidence remain pending.
 
+## September 12 SNMP delivery slice
+
+The operator requested working SNMP collection independently of the later flow,
+syslog and SuzieQ work. The existing device configuration was reused. This slice
+implements Requirement 4 through `telemetry/generate_snmp.py`, the Nautobot
+GraphQL query, two platform canaries, and fleet collection through the Argo root.
+It does not add device export or require a MetalLB ingress VIP.
+
+The existing high-volume cluster store cannot be assumed to fit 547 days in
+20 GiB. A separate VictoriaMetrics single instance, `snmp-metrics` at wave 4,
+retains SNMP for 547 days on a 20 GiB Longhorn volume. `otel-snmp` at wave 5 polls
+once and sends the same samples to that history store and the existing store
+for current queries/alerts. The latter keeps its existing retention. Storage
+budget and observation limits are documented with the implementation. This
+adds one bounded history store without replacing the selected backend.
+
+The Collector uses bounded in-memory exporter queues, not durable delivery.
+It exposes polling/export errors and freshness; outages or restarts can leave
+gaps. There is no raw-to-derived conversion in this slice. Under Principle VI,
+the raw measurements are the selected SNMP OID values, retained without
+pre-storage reduction. This makes no all-MIB, all-packet or lossless-UDP claim.
+The flow reconciliation and broader constitution review gates remain open.
+
+See [SNMP operations](../../../../telemetry/README.md) for pinned components,
+credential ownership, measured counter semantics and generation. Combined tasks
+below are not marked complete merely because their SNMP portion is delivered.
+
 ## Architecture
 
 `blog-sandbox` owns contexts, Jinja, compliance, Nautobot generation and

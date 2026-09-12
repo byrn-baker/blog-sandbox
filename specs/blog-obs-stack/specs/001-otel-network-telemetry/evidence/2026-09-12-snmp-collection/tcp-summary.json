@@ -1,0 +1,128 @@
+[
+  {
+    "source": "DCA-k3s-m1",
+    "destination": "DCB-k3s-w1",
+    "endpoints": [
+      {
+        "sent": 1048576,
+        "send_seconds": 8.388747839955613,
+        "send_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "received": 1048576,
+        "receive_seconds": 8.512659949017689,
+        "receive_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "mode": "client",
+        "local": "192.168.100.10",
+        "peer": "192.168.100.20",
+        "requested_mss": 8960,
+        "negotiated_mss": 8948,
+        "total_retrans": 2,
+        "errors": [],
+        "ok": true,
+        "exit_code": 0,
+        "role": "client"
+      },
+      {
+        "received": 1048576,
+        "receive_seconds": 8.368248546961695,
+        "receive_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "sent": 1048576,
+        "send_seconds": 8.388805955997668,
+        "send_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "mode": "server",
+        "local": "192.168.100.20",
+        "peer": "192.168.100.10",
+        "requested_mss": 8960,
+        "negotiated_mss": 8948,
+        "total_retrans": 1,
+        "errors": [],
+        "ok": true,
+        "exit_code": 0,
+        "role": "server"
+      }
+    ]
+  },
+  {
+    "source": "DCB-k3s-w1",
+    "destination": "DCC-k3s-w4",
+    "endpoints": [
+      {
+        "sent": 1048576,
+        "send_seconds": 8.388747550023254,
+        "send_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "received": 1048576,
+        "receive_seconds": 8.498017151956446,
+        "receive_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "mode": "client",
+        "local": "192.168.100.20",
+        "peer": "192.168.100.30",
+        "requested_mss": 8960,
+        "negotiated_mss": 8948,
+        "total_retrans": 0,
+        "errors": [],
+        "ok": true,
+        "exit_code": 0,
+        "role": "client"
+      },
+      {
+        "sent": 1048576,
+        "send_seconds": 8.388848375994712,
+        "send_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "received": 1048576,
+        "receive_seconds": 8.424118105031084,
+        "receive_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "mode": "server",
+        "local": "192.168.100.30",
+        "peer": "192.168.100.20",
+        "requested_mss": 8960,
+        "negotiated_mss": 8948,
+        "total_retrans": 0,
+        "errors": [],
+        "ok": true,
+        "exit_code": 0,
+        "role": "server"
+      }
+    ]
+  },
+  {
+    "source": "DCC-k3s-w4",
+    "destination": "DCA-k3s-m1",
+    "endpoints": [
+      {
+        "sent": 1048576,
+        "send_seconds": 8.388771128025837,
+        "send_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "received": 1048576,
+        "receive_seconds": 8.831760985020082,
+        "receive_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "mode": "client",
+        "local": "192.168.100.30",
+        "peer": "192.168.100.10",
+        "requested_mss": 8960,
+        "negotiated_mss": 8948,
+        "total_retrans": 0,
+        "errors": [],
+        "ok": true,
+        "exit_code": 0,
+        "role": "client"
+      },
+      {
+        "sent": 1048576,
+        "send_seconds": 8.388783842034172,
+        "send_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "received": 1048576,
+        "receive_seconds": 8.424635016010143,
+        "receive_sha256": "8e0c97c153d2dfe7cef29787cb318a7934e10e708038d161a0484b97a3490985",
+        "mode": "server",
+        "local": "192.168.100.10",
+        "peer": "192.168.100.30",
+        "requested_mss": 8960,
+        "negotiated_mss": 8948,
+        "total_retrans": 1,
+        "errors": [],
+        "ok": true,
+        "exit_code": 0,
+        "role": "server"
+      }
+    ]
+  }
+]

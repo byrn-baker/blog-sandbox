@@ -1,0 +1,8 @@
+{
+  "at": "2026-09-12T18:24:39.474718+00:00",
+  "running_processes": 13,
+  "patched_processes": 13,
+  "expected_hash": "605b893d815e96962cca4a8960b5a32289745721774e2db40a4c5876c2446a3e",
+  "virtio_processes": 13,
+  "diversion": "local diversion of /usr/bin/qemu-system-x86_64 to /usr/bin/qemu-system-x86_64.distrib\n"
+}

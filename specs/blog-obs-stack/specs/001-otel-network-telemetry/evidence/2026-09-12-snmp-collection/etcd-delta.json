@@ -1,0 +1,38 @@
+[
+  {
+    "node": "DCA-k3s-m1",
+    "from": "2026-09-12T18:23:41.088415+00:00",
+    "to": "2026-09-12T18:43:12.030806+00:00",
+    "slow_apply_last_30m": 551,
+    "peer_rtt_ms": {
+      "1313c972047dd6e0": 61.81,
+      "977130020c2735ad": 67.37
+    },
+    "etcd_server_leader_changes_seen_total_delta": 0.0,
+    "etcd_server_proposals_failed_total_delta": 0.0
+  },
+  {
+    "node": "DCA-k3s-m2",
+    "from": "2026-09-12T18:23:49.383265+00:00",
+    "to": "2026-09-12T18:43:19.932444+00:00",
+    "slow_apply_last_30m": 343,
+    "peer_rtt_ms": {
+      "977130020c2735ad": 68.7,
+      "c2bde6fe848e75ba": 72.29
+    },
+    "etcd_server_leader_changes_seen_total_delta": 0.0,
+    "etcd_server_proposals_failed_total_delta": 0.0
+  },
+  {
+    "node": "DCA-k3s-m3",
+    "from": "2026-09-12T18:23:49.234680+00:00",
+    "to": "2026-09-12T18:43:19.914110+00:00",
+    "slow_apply_last_30m": 143,
+    "peer_rtt_ms": {
+      "1313c972047dd6e0": 63.41,
+      "c2bde6fe848e75ba": 64.57
+    },
+    "etcd_server_leader_changes_seen_total_delta": 0.0,
+    "etcd_server_proposals_failed_total_delta": 0.0
+  }
+]

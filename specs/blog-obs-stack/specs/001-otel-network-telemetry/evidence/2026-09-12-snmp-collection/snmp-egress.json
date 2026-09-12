@@ -1,0 +1,25 @@
+{
+  "interface": "eth0",
+  "udp_requests": [
+    {
+      "source": "192.168.3.69",
+      "destination": "192.168.3.55",
+      "port": 161
+    },
+    {
+      "source": "192.168.3.69",
+      "destination": "192.168.3.56",
+      "port": 161
+    },
+    {
+      "source": "192.168.3.69",
+      "destination": "192.168.3.57",
+      "port": 161
+    },
+    {
+      "source": "192.168.3.69",
+      "destination": "192.168.3.58",
+      "port": 161
+    }
+  ]
+}

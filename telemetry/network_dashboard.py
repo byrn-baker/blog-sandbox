@@ -35,6 +35,14 @@ def dashboard(expected_devices):
     panel("Interface rows without error counters", "snmp_interface_oper_status" + selected +
           ' unless on(device,if_index) snmp_interface_in_errors_total{job="snmp",if_type!=""}', "short", "table",
           "IOS MPLS-layer rows return NoSuchInstance for error/discard counters. They are separate from the physical interface. Missing is not zero; the physical interface has its own counters.")
+    panel("Polling errors in the last 5 minutes",
+          'sum by (receiver) (increase(otelcol_scraper_errored_metric_points{receiver=~"snmp/.*"}[5m]))', "short")
+    panels[-1]["datasource"] = {"uid": "VictoriaMetrics"}
+    panel("Queued export requests", 'max by (exporter) (otelcol_exporter_queue_size{exporter=~"otlp_http/(snmp_history|victoriametrics)"})', "short")
+    panels[-1]["datasource"] = {"uid": "VictoriaMetrics"}
+    panel("Metric points exported per second",
+          'sum by (exporter) (rate(otelcol_exporter_sent_metric_points{exporter=~"otlp_http/(snmp_history|victoriametrics)"}[5m]))', "ops")
+    panels[-1]["datasource"] = {"uid": "VictoriaMetrics"}
     return {"uid": "network-snmp", "title": "Network SNMP", "tags": ["network", "snmp"],
             "schemaVersion": 39, "version": 1, "editable": False, "timezone": "browser",
             "refresh": "30s", "time": {"from": "now-1h", "to": "now"}, "panels": panels,

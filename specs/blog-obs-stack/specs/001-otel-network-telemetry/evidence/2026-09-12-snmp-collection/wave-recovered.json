@@ -1,0 +1,20 @@
+[
+  {
+    "name": "snmp-wave-first",
+    "sync": "Synced",
+    "health": "Healthy",
+    "message": "successfully synced (all tasks run)"
+  },
+  {
+    "name": "snmp-wave-second",
+    "sync": "Synced",
+    "health": "Healthy",
+    "message": "successfully synced (all tasks run)"
+  },
+  {
+    "name": "snmp-wave-test",
+    "sync": "Synced",
+    "health": "Healthy",
+    "message": "successfully synced (all tasks run)"
+  }
+]

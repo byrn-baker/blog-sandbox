@@ -1,0 +1,17 @@
+{
+  "at": "2026-09-12T18:52:31.985820+00:00",
+  "pod": "otel-snmp-5677c8b7cf-76k4g",
+  "started": "2026-09-12T18:47:19Z",
+  "restarts": 0,
+  "scrape_errors": 0.0,
+  "refused_points": 0.0,
+  "export_failures": 0,
+  "export_queues": [
+    "otelcol_exporter_queue_size{data_type=\"metrics\",exporter=\"otlp_http/snmp_history\"} 0",
+    "otelcol_exporter_queue_size{data_type=\"metrics\",exporter=\"otlp_http/victoriametrics\"} 0"
+  ],
+  "sent_points": [
+    "otelcol_exporter_sent_metric_points{exporter=\"otlp_http/snmp_history\",server_address=\"snmp-metrics.observability.svc\",server_port=\"8428\",url_path=\"/opentelemetry/v1/metrics\"} 16875",
+    "otelcol_exporter_sent_metric_points{exporter=\"otlp_http/victoriametrics\",server_address=\"vmsingle-victoria-metrics-k8s-stack.observability.svc\",server_port=\"8428\",url_path=\"/opentelemetry/v1/metrics\"} 16875"
+  ]
+}

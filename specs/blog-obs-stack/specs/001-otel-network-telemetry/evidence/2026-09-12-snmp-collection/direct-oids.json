@@ -1,0 +1,64 @@
+[
+  {
+    "index": 2,
+    "error": "0",
+    "bindings": [
+      {
+        "oid": "1.3.6.1.2.1.31.1.1.1.1.2",
+        "value": "Gi2",
+        "type": "OctetString"
+      },
+      {
+        "oid": "1.3.6.1.2.1.2.2.1.2.2",
+        "value": "GigabitEthernet2",
+        "type": "OctetString"
+      },
+      {
+        "oid": "1.3.6.1.2.1.2.2.1.14.2",
+        "value": "0",
+        "type": "Counter32"
+      },
+      {
+        "oid": "1.3.6.1.2.1.2.2.1.20.2",
+        "value": "0",
+        "type": "Counter32"
+      },
+      {
+        "oid": "1.3.6.1.2.1.31.1.1.1.6.2",
+        "value": "5121232986",
+        "type": "Counter64"
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "error": "0",
+    "bindings": [
+      {
+        "oid": "1.3.6.1.2.1.31.1.1.1.1.10",
+        "value": "Gi2",
+        "type": "OctetString"
+      },
+      {
+        "oid": "1.3.6.1.2.1.2.2.1.2.10",
+        "value": "GigabitEthernet2-mpls layer",
+        "type": "OctetString"
+      },
+      {
+        "oid": "1.3.6.1.2.1.2.2.1.14.10",
+        "value": "",
+        "type": "NoSuchInstance"
+      },
+      {
+        "oid": "1.3.6.1.2.1.2.2.1.20.10",
+        "value": "",
+        "type": "NoSuchInstance"
+      },
+      {
+        "oid": "1.3.6.1.2.1.31.1.1.1.6.10",
+        "value": "5022651776",
+        "type": "Counter64"
+      }
+    ]
+  }
+]

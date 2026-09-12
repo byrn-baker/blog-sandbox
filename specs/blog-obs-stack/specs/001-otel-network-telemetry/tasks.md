@@ -1,10 +1,16 @@
 # Tasks: Unified OTel Telemetry Pipeline (v3)
 
 **Date**: 2026-09-09 | **Spec**: [spec.md](spec.md) | **Plan**: [plan.md](plan.md)
-All implementation tasks remain unchecked. IDs are retained for continuity,
+Most combined implementation tasks remain unchecked. IDs are retained for continuity,
 but v1/v2 descriptions and execution order are superseded. Execute by phase,
 not numerical ID: T009 is deliberately deferred to P2. Wave numbers and
 Application filenames are defined once in plan.md.
+
+September 12: the SNMP portion is implemented separately under the operator's
+request. The broader flow/syslog/MetalLB/SuzieQ and accounting acceptance gates
+remain open. See the delivery slice in plan.md and telemetry/README.md in the
+repository root. T004, T010, T011 and T013 have SNMP implementation evidence;
+other multi-component tasks must not be inferred complete from that subset.
 
 ## Phase 0 — Baseline and design gates
 
@@ -31,7 +37,7 @@ Application filenames are defined once in plan.md.
   resource settings and rendered configuration. Verify: rendered charts and
   pinned-binary validation output; no guessed receiver types. Maps: FR-001,
   FR-002, FR-012; constitution V.
-- [ ] T004 Implement/document child Application health gating and dependency
+- [x] T004 Implement/document child Application health gating and dependency
   order in bootstrap values and apps/README.md. Verify: stalled Longhorn or
   other prerequisite blocks dependent initial deployment; test update
   behavior separately. Maps: FR-018, SC-007.
@@ -60,12 +66,12 @@ SuzieQ is not a dependency of this phase or US1/US2.
   Reserve VIP in Nautobot, pin Service/pool to it, configure distinct UDP
   ports. Verify: rendered references and dependency order. Maps: FR-002,
   FR-005, FR-017, FR-018.
-- [ ] T010 Implement config_generator and queries/network_fleet.gql from
+- [x] T010 Implement config_generator and queries/network_fleet.gql from
   Nautobot roles/platforms/primary management IP/context/credential refs.
   Generate sorted SNMP receivers and pipeline membership; canary selection
   filters query results. Verify: fixture render and deterministic rerun.
   Maps: FR-001, FR-005.
-- [ ] T011 Test generator removal/re-role/context exclusion and failed/empty
+- [x] T011 Test generator removal/re-role/context exclusion and failed/empty
   query handling. Validate before publishing all outputs atomically; retain
   previous outputs on failure. Verify: meaningful fixture/failure tests
   with unchanged prior artifacts and no hardcoded fleet. Maps: FR-005.
@@ -73,7 +79,7 @@ SuzieQ is not a dependency of this phase or US1/US2.
   exhaustion, restart counts, per-device freshness and storage growth.
   Verify: tagged test input and a failure produce operator-visible signals;
   do not confuse retry errors with terminal drops. Maps: FR-014.
-- [ ] T013 Document/implement secure SNMP secret resolution from existing
+- [x] T013 Document/implement secure SNMP secret resolution from existing
   context authority, no independently maintained community; add redacted
   templates and Argo Secret ownership rules. Verify: resolved values stay
   out of generated Git artifacts and logs. Maps: FR-005, FR-008.

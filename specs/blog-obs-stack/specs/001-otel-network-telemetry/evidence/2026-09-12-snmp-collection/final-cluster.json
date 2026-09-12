@@ -1,0 +1,51 @@
+{
+  "at": "2026-09-12T18:53:07.079182+00:00",
+  "nodes_ready": 9,
+  "nodes": 9,
+  "pods_ready": 67,
+  "pods": 67,
+  "volumes": [
+    {
+      "name": "pvc-994a6887-25e7-4498-a3fc-96aeec99c8dd",
+      "health": "healthy",
+      "replicas": 3
+    },
+    {
+      "name": "pvc-a1062d9a-b4b5-4c55-9488-c75fc73218d3",
+      "health": "healthy",
+      "replicas": 3
+    },
+    {
+      "name": "pvc-b304711d-13db-443b-a1bd-e832606f8230",
+      "health": "healthy",
+      "replicas": 3
+    }
+  ],
+  "applications": [
+    {
+      "name": "longhorn",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "otel-snmp",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "root-app",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "snmp-metrics",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "victoria-metrics-k8s-stack",
+      "sync": "Synced",
+      "health": "Healthy"
+    }
+  ]
+}

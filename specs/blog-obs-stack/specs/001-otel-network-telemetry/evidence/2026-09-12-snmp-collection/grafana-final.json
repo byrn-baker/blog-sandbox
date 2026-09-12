@@ -1,0 +1,104 @@
+{
+  "at": "2026-09-12T18:56:25.302005+00:00",
+  "dashboard": "Network SNMP",
+  "uid": "network-snmp",
+  "panels": [
+    {
+      "panel": "Devices polled in the last 3 minutes (expected 28)",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 1
+    },
+    {
+      "panel": "Device uptime",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 28
+    },
+    {
+      "panel": "Inbound traffic",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 372
+    },
+    {
+      "panel": "Outbound traffic",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 372
+    },
+    {
+      "panel": "Inbound utilization",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 321
+    },
+    {
+      "panel": "Outbound utilization",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 321
+    },
+    {
+      "panel": "Inbound errors",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 344
+    },
+    {
+      "panel": "Outbound errors",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 344
+    },
+    {
+      "panel": "Inbound discards",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 344
+    },
+    {
+      "panel": "Outbound discards",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 344
+    },
+    {
+      "panel": "Interface operational state",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 372
+    },
+    {
+      "panel": "Sample age",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 28
+    },
+    {
+      "panel": "Interface rows without error counters",
+      "datasource": "network-snmp",
+      "status": "success",
+      "series": 28
+    },
+    {
+      "panel": "Polling errors in the last 5 minutes",
+      "datasource": "VictoriaMetrics",
+      "status": "success",
+      "series": 28
+    },
+    {
+      "panel": "Queued export requests",
+      "datasource": "VictoriaMetrics",
+      "status": "success",
+      "series": 2
+    },
+    {
+      "panel": "Metric points exported per second",
+      "datasource": "VictoriaMetrics",
+      "status": "success",
+      "series": 2
+    }
+  ],
+  "datasource_health": "OK"
+}

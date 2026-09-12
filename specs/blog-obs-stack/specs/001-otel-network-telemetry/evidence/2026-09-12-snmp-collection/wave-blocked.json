@@ -1,0 +1,14 @@
+[
+  {
+    "name": "snmp-wave-test",
+    "sync": "OutOfSync",
+    "health": "Progressing",
+    "message": "waiting for healthy state of argoproj.io/Application/snmp-wave-first"
+  },
+  {
+    "name": "snmp-wave-first",
+    "sync": "Unknown",
+    "health": "Healthy",
+    "message": null
+  }
+]
