@@ -1,0 +1,79 @@
+# Rebuild the disposable cluster on a distinct server subnet
+
+The server network moved from 192.168.100.0/24 to 10.100.0.0/24 on
+2026-09-12. The former subnet overlapped the home network. For example,
+192.168.100.20 identified both the Proxmox host outside the lab and a K3s
+worker inside it. Management remains on 192.168.3.0/24. Proxmox addressing
+is unchanged.
+
+The user authorized discarding the cluster and its volume data for this
+rebuild. Existing Grafana and SNMP credentials were retained in restricted
+local files. No credential files belong in Git.
+
+## Source and execution order
+
+1. Change VLAN 100 in the topology context, server address template, BORDER1
+   NAT context, corresponding test fixtures, Ansible variables, and current
+   addressing documentation. Leave historical evidence unchanged.
+2. Run `make ci` and `make ci-full`. The migration passed 88 template/structure
+   checks and 149 configuration/Batfish checks.
+3. Sync the repository into Nautobot. Run the Git-sourced **Lab Server
+   Addressing** job with `dry_run=true`, then apply it. Nautobot IP host values
+   are immutable, so this job replaces address records and transfers their
+   interface assignments in a transaction. It checks all ten server bonds
+   and all nine leaf SVI assignments. The old prefix remains empty.
+4. Regenerate intent, fresh backups, compliance, and Config Plans. Deploy one
+   IOS-XE and one EOS canary, verify, then deploy the remaining leaves in waves.
+   Keep Fail Job on Task Failure enabled. The device changes remove the old
+   Vlan100 virtual IPv4 gateway, add 10.100.0.1/24, and replace the old subnet
+   in BORDER1's NAT-INET ACL. MTUs and IPv6 addressing remain unchanged.
+5. Reset only the modeled K3s members using the separate destructive playbook:
+
+   ```sh
+   cd ansible
+   .ansible/bin/ansible-playbook pb.reset_k3s.yml -e rebuild_disposable_cluster=true
+   ```
+
+   The play verifies host identity and K3s membership. It uninstalls K3s and
+   removes contents of the verified Longhorn secondary-disk mounts. BIND is
+   outside the reset group. Two workers required a reboot when old Longhorn
+   mounts blocked uninstallation; rerunning the reset then completed.
+6. Apply `pb.site.yml --tags network`, then `--tags dns`. Verify addresses,
+   gateways, DNS, internet access, and jumbo pings before restoring workloads.
+   The BIND VM had an obsolete `60-vlan100-bond.yaml` which Netplan merged
+   with the managed file. The host role now retires that file and replaces
+   the overlapping DNS resolver inherited from the VM template.
+7. Run `pb.site.yml --tags k3s`. The pinned offline installation uses bond0
+   for Flannel, keeps the three servers in DC-A, and disables Traefik and
+   ServiceLB. Allow the runtime-tuning and registry-mirror restarts to finish
+   before bootstrapping applications. The fetched kubeconfig uses the
+   management address, with an explicit API certificate SAN.
+8. Bootstrap the pinned Argo CD chart with the repository's bootstrap values.
+   Restore externally managed credentials, then apply `bootstrap/root-app.yaml`
+   from blog-sandbox-argo-cd. Its child Applications restore Longhorn and the
+   monitoring stack. Check actual storage replicas, dashboard access, and fresh
+   SNMP samples before declaring recovery complete.
+
+These commands use the existing Nautobot environment credentials and dynamic
+inventory. Do not replace the inventory with a static host list.
+
+## Verification boundaries
+
+All ten hosts passed new-address, gateway, DNS, and 9000-byte IPv4 ping checks
+after removal of BIND's duplicate Netplan file. All nine leaf gateways were
+independently checked in running and startup configuration with MTU 9000.
+BORDER1's fresh backup confirms the new NAT source and removal of the old one;
+an actual host reached the internet through the new subnet.
+
+Two deployment waves reported an `end` prompt timeout, on DCB-Leaf02 and
+DCB-Leaf03. Their running configurations, saved configurations, and subsequent
+backups were checked instead of treating the failed jobs as successful. The
+failures remain in job history. Broader compliance also reports older interface
+descriptions, the DNS Ethernet Segment Identifier, and IOS formatting/default
+commands; a successful compliance job does not mean every feature is compliant. Network evidence is in
+../specs/blog-obs-stack/specs/001-otel-network-telemetry/evidence/2026-09-12-server-renumber/.
+
+This renumbering does not deploy MetalLB, ingress, split DNS, or home-firewall
+rules. It removes the address collision those future changes otherwise need
+to work around. A short recovery check is not proof of site-failure tolerance
+or a long-running stability test.

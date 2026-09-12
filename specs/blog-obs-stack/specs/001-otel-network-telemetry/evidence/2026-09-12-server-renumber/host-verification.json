@@ -1,0 +1,252 @@
+[
+  {
+    "hostname": "DCA-DNS",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.53\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.53\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.71\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=24.7 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=12.2 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=17.6 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 12.237/18.177/24.653/5.082 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=0.031 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=0.045 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=0.043 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2045ms\nrtt min/avg/max/mdev = 0.031/0.039/0.045/0.006 ms\n"
+    },
+    "expected": "10.100.0.53/24",
+    "passed": true
+  },
+  {
+    "hostname": "DCA-k3s-m1",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.10\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"dev\":\"cni0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.42.0.1\",\"flags\":[]},{\"dst\":\"10.42.1.0/24\",\"gateway\":\"10.42.1.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.10\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.63\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=7.01 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=43.3 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=34.2 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 7.012/28.175/43.295/15.416 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=12.3 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=47.5 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=31.9 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 12.251/30.543/47.473/14.411 ms\n"
+    },
+    "expected": "10.100.0.10/24",
+    "passed": true
+  },
+  {
+    "hostname": "DCA-k3s-m2",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.11\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.42.0.0/24\",\"gateway\":\"10.42.0.0\",\"dev\":\"flannel.1\",\"flags\":[\"onlink\"]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.11\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.64\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=61.4 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=48.0 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=65.6 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 48.029/58.344/65.642/7.500 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=15.4 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=29.6 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=29.7 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 15.423/24.915/29.685/6.712 ms\n"
+    },
+    "expected": "10.100.0.11/24",
+    "passed": true
+  },
+  {
+    "hostname": "DCA-k3s-m3",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.12\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.12\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.65\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=59.9 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=76.0 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=37.0 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 37.031/57.649/75.987/15.985 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=3.36 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=13.0 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=22.2 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 3.363/12.878/22.224/7.700 ms\n"
+    },
+    "expected": "10.100.0.12/24",
+    "passed": true
+  },
+  {
+    "hostname": "DCB-k3s-w1",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.20\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.20\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.66\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=49.5 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=87.0 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=74.2 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 49.533/70.249/87.041/15.562 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=80.9 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=121 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=132 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 80.871/111.317/132.131/22.007 ms\n"
+    },
+    "expected": "10.100.0.20/24",
+    "passed": true
+  },
+  {
+    "hostname": "DCB-k3s-w2",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.21\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.21\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.67\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=106 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=82.2 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=59.5 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 59.488/82.514/105.808/18.911 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=138 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=166 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=189 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 138.443/164.207/188.662/20.522 ms\n"
+    },
+    "expected": "10.100.0.21/24",
+    "passed": true
+  },
+  {
+    "hostname": "DCB-k3s-w3",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.22\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.22\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.68\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=48.9 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=40.1 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=28.2 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 28.229/39.091/48.943/8.486 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=152 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=101 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=147 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 100.579/133.132/151.910/23.109 ms\n"
+    },
+    "expected": "10.100.0.22/24",
+    "passed": true
+  },
+  {
+    "hostname": "DCC-k3s-w4",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.30\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.30\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.69\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=43.9 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=81.4 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=90.2 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 43.932/71.837/90.155/20.051 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=135 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=160 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=141 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 135.453/145.623/160.422/10.705 ms\n"
+    },
+    "expected": "10.100.0.30/24",
+    "passed": true
+  },
+  {
+    "hostname": "DCC-k3s-w5",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.31\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.31\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.70\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=27.6 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=37.3 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=29.1 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 27.647/31.337/37.259/4.229 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=162 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=190 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=162 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 161.787/171.419/190.403/13.423 ms\n"
+    },
+    "expected": "10.100.0.31/24",
+    "passed": true
+  },
+  {
+    "hostname": "DCC-k3s-w6",
+    "address": {
+      "rc": 0,
+      "out": "[{\"ifindex\":5,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.100.0.32\",\"prefixlen\":24,\"broadcast\":\"10.100.0.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "routes": {
+      "rc": 0,
+      "out": "[{\"dst\":\"default\",\"gateway\":\"10.100.0.1\",\"dev\":\"bond0\",\"protocol\":\"static\",\"flags\":[]},{\"dst\":\"10.100.0.0/24\",\"dev\":\"bond0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.100.0.32\",\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.72\",\"flags\":[]}]\n"
+    },
+    "gateway": {
+      "rc": 0,
+      "out": "PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.\n64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=29.7 ms\n64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=27.7 ms\n64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=57.6 ms\n\n--- 10.100.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2004ms\nrtt min/avg/max/mdev = 27.698/38.310/57.580/13.648 ms\n"
+    },
+    "dns": {
+      "rc": 0,
+      "out": "10.100.0.53\n"
+    },
+    "jumbo": {
+      "rc": 0,
+      "out": "PING 10.100.0.53 (10.100.0.53) 8972(9000) bytes of data.\n8980 bytes from 10.100.0.53: icmp_seq=1 ttl=64 time=148 ms\n8980 bytes from 10.100.0.53: icmp_seq=2 ttl=64 time=128 ms\n8980 bytes from 10.100.0.53: icmp_seq=3 ttl=64 time=153 ms\n\n--- 10.100.0.53 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 128.094/142.928/153.023/10.714 ms\n"
+    },
+    "expected": "10.100.0.32/24",
+    "passed": true
+  }
+]

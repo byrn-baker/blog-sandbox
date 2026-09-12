@@ -1,0 +1,23 @@
+[
+  {
+    "device": "DCA-Leaf02",
+    "new_running": true,
+    "old_running": false,
+    "new_saved": true,
+    "mtu9000": true
+  },
+  {
+    "device": "DCA-Leaf03",
+    "new_running": true,
+    "old_running": false,
+    "new_saved": true,
+    "mtu9000": true
+  },
+  {
+    "device": "DCB-Leaf01",
+    "new_running": true,
+    "old_running": false,
+    "new_saved": true,
+    "mtu9000": true
+  }
+]

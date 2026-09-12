@@ -1,0 +1,9 @@
+[
+  {
+    "device": "DCB-Leaf02",
+    "new_running": true,
+    "old_running": false,
+    "new_saved": true,
+    "mtu9000": true
+  }
+]

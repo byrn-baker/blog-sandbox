@@ -1,0 +1,30 @@
+[
+  {
+    "device": "DCB-Leaf03",
+    "new_running": true,
+    "old_running": false,
+    "new_saved": true,
+    "mtu9000": true
+  },
+  {
+    "device": "DCC-Leaf01",
+    "new_running": true,
+    "old_running": false,
+    "new_saved": true,
+    "mtu9000": true
+  },
+  {
+    "device": "DCC-Leaf02",
+    "new_running": true,
+    "old_running": false,
+    "new_saved": true,
+    "mtu9000": true
+  },
+  {
+    "device": "DCC-Leaf03",
+    "new_running": true,
+    "old_running": false,
+    "new_saved": true,
+    "mtu9000": true
+  }
+]

@@ -1,0 +1,43 @@
+[
+  {
+    "job": "d00c3d30-ef4d-4b0f-b241-520a318f5d2c",
+    "status": "SUCCESS",
+    "errors": []
+  },
+  {
+    "job": "e0906aaa-4f7e-4140-aadf-38cc70ed86db",
+    "status": "FAILURE",
+    "errors": [
+      {
+        "device": "DCB-Leaf02",
+        "message": "E1016: Saving Config Failed with an unknown issue: `\n\nPattern not detected: 'end' in output.\n\nThings you might try to fix this:\n1. Adjust the regex pattern to better identify the terminating string. Note, in\nmany situations the pattern is automatically based on the network device's prompt.\n2. Increase the read_timeout to a larger value.\n\nYou can also look at the Netmiko session_log or debug log for more information.\n\n`"
+      },
+      {
+        "device": "DCB-Leaf02",
+        "message": "`E3024:` Failed deployment to the device with error: Subtask: DEPLOY CONFIG TO DEVICE (failed)\n"
+      },
+      {
+        "device": "",
+        "message": "`E3001:` General Exception handler, original error message ``````"
+      }
+    ]
+  },
+  {
+    "job": "d25cf524-c9fd-4269-9775-c4c28a842c02",
+    "status": "FAILURE",
+    "errors": [
+      {
+        "device": "DCB-Leaf03",
+        "message": "E1016: Saving Config Failed with an unknown issue: `\n\nPattern not detected: 'end' in output.\n\nThings you might try to fix this:\n1. Adjust the regex pattern to better identify the terminating string. Note, in\nmany situations the pattern is automatically based on the network device's prompt.\n2. Increase the read_timeout to a larger value.\n\nYou can also look at the Netmiko session_log or debug log for more information.\n\n`"
+      },
+      {
+        "device": "DCB-Leaf03",
+        "message": "`E3024:` Failed deployment to the device with error: Subtask: DEPLOY CONFIG TO DEVICE (failed)\n"
+      },
+      {
+        "device": "",
+        "message": "`E3001:` General Exception handler, original error message ``````"
+      }
+    ]
+  }
+]
