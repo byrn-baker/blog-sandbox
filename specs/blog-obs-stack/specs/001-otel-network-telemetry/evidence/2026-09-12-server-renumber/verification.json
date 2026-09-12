@@ -1,0 +1,41 @@
+[
+  {
+    "address": "192.168.3.63",
+    "port": 30300,
+    "at": "2026-09-12T20:55:20.045685+00:00",
+    "health_status": 200,
+    "database": "ok",
+    "login_status": 200,
+    "unauthenticated_dashboard_status": 401,
+    "dashboard_status": 200,
+    "dashboard": "Network SNMP",
+    "panels": 16,
+    "passed": true
+  },
+  {
+    "address": "192.168.3.66",
+    "port": 30300,
+    "at": "2026-09-12T20:55:20.046651+00:00",
+    "health_status": 200,
+    "database": "ok",
+    "login_status": 200,
+    "unauthenticated_dashboard_status": 401,
+    "dashboard_status": 200,
+    "dashboard": "Network SNMP",
+    "panels": 16,
+    "passed": true
+  },
+  {
+    "address": "192.168.3.69",
+    "port": 30300,
+    "at": "2026-09-12T20:55:20.047155+00:00",
+    "health_status": 200,
+    "database": "ok",
+    "login_status": 200,
+    "unauthenticated_dashboard_status": 401,
+    "dashboard_status": 200,
+    "dashboard": "Network SNMP",
+    "panels": 16,
+    "passed": true
+  }
+]

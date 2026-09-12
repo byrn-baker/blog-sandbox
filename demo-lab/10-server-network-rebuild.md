@@ -158,3 +158,48 @@ Argo repository commit `a07291e` explicitly clears those fields and selects
 client-side apply for this Deployment only. A server dry run accepted that
 manifest, and the live Deployment showed `Recreate` with the 2,100-second
 deadline after Argo CD applied it. Other workloads retain server-side apply.
+
+
+## Final recovery checks
+
+At approximately 20:56 UTC on 2026-09-12, all nine nodes were Ready with fresh
+leases, every non-completed pod was Ready, and all five Argo CD Applications
+were Synced and Healthy. All three Longhorn volumes were attached and healthy;
+each engine reported three replicas in `RW` mode. The Kubernetes readiness
+endpoint returned `ok`.
+
+Both VictoriaMetrics stores had fresh samples from all 28 network devices and
+372 interfaces. Each device had at least five polls in the preceding five
+minutes; the oldest uptime sample was under 60 seconds old. Export queues were
+empty, all receiver refused-point counters were zero, and the collector reported
+no failed exports. All 16 Network SNMP dashboard panel queries returned data.
+Authenticated dashboard access, unauthenticated access rejection, login pages,
+and database health were checked through NodePort 30300 at management addresses
+192.168.3.63, 192.168.3.66, and 192.168.3.69.
+
+Grafana is available at http://192.168.3.66:30300/d/network-snmp using the existing
+login. This verifies management access from the automation host. It does not
+verify home-network routing, a border port forward, MetalLB, ingress, or split
+DNS. The three control-plane nodes remain in DC-A.
+
+### SQLite contention remains a separate limitation
+
+During concurrent provisioning and storage initialization, Grafana returned
+HTTP 503 and logged `SQLITE_BUSY`; a direct health request also exceeded ten
+seconds. Argo repository commit `4e8a51a` declares `database.wal: true` and gives
+the readiness request five seconds. Rendering and server dry runs passed,
+and the restarted container's configuration contains `wal = true`.
+
+However, a read-only `PRAGMA journal_mode` against the mounted database still
+returned `delete`. Do not describe this setting as a verified WAL fix. The
+[v13.1.1 SQLite connection adapter](https://github.com/grafana/grafana/blob/v13.1.1/pkg/util/sqlite/sqlite_nocgo.go)
+is a candidate for further investigation: its DSN conversion constructs a
+pragma from the parameter key, including the leading underscore. No patched
+Grafana binary or upstream issue was published in this rebuild. Compare that
+behavior with Grafana's [documented WAL setting](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#wal).
+
+The final dashboard and database health checks passed after provisioning
+completed. That establishes recovery at the time of the checks, not sustained
+performance under load. Cross-site storage latency, load-related retransmissions,
+and SQLite contention still need a dedicated performance investigation before
+we claim the lab is fully stabilized or move etcd across all three datacenters.

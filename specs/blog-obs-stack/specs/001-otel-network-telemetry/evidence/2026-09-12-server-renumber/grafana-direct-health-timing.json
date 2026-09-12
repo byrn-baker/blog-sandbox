@@ -1,0 +1,14 @@
+[
+  {
+    "seconds": 10.022,
+    "error": "timed out"
+  },
+  {
+    "seconds": 4.795,
+    "error": "HTTP Error 503: Service Unavailable"
+  },
+  {
+    "seconds": 2.271,
+    "error": "HTTP Error 503: Service Unavailable"
+  }
+]

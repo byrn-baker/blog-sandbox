@@ -1,0 +1,134 @@
+{
+  "at": "2026-09-12T20:56:08.127372+00:00",
+  "nodes": [
+    {
+      "name": "dca-k3s-m1",
+      "internal_ip": "10.100.0.10",
+      "ready": "True"
+    },
+    {
+      "name": "dca-k3s-m2",
+      "internal_ip": "10.100.0.11",
+      "ready": "True"
+    },
+    {
+      "name": "dca-k3s-m3",
+      "internal_ip": "10.100.0.12",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w1",
+      "internal_ip": "10.100.0.20",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w2",
+      "internal_ip": "10.100.0.21",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w3",
+      "internal_ip": "10.100.0.22",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w4",
+      "internal_ip": "10.100.0.30",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w5",
+      "internal_ip": "10.100.0.31",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w6",
+      "internal_ip": "10.100.0.32",
+      "ready": "True"
+    }
+  ],
+  "lease_age_seconds": {
+    "dca-k3s-m1": 9.765647,
+    "dca-k3s-m2": 7.388583,
+    "dca-k3s-m3": 0.44547,
+    "dcb-k3s-w1": 1.104489,
+    "dcb-k3s-w2": 0.707725,
+    "dcb-k3s-w3": 10.067375,
+    "dcc-k3s-w4": 3.47299,
+    "dcc-k3s-w5": 4.681323,
+    "dcc-k3s-w6": 7.795206
+  },
+  "unready_pods": [],
+  "apps": {
+    "longhorn": {
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    "otel-snmp": {
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    "root-app": {
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    "snmp-metrics": {
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    "victoria-metrics-k8s-stack": {
+      "sync": "Synced",
+      "health": "Healthy"
+    }
+  },
+  "volumes": [
+    {
+      "name": "pvc-6d0ae7d0-9ac7-4db5-97d7-1e53a9606782",
+      "state": "attached",
+      "robustness": "healthy",
+      "replicas": 3
+    },
+    {
+      "name": "pvc-aa3265e8-9ed9-4f01-9709-2e563b040418",
+      "state": "attached",
+      "robustness": "healthy",
+      "replicas": 3
+    },
+    {
+      "name": "pvc-e9b8c99b-96f6-4c61-9817-d4a56cd6088d",
+      "state": "attached",
+      "robustness": "healthy",
+      "replicas": 3
+    }
+  ],
+  "engines": [
+    {
+      "name": "pvc-6d0ae7d0-9ac7-4db5-97d7-1e53a9606782-e-0",
+      "state": "running",
+      "replicas": {
+        "pvc-6d0ae7d0-9ac7-4db5-97d7-1e53a9606782-r-15281c5b": "RW",
+        "pvc-6d0ae7d0-9ac7-4db5-97d7-1e53a9606782-r-608a4ea1": "RW",
+        "pvc-6d0ae7d0-9ac7-4db5-97d7-1e53a9606782-r-760f2b35": "RW"
+      }
+    },
+    {
+      "name": "pvc-aa3265e8-9ed9-4f01-9709-2e563b040418-e-0",
+      "state": "running",
+      "replicas": {
+        "pvc-aa3265e8-9ed9-4f01-9709-2e563b040418-r-1559c894": "RW",
+        "pvc-aa3265e8-9ed9-4f01-9709-2e563b040418-r-bb912526": "RW",
+        "pvc-aa3265e8-9ed9-4f01-9709-2e563b040418-r-d17804df": "RW"
+      }
+    },
+    {
+      "name": "pvc-e9b8c99b-96f6-4c61-9817-d4a56cd6088d-e-0",
+      "state": "running",
+      "replicas": {
+        "pvc-e9b8c99b-96f6-4c61-9817-d4a56cd6088d-r-84eea17c": "RW",
+        "pvc-e9b8c99b-96f6-4c61-9817-d4a56cd6088d-r-86bbd1ee": "RW",
+        "pvc-e9b8c99b-96f6-4c61-9817-d4a56cd6088d-r-944d8a8a": "RW"
+      }
+    }
+  ],
+  "passed": true
+}
