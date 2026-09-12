@@ -17,6 +17,7 @@ import tempfile
 import urllib.request
 
 import yaml
+from network_dashboard import dashboard
 
 ROOT = Path(__file__).resolve().parents[1]
 ROLES = {"Border-Router", "CE-Router", "P-Router", "PE-Router", "Route-Reflector", "Leaf", "Spine"}
@@ -104,6 +105,10 @@ def values(devices):
         "service": {"extensions": ["health_check"], "pipelines": {},
                     "telemetry": {"metrics": {"readers": [{"pull": {"exporter": {"prometheus": {
                         "host": "${env:MY_POD_IP}", "port": 8888}}}}]}}}}
+    # Keep the existing short-retention query/alert path and retain the same
+    # samples in a separately budgeted 547-day VictoriaMetrics store.
+    config["exporters"]["otlp_http/snmp_history"] = copy.deepcopy(config["exporters"]["otlp_http/victoriametrics"])
+    config["exporters"]["otlp_http/snmp_history"]["metrics_endpoint"] = "http://snmp-metrics.observability.svc:8428/opentelemetry/v1/metrics"
     envs = []
     rules = []
     for device in devices:
@@ -114,7 +119,7 @@ def values(devices):
             for k, v in {"device": name, "platform": device["platform"], "site": device["site"],
                          "management_ip": device["address"], "telemetry_source": "snmp"}.items()]}
         config["service"]["pipelines"]["metrics/" + name] = {"receivers": [rec],
-            "processors": ["memory_limiter", proc, "batch"], "exporters": ["otlp_http/victoriametrics"]}
+            "processors": ["memory_limiter", proc, "batch"], "exporters": ["otlp_http/victoriametrics", "otlp_http/snmp_history"]}
         envs.append({"name": device["key"], "valueFrom": {"secretKeyRef": {"name": SECRET, "key": device["key"]}}})
         rules.append({"alert": "NetworkSnmpDeviceStale", "expr": 'absent_over_time(snmp_device_uptime_ticks{device="'+name+'"}[3m])',
                       "for": "2m", "labels": {"severity": "warning", "device": name},
@@ -132,6 +137,15 @@ def values(devices):
                   "metrics": {"enabled": True}},
         "rollout": {"strategy": "Recreate"},
         "extraManifests": [
+            {"apiVersion": "v1", "kind": "ConfigMap",
+             "metadata": {"name": "network-snmp-dashboard", "namespace": "observability", "labels": {"grafana_dashboard": "1"}},
+             "data": {"network-snmp.json": json.dumps(dashboard(len(devices)), indent=2)}},
+            {"apiVersion": "v1", "kind": "ConfigMap",
+             "metadata": {"name": "network-snmp-datasource", "namespace": "observability", "labels": {"grafana_datasource": "1"}},
+             "data": {"network-snmp.yaml": yaml.safe_dump({"apiVersion": 1, "datasources": [{
+                 "name": "Network SNMP (547 days)", "uid": "network-snmp", "type": "prometheus", "access": "proxy",
+                 "url": "http://snmp-metrics.observability.svc:8428", "isDefault": False,
+                 "jsonData": {"httpMethod": "POST", "timeInterval": "60s"}, "editable": False}]})}},
             {"apiVersion": "operator.victoriametrics.com/v1beta1", "kind": "VMServiceScrape",
              "metadata": {"name": "otel-snmp", "namespace": "observability"},
              "spec": {"selector": {"matchLabels": {"app.kubernetes.io/instance": "otel-snmp"}},
