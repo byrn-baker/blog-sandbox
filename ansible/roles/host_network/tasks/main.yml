@@ -43,6 +43,33 @@
       No bond0 IPv4 address found for {{ inventory_hostname }} in Nautobot.
       The device's bond0 interface must carry a 10.100.0.0/24 address.
 
+- name: Inspect the obsolete bond Netplan file
+  ansible.builtin.stat:
+    path: /etc/netplan/60-vlan100-bond.yaml
+  register: legacy_bond_netplan
+
+- name: Retire the previous bond definition before Netplan merges it
+  when: legacy_bond_netplan.stat.exists
+  block:
+    - name: Preserve the obsolete definition outside Netplan input files
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/netplan/60-vlan100-bond.yaml
+        dest: /etc/netplan/60-vlan100-bond.yaml.retired
+        mode: "0600"
+    - name: Remove the superseded definition
+      ansible.builtin.file:
+        path: /etc/netplan/60-vlan100-bond.yaml
+        state: absent
+      notify: Apply netplan
+
+- name: Replace the overlapping resolver inherited from the VM template
+  ansible.builtin.replace:
+    path: /etc/netplan/50-cloud-init.yaml
+    regexp: '^(\s*-\s*)192\.168\.100\.1(\s*)$'
+    replace: '\g<1>{{ lab_dns_management_server }}\g<2>'
+  notify: Apply netplan
+
 - name: Render netplan for the data-plane bond
   ansible.builtin.template:
     src: bond0.yaml.j2

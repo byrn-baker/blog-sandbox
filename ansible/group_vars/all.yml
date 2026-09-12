@@ -16,6 +16,7 @@ timezone: "UTC"
 # then, host_network lays down a resolvable path via the same address.
 lab_domain: "sandbox.lab"
 lab_dns_server: "10.100.0.53"
+lab_dns_management_server: "192.168.3.71"
 
 # Server data-plane gateway. This is the anycast SVI on the Arista leaves for
 # the 10.100.0.0/24 subnet. The server just points its default route here;
