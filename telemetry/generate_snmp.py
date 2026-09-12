@@ -15,6 +15,7 @@ import re
 import subprocess
 import tempfile
 import urllib.request
+import uuid
 
 import yaml
 from network_dashboard import dashboard
@@ -29,7 +30,7 @@ def fleet(response, selected=()):
     if response.get("errors") or not response.get("data", {}).get("devices"):
         raise ValueError("Nautobot query failed or returned no devices; preserving existing output")
     result = []
-    names, addresses = set(), set()
+    names, addresses, keys = set(), set(), set()
     for source in response["data"]["devices"]:
         if (source.get("role") or {}).get("name") not in ROLES:
             continue
@@ -45,16 +46,18 @@ def fleet(response, selected=()):
         if not re.fullmatch(r"[A-Za-z0-9_-]+", name):
             raise ValueError("Invalid device name")
         address = str(ipaddress.IPv4Interface(source["primary_ip4"]["address"]).ip)
-        if name in names or address in addresses:
+        key = "SNMP_" + name.upper().replace("-", "_")
+        if name in names or address in addresses or key in keys:
             raise ValueError("Duplicate device or primary IPv4 address")
         names.add(name)
         addresses.add(address)
+        keys.add(key)
         network = ipaddress.IPv4Network(snmp["acl_source"])
         if network != ipaddress.IPv4Network("192.168.3.0/24"):
             raise ValueError("SNMP ACL changed; verify collector egress before generation")
         result.append(dict(name=name, address=address, platform=source["platform"]["name"],
                            site=source["location"]["name"], community=snmp["ro_community"],
-                           contact=snmp["contact"], key="SNMP_" + name.upper().replace("-", "_")))
+                           contact=snmp["contact"], key=key))
     if not result:
         raise ValueError("No eligible SNMP devices; preserving existing output")
     if selected:
@@ -91,7 +94,7 @@ def receiver(device):
                            "if_index": {"indexed_value_prefix": "if"}}, "metrics": metrics}
 
 
-def values(devices):
+def values(devices, credential_revision=None):
     config = {
         "receivers": {},
         "processors": {"memory_limiter": {"check_interval": "1s", "limit_mib": 384, "spike_limit_mib": 64},
@@ -117,11 +120,12 @@ def values(devices):
         config["receivers"][rec] = receiver(device)
         config["processors"][proc] = {"attributes": [{"key": k, "value": v, "action": "upsert"}
             for k, v in {"device": name, "platform": device["platform"], "site": device["site"],
-                         "management_ip": device["address"], "telemetry_source": "snmp"}.items()]}
+                         "management_ip": device["address"], "telemetry_source": "snmp",
+                         "job": "snmp", "instance": device["address"]}.items()]}
         config["service"]["pipelines"]["metrics/" + name] = {"receivers": [rec],
             "processors": ["memory_limiter", proc, "batch"], "exporters": ["otlp_http/victoriametrics", "otlp_http/snmp_history"]}
         envs.append({"name": device["key"], "valueFrom": {"secretKeyRef": {"name": SECRET, "key": device["key"]}}})
-        rules.append({"alert": "NetworkSnmpDeviceStale", "expr": 'absent_over_time(snmp_device_uptime_ticks{device="'+name+'"}[3m])',
+        rules.append({"alert": "NetworkSnmpDeviceStale", "record": "", "expr": 'absent_over_time(snmp_device_uptime_ticks{device="'+name+'"}[3m])',
                       "for": "2m", "labels": {"severity": "warning", "device": name},
                       "annotations": {"summary": name + " has no fresh SNMP uptime sample"}})
     return {
@@ -136,6 +140,7 @@ def values(devices):
         "ports": {**{p: {"enabled": False} for p in ["otlp", "otlp-http", "jaeger-compact", "jaeger-thrift", "jaeger-grpc", "zipkin"]},
                   "metrics": {"enabled": True}},
         "rollout": {"strategy": "Recreate"},
+        "podAnnotations": ({"telemetry.lab/credential-revision": credential_revision} if credential_revision else {}),
         "extraManifests": [
             {"apiVersion": "v1", "kind": "ConfigMap",
              "metadata": {"name": "network-snmp-dashboard", "namespace": "observability", "labels": {"grafana_dashboard": "1"}},
@@ -171,10 +176,21 @@ def sync_secret(devices):
     secret = {"apiVersion": "v1", "kind": "Secret", "metadata": {"name": SECRET, "namespace": "observability",
         "labels": {"app.kubernetes.io/managed-by": "nautobot-snmp-generator"}}, "type": "Opaque",
         "data": {d["key"]: base64.b64encode(d["community"].encode()).decode() for d in devices}}
+    existing = subprocess.run(["kubectl", "-n", "observability", "get", "secret", SECRET, "--ignore-not-found", "-o", "json"],
+                              text=True, capture_output=True, timeout=30)
+    if existing.returncode:
+        raise RuntimeError("Cannot read credential synchronization state; preserving existing output")
+    previous = json.loads(existing.stdout) if existing.stdout.strip() else {}
+    revision = previous.get("metadata", {}).get("annotations", {}).get("telemetry.lab/credential-revision")
+    if previous.get("data") == secret["data"] and revision:
+        return revision
+    revision = str(uuid.uuid4())
+    secret["metadata"]["annotations"] = {"telemetry.lab/credential-revision": revision}
     result = subprocess.run(["kubectl", "apply", "--server-side", "--field-manager=nautobot-snmp-generator", "-f", "-"],
                             input=json.dumps(secret), text=True, capture_output=True, timeout=30)
     if result.returncode:
         raise RuntimeError("Credential synchronization failed; preserving generated values (details suppressed)")
+    return revision
 
 
 def query():
@@ -196,7 +212,7 @@ def main():
     selected = fleet(response, args.canary)
     document = values(selected)
     if args.sync_secret:
-        sync_secret(all_devices)
+        document["podAnnotations"] = {"telemetry.lab/credential-revision": sync_secret(all_devices)}
     atomic_yaml(args.output, document)
     print(f"Generated {len(selected)} receivers without credential values")
 

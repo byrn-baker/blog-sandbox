@@ -1,6 +1,7 @@
 import copy
 import json
 import sys
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -83,3 +84,39 @@ def test_serialized_context():
     r = response()
     r["data"]["devices"][0]["config_context"] = json.dumps(r["data"]["devices"][0]["config_context"])
     assert len(g.fleet(r)) == 2
+
+
+def test_secret_sync_is_idempotent_and_rotation_marker_is_not_secret(monkeypatch):
+    devices = g.fleet(response())
+    calls = []
+    stored = {}
+
+    def run(args, **kwargs):
+        calls.append(args)
+        if "get" in args:
+            return subprocess.CompletedProcess(args, 0, json.dumps(stored) if stored else "", "")
+        stored.update(json.loads(kwargs["input"]))
+        return subprocess.CompletedProcess(args, 0, "configured", "")
+
+    monkeypatch.setattr(g.subprocess, "run", run)
+    first = g.sync_secret(devices)
+    second = g.sync_secret(devices)
+    assert first == second
+    assert sum("apply" in args for args in calls) == 1
+    devices[0]["community"] = "rotated-fixture-only"
+    assert g.sync_secret(devices) != first
+    assert sum("apply" in args for args in calls) == 2
+    assert "fixture" not in first
+
+
+def test_failed_secret_write_leaves_generated_values(tmp_path, monkeypatch):
+    target = tmp_path / "values.yaml"
+    target.write_text("previous valid configuration\n")
+    monkeypatch.setattr(g, "query", response)
+    def fail(_):
+        raise RuntimeError("Secret synchronization failed")
+    monkeypatch.setattr(g, "sync_secret", fail)
+    monkeypatch.setattr(sys, "argv", ["generate_snmp.py", "--output", str(target), "--sync-secret"])
+    with pytest.raises(RuntimeError):
+        g.main()
+    assert target.read_text() == "previous valid configuration\n"
