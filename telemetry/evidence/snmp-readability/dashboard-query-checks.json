@@ -1,0 +1,821 @@
+[
+  {
+    "panel": "Devices polled in the last 3 minutes (expected 28)",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 1,
+    "labels": {}
+  },
+  {
+    "panel": "Device uptime",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 28,
+    "labels": {
+      "device": "DCA-Spine01",
+      "instance": "192.168.3.30",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound traffic",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 318,
+    "labels": {
+      "device": "DCA-Spine01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.30",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound traffic",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 318,
+    "labels": {
+      "device": "DCA-Spine01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.30",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound utilization",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 267,
+    "labels": {
+      "device": "DCA-Spine01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.30",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound utilization",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 267,
+    "labels": {
+      "device": "DCA-Spine01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.30",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound errors",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 318,
+    "labels": {
+      "device": "DCA-Spine01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.30",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound errors",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 318,
+    "labels": {
+      "device": "DCA-Spine01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.30",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound discards",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 318,
+    "labels": {
+      "device": "DCA-Spine01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.30",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound discards",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 318,
+    "labels": {
+      "device": "DCA-Spine01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.30",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Interface status",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 318,
+    "labels": {
+      "__name__": "snmp_interface_oper_status",
+      "device": "DCA-Spine01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.30",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Sample age",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 28,
+    "labels": {
+      "device": "DCA-Spine01",
+      "instance": "192.168.3.30",
+      "job": "snmp",
+      "management_ip": "192.168.3.30",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "MPLS pseudo-interfaces without error counters",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 28,
+    "labels": {
+      "__name__": "snmp_interface_oper_status",
+      "device": "BORDER1",
+      "if_index": "if.8",
+      "if_name": "Gi2",
+      "if_type": "166",
+      "instance": "192.168.3.50",
+      "interface": "GigabitEthernet2-mpls layer",
+      "job": "snmp",
+      "management_ip": "192.168.3.50",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "SP-Core",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Polling errors in the last 5 minutes",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 28,
+    "labels": {
+      "device": "BORDER1",
+      "receiver": "snmp/BORDER1"
+    }
+  },
+  {
+    "panel": "Queued export requests",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 2,
+    "labels": {
+      "destination": "SNMP history",
+      "exporter": "otlp_http/snmp_history"
+    }
+  },
+  {
+    "panel": "Metric points exported per second",
+    "device": ".*",
+    "interface": ".*",
+    "rows": 2,
+    "labels": {
+      "destination": "SNMP history",
+      "exporter": "otlp_http/snmp_history"
+    }
+  },
+  {
+    "panel": "Devices polled in the last 3 minutes (expected 28)",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {}
+  },
+  {
+    "panel": "Device uptime",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "instance": "192.168.3.60",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound traffic",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "if_index": "if.2",
+      "if_name": "Gi2",
+      "if_type": "6",
+      "instance": "192.168.3.60",
+      "interface": "GigabitEthernet2",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound traffic",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "if_index": "if.2",
+      "if_name": "Gi2",
+      "if_type": "6",
+      "instance": "192.168.3.60",
+      "interface": "GigabitEthernet2",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound utilization",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "if_index": "if.2",
+      "if_name": "Gi2",
+      "if_type": "6",
+      "instance": "192.168.3.60",
+      "interface": "GigabitEthernet2",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound utilization",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "if_index": "if.2",
+      "if_name": "Gi2",
+      "if_type": "6",
+      "instance": "192.168.3.60",
+      "interface": "GigabitEthernet2",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound errors",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "if_index": "if.2",
+      "if_name": "Gi2",
+      "if_type": "6",
+      "instance": "192.168.3.60",
+      "interface": "GigabitEthernet2",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound errors",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "if_index": "if.2",
+      "if_name": "Gi2",
+      "if_type": "6",
+      "instance": "192.168.3.60",
+      "interface": "GigabitEthernet2",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound discards",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "if_index": "if.2",
+      "if_name": "Gi2",
+      "if_type": "6",
+      "instance": "192.168.3.60",
+      "interface": "GigabitEthernet2",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound discards",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "if_index": "if.2",
+      "if_name": "Gi2",
+      "if_type": "6",
+      "instance": "192.168.3.60",
+      "interface": "GigabitEthernet2",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Interface status",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "__name__": "snmp_interface_oper_status",
+      "device": "CE1",
+      "if_index": "if.2",
+      "if_name": "Gi2",
+      "if_type": "6",
+      "instance": "192.168.3.60",
+      "interface": "GigabitEthernet2",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Sample age",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "instance": "192.168.3.60",
+      "job": "snmp",
+      "management_ip": "192.168.3.60",
+      "platform": "cisco_iosxe",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "MPLS pseudo-interfaces without error counters",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 0,
+    "labels": {}
+  },
+  {
+    "panel": "Polling errors in the last 5 minutes",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 1,
+    "labels": {
+      "device": "CE1",
+      "receiver": "snmp/CE1"
+    }
+  },
+  {
+    "panel": "Queued export requests",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 2,
+    "labels": {
+      "destination": "SNMP history",
+      "exporter": "otlp_http/snmp_history"
+    }
+  },
+  {
+    "panel": "Metric points exported per second",
+    "device": "CE1",
+    "interface": "GigabitEthernet2",
+    "rows": 2,
+    "labels": {
+      "destination": "SNMP history",
+      "exporter": "otlp_http/snmp_history"
+    }
+  },
+  {
+    "panel": "Devices polled in the last 3 minutes (expected 28)",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {}
+  },
+  {
+    "panel": "Device uptime",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "instance": "192.168.3.32",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound traffic",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.32",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound traffic",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.32",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound utilization",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.32",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound utilization",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.32",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound errors",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.32",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound errors",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.32",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Inbound discards",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.32",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Outbound discards",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.32",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Interface status",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "__name__": "snmp_interface_oper_status",
+      "device": "DCA-Leaf01",
+      "if_index": "if.1",
+      "if_name": "Ethernet1",
+      "if_type": "6",
+      "instance": "192.168.3.32",
+      "interface": "Ethernet1",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "Sample age",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "instance": "192.168.3.32",
+      "job": "snmp",
+      "management_ip": "192.168.3.32",
+      "platform": "arista_eos",
+      "scope.name": "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver",
+      "scope.version": "0.154.0",
+      "site": "DC-A",
+      "telemetry_source": "snmp"
+    }
+  },
+  {
+    "panel": "MPLS pseudo-interfaces without error counters",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 0,
+    "labels": {}
+  },
+  {
+    "panel": "Polling errors in the last 5 minutes",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 1,
+    "labels": {
+      "device": "DCA-Leaf01",
+      "receiver": "snmp/DCA-Leaf01"
+    }
+  },
+  {
+    "panel": "Queued export requests",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 2,
+    "labels": {
+      "destination": "SNMP history",
+      "exporter": "otlp_http/snmp_history"
+    }
+  },
+  {
+    "panel": "Metric points exported per second",
+    "device": "DCA-Leaf01",
+    "interface": "Ethernet1",
+    "rows": 2,
+    "labels": {
+      "destination": "SNMP history",
+      "exporter": "otlp_http/snmp_history"
+    }
+  }
+]

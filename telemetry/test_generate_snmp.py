@@ -2,6 +2,7 @@ import copy
 import json
 import sys
 import subprocess
+import shutil
 from pathlib import Path
 
 import pytest
@@ -139,3 +140,19 @@ def test_dashboard_refresh_preserves_collection_and_credential_revision(tmp_path
     before["extraManifests"][0]["data"].pop("network-snmp.json")
     assert after == before
     assert json.loads(actual)["uid"] == "network-snmp"
+
+
+@pytest.mark.skipif(not shutil.which("helm"), reason="Helm is required to check tpl rendering")
+def test_grafana_legends_survive_helm_tpl(tmp_path):
+    # The Collector chart evaluates extraManifests with tpl, which also recognizes
+    # Grafana's double-brace legend syntax unless the generated values escape it.
+    (tmp_path / "Chart.yaml").write_text("apiVersion: v2\nname: tpl-contract\nversion: 0.1.0\n")
+    (tmp_path / "templates").mkdir()
+    (tmp_path / "templates/dashboard.yaml").write_text(
+        '{{ range .Values.extraManifests }}---\n{{ tpl (toYaml .) $ }}\n{{ end }}')
+    manifest = g.values(g.fleet(response()))["extraManifests"][0]
+    (tmp_path / "values.yaml").write_text(yaml.safe_dump({"extraManifests": [manifest]}))
+    rendered = subprocess.run(["helm", "template", "test", str(tmp_path)],
+                              capture_output=True, text=True, check=True)
+    actual = yaml.safe_load(rendered.stdout)["data"]["network-snmp.json"]
+    assert json.loads(actual) == g.dashboard(2)

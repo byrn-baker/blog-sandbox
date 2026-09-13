@@ -1,0 +1,138 @@
+{
+  "applications": [
+    {
+      "name": "longhorn",
+      "sync": "Synced",
+      "health": "Healthy",
+      "revisions": [
+        "1.12.1",
+        "19bb7ac96b4358664a678992e3e542d9d259a87e"
+      ]
+    },
+    {
+      "name": "otel-snmp",
+      "sync": "Synced",
+      "health": "Healthy",
+      "revisions": [
+        "0.162.0",
+        "19bb7ac96b4358664a678992e3e542d9d259a87e"
+      ]
+    },
+    {
+      "name": "root-app",
+      "sync": "Synced",
+      "health": "Healthy",
+      "revisions": []
+    },
+    {
+      "name": "snmp-metrics",
+      "sync": "Synced",
+      "health": "Healthy",
+      "revisions": [
+        "0.46.0",
+        "abd946edf2139ed6a14dba9e4a64718204e88639"
+      ]
+    },
+    {
+      "name": "victoria-metrics-k8s-stack",
+      "sync": "Synced",
+      "health": "Healthy",
+      "revisions": [
+        "0.91.2",
+        "abd946edf2139ed6a14dba9e4a64718204e88639"
+      ]
+    }
+  ],
+  "pods": [
+    {
+      "name": "otel-snmp-5677c8b7cf-zksvd",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "snmp-metrics-0",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-grafana-7c9b7c4fd-vctvh",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-kube-state-metrics-545f7c6df4-wzb7n",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-2r2n5",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-b92x2",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-fvptq",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-hw6pq",
+      "ready": true,
+      "restarts": 1
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-jdkdp",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-mhk6w",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-qnsgp",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-rzrbw",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-prometheus-node-exporter-wkmkq",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "victoria-metrics-k8s-stack-victoria-metrics-operator-77cdbp2nwh",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "vmagent-victoria-metrics-k8s-stack-5dcd6959d9-2stnp",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "vmalert-victoria-metrics-k8s-stack-78689f75d9-cphs5",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "vmalertmanager-victoria-metrics-k8s-stack-0",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "vmsingle-victoria-metrics-k8s-stack-6dfb4f656c-5vgkl",
+      "ready": true,
+      "restarts": 0
+    }
+  ]
+}

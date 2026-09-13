@@ -1,0 +1,255 @@
+[
+  {
+    "device": "BORDER1",
+    "cli_count": 5,
+    "snmp_count": 7,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "CE1",
+    "cli_count": 9,
+    "snmp_count": 11,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "CE2",
+    "cli_count": 9,
+    "snmp_count": 11,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "CE3",
+    "cli_count": 9,
+    "snmp_count": 11,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "DCA-Leaf01",
+    "cli_count": 21,
+    "snmp_count": 20,
+    "snmp_only": [],
+    "cli_only": [
+      "Vlan4097"
+    ]
+  },
+  {
+    "device": "DCA-Leaf02",
+    "cli_count": 21,
+    "snmp_count": 20,
+    "snmp_only": [],
+    "cli_only": [
+      "Vlan4097"
+    ]
+  },
+  {
+    "device": "DCA-Leaf03",
+    "cli_count": 17,
+    "snmp_count": 16,
+    "snmp_only": [],
+    "cli_only": [
+      "Vlan4097"
+    ]
+  },
+  {
+    "device": "DCA-Spine01",
+    "cli_count": 12,
+    "snmp_count": 12,
+    "snmp_only": [],
+    "cli_only": []
+  },
+  {
+    "device": "DCA-Spine02",
+    "cli_count": 12,
+    "snmp_count": 12,
+    "snmp_only": [],
+    "cli_only": []
+  },
+  {
+    "device": "DCB-Leaf01",
+    "cli_count": 20,
+    "snmp_count": 19,
+    "snmp_only": [],
+    "cli_only": [
+      "Vlan4097"
+    ]
+  },
+  {
+    "device": "DCB-Leaf02",
+    "cli_count": 20,
+    "snmp_count": 19,
+    "snmp_only": [],
+    "cli_only": [
+      "Vlan4097"
+    ]
+  },
+  {
+    "device": "DCB-Leaf03",
+    "cli_count": 17,
+    "snmp_count": 16,
+    "snmp_only": [],
+    "cli_only": [
+      "Vlan4097"
+    ]
+  },
+  {
+    "device": "DCB-Spine01",
+    "cli_count": 12,
+    "snmp_count": 12,
+    "snmp_only": [],
+    "cli_only": []
+  },
+  {
+    "device": "DCB-Spine02",
+    "cli_count": 12,
+    "snmp_count": 12,
+    "snmp_only": [],
+    "cli_only": []
+  },
+  {
+    "device": "DCC-Leaf01",
+    "cli_count": 20,
+    "snmp_count": 19,
+    "snmp_only": [],
+    "cli_only": [
+      "Vlan4097"
+    ]
+  },
+  {
+    "device": "DCC-Leaf02",
+    "cli_count": 20,
+    "snmp_count": 19,
+    "snmp_only": [],
+    "cli_only": [
+      "Vlan4097"
+    ]
+  },
+  {
+    "device": "DCC-Leaf03",
+    "cli_count": 17,
+    "snmp_count": 16,
+    "snmp_only": [],
+    "cli_only": [
+      "Vlan4097"
+    ]
+  },
+  {
+    "device": "DCC-Spine01",
+    "cli_count": 12,
+    "snmp_count": 12,
+    "snmp_only": [],
+    "cli_only": []
+  },
+  {
+    "device": "DCC-Spine02",
+    "cli_count": 12,
+    "snmp_count": 12,
+    "snmp_only": [],
+    "cli_only": []
+  },
+  {
+    "device": "RR1",
+    "cli_count": 3,
+    "snmp_count": 5,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "RR2",
+    "cli_count": 3,
+    "snmp_count": 5,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "SP1",
+    "cli_count": 7,
+    "snmp_count": 9,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "SP2",
+    "cli_count": 7,
+    "snmp_count": 9,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "SP3",
+    "cli_count": 6,
+    "snmp_count": 8,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "SP4",
+    "cli_count": 6,
+    "snmp_count": 8,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "SPE1",
+    "cli_count": 6,
+    "snmp_count": 8,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "SPE2",
+    "cli_count": 6,
+    "snmp_count": 8,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  },
+  {
+    "device": "SPE3",
+    "cli_count": 6,
+    "snmp_count": 8,
+    "snmp_only": [
+      "Null0",
+      "VoIP-Null0"
+    ],
+    "cli_only": []
+  }
+]
