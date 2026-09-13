@@ -156,3 +156,25 @@ def test_grafana_legends_survive_helm_tpl(tmp_path):
                               capture_output=True, text=True, check=True)
     actual = yaml.safe_load(rendered.stdout)["data"]["network-snmp.json"]
     assert json.loads(actual) == g.dashboard(2)
+
+@pytest.mark.parametrize('role,platform,bgp,core', [
+    ('CE-Router','cisco_iosxe',True,False),
+    ('P-Router','cisco_iosxe',False,True),
+    ('PE-Router','cisco_iosxe',True,True),
+    ('Route-Reflector','cisco_iosxe',True,True),
+    ('Leaf','arista_eos',True,False),
+    ('Spine','arista_eos',True,False),
+])
+def test_routing_profiles_follow_modeled_role(role,platform,bgp,core):
+    r=response();r['data']['devices'][0]['role']['name']=role
+    r['data']['devices'][0]['platform']['name']=platform
+    device=next(d for d in g.fleet(r)if d['name']=='CE1')
+    metrics=g.receiver(device)['metrics']
+    assert ('snmp_bgp_peer_state'in metrics)==bgp
+    assert ('snmp_isis_adjacency_state'in metrics)==core
+    assert ('snmp_bfd_session_state'in metrics)==core
+    # Adding routing collection must preserve the established interface schema.
+    assert metrics['snmp_interface_oper_status']['column_oids'][0]['attributes']==[
+        {'name':'interface'},{'name':'if_name'},{'name':'if_type'},{'name':'if_index'}]
+    if bgp:
+        assert metrics['snmp_bgp_peer_established_transitions_total']['sum']['monotonic']

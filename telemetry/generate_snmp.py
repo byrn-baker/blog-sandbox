@@ -19,6 +19,7 @@ import uuid
 
 import yaml
 from network_dashboard import dashboard
+from routing_metrics import extend_receiver, index_transform
 
 
 def helm_dashboard(count):
@@ -62,7 +63,7 @@ def fleet(response, selected=()):
         if network != ipaddress.IPv4Network("192.168.3.0/24"):
             raise ValueError("SNMP ACL changed; verify collector egress before generation")
         result.append(dict(name=name, address=address, platform=source["platform"]["name"],
-                           site=source["location"]["name"], community=snmp["ro_community"],
+                           role=source["role"]["name"], site=source["location"]["name"], community=snmp["ro_community"],
                            contact=snmp["contact"], key=key))
     if not result:
         raise ValueError("No eligible SNMP devices; preserving existing output")
@@ -94,19 +95,20 @@ def receiver(device):
         metric["sum" if counter else "gauge"] = ({"aggregation": "cumulative", "monotonic": True,
             "value_type": "int"} if counter else {"value_type": "int"})
         metrics["snmp_interface_" + name] = metric
-    return {"endpoint": "udp://" + device["address"] + ":161", "version": "v2c",
+    return extend_receiver({"endpoint": "udp://" + device["address"] + ":161", "version": "v2c",
             "community": "${env:" + device["key"] + "}", "collection_interval": "60s", "timeout": "5s",
             "attributes": {"interface": {"oid": "1.3.6.1.2.1.2.2.1.2"},
                            "if_name": {"oid": "1.3.6.1.2.1.31.1.1.1.1"},
                            "if_type": {"oid": "1.3.6.1.2.1.2.2.1.3"},
-                           "if_index": {"indexed_value_prefix": "if"}}, "metrics": metrics}
+                           "if_index": {"indexed_value_prefix": "if"}}, "metrics": metrics}, device)
 
 
 def values(devices, credential_revision=None):
     config = {
         "receivers": {},
         "processors": {"memory_limiter": {"check_interval": "1s", "limit_mib": 384, "spike_limit_mib": 64},
-                       "batch": {"timeout": "5s", "send_batch_size": 2048, "send_batch_max_size": 4096}},
+                       "batch": {"timeout": "5s", "send_batch_size": 2048, "send_batch_max_size": 4096},
+                       "transform/routing_indices": index_transform()},
         "exporters": {"otlp_http/victoriametrics": {
             "metrics_endpoint": "http://vmsingle-victoria-metrics-k8s-stack.observability.svc:8428/opentelemetry/v1/metrics",
             "compression": "gzip", "timeout": "15s",
@@ -132,7 +134,7 @@ def values(devices, credential_revision=None):
                          "management_ip": device["address"], "telemetry_source": "snmp",
                          "job": "snmp", "instance": device["address"]}.items()]}
         config["service"]["pipelines"]["metrics/" + name] = {"receivers": [rec],
-            "processors": ["memory_limiter", proc, "batch"], "exporters": ["otlp_http/victoriametrics", "otlp_http/snmp_history"]}
+            "processors": ["memory_limiter", proc, "transform/routing_indices", "batch"], "exporters": ["otlp_http/victoriametrics", "otlp_http/snmp_history"]}
         envs.append({"name": device["key"], "valueFrom": {"secretKeyRef": {"name": SECRET, "key": device["key"]}}})
         rules.append({"alert": "NetworkSnmpDeviceStale", "record": "", "expr": 'absent_over_time(snmp_device_uptime_ticks{device="'+name+'"}[3m])',
                       "for": "2m", "labels": {"severity": "warning", "device": name},
