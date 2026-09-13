@@ -178,3 +178,14 @@ def test_routing_profiles_follow_modeled_role(role,platform,bgp,core):
         {'name':'interface'},{'name':'if_name'},{'name':'if_type'},{'name':'if_index'}]
     if bgp:
         assert metrics['snmp_bgp_peer_established_transitions_total']['sum']['monotonic']
+
+
+def test_bfd_identity_uses_cli_discriminator_not_invalid_interface_handle():
+    r = response()
+    r['data']['devices'][0]['role']['name'] = 'P-Router'
+    receiver = g.receiver(next(d for d in g.fleet(r) if d['name'] == 'CE1'))
+    assert 'snmp_bfd_session_if_index' not in receiver['metrics']
+    labels = receiver['metrics']['snmp_bfd_session_state']['column_oids'][0]['attributes']
+    assert {'name': 'local_discriminator'} in labels
+    assert {'name': 'application_id'} in labels
+    assert receiver['attributes']['local_discriminator']['oid'].endswith('.1.2.1.3')

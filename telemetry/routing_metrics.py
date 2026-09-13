@@ -32,20 +32,22 @@ def extend_receiver(config, device):
         attributes.update({'isis_adjacency': {'indexed_value_prefix': 'adj'},
                            'circuit_id': {'indexed_value_prefix': 'circuit'},
                            'bfd_session': {'indexed_value_prefix': 'bfd'},
-                           'address_family': {'oid': BFD+'.13'}})
+                           'address_family': {'oid': BFD+'.13'},
+                           'local_discriminator': {'oid': BFD+'.3'},
+                           'application_id': {'oid': BFD+'.2'}})
         column('snmp_isis_adjacency_state', ISIS+'.6.1.1.2', ['isis_adjacency'],
                'Cisco IS-IS adjacency: 1 Down, 2 Initializing, 3 Up, 4 Failed')
         column('snmp_isis_circuit_if_index', ISIS+'.3.2.1.2', ['circuit_id'],
                'Dynamic IS-IS circuit to IF-MIB index mapping, including configured circuits without neighbors')
-        column('snmp_bfd_session_state', BFD+'.6', ['bfd_session','address_family'],
+        column('snmp_bfd_session_state', BFD+'.6', ['bfd_session','address_family','local_discriminator','application_id'],
                'Cisco BFD state: 1 AdminDown, 2 Down, 3 Init, 4 Up, 5 Failing; not supported by the EOS profile')
-        column('snmp_bfd_session_if_index', BFD+'.25', ['bfd_session'],
-               'Dynamic Cisco BFD session to IF-MIB interface index mapping')
+        # This image reports internal interface handles in ciscoBfdSessInterface,
+        # not valid IF-MIB indices. Do not attach incorrect interface names.
     return config
 
 
 def index_transform():
     """Give dynamic numeric mapping values the same labels as existing IF-MIB rows."""
     return {'error_mode': 'propagate', 'metric_statements': [{'context': 'datapoint', 'statements': [
-        'set(attributes["if_index"], Concat(["if", String(value_int)], ".")) where metric.name == "snmp_isis_circuit_if_index" or metric.name == "snmp_bfd_session_if_index"'
+        'set(datapoint.attributes["if_index"], Concat(["if", String(datapoint.value_int)], ".")) where metric.name == "snmp_isis_circuit_if_index"'
     ]}]}
