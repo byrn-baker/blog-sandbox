@@ -151,3 +151,55 @@ python3 telemetry/generate_snmp.py --dashboard-only \
 
 Publish the generated values through the existing Argo Application. This mode
 does not query Nautobot or synchronize Secrets.
+
+## Routing polling
+
+`routing_metrics.py` extends the same receivers using Nautobot roles. BGP roles
+collect BGP4-MIB peer state, remote AS, seconds established and the cumulative
+count of entries into Established. Cisco core roles collect adjacency state
+from CISCO-IETF-ISIS-MIB and session state from CISCO-IETF-BFD-MIB. The standard
+IS-IS subtree was empty on the tested image; the Cisco subtree returned the
+live adjacency table. Existing device SNMP access permits these reads. No new
+SNMP host destination, notification configuration or device restart is needed.
+
+The verified default-context baseline is 133 BGP peer rows on 24 devices,
+28 directed IS-IS adjacencies on 10 core routers, and 56 BFD application rows
+representing 28 local discriminators on those routers. The four P routers do
+not run BGP. BGP peer transports include sessions carrying EVPN and VPNv4, but
+these metrics do not measure prefixes or health separately for each address
+family. The three SERVERS-VRF peers on DCA-Leaf03, DCB-Leaf03 and DCC-Leaf03
+are visible in the CLI and absent from the polled default-context BGP table.
+The inspected Arista BGP4V2 table also omitted the SERVERS peer on DCA-Leaf03.
+VRF-aware collection remains a gap; 133 is not a claim of all 136 CLI peers.
+
+IS-IS circuit indices are joined to their reported IF-MIB indices, then to
+`ifDescr`. This produces full CLI names without hard-coding a circuit-to-port
+map. BFD needs different treatment on this IOS-XE image: its interface column
+returns handles that disagree with IF-MIB, and its address column on SP1
+reported local addresses despite the MIB describing neighbor addresses.
+Neither field is used to label BFD sessions. The local discriminator matches
+the CLI's `LD` column. Application IDs 9 and 15 each export a row for the same
+session; the dashboard retains both and separately counts distinct local
+discriminators. Their numerical IDs are not presented as protocol names.
+No EOS BFD coverage is claimed.
+
+The `Network Routing` dashboard and `routing-rules.yaml` live under
+`blog-sandbox-argo-cd/observability/`. State mappings show Established or Up,
+with peer addresses for BGP and full local interface names for IS-IS. Alerts
+cover reported non-up states and device-level row counts below this recorded
+baseline. Update the coverage rules after intentional topology changes.
+A missing row must age out of the query lookback before the five-minute
+coverage hold begins; these are not immediate failure notifications. Counts
+cannot detect one missing peer replaced by a different peer.
+
+A one-minute poll can miss a short down/up event. BGP established-transition
+counters help identify recovered flaps, but do not provide the reason. Traps,
+syslog ingestion, external alert notification delivery and VictoriaLogs remain
+separate work. Enabling a device trap would not make this polling receiver
+accept UDP 162.
+
+Primary object definitions: [Cisco IS-IS MIB](https://github.com/cisco/cisco-mibs/blob/main/v2/CISCO-IETF-ISIS-MIB.my),
+[Cisco BFD MIB](https://github.com/cisco/cisco-mibs/blob/main/v2/CISCO-IETF-BFD-MIB.my),
+and [Arista MIB catalog](https://www.arista.com/en/support/product-documentation/arista-snmp-mibs).
+Live comparison evidence takes precedence over assuming every documented field
+is implemented correctly by the lab images.
