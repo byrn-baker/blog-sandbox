@@ -20,6 +20,12 @@ import uuid
 import yaml
 from network_dashboard import dashboard
 
+
+def helm_dashboard(count):
+    """Preserve Grafana legend placeholders through the chart's Helm tpl pass."""
+    return re.sub(r"\{\{[^{}]+\}\}", lambda match: "{{`" + match.group(0) + "`}}",
+                  json.dumps(dashboard(count), indent=2))
+
 ROOT = Path(__file__).resolve().parents[1]
 ROLES = {"Border-Router", "CE-Router", "P-Router", "PE-Router", "Route-Reflector", "Leaf", "Spine"}
 PLATFORMS = {"cisco_iosxe", "arista_eos"}
@@ -147,7 +153,7 @@ def values(devices, credential_revision=None):
         "extraManifests": [
             {"apiVersion": "v1", "kind": "ConfigMap",
              "metadata": {"name": "network-snmp-dashboard", "namespace": "observability", "labels": {"grafana_dashboard": "1"}},
-             "data": {"network-snmp.json": json.dumps(dashboard(len(devices)), indent=2)}},
+             "data": {"network-snmp.json": helm_dashboard(len(devices))}},
             {"apiVersion": "v1", "kind": "ConfigMap",
              "metadata": {"name": "network-snmp-datasource", "namespace": "observability", "labels": {"grafana_datasource": "1"}},
              "data": {"network-snmp.yaml": yaml.safe_dump({"apiVersion": 1, "datasources": [{
@@ -226,7 +232,7 @@ def main():
                      if m.get("kind") == "ConfigMap" and m["metadata"]["name"] == "network-snmp-dashboard"]
         if not count or len(manifests) != 1:
             raise ValueError("Existing SNMP fleet/dashboard missing; preserving output")
-        manifests[0]["data"]["network-snmp.json"] = json.dumps(dashboard(count), indent=2)
+        manifests[0]["data"]["network-snmp.json"] = helm_dashboard(count)
         atomic_yaml(args.output, document)
         print(f"Refreshed dashboard for {count} existing receivers")
         return
