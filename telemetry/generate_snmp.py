@@ -213,7 +213,23 @@ def main():
     parser.add_argument("--output", required=True)
     parser.add_argument("--canary", nargs="*", default=[])
     parser.add_argument("--sync-secret", action="store_true")
+    parser.add_argument("--dashboard-only", action="store_true",
+                        help="Refresh only the dashboard in existing values; preserve receivers and credentials")
     args = parser.parse_args()
+    if args.dashboard_only:
+        if args.sync_secret or args.canary:
+            parser.error("--dashboard-only cannot change credentials or fleet selection")
+        document = yaml.safe_load(Path(args.output).read_text())
+        receivers = document["alternateConfig"]["receivers"]
+        count = sum(name.startswith("snmp/") for name in receivers)
+        manifests = [m for m in document["extraManifests"]
+                     if m.get("kind") == "ConfigMap" and m["metadata"]["name"] == "network-snmp-dashboard"]
+        if not count or len(manifests) != 1:
+            raise ValueError("Existing SNMP fleet/dashboard missing; preserving output")
+        manifests[0]["data"]["network-snmp.json"] = json.dumps(dashboard(count), indent=2)
+        atomic_yaml(args.output, document)
+        print(f"Refreshed dashboard for {count} existing receivers")
+        return
     response = query()
     all_devices = fleet(response)
     selected = fleet(response, args.canary)

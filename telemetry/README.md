@@ -127,3 +127,27 @@ generated values); VictoriaMetrics single chart 0.46.0 and image v1.151.0;
 PyYAML 6.0.2. Charts are served by the lab mirror. Image pulls use the existing
 management-network registry caches. Rebuild the mirror using the procedure in
 `demo-lab/09-lab-artifact-mirror.md`.
+
+## Readable interface panels
+
+The Device and Interface selectors use full names from `ifDescr`, verified against
+live `show interfaces` output, such as `DCA-Leaf01 / Ethernet1` and
+`CE1 / GigabitEthernet2`. Short `ifName` aliases and numeric indices remain metric
+metadata for joins and diagnosis; legends and tables hide them. Status values
+render as Up, Down, Testing, Unknown, Dormant, Not present or Lower layer down.
+
+Normal interface panels exclude MPLS protocol-layer rows (`ifType=166`) and IOS
+`Null0`/`VoIP-Null0` sinks. A separate diagnostic table identifies MPLS rows missing
+error counters. Arista's internal `Vlan4097` appears in CLI output but was absent
+from the collected IF-MIB rows. The dashboard does not manufacture missing data.
+
+For a presentation-only update, preserve the fleet, credential revision and all
+Collector settings with:
+
+```bash
+python3 telemetry/generate_snmp.py --dashboard-only \
+  --output ../blog-sandbox-argo-cd/values/otel-snmp-values.yaml
+```
+
+Publish the generated values through the existing Argo Application. This mode
+does not query Nautobot or synchronize Secrets.

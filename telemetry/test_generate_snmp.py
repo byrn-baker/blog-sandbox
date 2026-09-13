@@ -125,3 +125,17 @@ def test_failed_secret_write_leaves_generated_values(tmp_path, monkeypatch):
     with pytest.raises(RuntimeError):
         g.main()
     assert target.read_text() == "previous valid configuration\n"
+
+
+def test_dashboard_refresh_preserves_collection_and_credential_revision(tmp_path, monkeypatch):
+    target = tmp_path / "values.yaml"
+    before = g.values(g.fleet(response()), credential_revision="existing-revision")
+    before["extraManifests"][0]["data"]["network-snmp.json"] = "{}"
+    target.write_text(yaml.safe_dump(before))
+    monkeypatch.setattr(sys, "argv", ["generate_snmp.py", "--output", str(target), "--dashboard-only"])
+    g.main()
+    after = yaml.safe_load(target.read_text())
+    actual = after["extraManifests"][0]["data"].pop("network-snmp.json")
+    before["extraManifests"][0]["data"].pop("network-snmp.json")
+    assert after == before
+    assert json.loads(actual)["uid"] == "network-snmp"

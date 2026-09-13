@@ -3,7 +3,7 @@
 
 def dashboard(expected_devices):
     ds = {"type": "prometheus", "uid": "network-snmp"}
-    selected = '{job="snmp",if_type!="",device=~"$device",interface=~"$interface"}'
+    selected = '{job="snmp",if_type!="",if_type!="166",interface!~"(VoIP-)?Null0",device=~"$device",interface=~"$interface"}'
     panels = []
 
     def panel(title, expression, unit, kind="timeseries", description=""):
@@ -11,7 +11,18 @@ def dashboard(expected_devices):
         panels.append({"id": i + 1, "title": title, "type": kind, "datasource": ds,
             "description": description, "gridPos": {"x": (i % 2) * 12, "y": (i // 2) * 8, "w": 12, "h": 8},
             "targets": [{"refId": "A", "expr": expression, "instant": kind in ["stat", "table"], "format": "table" if kind == "table" else "time_series"}],
-            "fieldConfig": {"defaults": {"unit": unit}, "overrides": []}, "options": {}})
+            "fieldConfig": {"defaults": {"unit": unit}, "overrides": []},
+            "options": {"legend": {"displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"]}}})
+        target = panels[-1]["targets"][0]
+        if kind == "timeseries":
+            target["legendFormat"] = "{{device}} / {{interface}}" if "snmp_interface_" in expression else "{{device}}"
+        if kind == "table":
+            names = ["device", "interface", "Value"] if "snmp_interface_" in expression else ["device", "Value"]
+            panels[-1]["transformations"] = [
+                {"id": "filterFieldsByName", "options": {"include": {"names": names}}},
+                {"id": "organize", "options": {"indexByName": {n: i for i, n in enumerate(names)},
+                    "renameByName": {"device": "Device", "interface": "Interface", "Value": title}}}]
+            panels[-1]["options"] = {"showHeader": True, "sortBy": [{"displayName": "Device", "desc": False}]}
 
     panel("Devices polled in the last 3 minutes (expected " + str(expected_devices) + ")",
           'count(max by (device) (timestamp(snmp_device_uptime_ticks{job="snmp"})) > time() - 180) or vector(0)', "short", "stat")
@@ -28,29 +39,52 @@ def dashboard(expected_devices):
     panel("Outbound errors", "rate(snmp_interface_out_errors_total" + selected + "[5m])", "ops")
     panel("Inbound discards", "rate(snmp_interface_in_discards_total" + selected + "[5m])", "ops")
     panel("Outbound discards", "rate(snmp_interface_out_discards_total" + selected + "[5m])", "ops")
-    panel("Interface operational state", "snmp_interface_oper_status" + selected, "short", "table",
-          "IF-MIB: 1 up, 2 down, 3 testing, 4 unknown, 5 dormant, 6 notPresent, 7 lowerLayerDown.")
+    panel("Interface status", "snmp_interface_oper_status" + selected, "none", "table",
+          "Names match the full CLI interface names. MPLS protocol-layer rows and IOS null sinks are excluded from normal interface views. Arista internal Vlan4097 is absent from the collected IF-MIB rows.")
     panel("Sample age", 'time() - timestamp(snmp_device_uptime_ticks{job="snmp",device=~"$device"})', "s", "table",
           "Missing samples are unknown, not zero traffic. Devices missing over the query lookback disappear; compare fleet count above.")
-    panel("Interface rows without error counters", "snmp_interface_oper_status" + selected +
-          ' unless on(device,if_index) snmp_interface_in_errors_total{job="snmp",if_type!=""}', "short", "table",
-          "IOS MPLS-layer rows return NoSuchInstance for error/discard counters. They are separate from the physical interface. Missing is not zero; the physical interface has its own counters.")
+    # Keep unsupported MPLS-layer counters visible as a diagnostic, not as duplicate physical links.
+    panel("MPLS pseudo-interfaces without error counters",
+          'snmp_interface_oper_status{job="snmp",if_type="166",device=~"$device"}' +
+          ' unless on(device,if_index) snmp_interface_in_errors_total{job="snmp",if_type!=""}', "none", "table",
+          "These are SNMP protocol-layer rows, not additional CLI interfaces. They can duplicate physical-link traffic. Missing error/discard counters mean unsupported, not zero. This diagnostic follows Device selection only.")
+    panels[-1]["transformations"][0]["options"]["include"]["names"] = ["device", "interface"]
+    panels[-1]["transformations"][1]["options"]["renameByName"]["interface"] = "SNMP protocol-layer row"
     panel("Polling errors in the last 5 minutes",
-          'sum by (receiver) (increase(otelcol_scraper_errored_metric_points{receiver=~"snmp/.*"}[5m]))', "short")
+          'label_replace(sum by (receiver) (increase(otelcol_scraper_errored_metric_points{receiver=~"snmp/($device)"}[5m])), "device", "$1", "receiver", "snmp/(.*)")', "short")
     panels[-1]["datasource"] = {"uid": "VictoriaMetrics"}
     panel("Queued export requests", 'max by (exporter) (otelcol_exporter_queue_size{exporter=~"otlp_http/(snmp_history|victoriametrics)"})', "short")
     panels[-1]["datasource"] = {"uid": "VictoriaMetrics"}
     panel("Metric points exported per second",
           'sum by (exporter) (rate(otelcol_exporter_sent_metric_points{exporter=~"otlp_http/(snmp_history|victoriametrics)"}[5m]))', "ops")
     panels[-1]["datasource"] = {"uid": "VictoriaMetrics"}
+    for item in panels:
+        if item["title"] in ["Queued export requests", "Metric points exported per second"]:
+            target = item["targets"][0]
+            target["expr"] = ('label_replace(label_replace(' + target["expr"] +
+                ', "destination", "SNMP history", "exporter", "otlp_http/snmp_history"), ' +
+                '"destination", "Cluster metrics", "exporter", "otlp_http/victoriametrics")')
+            target["legendFormat"] = "{{destination}}"
+        if item["title"] == "Interface status":
+            item["fieldConfig"]["defaults"]["mappings"] = [{"type": "value", "options": {
+                str(value): {"text": text, "color": color}
+                for value, text, color in [(1, "Up", "green"), (2, "Down", "red"),
+                    (3, "Testing", "yellow"), (4, "Unknown", "gray"), (5, "Dormant", "yellow"),
+                    (6, "Not present", "gray"), (7, "Lower layer down", "red")]}}]
+        if item["title"] in ["Inbound errors", "Outbound errors"]:
+            item["fieldConfig"]["defaults"]["unit"] = "suffix: errors/s"
+        if item["title"] in ["Inbound discards", "Outbound discards"]:
+            item["fieldConfig"]["defaults"]["unit"] = "suffix: discards/s"
+        if item["title"] == "Metric points exported per second":
+            item["fieldConfig"]["defaults"]["unit"] = "suffix: points/s"
     return {"uid": "network-snmp", "title": "Network SNMP", "tags": ["network", "snmp"],
-            "schemaVersion": 39, "version": 1, "editable": False, "timezone": "browser",
+            "schemaVersion": 39, "version": 2, "editable": False, "timezone": "browser",
             "refresh": "30s", "time": {"from": "now-1h", "to": "now"}, "panels": panels,
             "templating": {"list": [
-                {"name": "device", "type": "query", "datasource": ds,
+                {"name": "device", "label": "Device", "type": "query", "datasource": ds,
                  "query": "label_values(snmp_device_uptime_ticks, device)", "refresh": 1,
                  "multi": True, "includeAll": True, "allValue": ".*", "current": {"text": "All", "value": "$__all"}},
-                {"name": "interface", "type": "query", "datasource": ds,
-                 "query": 'label_values(snmp_interface_oper_status{job="snmp",if_type!="",device=~"$device"}, interface)', "refresh": 1,
+                {"name": "interface", "label": "Interface", "type": "query", "datasource": ds,
+                 "query": 'label_values(snmp_interface_oper_status{job="snmp",if_type!="",if_type!="166",interface!~"(VoIP-)?Null0",device=~"$device"}, interface)', "refresh": 1,
                  "multi": True, "includeAll": True, "allValue": ".*", "current": {"text": "All", "value": "$__all"}}
             ]}}
