@@ -152,7 +152,8 @@ def values(devices, credential_revision=None):
         "podAnnotations": ({"telemetry.lab/credential-revision": credential_revision} if credential_revision else {}),
         "extraManifests": [
             {"apiVersion": "v1", "kind": "ConfigMap",
-             "metadata": {"name": "network-snmp-dashboard", "namespace": "observability", "labels": {"grafana_dashboard": "1"}},
+             "metadata": {"name": "network-snmp-dashboard", "namespace": "observability", "labels": {"grafana_dashboard": "1"},
+                          "annotations": {"grafana_folder": "/var/lib/grafana/dashboards/Network"}},
              "data": {"network-snmp.json": helm_dashboard(len(devices))}},
             {"apiVersion": "v1", "kind": "ConfigMap",
              "metadata": {"name": "network-snmp-datasource", "namespace": "observability", "labels": {"grafana_datasource": "1"}},
@@ -233,6 +234,7 @@ def main():
         if not count or len(manifests) != 1:
             raise ValueError("Existing SNMP fleet/dashboard missing; preserving output")
         manifests[0]["data"]["network-snmp.json"] = helm_dashboard(count)
+        manifests[0]["metadata"].setdefault("annotations", {})["grafana_folder"] = "/var/lib/grafana/dashboards/Network"
         atomic_yaml(args.output, document)
         print(f"Refreshed dashboard for {count} existing receivers")
         return
