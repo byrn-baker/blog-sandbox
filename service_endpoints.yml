@@ -1,0 +1,7 @@
+# Shared source for the MetalLB reservations and BIND ingress records.
+ingress_domain: sandbox.lab
+ingress_management_ip: 192.168.3.240
+ingress_lab_ip: 10.100.0.240
+ingress_hostnames:
+  - grafana
+  - argocd

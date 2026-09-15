@@ -6,3 +6,6 @@ from .sp_demo_lab import SPDemoLabDesign
 from .lab_mtu import StandardLabMTU
 
 register_jobs(GCBootstrap, GCComplianceSetup, SPDemoLabDesign, StandardLabMTU)
+
+from .lab_ingress import LabIngressReservations
+register_jobs(LabIngressReservations)
