@@ -1,7 +1,7 @@
 """Polled routing objects verified on the lab's IOS-XE and EOS images.
 
-These are default-context IPv4 BGP peers and Cisco IS-IS/BFD tables, not a
-VRF/address-family inventory or a trap receiver. Indices remain dynamic.
+These are IPv4 BGP peers in default and explicitly verified EOS VRF contexts,
+plus Cisco IS-IS/BFD tables. They aren't an address-family or prefix inventory.
 """
 BGP_ROLES = {'Border-Router', 'CE-Router', 'PE-Router', 'Route-Reflector', 'Leaf', 'Spine'}
 CORE_ROLES = {'Border-Router', 'P-Router', 'PE-Router', 'Route-Reflector'}
@@ -24,7 +24,7 @@ def extend_receiver(config, device):
                            'remote_as': {'oid': '1.3.6.1.2.1.15.3.1.9'}})
         for name, suffix, counter, unit, description in [
             ('state', 2, False, '1', 'BGP4-MIB peer state: 1 Idle, 2 Connect, 3 Active, 4 OpenSent, 5 OpenConfirm, 6 Established'),
-            ('uptime_seconds', 16, False, 's', 'Seconds in Established state; default SNMP context, IPv4 peer transport'),
+            ('uptime_seconds', 16, False, 's', 'Seconds in Established state; IPv4 peer transport in the labeled VRF'),
             ('established_transitions_total', 15, True, '1', 'Transitions into Established; not a count of every intermediate state change'),
         ]:
             column('snmp_bgp_peer_'+name, '1.3.6.1.2.1.15.3.1.'+str(suffix), ['peer','remote_as'], description, counter, unit)
@@ -49,5 +49,6 @@ def extend_receiver(config, device):
 def index_transform():
     """Give dynamic numeric mapping values the same labels as existing IF-MIB rows."""
     return {'error_mode': 'propagate', 'metric_statements': [{'context': 'datapoint', 'statements': [
-        'set(datapoint.attributes["if_index"], Concat(["if", String(datapoint.value_int)], ".")) where metric.name == "snmp_isis_circuit_if_index"'
+        'set(datapoint.attributes["if_index"], Concat(["if", String(datapoint.value_int)], ".")) where metric.name == "snmp_isis_circuit_if_index"',
+        'set(datapoint.attributes["vrf"], "default") where IsMatch(metric.name, "^snmp_bgp_peer_") and datapoint.attributes["vrf"] == nil'
     ]}]}

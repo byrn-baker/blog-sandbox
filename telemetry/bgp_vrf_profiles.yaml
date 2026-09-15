@@ -1,0 +1,8 @@
+# Verified EOS SNMPv2c contexts. VRFs must also exist on modeled interfaces.
+# These are collection targets, not device configuration or credentials.
+DCA-Leaf03:
+  - SERVERS
+DCB-Leaf03:
+  - SERVERS
+DCC-Leaf03:
+  - SERVERS

@@ -37,6 +37,7 @@ def fleet(response, selected=()):
     if response.get("errors") or not response.get("data", {}).get("devices"):
         raise ValueError("Nautobot query failed or returned no devices; preserving existing output")
     result = []
+    profiles = yaml.safe_load((ROOT / "telemetry/bgp_vrf_profiles.yaml").read_text())
     names, addresses, keys = set(), set(), set()
     for source in response["data"]["devices"]:
         if (source.get("role") or {}).get("name") not in ROLES:
@@ -62,9 +63,15 @@ def fleet(response, selected=()):
         network = ipaddress.IPv4Network(snmp["acl_source"])
         if network != ipaddress.IPv4Network("192.168.3.0/24"):
             raise ValueError("SNMP ACL changed; verify collector egress before generation")
+        vrfs = profiles.get(name, [])
+        modeled_vrfs = {(i.get("vrf") or {}).get("name") for i in source.get("interfaces", [])}
+        if vrfs and (source["platform"]["name"] != "arista_eos" or
+                     len(vrfs) != len(set(vrfs)) or any(
+                         not re.fullmatch(r"[A-Za-z0-9_-]+", v) or v not in modeled_vrfs for v in vrfs)):
+            raise ValueError("BGP VRF profile is unsupported or absent from modeled interfaces")
         result.append(dict(name=name, address=address, platform=source["platform"]["name"],
                            role=source["role"]["name"], site=source["location"]["name"], community=snmp["ro_community"],
-                           contact=snmp["contact"], key=key))
+                           contact=snmp["contact"], key=key, bgp_vrfs=sorted(vrfs)))
     if not result:
         raise ValueError("No eligible SNMP devices; preserving existing output")
     if selected:
@@ -103,6 +110,17 @@ def receiver(device):
                            "if_index": {"indexed_value_prefix": "if"}}, "metrics": metrics}, device)
 
 
+def vrf_receiver(device, vrf):
+    """Poll BGP only in a verified EOS context; do not duplicate interface data."""
+    config = receiver(device)
+    config["community"] += "@" + vrf
+    config["attributes"] = {k: v for k, v in config["attributes"].items() if k in {"peer", "remote_as"}}
+    config["metrics"] = {k: v for k, v in config["metrics"].items() if k.startswith("snmp_bgp_peer_")}
+    if not config["metrics"]:
+        raise ValueError("VRF polling requires a BGP-capable role")
+    return config
+
+
 def values(devices, credential_revision=None):
     config = {
         "receivers": {},
@@ -135,6 +153,16 @@ def values(devices, credential_revision=None):
                          "job": "snmp", "instance": device["address"]}.items()]}
         config["service"]["pipelines"]["metrics/" + name] = {"receivers": [rec],
             "processors": ["memory_limiter", proc, "transform/routing_indices", "batch"], "exporters": ["otlp_http/victoriametrics", "otlp_http/snmp_history"]}
+        for vrf in device.get("bgp_vrfs", []):
+            vrf_rec = "snmp/" + name + "/" + vrf
+            transform = "transform/bgp_vrf_" + vrf
+            config["receivers"][vrf_rec] = vrf_receiver(device, vrf)
+            config["receivers"][vrf_rec]["initial_delay"] = str(1 + (ordinal * 58 // len(devices) + 29) % 59) + "s"
+            config["processors"][transform] = {"error_mode": "propagate", "metric_statements": [
+                {"context": "datapoint", "statements": ['set(datapoint.attributes["vrf"], "' + vrf + '")']}]}
+            config["service"]["pipelines"]["metrics/" + name + "/" + vrf] = {
+                "receivers": [vrf_rec], "processors": ["memory_limiter", proc, transform, "batch"],
+                "exporters": ["otlp_http/victoriametrics", "otlp_http/snmp_history"]}
         envs.append({"name": device["key"], "valueFrom": {"secretKeyRef": {"name": SECRET, "key": device["key"]}}})
         rules.append({"alert": "NetworkSnmpDeviceStale", "record": "", "expr": 'absent_over_time(snmp_device_uptime_ticks{device="'+name+'"}[3m])',
                       "for": "2m", "labels": {"severity": "warning", "device": name},
@@ -230,7 +258,7 @@ def main():
             parser.error("--dashboard-only cannot change credentials or fleet selection")
         document = yaml.safe_load(Path(args.output).read_text())
         receivers = document["alternateConfig"]["receivers"]
-        count = sum(name.startswith("snmp/") for name in receivers)
+        count = sum(name.startswith("snmp/") and name.count("/") == 1 for name in receivers)
         manifests = [m for m in document["extraManifests"]
                      if m.get("kind") == "ConfigMap" and m["metadata"]["name"] == "network-snmp-dashboard"]
         if not count or len(manifests) != 1:

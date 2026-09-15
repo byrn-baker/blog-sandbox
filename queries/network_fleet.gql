@@ -6,5 +6,6 @@ query NetworkTelemetryFleet {
     primary_ip4 { address }
     location { name }
     config_context
+    interfaces { name vrf { name } }
   }
 }

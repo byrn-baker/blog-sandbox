@@ -189,3 +189,50 @@ def test_bfd_identity_uses_cli_discriminator_not_invalid_interface_handle():
     assert {'name': 'local_discriminator'} in labels
     assert {'name': 'application_id'} in labels
     assert receiver['attributes']['local_discriminator']['oid'].endswith('.1.2.1.3')
+
+
+def vrf_fixture():
+    r = response()
+    leaf = r['data']['devices'][1]
+    leaf['name'] = 'DCA-Leaf03'
+    leaf['interfaces'] = [{'name': 'Ethernet10', 'vrf': {'name': 'SERVERS'}}]
+    return r
+
+
+def test_vrf_polling_is_bgp_only_and_reuses_secret_reference():
+    generated = g.values(g.fleet(vrf_fixture()))
+    c = generated['alternateConfig']
+    vrf = c['receivers']['snmp/DCA-Leaf03/SERVERS']
+    assert vrf['community'] == '${env:SNMP_DCA_LEAF03}@SERVERS'
+    assert len(vrf['metrics']) == 3
+    assert all(m.startswith('snmp_bgp_peer_') for m in vrf['metrics'])
+    assert set(vrf['attributes']) == {'peer', 'remote_as'}
+    assert len(generated['extraEnvs']) == 2
+    assert 'fixture-only-secret' not in yaml.safe_dump(generated)
+    default = c['service']['pipelines']['metrics/DCA-Leaf03']
+    scoped = c['service']['pipelines']['metrics/DCA-Leaf03/SERVERS']
+    assert scoped['exporters'] == default['exporters']
+    assert 'transform/bgp_vrf_SERVERS' in scoped['processors']
+    assert 'transform/bgp_vrf_SERVERS' not in default['processors']
+    assert 'snmp_interface_oper_status' in c['receivers']['snmp/DCA-Leaf03']['metrics']
+
+
+@pytest.mark.parametrize('change', ['missing_vrf', 'wrong_platform'])
+def test_vrf_profile_must_match_modeled_device(change):
+    r = vrf_fixture()
+    if change == 'missing_vrf':
+        r['data']['devices'][1]['interfaces'] = []
+    else:
+        r['data']['devices'][1]['platform']['name'] = 'cisco_iosxe'
+    with pytest.raises(ValueError, match='VRF profile'):
+        g.fleet(r)
+
+
+def test_dashboard_device_count_excludes_vrf_receivers(tmp_path, monkeypatch):
+    target = tmp_path / 'values.yaml'
+    d = g.values(g.fleet(vrf_fixture()))
+    target.write_text(yaml.safe_dump(d))
+    monkeypatch.setattr(sys, 'argv', ['generate_snmp.py', '--dashboard-only', '--output', str(target)])
+    g.main()
+    actual = yaml.safe_load(target.read_text())
+    assert actual == d
