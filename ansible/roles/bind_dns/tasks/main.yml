@@ -7,6 +7,10 @@
 # primary IPs, so DNS stays in lockstep with the source of truth. Re-running
 # the role after a topology change regenerates the zones.
 
+- name: Load Git-defined ingress endpoints
+  ansible.builtin.include_vars:
+    file: "{{ role_path }}/../../../service_endpoints.yml"
+
 - name: Query Nautobot for all device names and primary IPs
   ansible.builtin.uri:
     url: "{{ lookup('env', 'NAUTOBOT_URL') }}/api/graphql/"
@@ -24,6 +28,13 @@
   become: false
   run_once: true
   register: nb_devices
+  no_log: true
+
+- name: Require a successful complete Nautobot response
+  ansible.builtin.assert:
+    that:
+      - nb_devices.json.errors is not defined
+      - nb_devices.json.data.devices | length > 0
 
 - name: Build the A-record map (hostname -> IPv4), skipping devices with no primary IP
   ansible.builtin.set_fact:
@@ -35,6 +46,7 @@
   run_once: true
 
 - name: Install BIND9
+  when: not bind_refresh_only
   ansible.builtin.apt:
     name:
       - bind9
@@ -44,50 +56,96 @@
     update_cache: true
     cache_valid_time: 3600
 
-- name: Deploy named.conf.options (forwarders, ACL, listen)
-  ansible.builtin.template:
-    src: named.conf.options.j2
-    dest: /etc/bind/named.conf.options
-    owner: root
-    group: bind
-    mode: "0644"
-  notify: Reload bind
+- name: Create a DNS configuration staging directory
+  ansible.builtin.tempfile:
+    state: directory
+    prefix: bind-ingress-
+  register: bind_stage
 
-- name: Deploy named.conf.local (zone declarations)
-  ansible.builtin.template:
-    src: named.conf.local.j2
-    dest: /etc/bind/named.conf.local
-    owner: root
-    group: bind
-    mode: "0644"
-  notify: Reload bind
+- name: Stage and validate all zones before activating views
+  block:
+    - name: Render staged forward zones
+      ansible.builtin.template:
+        src: db.forward.j2
+        dest: "{{ bind_stage.path }}/db.{{ lab_domain }}.{{ item.name }}"
+        mode: "0644"
+      vars:
+        ingress_view_ip: "{{ item.ingress_ip }}"
+      loop: "{{ bind_views }}"
 
-- name: Render the forward zone
-  ansible.builtin.template:
-    src: db.forward.j2
-    dest: "/etc/bind/db.{{ lab_domain }}"
-    owner: root
-    group: bind
-    mode: "0644"
-  notify: Reload bind
+    - name: Render staged reverse zones
+      ansible.builtin.template:
+        src: db.reverse.j2
+        dest: "{{ bind_stage.path }}/db.{{ item.origin }}"
+        mode: "0644"
+      loop: "{{ bind_reverse_zones }}"
 
-- name: Render each reverse zone
-  ansible.builtin.template:
-    src: db.reverse.j2
-    dest: "/etc/bind/db.{{ item.origin }}"
-    owner: root
-    group: bind
-    mode: "0644"
-  loop: "{{ bind_reverse_zones }}"
-  loop_control:
-    label: "{{ item.origin }}"
-  notify: Reload bind
+    - name: Render the staged configuration
+      ansible.builtin.template:
+        src: "{{ item }}.j2"
+        dest: "{{ bind_stage.path }}/{{ item }}"
+        mode: "0644"
+      vars:
+        bind_config_dir: "{{ bind_stage.path }}"
+      loop: [named.conf.options, named.conf.local, named.conf]
 
-- name: Validate BIND configuration
-  ansible.builtin.command: named-checkconf -z
-  changed_when: false
+    - name: Validate the complete staged BIND configuration and zones
+      ansible.builtin.command:
+        argv: [named-checkconf, -z, "{{ bind_stage.path }}/named.conf"]
+      changed_when: false
+
+    - name: Install validated forward zones
+      when: not (bind_validate_only | default(false) | bool)
+      ansible.builtin.copy:
+        src: "{{ bind_stage.path }}/db.{{ lab_domain }}.{{ item.name }}"
+        dest: "/etc/bind/db.{{ lab_domain }}.{{ item.name }}"
+        remote_src: true
+        owner: root
+        group: bind
+        mode: "0644"
+        backup: true
+      loop: "{{ bind_views }}"
+      notify: Reload bind
+
+    - name: Install validated reverse zones
+      when: not (bind_validate_only | default(false) | bool)
+      ansible.builtin.copy:
+        src: "{{ bind_stage.path }}/db.{{ item.origin }}"
+        dest: "/etc/bind/db.{{ item.origin }}"
+        remote_src: true
+        owner: root
+        group: bind
+        mode: "0644"
+        backup: true
+      loop: "{{ bind_reverse_zones }}"
+      notify: Reload bind
+
+    - name: Activate validated configuration using final file paths
+      when: not (bind_validate_only | default(false) | bool)
+      ansible.builtin.template:
+        src: "{{ item }}.j2"
+        dest: "/etc/bind/{{ item }}"
+        owner: root
+        group: bind
+        mode: "0644"
+        backup: true
+      vars:
+        bind_config_dir: /etc/bind
+      loop: [named.conf.options, named.conf.local, named.conf]
+      notify: Reload bind
+
+    - name: Verify installed BIND configuration
+      when: not (bind_validate_only | default(false) | bool)
+      ansible.builtin.command: named-checkconf -z
+      changed_when: false
+  always:
+    - name: Remove staged configuration
+      ansible.builtin.file:
+        path: "{{ bind_stage.path }}"
+        state: absent
 
 - name: Ensure named is running
+  when: not (bind_validate_only | default(false) | bool)
   ansible.builtin.systemd:
     name: named
     state: started

@@ -1,0 +1,9 @@
+---
+- name: Update authoritative lab DNS from Nautobot and Git service endpoints
+  hosts: dns_servers
+  become: true
+  any_errors_fatal: true
+  vars:
+    bind_refresh_only: true
+  roles:
+    - bind_dns

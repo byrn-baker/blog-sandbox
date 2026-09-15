@@ -32,3 +32,14 @@ bind_soa_refresh: 3600
 bind_soa_retry: 900
 bind_soa_expire: 604800
 bind_soa_minimum: 300
+
+# Render and validate complete views before replacing the active configuration.
+bind_config_dir: /etc/bind
+bind_refresh_only: false
+bind_views:
+  - name: lab
+    clients: ["10.0.0.0/8", "fd10::/32"]
+    ingress_ip: "{{ ingress_lab_ip }}"
+  - name: management
+    clients: ["any"]
+    ingress_ip: "{{ ingress_management_ip }}"

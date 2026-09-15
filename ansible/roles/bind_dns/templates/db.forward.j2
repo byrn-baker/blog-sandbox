@@ -15,3 +15,8 @@ ns1     IN      A       {{ vlan100_ipv4 | default('10.100.0.53') }}
 {% for rec in dns_records | sort(attribute='name') %}
 {{ "%-24s" | format(rec.name | lower) }} IN      A       {{ rec.primary_ip4.host }}
 {% endfor %}
+
+; Application records share the ingress address selected by this DNS view.
+{% for host in ingress_hostnames | default([]) %}
+{{ "%-24s" | format(host) }} IN A {{ ingress_view_ip }}
+{% endfor %}

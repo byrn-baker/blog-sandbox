@@ -1,12 +1,19 @@
-// Managed by Ansible (bind_dns role)
-zone "{{ lab_domain }}" {
-    type master;
-    file "/etc/bind/db.{{ lab_domain }}";
-};
-
+// Managed by Ansible. Lab clients receive the bond0 ingress VIP.
+{% for view in bind_views %}
+view "{{ view.name }}" {
+    match-clients { {% for net in view.clients %}{{ net }}; {% endfor %} };
+    zone "{{ lab_domain }}" {
+        type master;
+        file "{{ bind_config_dir }}/db.{{ lab_domain }}.{{ view.name }}";
+        allow-transfer { none; };
+    };
 {% for rz in bind_reverse_zones %}
-zone "{{ rz.origin }}" {
-    type master;
-    file "/etc/bind/db.{{ rz.origin }}";
+    zone "{{ rz.origin }}" {
+        type master;
+        file "{{ bind_config_dir }}/db.{{ rz.origin }}";
+        allow-transfer { none; };
+    };
+{% endfor %}
+    include "/etc/bind/named.conf.default-zones";
 };
 {% endfor %}
