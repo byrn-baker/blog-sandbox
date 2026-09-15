@@ -167,10 +167,20 @@ The verified default-context baseline is 133 BGP peer rows on 24 devices,
 representing 28 local discriminators on those routers. The four P routers do
 not run BGP. BGP peer transports include sessions carrying EVPN and VPNv4, but
 these metrics do not measure prefixes or health separately for each address
-family. The three SERVERS-VRF peers on DCA-Leaf03, DCB-Leaf03 and DCC-Leaf03
-are visible in the CLI and absent from the polled default-context BGP table.
-The inspected Arista BGP4V2 table also omitted the SERVERS peer on DCA-Leaf03.
-VRF-aware collection remains a gap; 133 is not a claim of all 136 CLI peers.
+family.
+
+`bgp_vrf_profiles.yaml` selects the verified SERVERS contexts on DCA-Leaf03,
+DCB-Leaf03 and DCC-Leaf03. Generation checks that each VRF exists on that
+Nautobot device's modeled interfaces and rejects unsupported platforms.
+The EOS context is selected with `${env:SNMP_DEVICE_KEY}@SERVERS`; the base
+community remains a Secret reference. Each extra receiver polls only the
+three BGP metrics, so it doesn't duplicate interface or uptime measurements.
+
+Default BGP metrics carry `vrf="default"`; scoped metrics carry
+`vrf="SERVERS"`. Peer identity includes device, VRF and peer address. The
+expected fleet total is 136 rows: 133 default and three SERVERS peers. This
+covers the verified IPv4 peer transports, not every possible VRF or address
+family. New profiles require a direct SNMP/CLI comparison before rollout.
 
 IS-IS circuit indices are joined to their reported IF-MIB indices, then to
 `ifDescr`. This produces full CLI names without hard-coding a circuit-to-port
@@ -185,12 +195,14 @@ No EOS BFD coverage is claimed.
 
 The `Network Routing` dashboard and `routing-rules.yaml` live under
 `blog-sandbox-argo-cd/observability/`. State mappings show Established or Up,
-with peer addresses for BGP and full local interface names for IS-IS. Alerts
+with a VRF selector and VRF/peer columns for BGP, and full interface names for IS-IS. The selector affects BGP panels only. Alerts
 cover reported non-up states and device-level row counts below this recorded
 baseline. Update the coverage rules after intentional topology changes.
 A missing row must age out of the query lookback before the five-minute
 coverage hold begins; these are not immediate failure notifications. Counts
-cannot detect one missing peer replaced by a different peer.
+cannot detect one missing peer replaced by a different peer. The three SERVERS
+peers also have identity-specific absence rules using a three-minute window
+and a two-minute hold. Default-context coverage remains independently checked.
 
 A one-minute poll can miss a short down/up event. BGP established-transition
 counters help identify recovered flaps, but do not provide the reason. Traps,
