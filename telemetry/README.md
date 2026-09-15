@@ -215,3 +215,5 @@ Primary object definitions: [Cisco IS-IS MIB](https://github.com/cisco/cisco-mib
 and [Arista MIB catalog](https://www.arista.com/en/support/product-documentation/arista-snmp-mibs).
 Live comparison evidence takes precedence over assuming every documented field
 is implemented correctly by the lab images.
+
+The [VRF rollout verification](https://github.com/byrn-baker/blog-sandbox-argo-cd/blob/main/observability/evidence/bgp-vrf-verification.json) records both stores and all three dashboard selections. Newly labeled BGP series start with this rollout; older unlabeled history is retained but excluded from the VRF-aware panels to avoid double-counting.

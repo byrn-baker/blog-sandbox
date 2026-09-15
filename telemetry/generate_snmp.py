@@ -275,7 +275,7 @@ def main():
     if args.sync_secret:
         document["podAnnotations"] = {"telemetry.lab/credential-revision": sync_secret(all_devices)}
     atomic_yaml(args.output, document)
-    print(f"Generated {len(selected)} receivers without credential values")
+    print(f"Generated {len(document['alternateConfig']['receivers'])} receivers for {len(selected)} devices without credential values")
 
 
 if __name__ == "__main__":
