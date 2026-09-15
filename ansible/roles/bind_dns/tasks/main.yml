@@ -71,6 +71,7 @@
         mode: "0644"
       vars:
         ingress_view_ip: "{{ item.ingress_ip }}"
+        bind_view_ns_ip: "{{ lab_dns_management_server if item.name == 'management' else vlan100_ipv4 }}"
       loop: "{{ bind_views }}"
 
     - name: Render staged reverse zones
