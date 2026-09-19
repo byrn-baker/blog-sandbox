@@ -109,6 +109,19 @@ samples mean unknown, not zero traffic. Stale-device VMRule alerts query the
 existing VictoriaMetrics store; the history dashboard independently exposes
 history-store freshness.
 
+The same generated ConfigMap provisions `Network Operations Overview` at
+`/d/network-operations`. It is the NOC landing page, while `Network SNMP` and
+`Network Routing` remain drill-down views. The overview shows stale devices,
+admin-up/oper-down interfaces, routing exceptions, polling failures, the most
+utilized interfaces, non-zero error or discard rates and recent BGP transitions.
+Healthy interface and peer rows do not fill its tables. Metrics now carry the
+Nautobot device role in addition to site and platform so the dashboard can
+distinguish backbone, edge and data-center devices without a second inventory.
+
+The first version deliberately does not claim service impact, MPLS LSP health or
+EVPN/VNI health. Those require verified service and control-plane state that the
+current generic IF-MIB and BGP4-MIB polling does not provide.
+
 ```promql
 count by (device) (snmp_interface_oper_status)
 count(time() - timestamp(snmp_device_uptime_ticks) < 180)

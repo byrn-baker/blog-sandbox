@@ -32,6 +32,8 @@ def test_deterministic_and_secret_free():
     assert len(set(delays)) == 2
     assert all(0 < int(d[:-1]) < 60 for d in delays)
     assert a["extraEnvs"][0]["valueFrom"]["secretKeyRef"]["name"] == g.SECRET
+    ce_processor = a["alternateConfig"]["processors"]["resource/CE1"]["attributes"]
+    assert {"key": "role", "value": "CE-Router", "action": "upsert"} in ce_processor
 
 
 @pytest.mark.parametrize("change", ["remove", "role", "platform", "context", "contact"])
@@ -128,6 +130,17 @@ def test_failed_secret_write_leaves_generated_values(tmp_path, monkeypatch):
     assert target.read_text() == "previous valid configuration\n"
 
 
+def test_full_generation_preserves_existing_credential_revision(tmp_path, monkeypatch):
+    target = tmp_path / "values.yaml"
+    target.write_text(yaml.safe_dump({"podAnnotations": {
+        "telemetry.lab/credential-revision": "existing-revision"}}))
+    monkeypatch.setattr(g, "query", response)
+    monkeypatch.setattr(sys, "argv", ["generate_snmp.py", "--output", str(target)])
+    g.main()
+    actual = yaml.safe_load(target.read_text())
+    assert actual["podAnnotations"]["telemetry.lab/credential-revision"] == "existing-revision"
+
+
 def test_dashboard_refresh_preserves_collection_and_credential_revision(tmp_path, monkeypatch):
     target = tmp_path / "values.yaml"
     before = g.values(g.fleet(response()), credential_revision="existing-revision")
@@ -140,6 +153,7 @@ def test_dashboard_refresh_preserves_collection_and_credential_revision(tmp_path
     before["extraManifests"][0]["data"].pop("network-snmp.json")
     assert after == before
     assert json.loads(actual)["uid"] == "network-snmp"
+    assert json.loads(after["extraManifests"][0]["data"]["network-operations.json"])["uid"] == "network-operations"
 
 
 @pytest.mark.skipif(not shutil.which("helm"), reason="Helm is required to check tpl rendering")
@@ -156,6 +170,21 @@ def test_grafana_legends_survive_helm_tpl(tmp_path):
                               capture_output=True, text=True, check=True)
     actual = yaml.safe_load(rendered.stdout)["data"]["network-snmp.json"]
     assert json.loads(actual) == g.dashboard(2)
+    operations = yaml.safe_load(rendered.stdout)["data"]["network-operations.json"]
+    assert json.loads(operations) == g.operations_dashboard(2)
+
+
+def test_operations_dashboard_is_exception_oriented():
+    actual = g.operations_dashboard(28)
+    titles = {panel["title"] for panel in actual["panels"]}
+    assert actual["uid"] == "network-operations"
+    assert "Devices stale" in titles
+    assert "Unexpectedly down interfaces" in titles
+    assert "Most utilized inbound interfaces" in titles
+    assert "BGP transitions into Established (1h)" in titles
+    serialized = json.dumps(actual)
+    assert 'admin_status' in serialized
+    assert 'role' in serialized
 
 @pytest.mark.parametrize('role,platform,bgp,core', [
     ('CE-Router','cisco_iosxe',True,False),

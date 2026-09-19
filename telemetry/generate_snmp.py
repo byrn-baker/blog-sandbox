@@ -19,6 +19,7 @@ import uuid
 
 import yaml
 from network_dashboard import dashboard
+from network_operations_dashboard import dashboard as operations_dashboard
 from routing_metrics import extend_receiver, index_transform
 
 
@@ -26,6 +27,12 @@ def helm_dashboard(count):
     """Preserve Grafana legend placeholders through the chart's Helm tpl pass."""
     return re.sub(r"\{\{[^{}]+\}\}", lambda match: "{{`" + match.group(0) + "`}}",
                   json.dumps(dashboard(count), indent=2))
+
+
+def helm_operations_dashboard(count):
+    """Preserve Grafana placeholders in the NOC dashboard through Helm tpl."""
+    return re.sub(r"\{\{[^{}]+\}\}", lambda match: "{{`" + match.group(0) + "`}}",
+                  json.dumps(operations_dashboard(count), indent=2))
 
 ROOT = Path(__file__).resolve().parents[1]
 ROLES = {"Border-Router", "CE-Router", "P-Router", "PE-Router", "Route-Reflector", "Leaf", "Spine"}
@@ -148,7 +155,7 @@ def values(devices, credential_revision=None):
         config["receivers"][rec] = receiver(device)
         config["receivers"][rec]["initial_delay"] = str(1 + ordinal * 58 // len(devices)) + "s"
         config["processors"][proc] = {"attributes": [{"key": k, "value": v, "action": "upsert"}
-            for k, v in {"device": name, "platform": device["platform"], "site": device["site"],
+            for k, v in {"device": name, "role": device["role"], "platform": device["platform"], "site": device["site"],
                          "management_ip": device["address"], "telemetry_source": "snmp",
                          "job": "snmp", "instance": device["address"]}.items()]}
         config["service"]["pipelines"]["metrics/" + name] = {"receivers": [rec],
@@ -184,7 +191,8 @@ def values(devices, credential_revision=None):
             {"apiVersion": "v1", "kind": "ConfigMap",
              "metadata": {"name": "network-snmp-dashboard", "namespace": "observability", "labels": {"grafana_dashboard": "1"},
                           "annotations": {"grafana_folder": "/var/lib/grafana/dashboards/Network"}},
-             "data": {"network-snmp.json": helm_dashboard(len(devices))}},
+             "data": {"network-snmp.json": helm_dashboard(len(devices)),
+                      "network-operations.json": helm_operations_dashboard(len(devices))}},
             {"apiVersion": "v1", "kind": "ConfigMap",
              "metadata": {"name": "network-snmp-datasource", "namespace": "observability", "labels": {"grafana_datasource": "1"}},
              "data": {"network-snmp.yaml": yaml.safe_dump({"apiVersion": 1, "datasources": [{
@@ -264,6 +272,7 @@ def main():
         if not count or len(manifests) != 1:
             raise ValueError("Existing SNMP fleet/dashboard missing; preserving output")
         manifests[0]["data"]["network-snmp.json"] = helm_dashboard(count)
+        manifests[0]["data"]["network-operations.json"] = helm_operations_dashboard(count)
         manifests[0]["metadata"].setdefault("annotations", {})["grafana_folder"] = "/var/lib/grafana/dashboards/Network"
         atomic_yaml(args.output, document)
         print(f"Refreshed dashboard for {count} existing receivers")
@@ -271,7 +280,12 @@ def main():
     response = query()
     all_devices = fleet(response)
     selected = fleet(response, args.canary)
-    document = values(selected)
+    credential_revision = None
+    output = Path(args.output)
+    if output.exists() and not args.sync_secret:
+        previous = yaml.safe_load(output.read_text()) or {}
+        credential_revision = previous.get("podAnnotations", {}).get("telemetry.lab/credential-revision")
+    document = values(selected, credential_revision=credential_revision)
     if args.sync_secret:
         document["podAnnotations"] = {"telemetry.lab/credential-revision": sync_secret(all_devices)}
     atomic_yaml(args.output, document)
