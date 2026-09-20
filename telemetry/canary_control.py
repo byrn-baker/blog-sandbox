@@ -67,16 +67,16 @@ if __name__ == '__main__':
     elif args.action in ['reservation', 'compliance-setup']:
         jobs = api('extras/jobs/?limit=200')['results']
         name = 'Telemetry VIP Reservation' if args.action == 'reservation' else 'Golden Config - Compliance Rules Setup'
-        candidates = [j for j in jobs if j['name'] == name and j['enabled']]
+        candidates = [j for j in jobs if j['name'].split(' (')[0] == name and j['enabled'] and j['installed']]
         if len(candidates) != 1:
             raise ValueError('Expected one enabled job: ' + name)
-        run(candidates[0]['id'], {'dry_run': False}, args.action)
+        run(candidates[0]['id'], {'dry_run': False} if args.action == 'reservation' else {}, args.action)
     else:
         devices = [d for d in api('dcim/devices/?limit=100')['results'] if d['name'] in CANARIES]
         if {d['name'] for d in devices} != CANARIES:
             raise ValueError('Canary inventory mismatch')
         ids = [d['id'] for d in devices]
-        record('inventory', [{'name': d['name'], 'id': d['id'], 'address': d['primary_ip4']['address']} for d in devices])
+        record('inventory', [{'name': d['name'], 'id': d['id'], 'address': api('ipam/ip-addresses/' + d['primary_ip4']['id'] + '/')['address']} for d in devices])
         for name, job, extra in [
             ('intended', 'ab420817-1d1f-4d56-a319-382be6970919', {}),
             ('backup', 'f2033b99-24cd-4949-be4e-ed79d8178850', {'commit_message': 'Part 8 canary fresh backups'}),
