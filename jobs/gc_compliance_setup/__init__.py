@@ -32,6 +32,7 @@ from nautobot_golden_config.models import ComplianceFeature, ComplianceRule
 # ComplianceFeature is ordered by slug. These prefixes also control the order
 # used when Generate Config Plans joins multiple selected features.
 FEATURES = [
+    {"name": "flow_export", "slug": "053-flow-export", "description": "Flow record, exporter and monitor prerequisites"},
     {"name": "hostname", "slug": "010-hostname", "description": "Device hostname configuration"},
     {"name": "platform", "slug": "020-platform", "description": "Platform-level settings (STP mode, service model, VLAN ranges)"},
     {"name": "aaa", "slug": "030-aaa", "description": "AAA and TACACS+ authentication configuration"},
@@ -66,6 +67,8 @@ FEATURES = [
 # a device role (e.g., isis on a CE) will show "compliant" (empty both sides).
 
 RULES = [
+    {"feature": "flow_export", "platform": "cisco_iosxe", "match_config": "flow record\nflow exporter\nflow monitor", "ordered": True},
+    {"feature": "flow_export", "platform": "arista_eos", "match_config": "sflow", "ordered": False},
     # ═══ Cisco IOS-XE (platform name: cisco_iosxe) ═══
     {"feature": "hostname", "platform": "cisco_iosxe", "match_config": "hostname", "ordered": False},
     {"feature": "vrfs", "platform": "cisco_iosxe", "match_config": "vrf definition", "ordered": False},

@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-20",
+  "approved_scope": ["CE1", "DCA-Leaf01"],
+  "approved_source_subnets": ["10.100.0.0/24", "192.168.3.0/24"],
+  "nodes_ready": 9,
+  "applications_synced_healthy": 10,
+  "longhorn_volumes_healthy": 3,
+  "collector_version": "0.154.0",
+  "collector_components_present": ["netflow", "syslog", "otlp_http"],
+  "CE1": {"address": "192.168.3.60", "model": "C8000V", "version": "17.15.1a", "existing_flow_exporters": false},
+  "DCA-Leaf01": {"address": "192.168.3.32", "model": "vEOS-lab", "version": "4.34.6M", "sflow_enabled": false},
+  "eos_session_validation": {
+    "session": "PART8-VALIDATE",
+    "commands_accepted": [
+      "sflow vrf MGMT-VRF destination 192.168.3.241 6343",
+      "sflow vrf MGMT-VRF source-interface Management1",
+      "sflow sample 16384",
+      "sflow polling-interval 20",
+      "sflow run",
+      "logging vrf MGMT-VRF host 192.168.3.241",
+      "logging vrf MGMT-VRF source-interface Management1",
+      "logging trap informational"
+    ],
+    "aborted_without_commit": true,
+    "sflow_still_disabled_after_abort": true,
+    "limitations": "CLI acceptance is not evidence of packet sampling or export."
+  }
+}

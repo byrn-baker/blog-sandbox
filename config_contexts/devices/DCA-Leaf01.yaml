@@ -1,4 +1,10 @@
 # Lab vEOS workaround verified by captured TCP tests on 2026-09-11.
+telemetry_canary:
+  destination: 192.168.3.241
+  vrf: MGMT-VRF
+  source_interface: Management1
+  sflow_port: 6343
+  sample_rate: 16384
 lab_gro_workaround:
   device: DCA-Leaf01
   interfaces:

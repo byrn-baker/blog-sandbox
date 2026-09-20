@@ -53,6 +53,13 @@ KNOWN_BENIGN_IOS = {
 # The EOS tests first assert File_Format == ARISTA, so this list cannot hide
 # warnings caused by vendor-format misdetection.
 KNOWN_BENIGN_ARISTA = {
+    # Accepted in an uncommitted EOS 4.34.6M session on DCA-Leaf01,
+    # 2026-09-20, then aborted. Batfish does not model these sFlow lines.
+    "sflow vrf MGMT-VRF destination 192.168.3.241",
+    "sflow vrf MGMT-VRF source-interface Management1",
+    "sflow sample 16384",
+    "sflow polling-interval 20",
+    "sflow run",
     "vlan internal order ascending range",
     "virtual-router mac-address",
     "egress-vrf",
@@ -126,6 +133,7 @@ class TestBatfishIOSValidation:
     """Validate IOS-XE rendered configs parse cleanly in Batfish."""
 
     IOS_SCENARIOS = [
+        ("tests/mock_contexts/cisco_ios_ce_router.yaml", "golden-config/templates/cisco_ios.j2"),
         ("tests/mock_contexts/cisco_ios_route_reflector.yaml", "golden-config/templates/cisco_ios.j2"),
         ("tests/mock_contexts/cisco_ios_pe_router.yaml", "golden-config/templates/cisco_ios.j2"),
     ]

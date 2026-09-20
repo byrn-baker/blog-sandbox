@@ -2,6 +2,7 @@
 {% include 'golden-config/templates/ios/aaa.j2' %}{{ '\n' }}
 {% include 'golden-config/templates/ios/vrfs.j2' %}{{ '\n' }}
 {% include 'golden-config/templates/ios/routing.j2' %}{{ '\n' }}
+{% include 'golden-config/templates/ios/telemetry.j2' %}{{ '\n' }}
 {% with interfaces = interfaces | selectattr('name', 'equalto', 'Loopback0') | list %}
 {% include 'golden-config/templates/ios/interfaces.j2' %}{{ '\n' }}
 {% endwith %}

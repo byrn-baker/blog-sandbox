@@ -6,6 +6,12 @@ hostname: DCA-Leaf03
 tags: []
 
 config_context:
+  telemetry_canary:
+    destination: 192.168.3.241
+    vrf: MGMT-VRF
+    source_interface: Management1
+    sflow_port: 6343
+    sample_rate: 16384
   fabric_transport_mtu: 9214
   server_mtu: 9000
   bfd:

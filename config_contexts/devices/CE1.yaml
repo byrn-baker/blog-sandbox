@@ -1,0 +1,6 @@
+telemetry_canary:
+  destination: 192.168.3.241
+  vrf: MGMT-VRF
+  source_interface: GigabitEthernet1
+  netflow_port: 2055
+  interfaces: [GigabitEthernet2, GigabitEthernet3, GigabitEthernet4, GigabitEthernet5]

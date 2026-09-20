@@ -1,0 +1,32 @@
+{% if config_context.telemetry_canary is defined %}
+{% set telemetry = config_context.telemetry_canary %}
+flow record PART8-IPV4
+ match ipv4 source address
+ match ipv4 destination address
+ match ip protocol
+ match transport source-port
+ match transport destination-port
+ match interface input
+ collect counter bytes long
+ collect counter packets long
+ collect timestamp sys-uptime first
+ collect timestamp sys-uptime last
+!
+flow exporter PART8-EXPORT
+ destination {{ telemetry.destination }} vrf {{ telemetry.vrf }}
+ source {{ telemetry.source_interface }}
+ transport udp {{ telemetry.netflow_port }}
+ export-protocol netflow-v9
+ template data timeout 60
+!
+flow monitor PART8-MONITOR
+ exporter PART8-EXPORT
+ cache timeout active 60
+ cache timeout inactive 15
+ record PART8-IPV4
+!
+logging source-interface {{ telemetry.source_interface }} vrf {{ telemetry.vrf }}
+logging host {{ telemetry.destination }} vrf {{ telemetry.vrf }}
+logging trap informational
+!
+{% endif %}

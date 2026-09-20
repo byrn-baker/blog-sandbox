@@ -83,6 +83,9 @@ interface {{ interface.name }}
 {% endif %}
 {% endif %}
 {# Negotiation auto on GigabitEthernet interfaces #}
+{% if config_context.telemetry_canary is defined and interface.name in config_context.telemetry_canary.interfaces %}
+ ip flow monitor PART8-MONITOR input
+{% endif %}
 {% if interface.name.startswith('GigabitEthernet') %}
  negotiation auto
 {% endif %}
