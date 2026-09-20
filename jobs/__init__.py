@@ -9,3 +9,6 @@ register_jobs(GCBootstrap, GCComplianceSetup, SPDemoLabDesign, StandardLabMTU)
 
 from .lab_ingress import LabIngressReservations
 register_jobs(LabIngressReservations)
+
+from .telemetry_reservation import TelemetryReservation
+register_jobs(TelemetryReservation)

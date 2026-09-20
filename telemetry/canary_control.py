@@ -48,8 +48,9 @@ def wait(ident):
 
 
 def run(job, data, label):
-    data['fail_job_on_task_failure'] = True
-    data['debug'] = False
+    if label in ['intended', 'backup', 'compliance', 'deploy']:
+        data['fail_job_on_task_failure'] = True
+        data['debug'] = False
     response = api('extras/jobs/' + job + '/run/', {'data': data})
     ident = response['job_result']['id']
     record(label, {'job_result': ident, 'submitted': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'data': data})
