@@ -22,3 +22,15 @@ def test_only_two_live_device_contexts_enable_canary():
         if 'telemetry_canary' in yaml.safe_load(path.read_text()):
             selected.append(path.stem)
     assert set(selected) == {'CE1', 'DCA-Leaf01'}
+
+
+def test_eos_sflow_comparison_only_changes_run_state():
+    context = load_context('arista_eos_leaf.yaml')
+    context['config_context']['telemetry_canary']['enabled'] = True
+    template = build_jinja_env().get_template('golden-config/templates/arista_eos.j2')
+    before = template.render(**context)
+    context['config_context']['telemetry_canary']['enabled'] = False
+    after = template.render(**context)
+    assert '\nsflow run\n' in before
+    assert '\nno sflow run\n' in after
+    assert before.replace('\nsflow run\n', '\nno sflow run\n') == after

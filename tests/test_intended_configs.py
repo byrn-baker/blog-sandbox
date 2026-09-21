@@ -47,6 +47,7 @@ KNOWN_BENIGN_EOS = {
     "sflow sample 16384",
     "sflow polling-interval 20",
     "sflow run",
+    "no sflow run",
     "vrf instance",
     "vlan internal order",
     "router bfd",

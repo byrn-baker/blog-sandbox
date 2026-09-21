@@ -7,6 +7,7 @@ tags: []
 
 config_context:
   telemetry_canary:
+    enabled: false
     destination: 192.168.3.241
     vrf: MGMT-VRF
     source_interface: Management1

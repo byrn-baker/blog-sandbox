@@ -60,6 +60,7 @@ KNOWN_BENIGN_ARISTA = {
     "sflow sample 16384",
     "sflow polling-interval 20",
     "sflow run",
+    "no sflow run",
     "vlan internal order ascending range",
     "virtual-router mac-address",
     "egress-vrf",

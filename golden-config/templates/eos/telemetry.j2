@@ -4,7 +4,11 @@ sflow vrf {{ telemetry.vrf }} destination {{ telemetry.destination }}{{ '' if te
 sflow vrf {{ telemetry.vrf }} source-interface {{ telemetry.source_interface }}
 sflow sample {{ telemetry.sample_rate }}
 sflow polling-interval 20
+{% if telemetry.enabled | default(true) %}
 sflow run
+{% else %}
+no sflow run
+{% endif %}
 logging vrf {{ telemetry.vrf }} host {{ telemetry.destination }}
 logging vrf {{ telemetry.vrf }} source-interface {{ telemetry.source_interface }}
 !
