@@ -1,0 +1,632 @@
+{
+  "on-before": {
+    "runs": [
+      {
+        "sent": 5000,
+        "received": 3211,
+        "loss_percent": 35.78,
+        "spans": [
+          {
+            "from": "eth16",
+            "to": "vunl0_9_4",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0040531158447265625,
+            "p95_ms": 0.0069141387939453125,
+            "max_ms": 0.02384185791015625
+          },
+          {
+            "from": "vunl0_9_1",
+            "to": "vunl0_6_2",
+            "kind": "bridge",
+            "matched": 4999,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.024080276489257812
+          },
+          {
+            "from": "vunl0_6_10",
+            "to": "eth5",
+            "kind": "bridge",
+            "matched": 4999,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.02193450927734375
+          },
+          {
+            "from": "eth3",
+            "to": "vunl0_1_10",
+            "kind": "bridge",
+            "matched": 4999,
+            "missing": 0,
+            "median_ms": 0.0021457672119140625,
+            "p95_ms": 0.006198883056640625,
+            "max_ms": 0.02002716064453125
+          },
+          {
+            "from": "vunl0_1_1",
+            "to": "vunl0_3_1",
+            "kind": "bridge",
+            "matched": 4999,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.026941299438476562
+          },
+          {
+            "from": "vunl0_3_4",
+            "to": "eth9",
+            "kind": "bridge",
+            "matched": 3211,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.0209808349609375
+          },
+          {
+            "from": "vunl0_9_4",
+            "to": "vunl0_9_1",
+            "kind": "DCB-Leaf02",
+            "matched": 4999,
+            "missing": 1,
+            "median_ms": 60.75906753540039,
+            "p95_ms": 363.0249500274658,
+            "max_ms": 483.7758541107178
+          },
+          {
+            "from": "DCA-Leaf01-uplinks",
+            "to": "vunl0_3_4",
+            "kind": "DCA-Leaf01",
+            "matched": 3211,
+            "missing": 1788,
+            "median_ms": 2230.163097381592,
+            "p95_ms": 2772.089958190918,
+            "max_ms": 2988.8079166412354
+          }
+        ],
+        "start_epoch": 1789955596.467101,
+        "end_epoch": 1789955619.003668,
+        "capture_summaries": {
+          "192.168.3.63": "3211 packets captured\n3211 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.3.66": "5000 packets captured\n5000 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.17.2": "56414 packets captured\n56436 packets received by filter\n0 packets dropped by kernel\n"
+        }
+      },
+      {
+        "sent": 5000,
+        "received": 4665,
+        "loss_percent": 6.7,
+        "spans": [
+          {
+            "from": "eth16",
+            "to": "vunl0_9_4",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0040531158447265625,
+            "p95_ms": 0.0069141387939453125,
+            "max_ms": 0.03504753112792969
+          },
+          {
+            "from": "vunl0_9_1",
+            "to": "vunl0_6_2",
+            "kind": "bridge",
+            "matched": 4992,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.02002716064453125
+          },
+          {
+            "from": "vunl0_6_10",
+            "to": "eth5",
+            "kind": "bridge",
+            "matched": 4992,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.024080276489257812
+          },
+          {
+            "from": "vunl0_3_4",
+            "to": "eth9",
+            "kind": "bridge",
+            "matched": 4665,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.018835067749023438
+          },
+          {
+            "from": "eth4",
+            "to": "vunl0_2_10",
+            "kind": "bridge",
+            "matched": 4992,
+            "missing": 0,
+            "median_ms": 0.00286102294921875,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.017881393432617188
+          },
+          {
+            "from": "vunl0_2_1",
+            "to": "vunl0_3_2",
+            "kind": "bridge",
+            "matched": 4992,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.0209808349609375
+          },
+          {
+            "from": "vunl0_9_4",
+            "to": "vunl0_9_1",
+            "kind": "DCB-Leaf02",
+            "matched": 4992,
+            "missing": 8,
+            "median_ms": 71.76351547241211,
+            "p95_ms": 320.68705558776855,
+            "max_ms": 471.9851016998291
+          },
+          {
+            "from": "DCA-Leaf01-uplinks",
+            "to": "vunl0_3_4",
+            "kind": "DCA-Leaf01",
+            "matched": 4665,
+            "missing": 327,
+            "median_ms": 1193.8190460205078,
+            "p95_ms": 2061.9049072265625,
+            "max_ms": 2298.302173614502
+          }
+        ],
+        "start_epoch": 1789955645.454375,
+        "end_epoch": 1789955668.011987,
+        "capture_summaries": {
+          "192.168.3.63": "4665 packets captured\n4665 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.3.66": "5000 packets captured\n5000 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.17.2": "59266 packets captured\n59268 packets received by filter\n0 packets dropped by kernel\n"
+        }
+      }
+    ],
+    "sockets": {
+      "vmnicet1": {
+        "samples": 125,
+        "max_receive_memory": 615424,
+        "limit": 614400,
+        "drop_delta": 2365
+      },
+      "vmnicet5": {
+        "samples": 125,
+        "max_receive_memory": 207616,
+        "limit": 614400,
+        "drop_delta": 0
+      }
+    }
+  },
+  "off": {
+    "runs": [
+      {
+        "sent": 5000,
+        "received": 3706,
+        "loss_percent": 25.88,
+        "spans": [
+          {
+            "from": "eth16",
+            "to": "vunl0_9_4",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0040531158447265625,
+            "p95_ms": 0.007867813110351562,
+            "max_ms": 0.029087066650390625
+          },
+          {
+            "from": "vunl0_9_1",
+            "to": "vunl0_6_2",
+            "kind": "bridge",
+            "matched": 4984,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.01811981201171875
+          },
+          {
+            "from": "vunl0_6_10",
+            "to": "eth5",
+            "kind": "bridge",
+            "matched": 4984,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.018835067749023438
+          },
+          {
+            "from": "vunl0_3_4",
+            "to": "eth9",
+            "kind": "bridge",
+            "matched": 3706,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.017881393432617188
+          },
+          {
+            "from": "eth4",
+            "to": "vunl0_2_10",
+            "kind": "bridge",
+            "matched": 4984,
+            "missing": 0,
+            "median_ms": 0.0021457672119140625,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.025033950805664062
+          },
+          {
+            "from": "vunl0_2_1",
+            "to": "vunl0_3_2",
+            "kind": "bridge",
+            "matched": 4984,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.0209808349609375
+          },
+          {
+            "from": "vunl0_9_4",
+            "to": "vunl0_9_1",
+            "kind": "DCB-Leaf02",
+            "matched": 4984,
+            "missing": 16,
+            "median_ms": 272.536039352417,
+            "p95_ms": 1540.7991409301758,
+            "max_ms": 1726.6919612884521
+          },
+          {
+            "from": "DCA-Leaf01-uplinks",
+            "to": "vunl0_3_4",
+            "kind": "DCA-Leaf01",
+            "matched": 3706,
+            "missing": 1278,
+            "median_ms": 1410.4750156402588,
+            "p95_ms": 2428.9231300354004,
+            "max_ms": 2599.004030227661
+          }
+        ],
+        "start_epoch": 1789955821.590082,
+        "end_epoch": 1789955843.174597,
+        "capture_summaries": {
+          "192.168.3.63": "3706 packets captured\n3706 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.3.66": "5000 packets captured\n5000 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.17.2": "57284 packets captured\n57288 packets received by filter\n0 packets dropped by kernel\n"
+        }
+      },
+      {
+        "sent": 5000,
+        "received": 4721,
+        "loss_percent": 5.58,
+        "spans": [
+          {
+            "from": "eth16",
+            "to": "vunl0_9_4",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0040531158447265625,
+            "p95_ms": 0.0069141387939453125,
+            "max_ms": 0.02384185791015625
+          },
+          {
+            "from": "vunl0_9_1",
+            "to": "vunl0_6_2",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.0209808349609375
+          },
+          {
+            "from": "vunl0_6_10",
+            "to": "eth5",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.02002716064453125
+          },
+          {
+            "from": "vunl0_3_4",
+            "to": "eth9",
+            "kind": "bridge",
+            "matched": 4721,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.019788742065429688
+          },
+          {
+            "from": "eth4",
+            "to": "vunl0_2_10",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0021457672119140625,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.01811981201171875
+          },
+          {
+            "from": "vunl0_2_1",
+            "to": "vunl0_3_2",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.032901763916015625
+          },
+          {
+            "from": "vunl0_9_4",
+            "to": "vunl0_9_1",
+            "kind": "DCB-Leaf02",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 73.1736421585083,
+            "p95_ms": 318.770170211792,
+            "max_ms": 451.5039920806885
+          },
+          {
+            "from": "DCA-Leaf01-uplinks",
+            "to": "vunl0_3_4",
+            "kind": "DCA-Leaf01",
+            "matched": 4721,
+            "missing": 279,
+            "median_ms": 1392.960786819458,
+            "p95_ms": 1650.3729820251465,
+            "max_ms": 1766.5379047393799
+          }
+        ],
+        "start_epoch": 1789955866.089193,
+        "end_epoch": 1789955888.409747,
+        "capture_summaries": {
+          "192.168.3.63": "4721 packets captured\n4721 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.3.66": "5000 packets captured\n5000 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.17.2": "59442 packets captured\n59444 packets received by filter\n0 packets dropped by kernel\n"
+        }
+      }
+    ],
+    "sockets": {
+      "vmnicet1": {
+        "samples": 125,
+        "max_receive_memory": 768,
+        "limit": 614400,
+        "drop_delta": 0
+      },
+      "vmnicet5": {
+        "samples": 125,
+        "max_receive_memory": 67840,
+        "limit": 614400,
+        "drop_delta": 0
+      },
+      "vmnicet2": {
+        "samples": 125,
+        "max_receive_memory": 615424,
+        "limit": 614400,
+        "drop_delta": 1634
+      }
+    }
+  },
+  "on-restored": {
+    "runs": [
+      {
+        "sent": 5000,
+        "received": 4872,
+        "loss_percent": 2.56,
+        "spans": [
+          {
+            "from": "eth16",
+            "to": "vunl0_9_4",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0040531158447265625,
+            "p95_ms": 0.007152557373046875,
+            "max_ms": 0.019073486328125
+          },
+          {
+            "from": "vunl0_9_1",
+            "to": "vunl0_6_2",
+            "kind": "bridge",
+            "matched": 4977,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.006198883056640625,
+            "max_ms": 0.02193450927734375
+          },
+          {
+            "from": "vunl0_6_10",
+            "to": "eth5",
+            "kind": "bridge",
+            "matched": 4977,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.03600120544433594
+          },
+          {
+            "from": "vunl0_3_4",
+            "to": "eth9",
+            "kind": "bridge",
+            "matched": 4872,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.019073486328125
+          },
+          {
+            "from": "eth4",
+            "to": "vunl0_2_10",
+            "kind": "bridge",
+            "matched": 4977,
+            "missing": 0,
+            "median_ms": 0.00286102294921875,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.02002716064453125
+          },
+          {
+            "from": "vunl0_2_1",
+            "to": "vunl0_3_2",
+            "kind": "bridge",
+            "matched": 4977,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.02002716064453125
+          },
+          {
+            "from": "vunl0_9_4",
+            "to": "vunl0_9_1",
+            "kind": "DCB-Leaf02",
+            "matched": 4977,
+            "missing": 23,
+            "median_ms": 108.98590087890625,
+            "p95_ms": 502.17509269714355,
+            "max_ms": 696.8209743499756
+          },
+          {
+            "from": "DCA-Leaf01-uplinks",
+            "to": "vunl0_3_4",
+            "kind": "DCA-Leaf01",
+            "matched": 4872,
+            "missing": 105,
+            "median_ms": 285.50195693969727,
+            "p95_ms": 1477.5869846343994,
+            "max_ms": 1620.7420825958252
+          }
+        ],
+        "start_epoch": 1789956017.485655,
+        "end_epoch": 1789956039.3804,
+        "capture_summaries": {
+          "192.168.3.63": "4872 packets captured\n4872 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.3.66": "5000 packets captured\n5000 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.17.2": "59560 packets captured\n59570 packets received by filter\n0 packets dropped by kernel\n"
+        }
+      },
+      {
+        "sent": 5000,
+        "received": 4420,
+        "loss_percent": 11.6,
+        "spans": [
+          {
+            "from": "eth16",
+            "to": "vunl0_9_4",
+            "kind": "bridge",
+            "matched": 5000,
+            "missing": 0,
+            "median_ms": 0.0040531158447265625,
+            "p95_ms": 0.0069141387939453125,
+            "max_ms": 0.021219253540039062
+          },
+          {
+            "from": "vunl0_9_1",
+            "to": "vunl0_6_2",
+            "kind": "bridge",
+            "matched": 4990,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.030994415283203125
+          },
+          {
+            "from": "vunl0_6_10",
+            "to": "eth5",
+            "kind": "bridge",
+            "matched": 4987,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.02002716064453125
+          },
+          {
+            "from": "vunl0_3_4",
+            "to": "eth9",
+            "kind": "bridge",
+            "matched": 4420,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.02002716064453125
+          },
+          {
+            "from": "eth4",
+            "to": "vunl0_2_10",
+            "kind": "bridge",
+            "matched": 4987,
+            "missing": 0,
+            "median_ms": 0.00286102294921875,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.02384185791015625
+          },
+          {
+            "from": "vunl0_2_1",
+            "to": "vunl0_3_2",
+            "kind": "bridge",
+            "matched": 4987,
+            "missing": 0,
+            "median_ms": 0.0030994415283203125,
+            "p95_ms": 0.0059604644775390625,
+            "max_ms": 0.02002716064453125
+          },
+          {
+            "from": "vunl0_9_4",
+            "to": "vunl0_9_1",
+            "kind": "DCB-Leaf02",
+            "matched": 4990,
+            "missing": 10,
+            "median_ms": 86.48204803466797,
+            "p95_ms": 528.7530422210693,
+            "max_ms": 787.1699333190918
+          },
+          {
+            "from": "DCA-Leaf01-uplinks",
+            "to": "vunl0_3_4",
+            "kind": "DCA-Leaf01",
+            "matched": 4420,
+            "missing": 567,
+            "median_ms": 783.570408821106,
+            "p95_ms": 2536.3731384277344,
+            "max_ms": 2789.175033569336
+          }
+        ],
+        "start_epoch": 1789956062.743819,
+        "end_epoch": 1789956086.109817,
+        "capture_summaries": {
+          "192.168.3.63": "4420 packets captured\n4420 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.3.66": "5000 packets captured\n5000 packets received by filter\n0 packets dropped by kernel\n",
+          "192.168.17.2": "58742 packets captured\n58744 packets received by filter\n0 packets dropped by kernel\n"
+        }
+      }
+    ],
+    "sockets": {
+      "vmnicet1": {
+        "samples": 125,
+        "max_receive_memory": 768,
+        "limit": 614400,
+        "drop_delta": 0
+      },
+      "vmnicet5": {
+        "samples": 125,
+        "max_receive_memory": 6144,
+        "limit": 614400,
+        "drop_delta": 0
+      },
+      "vmnicet2": {
+        "samples": 125,
+        "max_receive_memory": 614400,
+        "limit": 614400,
+        "drop_delta": 136
+      }
+    }
+  }
+}

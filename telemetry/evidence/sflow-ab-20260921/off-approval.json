@@ -1,0 +1,6 @@
+{
+  "device": "DCA-Leaf01",
+  "plan": "6d1a2644-0617-4254-b4ec-9d14e16242b8",
+  "command": "no sflow run",
+  "authorization": "User approved sFlow-off comparison followed by restoration on 2026-09-21"
+}

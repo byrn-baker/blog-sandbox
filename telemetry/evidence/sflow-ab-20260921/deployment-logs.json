@@ -1,0 +1,118 @@
+{
+  "762acf69-8242-4765-85a4-8c0274d1378a": [
+    {
+      "log_level": "info",
+      "message": "Running job (source version: 3.0.7)"
+    },
+    {
+      "log_level": "debug",
+      "message": "Updating Dynamic Group Cache."
+    },
+    {
+      "log_level": "debug",
+      "message": "Starting config plan deployment job."
+    },
+    {
+      "log_level": "debug",
+      "message": "Starting config deployment"
+    },
+    {
+      "log_level": "debug",
+      "message": "Consolidated config set: no sflow run"
+    },
+    {
+      "log_level": "debug",
+      "message": "Executing post-processing on the config set"
+    },
+    {
+      "log_level": "debug",
+      "message": "Dispatcher process started for DCA-Leaf01 (arista_eos)"
+    },
+    {
+      "log_level": "info",
+      "message": "Config merge via netmiko starting"
+    },
+    {
+      "log_level": "info",
+      "message": "result: configure terminal\nDCA-Leaf01(config)#no sflow run\nDCA-Leaf01(config)#end\nDCA-Leaf01#, changed: True"
+    },
+    {
+      "log_level": "info",
+      "message": "Config merge ended"
+    },
+    {
+      "log_level": "info",
+      "message": "Config save ended"
+    },
+    {
+      "log_level": "info",
+      "message": "Successfully deployed configuration to device."
+    },
+    {
+      "log_level": "debug",
+      "message": "Completed configuration deployment."
+    },
+    {
+      "log_level": "success",
+      "message": "Job completed"
+    }
+  ],
+  "cd0ee2f2-e3cd-484d-9aa8-a8a8fda90ded": [
+    {
+      "log_level": "info",
+      "message": "Running job (source version: 3.0.7)"
+    },
+    {
+      "log_level": "debug",
+      "message": "Updating Dynamic Group Cache."
+    },
+    {
+      "log_level": "debug",
+      "message": "Starting config plan deployment job."
+    },
+    {
+      "log_level": "debug",
+      "message": "Starting config deployment"
+    },
+    {
+      "log_level": "debug",
+      "message": "Consolidated config set: sflow run"
+    },
+    {
+      "log_level": "debug",
+      "message": "Executing post-processing on the config set"
+    },
+    {
+      "log_level": "debug",
+      "message": "Dispatcher process started for DCA-Leaf01 (arista_eos)"
+    },
+    {
+      "log_level": "info",
+      "message": "Config merge via netmiko starting"
+    },
+    {
+      "log_level": "info",
+      "message": "result: configure terminal\nDCA-Leaf01(config)#sflow run\nDCA-Leaf01(config)#end\nDCA-Leaf01#, changed: True"
+    },
+    {
+      "log_level": "info",
+      "message": "Config merge ended"
+    },
+    {
+      "log_level": "info",
+      "message": "Config save ended"
+    },
+    {
+      "log_level": "info",
+      "message": "Successfully deployed configuration to device."
+    },
+    {
+      "log_level": "debug",
+      "message": "Completed configuration deployment."
+    },
+    {
+      "log_level": "success",
+      "message": "Job completed"
+    }
+  ]
+}

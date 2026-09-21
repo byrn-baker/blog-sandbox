@@ -1,0 +1,19 @@
+{
+  "command": "no sflow run",
+  "intended_sflow": [
+    "sflow vrf MGMT-VRF destination 192.168.3.241",
+    "sflow vrf MGMT-VRF source-interface Management1",
+    "sflow sample 16384",
+    "sflow polling-interval 20",
+    "no sflow run"
+  ],
+  "backup_sflow": [
+    "sflow sample 16384",
+    "sflow polling-interval 20",
+    "sflow vrf MGMT-VRF destination 192.168.3.241",
+    "sflow vrf MGMT-VRF source-interface Management1",
+    "sflow run"
+  ],
+  "intended_at": "2026-09-21 01:55:05.810283+00:00",
+  "backup_at": "2026-09-21 01:55:11.323327+00:00"
+}

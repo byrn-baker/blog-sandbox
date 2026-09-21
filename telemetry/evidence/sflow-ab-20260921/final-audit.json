@@ -1,0 +1,362 @@
+{
+  "compliance": [
+    {
+      "feature": "flow_export",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "feature": "logging",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    }
+  ],
+  "plans": [],
+  "plan_logs": [
+    {
+      "log_level": "info",
+      "message": "Running job (source version: 3.0.7)"
+    },
+    {
+      "log_level": "debug",
+      "message": "Updating Dynamic Group Cache."
+    },
+    {
+      "log_level": "debug",
+      "message": "Starting config plan generation job."
+    },
+    {
+      "log_level": "debug",
+      "message": "Starting config plan generation for compliance features."
+    },
+    {
+      "log_level": "debug",
+      "message": "Device `DCA-Leaf01` does not have `missing` configs for `053-flow-export, 190-logging`."
+    },
+    {
+      "log_level": "success",
+      "message": "Job completed"
+    }
+  ],
+  "cutoff": "2026-09-21T02:02:29.892246+00:00",
+  "nodes": [
+    {
+      "name": "dca-k3s-m1",
+      "ready": "True"
+    },
+    {
+      "name": "dca-k3s-m2",
+      "ready": "True"
+    },
+    {
+      "name": "dca-k3s-m3",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w1",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w2",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w3",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w4",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w5",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w6",
+      "ready": "True"
+    }
+  ],
+  "applications": [
+    {
+      "name": "cluster-observability",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "ingress-addresses",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "ingress-routes",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "longhorn",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "metallb",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "otel-snmp",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "root-app",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "snmp-metrics",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "telemetry-canary",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "traefik",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "victoria-metrics-k8s-stack",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "victorialogs",
+      "sync": "Synced",
+      "health": "Healthy"
+    }
+  ],
+  "volumes": [
+    {
+      "name": "pvc-36d2310d-8cdc-489b-87fc-9d24c07e5a67",
+      "health": "healthy"
+    },
+    {
+      "name": "pvc-6d0ae7d0-9ac7-4db5-97d7-1e53a9606782",
+      "health": "healthy"
+    },
+    {
+      "name": "pvc-aa3265e8-9ed9-4f01-9709-2e563b040418",
+      "health": "healthy"
+    },
+    {
+      "name": "pvc-e9b8c99b-96f6-4c61-9817-d4a56cd6088d",
+      "health": "healthy"
+    }
+  ],
+  "traced_netflow": [
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T01:53:16.733Z",
+      "destination.address": "10.3.1.4",
+      "destination.port": "4789",
+      "flow.end": "1789955617565000000",
+      "flow.io.bytes": "1029794",
+      "flow.io.packets": "4999",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "7311",
+      "flow.start": "1789955596733000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789955637416845929",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.2.5",
+      "source.port": "7966"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T01:54:05.055Z",
+      "destination.address": "10.3.1.4",
+      "destination.port": "4789",
+      "flow.end": "1789955665895000000",
+      "flow.io.bytes": "1028352",
+      "flow.io.packets": "4992",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "7360",
+      "flow.start": "1789955645055000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789955685793324319",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.2.5",
+      "source.port": "7966"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T01:57:01.817Z",
+      "destination.address": "10.3.1.4",
+      "destination.port": "4789",
+      "flow.end": "1789955842469000000",
+      "flow.io.bytes": "1026704",
+      "flow.io.packets": "4984",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "7542",
+      "flow.start": "1789955821817000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789955862426456807",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.2.5",
+      "source.port": "7966"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T01:57:45.974Z",
+      "destination.address": "10.3.1.4",
+      "destination.port": "4789",
+      "flow.end": "1789955886794000000",
+      "flow.io.bytes": "1030000",
+      "flow.io.packets": "5000",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "7587",
+      "flow.start": "1789955865974000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789955906767248920",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.2.5",
+      "source.port": "7966"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T02:00:17.399Z",
+      "destination.address": "10.3.1.4",
+      "destination.port": "4789",
+      "flow.end": "1789956038377000000",
+      "flow.io.bytes": "1025262",
+      "flow.io.packets": "4977",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "7743",
+      "flow.start": "1789956017399000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789956058483840591",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.2.5",
+      "source.port": "7966"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T02:01:02.613Z",
+      "destination.address": "10.3.1.4",
+      "destination.port": "4789",
+      "flow.end": "1789956083337000000",
+      "flow.io.bytes": "1027322",
+      "flow.io.packets": "4987",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "7789",
+      "flow.start": "1789956062613000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789956103588278917",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.2.5",
+      "source.port": "7966"
+    }
+  ],
+  "restored_sflow": [
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T02:01:03.028150457Z",
+      "destination.address": "10.100.0.12",
+      "destination.port": "2380",
+      "flow.end": "1789956063028150457",
+      "flow.io.bytes": "201",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "35",
+      "flow.start": "1789956063028150457",
+      "flow.tcp_flags": "24",
+      "flow.time_received": "1789956063028150457",
+      "flow.type": "sflow_5",
+      "network.transport": "tcp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.10",
+      "source.port": "32770"
+    }
+  ]
+}
