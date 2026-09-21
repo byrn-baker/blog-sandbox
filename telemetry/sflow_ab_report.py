@@ -39,20 +39,22 @@ def summarize():
                 'spans':spans,'start_epoch':min(r['time'] for r in records),
                 'end_epoch':max(r['time'] for r in records),
                 'capture_summaries':{h:c['capture_summary'] for h,c in test['captures'].items()}})
-        sockets=[]
+        sockets=collections.defaultdict(list)
         monitor=EVIDENCE/(label+'-socket-monitor.json')
         if monitor.exists():
             for s in json.loads(monitor.read_text()):
                 for sock in s['sockets']:
-                    if ':vmnicet1 ' in sock:
+                    interface = next((name for name in ['vmnicet1','vmnicet2','vmnicet5'] if ':'+name+' ' in sock),None)
+                    if interface:
                         m=re.search(r'skmem:\(r(\d+),rb(\d+).*?,d(\d+)\)',sock)
-                        sockets.append({'time':s['time'],'receive_memory':int(m[1]),'limit':int(m[2]),'drops':int(m[3])})
-        result[label]={'runs':runs,'socket':{'samples':len(sockets),
-            'max_receive_memory':max(x['receive_memory'] for x in sockets),
-            'limit':sockets[0]['limit'],'drop_delta':sockets[-1]['drops']-sockets[0]['drops']} if sockets else None}
+                        sockets[interface].append({'time':s['time'],'receive_memory':int(m[1]),'limit':int(m[2]),'drops':int(m[3])})
+        result[label]={'runs':runs,'sockets':{name:{'samples':len(items),
+            'max_receive_memory':max(x['receive_memory'] for x in items),
+            'limit':items[0]['limit'],'drop_delta':items[-1]['drops']-items[0]['drops']}
+            for name,items in sockets.items()}}
     (EVIDENCE/'comparison.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps({k:{'loss_percent':[x['loss_percent'] for x in v['runs']],
-                        'socket':v['socket']} for k,v in result.items()},indent=2))
+                        'sockets':v['sockets']} for k,v in result.items()},indent=2))
 
 
 if __name__=='__main__':summarize()
