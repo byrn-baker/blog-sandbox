@@ -69,6 +69,12 @@ logging from normal running configuration. EOS omits its default sFlow UDP
 port and informational logging. The final templates match those observed
 forms so compliance does not report defaults as missing commands.
 
+The final fresh compliance run passed flow export and logging on both devices.
+Config Plan generation job `4928d851-1d5e-44e0-bac4-cd8f6544db9f` then reported
+no missing configuration for either feature on either device and created no
+plans. No additional push was needed. Final `make ci-full` passed its 88
+template/structure checks and 149 Batfish/generated-configuration checks.
+
 ## Traffic interpretation and limits
 
 Stored EOS samples contain original 10.100.0.x endpoints, including Kubernetes
