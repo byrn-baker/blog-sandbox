@@ -41,6 +41,12 @@ KNOWN_BENIGN_IOS = {
 # fully model multi-agent EVPN or per-vrf BGP neighbors). Kept in sync with
 # KNOWN_BENIGN_ARISTA in test_batfish_validate.py.
 KNOWN_BENIGN_EOS = {
+    # EOS 4.34.6M session validation and live canary verified these lines.
+    "sflow vrf MGMT-VRF destination 192.168.3.241",
+    "sflow vrf MGMT-VRF source-interface Management1",
+    "sflow sample 16384",
+    "sflow polling-interval 20",
+    "sflow run",
     "vrf instance",
     "vlan internal order",
     "router bfd",

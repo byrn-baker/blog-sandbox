@@ -41,7 +41,9 @@ if __name__ == '__main__':
     rows = json.loads(next(line for line in result.stdout.splitlines() if line.startswith('[')))
     record(label + '-devices', rows)
     for row in rows:
-        print(json.dumps(row), flush=True)
+        print(json.dumps({'name': row['name'], 'error_type': row.get('error_type'),
+            'cli_errors': row.get('cli_errors'), 'stats': {k: v for k, v in row['commands'].items()
+                if k in ['show sflow', 'show flow exporter PART8-EXPORT statistics', 'show flow monitor PART8-MONITOR statistics']}}), flush=True)
     data = urllib.parse.urlencode({'query': '_time:30m | limit 200'}).encode()
     with urllib.request.urlopen('http://127.0.0.1:19428/select/logsql/query', data=data, timeout=30) as r:
         logs = [json.loads(line) for line in r.read().splitlines() if line]

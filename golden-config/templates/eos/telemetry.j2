@@ -1,12 +1,11 @@
 {% if config_context.telemetry_canary is defined %}
 {% set telemetry = config_context.telemetry_canary %}
-sflow vrf {{ telemetry.vrf }} destination {{ telemetry.destination }} {{ telemetry.sflow_port }}
+sflow vrf {{ telemetry.vrf }} destination {{ telemetry.destination }}{{ '' if telemetry.sflow_port == 6343 else ' ' ~ telemetry.sflow_port }}
 sflow vrf {{ telemetry.vrf }} source-interface {{ telemetry.source_interface }}
 sflow sample {{ telemetry.sample_rate }}
 sflow polling-interval 20
 sflow run
 logging vrf {{ telemetry.vrf }} host {{ telemetry.destination }}
 logging vrf {{ telemetry.vrf }} source-interface {{ telemetry.source_interface }}
-logging trap informational
 !
 {% endif %}
