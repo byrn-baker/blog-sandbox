@@ -1,6 +1,6 @@
 # Lab vEOS workaround verified by captured TCP tests on 2026-09-11.
 telemetry_canary:
-  enabled: false
+  enabled: true
   destination: 192.168.3.241
   vrf: MGMT-VRF
   source_interface: Management1

@@ -93,7 +93,8 @@ def captured_run(reverse=False, suffix=''):
     stats_code = """import json,time,pathlib
 rows=[]
 interfaces = ['vunl0_3_1','vunl0_3_4','eth9','vunl0_9_4','eth16',
-              'vunl0_9_1','vunl0_6_2','vunl0_6_10','eth5','eth3','vunl0_1_10','vunl0_1_1']
+              'vunl0_9_1','vunl0_6_2','vunl0_6_10','eth5','eth3','vunl0_1_10','vunl0_1_1',
+              'eth4','vunl0_2_10','vunl0_2_1','vunl0_3_2']
 interfaces += [p.resolve().name for iface in list(interfaces)
                if (p:=pathlib.Path('/sys/class/net')/iface/'master').exists()]
 interfaces = sorted(set(interfaces))

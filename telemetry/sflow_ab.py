@@ -100,7 +100,7 @@ def observe(label):
     sample="""import subprocess,time,json
 for i in range(125):
  out=subprocess.check_output(['ss','-0','-a','-m','-p','-n','-O'],text=True)
- print(json.dumps({'time':time.time(),'sockets':[' '.join(x.split()) for x in out.splitlines() if ':vmnicet1 ' in x or ':vmnicet5 ' in x]}),flush=True)
+ print(json.dumps({'time':time.time(),'sockets':[' '.join(x.split()) for x in out.splitlines() if any(':'+n+' ' in x for n in ['vmnicet1','vmnicet2','vmnicet5'])]}),flush=True)
  time.sleep(.25)
 """
     start=READ_CODE.index(' cmds=');end=READ_CODE.index('\n print(json.dumps',start)
