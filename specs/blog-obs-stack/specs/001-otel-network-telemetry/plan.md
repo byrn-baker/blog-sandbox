@@ -32,6 +32,15 @@ below are not marked complete merely because their SNMP portion is delivered.
 
 ## Architecture
 
+September 20–21: an approved two-device feasibility slice deployed NetFlow v9
+on CE1, sFlow on DCA-Leaf01, and syslog on both. The VIP path passed from the
+operator-confirmed 10.100.0.0/24 and 192.168.3.0/24 networks. The actual files
+are `apps/13-victorialogs.yaml`, `apps/14-telemetry-canary.yaml` and the local
+`telemetry-canary` chart in the Argo repository. See
+[canary evidence](../../../../telemetry/evidence/part8-canary/README.md).
+Fleet acceptance, VNI fields, durable accounting and workload packet loss
+remain open; the prospective full-stack design below is not fully deployed.
+
 `blog-sandbox` owns contexts, Jinja, compliance, Nautobot generation and
 secure credential integration. `blog-sandbox-argo-cd` owns Applications,
 values, generated non-secret resources and dashboards. Where no suitable

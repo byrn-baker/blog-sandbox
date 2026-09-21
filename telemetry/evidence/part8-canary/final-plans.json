@@ -1,0 +1,17 @@
+{
+  "job_result": "4928d851-1d5e-44e0-bac4-cd8f6544db9f",
+  "submitted": "2026-09-21T00:07:00.753175+00:00",
+  "data": {
+    "plan_type": "missing",
+    "feature": [
+      "9c97139d-7ce9-4f0c-93da-e8672e62cffa",
+      "d4dec7c3-7be1-48da-8a1e-e1fb9a2af015"
+    ],
+    "device": [
+      "fb6d551f-bb73-4839-a093-9acf5eff481e",
+      "c1a57aef-c57c-4dc6-9f80-1a8200945895"
+    ],
+    "change_control_id": "part8-canary-final-20260921",
+    "debug": false
+  }
+}

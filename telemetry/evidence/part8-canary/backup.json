@@ -1,0 +1,13 @@
+{
+  "job_result": "82f75c2f-637a-4add-9377-20009362d1c4",
+  "submitted": "2026-09-21T00:02:27.845027+00:00",
+  "data": {
+    "device": [
+      "fb6d551f-bb73-4839-a093-9acf5eff481e",
+      "c1a57aef-c57c-4dc6-9f80-1a8200945895"
+    ],
+    "commit_message": "Part 8 canary fresh backups",
+    "fail_job_on_task_failure": true,
+    "debug": false
+  }
+}

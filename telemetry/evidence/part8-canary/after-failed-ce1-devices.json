@@ -1,0 +1,37 @@
+[
+  {
+    "name": "CE1",
+    "address": "192.168.3.60",
+    "commands": {
+      "show flow exporter PART8-EXPORT statistics": "                       ^\n% Invalid input detected at '^' marker.\n",
+      "show flow monitor PART8-MONITOR statistics": "                      ^\n% Invalid input detected at '^' marker.\n",
+      "show flow monitor PART8-MONITOR cache format table": "                      ^\n% Invalid input detected at '^' marker.\n",
+      "show flow interface": "",
+      "show running-config | section ^flow": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address",
+      "show startup-config | section ^flow": "",
+      "show ip bgp summary": "BGP router identifier 10.2.1.1, local AS number 65001\nBGP table version is 1471, main routing table version 1471\n67 network entries using 16616 bytes of memory\n90 path entries using 12240 bytes of memory\n26/21 BGP path/bestpath attribute entries using 7696 bytes of memory\n26 BGP AS-PATH entries using 992 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 37544 total bytes of memory\nBGP activity 169/102 prefixes, 723/633 paths, scan interval 60 secs\n69 networks peaked at 19:47:55 Sep 12 2026 UTC (1w1d ago)\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n10.1.1.1        4        65101  309122  257649     1471    0    0 1w2d           14\n10.1.1.3        4        65101   35656   29747     1471    0    0 1d01h          14\n10.1.1.16       4        65113  309466  257651     1471    0    0 1w2d           18\n172.16.1.0      4        65000   83075   83265     1471    0    0 1w2d           44",
+      "show running-config | include ^logging": "",
+      "show startup-config | include ^logging": ""
+    },
+    "cli_errors": [
+      "show flow exporter PART8-EXPORT statistics",
+      "show flow monitor PART8-MONITOR statistics",
+      "show flow monitor PART8-MONITOR cache format table"
+    ]
+  },
+  {
+    "name": "DCA-Leaf01",
+    "address": "192.168.3.32",
+    "commands": {
+      "show sflow": "! Displaying counters that may be stale\nsFlow Configuration\n-------------------\nEnabled: no\nDestinations:\nSources:\n  0.0.0.0 (default) (VRF: default)\n  :: (default) (VRF: default)\nAgent ID Addresses:\n  0.0.0.0 (default) (VRF: default)\n  :: (default) (VRF: default)\nHardware sample rate for SW sFlow: 1048576 (default)\nPolling interval (sec): 2.0 (default)\nRewrite DSCP value: no\nDatagram DSCP value: 0\n\nConfiguration For Drop Packet Samples\n-------------------------------------\nEnabled: no\nDestinations: None (default)\nSources: None (default)\n\nStatus\n------\nRunning: no\nPolling on: no\nSampling on: no\nSample truncation size for SW sFlow: 128 (default)\nDatagram maximum size: 1400 (default)\nSend datagrams:\n  No (Sflow not running) (VRF: default)\nBGP export:\n  No (VRF: default)\nHardware sample rate for SW sFlow: 1048576 (default)\n\nStatus For Drop Packet Samples\n------------------------------\nRunning: No\n\nStatistics\n----------\nTotal packets: 0\nNumber of samples: 0\nSample pool: 0\nHardware trigger: 0\nNumber of datagrams: 0\n\nDrop Packet Sample Counters:\n  Datagrams sent: 0\n  Samples received: 0\n  Samples sent: 0",
+      "show sflow interfaces": "Default ingress sFlow configuration for an interface: Enabled\nDefault egress sFlow configuration for an interface: Disabled\nsFlow Interface (s):\n--------------------\nsFlow is not running",
+      "show running-config | section sflow": "",
+      "show startup-config | section sflow": "",
+      "show bgp evpn summary": "BGP summary information for VRF default\nRouter identifier 10.2.1.4, local AS number 65111\nNeighbor Status Codes: m - Under maintenance\n  Description              Neighbor V AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc PfxAdv\n  DCA-Spine01              10.2.1.2 4 65101          42303     38516    0    0    1d05h Estab   243    243    34\n  DCA-Spine02              10.2.1.3 4 65101          41851     38979    0    0 07:40:34 Estab   243    243    277",
+      "show interfaces counters rates": "Port      Name                 Intvl  In Kbps      %   In Pps Out Kbps      %  Out Pps\nEt1       to DCA-Spine01 Ether  5:00    172.7   0.0%      106      3.2   0.0%        5\nEt2       to DCA-Spine02 Ether  5:00      3.4   0.0%        5   1056.2   0.1%      108\nEt3                             5:00      0.0   0.0%        0      0.0   0.0%        0\nEt4       DCA-k3s-m1 bond memb  5:00    887.6   0.1%      124    230.4   0.0%      151\nEt5       DCA-k3s-w1 bond memb  5:00    273.3   0.0%       67    130.5   0.0%       40\nEt6       DCA-k3s-w2 bond memb  5:00    303.0   0.0%       97    225.1   0.0%       99\nEt7       dns-server-01 bond m  5:00      1.1   0.0%        1      1.6   0.0%        1\nEt8                             5:00      0.0   0.0%        0      0.0   0.0%        0\nEt9                             5:00      0.0   0.0%        0      0.0   0.0%        0\nEt10                            5:00      0.0   0.0%        0      0.0   0.0%        0\nMa1       Management - MGMT-VR  5:00      1.4   0.0%        3      3.6   0.0%        1\nPo4       DCA-k3s-m1 EVPN ESI   5:00    887.6   0.1%      124    230.4   0.0%      151\nPo5       DCA-k3s-w1 EVPN ESI   5:00    273.3   0.0%       67    130.5   0.0%       40\nPo6       DCA-k3s-w2 EVPN ESI   5:00    303.0   0.0%       97    225.1   0.0%       99\nPo7       DCA-DNS EVPN ESI mul  5:00      1.1   0.0%        1      1.6   0.0%        1",
+      "show running-config | include ^logging": "",
+      "show startup-config | include ^logging": ""
+    },
+    "cli_errors": []
+  }
+]

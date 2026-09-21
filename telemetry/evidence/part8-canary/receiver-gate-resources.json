@@ -1,0 +1,99 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "annotations": {
+      "argocd.argoproj.io/hook": "PostSync",
+      "argocd.argoproj.io/hook-delete-policy": "BeforeHookCreation",
+      "argocd.argoproj.io/tracking-id": "telemetry-canary:batch/Job:observability/telemetry-canary-reachability"
+    },
+    "creationTimestamp": "2026-09-20T23:48:00Z",
+    "generation": 1,
+    "labels": {
+      "batch.kubernetes.io/controller-uid": "fd8247c5-b8ee-402b-b187-1c7f345d756b",
+      "batch.kubernetes.io/job-name": "telemetry-canary-reachability",
+      "controller-uid": "fd8247c5-b8ee-402b-b187-1c7f345d756b",
+      "job-name": "telemetry-canary-reachability"
+    },
+    "name": "telemetry-canary-reachability",
+    "namespace": "observability",
+    "resourceVersion": "3850401",
+    "uid": "fd8247c5-b8ee-402b-b187-1c7f345d756b"
+  },
+  "spec": {
+    "activeDeadlineSeconds": 600,
+    "backoffLimit": 0,
+    "completionMode": "NonIndexed",
+    "completions": 1,
+    "manualSelector": false,
+    "parallelism": 1,
+    "podReplacementPolicy": "TerminatingOrFailed",
+    "selector": {
+      "matchLabels": {
+        "batch.kubernetes.io/controller-uid": "fd8247c5-b8ee-402b-b187-1c7f345d756b"
+      }
+    },
+    "suspend": false,
+    "template": {
+      "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "fd8247c5-b8ee-402b-b187-1c7f345d756b",
+          "batch.kubernetes.io/job-name": "telemetry-canary-reachability",
+          "controller-uid": "fd8247c5-b8ee-402b-b187-1c7f345d756b",
+          "job-name": "telemetry-canary-reachability"
+        }
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "args": [
+              "import json,time,urllib.parse,urllib.request\nendpoint='http://victorialogs.observability.svc:9428/select/logsql/query'\nchecks={\n  'management-netflow':'source.address:198.18.0.1 AND source.port:42001',\n  'lab-netflow':'source.address:198.18.0.2 AND source.port:42002',\n  'management-sflow':'source.address:198.18.0.1 AND source.port:43001',\n  'lab-sflow':'source.address:198.18.0.2 AND source.port:43002',\n  'management-syslog':'\"part8-gate-management\"',\n  'lab-syslog':'\"part8-gate-lab\"',\n}\nstart=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime(time.time()-5))\nfor attempt in range(110):\n  found=[]\n  for name,query in checks.items():\n    data=urllib.parse.urlencode({'query':f'_time:[{start}, now] AND ({query}) | stats count() as records'}).encode()\n    try:\n      with urllib.request.urlopen(endpoint,data=data,timeout=5) as r:\n        rows=[json.loads(line) for line in r.read().splitlines() if line]\n      if rows and int(rows[0].get('records',0))>0: found.append(name)\n    except Exception as e: print(type(e).__name__,flush=True)\n  if len(found)==len(checks):\n    print(json.dumps({'passed':True,'checks':found}),flush=True)\n    break\n  if attempt%6==0: print(json.dumps({'pending':sorted(set(checks)-set(found))}),flush=True)\n  time.sleep(5)\nelse: raise SystemExit('Receiver reachability gate failed; device rollout forbidden')\n"
+            ],
+            "command": [
+              "python3",
+              "-u",
+              "-c"
+            ],
+            "image": "docker.io/python:3.13.7-slim",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "gate",
+            "resources": {
+              "limits": {
+                "memory": "96Mi"
+              },
+              "requests": {
+                "cpu": "10m",
+                "memory": "32Mi"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File"
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "restartPolicy": "Never",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "terminationGracePeriodSeconds": 30
+      }
+    }
+  },
+  "status": {
+    "completionTime": "2026-09-20T23:48:31Z",
+    "conditions": [
+      {
+        "lastProbeTime": "2026-09-20T23:48:31Z",
+        "lastTransitionTime": "2026-09-20T23:48:31Z",
+        "status": "True",
+        "type": "Complete"
+      }
+    ],
+    "ready": 0,
+    "startTime": "2026-09-20T23:48:00Z",
+    "succeeded": 1,
+    "terminating": 0,
+    "uncountedTerminatedPods": {}
+  }
+}

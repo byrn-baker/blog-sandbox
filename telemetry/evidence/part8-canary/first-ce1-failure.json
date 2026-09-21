@@ -1,0 +1,10 @@
+{
+  "job": "d4c53cdb-f6be-4645-8def-24407b874e98",
+  "status": {
+    "value": "FAILURE",
+    "label": "FAILURE"
+  },
+  "rejected_command": "match ip protocol",
+  "error": "Invalid input detected at command: match ip protocol",
+  "readback": "Unused flow record only; no exporter, monitor attachment or syslog configured. Startup unchanged."
+}

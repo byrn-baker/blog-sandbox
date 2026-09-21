@@ -14,6 +14,14 @@ other multi-component tasks must not be inferred complete from that subset.
 
 ## Phase 0 — Baseline and design gates
 
+September 20–21 canary: CE1 NetFlow v9, DCA-Leaf01 sFlow packet samples,
+and both devices' syslog were observed in VictoriaLogs. Six VIP path checks
+passed from the current lab and management subnets. See
+[canary evidence](../../../../telemetry/evidence/part8-canary/README.md).
+Combined tasks stay open: the negative gate case, full-fleet scope, dashboard
+integration, 30-minute accounting and VNI interpretation are not established
+by this two-device slice. No fleet deployment is authorized by the canary.
+
 - [ ] T001 Reconcile baseline evidence and record constitution compliance.
   Baseline read-back/polls recorded in [the audit](evidence/2026-09-09-baseline/README.md);
   SNMP deployment is not established. [The pyATS baseline and TCP trace](evidence/2026-09-09-pyats-baseline/README.md)

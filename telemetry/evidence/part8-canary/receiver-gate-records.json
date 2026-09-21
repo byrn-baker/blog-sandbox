@@ -1,0 +1,34 @@
+[
+  {
+    "_msg": "<134>Sep 20 23:48:16 part8-gate part8-gate-management",
+    "_stream": "{service.name=\"telemetry-canary\"}",
+    "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+    "_time": "2026-09-20T23:48:16Z",
+    "facility": "16",
+    "facility_text": "local0",
+    "hostname": "part8-gate",
+    "message": "part8-gate-management",
+    "priority": "134",
+    "scope.name": "unknown",
+    "scope.version": "unknown",
+    "service.name": "telemetry-canary",
+    "severity_number": "9",
+    "severity_text": "info"
+  },
+  {
+    "_msg": "<134>Sep 20 23:48:17 part8-gate part8-gate-lab",
+    "_stream": "{service.name=\"telemetry-canary\"}",
+    "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+    "_time": "2026-09-20T23:48:17Z",
+    "facility": "16",
+    "facility_text": "local0",
+    "hostname": "part8-gate",
+    "message": "part8-gate-lab",
+    "priority": "134",
+    "scope.name": "unknown",
+    "scope.version": "unknown",
+    "service.name": "telemetry-canary",
+    "severity_number": "9",
+    "severity_text": "info"
+  }
+]

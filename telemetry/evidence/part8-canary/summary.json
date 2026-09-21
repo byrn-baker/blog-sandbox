@@ -1,0 +1,727 @@
+{
+  "cutoff": "2026-09-21T00:02:54Z",
+  "window_start": "2026-09-20T23:54:00Z",
+  "flow_records": [
+    {
+      "flow.type": "sflow_5",
+      "flow.sampler_address": "198.18.0.2",
+      "records": "1"
+    },
+    {
+      "flow.type": "netflow_v5",
+      "flow.sampler_address": "192.168.3.21",
+      "records": "1"
+    },
+    {
+      "flow.type": "sflow_5",
+      "flow.sampler_address": "198.18.0.1",
+      "records": "1"
+    },
+    {
+      "flow.type": "netflow_v9",
+      "flow.sampler_address": "192.168.3.60",
+      "records": "4151"
+    },
+    {
+      "flow.type": "sflow_5",
+      "flow.sampler_address": "192.168.3.32",
+      "records": "9"
+    },
+    {
+      "flow.type": "netflow_v5",
+      "flow.sampler_address": "10.42.0.0",
+      "records": "1"
+    }
+  ],
+  "tagged_syslog": [
+    {
+      "_msg": "<166>Sep 20 23:57:38 DCA-Leaf01 PART8-CANARY: PART8-CANARY-DCA-Leaf01",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:57:40.986334711Z",
+      "facility": "20",
+      "facility_text": "local4",
+      "message": "<166>Sep 20 23:57:38 DCA-Leaf01 PART8-CANARY: PART8-CANARY-DCA-Leaf01",
+      "net.host.ip": "::",
+      "net.host.name": "::",
+      "net.host.port": "5514",
+      "net.peer.ip": "192.168.3.32",
+      "net.peer.name": "dca-leaf01.sandbox.lab",
+      "net.peer.port": "32001",
+      "net.transport": "IP.UDP",
+      "priority": "166",
+      "scope.name": "unknown",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "9",
+      "severity_text": "info"
+    },
+    {
+      "_msg": "<190>271: *Sep 20 23:57:39.975: %SYS-6-USERLOG_INFO: Message from tty434(user id: cisco): PART8-CANARY-CE1",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:57:44.565644623Z",
+      "facility": "23",
+      "facility_text": "local7",
+      "message": "<190>271: *Sep 20 23:57:39.975: %SYS-6-USERLOG_INFO: Message from tty434(user id: cisco): PART8-CANARY-CE1",
+      "net.host.ip": "::",
+      "net.host.name": "::",
+      "net.host.port": "5514",
+      "net.peer.ip": "192.168.3.60",
+      "net.peer.name": "ce1.sandbox.lab",
+      "net.peer.port": "52587",
+      "net.transport": "IP.UDP",
+      "priority": "190",
+      "scope.name": "unknown",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "9",
+      "severity_text": "info"
+    }
+  ],
+  "eos_samples": [
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T00:01:32.224235828Z",
+      "destination.address": "10.100.0.12",
+      "destination.port": "2380",
+      "flow.end": "1789948892224235828",
+      "flow.io.bytes": "70",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "152",
+      "flow.start": "1789948892224235828",
+      "flow.tcp_flags": "16",
+      "flow.time_received": "1789948892224235828",
+      "flow.type": "sflow_5",
+      "network.transport": "tcp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.10",
+      "source.port": "33882"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:56:05.470571404Z",
+      "destination.address": "10.100.0.30",
+      "destination.port": "32433",
+      "flow.end": "1789948565470571404",
+      "flow.io.bytes": "70",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "2",
+      "flow.start": "1789948565470571404",
+      "flow.tcp_flags": "16",
+      "flow.time_received": "1789948565470571404",
+      "flow.type": "sflow_5",
+      "network.transport": "tcp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.10",
+      "source.port": "6443"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:56:44.713869288Z",
+      "destination.address": "10.100.0.31",
+      "destination.port": "17590",
+      "flow.end": "1789948604713869288",
+      "flow.io.bytes": "70",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "20",
+      "flow.start": "1789948604713869288",
+      "flow.tcp_flags": "16",
+      "flow.time_received": "1789948604713869288",
+      "flow.type": "sflow_5",
+      "network.transport": "tcp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.10",
+      "source.port": "6443"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:57:03.811100424Z",
+      "destination.address": "10.100.0.10",
+      "destination.port": "2380",
+      "flow.end": "1789948623811100424",
+      "flow.io.bytes": "70",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "28",
+      "flow.start": "1789948623811100424",
+      "flow.tcp_flags": "16",
+      "flow.time_received": "1789948623811100424",
+      "flow.type": "sflow_5",
+      "network.transport": "tcp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.12",
+      "source.port": "52380"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:57:22.910908552Z",
+      "destination.address": "10.3.1.4",
+      "destination.port": "4789",
+      "flow.end": "1789948642910908552",
+      "flow.io.bytes": "120",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "37",
+      "flow.start": "1789948642910908552",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789948642910908552",
+      "flow.type": "sflow_5",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.2.5",
+      "source.port": "20426"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:57:42.047947843Z",
+      "destination.address": "10.100.0.20",
+      "destination.port": "58876",
+      "flow.end": "1789948662047947843",
+      "flow.io.bytes": "541",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "47",
+      "flow.start": "1789948662047947843",
+      "flow.tcp_flags": "24",
+      "flow.time_received": "1789948662047947843",
+      "flow.type": "sflow_5",
+      "network.transport": "tcp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.10",
+      "source.port": "6443"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:57:42.047947843Z",
+      "destination.address": "10.100.0.10",
+      "destination.port": "2380",
+      "flow.end": "1789948662047947843",
+      "flow.io.bytes": "70",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "47",
+      "flow.start": "1789948662047947843",
+      "flow.tcp_flags": "16",
+      "flow.time_received": "1789948662047947843",
+      "flow.type": "sflow_5",
+      "network.transport": "tcp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.12",
+      "source.port": "52380"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:58:53.447802082Z",
+      "destination.address": "10.100.0.20",
+      "destination.port": "58876",
+      "flow.end": "1789948733447802082",
+      "flow.io.bytes": "544",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "81",
+      "flow.start": "1789948733447802082",
+      "flow.tcp_flags": "24",
+      "flow.time_received": "1789948733447802082",
+      "flow.type": "sflow_5",
+      "network.transport": "tcp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.10",
+      "source.port": "6443"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-20T23:58:12.240753927Z",
+      "destination.address": "10.3.1.4",
+      "destination.port": "4789",
+      "flow.end": "1789948692240753927",
+      "flow.io.bytes": "155",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.32",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "62",
+      "flow.start": "1789948692240753927",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789948692240753927",
+      "flow.type": "sflow_5",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.3.4",
+      "source.port": "28358"
+    }
+  ],
+  "netflow_examples": [
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T00:00:38.171Z",
+      "destination.address": "10.3.1.5",
+      "destination.port": "4789",
+      "flow.end": "1789948897301000000",
+      "flow.io.bytes": "855",
+      "flow.io.packets": "8",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "390",
+      "flow.start": "1789948838171000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789948903933060674",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.2.4",
+      "source.port": "2987"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T00:00:38.327Z",
+      "destination.address": "10.3.2.5",
+      "destination.port": "4789",
+      "flow.end": "1789948892121000000",
+      "flow.io.bytes": "6486",
+      "flow.io.packets": "20",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "390",
+      "flow.start": "1789948838327000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789948903933060674",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.1.4",
+      "source.port": "44072"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T00:01:23.065Z",
+      "destination.address": "10.3.2.4",
+      "destination.port": "4789",
+      "flow.end": "1789948883065000000",
+      "flow.io.bytes": "301",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "390",
+      "flow.start": "1789948883065000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789948903933060674",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.1.5",
+      "source.port": "38375"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T00:01:23.095Z",
+      "destination.address": "10.3.1.5",
+      "destination.port": "4789",
+      "flow.end": "1789948883095000000",
+      "flow.io.bytes": "102",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "390",
+      "flow.start": "1789948883095000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789948903933060674",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.3.2.4",
+      "source.port": "38375"
+    },
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-21T00:01:23.289Z",
+      "destination.address": "192.168.100.1",
+      "destination.port": "53",
+      "flow.end": "1789948883289000000",
+      "flow.io.bytes": "45",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.60",
+      "flow.sampling_rate": "0",
+      "flow.sequence_num": "390",
+      "flow.start": "1789948883289000000",
+      "flow.tcp_flags": "0",
+      "flow.time_received": "1789948903933060674",
+      "flow.type": "netflow_v9",
+      "network.transport": "udp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.10",
+      "source.port": "5101"
+    }
+  ],
+  "controlled_flow_samples": [
+    {
+      "records": "0"
+    }
+  ],
+  "udp_workload": {
+    "sent": 45000,
+    "received": 44403,
+    "missing": 597,
+    "missing_percent": 1.3266666666666667,
+    "scope": "Application counters for 128-byte UDP payloads from 10.100.0.10:47776 to 10.100.0.20:47777; cause of missing datagrams not isolated"
+  },
+  "applications": [
+    {
+      "name": "cluster-observability",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "ingress-addresses",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "ingress-routes",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "longhorn",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "metallb",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "otel-snmp",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "root-app",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "snmp-metrics",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "telemetry-canary",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "traefik",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "victoria-metrics-k8s-stack",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "victorialogs",
+      "sync": "Synced",
+      "health": "Healthy"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "dca-k3s-m1",
+      "ready": "True"
+    },
+    {
+      "name": "dca-k3s-m2",
+      "ready": "True"
+    },
+    {
+      "name": "dca-k3s-m3",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w1",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w2",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w3",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w4",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w5",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w6",
+      "ready": "True"
+    }
+  ],
+  "volumes": [
+    {
+      "name": "pvc-36d2310d-8cdc-489b-87fc-9d24c07e5a67",
+      "health": "healthy",
+      "state": "attached"
+    },
+    {
+      "name": "pvc-6d0ae7d0-9ac7-4db5-97d7-1e53a9606782",
+      "health": "healthy",
+      "state": "attached"
+    },
+    {
+      "name": "pvc-aa3265e8-9ed9-4f01-9709-2e563b040418",
+      "health": "healthy",
+      "state": "attached"
+    },
+    {
+      "name": "pvc-e9b8c99b-96f6-4c61-9817-d4a56cd6088d",
+      "health": "healthy",
+      "state": "attached"
+    }
+  ],
+  "compliance": [
+    {
+      "device": "CE1",
+      "feature": "flow_export",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "CE1",
+      "feature": "logging",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCA-Leaf01",
+      "feature": "flow_export",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCA-Leaf01",
+      "feature": "logging",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    }
+  ],
+  "deployment_logs": {
+    "b29a068c-ea63-4368-97ee-71c3372ffe2e": [
+      {
+        "level": "info",
+        "message": "Running job (source version: 3.0.7)"
+      },
+      {
+        "level": "info",
+        "message": "Config merge via netmiko starting"
+      },
+      {
+        "level": "info",
+        "message": "result: configure terminal\nEnter configuration commands, one per line.  End with CNTL/Z.\nCE1(config)#no flow record PART8-IPV4\nCE1(config)#flow record PART8-IPV4\nCE1(config-flow-record)# match ipv4 source address\nCE1(config-flow-record)# match ipv4 destination address\nCE1(config-flow-record)# match ipv4 protocol\nCE1(config-flow-record)# match transport source-port\nCE1(config-flow-record)# match transport destination-port\nCE1(config-flow-record)# match interface input\nCE1(config-flow-record)# collect counter bytes long\nCE1(config-flow-record)# collect counter packets long\nCE1(config-flow-record)# collect timestamp sys-uptime first\nCE1(config-flow-record)# collect timestamp sys-uptime last\nCE1(config-flow-record)#exit\nCE1(config)#flow exporter PART8-EXPORT\nCE1(config-flow-exporter)# destination 192.168.3.241 vrf MGMT-VRF\nCE1(config-flow-exporter)# source GigabitEthernet1\nCE1(config-flow-exporter)# transport udp 2055\nCE1(config-flow-exporter)# export-protocol netflow-v9\nCE1(config-flow-exporter)# template data timeout 60\nCE1(config-flow-exporter)#exit\nCE1(config)#flow monitor PART8-MONITOR\nCE1(config-flow-monitor)# exporter PART8-EXPORT\nCE1(config-flow-monitor)# cache timeout active 60\nCE1(config-flow-monitor)# cache timeout inactive 15\nCE1(config-flow-monitor)# record PART8-IPV4\nCE1(config-flow-monitor)#exit\nCE1(config)#logging source-interface GigabitEthernet1 vrf MGMT-VRF\nCE1(config)#logging host 192.168.3.241 vrf MGMT-VRF\nCE1(config)#logging trap informational\nCE1(config)#interface GigabitEthernet2\nCE1(config-if)# ip flow monitor PART8-MONITOR input\nCE1(config-if)#exit\nCE1(config)#interface GigabitEthernet3\nCE1(config-if)# ip flow monitor PART8-MONITOR input\nCE1(config-if)#exit\nCE1(config)#interface GigabitEthernet4\nCE1(config-if)# ip flow monitor PART8-MONITOR input\nCE1(config-if)#exit\nCE1(config)#interface GigabitEthernet5\nCE1(config-if)# ip flow monitor PART8-MONITOR input\nCE1(config-if)#exit\nCE1(config)#end\nCE1#, changed: True"
+      },
+      {
+        "level": "info",
+        "message": "Config merge ended"
+      },
+      {
+        "level": "info",
+        "message": "Config save ended"
+      },
+      {
+        "level": "info",
+        "message": "Successfully deployed configuration to device."
+      }
+    ],
+    "952d8b3e-2b14-4814-90b2-3ba23eba7a18": [
+      {
+        "level": "info",
+        "message": "Running job (source version: 3.0.7)"
+      },
+      {
+        "level": "info",
+        "message": "Config merge via netmiko starting"
+      },
+      {
+        "level": "info",
+        "message": "result: configure terminal\nDCA-Leaf01(config)#sflow vrf MGMT-VRF destination 192.168.3.241 6343\nDCA-Leaf01(config)#sflow vrf MGMT-VRF source-interface Management1\nDCA-Leaf01(config)#sflow sample 16384\nDCA-Leaf01(config)#sflow polling-interval 20\nDCA-Leaf01(config)#sflow run\nDCA-Leaf01(config)#logging vrf MGMT-VRF host 192.168.3.241\nDCA-Leaf01(config)#logging vrf MGMT-VRF source-interface Management1\nDCA-Leaf01(config)#logging trap informational\nDCA-Leaf01(config)#end\nDCA-Leaf01#, changed: True"
+      },
+      {
+        "level": "info",
+        "message": "Config merge ended"
+      },
+      {
+        "level": "info",
+        "message": "Config save ended"
+      },
+      {
+        "level": "info",
+        "message": "Successfully deployed configuration to device."
+      }
+    ]
+  },
+  "collector_log_warnings": [
+    "2026-09-20T23:56:35.790Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:36.795Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:37.798Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:38.803Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:39.803Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:40.814Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:41.813Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:42.819Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:43.823Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:44.827Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:45.831Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:46.834Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:47.836Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:48.835Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:49.838Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:50.877Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:51.889Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:52.897Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:53.904Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:54.915Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:55.926Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:56.931Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:57.940Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:58.947Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:56:59.947Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:57:00.949Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:57:01.952Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:57:02.955Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}",
+    "2026-09-20T23:57:03.968Z\twarn\tnetflowreceiver@v0.154.0/receiver.go:143\twe could not find a template for a flow message, this error is expected from time to time until the device sends a template\t{\"resource\": {\"service.instance.id\": \"d37702b4-374a-4d93-990c-f739f95c50ff\", \"service.name\": \"otelcol-contrib\", \"service.version\": \"0.154.0\"}, \"otelcol.component.id\": \"netflow\", \"otelcol.component.kind\": \"receiver\", \"otelcol.signal\": \"logs\", \"error\": \"receiver: message from [::ffff:192.168.3.60]:49260 NetFlowV9 [version:9 type:Decode obsDomainId:256: templateId:258] Error template not found\"}"
+  ]
+}

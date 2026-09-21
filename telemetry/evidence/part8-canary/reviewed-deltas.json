@@ -1,0 +1,18 @@
+[
+  {
+    "name": "CE1",
+    "device": "fb6d551f-bb73-4839-a093-9acf5eff481e",
+    "commands": "no flow record PART8-IPV4\nflow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n export-protocol netflow-v9\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n cache timeout inactive 15\n record PART8-IPV4\nexit\nlogging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF\nlogging trap informational\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "intended_at": "2026-09-20 23:52:53.128819+00:00",
+    "backup_at": "2026-09-20 23:53:00.651061+00:00",
+    "compliance_at": "2026-09-20 23:53:18.538012+00:00"
+  },
+  {
+    "name": "DCA-Leaf01",
+    "device": "c1a57aef-c57c-4dc6-9f80-1a8200945895",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241 6343\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\nlogging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1\nlogging trap informational\n",
+    "intended_at": "2026-09-20 23:52:53.128819+00:00",
+    "backup_at": "2026-09-20 23:53:00.651061+00:00",
+    "compliance_at": "2026-09-20 23:53:18.538012+00:00"
+  }
+]

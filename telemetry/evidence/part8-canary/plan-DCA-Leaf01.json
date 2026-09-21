@@ -1,0 +1,13 @@
+{
+  "job_result": "ae8212e5-35ee-4cc1-a009-a0ba7793462d",
+  "submitted": "2026-09-20T23:53:38.330250+00:00",
+  "data": {
+    "device": [
+      "c1a57aef-c57c-4dc6-9f80-1a8200945895"
+    ],
+    "plan_type": "manual",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241 6343\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\nlogging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1\nlogging trap informational\n",
+    "change_control_id": "part8-canary-20260920-v2",
+    "debug": false
+  }
+}
