@@ -27,7 +27,7 @@
 # config pushes on BORDER1/PE devices, causing "Pattern not detected" failures.
 # error_pattern still catches actual rejected commands.
 _metadata:
-  name: "Cisco IOS-XE Netmiko Properties"
+  name: "Cisco IOS-XE Platform Properties"
   weight: 1000
   description: "Netmiko send_config_set arguments for IOS-XE deployment"
   platforms:
@@ -36,6 +36,22 @@ netmiko_kwargs:
   error_pattern: "^% (Invalid input|Incomplete command|Ambiguous command|Unrecognized command|Too many parameters|Wrong parameter|Cannot execute)|^%ISIS: IPv6 unicast routing not enabled"
   read_timeout: 300
   cmd_verify: false
+
+# Fleet flow export. Device-specific telemetry_canary context remains the
+# authority for the already deployed CE1 syslog canary.
+netflow:
+  destination: 192.168.3.241
+  vrf: MGMT-VRF
+  source_interface: GigabitEthernet1
+  port: 2055
+  interfaces:
+    - GigabitEthernet2
+    - GigabitEthernet3
+    - GigabitEthernet4
+    - GigabitEthernet5
+    - GigabitEthernet6
+    - GigabitEthernet7
+    - GigabitEthernet8
 
 # Transport MTU after the CML router migration to virtio. Management and the
 # external NAT uplink retain their service MTUs. Explicit modeled MTUs override.

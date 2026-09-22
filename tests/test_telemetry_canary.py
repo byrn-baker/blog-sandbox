@@ -24,6 +24,24 @@ def test_only_two_live_device_contexts_enable_canary():
     assert set(selected) == {'CE1', 'DCA-Leaf01'}
 
 
+def test_ios_fleet_netflow_context_excludes_management():
+    context = yaml.safe_load((ROOT / 'config_contexts/platform_cisco_iosxe.yaml').read_text())['netflow']
+    assert context['destination'] == '192.168.3.241'
+    assert context['port'] == 2055
+    assert context['source_interface'] == 'GigabitEthernet1'
+    assert 'GigabitEthernet1' not in context['interfaces']
+
+
+def test_ios_disabled_interfaces_do_not_get_monitor():
+    context = load_context('cisco_ios_ce_router.yaml')
+    for interface in context['interfaces']:
+        if interface['name'] == 'GigabitEthernet6':
+            interface['enabled'] = False
+    text = build_jinja_env().get_template('golden-config/templates/cisco_ios.j2').render(**context)
+    block = text.split('interface GigabitEthernet6\n', 1)[1].split('\n!', 1)[0]
+    assert 'ip flow monitor' not in block
+
+
 def test_eos_sflow_comparison_only_changes_run_state():
     context = load_context('arista_eos_leaf.yaml')
     context['config_context']['telemetry_canary']['enabled'] = True
