@@ -1,0 +1,14 @@
+{
+  "devices": [
+    "CE2"
+  ],
+  "plans": [
+    "45eeecc7-0c9b-40e5-a9ca-221fc10fdb0a"
+  ],
+  "authorization": "Operator requested IOS-XE NetFlow fleet deployment on 2026-09-22",
+  "receiver_endpoint": [
+    2055,
+    5514,
+    6343
+  ]
+}

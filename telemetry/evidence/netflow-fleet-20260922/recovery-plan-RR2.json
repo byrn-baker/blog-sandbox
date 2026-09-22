@@ -1,0 +1,13 @@
+{
+  "job_result": "e719e1e8-54f2-4add-b714-f1686108d6cc",
+  "submitted": "2026-09-22T01:25:45.306012+00:00",
+  "data": {
+    "device": [
+      "573692b3-a60e-49bb-859f-61bf9285e7a0"
+    ],
+    "plan_type": "manual",
+    "commands": "flow monitor PART8-MONITOR\nexit\n",
+    "change_control_id": "part8-ios-netflow-recovery-20260922",
+    "debug": false
+  }
+}

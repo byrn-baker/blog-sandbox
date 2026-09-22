@@ -1,0 +1,13 @@
+{
+  "job_result": "79534199-306b-474f-865a-1bdf373dc047",
+  "submitted": "2026-09-22T01:10:02.943094+00:00",
+  "data": {
+    "device": [
+      "0c775cc6-32cb-4f53-b9c3-0f22fbf33eeb"
+    ],
+    "plan_type": "manual",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "change_control_id": "part8-ios-netflow-fleet-20260922",
+    "debug": false
+  }
+}

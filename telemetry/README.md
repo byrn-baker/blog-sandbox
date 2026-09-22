@@ -41,6 +41,20 @@ unsynchronizable first child held the next wave; repairing the first child
 allowed the later child to appear. This gates initial deployment. Existing
 children can reconcile independently afterward.
 
+## Flow deployment constraint
+
+The September 22 IOS-XE NetFlow rollout found that a multi-device Golden Config
+deployment can issue overlapping save operations. The dispatcher starts an
+inventory-wide Netmiko save from each per-device merge task. The three-device
+test produced an invalid `exit`, a 300-second timing read expiry and mixed
+startup state even though the merge commands had partially or fully completed.
+
+Deploy these Config Plans one device per job until the dispatcher behavior is
+fixed and retested. After a failed job, read running and startup state on every
+selected device, then generate fresh intent, backups, compliance and recovery
+plans. Do not assume job failure reverted accepted commands. The sanitized run
+is recorded in `telemetry/evidence/netflow-fleet-20260922/README.md`.
+
 ## Credentials and rotation
 
 `--sync-secret` resolves communities from the same Nautobot contexts as Golden

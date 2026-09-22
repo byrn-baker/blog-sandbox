@@ -1,0 +1,15 @@
+[
+  {
+    "name": "SPE1",
+    "address": "192.168.3.57",
+    "commands": {
+      "show flow exporter PART8-EXPORT statistics": "Flow Exporter PART8-EXPORT:\n  Packet send statistics (last cleared 00:01:34 ago):\n    Successfully sent:         18                    (2404 bytes)\n    Reason not given:          1                     (48 bytes)\n\n  Client send statistics:\n    Client: Flow Monitor PART8-MONITOR\n      Records added:           55\n        - sent:                55\n      Bytes added:             2255\n        - sent:                2255\n",
+      "show flow monitor PART8-MONITOR statistics": "  Cache type:                               Normal (Platform cache)\n  Cache size:                               200000\n  Current entries:                             163\n  High Watermark:                              185\n\n  Flows added:                                 218\n  Flows aged:                                   55\n    - Inactive timeout    (    15 secs)         55\n\n",
+      "show flow interface": "Interface GigabitEthernet2\n  FNF:  monitor:          PART8-MONITOR\n        direction:        Input\n        traffic(ip):      on\nInterface GigabitEthernet4\n  FNF:  monitor:          PART8-MONITOR\n        direction:        Input\n        traffic(ip):      on\nInterface GigabitEthernet5\n  FNF:  monitor:          PART8-MONITOR\n        direction:        Input\n        traffic(ip):      on\n",
+      "show running-config | section ^flow": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4",
+      "show startup-config | section ^flow": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4",
+      "show ip bgp summary": ""
+    },
+    "cli_errors": []
+  }
+]

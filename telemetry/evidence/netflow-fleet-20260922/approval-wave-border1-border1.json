@@ -1,0 +1,14 @@
+{
+  "devices": [
+    "BORDER1"
+  ],
+  "plans": [
+    "8d78e6d1-427c-4f6c-a25b-376cb2edd606"
+  ],
+  "authorization": "Operator requested IOS-XE NetFlow fleet deployment on 2026-09-22",
+  "receiver_endpoint": [
+    2055,
+    5514,
+    6343
+  ]
+}

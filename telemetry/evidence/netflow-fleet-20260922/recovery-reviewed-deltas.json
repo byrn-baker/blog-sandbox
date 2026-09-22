@@ -1,0 +1,12 @@
+[
+  {
+    "name": "CE3",
+    "device": "d44de994-46da-488b-be78-1afac0d04078",
+    "commands": "interface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\n"
+  },
+  {
+    "name": "RR2",
+    "device": "573692b3-a60e-49bb-859f-61bf9285e7a0",
+    "commands": "flow monitor PART8-MONITOR\nexit\n"
+  }
+]

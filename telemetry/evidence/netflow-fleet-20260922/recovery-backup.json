@@ -1,0 +1,12 @@
+{
+  "job_result": "daec2dd6-7de8-40dd-9082-a86ce881ab3d",
+  "submitted": "2026-09-22T01:24:31.777799+00:00",
+  "data": {
+    "device": [
+      "d44de994-46da-488b-be78-1afac0d04078",
+      "2cf22f7b-6704-49c3-ab06-9a1c73c55816",
+      "573692b3-a60e-49bb-859f-61bf9285e7a0"
+    ],
+    "commit_message": "NetFlow failed-wave recovery backups"
+  }
+}

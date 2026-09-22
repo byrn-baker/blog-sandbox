@@ -1,0 +1,389 @@
+{
+  "devices": [
+    {
+      "name": "BORDER1",
+      "sampler_address": "192.168.3.50",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 3,
+      "export_packets_successful": 147,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "CE1",
+      "sampler_address": "192.168.3.60",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 4,
+      "export_packets_successful": 95810,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "CE2",
+      "sampler_address": "192.168.3.61",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 4,
+      "export_packets_successful": 2611,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "CE3",
+      "sampler_address": "192.168.3.62",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 4,
+      "export_packets_successful": 2248,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "RR1",
+      "sampler_address": "192.168.3.51",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 1,
+      "export_packets_successful": 108,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "RR2",
+      "sampler_address": "192.168.3.52",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 1,
+      "export_packets_successful": 108,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "SP1",
+      "sampler_address": "192.168.3.53",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 5,
+      "export_packets_successful": 241,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "SP2",
+      "sampler_address": "192.168.3.54",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 5,
+      "export_packets_successful": 183,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "SP3",
+      "sampler_address": "192.168.3.55",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 4,
+      "export_packets_successful": 138,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "SP4",
+      "sampler_address": "192.168.3.56",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 4,
+      "export_packets_successful": 116,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "SPE1",
+      "sampler_address": "192.168.3.57",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 3,
+      "export_packets_successful": 504,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "SPE2",
+      "sampler_address": "192.168.3.58",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 3,
+      "export_packets_successful": 376,
+      "bgp_unestablished": []
+    },
+    {
+      "name": "SPE3",
+      "sampler_address": "192.168.3.59",
+      "running": true,
+      "startup": true,
+      "attached_interfaces": 3,
+      "export_packets_successful": 200,
+      "bgp_unestablished": []
+    }
+  ],
+  "compliance": [
+    {
+      "device": "BORDER1",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "CE1",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "CE2",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "CE3",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "RR1",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "RR2",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "SP1",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "SP2",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "SP3",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "SP4",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "SPE1",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "SPE2",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "SPE3",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    }
+  ],
+  "final_plan_count": 0,
+  "backend_by_sampler": [
+    {
+      "flow.sampler_address": "192.168.3.50",
+      "records": "198"
+    },
+    {
+      "flow.sampler_address": "192.168.3.51",
+      "records": "75"
+    },
+    {
+      "flow.sampler_address": "192.168.3.52",
+      "records": "75"
+    },
+    {
+      "flow.sampler_address": "192.168.3.53",
+      "records": "259"
+    },
+    {
+      "flow.sampler_address": "192.168.3.54",
+      "records": "210"
+    },
+    {
+      "flow.sampler_address": "192.168.3.55",
+      "records": "153"
+    },
+    {
+      "flow.sampler_address": "192.168.3.56",
+      "records": "130"
+    },
+    {
+      "flow.sampler_address": "192.168.3.57",
+      "records": "3312"
+    },
+    {
+      "flow.sampler_address": "192.168.3.58",
+      "records": "5042"
+    },
+    {
+      "flow.sampler_address": "192.168.3.59",
+      "records": "2501"
+    },
+    {
+      "flow.sampler_address": "192.168.3.60",
+      "records": "23030"
+    },
+    {
+      "flow.sampler_address": "192.168.3.61",
+      "records": "45572"
+    },
+    {
+      "flow.sampler_address": "192.168.3.62",
+      "records": "32580"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "dca-k3s-m1",
+      "ready": "True"
+    },
+    {
+      "name": "dca-k3s-m2",
+      "ready": "True"
+    },
+    {
+      "name": "dca-k3s-m3",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w1",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w2",
+      "ready": "True"
+    },
+    {
+      "name": "dcb-k3s-w3",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w4",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w5",
+      "ready": "True"
+    },
+    {
+      "name": "dcc-k3s-w6",
+      "ready": "True"
+    }
+  ],
+  "applications": [
+    {
+      "name": "cluster-observability",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "ingress-addresses",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "ingress-routes",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "longhorn",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "metallb",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "otel-snmp",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "root-app",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "snmp-metrics",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "telemetry-canary",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "traefik",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "victoria-metrics-k8s-stack",
+      "sync": "Synced",
+      "health": "Healthy"
+    },
+    {
+      "name": "victorialogs",
+      "sync": "Synced",
+      "health": "Healthy"
+    }
+  ],
+  "volumes": [
+    {
+      "name": "pvc-36d2310d-8cdc-489b-87fc-9d24c07e5a67",
+      "robustness": "healthy",
+      "state": "attached"
+    },
+    {
+      "name": "pvc-6d0ae7d0-9ac7-4db5-97d7-1e53a9606782",
+      "robustness": "healthy",
+      "state": "attached"
+    },
+    {
+      "name": "pvc-aa3265e8-9ed9-4f01-9709-2e563b040418",
+      "robustness": "healthy",
+      "state": "attached"
+    },
+    {
+      "name": "pvc-e9b8c99b-96f6-4c61-9817-d4a56cd6088d",
+      "robustness": "healthy",
+      "state": "attached"
+    }
+  ],
+  "collector_warnings": [],
+  "failed_wave": {
+    "job": "652edc7e-8edd-4d50-86fe-a54e68a7a45a",
+    "devices": [
+      "CE3",
+      "RR1",
+      "RR2"
+    ],
+    "cause": "Multi-device dispatcher invoked overlapping inventory-wide save tasks; CE3 and RR2 required fresh-plan recovery.",
+    "recovered": true
+  }
+}

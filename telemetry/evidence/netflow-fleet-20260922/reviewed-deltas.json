@@ -1,0 +1,162 @@
+[
+  {
+    "name": "BORDER1",
+    "device": "0c775cc6-32cb-4f53-b9c3-0f22fbf33eeb",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet3",
+      "GigabitEthernet4"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "CE2",
+    "device": "ee02957b-ae98-4ba3-a430-1c0f6283d2b2",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet3",
+      "GigabitEthernet4",
+      "GigabitEthernet5"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "CE3",
+    "device": "d44de994-46da-488b-be78-1afac0d04078",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet3",
+      "GigabitEthernet4",
+      "GigabitEthernet5"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "RR1",
+    "device": "2cf22f7b-6704-49c3-ab06-9a1c73c55816",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "RR2",
+    "device": "573692b3-a60e-49bb-859f-61bf9285e7a0",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "SP1",
+    "device": "d735794d-f868-4c63-a45f-396dd78eace6",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet6\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet3",
+      "GigabitEthernet4",
+      "GigabitEthernet5",
+      "GigabitEthernet6"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "SP2",
+    "device": "45b2a3a1-9ae2-4efe-9d8a-2c51e458b326",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet6\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet3",
+      "GigabitEthernet4",
+      "GigabitEthernet5",
+      "GigabitEthernet6"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "SP3",
+    "device": "dde570e2-8b17-437c-8f43-02ba637a0816",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet3",
+      "GigabitEthernet4",
+      "GigabitEthernet5"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "SP4",
+    "device": "82801c5b-e0c5-4459-b879-01b20837ff7f",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet3",
+      "GigabitEthernet4",
+      "GigabitEthernet5"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "SPE1",
+    "device": "e451a6ef-c0bd-4f1c-b885-cb10e0767e2d",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet4",
+      "GigabitEthernet5"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "SPE2",
+    "device": "f6370ee5-1388-4cb9-b793-caac543fb4a5",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet5\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet3",
+      "GigabitEthernet5"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  },
+  {
+    "name": "SPE3",
+    "device": "2ff21746-a5b7-495a-bcac-0da59a215647",
+    "commands": "flow record PART8-IPV4\n match ipv4 source address\n match ipv4 destination address\n match ipv4 protocol\n match transport source-port\n match transport destination-port\n match interface input\n collect counter bytes long\n collect counter packets long\n collect timestamp sys-uptime first\n collect timestamp sys-uptime last\nexit\nflow exporter PART8-EXPORT\n destination 192.168.3.241 vrf MGMT-VRF\n source GigabitEthernet1\n transport udp 2055\n template data timeout 60\nexit\nflow monitor PART8-MONITOR\n exporter PART8-EXPORT\n cache timeout active 60\n record PART8-IPV4\nexit\ninterface GigabitEthernet2\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet3\n ip flow monitor PART8-MONITOR input\nexit\ninterface GigabitEthernet4\n ip flow monitor PART8-MONITOR input\nexit\n",
+    "interfaces": [
+      "GigabitEthernet2",
+      "GigabitEthernet3",
+      "GigabitEthernet4"
+    ],
+    "intended_at": "2026-09-22 01:04:36.910840+00:00",
+    "backup_at": "2026-09-22 01:04:58.641165+00:00",
+    "compliance_at": "2026-09-22 01:06:14.849959+00:00"
+  }
+]
