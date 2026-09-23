@@ -1,0 +1,13 @@
+{
+  "job_result": "9e49a348-d90b-4f8c-913d-69754a65b775",
+  "submitted": "2026-09-23T18:48:31.088066+00:00",
+  "data": {
+    "device": [
+      "1d843b83-265b-4004-945e-c72c67e2059d"
+    ],
+    "plan_type": "manual",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "change_control_id": "part8-eos-sflow-fleet-20260923",
+    "debug": false
+  }
+}

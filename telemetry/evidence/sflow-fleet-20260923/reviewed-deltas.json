@@ -1,0 +1,137 @@
+[
+  {
+    "name": "DCA-Leaf01",
+    "device": "c1a57aef-c57c-4dc6-9f80-1a8200945895",
+    "commands": "",
+    "already_configured": true,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCA-Leaf02",
+    "device": "bb0e5e60-57cd-4385-83fd-5f63f0bebb88",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCA-Leaf03",
+    "device": "1758abf8-5347-4bc8-b8a0-27d5a0c8f969",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCA-Spine01",
+    "device": "8ce3a77b-7902-4e3e-a392-7d227fbe95b6",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCA-Spine02",
+    "device": "fdb6571c-e3ba-45b1-b052-df3e759d6d00",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCB-Leaf01",
+    "device": "5c75f595-9ae5-4998-aafd-8fd3d48343ba",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCB-Leaf02",
+    "device": "ebefaa1f-c4a3-4fbc-969b-68b0feeefb23",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCB-Leaf03",
+    "device": "153bee91-242d-48b3-83f0-21b61592cec4",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCB-Spine01",
+    "device": "00daf561-d9d3-4ace-a145-cef840a1d304",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCB-Spine02",
+    "device": "198e7b4c-a499-4c95-897b-c9777c9a1197",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCC-Leaf01",
+    "device": "1d843b83-265b-4004-945e-c72c67e2059d",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCC-Leaf02",
+    "device": "765a141a-457d-40b7-abb4-f7a500cc8908",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCC-Leaf03",
+    "device": "001e233d-b849-4da5-a7fd-c32547af4775",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCC-Spine01",
+    "device": "ef7dde22-0850-480d-a021-16725ceae25d",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  },
+  {
+    "name": "DCC-Spine02",
+    "device": "e2f6e50b-f64a-4d9c-8530-58d9bb5f097b",
+    "commands": "sflow vrf MGMT-VRF destination 192.168.3.241\nsflow vrf MGMT-VRF source-interface Management1\nsflow sample 16384\nsflow polling-interval 20\nsflow run\n",
+    "already_configured": false,
+    "intended_at": "2026-09-23 18:46:01.799678+00:00",
+    "backup_at": "2026-09-23 18:46:27.278860+00:00",
+    "compliance_at": "2026-09-23 18:47:26.274333+00:00"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "device": "DCB-Spine01",
+  "plan": "472adace-01c7-4253-9b3a-e61ecb0fad46",
+  "authorization": "Operator requested EOS sFlow fleet deployment on 2026-09-23",
+  "receiver_endpoint": [
+    2055,
+    5514,
+    6343
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "device": "DCC-Leaf03",
+  "plan": "fcba81df-136e-42bf-bee7-e7697d3eb23f",
+  "authorization": "Operator requested EOS sFlow fleet deployment on 2026-09-23",
+  "receiver_endpoint": [
+    2055,
+    5514,
+    6343
+  ]
+}

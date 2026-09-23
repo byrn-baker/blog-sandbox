@@ -3,6 +3,7 @@ query NetworkTelemetryFleet {
     name
     role { name }
     platform { name }
+    secrets_group { name }
     primary_ip4 { address }
     location { name }
     config_context

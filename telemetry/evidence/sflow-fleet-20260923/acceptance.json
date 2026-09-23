@@ -1,0 +1,173 @@
+{
+  "window": "30m",
+  "flow_type": "sflow_5",
+  "compliance": [
+    {
+      "device": "DCA-Leaf01",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCA-Leaf02",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCA-Leaf03",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCA-Spine01",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCA-Spine02",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCB-Leaf01",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCB-Leaf02",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCB-Leaf03",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCB-Spine01",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCB-Spine02",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCC-Leaf01",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCC-Leaf02",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCC-Leaf03",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCC-Spine01",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    },
+    {
+      "device": "DCC-Spine02",
+      "compliance": true,
+      "missing": "",
+      "extra": ""
+    }
+  ],
+  "victorialogs": [
+    {
+      "device": "DCA-Spine01",
+      "sampler_address": "192.168.3.30",
+      "records": 9
+    },
+    {
+      "device": "DCA-Spine02",
+      "sampler_address": "192.168.3.31",
+      "records": 8
+    },
+    {
+      "device": "DCA-Leaf01",
+      "sampler_address": "192.168.3.32",
+      "records": 33
+    },
+    {
+      "device": "DCA-Leaf02",
+      "sampler_address": "192.168.3.33",
+      "records": 12
+    },
+    {
+      "device": "DCA-Leaf03",
+      "sampler_address": "192.168.3.34",
+      "records": 1
+    },
+    {
+      "device": "DCB-Spine01",
+      "sampler_address": "192.168.3.35",
+      "records": 8
+    },
+    {
+      "device": "DCB-Spine02",
+      "sampler_address": "192.168.3.36",
+      "records": 9
+    },
+    {
+      "device": "DCB-Leaf01",
+      "sampler_address": "192.168.3.37",
+      "records": 12
+    },
+    {
+      "device": "DCB-Leaf02",
+      "sampler_address": "192.168.3.38",
+      "records": 10
+    },
+    {
+      "device": "DCB-Leaf03",
+      "sampler_address": "192.168.3.39",
+      "records": 1
+    },
+    {
+      "device": "DCC-Spine01",
+      "sampler_address": "192.168.3.40",
+      "records": 8
+    },
+    {
+      "device": "DCC-Spine02",
+      "sampler_address": "192.168.3.41",
+      "records": 8
+    },
+    {
+      "device": "DCC-Leaf01",
+      "sampler_address": "192.168.3.42",
+      "records": 8
+    },
+    {
+      "device": "DCC-Leaf02",
+      "sampler_address": "192.168.3.43",
+      "records": 8
+    },
+    {
+      "device": "DCC-Leaf03",
+      "sampler_address": "192.168.3.44",
+      "records": 1
+    }
+  ]
+}

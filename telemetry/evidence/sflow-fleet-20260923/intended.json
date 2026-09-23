@@ -1,0 +1,25 @@
+{
+  "job_result": "7648325c-e4e9-4b2d-b2d0-d17140fc0b41",
+  "submitted": "2026-09-23T18:57:29.206184+00:00",
+  "data": {
+    "device": [
+      "c1a57aef-c57c-4dc6-9f80-1a8200945895",
+      "bb0e5e60-57cd-4385-83fd-5f63f0bebb88",
+      "1758abf8-5347-4bc8-b8a0-27d5a0c8f969",
+      "8ce3a77b-7902-4e3e-a392-7d227fbe95b6",
+      "fdb6571c-e3ba-45b1-b052-df3e759d6d00",
+      "5c75f595-9ae5-4998-aafd-8fd3d48343ba",
+      "ebefaa1f-c4a3-4fbc-969b-68b0feeefb23",
+      "153bee91-242d-48b3-83f0-21b61592cec4",
+      "00daf561-d9d3-4ace-a145-cef840a1d304",
+      "198e7b4c-a499-4c95-897b-c9777c9a1197",
+      "1d843b83-265b-4004-945e-c72c67e2059d",
+      "765a141a-457d-40b7-abb4-f7a500cc8908",
+      "001e233d-b849-4da5-a7fd-c32547af4775",
+      "ef7dde22-0850-480d-a021-16725ceae25d",
+      "e2f6e50b-f64a-4d9c-8530-58d9bb5f097b"
+    ],
+    "fail_job_on_task_failure": true,
+    "debug": false
+  }
+}
