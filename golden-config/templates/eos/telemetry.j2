@@ -1,14 +1,18 @@
-{% if config_context.telemetry_canary is defined %}
-{% set telemetry = config_context.telemetry_canary %}
-sflow vrf {{ telemetry.vrf }} destination {{ telemetry.destination }}{{ '' if telemetry.sflow_port == 6343 else ' ' ~ telemetry.sflow_port }}
-sflow vrf {{ telemetry.vrf }} source-interface {{ telemetry.source_interface }}
-sflow sample {{ telemetry.sample_rate }}
+{% if config_context.sflow is defined or config_context.telemetry_canary is defined %}
+{% set flow = config_context.sflow if config_context.sflow is defined else config_context.telemetry_canary %}
+{% set flow_port = flow.port if flow.port is defined else flow.sflow_port %}
+sflow vrf {{ flow.vrf }} destination {{ flow.destination }}{{ '' if flow_port == 6343 else ' ' ~ flow_port }}
+sflow vrf {{ flow.vrf }} source-interface {{ flow.source_interface }}
+sflow sample {{ flow.sample_rate }}
 sflow polling-interval 20
-{% if telemetry.enabled | default(true) %}
+{% if flow.enabled | default(true) %}
 sflow run
 {% else %}
 no sflow run
 {% endif %}
+{% endif %}
+{% if config_context.telemetry_canary is defined %}
+{% set telemetry = config_context.telemetry_canary %}
 logging vrf {{ telemetry.vrf }} host {{ telemetry.destination }}
 logging vrf {{ telemetry.vrf }} source-interface {{ telemetry.source_interface }}
 !

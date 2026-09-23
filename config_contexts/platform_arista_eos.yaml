@@ -40,6 +40,16 @@ netmiko_kwargs:
   read_timeout: 300
   cmd_verify: false
 
+# Fleet sFlow export. The DCA-Leaf01 telemetry_canary context remains scoped to
+# the already deployed syslog canary; eos/telemetry.j2 prefers this platform
+# block for sFlow on every EOS device.
+sflow:
+  destination: 192.168.3.241
+  vrf: MGMT-VRF
+  source_interface: Management1
+  port: 6343
+  sample_rate: 16384
+
 # Routed fabric and CE handoffs require the 9500-byte virtual transport first.
 # Server VLAN gateways carry 9000-byte IP packets; VXLAN adds outer overhead.
 fabric_transport_mtu: 9214

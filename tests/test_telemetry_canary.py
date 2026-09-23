@@ -32,6 +32,17 @@ def test_ios_fleet_netflow_context_excludes_management():
     assert 'GigabitEthernet1' not in context['interfaces']
 
 
+def test_eos_fleet_sflow_context_uses_management_vrf():
+    context = yaml.safe_load((ROOT / 'config_contexts/platform_arista_eos.yaml').read_text())['sflow']
+    assert context == {
+        'destination': '192.168.3.241',
+        'vrf': 'MGMT-VRF',
+        'source_interface': 'Management1',
+        'port': 6343,
+        'sample_rate': 16384,
+    }
+
+
 def test_ios_disabled_interfaces_do_not_get_monitor():
     context = load_context('cisco_ios_ce_router.yaml')
     for interface in context['interfaces']:
@@ -44,10 +55,10 @@ def test_ios_disabled_interfaces_do_not_get_monitor():
 
 def test_eos_sflow_comparison_only_changes_run_state():
     context = load_context('arista_eos_leaf.yaml')
-    context['config_context']['telemetry_canary']['enabled'] = True
+    context['config_context']['sflow']['enabled'] = True
     template = build_jinja_env().get_template('golden-config/templates/arista_eos.j2')
     before = template.render(**context)
-    context['config_context']['telemetry_canary']['enabled'] = False
+    context['config_context']['sflow']['enabled'] = False
     after = template.render(**context)
     assert '\nsflow run\n' in before
     assert '\nno sflow run\n' in after
