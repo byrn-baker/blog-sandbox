@@ -40,9 +40,12 @@ netmiko_kwargs:
   read_timeout: 300
   cmd_verify: false
 
-# Fleet sFlow export. The DCA-Leaf01 telemetry_canary context remains scoped to
-# the already deployed syslog canary; eos/telemetry.j2 prefers this platform
-# block for sFlow on every EOS device.
+# Fleet sFlow export and syslog use the management VRF.
+syslog:
+  destination: 192.168.3.241
+  vrf: MGMT-VRF
+  source_interface: Management1
+
 sflow:
   destination: 192.168.3.241
   vrf: MGMT-VRF

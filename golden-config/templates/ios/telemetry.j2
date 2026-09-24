@@ -24,8 +24,8 @@ flow monitor PART8-MONITOR
  record PART8-IPV4
 !
 {% endif %}
-{% if config_context.telemetry_canary is defined %}
-{% set telemetry = config_context.telemetry_canary %}
+{% if config_context.syslog is defined or config_context.telemetry_canary is defined %}
+{% set telemetry = config_context.syslog if config_context.syslog is defined else config_context.telemetry_canary %}
 logging source-interface {{ telemetry.source_interface }} vrf {{ telemetry.vrf }}
 logging host {{ telemetry.destination }} vrf {{ telemetry.vrf }}
 !

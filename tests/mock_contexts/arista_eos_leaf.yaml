@@ -6,6 +6,10 @@ hostname: DCA-Leaf03
 tags: []
 
 config_context:
+  syslog:
+    destination: 192.168.3.241
+    vrf: MGMT-VRF
+    source_interface: Management1
   sflow:
     destination: 192.168.3.241
     vrf: MGMT-VRF

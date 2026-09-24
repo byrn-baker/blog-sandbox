@@ -7,6 +7,10 @@
 hostname: CE1
 
 config_context:
+  syslog:
+    destination: 192.168.3.241
+    vrf: MGMT-VRF
+    source_interface: GigabitEthernet1
   netflow:
     destination: 192.168.3.241
     vrf: MGMT-VRF

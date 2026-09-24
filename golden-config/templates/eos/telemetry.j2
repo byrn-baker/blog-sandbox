@@ -11,8 +11,8 @@ sflow run
 no sflow run
 {% endif %}
 {% endif %}
-{% if config_context.telemetry_canary is defined %}
-{% set telemetry = config_context.telemetry_canary %}
+{% if config_context.syslog is defined or config_context.telemetry_canary is defined %}
+{% set telemetry = config_context.syslog if config_context.syslog is defined else config_context.telemetry_canary %}
 logging vrf {{ telemetry.vrf }} host {{ telemetry.destination }}
 logging vrf {{ telemetry.vrf }} source-interface {{ telemetry.source_interface }}
 !

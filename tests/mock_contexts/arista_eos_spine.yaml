@@ -4,6 +4,10 @@
 hostname: DCA-Spine01
 
 config_context:
+  syslog:
+    destination: 192.168.3.241
+    vrf: MGMT-VRF
+    source_interface: Management1
   fabric_transport_mtu: 9214
   server_mtu: 9000
   bfd:

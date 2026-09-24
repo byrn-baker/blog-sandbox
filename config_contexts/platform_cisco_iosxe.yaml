@@ -37,8 +37,12 @@ netmiko_kwargs:
   read_timeout: 300
   cmd_verify: false
 
-# Fleet flow export. Device-specific telemetry_canary context remains the
-# authority for the already deployed CE1 syslog canary.
+# Fleet flow export and syslog use the management VRF.
+syslog:
+  destination: 192.168.3.241
+  vrf: MGMT-VRF
+  source_interface: GigabitEthernet1
+
 netflow:
   destination: 192.168.3.241
   vrf: MGMT-VRF

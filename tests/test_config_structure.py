@@ -264,10 +264,10 @@ def test_config_plan_declares_routing_before_interfaces():
     assert order.index("routing_global") < order.index("loopback_prerequisite") < order.index("isis") < order.index("interfaces")
     for context_file, platform in IOS_SCENARIOS:
         output = render(context_file, platform)
-        assert output.index("ipv6 unicast-routing") < output.index("interface GigabitEthernet")
+        assert output.index("ipv6 unicast-routing") < output.index("\ninterface GigabitEthernet")
         if "router isis SP-ISIS" in output:
             assert output.index("ipv6 unicast-routing") < output.index("interface Loopback0")
-            assert output.index("interface Loopback0") < output.index("router isis SP-ISIS") < output.index("interface GigabitEthernet")
+            assert output.index("interface Loopback0") < output.index("router isis SP-ISIS") < output.index("\ninterface GigabitEthernet")
             assert len(re.findall(r"^interface Loopback0$", output, re.M)) == 1
 
 
