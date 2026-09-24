@@ -1,0 +1,11 @@
+{
+  "job_result": "30fe3d5a-b80e-4f3b-9592-7508de31670e",
+  "submitted": "2026-09-24T04:06:39.620058+00:00",
+  "data": {
+    "config_plan": [
+      "dfd9edfb-3acd-4eff-b3e8-a19175fd1518"
+    ],
+    "fail_job_on_task_failure": true,
+    "debug": false
+  }
+}

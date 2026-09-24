@@ -1,0 +1,254 @@
+[
+  {
+    "name": "BORDER1",
+    "device": "0c775cc6-32cb-4f53-b9c3-0f22fbf33eeb",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "CE1",
+    "device": "fb6d551f-bb73-4839-a093-9acf5eff481e",
+    "platform": "cisco_iosxe",
+    "commands": "",
+    "already_configured": true,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "CE2",
+    "device": "ee02957b-ae98-4ba3-a430-1c0f6283d2b2",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "CE3",
+    "device": "d44de994-46da-488b-be78-1afac0d04078",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCA-Leaf01",
+    "device": "c1a57aef-c57c-4dc6-9f80-1a8200945895",
+    "platform": "arista_eos",
+    "commands": "",
+    "already_configured": true,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCA-Leaf02",
+    "device": "bb0e5e60-57cd-4385-83fd-5f63f0bebb88",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCA-Leaf03",
+    "device": "1758abf8-5347-4bc8-b8a0-27d5a0c8f969",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCA-Spine01",
+    "device": "8ce3a77b-7902-4e3e-a392-7d227fbe95b6",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCA-Spine02",
+    "device": "fdb6571c-e3ba-45b1-b052-df3e759d6d00",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCB-Leaf01",
+    "device": "5c75f595-9ae5-4998-aafd-8fd3d48343ba",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCB-Leaf02",
+    "device": "ebefaa1f-c4a3-4fbc-969b-68b0feeefb23",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCB-Leaf03",
+    "device": "153bee91-242d-48b3-83f0-21b61592cec4",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCB-Spine01",
+    "device": "00daf561-d9d3-4ace-a145-cef840a1d304",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCB-Spine02",
+    "device": "198e7b4c-a499-4c95-897b-c9777c9a1197",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCC-Leaf01",
+    "device": "1d843b83-265b-4004-945e-c72c67e2059d",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCC-Leaf02",
+    "device": "765a141a-457d-40b7-abb4-f7a500cc8908",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCC-Leaf03",
+    "device": "001e233d-b849-4da5-a7fd-c32547af4775",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCC-Spine01",
+    "device": "ef7dde22-0850-480d-a021-16725ceae25d",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "DCC-Spine02",
+    "device": "e2f6e50b-f64a-4d9c-8530-58d9bb5f097b",
+    "platform": "arista_eos",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "RR1",
+    "device": "2cf22f7b-6704-49c3-ab06-9a1c73c55816",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "RR2",
+    "device": "573692b3-a60e-49bb-859f-61bf9285e7a0",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "SP1",
+    "device": "d735794d-f868-4c63-a45f-396dd78eace6",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "SP2",
+    "device": "45b2a3a1-9ae2-4efe-9d8a-2c51e458b326",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "SP3",
+    "device": "dde570e2-8b17-437c-8f43-02ba637a0816",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "SP4",
+    "device": "82801c5b-e0c5-4459-b879-01b20837ff7f",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "SPE1",
+    "device": "e451a6ef-c0bd-4f1c-b885-cb10e0767e2d",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "SPE2",
+    "device": "f6370ee5-1388-4cb9-b793-caac543fb4a5",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  },
+  {
+    "name": "SPE3",
+    "device": "2ff21746-a5b7-495a-bcac-0da59a215647",
+    "platform": "cisco_iosxe",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "already_configured": false,
+    "intended_at": "2026-09-24 03:40:17.029420+00:00",
+    "backup_at": "2026-09-24 03:40:59.706693+00:00"
+  }
+]

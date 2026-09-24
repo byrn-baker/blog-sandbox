@@ -3,6 +3,8 @@ import argparse
 import json
 from pathlib import Path
 import subprocess
+import urllib.parse
+import urllib.request
 
 import canary_control as control
 from sflow_fleet_rollout import shell, INTENDED_JOB, BACKUP_JOB, COMPLIANCE_JOB, PLAN_JOB, DEPLOY_JOB
@@ -130,9 +132,36 @@ print(json.dumps(rows))
         print(json.dumps({'device':row['name'], 'running':True, 'startup':True}), flush=True)
 
 
+def acceptance():
+    verified = json.loads((control.EVIDENCE / 'verify-fleet.json').read_text())
+    assert len(verified) == 28
+    expected = {r['address']:r['name'] for r in verified}
+    query = '_time:2h AND NOT flow.type:* | stats by (net.peer.ip) count() as records'
+    request = urllib.request.Request('http://127.0.0.1:19428/select/logsql/query',
+        data=urllib.parse.urlencode({'query':query}).encode())
+    with urllib.request.urlopen(request,timeout=60) as response:
+        rows = [json.loads(line) for line in response.read().splitlines() if line]
+    received = {r['net.peer.ip']:int(r['records']) for r in rows if r.get('net.peer.ip') in expected}
+    rules = control.api('plugins/golden-config/compliance-rule/?limit=100')['results']
+    ids = {r['id'] for r in rules if r['display'] in [p + ' - logging' for p in PLATFORMS]}
+    assert len(ids) == 2
+    rows = control.api('plugins/golden-config/config-compliance/?limit=1000')['results']
+    names = {r['id']:r['name'] for r in inventory()}
+    checks = [{'device':names[r['device']['id']],'compliance':r['compliance'],
+               'missing':r['missing'],'extra':r['extra']} for r in rows if r['rule']['id'] in ids]
+    report = {'window':'2h', 'logging_compliance':checks,
+              'received':[{'device':expected[ip],'address':ip,'records':received[ip]} for ip in sorted(received)],
+              'missing_devices':sorted(expected[ip] for ip in set(expected)-set(received))}
+    control.record('acceptance',report)
+    assert {r['device'] for r in checks} == set(expected.values()), checks
+    assert len(checks) == 28 and all(r['compliance'] for r in checks), checks
+    assert not report['missing_devices'], report['missing_devices']
+    print(json.dumps({'compliant':len(checks),'syslog_senders':len(received)}))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['refresh','plans','deploy','verify'])
+    parser.add_argument('action', choices=['refresh','plans','deploy','verify','acceptance'])
     parser.add_argument('names', nargs='*')
     args = parser.parse_args()
     if args.action == 'refresh': refresh()
@@ -140,4 +169,5 @@ if __name__ == '__main__':
     elif args.action == 'deploy':
         assert len(args.names) == 1
         deploy(args.names[0])
+    elif args.action == 'acceptance': acceptance()
     else: verify(args.names or [r['name'] for r in inventory()])

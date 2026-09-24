@@ -1,0 +1,10 @@
+[
+  {
+    "name": "CE3",
+    "address": "192.168.3.62",
+    "platform": "cisco_iosxe",
+    "running": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "startup": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "status": "Syslog logging: enabled (0 messages dropped, 3 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)\n\nNo Active Message Discriminator.\n\n\n\nNo Inactive Message Discriminator.\n\n\n    Console logging: level debugging, 258 messages logged, xml disabled,\n                     filtering disabled\n    Monitor logging: level debugging, 0 messages logged, xml disabled,\n                     filtering disabled\n    Buffer logging:  level debugging, 259 messages logged, xml disabled,\n                    filtering disabled\n    Exception Logging: size (4096 bytes)\n    Count and timestamp logging messages: disabled\n    Persistent logging: disabled\n\nNo active filter modules.\n\n    Trap logging: level informational, 265 message lines logged\n        Logging to 192.168.3.241  (MGMT-VRF) (udp port 514, audit disabled,\n              link up),\n              5 message lines logged, \n              0 message lines rate-limited, \n              0 message lines dropped-by-MD, \n              xml disabled, sequence number disabled\n              filtering disabled\n        Logging Source-Interface:       VRF Name:\n        GigabitEthernet1                MGMT-VRF\n    TLS Profiles: \n\nLog Buffer (131072 bytes):\n\n*Sep 11 20:20:27.393: %CRYPTO-5-SELF_TEST_START: Crypto algorithms release (Rel5a), Entropy release (3.4.1)\n       begin Crypto Module self-tests\n*Sep 11 20:20:27.394: %CRYPTO-5-SELF_TEST_START: Crypto algorithms release (Rel5a), Entropy release (3.4.1)\n       begin Crypto Module Integrity Test\n*Sep 11 20:20:27.413: %CRYPTO-5-SELF_TEST_END: Crypto Integrity self-test completed suc"
+  }
+]

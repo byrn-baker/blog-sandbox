@@ -1,0 +1,13 @@
+{
+  "job_result": "0e67e248-f61b-4480-86ad-b104ed048623",
+  "submitted": "2026-09-24T03:45:01.475235+00:00",
+  "data": {
+    "device": [
+      "f6370ee5-1388-4cb9-b793-caac543fb4a5"
+    ],
+    "plan_type": "manual",
+    "commands": "logging source-interface GigabitEthernet1 vrf MGMT-VRF\nlogging host 192.168.3.241 vrf MGMT-VRF",
+    "change_control_id": "part8-syslog-fleet-20260924",
+    "debug": false
+  }
+}

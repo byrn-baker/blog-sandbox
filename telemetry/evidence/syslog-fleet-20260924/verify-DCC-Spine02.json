@@ -1,0 +1,10 @@
+[
+  {
+    "name": "DCC-Spine02",
+    "address": "192.168.3.41",
+    "platform": "arista_eos",
+    "running": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "startup": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "status": "Syslog logging: enabled\nBuffer logging: level debugging\nConsole logging: disabled\nPersistent logging: disabled\nMonitor logging: disabled\nSynchronous logging: disabled\nTrap logging: level informational\n    Logging source-interface 'Management1', IP Address 192.168.3.41 in VRF MGMT-VRF\n    Logging to '192.168.3.241' port 514 in VRF MGMT-VRF via udp\nSequence numbers: disabled\nSyslog facility: local4\nHostname format: Hostname only\nRepeat logging interval: disabled\nRepeat messages: disabled\nRoot login logging: disabled\n\nExternal configuration:\n    active: \n    inactive: \n\nFacility                   Severity            Effective Severity\n--------------------       -------------       ------------------\naaa                        debugging           debugging    \naccounting                 debugging           debugging    \nacl                        debugging           debugging    \nagent                      debugging           debugging    \nale                        debugging           debugging    \narp                        debugging           debugging    \nbfd                        debugging           debugging    \nbgp                        debugging           debugging    \nbmp                        debugging           debugging    \ncapacity                   debugging           debugging    \ncapi                       debugging           debugging    \nclassification             debugging           debugging    \nclear                      debugging           debugging    \ncvx                        debugging           debugging    \ndataplane                  debugging    "
+  }
+]

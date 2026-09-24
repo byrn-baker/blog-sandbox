@@ -1,0 +1,13 @@
+{
+  "job_result": "6637937f-c167-44e5-b891-b98eea8e80db",
+  "submitted": "2026-09-24T03:44:29.558549+00:00",
+  "data": {
+    "device": [
+      "1d843b83-265b-4004-945e-c72c67e2059d"
+    ],
+    "plan_type": "manual",
+    "commands": "logging vrf MGMT-VRF host 192.168.3.241\nlogging vrf MGMT-VRF source-interface Management1",
+    "change_control_id": "part8-syslog-fleet-20260924",
+    "debug": false
+  }
+}

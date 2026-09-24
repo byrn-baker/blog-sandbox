@@ -22,6 +22,19 @@ Combined tasks stay open: the negative gate case, full-fleet scope, dashboard
 integration, 30-minute accounting and VNI interpretation are not established
 by this two-device slice. No fleet deployment is authorized by the canary.
 
+September 24: the operator separately authorized fleet syslog and SuzieQ.
+Syslog records now arrive from all 28 management addresses, and SuzieQ's
+Nautobot-generated inventory returns all 28 devices with 140 healthy service
+statuses. Grafana's Network Telemetry dashboard combines this data with the
+existing SNMP and flow views. SuzieQ has a tested 14-day coalesced-history
+policy, a retained baseline and a 24-hour recovery quarantine, with storage
+metrics and alerts. See the
+[syslog rollout evidence](../../../../telemetry/evidence/syslog-fleet-20260924/README.md)
+and `suzieq/evidence/fleet-20260924/` in blog-sandbox-argo-cd. Combined tasks below
+remain open where they also require credential-rotation/failure tests, a state
+metrics bridge, controlled-event tests or accounting acceptance. This rollout
+does not close the vEOS forwarding investigation.
+
 - [ ] T001 Reconcile baseline evidence and record constitution compliance.
   Baseline read-back/polls recorded in [the audit](evidence/2026-09-09-baseline/README.md);
   SNMP deployment is not established. [The pyATS baseline and TCP trace](evidence/2026-09-09-pyats-baseline/README.md)
