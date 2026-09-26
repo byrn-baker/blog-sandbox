@@ -226,3 +226,44 @@ def test_ios_snmp_template_has_no_vrf_line():
     template = build_jinja_env().get_template("golden-config/templates/cisco_ios.j2")
     rendered = template.render(**context)
     assert "snmp-server vrf" not in rendered
+
+
+@pytest.mark.parametrize("context_file,platform", DEVICE_SCENARIOS)
+def test_ntp_management_policy_and_optional_context(context_file, platform):
+    """NTP must use only the designated management endpoint and source."""
+    context = load_context(context_file)
+    template = build_jinja_env().get_template(
+        f"golden-config/templates/{PLATFORM_TEMPLATES[platform]}"
+    )
+    rendered = template.render(**context)
+    lines = [line for line in rendered.splitlines() if line.startswith("ntp ")]
+    if platform == "cisco_ios":
+        assert lines == [
+            "ntp server vrf MGMT-VRF 192.168.3.242 source GigabitEthernet1"
+        ]
+    else:
+        assert lines == [
+            "ntp local-interface vrf MGMT-VRF Management1",
+            "ntp server vrf MGMT-VRF 192.168.3.242",
+        ]
+    del context["config_context"]["ntp"]
+    assert not any(line.startswith("ntp ") for line in template.render(**context).splitlines())
+
+
+@pytest.mark.parametrize("platform,context_file", [
+    ("cisco_ios", "cisco_ios_p_router.yaml"),
+    ("arista_eos", "arista_eos_leaf.yaml"),
+])
+def test_ntp_inband_policy_does_not_emit_management_vrf(platform, context_file):
+    """An explicit in-band override must not accidentally bind to management."""
+    context = load_context(context_file)
+    context["config_context"]["ntp"] = {
+        "servers": ["10.100.0.241"], "source_interface": "Loopback0"
+    }
+    rendered = build_jinja_env().get_template(
+        f"golden-config/templates/{PLATFORM_TEMPLATES[platform]}"
+    ).render(**context)
+    lines = [line for line in rendered.splitlines() if line.startswith("ntp ")]
+    expected = (["ntp server 10.100.0.241 source Loopback0"] if platform == "cisco_ios"
+                else ["ntp local-interface Loopback0", "ntp server 10.100.0.241"])
+    assert lines == expected

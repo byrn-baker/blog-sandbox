@@ -57,3 +57,10 @@ sflow:
 # Server VLAN gateways carry 9000-byte IP packets; VXLAN adds outer overhead.
 fabric_transport_mtu: 9214
 server_mtu: 9000
+
+# NTP uses the management-plane endpoint; standard UDP/123 is implicit.
+ntp:
+  servers:
+    - 192.168.3.242
+  vrf: MGMT-VRF
+  source_interface: Management1

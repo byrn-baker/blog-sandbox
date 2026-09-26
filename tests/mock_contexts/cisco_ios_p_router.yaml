@@ -5,6 +5,11 @@
 hostname: SP1
 
 config_context:
+  ntp:
+    servers:
+      - 192.168.3.242
+    vrf: MGMT-VRF
+    source_interface: GigabitEthernet1
   syslog:
     destination: 192.168.3.241
     vrf: MGMT-VRF

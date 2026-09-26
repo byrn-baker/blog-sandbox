@@ -63,3 +63,10 @@ router_data_mtu: 9216
 
 # IOS also emits CLI failures with a %ISIS: prefix and no space after %.
 # Match the observed routing prerequisite failure without matching syslog codes.
+
+# NTP uses the management-plane endpoint; standard UDP/123 is implicit.
+ntp:
+  servers:
+    - 192.168.3.242
+  vrf: MGMT-VRF
+  source_interface: GigabitEthernet1

@@ -1,0 +1,9 @@
+{# NTP transport uses standard UDP/123. VRF and source are explicit policy. #}
+{% if config_context.ntp is defined %}
+{% set ntp = config_context.ntp %}
+ntp local-interface{% if ntp.vrf | default('') %} vrf {{ ntp.vrf }}{% endif %} {{ ntp.source_interface }}
+{% for server in ntp.servers %}
+ntp server{% if ntp.vrf | default('') %} vrf {{ ntp.vrf }}{% endif %} {{ server }}
+{% endfor %}
+!
+{% endif %}
