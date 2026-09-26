@@ -3,6 +3,8 @@ ingress_domain: sandbox.lab
 ingress_management_ip: 192.168.3.240
 ingress_lab_ip: 10.100.0.240
 telemetry_ip: 192.168.3.241
+ntp_management_ip: 192.168.3.242
+ntp_lab_ip: 10.100.0.241
 ingress_hostnames:
   - grafana
   - argocd
