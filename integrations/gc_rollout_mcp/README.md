@@ -75,3 +75,20 @@ See `jobs/gc_rollout/README.md` for installation, exact schema, scope and recove
 Status includes wave counts, phase timing events and an execution-log URL. Report
 transitions without launching a duplicate SSH, save or NTP polling loop. The
 coordinator reuses Golden Config's built-in Jobs for each approved batch.
+
+
+## Existing-plan lookup before generation
+
+Call `gc_plan_find_existing(device_id, config_set, plan_type, feature_ids,
+change_control_id)` with the current proposed delta before invoking Golden Config
+plan generation. It follows pagination and compares exact ordered commands,
+normalizing only CRLF. It reports unused matching plans, scope compatibility,
+change-control differences and completed/claimed history. It does not generate,
+delete, relabel or deploy plans. Revalidate current intent/compliance and review
+approval before reuse. Multiple matching plans require selection of one reviewed
+canonical ID, not deployment of every copy. A different source revision or an
+expired rollout approval alone is not a reason to recreate an unchanged plan.
+
+The lookup is not an atomic get-or-create operation: serialize generation for the
+same devices and recheck before and after creation. Native Golden Config clients
+can still create duplicates. Semantic CLI equivalence is outside this exact check.

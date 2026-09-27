@@ -7,7 +7,7 @@ import json
 import os
 import ssl
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlencode
 from urllib.request import Request, urlopen
 from uuid import UUID
 
@@ -45,6 +45,71 @@ def submit(key, data):
     job = result["job_result"]
     return {"job_result_id": job["id"], "status": job["status"],
             "message": "Queued; poll gc_rollout_status. Submission is not deployment success."}
+
+
+@mcp.tool()
+def gc_plan_find_existing(device_id: str, config_set: str, plan_type: str,
+                          feature_ids: list[str], change_control_id: str) -> dict:
+    """Check BEFORE generation for existing plans with the same ordered commands.
+
+    Derive config_set from current Golden Config compliance/intent without creating
+    a plan. Reuse candidates still need current-input and approval review. Never
+    create a duplicate just to change the change-control ID. This read is not an
+    atomic get-or-create operation; serialize generation and recheck afterward.
+    """
+    device_id = uuid(device_id)
+    features = sorted({uuid(x) for x in feature_ids})
+    if plan_type not in {"intended", "missing", "remediation", "manual"}:
+        raise ValueError("Unsupported plan type")
+    if not config_set.strip():
+        raise ValueError("Provide the exact proposed commands; empty input is not a change")
+    # Preserve whitespace, command order and repetitions. Only CRLF is normalized.
+    commands = config_set.replace("\r\n", "\n")
+    matches, statuses, offset = [], {}, 0
+    while True:
+        params = urlencode({"device_id": device_id, "limit": 200, "offset": offset,
+                            "exclude_m2m": "false", "depth": 1})
+        page = request("plugins/golden-config/config-plan/?" + params)
+        rows = page["results"]
+        for plan in rows:
+            if uuid(plan["device"]["id"]) != device_id:
+                raise RuntimeError("Nautobot did not honor the device filter")
+            if plan["config_set"].replace("\r\n", "\n") != commands:
+                continue
+            if "feature" not in plan:
+                raise RuntimeError("Feature membership missing; cannot establish a reusable match")
+            current_features = sorted(uuid(x["id"] if isinstance(x, dict) else x) for x in plan["feature"])
+            status = plan.get("status") or {}
+            status_name = status.get("name")
+            if not status_name and status.get("id"):
+                status_id = uuid(status["id"])
+                if status_id not in statuses:
+                    statuses[status_id] = request("extras/statuses/" + status_id + "/")["name"]
+                status_name = statuses[status_id]
+            current_type = plan["plan_type"]
+            if isinstance(current_type, dict):
+                current_type = current_type["value"]
+            unused = not plan.get("deploy_result") and status_name in {"Approved", "Not Approved"}
+            compatible = current_type == plan_type and current_features == features
+            matches.append({"id": plan["id"], "status": status_name,
+                            "change_control_id": plan["change_control_id"],
+                            "plan_type": current_type, "feature_ids": current_features,
+                            "unused": unused, "scope_matches": compatible,
+                            "reuse_candidate": unused and compatible and plan["change_control_id"] == change_control_id,
+                            "created": plan.get("created"), "deploy_result": plan.get("deploy_result")})
+        if not page.get("next"):
+            break
+        if not rows:
+            raise RuntimeError("Incomplete pagination; cannot rule out duplicates")
+        offset += len(rows)
+    candidates = [p["id"] for p in matches if p["reuse_candidate"]]
+    pending = [p for p in matches if p["unused"] or p["status"] == "In Progress"]
+    action = "review_existing" if pending else "no_unused_exact_match"
+    return {"device_id": device_id, "action": action, "reuse_candidate_ids": candidates,
+            "exact_command_matches": matches,
+            "message": ("Review existing plans before any generation; do not regenerate or relabel silently."
+                        if pending else "No unused exact match. Revalidate current drift before generating one scoped plan."),
+            "limitations": "Exact ordered text comparison; no semantic CLI equivalence or atomic creation lock."}
 
 
 @mcp.tool()
