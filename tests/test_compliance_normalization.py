@@ -19,3 +19,10 @@ def test_pagination_keeps_security_and_other_parents():
 def test_acl_order_untouched():
     raw = "ip access-list standard TEST\n 10 deny any\n 20 permit any"
     assert normalize(raw, "acl", "cisco_ios") == raw
+
+
+def test_runtime_fragment_matches_source():
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]
+    source = (root / "netclaw_compliance.py").read_text()
+    assert source in (root / "integrations/gc_compliance/nautobot_config_fragment.py").read_text()
