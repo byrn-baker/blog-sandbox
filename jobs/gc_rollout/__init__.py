@@ -1,4 +1,4 @@
-"""Nautobot Jobs for reviewed, durable Golden Config NTP rollouts."""
+"""Nautobot Jobs for reviewed, durable Golden Config rollouts."""
 import json
 from datetime import timedelta
 
@@ -10,7 +10,7 @@ from nautobot.extras.models import Job as JobModel, JobResult
 from . import state
 from .backend import deploy, permission_check, refresh_evidence
 from .manifest import build, digest, validate_current
-from .verify import RolloutCanceled, check_cancel, verify_wave
+from .state import RolloutCanceled, check_cancel
 
 name = "Golden Config Rollout"
 
@@ -20,7 +20,7 @@ class PrepareGCRollout(Job):
 
     class Meta:
         name = "Prepare GC Rollout"
-        description = "Snapshot NTP plans, source, canaries and verification policy for explicit approval. No device writes."
+        description = "Snapshot configuration plans, source, canaries and verification policy for explicit approval. No device writes."
         has_sensitive_variables = False
 
     def run(self, spec_json):
@@ -28,7 +28,7 @@ class PrepareGCRollout(Job):
             raise ValueError("Rollout specification is too large")
         manifest = build(self.user, json.loads(spec_json))
         approval_digest = digest(manifest)
-        self.logger.info("Prepared %s devices in %s waves. Approval digest: %s",
+        self.logger.info("Prepared %s plans in %s waves. Approval digest: %s",
                          len(manifest["plans"]), len(manifest["waves"]), approval_digest)
         return {
             "schema": state.SCHEMA, "run_id": str(self.job_result.pk), "manifest": manifest,
@@ -46,7 +46,7 @@ class ExecuteGCRollout(Job):
 
     class Meta:
         name = "Execute GC Rollout"
-        description = "Execute exactly the reviewed NTP rollout, stop on failed gates, and persist progress."
+        description = "Execute exactly the reviewed configuration rollout, stop on failed gates, and persist progress."
         has_sensitive_variables = False
         is_singleton = True
         soft_time_limit = 21600
@@ -80,25 +80,21 @@ class ExecuteGCRollout(Job):
                                       "reference": approval_reference, "digest": approval_digest, "at": state.now()}
                 state.event(ledger, "approved", ledger["approval"])
         try:
-            # Check all devices before changing the first canary.
-            verify_wave(self, run_id, manifest, [p["device"] for p in manifest["plans"]], baseline=True)
             for index, names in enumerate(manifest["waves"]):
                 check_cancel(run_id)
-                validate_current(manifest, names)
-                verify_wave(self, run_id, manifest, names, baseline=True)
                 self.logger.info("Wave %s/%s: %s", index + 1, len(manifest["waves"]), ", ".join(names))
                 deploy(self, run_id, manifest, names)
                 with state.locked(run_id) as ledger:
                     ledger["stage"] = "verifying"
                     state.event(ledger, "verifying", {"wave": index + 1, "devices": names})
-                verify_wave(self, run_id, manifest, names)
                 refresh_evidence(self, run_id, manifest, names)
                 with state.locked(run_id) as ledger:
                     ledger["completed_waves"].append(index + 1)
+                    state.event(ledger, "wave_completed", {"wave": index + 1, "devices": names})
             check_cancel(run_id)
             with state.locked(run_id) as ledger:
                 ledger["stage"] = "completed"
-                state.event(ledger, "completed", "All approved waves passed synchronization and compliance gates")
+                state.event(ledger, "completed", "All approved waves completed deployment, fresh backup and selected compliance gates")
             self.logger.info("Rollout %s completed", run_id)
             return {"run_id": run_id, "stage": "completed"}
         except Exception as exc:

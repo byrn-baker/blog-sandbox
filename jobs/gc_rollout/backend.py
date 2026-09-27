@@ -1,21 +1,21 @@
 """Golden Config integration. Device writes occur only through its deploy play."""
+from time import monotonic
+
 from django.utils import timezone
 from nautobot.dcim.models import Device
 from nautobot.extras.models import Status
-from nautobot_golden_config.jobs import BackupJob, ComplianceJob
+from nautobot_golden_config.jobs import BackupJob, ComplianceJob, DeployConfigPlans
 from nautobot_golden_config.models import ConfigPlan, ConfigCompliance, GoldenConfig
-from nautobot_golden_config.nornir_plays.config_deployment import config_deployment
-from nautobot_golden_config.utilities.helper import update_dynamic_groups_cache
 
 from . import state
 from .manifest import validate_current
-from .verify import check_cancel
+from .state import check_cancel
 
 
 def permission_check(job, manifest):
     """Executing a custom Job must not bypass object-level change permissions."""
     ids = [p["id"] for p in manifest["plans"]]
-    devices = [p["device_id"] for p in manifest["plans"]]
+    devices = {p["device_id"] for p in manifest["plans"]}
     if ConfigPlan.objects.restrict(job.user, "change").filter(pk__in=ids).count() != len(ids):
         raise PermissionError("Executor needs change permission on all selected Config Plans")
     if Device.objects.restrict(job.user, "view").filter(pk__in=devices).count() != len(devices):
@@ -25,7 +25,6 @@ def permission_check(job, manifest):
 def deploy(job, run_id, manifest, names):
     """Reserve every plan before touching devices; a crash makes it non-retryable."""
     check_cancel(run_id)
-    validate_current(manifest, names)
     ids = [p["id"] for p in manifest["plans"] if p["device"] in names]
     with state.locked(run_id) as ledger:
         if ledger["cancel_requested"]:
@@ -41,11 +40,16 @@ def deploy(job, run_id, manifest, names):
         ledger["stage"] = "deploying"
         state.event(ledger, "deploying", {"devices": names, "plan_ids": ids})
     job.logger.info("Deploying approved wave: %s", ", ".join(names))
-    # Uses the current JobResult/request/user; never queues a nested Celery task.
-    job.data = {"config_plan": ConfigPlan.objects.filter(pk__in=ids),
-                "fail_job_on_task_failure": True, "debug": False}
-    update_dynamic_groups_cache()
-    config_deployment(job)
+    # Reuse the built-in Job, including its cache refresh, dispatcher, saves,
+    # postprocessing, parallel runner and error handling. Share the execution
+    # request so Golden Config logs/results attach to this coordinator JobResult.
+    started = monotonic()
+    child = DeployConfigPlans()
+    child.request = job.request
+    child.run(config_plan=ConfigPlan.objects.filter(pk__in=ids),
+              fail_job_on_task_failure=True, debug=False)
+    with state.locked(run_id) as ledger:
+        state.event(ledger, "deployment_finished", {"devices": names, "seconds": round(monotonic() - started, 3)})
     if ConfigPlan.objects.filter(pk__in=ids).exclude(status__name="Completed").exists():
         raise RuntimeError("Golden Config did not mark every plan Completed")
     for name in names:
@@ -68,9 +72,16 @@ def refresh_evidence(job, run_id, manifest, names):
     with state.locked(run_id) as ledger:
         ledger["stage"] = "backup_and_compliance"
         state.event(ledger, "backup_and_compliance", {"devices": names})
-    invoke(job, BackupJob, devices)
-    check_cancel(run_id)
-    invoke(job, ComplianceJob, devices)
+    for phase, cls in (("backing_up", BackupJob), ("checking_compliance", ComplianceJob)):
+        check_cancel(run_id)
+        with state.locked(run_id) as ledger:
+            ledger["stage"] = phase
+            state.event(ledger, phase, {"devices": names})
+        job.logger.info("%s: %s", phase, ", ".join(names))
+        phase_started = monotonic()
+        invoke(job, cls, devices)
+        with state.locked(run_id) as ledger:
+            state.event(ledger, phase + "_finished", {"devices": names, "seconds": round(monotonic() - phase_started, 3)})
     evidence = []
     for device in devices:
         gc = GoldenConfig.objects.get(device=device)
@@ -81,6 +92,7 @@ def refresh_evidence(job, run_id, manifest, names):
         rows = list(ConfigCompliance.objects.filter(device=device, rule_id__in=expected_rules))
         if {str(r.rule_id) for r in rows} != expected_rules or any(not r.compliance for r in rows):
             raise RuntimeError(f"{device.name}: approved compliance features did not pass")
+        state.progress(run_id, device.name, {"stage": "compliance_verified", "compliance_passed": True})
         evidence.append({"device": device.name, "backup_at": gc.backup_last_success_date.isoformat(),
                          "compliance_at": gc.compliance_last_success_date.isoformat(),
                          "compliance_result_ids": [str(r.pk) for r in rows]})

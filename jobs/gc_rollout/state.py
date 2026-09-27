@@ -57,3 +57,12 @@ def progress(run_id, device, sample):
         data["devices"][device] = {**old, **sample, "observed_at": now()}
         if old.get("stage") != sample.get("stage"):
             event(data, sample["stage"], "Verification stage changed", device)
+
+
+class RolloutCanceled(RuntimeError):
+    """Cooperative stop; already deployed changes are not reverted."""
+
+
+def check_cancel(run_id):
+    if canceled(run_id):
+        raise RolloutCanceled("Cancellation requested; no further rollout stages will start")

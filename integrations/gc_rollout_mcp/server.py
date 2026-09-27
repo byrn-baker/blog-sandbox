@@ -49,7 +49,7 @@ def submit(key, data):
 
 @mcp.tool()
 def gc_rollout_prepare(spec: dict) -> dict:
-    """Snapshot a reviewed NTP rollout without deploying. Returns the preparation JobResult/run ID."""
+    """Snapshot a reviewed configuration rollout without deploying. Returns the preparation JobResult/run ID."""
     result = submit("GC_ROLLOUT_PREPARE_JOB_ID", {"spec_json": json.dumps(spec)})
     result["run_id"] = result["job_result_id"]
     return result
@@ -77,9 +77,13 @@ def gc_rollout_status(run_id: str, include_manifest: bool = False) -> dict:
         return {"job_result_id": job["id"], "job_status": job["status"], "result": ledger}
     result = {k: ledger.get(k) for k in ("run_id", "stage", "approval_digest", "expires_at", "updated_at",
               "execution_job", "cancel_requested", "completed_waves", "error_type")}
-    result["devices"] = {name: {k: value.get(k) for k in ("stage", "applied", "saved", "peer_responding",
-                          "synchronized", "observed_at", "error_type")} for name, value in ledger["devices"].items()}
+    result["devices"] = {name: {k: value.get(k) for k in ("stage", "compliance_passed", "observed_at", "error_type")} for name, value in ledger["devices"].items()}
+    result["completed_wave_count"] = len(ledger["completed_waves"])
+    result["total_waves"] = len(ledger["manifest"]["waves"])
     result["recent_events"] = ledger["events"][-8:]
+    result["execution_url"] = (os.environ["NAUTOBOT_URL"].rstrip("/") +
+                               "/extras/job-results/" + uuid(ledger["execution_job"]) + "/"
+                               if ledger.get("execution_job") else None)
     result["evidence"] = ledger["evidence"]
     if include_manifest:
         result["manifest"] = ledger["manifest"]

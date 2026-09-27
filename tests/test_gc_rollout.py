@@ -57,7 +57,7 @@ def modules(monkeypatch):
     monkeypatch.setitem(sys.modules, prefix, package)
     spec.loader.exec_module(package)
     return types.SimpleNamespace(jobs=package, **{name: sys.modules[prefix + "." + name]
-                               for name in ("state", "manifest", "backend", "verify")})
+                               for name in ("state", "manifest", "backend")})
 
 
 @pytest.fixture
@@ -72,7 +72,6 @@ def prepared(modules, monkeypatch):
             "source_repository": "repo", "source_commit": "a" * 40, "ci_evidence": "CI run 123",
             "rollback_reference": "reviewed rollback", "change_control_id": "change1",
             "canaries": ["CE1", "Leaf1"], "parallel_canaries": True, "wave_size": 1,
-            "ntp_server": "192.168.3.242", "timeout_seconds": 1200, "poll_seconds": 20,
             "feature_ids": ["ntp"]}
     plans = []
     for index, (name, driver) in enumerate((("CE1", "cisco_iosxe"), ("CE2", "cisco_iosxe"),
@@ -108,7 +107,7 @@ def test_sequential_canaries_are_separate(modules, prepared):
 
 
 @pytest.mark.parametrize("field,value", [("parallel_canaries", "true"), ("wave_size", 0), ("wave_size", True),
-    ("timeout_seconds", 1801), ("poll_seconds", 1), ("canaries", ["CE1"]), ("canaries", ["CE1", "CE2"]),
+    ("ntp_server", "192.0.2.1"), ("canaries", ["CE1"]), ("canaries", ["CE1", "CE2"]),
     ("plan_ids", ["same", "same"]), ("source_commit", "b"*40), ("ci_evidence", ""), ("feature_ids", [])])
 def test_bad_spec_rejected(modules, prepared, field, value):
     prepared[0][field] = value
@@ -116,7 +115,7 @@ def test_bad_spec_rejected(modules, prepared, field, value):
         modules.manifest.build("user", prepared[0])
 
 
-@pytest.mark.parametrize("field,value", [("deploy_result_id", "already-used"), ("config_set", "hostname wrong"),
+@pytest.mark.parametrize("field,value", [("deploy_result_id", "already-used"), ("config_set", ""),
                                         ("change_control_id", "different")])
 def test_ineligible_plan_rejected(modules, prepared, field, value):
     setattr(prepared[1][0], field, value)
@@ -135,18 +134,6 @@ def test_digest_binds_policy_and_commands(modules, prepared):
     assert modules.manifest.digest(changed) != original
 
 
-@pytest.mark.parametrize("status,row,expected", [
-    ("Clock is synchronized, stratum 5", "*~192.168.3.242 192.168.3.1 4 11 64 37 2.9 1.1 0.6", (True, True)),
-    ("synchronised to NTP server (192.168.3.242) at stratum 5", "*192.168.3.242 192.168.3.1 4 u 11 64 37 2.9 1.1 0.6", (True, True)),
-    ("unsynchronised", "*192.168.3.242 192.168.3.1 4 u 11 64 37 2.9 1.1 0.6", (True, False)),
-    ("Clock is synchronized", "+192.168.3.242 192.168.3.1 4 11 64 37 2.9 1.1 0.6", (True, False)),
-    ("Clock is synchronized", "*192.168.3.242 192.168.3.1 4 11 64 0 2.9 1.1 0.6", (False, False)),
-    ("Clock is synchronized", "*192.168.3.243 192.168.3.1 4 11 64 37 2.9 1.1 0.6", (False, False)),
-])
-def test_ntp_states(modules, status, row, expected):
-    assert modules.verify.peer_state(status, row, "192.168.3.242") == expected
-
-
 @pytest.fixture
 def execution(modules, monkeypatch):
     j = modules.jobs
@@ -163,7 +150,6 @@ def execution(modules, monkeypatch):
     monkeypatch.setattr(j, "validate_current", Mock())
     j.JobResult.objects.filter.return_value.exclude.return_value.iterator.return_value = iter([])
     calls = []
-    monkeypatch.setattr(j, "verify_wave", lambda *a, **k: calls.append(("baseline" if k.get("baseline") else "verify", a[3])))
     def deploy(*a):
         ledger["stage"] = "deploying"
         calls.append(("deploy", a[3]))
@@ -175,9 +161,8 @@ def execution(modules, monkeypatch):
 def test_execute_order(modules, execution):
     job, ledger, calls = execution
     assert job.run("run", ledger["approval_digest"], "operator-approved")["stage"] == "completed"
-    assert calls == [("baseline", ["CE1", "CE2"]), ("baseline", ["CE1"]), ("deploy", ["CE1"]),
-                     ("verify", ["CE1"]), ("evidence", ["CE1"]), ("baseline", ["CE2"]),
-                     ("deploy", ["CE2"]), ("verify", ["CE2"]), ("evidence", ["CE2"])]
+    assert calls == [("deploy", ["CE1"]), ("evidence", ["CE1"]),
+                     ("deploy", ["CE2"]), ("evidence", ["CE2"])]
 
 
 @pytest.mark.parametrize("mutation", ["digest", "expired", "duplicate", "canceled"])
@@ -201,10 +186,10 @@ def test_changed_plan_stops_before_claim(modules, execution, monkeypatch):
 
 def test_failed_canary_prevents_fleet(modules, execution, monkeypatch):
     job, ledger, calls = execution
-    def verify(*a, **k):
-        if not k.get("baseline"): raise TimeoutError("unsynchronized")
-    monkeypatch.setattr(modules.jobs, "verify_wave", verify)
-    with pytest.raises(TimeoutError): job.run("run", ledger["approval_digest"], "approved")
+    def evidence(*a):
+        raise RuntimeError("Compliance failed")
+    monkeypatch.setattr(modules.jobs, "refresh_evidence", evidence)
+    with pytest.raises(RuntimeError): job.run("run", ledger["approval_digest"], "approved")
     assert calls == [("deploy", ["CE1"])]
     assert ledger["stage"] == "failed"
 
@@ -224,7 +209,7 @@ def test_cancel_after_canary_prevents_fleet(modules, execution, monkeypatch):
     job, ledger, calls = execution
     def evidence(*a): ledger["cancel_requested"] = True
     monkeypatch.setattr(modules.jobs, "refresh_evidence", evidence)
-    with pytest.raises(modules.verify.RolloutCanceled): job.run("run", ledger["approval_digest"], "approved")
+    with pytest.raises(modules.state.RolloutCanceled): job.run("run", ledger["approval_digest"], "approved")
     assert [v for k, v in calls if k == "deploy"] == [["CE1"]]
     assert ledger["stage"] == "canceled"
 
@@ -395,35 +380,6 @@ def test_actual_iosxe_driver_name_is_supported(modules, prepared):
         p.device.platform.network_driver = "cisco_ios"
     result = modules.manifest.build("user", prepared[0])
     assert any(p["platform"] == "cisco_ios" for p in result["plans"])
-
-
-def test_verification_uses_nautobot_inventory_credentials_and_driver(modules, monkeypatch):
-    verify = modules.verify
-    monkeypatch.setattr(verify, "check_cancel", lambda _: None)
-    settings = {"credentials": "site.credentials.NautobotDeviceCredentials",
-                "inventory_params": {"use_fqdn": False}}
-    monkeypatch.setattr(verify, "NORNIR_SETTINGS", settings)
-    connection = Mock()
-    connection.check_enable_mode.return_value = True
-    connection.send_command.return_value = "ntp server 192.0.2.1"
-    options = types.SimpleNamespace(platform="driver-from-nautobot", username="inventory-user",
-                                    password="inventory-test-value", extras={"secret": "inventory-test-secret"})
-    host = Mock()
-    host.connection_options = {"netmiko": options}
-    host.get_connection.return_value = connection
-    nr = types.SimpleNamespace(inventory=types.SimpleNamespace(hosts={"CE1": host}), config=object())
-    initialize = Mock(return_value=nullcontext(nr))
-    monkeypatch.setattr(verify, "InitNornir", initialize)
-    manifest = {"plans": [{"device": "CE1", "device_id": "device1", "baseline_ntp": ["ntp server 192.0.2.1"]}], "spec": {}}
-    assert verify.verify_wave(Mock(), "run", manifest, ["CE1"], baseline=True)[0]["baseline_matches"]
-    inventory = initialize.call_args.kwargs["inventory"]
-    assert inventory["plugin"] == "nautobot-inventory"
-    assert inventory["options"]["credentials_class"] == settings["credentials"]
-    assert inventory["options"]["params"] == settings["inventory_params"]
-    assert options.platform == "driver-from-nautobot"
-    assert options.username == "inventory-user" and options.password == "inventory-test-value"
-    assert options.extras["secret"] == "inventory-test-secret"
-    host.get_connection.assert_called_once_with("netmiko", nr.config)
 
 
 def test_manifest_contains_no_credentials(modules, prepared):

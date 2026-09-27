@@ -14,7 +14,7 @@ def relative_backup_path(rendered):
         raise ValueError("Backup path must be a concrete relative file path")
     # Never let a bad mapping exempt executable source or Git metadata.
     if path.suffix not in {".cfg", ".conf"}:
-        raise ValueError("NTP profile backup artifacts must be .cfg or .conf files")
+        raise ValueError("Reviewed backup artifacts must be .cfg or .conf files")
     if path.parts[0] in {".git", "jobs", "templates", "config_contexts", "graphql_queries", "integrations"}:
         raise ValueError("Backup output mapping overlaps protected source")
     return str(path)
