@@ -77,7 +77,7 @@ RULES = [
     {"feature": "interfaces", "platform": "cisco_iosxe", "match_config": "interface ", "ordered": True},
     # Loopback0 deliberately also belongs to interfaces. This early feature
     # supplies the prerequisite in fresh-device plans; later re-entry is safe.
-    {"feature": "loopback_prerequisite", "platform": "cisco_iosxe", "match_config": "interface Loopback0", "ordered": True},
+    {"feature": "loopback_prerequisite", "platform": "cisco_iosxe", "match_config": "interface Loopback0", "ordered": False},
     {"feature": "isis", "platform": "cisco_iosxe", "match_config": "router isis", "ordered": True},
     {"feature": "mpls", "platform": "cisco_iosxe", "match_config": "mpls ldp", "ordered": False},
     {"feature": "bgp", "platform": "cisco_iosxe", "match_config": "router bgp", "ordered": True},
