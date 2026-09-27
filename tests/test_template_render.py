@@ -273,9 +273,13 @@ def test_non_dns_compliance_rendering_policy():
     """Compare policy variants without changing a live DNS attachment."""
     env = build_jinja_env()
     spine = load_context("arista_eos_spine.yaml")
-    spine["config_context"]["bgp_pmtud_peer_groups"] = ["EVPN-OVERLAY-PEERS"]
+    spine["config_context"]["bgp_pmtud_peer_groups_by_device"] = {"DCA-Spine02": ["EVPN-OVERLAY-PEERS"]}
+    spine["hostname"] = "DCA-Spine02"
     rendered = env.get_template("golden-config/templates/arista_eos.j2").render(**spine)
     assert "neighbor EVPN-OVERLAY-PEERS transport pmtud" in rendered
+    spine["hostname"] = "DCA-Spine01"
+    rendered = env.get_template("golden-config/templates/arista_eos.j2").render(**spine)
+    assert "transport pmtud" not in rendered
     leaf = load_context("arista_eos_leaf.yaml")
     leaf["interfaces"] = [{"name": "Vlan100", "description": "SERVERS", "enabled": True,
                            "ip_addresses": [{"address": "10.100.0.1/24", "ip_version": 4}],

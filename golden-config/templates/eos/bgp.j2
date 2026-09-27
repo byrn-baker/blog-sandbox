@@ -31,7 +31,7 @@ router bgp {{ bgp.autonomous_system.asn }}
 {% if pg_attrs.next_hop_unchanged | default(false) %}
    neighbor {{ pg.name }} next-hop-unchanged
 {% endif %}
-{% if pg.name in config_context.bgp_pmtud_peer_groups | default([]) %}
+{% if pg.name in (config_context.bgp_pmtud_peer_groups_by_device | default({})).get(hostname, []) %}
    neighbor {{ pg.name }} transport pmtud
 {% endif %}
 {% if pg_attrs.bfd | default(false) %}
