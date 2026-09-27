@@ -206,6 +206,11 @@ except Exception:
 def is_benign(text: str, platform: str) -> bool:
     """Check if a parse warning is known-benign for the given platform."""
     stripped = text.strip()
+    # Same exact-line EOS grammar gap documented in test_batfish_validate.py.
+    # https://avd.arista.com/4.6/examples/single-dc-l3ls/documentation/devices/dc1-leaf1a.html
+    # This permits parsing only; live device acceptance remains a canary gate.
+    if platform == "arista_eos" and stripped == "ntp local-interface vrf MGMT-VRF Management1":
+        return True
     known = KNOWN_BENIGN_IOS
     if platform == "arista_eos":
         known = known | KNOWN_BENIGN_EOS

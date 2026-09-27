@@ -239,7 +239,7 @@ def test_ntp_management_policy_and_optional_context(context_file, platform):
     lines = [line for line in rendered.splitlines() if line.startswith("ntp ")]
     if platform == "cisco_ios":
         assert lines == [
-            "ntp server vrf MGMT-VRF 192.168.3.242 source GigabitEthernet1"
+            "ntp server vrf MGMT-VRF 192.168.3.242"
         ]
     else:
         assert lines == [

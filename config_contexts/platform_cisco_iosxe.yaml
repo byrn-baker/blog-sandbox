@@ -65,8 +65,8 @@ router_data_mtu: 9216
 # Match the observed routing prerequisite failure without matching syslog codes.
 
 # NTP uses the management-plane endpoint; standard UDP/123 is implicit.
+# VRF-scoped IOS-XE NTP uses the outgoing interface; source is not accepted.
 ntp:
   servers:
     - 192.168.3.242
   vrf: MGMT-VRF
-  source_interface: GigabitEthernet1
