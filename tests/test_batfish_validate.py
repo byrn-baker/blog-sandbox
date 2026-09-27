@@ -124,6 +124,10 @@ def create_snapshot(
 def is_benign_warning(text: str, known_set: set[str]) -> bool:
     """Check if a parse warning matches a known-benign pattern."""
     stripped = text.strip()
+    # Exact EOS CLI observed in running/startup on five lab spines (2026-09-26).
+    # Batfish does not model this transport command; do not broaden the exception.
+    if known_set is KNOWN_BENIGN_ARISTA and stripped == "neighbor EVPN-OVERLAY-PEERS transport pmtud":
+        return True
     # EOS syntax documented by Arista AVD; Batfish currently cannot parse it.
     # https://avd.arista.com/4.6/examples/single-dc-l3ls/documentation/devices/dc1-leaf1a.html
     # Match the whole line only; actual device acceptance remains a canary gate.

@@ -206,6 +206,10 @@ except Exception:
 def is_benign(text: str, platform: str) -> bool:
     """Check if a parse warning is known-benign for the given platform."""
     stripped = text.strip()
+    # Exact EOS CLI observed in running/startup on five lab spines (2026-09-26).
+    # Batfish does not model this transport command; do not broaden the exception.
+    if platform == "arista_eos" and stripped == "neighbor EVPN-OVERLAY-PEERS transport pmtud":
+        return True
     # Same exact-line EOS grammar gap documented in test_batfish_validate.py.
     # https://avd.arista.com/4.6/examples/single-dc-l3ls/documentation/devices/dc1-leaf1a.html
     # This permits parsing only; live device acceptance remains a canary gate.
