@@ -76,7 +76,7 @@ interface {{ interface.name }}
 {% endfor %}
 {# VLAN 100 exports its learned host routes so each site can originate the  #}
 {# per-host /32 that steers internet return traffic back to the owning DC.  #}
-{% if interface.name == 'Vlan100' %}
+{% if interface.name == 'Vlan100' and esi.pos %}
    ip attached-host route export
 {% endif %}
 !

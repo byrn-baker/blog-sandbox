@@ -1,0 +1,13 @@
+---
+_metadata:
+  name: "Preserve existing spine BGP PMTUD policy"
+  weight: 1100
+  description: "Model verified existing PMTUD without changing other peers"
+  devices:
+    - name: "DCA-Spine02"
+    - name: "DCB-Spine01"
+    - name: "DCB-Spine02"
+    - name: "DCC-Spine01"
+    - name: "DCC-Spine02"
+bgp_pmtud_peer_groups:
+  - EVPN-OVERLAY-PEERS

@@ -23,7 +23,7 @@ Idempotent — safe to re-run as templates evolve.
 from nautobot.apps.jobs import register_jobs, Job
 from nautobot.dcim.models import Platform
 
-from nautobot_golden_config.models import ComplianceFeature, ComplianceRule
+from nautobot_golden_config.models import ComplianceFeature, ComplianceRule, FUNC_MAPPER
 
 
 # ─── Feature Definitions ───────────────────────────────────────────────────────
@@ -32,6 +32,7 @@ from nautobot_golden_config.models import ComplianceFeature, ComplianceRule
 # ComplianceFeature is ordered by slug. These prefixes also control the order
 # used when Generate Config Plans joins multiple selected features.
 FEATURES = [
+    {"name": "server_bonds_non_dns", "slug": "061-server-bonds-non-dns", "description": "Server bond ports 4-6; excludes DNS port 7"},
     {"name": "flow_export", "slug": "053-flow-export", "description": "Flow record, exporter and monitor prerequisites"},
     {"name": "hostname", "slug": "010-hostname", "description": "Device hostname configuration"},
     {"name": "platform", "slug": "020-platform", "description": "Platform-level settings (STP mode, service model, VLAN ranges)"},
@@ -67,6 +68,7 @@ FEATURES = [
 # a device role (e.g., isis on a CE) will show "compliant" (empty both sides).
 
 RULES = [
+    {"feature": "server_bonds_non_dns", "platform": "arista_eos", "match_config": "interface Port-Channel4\ninterface Port-Channel5\ninterface Port-Channel6\ninterface Ethernet4\ninterface Ethernet5\ninterface Ethernet6", "ordered": True},
     {"feature": "flow_export", "platform": "cisco_iosxe", "match_config": "flow record\nflow exporter\nflow monitor", "ordered": True},
     {"feature": "flow_export", "platform": "arista_eos", "match_config": "sflow", "ordered": False},
     # ═══ Cisco IOS-XE (platform name: cisco_iosxe) ═══
@@ -179,6 +181,9 @@ class GCComplianceSetup(Job):
                 errors.append(f"Platform not found: {rule_def['platform']}")
                 continue
 
+            normalized = rule_def["platform"] == "cisco_iosxe" and rule_def["feature"] in {"interfaces", "loopback_prerequisite", "vty"}
+            if normalized and not FUNC_MAPPER.get("custom"):
+                raise RuntimeError("Activate the Git-owned netclaw_compliance callback before enabling normalized rules")
             rule, created = ComplianceRule.objects.get_or_create(
                 feature=feature,
                 platform=platform,
@@ -186,6 +191,7 @@ class GCComplianceSetup(Job):
                     "match_config": rule_def["match_config"],
                     "config_ordered": rule_def["ordered"],
                     "config_type": "cli",
+                    "custom_compliance": normalized,
                 },
             )
 
@@ -196,6 +202,9 @@ class GCComplianceSetup(Job):
                 )
             else:
                 changed = False
+                if rule.custom_compliance != normalized:
+                    rule.custom_compliance = normalized
+                    changed = True
                 if rule.match_config != rule_def["match_config"]:
                     rule.match_config = rule_def["match_config"]
                     changed = True

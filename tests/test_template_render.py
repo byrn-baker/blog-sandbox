@@ -267,3 +267,21 @@ def test_ntp_inband_policy_does_not_emit_management_vrf(platform, context_file):
     expected = (["ntp server 10.100.0.241 source Loopback0"] if platform == "cisco_ios"
                 else ["ntp local-interface Loopback0", "ntp server 10.100.0.241"])
     assert lines == expected
+
+
+def test_non_dns_compliance_rendering_policy():
+    """Compare policy variants without changing a live DNS attachment."""
+    env = build_jinja_env()
+    spine = load_context("arista_eos_spine.yaml")
+    spine["config_context"]["bgp_pmtud_peer_groups"] = ["EVPN-OVERLAY-PEERS"]
+    rendered = env.get_template("golden-config/templates/arista_eos.j2").render(**spine)
+    assert "neighbor EVPN-OVERLAY-PEERS transport pmtud" in rendered
+    leaf = load_context("arista_eos_leaf.yaml")
+    leaf["interfaces"] = [{"name": "Vlan100", "description": "SERVERS", "enabled": True,
+                           "ip_addresses": [{"address": "10.100.0.1/24", "ip_version": 4}],
+                           "vrf": {"name": "SERVERS"}, "mtu": 9000}]
+    rendered = env.get_template("golden-config/templates/eos/interfaces.j2").render(**leaf)
+    assert "ip attached-host route export" not in rendered
+    ios = load_context("cisco_ios_route_reflector.yaml")
+    rendered = env.get_template("golden-config/templates/ios/snmp.j2").render(**ios)
+    assert " 10 permit " in rendered
