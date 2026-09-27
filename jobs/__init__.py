@@ -12,3 +12,7 @@ register_jobs(LabIngressReservations)
 
 from .telemetry_reservation import TelemetryReservation
 register_jobs(TelemetryReservation)
+
+from .gc_rollout import PrepareGCRollout, ExecuteGCRollout, CancelGCRollout, ReconcileGCRollout
+
+register_jobs(PrepareGCRollout, ExecuteGCRollout, CancelGCRollout, ReconcileGCRollout)
