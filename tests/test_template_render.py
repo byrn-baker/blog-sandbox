@@ -289,3 +289,10 @@ def test_non_dns_compliance_rendering_policy():
     ios = load_context("cisco_ios_route_reflector.yaml")
     rendered = env.get_template("golden-config/templates/ios/snmp.j2").render(**ios)
     assert " 10 permit " in rendered
+
+
+def test_named_acl_block_order_preserves_rule_order():
+    env = build_jinja_env()
+    ctx = load_context("cisco_ios_border_router.yaml")
+    cfg = env.get_template("golden-config/templates/cisco_ios.j2").render(**ctx)
+    assert cfg.index("ip access-list standard ACL-SNMP-RO") < cfg.index("ip access-list standard NAT-INET")

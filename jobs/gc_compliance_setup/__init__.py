@@ -68,19 +68,19 @@ FEATURES = [
 # a device role (e.g., isis on a CE) will show "compliant" (empty both sides).
 
 RULES = [
-    {"feature": "server_bonds_non_dns", "platform": "arista_eos", "match_config": "interface Port-Channel4\ninterface Port-Channel5\ninterface Port-Channel6\ninterface Ethernet4\ninterface Ethernet5\ninterface Ethernet6", "ordered": True},
+    {"feature": "server_bonds_non_dns", "platform": "arista_eos", "match_config": "interface Port-Channel4\ninterface Port-Channel5\ninterface Port-Channel6\ninterface Ethernet4\ninterface Ethernet5\ninterface Ethernet6", "ordered": False},
     {"feature": "flow_export", "platform": "cisco_iosxe", "match_config": "flow record\nflow exporter\nflow monitor", "ordered": True},
     {"feature": "flow_export", "platform": "arista_eos", "match_config": "sflow", "ordered": False},
     # ═══ Cisco IOS-XE (platform name: cisco_iosxe) ═══
     {"feature": "hostname", "platform": "cisco_iosxe", "match_config": "hostname", "ordered": False},
     {"feature": "vrfs", "platform": "cisco_iosxe", "match_config": "vrf definition", "ordered": False},
-    {"feature": "interfaces", "platform": "cisco_iosxe", "match_config": "interface ", "ordered": True},
+    {"feature": "interfaces", "platform": "cisco_iosxe", "match_config": "interface ", "ordered": False},
     # Loopback0 deliberately also belongs to interfaces. This early feature
     # supplies the prerequisite in fresh-device plans; later re-entry is safe.
     {"feature": "loopback_prerequisite", "platform": "cisco_iosxe", "match_config": "interface Loopback0", "ordered": False},
-    {"feature": "isis", "platform": "cisco_iosxe", "match_config": "router isis", "ordered": True},
+    {"feature": "isis", "platform": "cisco_iosxe", "match_config": "router isis", "ordered": False},
     {"feature": "mpls", "platform": "cisco_iosxe", "match_config": "mpls ldp", "ordered": False},
-    {"feature": "bgp", "platform": "cisco_iosxe", "match_config": "router bgp", "ordered": True},
+    {"feature": "bgp", "platform": "cisco_iosxe", "match_config": "router bgp", "ordered": False},
     {"feature": "aaa", "platform": "cisco_iosxe", "match_config": "aaa \ntacacs-server\ntacacs server", "ordered": True},
     {"feature": "vty", "platform": "cisco_iosxe", "match_config": "line vty", "ordered": True},
     {"feature": "acl", "platform": "cisco_iosxe", "match_config": "ip access-list\naccess-list", "ordered": True},
@@ -96,8 +96,8 @@ RULES = [
     # ═══ Arista EOS (platform name: arista_eos) ═══
     {"feature": "hostname", "platform": "arista_eos", "match_config": "hostname", "ordered": False},
     {"feature": "vrfs", "platform": "arista_eos", "match_config": "vrf instance", "ordered": False},
-    {"feature": "interfaces", "platform": "arista_eos", "match_config": "interface ", "ordered": True},
-    {"feature": "bgp", "platform": "arista_eos", "match_config": "router bgp", "ordered": True},
+    {"feature": "interfaces", "platform": "arista_eos", "match_config": "interface ", "ordered": False},
+    {"feature": "bgp", "platform": "arista_eos", "match_config": "router bgp", "ordered": False},
     {"feature": "routing_global", "platform": "arista_eos", "match_config": "ip routing\nipv6 unicast-routing", "ordered": False},
     {"feature": "platform", "platform": "arista_eos", "match_config": "service routing protocols model\nspanning-tree\nvlan internal order\nevent-handler lab-gro-off-", "ordered": False},
     {"feature": "vlans", "platform": "arista_eos", "match_config": "vlan ", "ordered": False},
