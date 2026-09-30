@@ -1,0 +1,12 @@
+query FlowEnrichment {
+  devices {
+    id
+    name
+    role { name }
+    location { name }
+    interfaces {
+      name
+      ip_addresses { address parent { namespace { name } } }
+    }
+  }
+}
