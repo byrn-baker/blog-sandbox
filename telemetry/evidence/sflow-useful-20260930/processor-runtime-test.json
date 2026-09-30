@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "records": 4,
+  "cases": [
+    "exact",
+    "shared",
+    "ambiguous",
+    "unknown"
+  ],
+  "original_bytes_preserved": true,
+  "image": "0.154.0"
+}

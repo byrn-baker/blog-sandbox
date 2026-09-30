@@ -1,0 +1,4417 @@
+{
+  "sha256": "2fba7253492184495025dbd71c171c557b42e746a5317f7633d66936edb54992",
+  "generated_at": "2026-09-30T02:55:13.330684+00:00",
+  "device_count": 38,
+  "addresses": {
+    "10.0.0.0": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.1": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.10": {
+      "status": "exact",
+      "label": "SP4 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.11": {
+      "status": "exact",
+      "label": "SPE1 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE1",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "10.0.0.12": {
+      "status": "exact",
+      "label": "SP4 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.13": {
+      "status": "exact",
+      "label": "SPE2 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE2",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "10.0.0.14": {
+      "status": "exact",
+      "label": "SP3 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.15": {
+      "status": "exact",
+      "label": "SPE2 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE2",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "10.0.0.16": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.17": {
+      "status": "exact",
+      "label": "SPE3 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE3",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "10.0.0.18": {
+      "status": "exact",
+      "label": "SP3 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.19": {
+      "status": "exact",
+      "label": "SPE3 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE3",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "10.0.0.2": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.20": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.21": {
+      "status": "exact",
+      "label": "RR1 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR1",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "10.0.0.22": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.23": {
+      "status": "exact",
+      "label": "RR2 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR2",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "10.0.0.24": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet6 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet6",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.25": {
+      "status": "exact",
+      "label": "BORDER1 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "BORDER1",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "Border-Router"
+        }
+      ]
+    },
+    "10.0.0.26": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet6 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet6",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.27": {
+      "status": "exact",
+      "label": "BORDER1 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "BORDER1",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "Border-Router"
+        }
+      ]
+    },
+    "10.0.0.3": {
+      "status": "exact",
+      "label": "SP4 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.4": {
+      "status": "exact",
+      "label": "SP3 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.5": {
+      "status": "exact",
+      "label": "SP4 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.6": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.7": {
+      "status": "exact",
+      "label": "SP3 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.8": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.0.0.9": {
+      "status": "exact",
+      "label": "SPE1 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE1",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "10.1.0.1": {
+      "status": "exact",
+      "label": "RR1 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR1",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "10.1.0.10": {
+      "status": "exact",
+      "label": "BORDER1 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "BORDER1",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "Border-Router"
+        }
+      ]
+    },
+    "10.1.0.2": {
+      "status": "exact",
+      "label": "RR2 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR2",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "10.1.0.3": {
+      "status": "exact",
+      "label": "SP1 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.1.0.4": {
+      "status": "exact",
+      "label": "SP2 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.1.0.5": {
+      "status": "exact",
+      "label": "SP3 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.1.0.6": {
+      "status": "exact",
+      "label": "SP4 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "10.1.0.7": {
+      "status": "exact",
+      "label": "SPE1 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE1",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "10.1.0.8": {
+      "status": "exact",
+      "label": "SPE2 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE2",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "10.1.0.9": {
+      "status": "exact",
+      "label": "SPE3 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE3",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "10.1.1.0": {
+      "status": "exact",
+      "label": "CE1 / GigabitEthernet3 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "GigabitEthernet3",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.1.1.1": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Ethernet10 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Ethernet10",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.1.10": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.1.11": {
+      "status": "exact",
+      "label": "DCA-Leaf01 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.1.12": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.1.13": {
+      "status": "exact",
+      "label": "DCA-Leaf02 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.1.14": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Ethernet3 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Ethernet3",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.1.15": {
+      "status": "exact",
+      "label": "DCA-Leaf03 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.1.16": {
+      "status": "exact",
+      "label": "DCA-Leaf03 / Ethernet10 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Ethernet10",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.1.17": {
+      "status": "exact",
+      "label": "CE1 / GigabitEthernet5 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "GigabitEthernet5",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.1.1.2": {
+      "status": "exact",
+      "label": "CE1 / GigabitEthernet4 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "GigabitEthernet4",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.1.1.3": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Ethernet10 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Ethernet10",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.1.4": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.1.5": {
+      "status": "exact",
+      "label": "DCA-Leaf01 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.1.6": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.1.7": {
+      "status": "exact",
+      "label": "DCA-Leaf02 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.1.8": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Ethernet3 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Ethernet3",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.1.9": {
+      "status": "exact",
+      "label": "DCA-Leaf03 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.2.0": {
+      "status": "exact",
+      "label": "CE2 / GigabitEthernet3 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "GigabitEthernet3",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.1.2.1": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Ethernet10 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Ethernet10",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.2.10": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.2.11": {
+      "status": "exact",
+      "label": "DCB-Leaf01 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.2.12": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.2.13": {
+      "status": "exact",
+      "label": "DCB-Leaf02 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.2.14": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Ethernet3 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Ethernet3",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.2.15": {
+      "status": "exact",
+      "label": "DCB-Leaf03 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.2.16": {
+      "status": "exact",
+      "label": "DCB-Leaf03 / Ethernet10 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Ethernet10",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.2.17": {
+      "status": "exact",
+      "label": "CE2 / GigabitEthernet5 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "GigabitEthernet5",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.1.2.2": {
+      "status": "exact",
+      "label": "CE2 / GigabitEthernet4 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "GigabitEthernet4",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.1.2.3": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Ethernet10 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Ethernet10",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.2.4": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.2.5": {
+      "status": "exact",
+      "label": "DCB-Leaf01 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.2.6": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.2.7": {
+      "status": "exact",
+      "label": "DCB-Leaf02 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.2.8": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Ethernet3 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Ethernet3",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.2.9": {
+      "status": "exact",
+      "label": "DCB-Leaf03 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.3.0": {
+      "status": "exact",
+      "label": "CE3 / GigabitEthernet3 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "GigabitEthernet3",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.1.3.1": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Ethernet10 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Ethernet10",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.3.10": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.3.11": {
+      "status": "exact",
+      "label": "DCC-Leaf01 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.3.12": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.3.13": {
+      "status": "exact",
+      "label": "DCC-Leaf02 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.3.14": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Ethernet3 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Ethernet3",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.3.15": {
+      "status": "exact",
+      "label": "DCC-Leaf03 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.3.16": {
+      "status": "exact",
+      "label": "DCC-Leaf03 / Ethernet10 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Ethernet10",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.3.17": {
+      "status": "exact",
+      "label": "CE3 / GigabitEthernet5 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "GigabitEthernet5",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.1.3.2": {
+      "status": "exact",
+      "label": "CE3 / GigabitEthernet4 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "GigabitEthernet4",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.1.3.3": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Ethernet10 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Ethernet10",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.3.4": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.3.5": {
+      "status": "exact",
+      "label": "DCC-Leaf01 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.3.6": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.3.7": {
+      "status": "exact",
+      "label": "DCC-Leaf02 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.1.3.8": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Ethernet3 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Ethernet3",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.1.3.9": {
+      "status": "exact",
+      "label": "DCC-Leaf03 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.100.0.1": {
+      "status": "shared",
+      "label": "DCA-Leaf01 / Vlan100 (DC-A); DCA-Leaf02 / Vlan100 (DC-A); DCA-Leaf03 / Vlan100 (DC-A); DCB-Leaf01 / Vlan100 (DC-B); DCB-Leaf02 / Vlan100 (DC-B); DCB-Leaf03 / Vlan100 (DC-B); DCC-Leaf01 / Vlan100 (DC-C); DCC-Leaf02 / Vlan100 (DC-C); DCC-Leaf03 / Vlan100 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Vlan100",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Vlan100",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Vlan100",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Vlan100",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Vlan100",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Vlan100",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Vlan100",
+          "site": "DC-C",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Vlan100",
+          "site": "DC-C",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Vlan100",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.100.0.10": {
+      "status": "exact",
+      "label": "DCA-k3s-m1 / bond0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-k3s-m1",
+          "interface": "bond0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.100.0.11": {
+      "status": "exact",
+      "label": "DCA-k3s-m2 / bond0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-k3s-m2",
+          "interface": "bond0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.100.0.12": {
+      "status": "exact",
+      "label": "DCA-k3s-m3 / bond0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-k3s-m3",
+          "interface": "bond0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.100.0.20": {
+      "status": "exact",
+      "label": "DCB-k3s-w1 / bond0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-k3s-w1",
+          "interface": "bond0",
+          "site": "DC-B",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.100.0.21": {
+      "status": "exact",
+      "label": "DCB-k3s-w2 / bond0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-k3s-w2",
+          "interface": "bond0",
+          "site": "DC-B",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.100.0.22": {
+      "status": "exact",
+      "label": "DCB-k3s-w3 / bond0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-k3s-w3",
+          "interface": "bond0",
+          "site": "DC-B",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.100.0.30": {
+      "status": "exact",
+      "label": "DCC-k3s-w4 / bond0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-k3s-w4",
+          "interface": "bond0",
+          "site": "DC-C",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.100.0.31": {
+      "status": "exact",
+      "label": "DCC-k3s-w5 / bond0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-k3s-w5",
+          "interface": "bond0",
+          "site": "DC-C",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.100.0.32": {
+      "status": "exact",
+      "label": "DCC-k3s-w6 / bond0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-k3s-w6",
+          "interface": "bond0",
+          "site": "DC-C",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.100.0.53": {
+      "status": "exact",
+      "label": "DCA-DNS / bond0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-DNS",
+          "interface": "bond0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "10.2.1.1": {
+      "status": "exact",
+      "label": "CE1 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.2.1.2": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.2.1.3": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.2.1.4": {
+      "status": "exact",
+      "label": "DCA-Leaf01 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.2.1.5": {
+      "status": "exact",
+      "label": "DCA-Leaf02 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.2.1.6": {
+      "status": "exact",
+      "label": "DCA-Leaf03 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.2.2.1": {
+      "status": "exact",
+      "label": "CE2 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.2.2.2": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.2.2.3": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.2.2.4": {
+      "status": "exact",
+      "label": "DCB-Leaf01 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.2.2.5": {
+      "status": "exact",
+      "label": "DCB-Leaf02 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.2.2.6": {
+      "status": "exact",
+      "label": "DCB-Leaf03 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.2.3.1": {
+      "status": "exact",
+      "label": "CE3 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "10.2.3.2": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.2.3.3": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "10.2.3.4": {
+      "status": "exact",
+      "label": "DCC-Leaf01 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.2.3.5": {
+      "status": "exact",
+      "label": "DCC-Leaf02 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.2.3.6": {
+      "status": "exact",
+      "label": "DCC-Leaf03 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.3.1.4": {
+      "status": "exact",
+      "label": "DCA-Leaf01 / Loopback1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Loopback1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.3.1.5": {
+      "status": "exact",
+      "label": "DCA-Leaf02 / Loopback1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Loopback1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.3.1.6": {
+      "status": "exact",
+      "label": "DCA-Leaf03 / Loopback1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Loopback1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.3.2.4": {
+      "status": "exact",
+      "label": "DCB-Leaf01 / Loopback1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Loopback1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.3.2.5": {
+      "status": "exact",
+      "label": "DCB-Leaf02 / Loopback1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Loopback1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.3.2.6": {
+      "status": "exact",
+      "label": "DCB-Leaf03 / Loopback1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Loopback1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.3.3.4": {
+      "status": "exact",
+      "label": "DCC-Leaf01 / Loopback1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Loopback1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.3.3.5": {
+      "status": "exact",
+      "label": "DCC-Leaf02 / Loopback1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Loopback1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "10.3.3.6": {
+      "status": "exact",
+      "label": "DCC-Leaf03 / Loopback1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Loopback1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "172.16.1.0": {
+      "status": "exact",
+      "label": "SPE1 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE1",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "172.16.1.1": {
+      "status": "exact",
+      "label": "CE1 / GigabitEthernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "GigabitEthernet2",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "172.16.2.0": {
+      "status": "exact",
+      "label": "SPE2 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE2",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "172.16.2.1": {
+      "status": "exact",
+      "label": "CE2 / GigabitEthernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "GigabitEthernet2",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "172.16.3.0": {
+      "status": "exact",
+      "label": "SPE3 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE3",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "172.16.3.1": {
+      "status": "exact",
+      "label": "CE3 / GigabitEthernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "GigabitEthernet2",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "192.168.101.1": {
+      "status": "shared",
+      "label": "DCA-Leaf01 / Vlan101 (DC-A); DCA-Leaf02 / Vlan101 (DC-A); DCA-Leaf03 / Vlan101 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Vlan101",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Vlan101",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Vlan101",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.201.1": {
+      "status": "shared",
+      "label": "DCB-Leaf01 / Vlan201 (DC-B); DCB-Leaf02 / Vlan201 (DC-B); DCB-Leaf03 / Vlan201 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Vlan201",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Vlan201",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Vlan201",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.30": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Management1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Management1",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "192.168.3.31": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Management1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Management1",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "192.168.3.32": {
+      "status": "exact",
+      "label": "DCA-Leaf01 / Management1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Management1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.33": {
+      "status": "exact",
+      "label": "DCA-Leaf02 / Management1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Management1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.34": {
+      "status": "exact",
+      "label": "DCA-Leaf03 / Management1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Management1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.35": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Management1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Management1",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "192.168.3.36": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Management1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Management1",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "192.168.3.37": {
+      "status": "exact",
+      "label": "DCB-Leaf01 / Management1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Management1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.38": {
+      "status": "exact",
+      "label": "DCB-Leaf02 / Management1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Management1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.39": {
+      "status": "exact",
+      "label": "DCB-Leaf03 / Management1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Management1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.40": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Management1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Management1",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "192.168.3.41": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Management1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Management1",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "192.168.3.42": {
+      "status": "exact",
+      "label": "DCC-Leaf01 / Management1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Management1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.43": {
+      "status": "exact",
+      "label": "DCC-Leaf02 / Management1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Management1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.44": {
+      "status": "exact",
+      "label": "DCC-Leaf03 / Management1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Management1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "192.168.3.50": {
+      "status": "exact",
+      "label": "BORDER1 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "BORDER1",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "Border-Router"
+        }
+      ]
+    },
+    "192.168.3.51": {
+      "status": "exact",
+      "label": "RR1 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR1",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "192.168.3.52": {
+      "status": "exact",
+      "label": "RR2 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR2",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "192.168.3.53": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "192.168.3.54": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "192.168.3.55": {
+      "status": "exact",
+      "label": "SP3 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "192.168.3.56": {
+      "status": "exact",
+      "label": "SP4 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "192.168.3.57": {
+      "status": "exact",
+      "label": "SPE1 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE1",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "192.168.3.58": {
+      "status": "exact",
+      "label": "SPE2 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE2",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "192.168.3.59": {
+      "status": "exact",
+      "label": "SPE3 / GigabitEthernet1 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE3",
+          "interface": "GigabitEthernet1",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "192.168.3.60": {
+      "status": "exact",
+      "label": "CE1 / GigabitEthernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "GigabitEthernet1",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "192.168.3.61": {
+      "status": "exact",
+      "label": "CE2 / GigabitEthernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "GigabitEthernet1",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "192.168.3.62": {
+      "status": "exact",
+      "label": "CE3 / GigabitEthernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "GigabitEthernet1",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "192.168.3.63": {
+      "status": "exact",
+      "label": "DCA-k3s-m1 / eth0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-k3s-m1",
+          "interface": "eth0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.3.64": {
+      "status": "exact",
+      "label": "DCA-k3s-m2 / eth0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-k3s-m2",
+          "interface": "eth0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.3.65": {
+      "status": "exact",
+      "label": "DCA-k3s-m3 / eth0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-k3s-m3",
+          "interface": "eth0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.3.66": {
+      "status": "exact",
+      "label": "DCB-k3s-w1 / eth0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-k3s-w1",
+          "interface": "eth0",
+          "site": "DC-B",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.3.67": {
+      "status": "exact",
+      "label": "DCB-k3s-w2 / eth0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-k3s-w2",
+          "interface": "eth0",
+          "site": "DC-B",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.3.68": {
+      "status": "exact",
+      "label": "DCB-k3s-w3 / eth0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-k3s-w3",
+          "interface": "eth0",
+          "site": "DC-B",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.3.69": {
+      "status": "exact",
+      "label": "DCC-k3s-w4 / eth0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-k3s-w4",
+          "interface": "eth0",
+          "site": "DC-C",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.3.70": {
+      "status": "exact",
+      "label": "DCC-k3s-w5 / eth0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-k3s-w5",
+          "interface": "eth0",
+          "site": "DC-C",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.3.71": {
+      "status": "exact",
+      "label": "DCA-DNS / eth0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-DNS",
+          "interface": "eth0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.3.72": {
+      "status": "exact",
+      "label": "DCC-k3s-w6 / eth0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-k3s-w6",
+          "interface": "eth0",
+          "site": "DC-C",
+          "role": "Server"
+        }
+      ]
+    },
+    "192.168.31.1": {
+      "status": "shared",
+      "label": "DCC-Leaf01 / Vlan301 (DC-C); DCC-Leaf02 / Vlan301 (DC-C); DCC-Leaf03 / Vlan301 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Vlan301",
+          "site": "DC-C",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Vlan301",
+          "site": "DC-C",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Vlan301",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:0:1::1": {
+      "status": "exact",
+      "label": "RR1 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR1",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "fd10:0:1::10": {
+      "status": "exact",
+      "label": "BORDER1 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "BORDER1",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "Border-Router"
+        }
+      ]
+    },
+    "fd10:0:1::2": {
+      "status": "exact",
+      "label": "RR2 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR2",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "fd10:0:1::3": {
+      "status": "exact",
+      "label": "SP1 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10:0:1::4": {
+      "status": "exact",
+      "label": "SP2 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10:0:1::5": {
+      "status": "exact",
+      "label": "SP3 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10:0:1::6": {
+      "status": "exact",
+      "label": "SP4 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10:0:1::7": {
+      "status": "exact",
+      "label": "SPE1 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE1",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10:0:1::8": {
+      "status": "exact",
+      "label": "SPE2 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE2",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10:0:1::9": {
+      "status": "exact",
+      "label": "SPE3 / Loopback0 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE3",
+          "interface": "Loopback0",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10:1:1::": {
+      "status": "exact",
+      "label": "CE1 / GigabitEthernet3 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "GigabitEthernet3",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:1:1::1": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Ethernet10 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Ethernet10",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:1::10": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:1::11": {
+      "status": "exact",
+      "label": "DCA-Leaf01 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:1::12": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:1::13": {
+      "status": "exact",
+      "label": "DCA-Leaf02 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:1::14": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Ethernet3 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Ethernet3",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:1::15": {
+      "status": "exact",
+      "label": "DCA-Leaf03 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:1::2": {
+      "status": "exact",
+      "label": "CE1 / GigabitEthernet4 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "GigabitEthernet4",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:1:1::3": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Ethernet10 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Ethernet10",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:1::4": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:1::5": {
+      "status": "exact",
+      "label": "DCA-Leaf01 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:1::6": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Ethernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Ethernet2",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:1::7": {
+      "status": "exact",
+      "label": "DCA-Leaf02 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:1::8": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Ethernet3 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Ethernet3",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:1::9": {
+      "status": "exact",
+      "label": "DCA-Leaf03 / Ethernet1 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Ethernet1",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:2::": {
+      "status": "exact",
+      "label": "CE2 / GigabitEthernet3 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "GigabitEthernet3",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:1:2::1": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Ethernet10 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Ethernet10",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:2::10": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:2::11": {
+      "status": "exact",
+      "label": "DCB-Leaf01 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:2::12": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:2::13": {
+      "status": "exact",
+      "label": "DCB-Leaf02 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:2::14": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Ethernet3 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Ethernet3",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:2::15": {
+      "status": "exact",
+      "label": "DCB-Leaf03 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:2::2": {
+      "status": "exact",
+      "label": "CE2 / GigabitEthernet4 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "GigabitEthernet4",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:1:2::3": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Ethernet10 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Ethernet10",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:2::4": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:2::5": {
+      "status": "exact",
+      "label": "DCB-Leaf01 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:2::6": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Ethernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Ethernet2",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:2::7": {
+      "status": "exact",
+      "label": "DCB-Leaf02 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:2::8": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Ethernet3 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Ethernet3",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:2::9": {
+      "status": "exact",
+      "label": "DCB-Leaf03 / Ethernet1 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Ethernet1",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:3::": {
+      "status": "exact",
+      "label": "CE3 / GigabitEthernet3 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "GigabitEthernet3",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:1:3::1": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Ethernet10 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Ethernet10",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:3::10": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:3::11": {
+      "status": "exact",
+      "label": "DCC-Leaf01 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:3::12": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:3::13": {
+      "status": "exact",
+      "label": "DCC-Leaf02 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:3::14": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Ethernet3 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Ethernet3",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:3::15": {
+      "status": "exact",
+      "label": "DCC-Leaf03 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:3::2": {
+      "status": "exact",
+      "label": "CE3 / GigabitEthernet4 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "GigabitEthernet4",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:1:3::3": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Ethernet10 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Ethernet10",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:3::4": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:3::5": {
+      "status": "exact",
+      "label": "DCC-Leaf01 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:3::6": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Ethernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Ethernet2",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:3::7": {
+      "status": "exact",
+      "label": "DCC-Leaf02 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:1:3::8": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Ethernet3 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Ethernet3",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:1:3::9": {
+      "status": "exact",
+      "label": "DCC-Leaf03 / Ethernet1 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Ethernet1",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:2:1::1": {
+      "status": "exact",
+      "label": "CE1 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:2:1::2": {
+      "status": "exact",
+      "label": "DCA-Spine01 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine01",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:2:1::3": {
+      "status": "exact",
+      "label": "DCA-Spine02 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Spine02",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:2:1::4": {
+      "status": "exact",
+      "label": "DCA-Leaf01 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:2:1::5": {
+      "status": "exact",
+      "label": "DCA-Leaf02 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:2:1::6": {
+      "status": "exact",
+      "label": "DCA-Leaf03 / Loopback0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Loopback0",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:2:2::1": {
+      "status": "exact",
+      "label": "CE2 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:2:2::2": {
+      "status": "exact",
+      "label": "DCB-Spine01 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine01",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:2:2::3": {
+      "status": "exact",
+      "label": "DCB-Spine02 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Spine02",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:2:2::4": {
+      "status": "exact",
+      "label": "DCB-Leaf01 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:2:2::5": {
+      "status": "exact",
+      "label": "DCB-Leaf02 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:2:2::6": {
+      "status": "exact",
+      "label": "DCB-Leaf03 / Loopback0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Loopback0",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:2:3::1": {
+      "status": "exact",
+      "label": "CE3 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:2:3::2": {
+      "status": "exact",
+      "label": "DCC-Spine01 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine01",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:2:3::3": {
+      "status": "exact",
+      "label": "DCC-Spine02 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Spine02",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Spine"
+        }
+      ]
+    },
+    "fd10:2:3::4": {
+      "status": "exact",
+      "label": "DCC-Leaf01 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:2:3::5": {
+      "status": "exact",
+      "label": "DCC-Leaf02 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:2:3::6": {
+      "status": "exact",
+      "label": "DCC-Leaf03 / Loopback0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Loopback0",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10::": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::1": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::10": {
+      "status": "exact",
+      "label": "SP4 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::11": {
+      "status": "exact",
+      "label": "SPE1 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE1",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10::12": {
+      "status": "exact",
+      "label": "SP4 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::13": {
+      "status": "exact",
+      "label": "SPE2 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE2",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10::14": {
+      "status": "exact",
+      "label": "SP3 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::15": {
+      "status": "exact",
+      "label": "SPE2 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE2",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10::16": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::17": {
+      "status": "exact",
+      "label": "SPE3 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE3",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10::18": {
+      "status": "exact",
+      "label": "SP3 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::19": {
+      "status": "exact",
+      "label": "SPE3 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE3",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10::2": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::20": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::21": {
+      "status": "exact",
+      "label": "RR1 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR1",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "fd10::22": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::23": {
+      "status": "exact",
+      "label": "RR2 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "RR2",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "Route-Reflector"
+        }
+      ]
+    },
+    "fd10::24": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet6 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet6",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::25": {
+      "status": "exact",
+      "label": "BORDER1 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "BORDER1",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "Border-Router"
+        }
+      ]
+    },
+    "fd10::26": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet6 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet6",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::27": {
+      "status": "exact",
+      "label": "BORDER1 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "BORDER1",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "Border-Router"
+        }
+      ]
+    },
+    "fd10::3": {
+      "status": "exact",
+      "label": "SP4 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::4": {
+      "status": "exact",
+      "label": "SP3 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::5": {
+      "status": "exact",
+      "label": "SP4 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP4",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::6": {
+      "status": "exact",
+      "label": "SP1 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP1",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::7": {
+      "status": "exact",
+      "label": "SP3 / GigabitEthernet3 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP3",
+          "interface": "GigabitEthernet3",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::8": {
+      "status": "exact",
+      "label": "SP2 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SP2",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "P-Router"
+        }
+      ]
+    },
+    "fd10::9": {
+      "status": "exact",
+      "label": "SPE1 / GigabitEthernet2 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE1",
+          "interface": "GigabitEthernet2",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10:a:100::1": {
+      "status": "shared",
+      "label": "DCA-Leaf01 / Vlan100 (DC-A); DCA-Leaf02 / Vlan100 (DC-A); DCA-Leaf03 / Vlan100 (DC-A); DCB-Leaf01 / Vlan100 (DC-B); DCB-Leaf02 / Vlan100 (DC-B); DCB-Leaf03 / Vlan100 (DC-B); DCC-Leaf01 / Vlan100 (DC-C); DCC-Leaf02 / Vlan100 (DC-C); DCC-Leaf03 / Vlan100 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Vlan100",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Vlan100",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Vlan100",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Vlan100",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Vlan100",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Vlan100",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Vlan100",
+          "site": "DC-C",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Vlan100",
+          "site": "DC-C",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Vlan100",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:a:100::10": {
+      "status": "exact",
+      "label": "DCA-k3s-m1 / bond0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-k3s-m1",
+          "interface": "bond0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:100::11": {
+      "status": "exact",
+      "label": "DCA-k3s-m2 / bond0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-k3s-m2",
+          "interface": "bond0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:100::12": {
+      "status": "exact",
+      "label": "DCA-k3s-m3 / bond0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-k3s-m3",
+          "interface": "bond0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:100::20": {
+      "status": "exact",
+      "label": "DCB-k3s-w1 / bond0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-k3s-w1",
+          "interface": "bond0",
+          "site": "DC-B",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:100::21": {
+      "status": "exact",
+      "label": "DCB-k3s-w2 / bond0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-k3s-w2",
+          "interface": "bond0",
+          "site": "DC-B",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:100::22": {
+      "status": "exact",
+      "label": "DCB-k3s-w3 / bond0 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-k3s-w3",
+          "interface": "bond0",
+          "site": "DC-B",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:100::30": {
+      "status": "exact",
+      "label": "DCC-k3s-w4 / bond0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-k3s-w4",
+          "interface": "bond0",
+          "site": "DC-C",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:100::31": {
+      "status": "exact",
+      "label": "DCC-k3s-w5 / bond0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-k3s-w5",
+          "interface": "bond0",
+          "site": "DC-C",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:100::32": {
+      "status": "exact",
+      "label": "DCC-k3s-w6 / bond0 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-k3s-w6",
+          "interface": "bond0",
+          "site": "DC-C",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:100::53": {
+      "status": "exact",
+      "label": "DCA-DNS / bond0 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-DNS",
+          "interface": "bond0",
+          "site": "DC-A",
+          "role": "Server"
+        }
+      ]
+    },
+    "fd10:a:101::1": {
+      "status": "shared",
+      "label": "DCA-Leaf01 / Vlan101 (DC-A); DCA-Leaf02 / Vlan101 (DC-A); DCA-Leaf03 / Vlan101 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf01",
+          "interface": "Vlan101",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf02",
+          "interface": "Vlan101",
+          "site": "DC-A",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCA-Leaf03",
+          "interface": "Vlan101",
+          "site": "DC-A",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:a:201::1": {
+      "status": "shared",
+      "label": "DCB-Leaf01 / Vlan201 (DC-B); DCB-Leaf02 / Vlan201 (DC-B); DCB-Leaf03 / Vlan201 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf01",
+          "interface": "Vlan201",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf02",
+          "interface": "Vlan201",
+          "site": "DC-B",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCB-Leaf03",
+          "interface": "Vlan201",
+          "site": "DC-B",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:a:301::1": {
+      "status": "shared",
+      "label": "DCC-Leaf01 / Vlan301 (DC-C); DCC-Leaf02 / Vlan301 (DC-C); DCC-Leaf03 / Vlan301 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf01",
+          "interface": "Vlan301",
+          "site": "DC-C",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf02",
+          "interface": "Vlan301",
+          "site": "DC-C",
+          "role": "Leaf"
+        },
+        {
+          "namespace": "Global",
+          "device": "DCC-Leaf03",
+          "interface": "Vlan301",
+          "site": "DC-C",
+          "role": "Leaf"
+        }
+      ]
+    },
+    "fd10:c:1::": {
+      "status": "exact",
+      "label": "SPE1 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE1",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10:c:1::1": {
+      "status": "exact",
+      "label": "CE1 / GigabitEthernet2 (DC-A)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE1",
+          "interface": "GigabitEthernet2",
+          "site": "DC-A",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:c:2::": {
+      "status": "exact",
+      "label": "SPE2 / GigabitEthernet5 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE2",
+          "interface": "GigabitEthernet5",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10:c:2::1": {
+      "status": "exact",
+      "label": "CE2 / GigabitEthernet2 (DC-B)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE2",
+          "interface": "GigabitEthernet2",
+          "site": "DC-B",
+          "role": "CE-Router"
+        }
+      ]
+    },
+    "fd10:c:3::": {
+      "status": "exact",
+      "label": "SPE3 / GigabitEthernet4 (SP-Core)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "SPE3",
+          "interface": "GigabitEthernet4",
+          "site": "SP-Core",
+          "role": "PE-Router"
+        }
+      ]
+    },
+    "fd10:c:3::1": {
+      "status": "exact",
+      "label": "CE3 / GigabitEthernet2 (DC-C)",
+      "namespace": "Global",
+      "owners": [
+        {
+          "namespace": "Global",
+          "device": "CE3",
+          "interface": "GigabitEthernet2",
+          "site": "DC-C",
+          "role": "CE-Router"
+        }
+      ]
+    }
+  }
+}

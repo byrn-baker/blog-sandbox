@@ -1,0 +1,49 @@
+{
+  "query": "_time:[2026-09-30T03:02:28.086965+00:00, 2026-09-30T03:08:32.656779+00:00] AND flow.type:\"sflow_5\" AND source.address:\"10.100.0.10\" AND destination.address:\"10.100.0.30\" AND source.port:\"51923\" AND destination.port:\"47933\" AND network.transport:\"tcp\"",
+  "matching_samples": 1,
+  "by_exporter": {
+    "192.168.3.33": 1
+  },
+  "require_enrichment": true,
+  "records": [
+    {
+      "_msg": "missing _msg field; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#message-field",
+      "_stream": "{service.name=\"telemetry-canary\"}",
+      "_stream_id": "0000000000000000f368e24678f5fa0a63943b99b943a23b",
+      "_time": "2026-09-30T03:05:38.745553304Z",
+      "destination.address": "10.100.0.30",
+      "destination.port": "47933",
+      "flow.end": "1790737538745553304",
+      "flow.io.bytes": "9018",
+      "flow.io.packets": "1",
+      "flow.sampler_address": "192.168.3.33",
+      "flow.sampling_rate": "16384",
+      "flow.sequence_num": "250841",
+      "flow.start": "1790737538745553304",
+      "flow.tcp_flags": "24",
+      "flow.time_received": "1790737538745553304",
+      "flow.type": "sflow_5",
+      "nautobot.destination.label": "DCC-k3s-w4 / bond0 (DC-C)",
+      "nautobot.destination.namespace": "Global",
+      "nautobot.destination.status": "exact",
+      "nautobot.exporter.label": "DCA-Leaf02 / Management1 (DC-A)",
+      "nautobot.exporter.namespace": "Global",
+      "nautobot.exporter.status": "exact",
+      "nautobot.snapshot.generated_at": "2026-09-30T02:55:13.330684+00:00",
+      "nautobot.snapshot.sha256": "2fba7253492184495025dbd71c171c557b42e746a5317f7633d66936edb54992",
+      "nautobot.source.label": "DCA-k3s-m1 / bond0 (DC-A)",
+      "nautobot.source.namespace": "Global",
+      "nautobot.source.status": "exact",
+      "network.transport": "tcp",
+      "network.type": "ipv4",
+      "scope.attributes.receiver": "netflow",
+      "scope.name": "otelcol/netflowreceiver",
+      "scope.version": "unknown",
+      "service.name": "telemetry-canary",
+      "severity_number": "0",
+      "severity_text": "Unspecified",
+      "source.address": "10.100.0.10",
+      "source.port": "51923"
+    }
+  ]
+}

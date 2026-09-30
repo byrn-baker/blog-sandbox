@@ -1,0 +1,6 @@
+{
+  "port": 47932,
+  "requested_tcp_mss": 1200,
+  "status": "aborted",
+  "reason": "Smaller per-connection MSS reduced throughput; projected completion exceeded 720-second safety limit. Retain original jumbo-MSS profile for the repeat."
+}

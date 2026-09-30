@@ -1,0 +1,24 @@
+{
+  "started_at": "2026-09-30T02:53:42.992382+00:00",
+  "source_device": "DCA-k3s-m1",
+  "destination_device": "DCC-k3s-w4",
+  "source_address": "10.100.0.10",
+  "destination_address": "10.100.0.30",
+  "destination_port": 47931,
+  "rate_limit_bytes_per_second": 1048576,
+  "sender": {
+    "mode": "send",
+    "bytes": 268435456,
+    "seconds": 256.0001685009338,
+    "sha256": "486cc817b95d853d3c357ff283b204c0144bd255e73fe2deb1389493b257e3c0",
+    "source_port": 58785
+  },
+  "receiver": {
+    "mode": "receive",
+    "bytes": 268435456,
+    "seconds": 258.440810874803,
+    "sha256": "486cc817b95d853d3c357ff283b204c0144bd255e73fe2deb1389493b257e3c0"
+  },
+  "ended_at": "2026-09-30T02:58:03.127488+00:00",
+  "verified": true
+}

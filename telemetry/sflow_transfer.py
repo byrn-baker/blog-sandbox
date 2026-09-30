@@ -43,7 +43,6 @@ with tempfile.TemporaryFile(prefix='part8-sflow-',dir='/var/tmp') as f:
   for _ in range(size//len(block)): f.write(block)
   f.flush(); f.seek(0)
   with socket.socket() as conn:
-   conn.setsockopt(socket.IPPROTO_TCP,socket.TCP_MAXSEG,1200)
    conn.settimeout(60); conn.bind((source,0)); conn.connect((dest,port))
    source_port=conn.getsockname()[1]; start=time.monotonic(); total=0
    while data:=f.read(16384):
@@ -97,7 +96,6 @@ def main():
             'source_device':a.source,'destination_device':a.destination,
             'source_address':source,'destination_address':dest,'destination_port':a.port,
             'rate_limit_bytes_per_second':1048576}
-    report['requested_tcp_mss']=1200
     receiver=subprocess.Popen(command(dm,'receive'),stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
     try:
         assert json.loads(receiver.stdout.readline())['ready']

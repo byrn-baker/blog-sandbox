@@ -1,0 +1,4 @@
+{
+  "command": "ss -tin dst 10.100.0.30 dport = :47932",
+  "output": "State Recv-Q Send-Q Local Address:Port  Peer Address:Port \nESTAB 0      697252   10.100.0.10:32943  10.100.0.30:47932\n\t cubic wscale:7,7 rto:1040 rtt:701.453/44.943 mss:1188 pmtu:9000 rcvmss:536 advmss:1188 cwnd:143 ssthresh:143 bytes_sent:19792772 bytes_retrans:522720 bytes_acked:18963549 segs_out:16663 segs_in:9184 data_segs_out:16661 send 1937510bps lastsnd:1 lastrcv:85839 lastack:1 pacing_rate 4178512bps delivery_rate 1787696bps delivered:16079 busy:85839ms rwnd_limited:865ms(1.0%) unacked:258 retrans:15/440 lost:15 sacked:115 rcv_space:11880 rcv_ssthresh:64348 notsent:390748 minrtt:208.816 snd_wnd:2392192 rcv_wnd:64896\n"
+}
